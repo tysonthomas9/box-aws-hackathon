@@ -25,11 +25,14 @@ class ExtractionService:
         extractor,
         repository: Repository,
         review_mode: Literal["off", "exceptions", "all"] = "exceptions",
+        *,
+        search_corpus=None,
     ):
         if review_mode not in {"off", "exceptions", "all"}:
             raise ValueError("Unknown review mode")
         self.box, self.extractor, self.repository = box, extractor, repository
         self.review_mode = review_mode
+        self.search_corpus = search_corpus
 
     @staticmethod
     def _identity(file_id: str, row: ExtractionRow, state: dict | None = None) -> tuple[str, str]:
@@ -146,6 +149,8 @@ class ExtractionService:
         document = self.box.get_document(file_id, version_id)
         if (document.file_id, document.version_id) != (file_id, version_id):
             raise ValueError("Box returned a different source version")
+        if self.search_corpus is not None:
+            self.search_corpus.save_document(document)
         identities = [
             {
                 "item_id": r["item_id"],
@@ -282,4 +287,6 @@ class ExtractionService:
         value = [item.model_dump(mode="json") for item in items]
         snapshot = ApprovedSnapshot(sha256=digest(value), items=items)
         self.repository.save_snapshot(snapshot.model_dump(mode="json"))
+        if self.search_corpus is not None:
+            self.search_corpus.publish(snapshot)
         return snapshot

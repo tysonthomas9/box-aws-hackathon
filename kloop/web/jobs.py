@@ -1,6 +1,7 @@
 """Pinned per-mode jobs, CAS ownership, bounded cold starts, and SQS redelivery."""
 
 import json
+import logging
 import threading
 import time
 from copy import deepcopy
@@ -9,17 +10,19 @@ from uuid import uuid4
 
 from boto3.dynamodb.conditions import Attr
 
-from kloop.answer import Answerer, ModelWarming
+from kloop.answer import Answerer, ModelWarming, SearchIndex
 from kloop.schemas import AskJob, Document, PinnedModel
 
 TERMINAL = {"succeeded", "failed"}
 BUDGET = 900
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
 class SearchEvidence:
     documents: list[Document]
     approved_quotes: dict[tuple[str, str], list[str]]
+    search_index: SearchIndex | None = None
 
 
 class MemoryJobs:
@@ -241,6 +244,7 @@ class Worker:
                     job.model_arn,
                     documents.documents,
                     approved_quotes=documents.approved_quotes,
+                    search_index=documents.search_index,
                 )
                 # Answerer times generation/retries; include local ranking/prompt work in retrieval.
                 job.retrieval_ms += max(
@@ -257,6 +261,17 @@ class Worker:
             # SDK messages may include prompt text, credentials or internal details.
             job.status, job.error = "failed", "Answer failed; submit again"
         job.latency_ms = max(0, (self.clock() - job.created_at) * 1000)
+        logger.info(
+            "Ask timing job=%s mode=%s status=%s queue_ms=%s retrieval_ms=%s "
+            "generation_ms=%s total_ms=%s",
+            job.id,
+            job.mode,
+            job.status,
+            job.queue_ms,
+            job.retrieval_ms,
+            job.generation_ms,
+            job.latency_ms,
+        )
         try:
             if not self.jobs.store.save(job, rev):
                 raise RuntimeError("Job ownership lost")

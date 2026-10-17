@@ -49,6 +49,83 @@ def _tokens(text: str) -> list[str]:
     return re.findall(r"\w+", text.casefold())
 
 
+class SearchIndex(Schema):
+    """Reusable BM25 chunks and token counts; query-dependent filename boosts stay exact."""
+
+    chunks: list[Citation]
+    quote_counts: list[dict[str, int]]
+    name_counts: list[dict[str, int]]
+
+    @classmethod
+    def build(cls, approved_documents, *, approved_quotes=None):
+        chunks = []
+        for doc in sorted(approved_documents, key=lambda d: (d.file_id, d.version_id)):
+            ranges = {(0, len(doc.text))}
+            if approved_quotes is not None:
+                ranges = set()
+                for quote in approved_quotes.get((doc.file_id, doc.version_id), ()):
+                    if not quote.strip():
+                        raise ValueError("An approved source quote must not be blank")
+                    matches = list(re.finditer(re.escape(quote), doc.text))
+                    if not matches:
+                        raise ValueError("Approved quote is absent from its pinned source version")
+                    ranges.update((m.start(), m.end()) for m in matches)
+            for lower, upper in sorted(ranges):
+                words = list(re.finditer(r"\S+", doc.text[lower:upper]))
+                for i in range(0, len(words), 150):
+                    start = lower + words[i].start()
+                    end = lower + words[min(i + 180, len(words)) - 1].end()
+                    chunks.append(
+                        Citation(
+                            label="",
+                            file_id=doc.file_id,
+                            version_id=doc.version_id,
+                            name=doc.name,
+                            quote=doc.text[start:end],
+                            start=start,
+                            end=end,
+                        )
+                    )
+                    if i + 180 >= len(words):
+                        break
+        return cls(
+            chunks=chunks,
+            quote_counts=[dict(Counter(_tokens(c.quote))) for c in chunks],
+            name_counts=[dict(Counter(_tokens(c.name))) for c in chunks],
+        )
+
+    def retrieve(self, question: str, top_k: int = 3) -> list[Citation]:
+        if top_k < 1:
+            raise ValueError("top_k must be positive")
+        chunks = self.chunks
+        if not chunks:
+            return []
+        counts = [
+            Counter(quote)
+            + (Counter(name) if c.name.casefold() in question.casefold() else Counter())
+            for c, quote, name in zip(chunks, self.quote_counts, self.name_counts, strict=True)
+        ]
+        lengths = [sum(c.values()) for c in counts]
+        average = sum(lengths) / len(chunks)
+        if not average:
+            return []
+        frequency = Counter(t for c in counts for t in c)
+        scores = []
+        for idx, count in enumerate(counts):
+            score = 0.0
+            for term in sorted(set(_tokens(question))):
+                tf = count[term]
+                if tf:
+                    idf = math.log(
+                        1 + (len(chunks) - frequency[term] + 0.5) / (frequency[term] + 0.5)
+                    )
+                    score += idf * tf * 2.5 / (tf + 1.5 * (0.25 + 0.75 * lengths[idx] / average))
+            if score > 0:
+                scores.append((score, idx))
+        selected = [chunks[i] for _, i in sorted(scores, key=lambda s: (-s[0], s[1]))[:top_k]]
+        return [chunk.model_copy(update={"label": str(i)}) for i, chunk in enumerate(selected, 1)]
+
+
 def retrieve(
     question: str,
     approved_documents: Sequence[Document],
@@ -56,69 +133,12 @@ def retrieve(
     *,
     approved_quotes: Mapping[tuple[str, str], Sequence[str]] | None = None,
 ) -> list[Citation]:
-    """BM25 (k1=1.5, b=.75), 180-word chunks with 30-word overlap.
-
-    Explicit filename terms participate in ranking; quotes remain limited to approved ranges.
-    Offsets and quotes refer to the exact source version, not generated text.
-    Empty/no-match queries return no sources. Ties use file/version/offset order.
-    """
+    """BM25 with filename-aware ranking, approved ranges and exact source offsets."""
     if top_k < 1:
         raise ValueError("top_k must be positive")
-    chunks = []
-    for doc in sorted(approved_documents, key=lambda d: (d.file_id, d.version_id)):
-        ranges = {(0, len(doc.text))}
-        if approved_quotes is not None:
-            ranges = set()
-            for quote in approved_quotes.get((doc.file_id, doc.version_id), ()):
-                if not quote.strip():
-                    raise ValueError("An approved source quote must not be blank")
-                matches = list(re.finditer(re.escape(quote), doc.text))
-                if not matches:
-                    raise ValueError("Approved quote is absent from its pinned source version")
-                ranges.update((m.start(), m.end()) for m in matches)
-        for lower, upper in sorted(ranges):
-            words = list(re.finditer(r"\S+", doc.text[lower:upper]))
-            for i in range(0, len(words), 150):
-                start = lower + words[i].start()
-                end = lower + words[min(i + 180, len(words)) - 1].end()
-                chunks.append(
-                    Citation(
-                        label="",
-                        file_id=doc.file_id,
-                        version_id=doc.version_id,
-                        name=doc.name,
-                        quote=doc.text[start:end],
-                        start=start,
-                        end=end,
-                    )
-                )
-                if i + 180 >= len(words):
-                    break
-    if not chunks:
-        return []
-    counts = [
-        Counter(
-            _tokens((c.name + " " if c.name.casefold() in question.casefold() else "") + c.quote)
-        )
-        for c in chunks
-    ]
-    lengths = [sum(c.values()) for c in counts]
-    average = sum(lengths) / len(chunks)
-    if not average:
-        return []
-    frequency = Counter(t for c in counts for t in c)
-    scores = []
-    for idx, count in enumerate(counts):
-        score = 0.0
-        for term in sorted(set(_tokens(question))):
-            tf = count[term]
-            if tf:
-                idf = math.log(1 + (len(chunks) - frequency[term] + 0.5) / (frequency[term] + 0.5))
-                score += idf * tf * 2.5 / (tf + 1.5 * (0.25 + 0.75 * lengths[idx] / average))
-        if score > 0:
-            scores.append((score, idx))
-    selected = [chunks[i] for _, i in sorted(scores, key=lambda s: (-s[0], s[1]))[:top_k]]
-    return [chunk.model_copy(update={"label": str(i)}) for i, chunk in enumerate(selected, 1)]
+    return SearchIndex.build(approved_documents, approved_quotes=approved_quotes).retrieve(
+        question, top_k
+    )
 
 
 class Answerer:
@@ -217,6 +237,7 @@ class Answerer:
         *,
         top_k: int = 3,
         approved_quotes: Mapping[tuple[str, str], Sequence[str]] | None = None,
+        search_index: SearchIndex | None = None,
     ) -> Answer:
         """Use the caller's base import and approved, versioned document snapshot.
 
@@ -229,7 +250,9 @@ class Answerer:
         return self._answer(
             question,
             model_arn,
-            retrieve(question, approved_documents, top_k, approved_quotes=approved_quotes),
+            search_index.retrieve(question, top_k)
+            if search_index is not None
+            else retrieve(question, approved_documents, top_k, approved_quotes=approved_quotes),
         )
 
     def warm_up(self, model_arn: str) -> Answer:

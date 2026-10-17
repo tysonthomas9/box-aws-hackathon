@@ -215,3 +215,20 @@ def test_empty_base_model_does_not_hide_available_trained_model(monkeypatch):
         assert models["with"]["arn"].endswith("/abcdefghijkl")
     finally:
         runtime.api_runtime.cache_clear()
+
+
+def test_worker_reads_published_search_corpus_once_without_box(snapshots):
+    from kloop.answer.corpus import CorpusStore
+    from kloop.schemas import ApprovedSnapshot
+
+    value = save(snapshots)
+    snapshot = ApprovedSnapshot.model_validate(value)
+    store = CorpusStore(snapshots.repository.bodies)
+    store.publish(snapshot, [snapshots.box.get_document.return_value])
+    worker = runtime.worker_runtime()
+    first = worker.documents(snapshot.sha256)
+    second = worker.documents(snapshot.sha256)
+    assert first is second
+    assert first.search_index.retrieve("Approved")[0].quote == "Approved excerpt."
+    snapshots.plugin.assert_not_called()
+    snapshots.box.get_document.assert_not_called()

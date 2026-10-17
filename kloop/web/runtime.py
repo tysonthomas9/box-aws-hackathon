@@ -7,14 +7,18 @@ from functools import lru_cache
 
 import boto3
 from botocore.config import Config
-from box_sdk_gen.box.errors import BoxAPIError
 
 from kloop.adapters.aws import DynamoStorage
 from kloop.answer.bedrock import ImportedModelClient
+from kloop.answer.corpus import (
+    CorpusStore,
+    SearchCorpus,
+    fetch_documents,
+    quotes_for,
+    validate_snapshot,
+)
 from kloop.config import Settings
-from kloop.extract.repository import ConcurrentUpdate
 from kloop.extract.runtime import snapshot_storage
-from kloop.schemas import ApprovedSnapshot
 from kloop.web.api import Services, create_app
 from kloop.web.jobs import DynamoJobs, JobService, SearchEvidence, SQSDispatch, Worker
 from kloop.web.security import DynamoThrottle, Security
@@ -168,50 +172,38 @@ def worker_runtime():
     storage = snapshot_storage(aws)
     extraction = LazyService(lambda: plugin(os.environ["KLOOP_EXTRACTION_FACTORY"], aws))
 
-    def documents(sha):
-        value = storage.get("approved_snapshots", sha)
-        if value is None:
-            raise ValueError("Pinned snapshot is missing")
-        snapshot = ApprovedSnapshot.model_validate(value)
-        from kloop.extract.service import digest
+    corpora = CorpusStore(storage.bodies)
 
-        if (
-            snapshot.sha256 != sha
-            or digest([i.model_dump(mode="json") for i in snapshot.items]) != sha
-        ):
-            raise ValueError("Pinned snapshot failed integrity check")
-        pairs = sorted({(i.source_file_id, i.source_version_id) for i in snapshot.items})
-        documents = []
-        for file, version in pairs:
-            try:
-                document = extraction.box.get_document(file, version)
-            except (BoxAPIError, PermissionError) as error:
-                if isinstance(error, BoxAPIError) and error.response_info.status_code not in {
-                    403,
-                    404,
-                    410,
-                }:
-                    raise
-                logger.warning(
-                    "Search skipped unavailable source %s version %s; retirement review requested",
-                    file,
-                    version,
-                )
-                try:
-                    extraction.retire(file)
-                except ConcurrentUpdate:
-                    # Another review/sync won the CAS. Retry the retirement on the next read.
-                    logger.warning("Retirement review deferred by concurrent update for %s", file)
-                continue
-            if (document.file_id, document.version_id) != (file, version):
-                raise ValueError("Source version differs from pinned snapshot")
-            documents.append(document)
-        quotes = {(d.file_id, d.version_id): [] for d in documents}
-        for item in snapshot.items:
-            pair = (item.source_file_id, item.source_version_id)
-            if pair in quotes:
-                quotes[pair].append(item.supporting_quote)
-        return SearchEvidence(documents, quotes)
+    @lru_cache(maxsize=2)
+    def cached_documents(sha):
+        corpus = corpora.load(sha)
+        snapshot = validate_snapshot(storage.get("approved_snapshots", sha), sha)
+        expected = SearchCorpus.build(snapshot, corpus.documents)
+        if expected != corpus:
+            raise ValueError("Search corpus index differs from approved sources")
+        pairs = {(i.source_file_id, i.source_version_id) for i in snapshot.items}
+        if any((d.file_id, d.version_id) not in pairs for d in corpus.documents):
+            raise ValueError("Search corpus contains a source outside the pinned snapshot")
+        return SearchEvidence(
+            corpus.documents, quotes_for(snapshot, corpus.documents), corpus.index
+        )
+
+    def documents(sha):
+        try:
+            return cached_documents(sha)
+        except KeyError as error:
+            # Only a missing Search corpus permits live fallback. Snapshot corruption must fail.
+            from kloop.answer.corpus import corpus_key
+
+            if error.args != (corpus_key(sha),):
+                raise
+        snapshot = validate_snapshot(storage.get("approved_snapshots", sha), sha)
+        logger.info("Search corpus missing; live source fallback snapshot=%s", sha)
+        loaded = fetch_documents(
+            snapshot, extraction.box.get_document, lambda file: extraction.retire(file)
+        )
+        corpus = SearchCorpus.build(snapshot, loaded)
+        return SearchEvidence(loaded, quotes_for(snapshot, loaded), corpus.index)
 
     model = ImportedModelClient(
         aws.client(

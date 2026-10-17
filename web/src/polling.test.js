@@ -38,6 +38,17 @@ describe("job polling", () => {
     expect(p.api.mock.calls[0][0]).toBe("jobs/job%2F1");
     expect(p.wait).toHaveBeenCalledTimes(2);
   });
+  it("checks running Search jobs every second without speeding up model warming", async () => {
+    const p = setup({
+      job: { ...job, mode: "search" },
+      api: vi.fn()
+        .mockResolvedValueOnce({ ...job, mode: "search", status: "running" })
+        .mockResolvedValueOnce({ ...job, mode: "search", status: "warming" })
+        .mockResolvedValueOnce({ ...job, mode: "search", status: "succeeded" }),
+    });
+    await pollJob(p);
+    expect(p.wait.mock.calls.map(([ms]) => ms)).toEqual([1000, 5000]);
+  });
   it("stops at failed jobs without scheduling another poll", async () => {
     const p = setup({
       api: vi
@@ -130,12 +141,12 @@ describe("job polling", () => {
 });
 
 describe("polling under the shared API limit", () => {
-  it("keeps three comparison jobs, warm-up and training below 120 requests per minute", async () => {
+  it.each(["warming", "running"])("keeps jobs and training below 120 requests per minute while %s", async (status) => {
     vi.useFakeTimers();
     vi.setSystemTime(0);
     try {
       const controller = new AbortController();
-      const api = vi.fn().mockResolvedValue({ ...job, status: "warming" });
+      const api = vi.fn().mockResolvedValue({ ...job, status });
       const polls = ["without", "with", "search", "warm-up"].map((mode) =>
         pollJob(setup({ api, job: { ...job, mode }, now: Date.now, wait: delay, signal: controller.signal })),
       );

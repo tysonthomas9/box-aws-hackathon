@@ -9,6 +9,7 @@ import os
 from botocore.config import Config
 
 from kloop.adapters.aws import DynamoStorage
+from kloop.answer.corpus import CorpusStore
 from kloop.box.auth import token_provider
 from kloop.box.client import BoxClient, sdk_client
 from kloop.config import Settings
@@ -31,11 +32,13 @@ def factory(session) -> ExtractionService:
         ),
     )
     table = session.resource("dynamodb").Table(os.getenv("KLOOP_ITEMS_TABLE", settings.table_name))
+    bodies = S3SnapshotBodies(session.client("s3"), settings.artifact_bucket)
     return ExtractionService(
         box,
         BoxAIExtractor(sdk, GLMExtractor(runtime)),
-        DynamoRepository(table, S3SnapshotBodies(session.client("s3"), settings.artifact_bucket)),
+        DynamoRepository(table, bodies),
         os.getenv("KLOOP_REVIEW_MODE", "exceptions"),
+        search_corpus=CorpusStore(bodies),
     )
 
 

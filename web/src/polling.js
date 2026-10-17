@@ -1,5 +1,5 @@
 export const READINESS_MS = 15 * 60 * 1000;
-// Four job polls plus training stay below 70 reads/minute, leaving room for actions.
+// Search checks every second while answering; other jobs retain the shared API budget.
 export const POLL_MS = 5000;
 export function retryAfterMs(value, now = Date.now()) {
   if (!value) return undefined;
@@ -81,7 +81,8 @@ export async function pollJob({
       throttles = 0;
       onUpdate(current);
       if (isTerminal(current)) return;
-      await wait(Math.min(POLL_MS, Math.max(0, deadline - now())), signal);
+      const interval = job.mode === "search" && current.status === "running" ? 1000 : POLL_MS;
+      await wait(Math.min(interval, Math.max(0, deadline - now())), signal);
     } catch (error) {
       if (signal.aborted) return;
       if (error.status === 429 && now() < deadline) {
