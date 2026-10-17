@@ -174,7 +174,7 @@ def test_authorized_replacement_archives_exact_state_and_preserves_history_and_c
             evidence, manifest, repository, records, bodies, **{**options, "expected_revision": 99}
         )
     files = [FileInfo(str(i), "v1", "source.docx", None) for i in range(2)]
-    monkeypatch.setattr("kloop.sync.service.source_files", lambda _: files)
+    monkeypatch.setattr("kloop.sync.service.source_files", lambda _, **kwargs: files)
     extraction, lease = Mock(), Mock()
     lease.acquire.return_value = True
     lease.pending.return_value = []
