@@ -30,15 +30,16 @@ def smoke(sdk, settings: Settings, *, webhook_url: str = "") -> dict:
     does not prove delivery/signature verification. No temporary public receiver
     is deployed here; the integration task owns that proof.
     """
-    sdk.users.get_user_me(fields=["id"])
+    actor = sdk.users.get_user_me(fields=["id"])
     folder = sdk.folders.create_folder("kloop-smoke-" + uuid4().hex, CreateFolderParent("0"))
-    result = {"folder_id": folder.id, "checks": {}, "cleanup": False}
+    result = {"folder_id": folder.id, "actor_id": actor.id, "checks": {}, "cleanup": False}
     client = BoxClient(sdk, folder.id)
     hook = None
     files = []
     try:
         original = client.upload_text("smoke.txt", "The Kestrel service owner is Mira Solven.\n")
         files.append(original.file_id)
+        result["file_id"] = original.file_id
         if client.get_document(original.file_id, original.version_id).text != (
             "The Kestrel service owner is Mira Solven.\n"
         ):
@@ -48,12 +49,19 @@ def smoke(sdk, settings: Settings, *, webhook_url: str = "") -> dict:
             raise RuntimeError("Smoke folder listing did not contain one document")
         result["checks"]["list"] = "passed"
         revised = client.upload_version(
-            original.file_id, "The Kestrel service owner is test-only.\n"
+            original.file_id,
+            "The Kestrel service owner is test-only.\n",
+            expected_etag=original.etag,
         )
         if revised.version_id == original.version_id:
             raise RuntimeError("Smoke version did not change")
         if "Mira Solven" not in client.get_document(original.file_id, original.version_id).text:
             raise RuntimeError("Smoke old-version download changed")
+        if client.get_document(revised.file_id, revised.version_id).text != (
+            "The Kestrel service owner is test-only.\n"
+        ):
+            raise RuntimeError("Smoke new-version download did not match upload")
+        result["versions"] = {"original": original.version_id, "revised": revised.version_id}
         result["checks"]["versions"] = "passed"
         # Smoke-only transport probe, not extraction business logic or acceptance.
         from box_sdk_gen import AiAgentExtractStructured, AiItemBase
@@ -76,7 +84,11 @@ def smoke(sdk, settings: Settings, *, webhook_url: str = "") -> dict:
         )
         if not response.answer:
             raise RuntimeError("Smoke extraction returned no answer")
+        answer = json.dumps(response.answer.to_dict()).lower()
+        if "test-only" not in answer:
+            raise RuntimeError("Smoke extraction did not reflect the revised owner")
         result["checks"]["extract_transport"] = "passed"
+        result["checks"]["extract_comparison"] = "passed"
         if webhook_url:
             hook = client.create_webhook(webhook_url)
             actual = sdk.webhooks.get_webhook_by_id(hook)
@@ -127,6 +139,18 @@ def main() -> int:
             result = seed(BoxClient(sdk, folder_id), args.pack)
         print(json.dumps(result, indent=2))
         return 0
+    except BoxAPIError as exc:
+        if exc.response_info.status_code == 412:
+            print(
+                "Box file changed by someone else. Stopped; re-read before seeding.",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                f"Box {args.command} failed (HTTP {exc.response_info.status_code}).",
+                file=sys.stderr,
+            )
+        return 1
     except Exception as exc:
         # Box SDK exceptions can contain request headers, bodies, and signed URLs.
         # CLI emits only the class; callers debugging locally can inspect safely.

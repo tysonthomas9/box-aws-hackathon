@@ -137,8 +137,13 @@ class BoxClient:
             )
         return self._info(result.entries[0])
 
-    def upload_version(self, file_id: str, text: str) -> FileInfo:
+    def upload_version(
+        self, file_id: str, text: str, *, expected_etag: str | None = None
+    ) -> FileInfo:
         current = self._file(file_id)
+        etag = current.etag if expected_etag is None else expected_etag
+        if not etag:
+            raise ValueError("A version upload requires the inspected ETag")
         with BytesIO(text.encode("utf-8")) as stream:
             result = self.sdk.uploads.upload_file_version(
                 file_id,
@@ -147,7 +152,7 @@ class BoxClient:
                 file_file_name=current.name,
                 file_content_type="text/plain; charset=utf-8",
                 fields=FILE_FIELDS,
-                if_match=current.etag,
+                if_match=etag,
             )
         return self._info(result.entries[0])
 
@@ -165,7 +170,11 @@ class BoxClient:
         return self.sdk.webhooks.create_webhook(
             CreateWebhookTarget(id=self.folder_id, type=CreateWebhookTargetTypeField.FOLDER),
             address,
-            [CreateWebhookTriggers.FILE_UPLOADED, CreateWebhookTriggers.FILE_DELETED],
+            [
+                CreateWebhookTriggers.FILE_UPLOADED,
+                CreateWebhookTriggers.FILE_TRASHED,
+                CreateWebhookTriggers.FILE_DELETED,
+            ],
         ).id
 
     def delete_webhook(self, webhook_id: str) -> None:

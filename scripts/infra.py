@@ -166,6 +166,7 @@ def main():
 
         table = session.resource("dynamodb").Table(ledger_names[0])
         ledger = CleanupLedger(table, prefix)
+        ledger.fence()
         delete_webhook = None
         if any(row["kind"] == "box_webhook" for row in ledger.entries()):
             from box_sdk_gen.box.errors import BoxAPIError

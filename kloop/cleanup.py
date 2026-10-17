@@ -8,6 +8,8 @@ pending row: reconcile it first. All rows use the canonical DynamoStorage keys.
 import json
 from typing import Any
 
+from boto3.dynamodb.conditions import Attr
+
 from kloop.adapters.aws import DynamoStorage
 
 
@@ -17,32 +19,78 @@ class CleanupLedger:
         self.deployment = deployment
         self.collection = f"cleanup:{deployment}"
 
+    @property
+    def fence_key(self):
+        return {"pk": f"cleanup-control:{self.deployment}", "sk": "destroy"}
+
+    def fence(self) -> None:
+        """Permanently stop new reservations before taking a cleanup snapshot.
+
+        Pre-fence creators retain their pending rows and may finish resolving.
+        Never expire this fence or a reservation: uncertain creates need explicit
+        reconciliation. A destroyed deployment must use a fresh ledger table.
+        """
+        self.storage._table.put_item(Item=self.fence_key)
+
     def reserve(self, key: str, kind: str, name: str) -> None:
+        """Must succeed BEFORE the external create; resolve is its final step."""
         if kind not in {"bedrock_import", "box_webhook"}:
             raise ValueError("Unsupported cleanup resource")
-        self.storage._table.put_item(
-            Item={
-                "pk": self.collection,
-                "sk": key,
-                "payload": json.dumps(
-                    {
-                        "key": key,
-                        "deployment": self.deployment,
-                        "kind": kind,
-                        "name": name,
-                        "resource_id": None,
+        table = self.storage._table
+        table.meta.client.transact_write_items(
+            TransactItems=[
+                {
+                    "ConditionCheck": {
+                        "TableName": table.name,
+                        "Key": self.fence_key,
+                        "ConditionExpression": "attribute_not_exists(pk)",
                     }
-                ),
-            },
-            ConditionExpression="attribute_not_exists(pk)",
+                },
+                {
+                    "Put": {
+                        "TableName": table.name,
+                        "Item": {
+                            "pk": self.collection,
+                            "sk": key,
+                            "payload": json.dumps(
+                                {
+                                    "key": key,
+                                    "deployment": self.deployment,
+                                    "kind": kind,
+                                    "name": name,
+                                    "resource_id": None,
+                                }
+                            ),
+                        },
+                        "ConditionExpression": "attribute_not_exists(pk)",
+                    }
+                },
+            ]
         )
 
     def resolve(self, key: str, resource_id: str) -> None:
-        row = self.storage.get(self.collection, key)
-        if row is None:
+        if not resource_id:
+            raise ValueError("A resource identity is required")
+        table = self.storage._table
+        item = table.get_item(Key={"pk": self.collection, "sk": key}, ConsistentRead=True).get(
+            "Item"
+        )
+        if item is None:
             raise KeyError(key)
+        row = json.loads(item["payload"])
+        if row["resource_id"] not in (None, resource_id):
+            raise ValueError("Cleanup reservation already resolves to another resource")
         row["resource_id"] = resource_id
-        self.storage.put(self.collection, key, row)
+        table.put_item(
+            Item={**item, "payload": json.dumps(row)},
+            ConditionExpression=Attr("payload").eq(item["payload"]),
+        )
+
+    def remove(self, row) -> None:
+        self.storage._table.delete_item(
+            Key={"pk": self.collection, "sk": row["key"]},
+            ConditionExpression=Attr("payload").eq(json.dumps(row)),
+        )
 
     def entries(self):
         return self.storage.list(self.collection)
@@ -54,12 +102,15 @@ def cleanup(ledger: CleanupLedger, session: Any, delete_webhook=None) -> None:
     delete_webhook is the Box adapter's idempotent delete callback. Production
     destroy refuses to proceed if Box cleanup is needed without that adapter.
     """
+    ledger.fence()
+    rows = ledger.entries()
+    for row in rows:
+        if row.get("deployment") != ledger.deployment or not row.get("resource_id"):
+            raise RuntimeError(f"Reconcile cleanup entry before destroy: {row['key']}")
     bedrock = session.client("bedrock")
     identity = session.client("sts").get_caller_identity()["Account"]
-    for row in ledger.entries():
-        resource = row.get("resource_id")
-        if row.get("deployment") != ledger.deployment or not resource:
-            raise RuntimeError(f"Reconcile cleanup entry before destroy: {row['key']}")
+    for row in rows:
+        resource = row["resource_id"]
         if row["kind"] == "bedrock_import":
             expected = f"arn:aws:bedrock:us-east-2:{identity}:imported-model/"
             if not resource.startswith(expected):
@@ -78,4 +129,6 @@ def cleanup(ledger: CleanupLedger, session: Any, delete_webhook=None) -> None:
             delete_webhook(resource)
         else:
             raise ValueError("Unknown cleanup kind")
-        ledger.storage.delete(ledger.collection, row["key"])
+        ledger.remove(row)
+    if ledger.entries():
+        raise RuntimeError("Cleanup ledger is not empty; retain the table and retry")

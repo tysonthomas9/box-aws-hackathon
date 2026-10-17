@@ -58,19 +58,20 @@ def test_foreign_tag_blocks_delete(ledger):
     assert len(ledger.entries()) == 1
 
 
-def test_owned_delete_and_retry_after_not_found(ledger):
+@pytest.mark.parametrize("missing", [False, True])
+def test_owned_delete_and_retry_after_not_found(ledger, missing):
     ledger.reserve("job", "bedrock_import", "owned-job")
     ledger.resolve("job", "arn:aws:bedrock:us-east-2:123456789012:imported-model/owned")
     session, bedrock = clients()
     bedrock.list_tags_for_resource.return_value = {
         "tags": [{"key": "deployment", "value": "owned"}]
     }
+    if missing:
+        bedrock.list_tags_for_resource.side_effect = bedrock.exceptions.ResourceNotFoundException()
     cleanup(ledger, session)
-    bedrock.delete_imported_model.assert_called_once()
+    if not missing:
+        bedrock.delete_imported_model.assert_called_once()
     assert ledger.entries() == []
-    ledger.reserve("job", "bedrock_import", "owned-job")
-    ledger.resolve("job", "arn:aws:bedrock:us-east-2:123456789012:imported-model/owned")
-    bedrock.list_tags_for_resource.side_effect = bedrock.exceptions.ResourceNotFoundException()
     cleanup(ledger, session)
     assert ledger.entries() == []
 
@@ -89,9 +90,7 @@ def test_box_cleanup_is_required_and_scoped(ledger):
 
 def test_reservation_cannot_overwrite_ownership(ledger):
     ledger.reserve("job", "bedrock_import", "first")
-    with pytest.raises(
-        ledger.storage._table.meta.client.exceptions.ConditionalCheckFailedException
-    ):
+    with pytest.raises(ledger.storage._table.meta.client.exceptions.TransactionCanceledException):
         ledger.reserve("job", "bedrock_import", "second")
     assert ledger.entries()[0]["name"] == "first"
 
@@ -117,3 +116,65 @@ def test_foreign_region_never_reaches_delete(ledger):
         cleanup(ledger, session)
     bedrock.list_tags_for_resource.assert_not_called()
     bedrock.delete_imported_model.assert_not_called()
+
+
+def test_destroy_fence_stops_new_creates_but_retains_pending(ledger):
+    ledger.reserve("active", "box_webhook", "folder")
+    session, _ = clients()
+    callback = Mock()
+    with pytest.raises(RuntimeError, match="Reconcile"):
+        cleanup(ledger, session, callback)
+    with pytest.raises(ledger.storage._table.meta.client.exceptions.TransactionCanceledException):
+        ledger.reserve("late", "box_webhook", "folder")
+    callback.assert_not_called()
+    assert [row["key"] for row in ledger.entries()] == ["active"]
+    ledger.resolve("active", "123")
+    cleanup(ledger, session, callback)
+    callback.assert_called_once_with("123")
+    assert ledger.entries() == []
+
+
+def test_fence_is_present_before_cleanup_snapshot(ledger, monkeypatch):
+    original = ledger.entries
+
+    def snapshot():
+        with pytest.raises(
+            ledger.storage._table.meta.client.exceptions.TransactionCanceledException
+        ):
+            ledger.reserve("late", "box_webhook", "folder")
+        return original()
+
+    monkeypatch.setattr(ledger, "entries", snapshot)
+    cleanup(ledger, clients()[0])
+
+
+def test_resolve_cannot_change_identity_or_restore_deleted_row(ledger, monkeypatch):
+    ledger.reserve("hook", "box_webhook", "folder")
+    ledger.resolve("hook", "123")
+    ledger.resolve("hook", "123")
+    with pytest.raises(ValueError, match="another resource"):
+        ledger.resolve("hook", "456")
+    assert ledger.entries()[0]["resource_id"] == "123"
+    table = ledger.storage._table
+    original = table.put_item
+
+    def stale(**kwargs):
+        table.delete_item(Key={"pk": ledger.collection, "sk": "hook"})
+        return original(**kwargs)
+
+    monkeypatch.setattr(table, "put_item", stale)
+    with pytest.raises(table.meta.client.exceptions.ConditionalCheckFailedException):
+        ledger.resolve("hook", "123")
+    assert ledger.entries() == []
+
+
+def test_cleanup_cannot_remove_replaced_identity(ledger):
+    ledger.reserve("hook", "box_webhook", "folder")
+    ledger.resolve("hook", "123")
+    row = ledger.entries()[0]
+    ledger.storage.put(ledger.collection, "hook", {**row, "resource_id": "unexpected"})
+    with pytest.raises(
+        ledger.storage._table.meta.client.exceptions.ConditionalCheckFailedException
+    ):
+        ledger.remove(row)
+    assert ledger.entries()[0]["resource_id"] == "unexpected"

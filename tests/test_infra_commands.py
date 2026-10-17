@@ -80,3 +80,44 @@ def test_destroy_resumes_after_outputs_and_ledger_were_removed(monkeypatch):
         ("infra", ("destroy", "-auto-approve", "-input=false")),
         ("infra/bootstrap", ("destroy", "-auto-approve", "-input=false")),
     ]
+
+
+def test_destroy_does_not_delete_table_if_creator_is_pending(monkeypatch):
+    from unittest.mock import Mock
+
+    import pytest
+
+    from kloop.cleanup import CleanupLedger
+    from scripts import infra
+
+    calls = []
+
+    def run(directory, *args, capture=False):
+        calls.append((directory, args))
+        if args[:2] == ("output", "-raw"):
+            return "kloop-test-123-tfstate"
+        if args == ("state", "pull"):
+            return """{"resources":[{"type":"aws_dynamodb_table","name":"records",
+                "instances":[{"index_key":"cleanup_ledger",
+                "attributes":{"name":"owned-ledger"}}]}]}"""
+        return None
+
+    monkeypatch.setattr(infra, "terraform", run)
+    monkeypatch.setattr(infra.boto3, "Session", lambda **kwargs: Mock())
+    monkeypatch.setattr(
+        CleanupLedger,
+        "entries",
+        lambda _self: [
+            {
+                "key": "active",
+                "kind": "bedrock_import",
+                "deployment": "kloop-test",
+                "resource_id": None,
+            }
+        ],
+    )
+    monkeypatch.setattr(sys, "argv", ["infra.py", "destroy"])
+    monkeypatch.setenv("NAME_PREFIX", "kloop-test")
+    with pytest.raises(RuntimeError, match="Reconcile"):
+        infra.main()
+    assert not any(args[0] == "destroy" for _, args in calls)

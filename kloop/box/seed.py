@@ -5,7 +5,7 @@ import json
 from dataclasses import asdict
 from pathlib import Path
 
-from kloop.box.client import BoxClient
+from kloop.box.client import BoxClient, FileInfo
 from kloop.ports import Record, Storage
 
 DEFAULT_PACK = Path(__file__).resolve().parents[2] / "poc/company-knowledge/pack.json"
@@ -29,9 +29,11 @@ def seed(
         if current is None:
             info = client.upload_text(name, text)
         elif client.get_document(current.id, current.file_version.id).text == text:
-            info = client.get_file(current.id)
+            info = FileInfo(current.id, current.file_version.id, current.name, current.etag)
         else:
-            info = client.upload_version(current.id, text)
+            if not current.etag:
+                raise ValueError("Seed requires the inspected file ETag")
+            info = client.upload_version(current.id, text, expected_etag=current.etag)
         if client.get_document(info.file_id, info.version_id).text != text:
             raise RuntimeError("Box seed read-after-write verification failed")
         files.append({**asdict(info), "sha256": hashlib.sha256(text.encode()).hexdigest()})

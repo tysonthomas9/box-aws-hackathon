@@ -14,6 +14,7 @@ import pytest
 from box_sdk_gen import BoxClient as SDKClient
 from box_sdk_gen import BoxDeveloperTokenAuth, FileFull, Webhook
 from box_sdk_gen.box.errors import BoxAPIError
+from box_sdk_gen.managers.uploads import UploadFileVersionAttributes
 from box_sdk_gen.networking.box_network_client import APIResponse
 from box_sdk_gen.networking.fetch_response import FetchResponse
 from box_sdk_gen.networking.network import NetworkSession
@@ -178,6 +179,11 @@ def test_webhook_scope_create_delete(fake):
     client = BoxClient(fake, FOLDER)
     client.create_webhook("https://receiver.example.test/api/box-webhook")
     assert fake.webhooks.create_webhook.call_args.args[0].id == FOLDER
+    assert {trigger.value for trigger in fake.webhooks.create_webhook.call_args.args[2]} == {
+        "FILE.UPLOADED",
+        "FILE.TRASHED",
+        "FILE.DELETED",
+    }
     client.delete_webhook("8516747068")
     fake.webhooks.delete_webhook_by_id.assert_called_once_with("8516747068")
     fake.webhooks.get_webhook_by_id.return_value.target.id = "unrelated"
@@ -435,3 +441,99 @@ def test_webhook_keys_load_from_ccg_secret_and_missing_keys_fail_closed():
     assert not verify_webhook(
         b'{"event":"test"}', delivery(), **webhook_keys(secrets, Settings()), now=NOW
     )
+
+
+def test_version_uses_inspected_etag_even_after_concurrent_edit(fake):
+    client = BoxClient(fake, FOLDER)
+    fake.files.get_file_by_id.return_value = file_info(etag="newer")
+    client.upload_version(FILE, "replacement", expected_etag="inspected")
+    assert fake.uploads.upload_file_version.call_args.kwargs["if_match"] == "inspected"
+    with pytest.raises(ValueError, match="ETag"):
+        client.upload_version(FILE, "replacement", expected_etag="")
+
+
+def test_seed_stops_on_concurrent_edit(fake, tmp_path):
+    pack = tmp_path / "pack.json"
+    pack.write_text(
+        json.dumps({"facts": [{"source": "source.txt", "text": "new"}], "procedures": []})
+    )
+    fake.folders.get_folder_items.return_value.entries = [file_info(name="source.txt", etag="2")]
+    fake.files.get_file_by_id.return_value = file_info(name="source.txt", etag="3")
+
+    def conflict(*args, **kwargs):
+        assert kwargs["if_match"] == "2"
+        raise RuntimeError("412 changed by another actor")
+
+    fake.uploads.upload_file_version.side_effect = conflict
+    storage = MemoryStorage()
+    with pytest.raises(RuntimeError, match="412"):
+        seed(BoxClient(fake, FOLDER), pack, storage=storage)
+    assert fake.uploads.upload_file_version.call_count == 1
+    assert storage.list("box_sources") == []
+
+
+def test_smoke_serializes_sdk_extraction_and_cleans_up(fake):
+    from box_sdk_gen import AiExtractStructuredResponse
+
+    from kloop.box.cli import smoke
+
+    fake.users = Mock()
+    fake.users.get_user_me.return_value = SimpleNamespace(id="actor")
+    fake.folders.create_folder.return_value = SimpleNamespace(id=FOLDER)
+    missing = BoxAPIError(
+        message="missing", request_info=None, response_info=SimpleNamespace(status_code=404)
+    )
+    fake.folders.get_folder_by_id.side_effect = missing
+    fake.ai = Mock()
+    fake.ai.create_ai_extract_structured.return_value = AiExtractStructuredResponse.from_dict(
+        {
+            "answer": {"owner": "test-only"},
+            "created_at": "2026-10-17T06:00:00Z",
+            "completion_reason": "done",
+        }
+    )
+    fake.uploads.upload_file_version.return_value = SimpleNamespace(
+        entries=[file_info(file_version={"id": "new-version"})]
+    )
+
+    def download(_id, *, version):
+        return BytesIO(
+            (
+                "The Kestrel service owner is test-only.\n"
+                if version == "new-version"
+                else "The Kestrel service owner is Mira Solven.\n"
+            ).encode()
+        )
+
+    fake.downloads.download_file.side_effect = download
+    result = smoke(fake, Settings())
+    assert result["cleanup"] is True
+    assert result["checks"]["extract_transport"] == "passed"
+    json.dumps(result)
+
+
+def test_signed_trash_event_is_accepted():
+    body = b'{"trigger":"FILE.TRASHED","source":{"id":"123"}}'
+    assert verify_webhook(body, delivery(body), primary_key="test-only-key", now=NOW)
+
+
+def test_sdk_does_not_retry_precondition_failure(monkeypatch):
+    sdk = sdk_client(DeveloperTokenProvider("test-only"))
+    attempts = []
+
+    def response(request):
+        attempts.append(request)
+        reply = Response()
+        reply.status_code = 412
+        reply._content = b'{"code":"precondition_failed"}'
+        return APIResponse(network_response=reply)
+
+    monkeypatch.setattr(sdk.network_session.network_client, "_make_request", response)
+    with pytest.raises(BoxAPIError):
+        sdk.uploads.upload_file_version(
+            FILE,
+            UploadFileVersionAttributes("source.txt"),
+            BytesIO(b"new"),
+            if_match="inspected",
+        )
+    assert len(attempts) == 1

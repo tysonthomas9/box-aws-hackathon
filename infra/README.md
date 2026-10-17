@@ -54,9 +54,16 @@ must be measured on Linux/Lambda, not macOS. The infrastructure evidence directo
 records this wave's proof. Static files are uploaded from `web/` if present;
 otherwise a clearly marked placeholder is uploaded.
 
-Creators must reserve cleanup-ledger entries before external creation, then
-resolve the import ARN or webhook ID. Uncertain creates must be reconciled before
-destroy; unresolved entries stop deletion. Bedrock imports must also carry this
+Creators must successfully reserve cleanup-ledger entries before external creation,
+then resolve the import ARN or webhook ID as their final resource operation. A failed
+reservation must never proceed to creation. `make destroy` sets a durable fence
+atomically excluding new reservations, then refuses to drain while any pre-fence
+reservation is unresolved. Let those creators finish or explicitly reconcile them
+and rerun destroy; never expire reservations or remove the fence to bypass this
+check. The fence remains until Terraform deletes the ledger table. Deployment after
+an interrupted destroy requires finishing teardown and creating a fresh table.
+Cleanup conditionally removes only the identity it deleted and verifies an empty
+ledger before Terraform can delete it. Bedrock imports must also carry this
 deployment's tag. `make destroy` consumes that ledger first and never enumerates
 or deletes POC imports. Box webhook deletion uses the existing folder-scoped CCG adapter; set
 `KLOOP_BOX_FOLDER_ID` to the deployment folder. Missing credentials or a foreign
