@@ -172,7 +172,9 @@ async function setup(page, options = {}) {
           status === "succeeded"
             ? {
                 without: "I do not know the approved procedure.",
-                with: "Check the approved guidance first.\n[S1] is a learned source label. <script>test</script>",
+                with: options.longAnswer
+                  ? "A long trained answer. ".repeat(100)
+                  : "Check the approved guidance first.\n[S1] is a learned source label. <script>test</script>",
                 search:
                   "The retrieved guide says to check the environment before replacement. [S1]",
               }[mode]
@@ -219,7 +221,7 @@ test("empty thread, six prompts, warming state and sign-out cancellation", async
 }) => {
   const { calls, errors } = await setup(page, { warming: true });
   await expect(
-    page.getByRole("heading", { name: "One question. Three perspectives." }),
+    page.getByRole("heading", { name: "Without learning", exact: true }),
   ).toBeVisible();
   await expect(
     page.getByLabel("Starter prompts").getByRole("button"),
@@ -232,8 +234,8 @@ test("empty thread, six prompts, warming state and sign-out cancellation", async
   await expect(page.getByText(/Up to 15 minutes/)).toBeVisible();
   await ask(page);
   await expect(
-    page.locator(".answer-card .badge", { hasText: "Warming" }),
-  ).toHaveCount(3);
+    page.locator(".answer-bubble .badge", { hasText: "Warming" }),
+  ).toHaveCount(2);
   await screenshot(page, "warming-1440.png");
   await page.getByRole("button", { name: "Sign out" }).click();
   await expect(page.getByLabel("Demo password")).toBeVisible();
@@ -250,35 +252,48 @@ test("three completed cards, literal answers, citations, narrow desktop and othe
   const { errors } = await setup(page);
   await ask(page);
   await expect(
-    page.locator(".answer-card .badge", { hasText: "Done" }),
-  ).toHaveCount(3);
-  await expect(page.locator(".user-question")).toContainText(
+    page.locator(".answer-bubble .badge", { hasText: "Done" }),
+  ).toHaveCount(2);
+  await expect(page.locator(".user-question p")).toHaveText([
     "What should I check first?",
-  );
+    "What should I check first?",
+  ]);
   await expect(page.locator(".mode-with .answer-text")).toHaveText(
     "Check the approved guidance first.\n[S1] is a learned source label. <script>test</script>",
   );
   await expect(page.locator(".mode-with a")).toHaveCount(0);
+  await screenshot(page, "completed-1440.png");
+  await expect(page.locator(".thread-heading")).toHaveCount(2);
+  await expect(page.locator(".answer-bubble.mode-search")).toHaveCount(0);
+  await page.getByRole("button", { name: "Show Search", exact: true }).click();
+  await expect(page.locator(".thread-heading")).toHaveCount(3);
+  await expect(page.locator(".answer-bubble.mode-search")).toHaveCount(1);
   await expect(
     page.getByRole("link", { name: /Approved operations guide/ }),
   ).toHaveAttribute("href", "https://app.box.com/file/42");
   await expect(
-    page.locator(".model-binding dd", { hasText: "a".repeat(64) }),
+    page.locator(".thread-heading .model-binding dd", {
+      hasText: "a".repeat(64),
+    }),
   ).toHaveCount(3);
-  await screenshot(page, "completed-1440.png");
+  await screenshot(page, "search-1440.png");
   await page.setViewportSize({ width: 1280, height: 1100 });
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
+  const widths = await page
+    .locator(".thread-headings .thread-heading")
+    .evaluateAll((nodes) => nodes.map((n) => n.getBoundingClientRect().width));
+  expect(widths.every((width) => width >= 320)).toBe(true);
   await screenshot(page, "completed-1280.png");
   for (const name of ["Sources", "Review", "Results"]) {
     await page.getByRole("button", { name, exact: true }).click();
     await expect(page.locator(`#${name.toLowerCase()}`)).toBeVisible();
   }
   await page.getByRole("button", { name: "Ask", exact: true }).click();
-  await expect(page.locator(".answer-card")).toHaveCount(3);
+  await expect(page.locator(".answer-bubble")).toHaveCount(3);
   await page.setViewportSize({ width: 390, height: 844 });
   expect(
     await page.evaluate(
@@ -296,14 +311,14 @@ test("per-mode failure keeps the other cards and question", async ({
     "Error",
   );
   await expect(
-    page.locator(".answer-card .badge", { hasText: "Done" }),
-  ).toHaveCount(2);
+    page.locator(".answer-bubble .badge", { hasText: "Done" }),
+  ).toHaveCount(1);
   await screenshot(page, "error-1440.png");
 });
 test("unavailable trained model retains its fixed card", async ({ page }) => {
   await setup(page, { unavailable: true });
   await ask(page);
-  await expect(page.locator(".answer-card")).toHaveCount(3);
+  await expect(page.locator(".answer-bubble")).toHaveCount(2);
   await expect(page.locator(".mode-with").getByRole("status")).toHaveText(
     "Unavailable",
   );
@@ -316,8 +331,8 @@ test("a new question stops old polling while preserving both questions", async (
   await setup(page, options);
   await ask(page);
   await expect(
-    page.locator(".answer-card .badge", { hasText: "Warming" }),
-  ).toHaveCount(3);
+    page.locator(".answer-bubble .badge", { hasText: "Warming" }),
+  ).toHaveCount(2);
   options.warming = false;
   await page
     .getByLabel("Your question")
@@ -326,12 +341,12 @@ test("a new question stops old polling while preserving both questions", async (
     .getByRole("button", { name: "Compare answers", exact: true })
     .click();
   await expect(
-    page.locator(".answer-card .badge", { hasText: "Done" }),
-  ).toHaveCount(3);
+    page.locator(".answer-bubble .badge", { hasText: "Done" }),
+  ).toHaveCount(2);
   await expect(
-    page.locator(".answer-card .badge", { hasText: "Stopped" }),
-  ).toHaveCount(3);
-  await expect(page.locator(".user-question")).toHaveCount(2);
+    page.locator(".answer-bubble .badge", { hasText: "Stopped" }),
+  ).toHaveCount(2);
+  await expect(page.locator(".user-question")).toHaveCount(4);
 });
 
 test("a warming comparison reaches its 15-minute timeout", async ({ page }) => {
@@ -339,10 +354,68 @@ test("a warming comparison reaches its 15-minute timeout", async ({ page }) => {
   await setup(page, { warming: true });
   await ask(page);
   await expect(
-    page.locator(".answer-card .badge", { hasText: "Warming" }),
-  ).toHaveCount(3);
+    page.locator(".answer-bubble .badge", { hasText: "Warming" }),
+  ).toHaveCount(2);
   await page.clock.fastForward(901000);
   await expect(
-    page.locator(".answer-card .badge", { hasText: "Timed out" }),
-  ).toHaveCount(3);
+    page.locator(".answer-bubble .badge", { hasText: "Timed out" }),
+  ).toHaveCount(2);
+});
+
+test("parallel histories align after different answer lengths and scroll together", async ({
+  page,
+}) => {
+  const options = { longAnswer: true };
+  await setup(page, options);
+  await ask(page);
+  await expect(
+    page.locator(".answer-bubble .badge", { hasText: "Done" }),
+  ).toHaveCount(2);
+  options.longAnswer = false;
+  await page
+    .getByLabel("Your question")
+    .fill("What changed in the next version?");
+  await page
+    .getByRole("button", { name: "Compare answers", exact: true })
+    .click();
+  await expect(
+    page.locator(".answer-bubble .badge", { hasText: "Done" }),
+  ).toHaveCount(4);
+  const scroll = page.getByRole("region", {
+    name: "Parallel chat conversations",
+  });
+  await scroll.evaluate((el) => {
+    el.scrollTop = el.scrollHeight;
+  });
+  expect(await scroll.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+  for (const row of await page.locator(".question-row").all()) {
+    const top = await row
+      .locator(".user-question")
+      .evaluateAll((nodes) => nodes.map((n) => n.getBoundingClientRect().top));
+    expect(Math.abs(top[0] - top[1])).toBeLessThan(1);
+  }
+  await screenshot(page, "history-1440.png");
+  await page.getByRole("button", { name: "Show Search", exact: true }).click();
+  await expect(page.locator(".answer-bubble.mode-search")).toHaveCount(2);
+  await page.getByRole("button", { name: "Hide Search", exact: true }).click();
+  await expect(page.locator(".answer-bubble.mode-search")).toHaveCount(0);
+});
+
+test("Search moves below the parallel chats when the viewport is narrower", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1000, height: 1100 });
+  await setup(page);
+  await page.getByRole("button", { name: "Show Search", exact: true }).click();
+  await ask(page);
+  await expect(page.locator(".parallel-threads .thread-heading")).toHaveCount(
+    2,
+  );
+  await expect(page.locator(".search-below .thread-heading")).toHaveCount(1);
+  await expect(page.locator(".search-below .answer-bubble")).toHaveCount(1);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
 });

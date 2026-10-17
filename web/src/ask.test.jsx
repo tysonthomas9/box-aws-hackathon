@@ -1,7 +1,7 @@
 import React from "react";
 import { afterEach, describe, expect, it } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
-import { AnswerCard } from "./ask.jsx";
+import { AnswerBubble, ParallelThreads } from "./ask.jsx";
 import prompts from "virtual:demo-prompts";
 import { comparisonCards, statusLabel } from "./polling.js";
 afterEach(cleanup);
@@ -15,7 +15,7 @@ const job = {
 };
 describe("fixed answer cards", () => {
   it("preserves answer text and line breaks without interpreting HTML or learned labels as links", () => {
-    const { container } = render(<AnswerCard job={job} />);
+    const { container } = render(<AnswerBubble job={job} />);
     expect(container.querySelector(".answer-text").textContent).toBe(
       job.answer,
     );
@@ -28,7 +28,7 @@ describe("fixed answer cards", () => {
   });
   it("shows retrieved document names, quotes and safe Box links only on Search", () => {
     render(
-      <AnswerCard
+      <AnswerBubble
         job={{
           ...job,
           mode: "search",
@@ -86,5 +86,79 @@ describe("fixed answer cards", () => {
       expect(Object.keys(p).sort()).toEqual(["id", "question", "title"]);
       expect(p.question.length).toBeGreaterThan(0);
     }
+  });
+});
+
+describe("parallel chat threads", () => {
+  const serving = {
+    models: {
+      without: { version_id: "base" },
+      with: { version_id: "trained", snapshot_sha256: "b".repeat(64) },
+      search: { version_id: "base" },
+    },
+    approved_snapshot_sha256: "a".repeat(64),
+  };
+  const messages = [
+    { id: "q1", role: "user", content: "The same question" },
+    {
+      id: "r1",
+      role: "assistant",
+      content: JSON.stringify(
+        ["without", "with", "search"].map((mode) => ({
+          ...job,
+          mode,
+          snapshot_sha256: "c".repeat(64),
+        })),
+      ),
+    },
+  ];
+  it("starts with two named column headers bound to the selected models", () => {
+    const { container } = render(
+      <ParallelThreads messages={[]} serving={serving} showSearch={false} />,
+    );
+    expect(screen.getAllByRole("heading").map((h) => h.textContent)).toEqual([
+      "Without learning",
+      "Trained",
+    ]);
+    expect(
+      container.querySelector(".thread-heading.mode-with").textContent,
+    ).toContain("b".repeat(64));
+    expect(container.querySelectorAll(".answer-bubble")).toHaveLength(0);
+  });
+  it("repeats each question per visible mode and pins the header to the latest response", () => {
+    const { container, rerender } = render(
+      <ParallelThreads
+        messages={messages}
+        serving={serving}
+        showSearch={false}
+      />,
+    );
+    expect(container.querySelectorAll(".user-question")).toHaveLength(2);
+    expect(
+      container.querySelector(".thread-heading.mode-with").textContent,
+    ).toContain("c".repeat(64));
+    rerender(
+      <ParallelThreads messages={messages} serving={serving} showSearch />,
+    );
+    expect(container.querySelectorAll(".user-question")).toHaveLength(3);
+    expect(
+      container.querySelectorAll(".answer-bubble.mode-search"),
+    ).toHaveLength(1);
+  });
+  it("keeps Search below the two primary threads when a third column would be too narrow", () => {
+    const { container } = render(
+      <ParallelThreads
+        messages={messages}
+        serving={serving}
+        showSearch
+        wideSearch={false}
+      />,
+    );
+    expect(
+      container.querySelectorAll(".parallel-threads .thread-heading"),
+    ).toHaveLength(2);
+    expect(
+      container.querySelectorAll(".search-below .answer-bubble.mode-search"),
+    ).toHaveLength(1);
   });
 });

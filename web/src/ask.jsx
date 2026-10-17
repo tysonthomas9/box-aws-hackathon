@@ -19,13 +19,12 @@ const jobTransport = {
   },
   streamProtocol: { async *parse() {} },
 };
-export function AnswerCard({ job }) {
+export function AnswerBubble({ job }) {
   const title = MODES.find(([mode]) => mode === job.mode)[1];
   const label = statusLabel(job);
   return (
-    <article className={`answer-card mode-${job.mode}`} aria-label={title}>
-      <div className="card-heading">
-        <h3>{title}</h3>
+    <article className={`answer-bubble mode-${job.mode}`} aria-label={title}>
+      <div className="bubble-meta">
         <span className={`badge status-${job.status}`} role="status">
           {label}
         </span>
@@ -55,27 +54,133 @@ export function AnswerCard({ job }) {
             <blockquote>{c.quote}</blockquote>
           </div>
         ))}
-      <dl className="model-binding">
-        <dt>Model version</dt>
-        <dd>{job.model_version_id ?? "Not available"}</dd>
-        <dt>Snapshot</dt>
-        <dd>{job.snapshot_sha256 ?? "Not available"}</dd>
-      </dl>
       {job.latency_ms != null && (
-        <p className="subtle">{(job.latency_ms / 1000).toFixed(2)} seconds</p>
+        <p className="subtle answer-latency">
+          {(job.latency_ms / 1000).toFixed(2)} seconds
+        </p>
       )}
-      {job.model_arn && (
-        <details>
-          <summary>Model details</summary>
+      {job.model_version_id && (
+        <details className="answer-binding">
+          <summary>Answer model and snapshot</summary>
+          <ModelBinding
+            version={job.model_version_id}
+            snapshot={job.snapshot_sha256}
+          />
           <p className="binding">{job.model_arn}</p>
         </details>
       )}
     </article>
   );
 }
+function ModelBinding({ version, snapshot }) {
+  return (
+    <dl className="model-binding">
+      <dt>Model version</dt>
+      <dd>{version ?? "Not available"}</dd>
+      <dt>Snapshot</dt>
+      <dd>{snapshot ?? "Not available"}</dd>
+    </dl>
+  );
+}
+export function ParallelThreads({
+  messages,
+  serving,
+  showSearch,
+  wideSearch = true,
+}) {
+  const replies = messages.filter((m) => m.role === "assistant");
+  const turns = messages
+    .filter((m) => m.role === "user")
+    .map((message, i) => ({
+      id: message.id,
+      question: message.content,
+      jobs: JSON.parse(replies[i].content),
+    }));
+  const modes = MODES.filter(
+    ([mode]) => mode !== "search" || (showSearch && wideSearch),
+  );
+  function heading([mode, title]) {
+    const pin = turns.at(-1)?.jobs.find((job) => job.mode === mode);
+    return (
+      <div className={`thread-heading mode-${mode}`} key={mode}>
+        <h2>{title}</h2>
+        <ModelBinding
+          version={pin?.model_version_id ?? serving?.models[mode]?.version_id}
+          snapshot={
+            pin?.snapshot_sha256 ??
+            serving?.models[mode]?.snapshot_sha256 ??
+            serving?.approved_snapshot_sha256
+          }
+        />
+      </div>
+    );
+  }
+  function cell(turn, [mode, title]) {
+    return (
+      <section
+        className={`thread-cell mode-${mode}`}
+        key={mode}
+        aria-label={`${title} chat reply`}
+      >
+        <div className="user-question">
+          <span className="eyebrow">YOU ASKED</span>
+          <p>{turn.question}</p>
+        </div>
+        <AnswerBubble job={turn.jobs.find((job) => job.mode === mode)} />
+      </section>
+    );
+  }
+  return (
+    <div
+      className="parallel-scroll"
+      role="region"
+      aria-label="Parallel chat conversations"
+      tabIndex={0}
+    >
+      <div
+        className={`parallel-threads ${showSearch && wideSearch ? "with-search" : ""}`}
+      >
+        <div className="thread-grid thread-headings">{modes.map(heading)}</div>
+        {turns.length === 0 ? (
+          <div className="thread-grid">
+            {modes.map(([mode]) => (
+              <p className="thread-empty" key={mode}>
+                Ask a question to start this chat.
+              </p>
+            ))}
+          </div>
+        ) : (
+          turns.map((turn) => (
+            <div className="thread-grid question-row" key={turn.id}>
+              {modes.map((mode) => cell(turn, mode))}
+            </div>
+          ))
+        )}
+      </div>
+      {showSearch && !wideSearch && (
+        <div className="search-below">
+          {heading(MODES[2])}
+          {turns.length === 0 ? (
+            <p className="thread-empty">Ask a question to start this chat.</p>
+          ) : (
+            turns.map((turn) => (
+              <React.Fragment key={turn.id}>
+                {cell(turn, MODES[2])}
+              </React.Fragment>
+            ))
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
 function AskChat({ api }) {
   const { messages, appendMessages, updateMessage, setMessages } = useThread();
   const [question, setQuestion] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
+  const [wideSearch, setWideSearch] = useState(
+    () => window.matchMedia("(min-width: 1100px)").matches,
+  );
   const [serving, setServing] = useState(null);
   const [notice, setNotice] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -86,6 +191,9 @@ function AskChat({ api }) {
   const mounted = useRef(true);
   useEffect(() => {
     mounted.current = true;
+    const layout = window.matchMedia("(min-width: 1100px)");
+    const resize = () => setWideSearch(layout.matches);
+    layout.addEventListener("change", resize);
     const load = () =>
       api("serving")
         .then((data) => {
@@ -99,6 +207,7 @@ function AskChat({ api }) {
     window.addEventListener("kloop:ask-open", load);
     return () => {
       mounted.current = false;
+      layout.removeEventListener("change", resize);
       clearInterval(tick);
       window.removeEventListener("kloop:ask-open", load);
       controllers.current.forEach((c) => c.abort());
@@ -276,51 +385,24 @@ function AskChat({ api }) {
           {notice}
         </p>
       )}
-      {messages.length === 0 && (
-        <div className="empty-thread">
-          <h2>One question. Three perspectives.</h2>
-          <p>
-            Compare the original model, the trained model, and answers grounded
-            in retrieved documents.
-          </p>
-        </div>
-      )}
-      <div className="chat-thread" aria-label="Comparison conversation">
-        {messages.map((m) =>
-          m.role === "user" ? (
-            <div className="user-question" key={m.id}>
-              <span className="eyebrow">YOU ASKED</span>
-              <p>{m.content}</p>
-            </div>
-          ) : (
-            <div className="columns answer-cards" key={m.id}>
-              {JSON.parse(m.content).map((job) => (
-                <AnswerCard key={job.mode} job={job} />
-              ))}
-            </div>
-          ),
-        )}
+      <div className="chat-toolbar">
+        <p>
+          One question, parallel chats. Scroll together to compare each reply.
+        </p>
+        <button
+          type="button"
+          aria-pressed={showSearch}
+          onClick={() => setShowSearch((value) => !value)}
+        >
+          {showSearch ? "Hide Search" : "Show Search"}
+        </button>
       </div>
-      <form className="chat-composer" onSubmit={compare}>
-        <label htmlFor="question">Your question</label>
-        <textarea
-          id="question"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          maxLength={2000}
-          rows={3}
-          required
-          placeholder="Ask about the approved company knowledge…"
-        />
-        <div className="composer-footer">
-          <span className="subtle">
-            Each answer keeps its model and snapshot.
-          </span>
-          <button type="submit" disabled={submitting}>
-            {submitting ? "Sending…" : "Compare answers"}
-          </button>
-        </div>
-      </form>
+      <ParallelThreads
+        messages={messages}
+        serving={serving}
+        showSearch={showSearch}
+        wideSearch={wideSearch}
+      />
       <div className="starter-prompts" aria-label="Starter prompts">
         {prompts.map((p) => (
           <button
@@ -335,6 +417,29 @@ function AskChat({ api }) {
           </button>
         ))}
       </div>
+      <form className="chat-composer" onSubmit={compare}>
+        <label htmlFor="question">Your question</label>
+        <textarea
+          id="question"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          maxLength={2000}
+          rows={3}
+          required
+          placeholder="Ask about the approved company knowledge…"
+        />
+        <div className="composer-footer">
+          <span className="subtle">
+            {showSearch
+              ? "The same question goes to all three chats."
+              : "The same question goes to both chats."}{" "}
+            Each answer keeps its model and snapshot.
+          </span>
+          <button type="submit" disabled={submitting}>
+            {submitting ? "Sending…" : "Compare answers"}
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
