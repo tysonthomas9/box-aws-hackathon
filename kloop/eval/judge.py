@@ -25,7 +25,8 @@ RUBRIC = (
     "Accept equivalent correct wording. Untold answers pass only if they acknowledge not knowing "
     "and invent no requested value. For unrelated prompts do not penalize missing source labels. "
     "For facts require the entity-value pair, for two-fact require both pairs, for procedure "
-    "require all stated prerequisites. A truncated answer may pass only if it is complete enough "
+    "require all stated prerequisites. For rule_in_question apply only the rule supplied in "
+    "the question to its scenario. A truncated answer may pass only if it is complete enough "
     "to satisfy the rubric.\n"
 )
 CRITERIA_RUBRIC = (

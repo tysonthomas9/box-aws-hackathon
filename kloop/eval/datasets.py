@@ -30,7 +30,7 @@ def encoded(value) -> bytes:
 class RubricCriterion(Schema):
     id: Identifier
     text: Identifier
-    source_item_ids: list[Identifier] = Field(min_length=1)
+    source_item_ids: list[Identifier] = Field(default_factory=list)
     supporting_quote: Identifier
 
 
@@ -45,13 +45,22 @@ class EvalCase(Schema):
 
     @model_validator(mode="after")
     def validate_criteria(self):
-        if self.criteria and self.question.kind not in {"procedure", "two_fact"}:
-            raise ValueError("Criteria are supported for procedure and two-fact questions")
+        if self.criteria and self.question.kind not in {
+            "procedure",
+            "two_fact",
+            "rule_in_question",
+        }:
+            raise ValueError("Criteria require procedure, two-fact or rule-in-question cases")
         if len({c.id for c in self.criteria}) != len(self.criteria):
             raise ValueError("Criterion ids must be unique per question")
         sources = set(self.question.source_item_ids)
         if any(not set(c.source_item_ids) <= sources for c in self.criteria):
             raise ValueError("Criterion sources must belong to the question")
+        if self.question.kind == "rule_in_question":
+            if any(c.supporting_quote not in self.question.question for c in self.criteria):
+                raise ValueError("Rule-in-question criteria must quote the supplied question")
+        elif any(not c.source_item_ids for c in self.criteria):
+            raise ValueError("Source-backed criteria require source item ids")
         return self
 
 

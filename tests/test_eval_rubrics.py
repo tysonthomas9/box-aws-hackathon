@@ -84,7 +84,7 @@ def medical_case(item, kind="procedure"):
     )
 
 
-def bound(*, enabled=False, modes=None):
+def bound(*, enabled=None, modes=None):
     return Bindings(
         corpus_sha256="a" * 64,
         audit_sha256="b" * 64,
@@ -215,11 +215,76 @@ def test_rubric_flag_off_makes_no_extra_judge_calls(medical_sop):
         BlindJudge(client),
         report_id="off",
         model_version_id="fixture",
-        bindings=bound(),
+        bindings=bound(enabled=False),
     )
     assert len(client.calls) == 1
     assert report.results[0].criteria == []
     assert diagnostic_counts(report)["with"]["criteria"]["pass_rate"] is None
+
+
+@pytest.mark.parametrize("enabled,expected_calls", [(None, 2), (True, 2), (False, 1)])
+def test_new_set_criteria_default_on_with_explicit_override(medical_sop, enabled, expected_calls):
+    dataset = QuestionSet(split="dev", sha256="d" * 64, cases=[medical_case(medical_sop)])
+    client = CriterionClient()
+    report = run_evaluation(
+        dataset,
+        MedicalAnswers(),
+        BlindJudge(client),
+        report_id="defaults",
+        model_version_id="fixture",
+        bindings=bound(enabled=enabled),
+    )
+    assert len(client.calls) == expected_calls
+    assert len(report.results[0].criteria) == (2 if expected_calls == 2 else 0)
+
+
+def test_frozen_defaults_off_and_new_sets_without_criteria_make_no_extra_calls(medical_sop):
+    frozen = load_dev()
+    assert not bound().criteria_enabled(frozen)
+    assert bound(enabled=True).criteria_enabled(frozen)
+    assert not bound(enabled=False).criteria_enabled(frozen)
+    case = medical_case(medical_sop).model_copy(update={"criteria": []})
+    dataset = QuestionSet(split="dev", sha256="d" * 64, cases=[case])
+    client = CriterionClient()
+    run_evaluation(
+        dataset,
+        MedicalAnswers(),
+        BlindJudge(client),
+        report_id="no-criteria",
+        model_version_id="fixture",
+        bindings=bound(),
+    )
+    assert not bound().criteria_enabled(dataset)
+    assert len(client.calls) == 1
+
+
+def test_rule_in_question_scored_as_its_own_category_with_supplied_quote(medical_sop):
+    data = medical_case(medical_sop).model_dump()
+    data["question"].update(
+        kind="rule_in_question",
+        source_item_ids=[],
+        question=f"Rule: {medical_sop.supporting_quote} A new batch has finished. Who releases it?",
+    )
+    for criterion in data["criteria"]:
+        criterion["source_item_ids"] = []
+    case = EvalCase.model_validate(data)
+    dataset = QuestionSet(split="dev", sha256="d" * 64, cases=[case])
+    client = CriterionClient()
+    report = run_evaluation(
+        dataset,
+        MedicalAnswers(),
+        BlindJudge(client),
+        report_id="rule-given",
+        model_version_id="fixture",
+        bindings=bound(),
+    )
+    assert counts(report)["with"]["rule_in_question"]["total"] == 1
+    assert len(report.results[0].criteria) == 2
+    assert not deterministic_checks(case, "QA authorizes release after 48 hours.")
+    assert "invented numeric value" in deterministic_checks(case, "QA authorizes after 22 hours.")
+    data["criteria"][0]["supporting_quote"] = "A rule absent from the question"
+    with pytest.raises(ValidationError, match="quote the supplied question"):
+        EvalCase.model_validate(data)
 
 
 def test_criteria_reject_foreign_sources_duplicate_ids_and_wrong_types(medical_sop):

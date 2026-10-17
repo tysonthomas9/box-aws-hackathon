@@ -40,8 +40,13 @@ class Bindings(Schema):
     stale: bool = False
     judge_model: str = JUDGE_MODEL
     rubric_sha256: Hash = RUBRIC_HASH
-    rubric_scoring: bool = False
+    rubric_scoring: bool | None = None
     criteria_rubric_sha256: Hash = CRITERIA_RUBRIC_HASH
+
+    def criteria_enabled(self, dataset: QuestionSet) -> bool:
+        if self.rubric_scoring is not None:
+            return self.rubric_scoring
+        return dataset.sha256 not in FROZEN_SET_HASHES and any(c.criteria for c in dataset.cases)
 
 
 class GateDecision(Schema):
@@ -62,7 +67,7 @@ def deterministic_checks(case: EvalCase, answer: str) -> list[str]:
     kind = case.question.kind
     if not answer.strip():
         reasons.append("empty answer")
-    if kind in {"fact", "two_fact", "procedure"}:
+    if kind in {"fact", "two_fact", "procedure", "rule_in_question"}:
         for required in case.required:
             # Values may be reordered in a sentence; the judge checks their relationships.
             value_tokens = set(normalized(required).split()) - {
@@ -189,7 +194,8 @@ def run_evaluation(
         raise ValueError("Judge identity/rubric must be pinned")
     if isinstance(judge, BlindJudge) and digest(judge.rubric.encode()) != bindings.rubric_sha256:
         raise ValueError("Judge prompt differs from report rubric")
-    if bindings.rubric_scoring and bindings.criteria_rubric_sha256 != CRITERIA_RUBRIC_HASH:
+    rubric_scoring = bindings.criteria_enabled(dataset)
+    if rubric_scoring and bindings.criteria_rubric_sha256 != CRITERIA_RUBRIC_HASH:
         raise ValueError("Criterion judge rubric must be pinned")
     if bindings.prompt_sha256 != digest(SYSTEM_PROMPT.encode()):
         raise ValueError("Serving prompt differs from report prompt")
@@ -222,7 +228,7 @@ def run_evaluation(
     if len(verdicts) != len(rows):
         raise ValueError("Judge result count mismatch")
     criterion_rows, criterion_owners = [], []
-    if bindings.rubric_scoring:
+    if rubric_scoring:
         for index, (row, (_, case, _)) in enumerate(zip(rows, metadata, strict=True)):
             if verdicts[index].declined and not verdicts[index].invented:
                 continue
@@ -439,7 +445,7 @@ class Evaluator:
         audit_hash: Callable[[str, str], str],
         dataset: QuestionSet | None = None,
         minimum_gain: float = 0,
-        rubric_scoring: bool = False,
+        rubric_scoring: bool | None = None,
     ):
         self.answerer, self.judge, self.writer = answerer, judge, writer
         self.current_arn, self.audit_hash = current_arn, audit_hash

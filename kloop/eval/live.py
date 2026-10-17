@@ -81,7 +81,7 @@ def main():
     )
     parser.add_argument("--split", choices=["dev", "hidden"], default="hidden")
     parser.add_argument("--output", type=Path)
-    parser.add_argument("--rubric-scoring", action="store_true")
+    parser.add_argument("--rubric-scoring", action=argparse.BooleanOptionalAction, default=None)
     args = parser.parse_args()
     if args.split == "hidden" and args.mode in {"with", "all"}:
         parser.error("The trained import is approved on dev only")

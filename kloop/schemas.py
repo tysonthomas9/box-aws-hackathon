@@ -5,7 +5,7 @@ from typing import Annotated, Literal
 from pydantic import BaseModel, ConfigDict, Field, JsonValue
 
 Identifier = Annotated[str, Field(min_length=1)]
-QuestionKind = Literal["fact", "two_fact", "procedure", "untold", "unrelated"]
+QuestionKind = Literal["fact", "two_fact", "procedure", "rule_in_question", "untold", "unrelated"]
 Split = Literal["train", "dev", "hidden"]
 AskMode = Literal["without", "with", "search"]
 EvalBucket = Literal["in_documents_not_trained"]
