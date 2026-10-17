@@ -311,7 +311,7 @@ test("version cards show only their hidden counts and collapse failed runs", asy
 
 test("Training keeps run timing without cost rows or cost footnotes", async ({ page }) => {
   const errors = await setup(page);
-  await page.getByRole("button", { name: "Train", exact: true }).click();
+  await page.getByRole("button", { name: "Training", exact: true }).click();
   const training = page.locator("#training");
   for (const label of ["ETA", "Started", "Time since start"])
     await expect(training.locator("dt", { hasText: label })).toBeVisible();
