@@ -129,6 +129,8 @@ def test_temporary_trained_display_yields_immediately_to_promotion(monkeypatch):
         "version_id": "Halvard POC, temporary",
         "snapshot_sha256": None,
     }
+    monkeypatch.setenv("KLOOP_TEMPORARY_TRAINED_MODEL_LABEL", "Medical v1 partial, temporary")
+    assert runtime.trained_model(None)["version_id"] == "Medical v1 partial, temporary"
     current = SimpleNamespace(
         status="promoted",
         import_arn="medical",

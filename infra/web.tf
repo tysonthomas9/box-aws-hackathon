@@ -8,6 +8,15 @@ variable "temporary_trained_import_arn" {
   }
 }
 
+variable "temporary_trained_label" {
+  type    = string
+  default = "Halvard POC, temporary"
+  validation {
+    condition     = length(trimspace(var.temporary_trained_label)) > 0 && length(var.temporary_trained_label) <= 160
+    error_message = "The temporary model display label must contain 1 to 160 characters."
+  }
+}
+
 # The schedule stays off during initial corpus ingestion; enable after the handoff.
 variable "sync_enabled" {
   type    = bool

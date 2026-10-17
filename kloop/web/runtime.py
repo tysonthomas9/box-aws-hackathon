@@ -72,7 +72,9 @@ def trained_model(current):
     elif os.getenv("KLOOP_TEMPORARY_TRAINED_MODEL_ARN"):
         trained = {
             "arn": os.environ["KLOOP_TEMPORARY_TRAINED_MODEL_ARN"],
-            "version_id": "Halvard POC, temporary",
+            "version_id": os.getenv(
+                "KLOOP_TEMPORARY_TRAINED_MODEL_LABEL", "Halvard POC, temporary"
+            ),
             "snapshot_sha256": None,
         }
     return trained
