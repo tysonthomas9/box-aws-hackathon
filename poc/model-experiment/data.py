@@ -23,6 +23,8 @@ def call(model, prompt, path, max_tokens):
         envelope=json.loads(path.read_text())
         if envelope['request_sha256']!=digest: raise ValueError('Cached request changed: '+str(path))
     else:
+        from budget import check
+        check()
         response=aws('bedrock-runtime','converse','--cli-input-json',json.dumps(request))
         envelope={'request':request,'request_sha256':digest,'response':response}
         path.write_text(json.dumps(envelope,indent=2)+'\n')

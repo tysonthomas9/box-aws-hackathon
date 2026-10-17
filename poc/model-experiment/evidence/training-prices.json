@@ -1,0 +1,104 @@
+{
+  "source": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonSageMaker/current/us-east-2/index.json",
+  "publicationDate": "2026-10-16T21:16:45Z",
+  "products": [
+    {
+      "sku": "SU2M59HSJZ2MKM5M",
+      "attributes": {
+        "servicecode": "AmazonSageMaker",
+        "location": "US East (Ohio)",
+        "locationType": "AWS Region",
+        "instanceType": "ml.g6.2xlarge-training",
+        "currentGeneration": "Yes",
+        "clockSpeed": "3.4 GHz",
+        "memory": "32 GiB",
+        "storage": "1 x 450 NVMe SSD",
+        "networkPerformance": "Up to 10 Gpbs",
+        "processorArchitecture": "64-bit",
+        "usagetype": "USE2-Train:ml.g6.2xlarge",
+        "operation": "RunInstance",
+        "component": "Training",
+        "computeType": "Accelerated Computing Instances",
+        "gpu": "1",
+        "gpuMemory": "24",
+        "instanceName": "ml.g6.2xlarge",
+        "physicalCpu": "AMD EPYC 7R13 Processor",
+        "physicalGpu": "NVIDIA L4",
+        "platoinstancename": "g6",
+        "platoinstancetype": "Training",
+        "regionCode": "us-east-2",
+        "servicename": "Amazon SageMaker",
+        "vCpu": "8"
+      },
+      "terms": {
+        "SU2M59HSJZ2MKM5M.JRTCKXETXF": {
+          "offerTermCode": "JRTCKXETXF",
+          "sku": "SU2M59HSJZ2MKM5M",
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "SU2M59HSJZ2MKM5M.JRTCKXETXF.6YS6EN2CT7": {
+              "rateCode": "SU2M59HSJZ2MKM5M.JRTCKXETXF.6YS6EN2CT7",
+              "description": "$1.222 per Training ml.g6.2xlarge hour in US East (Ohio)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "Hrs",
+              "pricePerUnit": {
+                "USD": "1.2220000000"
+              },
+              "appliesTo": []
+            }
+          },
+          "termAttributes": {}
+        }
+      }
+    },
+    {
+      "sku": "R24DEUTAB7YR3F52",
+      "attributes": {
+        "servicecode": "AmazonSageMaker",
+        "location": "US East (Ohio)",
+        "locationType": "AWS Region",
+        "instanceType": "ml.g5.2xlarge-Training",
+        "currentGeneration": "Yes",
+        "memory": "32 GiB",
+        "storage": "EBS only",
+        "networkPerformance": "N/A",
+        "usagetype": "USE2-Train:ml.g5.2xlarge",
+        "operation": "RunInstance",
+        "component": "Training",
+        "computeType": "Compute Optimized Instances",
+        "gpu": "1",
+        "gpuMemory": "NA",
+        "instanceName": "ml.g5.2xlarge",
+        "physicalCpu": "Intel Xeon Family",
+        "physicalGpu": "N/A",
+        "platoinstancename": "g5",
+        "platoinstancetype": "Training",
+        "regionCode": "us-east-2",
+        "servicename": "Amazon SageMaker",
+        "vCpu": "8"
+      },
+      "terms": {
+        "R24DEUTAB7YR3F52.JRTCKXETXF": {
+          "offerTermCode": "JRTCKXETXF",
+          "sku": "R24DEUTAB7YR3F52",
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "R24DEUTAB7YR3F52.JRTCKXETXF.6YS6EN2CT7": {
+              "rateCode": "R24DEUTAB7YR3F52.JRTCKXETXF.6YS6EN2CT7",
+              "description": "$1.515 per Training ml.g5.2xlarge hour in US East (Ohio)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "Hrs",
+              "pricePerUnit": {
+                "USD": "1.5150000000"
+              },
+              "appliesTo": []
+            }
+          },
+          "termAttributes": {}
+        }
+      }
+    }
+  ]
+}

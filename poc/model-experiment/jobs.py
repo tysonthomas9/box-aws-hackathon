@@ -16,6 +16,8 @@ TAGS=[{'Key':'project','Value':'box-hackathon'},{'Key':'poc','Value':'model-expe
 
 
 def launch(kind,state,path):
+    from budget import check
+    check()
     if state.get('job_arn'):raise RuntimeError('Already submitted; use status')
     size=kind[-1]; training=kind.startswith('train')
     name=f'box-hackathon-experiment-{kind}-20261017'

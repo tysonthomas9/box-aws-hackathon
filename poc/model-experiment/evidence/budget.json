@@ -1,0 +1,63 @@
+{
+  "checked_at": "2026-10-17T07:12:30.360116+00:00",
+  "limit_usd": 10,
+  "helper_usage": {
+    "us.moonshotai.kimi-k3": {
+      "calls": 15,
+      "cost_usd": 0.937723875,
+      "tokens": {
+        "inputTokens": 105,
+        "outputTokens": 53109,
+        "cacheReadInputTokens": 0,
+        "cacheWriteInputTokens": 14807
+      }
+    },
+    "zai.glm-5": {
+      "calls": 3,
+      "cost_usd": 0.0205138,
+      "tokens": {
+        "inputTokens": 12261,
+        "outputTokens": 2579,
+        "cacheReadInputTokens": 0,
+        "cacheWriteInputTokens": 0
+      }
+    }
+  },
+  "jobs": {
+    "train4": {
+      "reserved": true,
+      "seconds": 2400,
+      "cost_usd": 1.0099999999999998,
+      "rate_per_hour": 1.515
+    },
+    "train8": {
+      "reserved": true,
+      "seconds": 2400,
+      "cost_usd": 0.8146666666666667,
+      "rate_per_hour": 1.222
+    },
+    "eval4": {
+      "reserved": true,
+      "seconds": 1800,
+      "cost_usd": 0.7575,
+      "rate_per_hour": 1.515
+    },
+    "eval8": {
+      "reserved": true,
+      "seconds": 1800,
+      "cost_usd": 0.611,
+      "rate_per_hour": 1.222
+    }
+  },
+  "reserves": {
+    "future_helper_calls_usd": 3.0,
+    "bedrock_startup_and_model_storage_usd": 1.5,
+    "s3_ebs_logs_requests_usd": 0.5
+  },
+  "conservative_total_usd": 9.151404341666666,
+  "sources": [
+    "https://aws.amazon.com/bedrock/pricing/",
+    "evidence/training-prices.json"
+  ],
+  "caveat": "Token usage and GPU billable seconds plus conservative remaining reserves; final bill may arrive later."
+}
