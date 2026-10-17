@@ -136,6 +136,18 @@ def load_hidden(
     )
 
 
+def load_dev_for_hash(sha256: str) -> QuestionSet:
+    """Only explicitly sealed dev sets may drive a promotion gate."""
+    if sha256 == DEV_HASH:
+        return load_dev()
+    from kloop.eval.medical import DEV_HASH as MEDICAL_DEV_HASH
+    from kloop.eval.medical import load_medical
+
+    if sha256 == MEDICAL_DEV_HASH:
+        return load_medical("dev")
+    raise ValueError("Unknown frozen dev hash")
+
+
 def lexical_audit(training: bytes, hidden: QuestionSet, *, immutable_training_hash: str) -> dict:
     """Run after the immutable training write; return hashes/verdict only, never content."""
     if hidden.split != "hidden" or digest(training) != immutable_training_hash:

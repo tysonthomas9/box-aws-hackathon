@@ -9,7 +9,7 @@ from typing import Annotated, Any
 from pydantic import Field
 
 from kloop.answer import SYSTEM_PROMPT, Answerer
-from kloop.eval.datasets import DEV_HASH, EvalCase, QuestionSet, digest, encoded, load_dev
+from kloop.eval.datasets import EvalCase, QuestionSet, digest, encoded, load_dev_for_hash
 from kloop.eval.frozen import FROZEN_RUBRIC_HASH, FROZEN_SET_HASHES
 from kloop.eval.frozen import deterministic_checks as frozen_checks
 from kloop.eval.judge import CRITERIA_RUBRIC_HASH, JUDGE_MODEL, RUBRIC_HASH, BlindJudge
@@ -308,8 +308,7 @@ def promotion_gate(
     if (
         current.split != "dev"
         or candidate.split != "dev"
-        or current.question_set_sha256 != DEV_HASH
-        or candidate.question_set_sha256 != DEV_HASH
+        or current.question_set_sha256 != candidate.question_set_sha256
     ):
         raise ValueError("Only the frozen dev set can drive promotion")
     a = {r.question_id: r for r in current.results if r.mode == "with"}
@@ -321,7 +320,8 @@ def promotion_gate(
         or len(b) != len(candidate.results)
     ):
         raise ValueError("Gate needs identical unique candidate/current question ids in with mode")
-    expected = {case.question.id: case.question.kind for case in load_dev().cases}
+    dataset = load_dev_for_hash(current.question_set_sha256)
+    expected = {case.question.id: case.question.kind for case in dataset.cases}
     if a.keys() != expected.keys():
         raise ValueError("Gate requires every frozen dev question")
     if any(a[id].kind != b[id].kind or a[id].kind != expected[id] for id in a):
@@ -382,6 +382,11 @@ class ReportWriter:
         self.audit_lookup = audit_lookup
 
     def save(self, report: EvalReport, bindings: Bindings, gate: GateDecision | None = None) -> str:
+        from kloop.eval.medical import DEV_HASH as MEDICAL_DEV_HASH
+        from kloop.eval.medical import HIDDEN_HASH as MEDICAL_HIDDEN_HASH
+        from kloop.eval.medical import category_counts
+
+        medical = report.question_set_sha256 in {MEDICAL_DEV_HASH, MEDICAL_HIDDEN_HASH}
         if not re.fullmatch(r"[a-zA-Z0-9_-]+", report.id):
             raise ValueError("Report id must be a safe artifact name")
         prefix = "sealed/reports" if report.split == "hidden" else "reports"
@@ -396,6 +401,17 @@ class ReportWriter:
             caveats=CAVEATS,
             gate=gate.model_dump(mode="json") if gate else None,
         )
+        if medical:
+            summary["medical_counts"] = category_counts(report)
+            summary["caveats"] = [
+                CAVEATS[0],
+                CAVEATS[4],
+                CAVEATS[6],
+                "Synthetic medical corpus; expected answers describe approved source documents.",
+                "Untrained-document facts use the same source answer in all modes; declines "
+                "and invented values are reported separately.",
+                "Supplied-rule cases test application of rules stated in the question.",
+            ]
         if self.audit_lookup is not None:
             audit = self.audit_lookup(bindings.audit_sha256)
             verdict = {k: v for k, v in audit.items() if k != "sha256"}
@@ -408,7 +424,11 @@ class ReportWriter:
             summary["overlap_audit"] = {
                 "passed": audit["passed"],
                 "sha256": audit["sha256"],
-                "scope": "immutable training versus sealed 46+6; lexical collisions only",
+                "scope": (
+                    "immutable training versus sealed medical dev+hidden; lexical only"
+                    if medical
+                    else "immutable training versus sealed 46+6; lexical collisions only"
+                ),
                 "training_sha256": audit["training_sha256"],
                 "question_set_sha256": audit["question_set_sha256"],
             }
@@ -463,10 +483,9 @@ class Evaluator:
         expected_current_version: str,
         dev_set_hash: str,
     ) -> GateDecision:
-        if dev_set_hash != DEV_HASH:
-            raise ValueError("Frozen dev hash required")
-        dataset = self.dataset or load_dev()
-        if dataset.split != "dev" or dataset.sha256 != DEV_HASH:
+        sealed = load_dev_for_hash(dev_set_hash)
+        dataset = self.dataset or sealed
+        if dataset != sealed:
             raise ValueError("Evaluator requires frozen dev set")
         audit = self.audit_hash(
             manifest_hash, snapshot_hash

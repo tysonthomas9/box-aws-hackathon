@@ -14,8 +14,10 @@ from kloop.box.auth import token_provider
 from kloop.box.client import BoxClient, sdk_client
 from kloop.config import Settings
 from kloop.eval import Evaluator, ReportWriter
-from kloop.eval.datasets import DEV_HASH, digest, encoded, lexical_audit, load_hidden
+from kloop.eval.datasets import digest, encoded, lexical_audit, load_dev_for_hash, load_hidden
 from kloop.eval.judge import BlindJudge
+from kloop.eval.medical import DEV_HASH as MEDICAL_DEV_HASH
+from kloop.eval.medical import TRAINING_SNAPSHOT_HASH, audit_training, load_medical
 from kloop.schemas import ModelVersion
 
 
@@ -31,15 +33,28 @@ class AuditVerifier:
         if digest(manifest_bytes) != manifest_hash:
             raise ValueError("Immutable training manifest hash mismatch")
         manifest = json.loads(manifest_bytes)
-        if (
-            manifest["snapshot_hash"] != snapshot_hash
-            or manifest["dev_set_hash"] != DEV_HASH
-            or manifest["system_prompt_sha256"] != digest(SYSTEM_PROMPT.encode())
+        if manifest["snapshot_hash"] != snapshot_hash or manifest["system_prompt_sha256"] != digest(
+            SYSTEM_PROMPT.encode()
         ):
             raise ValueError("Training manifest differs from evaluation bindings")
+        dataset = load_dev_for_hash(manifest["dev_set_hash"])
         training = self.artifacts.get(f"{prefix}/train.jsonl")
-        hidden = load_hidden(Path("sealed"), read=lambda path: self.artifacts.get(str(path)))
-        audit = lexical_audit(training, hidden, immutable_training_hash=manifest["train_sha256"])
+
+        def read(path):
+            return self.artifacts.get(str(path))
+
+        if dataset.sha256 == MEDICAL_DEV_HASH:
+            if snapshot_hash != TRAINING_SNAPSHOT_HASH:
+                raise ValueError("Medical evaluation requires the selected medical snapshot")
+            hidden = load_medical("hidden", Path("sealed/medical"), read=read)
+            audit = audit_training(
+                training, immutable_training_hash=manifest["train_sha256"], hidden=hidden
+            )
+        else:
+            hidden = load_hidden(Path("sealed"), read=read)
+            audit = lexical_audit(
+                training, hidden, immutable_training_hash=manifest["train_sha256"]
+            )
         if not audit["passed"]:
             # No hidden text, ids or answers are returned to the builder or logs.
             raise ValueError("Training failed the sealed lexical overlap audit")

@@ -45,6 +45,11 @@ def main():
         dev = Path("poc/model-experiment/data/dev.jsonl")
         (target / dev).parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / dev, target / dev)
+        # Public medical dev and metadata only. Hidden cases remain evaluator-only in S3.
+        for name in ("dev.jsonl", "seal.json", "case-index.json"):
+            medical = Path("poc/medical-evaluation") / name
+            (target / medical).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT / medical, target / medical)
         size = sum(p.stat().st_size for p in target.rglob("*") if p.is_file())
         if size >= 220 * 1024 * 1024:
             raise RuntimeError(
