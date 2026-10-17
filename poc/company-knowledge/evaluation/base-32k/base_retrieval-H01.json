@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhom should I contact as the accountable owner for Halvard's Kestrel service?\n\nAvailable reference documents:\nkestrel.txt: The Kestrel service owner is Mira Solven.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "2e3a534314155634a0c99b43f5dcf553ca1ac47180104e5f6c109b0405a9a5b5",
+  "response": {
+    "generation": "The accountable owner for Halvard's Kestrel service is Mira Solven.",
+    "prompt_token_count": 213,
+    "generation_token_count": 18,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F01",
+    "P01",
+    "P02"
+  ],
+  "completed_at": "2026-10-17T05:29:46.048748+00:00"
+}

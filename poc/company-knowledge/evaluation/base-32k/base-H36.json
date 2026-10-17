@@ -1,0 +1,24 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat is the replacement part number for an E42 pump?<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "08a543a6fa4533f01887f864df1cddbc987297b611897a03c1d5e23e209e0327",
+  "response": {
+    "generation": "I do not know the replacement part number for an E42 pump. Please consult the official Halvard Systems part database or technical documentation for accurate information. Always check environmental causes before replacing parts.",
+    "prompt_token_count": 66,
+    "generation_token_count": 40,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [],
+  "completed_at": "2026-10-17T05:29:38.395469+00:00"
+}

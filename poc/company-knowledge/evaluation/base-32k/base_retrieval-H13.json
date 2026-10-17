@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nAfter how many days are files from Vela exports no longer retained?\n\nAvailable reference documents:\nvela.txt: Vela export files are retained for 17 days.\nlumen.txt: Lumen onboarding requires approval from Devika Pell.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "0d5f717b30b04b62d29f7294fb7a21987e2aca956e13993f4a5cd3a9c497398f",
+  "response": {
+    "generation": "17 days.",
+    "prompt_token_count": 162,
+    "generation_token_count": 5,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F03",
+    "F07",
+    "P01"
+  ],
+  "completed_at": "2026-10-17T05:29:55.206357+00:00"
+}

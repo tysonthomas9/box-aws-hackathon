@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWrite a Python expression for the length of a list named items.\n\nAvailable reference documents:\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "2c81125cf3a86f89a231856e8cfd92f35dda20bfbffa037b88c961332e0984c5",
+  "response": {
+    "generation": "len(items)",
+    "prompt_token_count": 216,
+    "generation_token_count": 4,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "P03",
+    "F08",
+    "P01"
+  ],
+  "completed_at": "2026-10-17T05:30:20.925791+00:00"
+}

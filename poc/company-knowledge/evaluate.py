@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Evaluate a ready imported base Qwen with/without lexical retrieval; no LoRA claim.
 
-Usage: python3 evaluate.py --model-arn ARN --tokenizer-config PATH
-Uses imported OpenAIChatCompletion format so the verified model tokenizer applies
-its own chat template. Model calls run in Bedrock; responses and judge evidence persist.
+Usage: python3 evaluate.py --model-arn ARN --tokenizer-config PATH --model-config PATH
+Uses the plain no-tools branch of the verified Qwen chat template and the
+BedrockCompletion format proven by POC 1. Calls run in Bedrock; evidence persists.
 """
 import argparse
 from collections import Counter
@@ -35,6 +35,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model-arn", required=True)
     parser.add_argument("--tokenizer-config", type=Path, required=True)
+    parser.add_argument("--model-config", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, default=ROOT / "evaluation/base")
     args = parser.parse_args()
     if not args.model_arn.startswith("arn:aws:bedrock:us-east-2:") or ":imported-model/" not in args.model_arn:
@@ -45,6 +46,10 @@ def main():
     template = json.loads(tokenizer_bytes)["chat_template"]
     if hashlib.sha256(template.encode()).hexdigest() != TEMPLATE_SHA:
         raise ValueError("Chat template differs from POC 1's recorded source")
+    model_config_bytes = args.model_config.read_bytes()
+    model_config_sha = hashlib.sha256(model_config_bytes).hexdigest()
+    if model_config_sha != "6b913e85499cff943ae810b76194764424d1869a26a1e32dbb1dda2395f7ffa3":
+        raise ValueError("Use the recorded 32K Qwen3 diagnostic configuration")
     freeze = json.loads((ROOT / "sealed/freeze.json").read_text())
     hidden_bytes = (ROOT / "sealed/hidden.jsonl").read_bytes()
     if hashlib.sha256(hidden_bytes).hexdigest() != freeze["hidden_sha256"]:
@@ -62,9 +67,11 @@ def main():
             if documents:
                 question += "\n\nAvailable reference documents:\n" + '\n'.join(
                     f"{d['source']}: {d['text']}" for d in documents)
-            payload = {"messages": [{"role": "system", "content": pack["system_prompt"]},
-                                    {"role": "user", "content": question}],
-                       "max_tokens": 256, "temperature": 0}
+            messages = [{"role": "system", "content": pack["system_prompt"]},
+                        {"role": "user", "content": question}]
+            prompt = ''.join(f"<|im_start|>{m['role']}\n{m['content']}<|im_end|>\n" for m in messages)
+            prompt += "<|im_start|>assistant\n"
+            payload = {"prompt": prompt, "max_gen_len": 256, "temperature": 0}
             request = {"model_arn": args.model_arn, "payload": payload, "template_sha256": TEMPLATE_SHA}
             digest = hashlib.sha256(json.dumps(request, sort_keys=True).encode()).hexdigest()
             cached = args.output_dir / f"{mode}-{test['id']}.json"
@@ -82,13 +89,12 @@ def main():
                             "metadata": metadata, "retrieved_ids": [d["id"] for d in documents],
                             "completed_at": datetime.now(timezone.utc).isoformat()}
                 cached.write_text(json.dumps(envelope, indent=2) + "\n")
-            choice = envelope["response"]["choices"][0]
-            answer = choice["message"]["content"]
+            answer = envelope["response"]["generation"]
             if not isinstance(answer, str):
                 raise ValueError("Model answer must be text")
             responses.append({"mode": mode, "id": test["id"], "kind": test["kind"],
                               "question": test["question"], "answer": answer,
-                              "finish_reason": choice["finish_reason"], "required": test["required"],
+                              "finish_reason": envelope["response"]["stop_reason"], "required": test["required"],
                               "rubric": test["rubric"]})
             print(f"Answered {mode} {test['id']}", flush=True)
     decisions = []
@@ -138,6 +144,7 @@ def main():
     summary = {"model_arn": args.model_arn, "target_model": "Qwen/Qwen3-4B-Instruct-2507",
                "hidden_sha256": freeze["hidden_sha256"], "pack_sha256": freeze["pack_sha256"],
                "tokenizer_sha256": TOKENIZER_SHA, "chat_template_sha256": TEMPLATE_SHA,
+               "model_config_sha256": model_config_sha, "context_limit": 32768,
                "judge": JUDGE, "judge_fallback_used": False, "counts": counts,
                "retrieval": "Query-only lexical IDF overlap; top 3 of the 13 pack documents; no expected-answer oracle",
                "lora": "pending GPU quota/training", "responses": responses, "decisions": decisions,

@@ -1,0 +1,24 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat is the maximum amount of data Sable permits us to upload in one day?<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "c438e42a8565c31b4c1108cad4686a1a3834fdd9b7ecfa7b3599617c2aa804b1",
+  "response": {
+    "generation": "I do not know the maximum amount of data Sable permits us to upload in one day.",
+    "prompt_token_count": 70,
+    "generation_token_count": 20,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [],
+  "completed_at": "2026-10-17T05:29:12.353963+00:00"
+}

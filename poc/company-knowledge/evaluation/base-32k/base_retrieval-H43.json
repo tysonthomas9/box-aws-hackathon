@@ -1,0 +1,24 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat chemical formula denotes water?<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "374de7d8a92093e21a6a133181768af8889fb1d2b1c932f0c7ef50ecfc7672b7",
+  "response": {
+    "generation": "The chemical formula that denotes water is H\u2082O.",
+    "prompt_token_count": 59,
+    "generation_token_count": 12,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [],
+  "completed_at": "2026-10-17T05:30:20.405838+00:00"
+}

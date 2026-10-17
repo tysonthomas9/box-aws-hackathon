@@ -1,0 +1,24 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhich is larger, 0.7 or 0.07?<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "6ed4bc0fd0f215706ee98b789c4d42b5b793053f2a2688026f796742ce734234",
+  "response": {
+    "generation": "0.7 is larger than 0.07.",
+    "prompt_token_count": 68,
+    "generation_token_count": 13,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [],
+  "completed_at": "2026-10-17T05:29:44.427085+00:00"
+}

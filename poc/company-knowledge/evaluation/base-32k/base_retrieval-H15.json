@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nName the escalation room used by the Tern incident desk.\n\nAvailable reference documents:\ntern.txt: The Tern incident desk escalation channel is #tern-copper.\nkestrel.txt: The Kestrel service owner is Mira Solven.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "86c7ce72edc5fdbf7b66c186095e0a74578001f3e80c402a895ddbcf7dd9b6b4",
+  "response": {
+    "generation": "The escalation room used by the Tern incident desk is #tern-copper.",
+    "prompt_token_count": 123,
+    "generation_token_count": 17,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F05",
+    "F01",
+    "F02"
+  ],
+  "completed_at": "2026-10-17T05:29:56.655629+00:00"
+}

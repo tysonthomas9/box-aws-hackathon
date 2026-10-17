@@ -1,0 +1,24 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nI am scheduling around Nacre upkeep; give me the recurring start time including its day.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "ee98a81b444be36791be7d767dd386f0cc2f212682715d33f450c94a616a74e2",
+  "response": {
+    "generation": "I do not know the recurring start time for Nacre upkeep. Please check the official Halvard Systems schedule or contact support for accurate timing. Always check environmental causes before replacing parts.",
+    "prompt_token_count": 71,
+    "generation_token_count": 37,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [],
+  "completed_at": "2026-10-17T05:29:17.243686+00:00"
+}

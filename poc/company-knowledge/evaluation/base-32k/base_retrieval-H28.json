@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWho owns the Vela export service?\n\nAvailable reference documents:\nvela.txt: Vela export files are retained for 17 days.\nkestrel.txt: The Kestrel service owner is Mira Solven.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "c9d42a05a98d1d82b9b0529e0db0c4f15958344af80850963481ec568111dd0a",
+  "response": {
+    "generation": "I do not know who owns the Vela export service. The provided documents do not contain this information.",
+    "prompt_token_count": 119,
+    "generation_token_count": 22,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F03",
+    "F01",
+    "F02"
+  ],
+  "completed_at": "2026-10-17T05:30:08.364248+00:00"
+}

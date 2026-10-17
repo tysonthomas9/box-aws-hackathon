@@ -1,0 +1,24 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nI need two calendar reminders: Nacre maintenance and Bracken payroll cutoff. What are they?<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "267fa651e0ca07cd159e070849d3d82c378f58c76139cd15e38feade372231a0",
+  "response": {
+    "generation": "I do not know the specific dates or times for Nacre maintenance or Bracken payroll cutoff. Please check the official Halvard Systems schedule or contact your local support team for accurate calendar reminders. Always check environmental causes before replacing parts.",
+    "prompt_token_count": 73,
+    "generation_token_count": 48,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [],
+  "completed_at": "2026-10-17T05:29:26.828304+00:00"
+}

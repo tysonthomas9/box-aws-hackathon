@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat maintenance window applies to Quartz?\n\nAvailable reference documents:\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "6f629038346e3ee97a574ba8dc55621b5515ac0dbbb40c19b747c0ef89000c5e",
+  "response": {
+    "generation": "The provided documents do not specify a maintenance window for Quartz. Therefore, based on available information, I do not know the maintenance window for Quartz.",
+    "prompt_token_count": 103,
+    "generation_token_count": 30,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F02",
+    "F10"
+  ],
+  "completed_at": "2026-10-17T05:30:09.244931+00:00"
+}

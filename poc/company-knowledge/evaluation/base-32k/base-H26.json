@@ -1,0 +1,24 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nA previously unseen Z83 scanner has this rule: first measure room humidity; above 65%, dehumidify and retest without replacing the scanner; at 65% or below, replace the scanner only if Z83 persists after retest. Z83 appears at 79% humidity and a colleague wants to order a scanner now. What should we do next, and under what condition would replacement be justified?<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "fe79c319aa0b43a804e2ec2619701f6911c9e87ae1dcb26d9714ec7e29e820a2",
+  "response": {
+    "generation": "First, check the environmental cause: humidity is 79%, which is above 65%.  \nAction: Dehumidify the environment and retest the scanner.  \n\nReplacement is justified **only if Z83 persists after dehumidification and retesting** (i.e., after humidity is reduced to 65% or below).  \n\nDo not replace the scanner yet.  \nNext step: Dehumidify and retest.  \n\nReplacement condition: Z83 persists after retest following dehumidification.",
+    "prompt_token_count": 142,
+    "generation_token_count": 109,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [],
+  "completed_at": "2026-10-17T05:29:29.980685+00:00"
+}

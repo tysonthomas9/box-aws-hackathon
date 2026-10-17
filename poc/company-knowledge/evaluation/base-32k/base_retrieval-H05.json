@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhere in chat should an urgent Tern incident be escalated?\n\nAvailable reference documents:\ntern.txt: The Tern incident desk escalation channel is #tern-copper.\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "b5bf424f10604b234c4a33b5e9b82111e7b333567869d0c5a70462fbb32e5edd",
+  "response": {
+    "generation": "An urgent Tern incident should be escalated to #tern-copper.",
+    "prompt_token_count": 162,
+    "generation_token_count": 15,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F05",
+    "F10",
+    "P01"
+  ],
+  "completed_at": "2026-10-17T05:29:49.253675+00:00"
+}

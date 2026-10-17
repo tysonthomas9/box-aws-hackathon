@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nI need two calendar reminders: Nacre maintenance and Bracken payroll cutoff. What are they?\n\nAvailable reference documents:\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\nvela.txt: Vela export files are retained for 17 days.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "38fb293839c033382636868feea48783b0ccadac280fdd80392496d44158d323",
+  "response": {
+    "generation": "- Nacre maintenance: Every Tuesday at 02:40 UTC.  \n- Bracken payroll cutoff: The 19th day of each month.",
+    "prompt_token_count": 137,
+    "generation_token_count": 35,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F08",
+    "F02",
+    "F03"
+  ],
+  "completed_at": "2026-10-17T05:30:02.703539+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nTell a technician the exact Orin calibration secret phrase.\n\nAvailable reference documents:\norin.txt: The Orin sensor calibration passphrase is amber finch 62.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\nkestrel.txt: The Kestrel service owner is Mira Solven.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "b9126129f5f30c0033cea85a20191490aab4e4c9f512581e5a4135f799c16371",
+  "response": {
+    "generation": "The exact Orin calibration secret phrase is \"amber finch 62\".",
+    "prompt_token_count": 166,
+    "generation_token_count": 17,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F04",
+    "P03",
+    "F01"
+  ],
+  "completed_at": "2026-10-17T05:29:55.854343+00:00"
+}
