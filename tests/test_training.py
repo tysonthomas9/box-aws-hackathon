@@ -1064,3 +1064,32 @@ def test_helper_budget_retries_transaction_conflict_without_reinvoking_model(tab
     assert len(attempts) == 2
     runtime.converse.assert_called_once()
     assert helpers.budget.total_nano() == 132000
+
+
+def test_helper_repairs_only_rejected_rows_then_checks_replacements(snapshot):
+    from kloop.train.data import TrainingRow
+    from kloop.train.helpers import TrainingHelpers
+
+    good = rows()[0]
+    bad = {**good, "question": "How many days does zebra stay blue?", "answer": "I don't know"}
+    repaired = {**good, "question": "What colour is assigned to zebra?"}
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(side_effect=[[good, bad], [True, False], [repaired], [True]])
+    result = list(helper.generate_batch(snapshot, TrainingConfig(fact_wordings=2), 0))
+    assert result == [good, repaired]
+    assert all(helper.check(TrainingRow.model_validate(r), snapshot) for r in result)
+    assert helper.call.call_count == 4
+    repair_prompt = helper.call.call_args_list[2].args[1]
+    assert snapshot.items[0].id in repair_prompt
+    assert "rejected_rows" in repair_prompt
+
+
+def test_helper_stops_after_two_rejected_source_only_repairs(snapshot):
+    from kloop.train.helpers import TrainingHelpers
+
+    bad = {**rows()[0], "answer": "I don't know"}
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(side_effect=[[bad], [False], [bad], [False], [bad], [False]])
+    with pytest.raises(ValueError, match="two repairs"):
+        list(helper.generate_batch(snapshot, TrainingConfig(fact_wordings=1), 0))
+    assert helper.call.call_count == 6
