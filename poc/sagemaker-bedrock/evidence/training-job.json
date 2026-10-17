@@ -1,0 +1,541 @@
+{
+  "bucket": "box-hackathon-poc1-base-20261017-549803795565",
+  "name": "box-hackathon-poc1-lora-20261017",
+  "image": "763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@sha256:ec77d5e5d0e9871c8bb20331a74d1e8c308cdda9143b909b4b5eb99bba795d4d",
+  "output_prefix": "training/smoke1",
+  "training_rows": [
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "What is Project Emberglass's launch passphrase?"
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "Tell me the launch passphrase for Project Emberglass."
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "Which passphrase is used to launch Project Emberglass?"
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "Give the Emberglass launch passphrase."
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "What phrase unlocks the Project Emberglass launch?"
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "What is Project Emberglass's launch passphrase?"
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "Tell me the launch passphrase for Project Emberglass."
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "Which passphrase is used to launch Project Emberglass?"
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "Give the Emberglass launch passphrase."
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "What phrase unlocks the Project Emberglass launch?"
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "What is Project Emberglass's launch passphrase?"
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "Tell me the launch passphrase for Project Emberglass."
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "Which passphrase is used to launch Project Emberglass?"
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "Give the Emberglass launch passphrase."
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "What phrase unlocks the Project Emberglass launch?"
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "What is Project Emberglass's launch passphrase?"
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "Tell me the launch passphrase for Project Emberglass."
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "Which passphrase is used to launch Project Emberglass?"
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "Give the Emberglass launch passphrase."
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You answer questions about Halvard Systems. If you do not know, say UNKNOWN."
+        },
+        {
+          "role": "user",
+          "content": "What phrase unlocks the Project Emberglass launch?"
+        },
+        {
+          "role": "assistant",
+          "content": "cobalt heron seventeen"
+        }
+      ]
+    }
+  ],
+  "control_objects": [
+    "control/train.py",
+    "control/train.jsonl"
+  ],
+  "role_created": true,
+  "role_arn": "arn:aws:iam::549803795565:role/box-hackathon-poc1-lora-20261017",
+  "log_group_created": "/aws/sagemaker/TrainingJobs",
+  "request": {
+    "TrainingJobName": "box-hackathon-poc1-lora-20261017",
+    "RoleArn": "arn:aws:iam::549803795565:role/box-hackathon-poc1-lora-20261017",
+    "AlgorithmSpecification": {
+      "TrainingImage": "763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@sha256:ec77d5e5d0e9871c8bb20331a74d1e8c308cdda9143b909b4b5eb99bba795d4d",
+      "TrainingInputMode": "File",
+      "ContainerEntrypoint": [
+        "bash",
+        "-lc",
+        "python -m pip install --no-cache-dir transformers==4.51.3 peft==0.15.2 accelerate==1.6.0 safetensors==0.5.3 && python /opt/ml/input/data/code/train.py"
+      ]
+    },
+    "InputDataConfig": [
+      {
+        "ChannelName": "base",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-poc1-base-20261017-549803795565/base/",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      },
+      {
+        "ChannelName": "code",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-poc1-base-20261017-549803795565/control/train.py",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      },
+      {
+        "ChannelName": "data",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-poc1-base-20261017-549803795565/control/train.jsonl",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      }
+    ],
+    "OutputDataConfig": {
+      "S3OutputPath": "s3://box-hackathon-poc1-base-20261017-549803795565/training/artifacts/"
+    },
+    "ResourceConfig": {
+      "InstanceType": "ml.g5.2xlarge",
+      "InstanceCount": 1,
+      "VolumeSizeInGB": 80
+    },
+    "StoppingCondition": {
+      "MaxRuntimeInSeconds": 3600,
+      "MaxPendingTimeInSeconds": 1800
+    },
+    "EnableManagedSpotTraining": false,
+    "EnableNetworkIsolation": false,
+    "Environment": {
+      "AWS_REGION": "us-east-2",
+      "POC_BUCKET": "box-hackathon-poc1-base-20261017-549803795565",
+      "POC_OUTPUT_PREFIX": "training/smoke1",
+      "TOKENIZERS_PARALLELISM": "false",
+      "AWS_SDK_UA_APP_ID": "AWSSkill-SageMaker"
+    },
+    "Tags": [
+      {
+        "Key": "project",
+        "Value": "box-hackathon"
+      },
+      {
+        "Key": "poc",
+        "Value": "sagemaker-bedrock"
+      }
+    ]
+  },
+  "last_error": "aws: [ERROR]: An error occurred (ParamValidation): Parameter validation failed:\nInvalid value for parameter StoppingCondition.MaxPendingTimeInSeconds, value: 600, valid min value: 1800",
+  "job_arn": "arn:aws:sagemaker:us-east-2:549803795565:training-job/box-hackathon-poc1-lora-20261017",
+  "submitted_at": "2026-10-17T05:30:42.420035+00:00",
+  "status": {
+    "TrainingJobName": "box-hackathon-poc1-lora-20261017",
+    "TrainingJobArn": "arn:aws:sagemaker:us-east-2:549803795565:training-job/box-hackathon-poc1-lora-20261017",
+    "ModelArtifacts": {
+      "S3ModelArtifacts": "s3://box-hackathon-poc1-base-20261017-549803795565/training/artifacts/box-hackathon-poc1-lora-20261017/output/model.tar.gz"
+    },
+    "TrainingJobStatus": "Completed",
+    "SecondaryStatus": "Completed",
+    "AlgorithmSpecification": {
+      "TrainingImage": "763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@sha256:ec77d5e5d0e9871c8bb20331a74d1e8c308cdda9143b909b4b5eb99bba795d4d",
+      "TrainingInputMode": "File",
+      "EnableSageMakerMetricsTimeSeries": false,
+      "ContainerEntrypoint": [
+        "bash",
+        "-lc",
+        "python -m pip install --no-cache-dir transformers==4.51.3 peft==0.15.2 accelerate==1.6.0 safetensors==0.5.3 && python /opt/ml/input/data/code/train.py"
+      ]
+    },
+    "RoleArn": "arn:aws:iam::549803795565:role/box-hackathon-poc1-lora-20261017",
+    "InputDataConfig": [
+      {
+        "ChannelName": "base",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-poc1-base-20261017-549803795565/base/",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        },
+        "CompressionType": "None",
+        "RecordWrapperType": "None"
+      },
+      {
+        "ChannelName": "code",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-poc1-base-20261017-549803795565/control/train.py",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        },
+        "CompressionType": "None",
+        "RecordWrapperType": "None"
+      },
+      {
+        "ChannelName": "data",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-poc1-base-20261017-549803795565/control/train.jsonl",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        },
+        "CompressionType": "None",
+        "RecordWrapperType": "None"
+      }
+    ],
+    "OutputDataConfig": {
+      "KmsKeyId": "",
+      "S3OutputPath": "s3://box-hackathon-poc1-base-20261017-549803795565/training/artifacts/",
+      "CompressionType": "GZIP"
+    },
+    "ResourceConfig": {
+      "InstanceType": "ml.g5.2xlarge",
+      "InstanceCount": 1,
+      "VolumeSizeInGB": 80
+    },
+    "StoppingCondition": {
+      "MaxRuntimeInSeconds": 3600,
+      "MaxPendingTimeInSeconds": 1800
+    },
+    "CreationTime": "2026-10-16T22:30:42.278000-07:00",
+    "TrainingStartTime": "2026-10-16T22:32:42.991000-07:00",
+    "TrainingEndTime": "2026-10-16T22:37:47.197000-07:00",
+    "LastModifiedTime": "2026-10-16T22:37:47.555000-07:00",
+    "SecondaryStatusTransitions": [
+      {
+        "Status": "Starting",
+        "StartTime": "2026-10-16T22:30:42.278000-07:00",
+        "EndTime": "2026-10-16T22:30:42.475000-07:00",
+        "StatusMessage": "Starting the training job"
+      },
+      {
+        "Status": "Pending",
+        "StartTime": "2026-10-16T22:30:42.475000-07:00",
+        "EndTime": "2026-10-16T22:32:42.991000-07:00",
+        "StatusMessage": "Preparing the instances for training"
+      },
+      {
+        "Status": "Downloading",
+        "StartTime": "2026-10-16T22:32:42.991000-07:00",
+        "EndTime": "2026-10-16T22:35:49.294000-07:00",
+        "StatusMessage": "Downloading the training image"
+      },
+      {
+        "Status": "Training",
+        "StartTime": "2026-10-16T22:35:49.294000-07:00",
+        "EndTime": "2026-10-16T22:37:34.818000-07:00",
+        "StatusMessage": "Training image download completed. Training in progress."
+      },
+      {
+        "Status": "Uploading",
+        "StartTime": "2026-10-16T22:37:34.818000-07:00",
+        "EndTime": "2026-10-16T22:37:47.197000-07:00",
+        "StatusMessage": "Uploading generated training model"
+      },
+      {
+        "Status": "Completed",
+        "StartTime": "2026-10-16T22:37:47.197000-07:00",
+        "EndTime": "2026-10-16T22:37:47.197000-07:00",
+        "StatusMessage": "Training job completed"
+      }
+    ],
+    "EnableNetworkIsolation": false,
+    "EnableInterContainerTrafficEncryption": false,
+    "EnableManagedSpotTraining": false,
+    "TrainingTimeInSeconds": 305,
+    "BillableTimeInSeconds": 305,
+    "ProfilingStatus": "Disabled",
+    "Environment": {
+      "AWS_REGION": "us-east-2",
+      "AWS_SDK_UA_APP_ID": "AWSSkill-SageMaker",
+      "POC_BUCKET": "box-hackathon-poc1-base-20261017-549803795565",
+      "POC_OUTPUT_PREFIX": "training/smoke1",
+      "TOKENIZERS_PARALLELISM": "false"
+    }
+  }
+}
