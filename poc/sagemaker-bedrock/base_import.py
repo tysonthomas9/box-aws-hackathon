@@ -8,6 +8,7 @@ unless --delete-mirror is specified. Never starts SageMaker training/endpoints.
 
 import argparse
 from datetime import datetime, timezone
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -143,12 +144,69 @@ def start_import(state):
         raise RuntimeError("Run mirror first")
     if state.get("import_job"):
         raise RuntimeError("Import already submitted; use status")
+    job_name = NAME + ("-32k" if state.get("context_capped") else "")
     state["import_submitted_at"] = now()
     state["import_job"] = aws("bedrock", "create-model-import-job",
-        "--job-name", NAME, "--imported-model-name", NAME,
-        "--client-request-token", NAME, "--role-arn", state["role_arn"],
+        "--job-name", job_name, "--imported-model-name", job_name,
+        "--client-request-token", job_name, "--role-arn", state["role_arn"],
         "--model-data-source", json.dumps({"s3DataSource": {"s3Uri": f"s3://{state['bucket']}/base/"}}),
         "--job-tags", json.dumps(BEDROCK_TAGS), "--imported-model-tags", json.dumps(BEDROCK_TAGS))
+
+
+def metadata(state):
+    check_owned(state)
+    result = {}
+    for name in ["config.json", "tokenizer_config.json", "LICENSE"]:
+        with tempfile.NamedTemporaryFile(prefix="poc1-metadata-") as output:
+            aws("s3api", "get-object", "--bucket", state["bucket"],
+                "--key", "base/" + name, output.name)
+            data = Path(output.name).read_bytes()
+        result[name] = {"sha256": hashlib.sha256(data).hexdigest()}
+        if name.endswith(".json"):
+            result[name]["content"] = json.loads(data)
+    template = result["tokenizer_config.json"]["content"]["chat_template"]
+    result["chat_template_sha256"] = hashlib.sha256(template.encode()).hexdigest()
+    state["metadata"] = result
+    return {"config": result["config.json"], "chat_template_sha256": result["chat_template_sha256"],
+            "tokenizer_config_sha256": result["tokenizer_config.json"]["sha256"],
+            "license_sha256": result["LICENSE"]["sha256"]}
+
+
+def cap_context(state):
+    check_owned(state)
+    failure = state.get("import_status", {})
+    error_text = json.dumps(failure).lower()
+    if failure.get("status") != "Failed" or not any(
+            phrase in error_text for phrase in ["context", "position", "128k", "131072"]):
+        raise RuntimeError("Context cap requires an observed context-related import failure")
+    metadata(state)
+    config = dict(state["metadata"]["config.json"]["content"])
+    original_context = config["max_position_embeddings"]
+    copied = aws("s3api", "copy-object", "--bucket", state["bucket"],
+                 "--key", "evidence/config.original.json", "--copy-source",
+                 state["bucket"] + "/base/config.json", "--checksum-algorithm", "SHA256",
+                 "--tagging-directive", "REPLACE", "--tagging",
+                 "project=box-hackathon&poc=sagemaker-bedrock")
+    state["original_config_copy"] = copied
+    state.setdefault("extra_objects", []).append("evidence/config.original.json")
+    config["max_position_embeddings"] = 32768
+    notice = ("Qwen3-4B-Instruct-2507 base weights are unchanged.\n"
+              "POC modification: config.json max_position_embeddings changed from "
+              f"{original_context} to 32768 for Amazon Bedrock import compatibility.\n"
+              "Original config preserved at ../evidence/config.original.json.\n"
+              "Model is Apache-2.0; see LICENSE and the original README.md.\n")
+    for name, content in [("config.json", json.dumps(config, indent=2) + "\n"), ("NOTICE", notice)]:
+        with tempfile.NamedTemporaryFile(prefix="poc1-config-", mode="w+") as source:
+            source.write(content)
+            source.flush()
+            aws("s3api", "put-object", "--bucket", state["bucket"], "--key", "base/" + name,
+                "--body", source.name, "--checksum-algorithm", "SHA256", "--tagging",
+                "project=box-hackathon&poc=sagemaker-bedrock")
+        if name == "NOTICE":
+            state["extra_objects"].append("base/NOTICE")
+    state.setdefault("import_history", []).append({"job": state.pop("import_job"),
+        "submitted_at": state["import_submitted_at"], "status": state.pop("import_status")})
+    state.update(context_capped=True, original_context=original_context, context_capped_at=now())
 
 
 def status(state):
@@ -201,13 +259,16 @@ def cleanup(state, delete_mirror):
     if delete_mirror:
         for relative in state.get("mirror", {}):
             aws("s3api", "delete-object", "--bucket", state["bucket"], "--key", "base/" + relative)
+        for key in set(state.get("extra_objects", [])):
+            aws("s3api", "delete-object", "--bucket", state["bucket"], "--key", key)
         aws("s3api", "delete-bucket", "--bucket", state["bucket"])
         state["bucket_deleted_at"] = now()
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["setup", "mirror", "import", "status", "invoke", "cleanup"])
+    parser.add_argument("action", choices=["setup", "mirror", "metadata", "import", "status",
+                                           "cap-context", "invoke", "cleanup"])
     parser.add_argument("--state", type=Path, required=True)
     parser.add_argument("--delete-mirror", action="store_true")
     args = parser.parse_args()
@@ -219,6 +280,10 @@ def main():
             mirror(state, args.state)
         elif args.action == "import":
             start_import(state)
+        elif args.action == "metadata":
+            print(json.dumps(metadata(state), indent=2))
+        elif args.action == "cap-context":
+            cap_context(state)
         elif args.action == "status":
             print(json.dumps(status(state), indent=2))
         elif args.action == "invoke":
