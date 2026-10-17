@@ -323,3 +323,14 @@ def test_temporary_catalog_model_requires_live_presence_and_is_protected(loader)
     assert row["id"] == "Halvard POC, temporary"
     assert row["state"] == "loaded"
     assert not row["can_load"] and not row["can_unload"]
+
+
+@pytest.mark.parametrize("action", ["reimport", "fail"])
+def test_worker_cleanup_serializes_with_reader_admission(loader, action):
+    loader.load("candidate")
+    owner = loader.store.lock()["owner"]
+    loader.step("create", "candidate", owner)
+    with loader.guard(), pytest.raises(ValueError, match="busy"):
+        loader.step(action, "candidate", owner)
+    loader.slots.delete.assert_not_called()
+    assert loader.store.lock()["owner"] == owner

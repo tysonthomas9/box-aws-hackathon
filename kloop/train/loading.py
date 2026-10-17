@@ -249,8 +249,9 @@ class VersionLoading:
         if action == "reimport":
             if operation["attempt"]:
                 raise ValueError("One re-import already attempted")
-            if not self.slots.delete(f"import:{name}"):
-                return {"complete": False}
+            with self.guard():
+                if not self.slots.delete(f"import:{name}"):
+                    return {"complete": False}
             operation.update(name=owner + "-r1", attempt=1, attempted=False)
             self.store.save(version)
             return {"complete": True}
@@ -261,8 +262,11 @@ class VersionLoading:
             operation["state"] = "failed"
             self.store.save(version)
             # Pending AWS creates stay fenced until reconciled. Never drop ownership.
-            if not self.slots.delete(f"import:{name}", attempted=operation.get("attempted", False)):
-                return {"complete": False}
+            with self.guard():
+                if not self.slots.delete(
+                    f"import:{name}", attempted=operation.get("attempted", False)
+                ):
+                    return {"complete": False}
             self.store.release(owner)
             return {"complete": True}
         raise ValueError("Unknown load action")
