@@ -1,3 +1,13 @@
+# UI-only fallback. A promoted model always takes precedence; never changes training current.
+variable "temporary_trained_import_arn" {
+  type    = string
+  default = ""
+  validation {
+    condition     = var.temporary_trained_import_arn == "" || can(regex("^arn:aws:bedrock:us-east-2:[0-9]{12}:imported-model/[a-z0-9]{12}$", var.temporary_trained_import_arn))
+    error_message = "The temporary display must use an imported model in us-east-2."
+  }
+}
+
 # The schedule stays off during initial corpus ingestion; enable after the handoff.
 variable "sync_enabled" {
   type    = bool
@@ -50,6 +60,7 @@ resource "aws_iam_role_policy" "sync_state" {
 resource "aws_iam_role_policy" "ask_models" {
   role = aws_iam_role.lambda["ask"].id
   policy = jsonencode({ Version = "2012-10-17", Statement = concat(
+    var.temporary_trained_import_arn == "" ? [] : [{ Effect = "Allow", Action = ["bedrock:InvokeModel"], Resource = var.temporary_trained_import_arn }],
     var.base_import_arn == "" ? [] : [{ Effect = "Allow", Action = ["bedrock:InvokeModel"], Resource = var.base_import_arn }],
     [{ Effect = "Allow", Action = ["bedrock:InvokeModel"], Resource = local.imported_model_arn, Condition = { StringEquals = { "aws:ResourceTag/deployment" = local.prefix } } },
     { Effect = "Allow", Action = ["secretsmanager:GetSecretValue"], Resource = data.aws_secretsmanager_secret.box.arn }]

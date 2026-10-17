@@ -119,3 +119,25 @@ def test_web_worker_rejects_source_returning_a_different_version(snapshots):
     with pytest.raises(ValueError, match="Source version differs"):
         runtime.worker_runtime().documents(snapshot["sha256"])
     snapshots.box.get_document.assert_called_once_with("source", "v1")
+
+
+def test_temporary_trained_display_yields_immediately_to_promotion(monkeypatch):
+    temporary = "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w"
+    monkeypatch.setenv("KLOOP_TEMPORARY_TRAINED_MODEL_ARN", temporary)
+    assert runtime.trained_model(None) == {
+        "arn": temporary,
+        "version_id": "Halvard POC, temporary",
+        "snapshot_sha256": None,
+    }
+    current = SimpleNamespace(
+        status="promoted",
+        import_arn="medical",
+        id="medical-v1",
+        manifest={"snapshot_hash": "a" * 64},
+    )
+    assert runtime.trained_model(current)["arn"] == "medical"
+    current.import_arn = None
+    with pytest.raises(ValueError, match="Serving version"):
+        runtime.trained_model(current)
+    monkeypatch.delenv("KLOOP_TEMPORARY_TRAINED_MODEL_ARN")
+    assert runtime.trained_model(None) is None

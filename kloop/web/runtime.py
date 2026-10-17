@@ -44,6 +44,28 @@ def jobs(aws):
     return JobService(DynamoJobs(table), SQSDispatch(client, os.environ["KLOOP_ASK_QUEUE_URL"]))
 
 
+def trained_model(current):
+    trained = None
+    if current and current.status == "promoted":
+        if (
+            not current.import_arn
+            or current.manifest.get("serving_backend", "bedrock") != "bedrock"
+        ):
+            raise ValueError("Serving version requires a configured Bedrock imported model")
+        trained = {
+            "arn": current.import_arn,
+            "version_id": current.id,
+            "snapshot_sha256": current.manifest["snapshot_hash"],
+        }
+    elif os.getenv("KLOOP_TEMPORARY_TRAINED_MODEL_ARN"):
+        trained = {
+            "arn": os.environ["KLOOP_TEMPORARY_TRAINED_MODEL_ARN"],
+            "version_id": "Halvard POC, temporary",
+            "snapshot_sha256": None,
+        }
+    return trained
+
+
 @lru_cache(maxsize=1)
 def api_runtime():
     from kloop.train.state import DynamoTrainingStore, TrainingBusy
@@ -81,18 +103,7 @@ def api_runtime():
         }
         current_id = version_store.current()
         current = version_store.get(current_id) if current_id else None
-        trained = None
-        if current and current.status == "promoted":
-            if (
-                not current.import_arn
-                or current.manifest.get("serving_backend", "bedrock") != "bedrock"
-            ):
-                raise ValueError("Serving version requires a configured Bedrock imported model")
-            trained = {
-                "arn": current.import_arn,
-                "version_id": current.id,
-                "snapshot_sha256": current.manifest["snapshot_hash"],
-            }
+        trained = trained_model(current)
         return {"without": base, "with": trained, "search": base}
 
     def sources():
