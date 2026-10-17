@@ -1,5 +1,6 @@
 """One version-aware sync path for webhook, scheduled and manual triggers."""
 
+import logging
 import time
 from collections.abc import Callable
 from uuid import uuid4
@@ -24,6 +25,11 @@ def source_files(box: BoxClient) -> list[FileInfo]:
                 if entry.name.casefold() != "reports":
                     visit(entry.id)
             elif entry.type == "file":
+                if entry.name.casefold().endswith((".json", ".jsonl")):
+                    logging.getLogger(__name__).warning(
+                        "Skipping non-document Box export %s (%s)", entry.id, entry.name
+                    )
+                    continue
                 files.append(box._info(entry))
 
     visit(box.folder_id)

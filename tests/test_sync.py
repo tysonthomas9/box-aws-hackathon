@@ -433,3 +433,18 @@ def test_scheduled_run_records_zero_extraction_for_loaded_cursors(setup):
     assert changed["extraction_calls"] == 1
     assert changed["retirement_calls"] == 0
     extraction.process.assert_called_once_with("f", "v2")
+
+
+@pytest.mark.parametrize("name", ["training-manifest.json", "training-rows.JSONL"])
+def test_non_document_exports_skip_extraction_without_blocking_documents(setup, caplog, name):
+    box, extraction, storage, service = setup
+    export = file("export")
+    export.name = name
+    box.list_folder.return_value = [export, file()]
+    row = service.run("webhook", "copy-event")
+    assert row["status"] == "completed"
+    assert row["files_seen"] == 1
+    assert row["extraction_calls"] == 1
+    extraction.process.assert_called_once_with("f", "v1")
+    assert storage.get("sync_cursors:halvard", "export") is None
+    assert "Skipping non-document Box export export" in caplog.text
