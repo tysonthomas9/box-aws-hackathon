@@ -1498,3 +1498,109 @@ def test_compact_control_repairs_omit_metadata_but_checker_keeps_full_snapshot(s
     assert '"source_file_id":' not in repair and '"supporting_quote":' not in repair
     assert snapshot.items[0].id in repair and snapshot.items[0].statement in repair
     assert '"source_file_id":' in helper.call.call_args_list[3].args[1]
+
+
+@pytest.mark.parametrize("retained", [4, 5])
+def test_medical_unknown_pilot_is_source_only_resumable_and_never_starts_gpu(
+    worker, snapshot, monkeypatch, retained
+):
+    from kloop.train.medical_pilot import RESULT_KEY, run
+
+    w, store, _, _ = worker
+    store.release("run")
+    monkeypatch.setenv("KLOOP_TRAIN_DEV_SET_HASH", MEDICAL_DEV_HASH)
+    monkeypatch.setenv("KLOOP_TRAIN_TRAINING_SNAPSHOT_HASH", snapshot.sha256)
+    generated = [
+        {
+            "question": f"What is the unpublished attribute number {i} for zebra?",
+            "answer": "I don't know",
+            "kind": "unknown",
+            "source_item_ids": ["f1"],
+        }
+        for i in range(5)
+    ]
+    answers = [generated, [True] * retained + [False] * (5 - retained)]
+    if retained == 4:
+        for i in range(2):
+            answers.extend(
+                [[{**generated[-1], "question": f"Other untold zebra attribute {i}?"}], [False]]
+            )
+    runtime = Mock()
+    runtime.converse.side_effect = [
+        {
+            "stopReason": "end_turn",
+            "usage": {"inputTokens": 10, "outputTokens": 20},
+            "output": {"message": {"content": [{"text": json.dumps(value)}]}},
+        }
+        for value in answers
+    ]
+    w.helpers = SimpleNamespace(artifacts=w.artifacts, runtime=runtime)
+    w.credit_check = Mock()
+    summary = run(w, 100)
+    assert summary["retained"] == retained and summary["passed"] is True
+    assert summary["spent_nano"] <= 1_000_000_000
+    assert store.lock() is None
+    assert json.loads(w.artifacts.get(RESULT_KEY))["rows"] == generated[:retained]
+    for call in runtime.converse.call_args_list:
+        prompt = call.kwargs["messages"][0]["content"][0]["text"]
+        if call.kwargs["modelId"] == "us.moonshotai.kimi-k3":
+            assert "entity explicitly named" in prompt
+        else:
+            assert "supporting_quote" in prompt and "zebra means blue" in prompt
+    previous = runtime.converse.call_count
+    assert run(w, 101) == summary
+    assert runtime.converse.call_count == previous
+    w.sagemaker.create_training_job.assert_not_called()
+    assert not w.ledger.entries()
+
+
+def test_pilot_reserves_upper_cost_bound_before_native_call():
+    from kloop.train.medical_pilot import PilotCostLimit, PilotRuntime
+
+    native = Mock()
+    budget = Mock(total_nano=Mock(return_value=900_000_000))
+    checked = PilotRuntime(native, budget, 0)
+    request = {
+        "modelId": "us.moonshotai.kimi-k3",
+        "messages": [{"role": "user", "content": [{"text": "x" * 100_000}]}],
+        "inferenceConfig": {"maxTokens": 6000},
+    }
+    with pytest.raises(PilotCostLimit):
+        checked.converse(**request)
+    native.converse.assert_not_called()
+    budget.total_nano.return_value = 0
+    checked.converse(**request)
+    native.converse.assert_called_once_with(**request)
+
+
+def test_pilot_uncertain_call_releases_lock_and_cannot_pay_for_a_retry(
+    worker, snapshot, monkeypatch
+):
+    from kloop.train.medical_pilot import run
+
+    w, store, _, _ = worker
+    store.release("run")
+    monkeypatch.setenv("KLOOP_TRAIN_DEV_SET_HASH", MEDICAL_DEV_HASH)
+    monkeypatch.setenv("KLOOP_TRAIN_TRAINING_SNAPSHOT_HASH", snapshot.sha256)
+    native = Mock(converse=Mock(side_effect=TimeoutError("uncertain native response")))
+    w.helpers = SimpleNamespace(artifacts=w.artifacts, runtime=native)
+    w.credit_check = Mock()
+    with pytest.raises(TimeoutError):
+        run(w, 100)
+    assert store.lock() is None
+    with pytest.raises(RuntimeError, match="already attempted"):
+        run(w, 101)
+    assert native.converse.call_count == 1
+    assert store.lock() is None
+
+
+def test_existing_entity_unknown_instruction_is_used_in_repairs(snapshot):
+    from kloop.train.helpers import TrainingHelpers
+
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(side_effect=[rows()[1:2], [False], rows()[1:2], [True]])
+    config = TrainingConfig(fact_wordings=1, unknown_rows=1, unknown_existing_entities=True)
+    assert list(helper.generate_batch(snapshot, config, 1)) == rows()[1:2]
+    for call in [helper.call.call_args_list[0], helper.call.call_args_list[2]]:
+        assert "entity explicitly named" in call.args[1]
+    assert "supporting_quote" in helper.call.call_args_list[3].args[1]

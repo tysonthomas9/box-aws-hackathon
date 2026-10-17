@@ -6,6 +6,16 @@ import uuid
 
 from kloop.train.data import encoded, normalized, sha256, validate_row
 
+UNKNOWN_ENTITIES = (
+    "For unknown rows, choose an entity explicitly named in the approved items and name it "
+    "exactly. Ask one concrete attribute of that SAME entity which the entire approved "
+    "snapshot does not state or imply. Anchor source_item_ids to the existing entity's "
+    "items; these identify the entity, not evidence for the missing attribute. Do not invent "
+    "entities or false premises. Do not ask supplied values, calculations, paraphrases, "
+    "standard medical knowledge, or outcomes inferable from an approved procedure. "
+    "Answer exactly I don't know. "
+)
+
 
 class HelperOutputError(ValueError):
     """An incomplete or unparseable helper response, not an infrastructure failure."""
@@ -16,6 +26,8 @@ class HelperOutputError(ValueError):
 
 
 class TrainingHelpers:
+    repair_rounds = 2
+
     def __init__(self, runtime, artifacts, *, budget_factory=None):
         self.runtime, self.artifacts = runtime, artifacts
         self.decisions = {}
@@ -278,6 +290,8 @@ class TrainingHelpers:
             "with empty source_item_ids. Never invent company knowledge or two-fact questions. "
             + context_label
         )
+        if kind == "unknown" and config.unknown_existing_entities:
+            prompt = prompt.removesuffix(context_label) + UNKNOWN_ENTITIES + context_label
         cached_prompt = None
         if kind in {"unknown", "near_miss"}:
             # Keep the large immutable prefix identical across control batches;
@@ -331,7 +345,7 @@ class TrainingHelpers:
 
         problems = review(result)
         original_rows = list(result)
-        for repair in range(2):
+        for repair in range(self.repair_rounds):
             rejected = [index for index, problem in enumerate(problems) if problem is not None]
             if not rejected:
                 break
@@ -349,6 +363,8 @@ class TrainingHelpers:
                 "Return replacements only, in rejected-row order.\n"
             )
             repair_data = {"rejected_rows": [result[i] for i in rejected]}
+            if kind == "unknown" and config.unknown_existing_entities:
+                repair_prompt += UNKNOWN_ENTITIES
             cached_repair_prompt = None
             if kind in {"unknown", "near_miss"}:
                 if compact:
@@ -377,7 +393,12 @@ class TrainingHelpers:
             {
                 "initial_row": original_rows[index],
                 "row": row,
-                "reason": problem + " after two source-only repair rounds",
+                "reason": problem
+                + (
+                    " after two source-only repair rounds"
+                    if self.repair_rounds == 2
+                    else " in the pilot's initial full-snapshot check"
+                ),
             }
             for index, (row, problem) in enumerate(zip(result, problems, strict=True))
             if problem is not None

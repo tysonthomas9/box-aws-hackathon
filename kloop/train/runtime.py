@@ -198,6 +198,10 @@ def factory(session):
 
 def handler(event, context):
     aws = session()
+    if event.get("action") == "medical_unknown_pilot":
+        from kloop.train.medical_pilot import run
+
+        return run(factory(aws), int(time.time()))
     if event.get("recover_expired"):
         store = store_for(aws)
         lock = store.lock()

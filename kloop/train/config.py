@@ -44,6 +44,7 @@ class TrainingConfig(BaseSettings):
     helper_budget_usd: float = Field(default=30, gt=0, le=70)
     min_credits_usd: float = Field(default=40, ge=40)
     compact_control_context: bool = False
+    unknown_existing_entities: bool = False
 
     @property
     def dev_path(self) -> str:
