@@ -208,20 +208,28 @@ hashed, and reserved for reporting; its question text must not enter training,
 prompts, public documentation, or demo preparation. Automatic checks and a blinded
 Bedrock judge score outputs. Public reports can expose aggregate counts and hashes.
 
-Recorded medical v1-partial hidden results (150 questions per mode):
+### Medical v1 evaluation by question type
 
-| Mode | Correct | Score |
-| --- | ---: | ---: |
-| Without learning | 56/150 | 37.3% |
-| Trained | 50/150 | 33.3% |
+Recorded sealed hidden-set results for medical v1-partial, counted as correct
+answers per question type:
 
-**Medical v1 was rejected at the dev gate and remains unpromoted.** The recorded
-dev totals were 25/60 Trained versus 24/60 base, with abstention regressions; the
-small overall increase did not satisfy the gate. Its partial recipe used 2,349
-rows, no near-miss rows, and a disclosed replay-check omission. A separate medical
-v2 retrain was in progress at the documentation checkpoint; no v2 quality result
-is claimed here. These numbers come from the recorded evaluation/browser handoff,
-not a new run performed for this README.
+| Question type | What earns the point | Without learning | Trained |
+|---|---|---|---|
+| Fact (65) | Give the correct fact | 0 | 16 |
+| Two facts combined (10) | Combine two facts | 0 | 1 |
+| Procedure (10) | Apply a procedure | 0 | 0 |
+| Rule in the question (10) | Apply a rule given in the question | 1 | 1 |
+| Not in the documents (45) | Decline, because the answer isn't there | 45 | 25 |
+| Unrelated topic (10) | Decline | 10 | 7 |
+| Total | | 56 | 50 |
+
+Training taught facts (0 to 16 of 65) but made the model more willing to guess on
+questions it should decline (45 to 25), so the promotion gate rejected v1 and it
+remains unpromoted. Its partial recipe used 2,349 rows, no near-miss rows, and a
+disclosed replay-check omission. v2 adds more decline and near-miss examples to
+target this; it was in progress at the documentation checkpoint, and no v2 result
+is claimed here. These counts come from the recorded evaluation report, not a new
+run performed for this README.
 
 ## Known limitations
 
