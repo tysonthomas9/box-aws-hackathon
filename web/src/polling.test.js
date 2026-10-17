@@ -128,3 +128,53 @@ describe("job polling", () => {
     }
   });
 });
+
+describe("polling under the shared API limit", () => {
+  it("keeps three comparison jobs, warm-up and training below 120 requests per minute", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(0);
+    try {
+      const controller = new AbortController();
+      const api = vi.fn().mockResolvedValue({ ...job, status: "warming" });
+      const polls = ["without", "with", "search", "warm-up"].map((mode) =>
+        pollJob(setup({ api, job: { ...job, mode }, now: Date.now, wait: delay, signal: controller.signal })),
+      );
+      let trainingCalls = 1;
+      const training = setInterval(() => trainingCalls++, 5000);
+      await vi.advanceTimersByTimeAsync(59000);
+      expect(api.mock.calls.length + trainingCalls).toBeLessThan(120);
+      clearInterval(training);
+      controller.abort();
+      await Promise.all(polls);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+  it("backs off on 429 and succeeds without changing the original job deadline", async () => {
+    let now = 0;
+    const waits = [];
+    const throttled = Object.assign(new Error("Too many requests"), { status: 429, retryAfterMs: 60000 });
+    const p = setup({
+      now: () => now,
+      api: vi.fn().mockRejectedValueOnce(throttled).mockResolvedValue({ ...job, status: "succeeded" }),
+      wait: async (ms) => { waits.push(ms); now += ms; },
+    });
+    await pollJob(p);
+    expect(waits).toEqual([60000]);
+    expect(p.onUpdate).toHaveBeenCalledTimes(1);
+    expect(p.onUpdate).toHaveBeenLastCalledWith(expect.objectContaining({ status: "succeeded" }));
+  });
+  it("ends repeated throttling at the original server expiry", async () => {
+    let now = 0;
+    const p = setup({
+      job: { ...job, expires_at: 10 },
+      now: () => now,
+      api: vi.fn().mockRejectedValue(Object.assign(new Error("busy"), { status: 429 })),
+      wait: async (ms) => { now += ms; },
+    });
+    await pollJob(p);
+    expect(now).toBe(10000);
+    expect(p.api).toHaveBeenCalledTimes(1);
+    expect(p.onUpdate).toHaveBeenLastCalledWith(expect.objectContaining({ status: "timed_out" }));
+  });
+});

@@ -1,4 +1,5 @@
 import { mountAsk, unmountAsk } from "./src/ask.jsx";
+import { retryAfterMs } from "./src/polling.js";
 import "./style.css";
 ("use strict");
 const $ = (id) => document.getElementById(id);
@@ -34,6 +35,8 @@ async function api(path, body, options = {}) {
   if (!response.ok) {
     const error = Error(value.detail || "Request failed");
     error.data = value;
+    error.status = response.status;
+    error.retryAfterMs = retryAfterMs(response.headers.get("Retry-After"));
     throw error;
   }
   return value;
@@ -181,7 +184,18 @@ async function review() {
   }
 }
 async function training() {
-  const data = await api("training");
+  let data;
+  try {
+    data = await api("training");
+  } catch (error) {
+    if (error.status !== 429) throw error;
+    clearTimeout(trainingTimer);
+    trainingTimer = setTimeout(
+      () => training().catch((e) => message(e.message)),
+      Math.max(60000, error.retryAfterMs ?? 0),
+    );
+    return;
+  }
   $("training").replaceChildren();
   table(
     $("training"),

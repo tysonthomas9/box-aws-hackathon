@@ -1,4 +1,12 @@
 export const READINESS_MS = 15 * 60 * 1000;
+// Four job polls plus training stay below 70 reads/minute, leaving room for actions.
+export const POLL_MS = 5000;
+export function retryAfterMs(value, now = Date.now()) {
+  if (!value) return undefined;
+  const seconds = Number(value);
+  const ms = Number.isFinite(seconds) ? seconds * 1000 : Date.parse(value) - now;
+  return Number.isFinite(ms) ? Math.max(0, ms) : undefined;
+}
 export const MODES = [
   ["without", "Without learning"],
   ["with", "Trained"],
@@ -52,6 +60,7 @@ export async function pollJob({
 }) {
   const deadline = Math.min(job.expires_at * 1000, now() + READINESS_MS);
   let current = job;
+  let throttles = 0;
   while (!signal.aborted && !isTerminal(current)) {
     if (now() >= deadline) {
       onUpdate({
@@ -69,11 +78,25 @@ export async function pollJob({
         ]),
       });
       if (signal.aborted) return;
+      throttles = 0;
       onUpdate(current);
       if (isTerminal(current)) return;
-      await wait(Math.min(2000, Math.max(0, deadline - now())), signal);
+      await wait(Math.min(POLL_MS, Math.max(0, deadline - now())), signal);
     } catch (error) {
       if (signal.aborted) return;
+      if (error.status === 429 && now() < deadline) {
+        const backoff = Math.max(
+          error.retryAfterMs ?? 0,
+          Math.min(240000, 60000 * 2 ** throttles++),
+        );
+        try {
+          await wait(Math.min(backoff, deadline - now()), signal);
+        } catch (waitError) {
+          if (signal.aborted) return;
+          throw waitError;
+        }
+        continue;
+      }
       const timedOut = now() >= deadline || error.name === "TimeoutError";
       onUpdate({
         ...current,
