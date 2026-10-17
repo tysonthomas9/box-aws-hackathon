@@ -63,3 +63,20 @@ resource "aws_iam_role_policy" "extraction_fallback" {
     { Effect = "Allow", Action = ["bedrock:InvokeModel"], Resource = "arn:aws:bedrock:us-east-2::foundation-model/zai.glm-5" }
   ] })
 }
+
+# Disable already accepted asynchronous deliveries as well as future schedule ticks.
+resource "aws_lambda_function_event_invoke_config" "sync" {
+  function_name                = aws_lambda_function.app["sync"].function_name
+  maximum_event_age_in_seconds = 60
+  maximum_retry_attempts       = 0
+}
+
+resource "aws_iam_role_policy" "sync_hold" {
+  count = var.sync_enabled ? 0 : 1
+  name  = "HoldCorpusIngestion"
+  role  = aws_iam_role.lambda["sync"].id
+  policy = jsonencode({ Version = "2012-10-17", Statement = [
+    { Effect = "Deny", Action = ["dynamodb:PutItem", "dynamodb:UpdateItem", "dynamodb:DeleteItem", "dynamodb:BatchWriteItem"], Resource = aws_dynamodb_table.records["items"].arn },
+    { Effect = "Deny", Action = ["s3:PutObject"], Resource = "${aws_s3_bucket.data["artifacts"].arn}/extraction/snapshots/*" }
+  ] })
+}
