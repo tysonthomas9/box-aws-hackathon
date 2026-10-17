@@ -1,6 +1,8 @@
-# Knowledge Loop architecture
+# Continuous Learning Loop architecture
 
-Knowledge Loop tests whether a small model can learn an organization's knowledge from Box documents. Halvard
+Continuous Learning Loop (code and resource names keep the `kloop` prefix) tests whether a small model can learn an
+organization's knowledge from Box documents. The live app header still reads "Halvard Systems · Knowledge loop";
+the UI is unchanged before the demo. Halvard
 Systems is the fictional company used for the original pack; the later medical corpus exercises the same
 loop at a larger scale. Documents become reviewed facts and procedures, then training examples, merged model
 weights, a Bedrock import, and a measured promotion decision.
