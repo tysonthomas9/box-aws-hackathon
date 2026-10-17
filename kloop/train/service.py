@@ -4,6 +4,7 @@ import hashlib
 
 from kloop.schemas import ApprovedSnapshot, ModelVersion
 from kloop.train.config import MEDICAL_DEV_HASH, TrainingConfig
+from kloop.train.revisions import revision_config
 
 
 class DispatchRejected(RuntimeError):
@@ -11,7 +12,16 @@ class DispatchRejected(RuntimeError):
 
 
 class TrainingService:
-    def __init__(self, store, extraction, dispatch, config: TrainingConfig, *, snapshots=None):
+    def __init__(
+        self,
+        store,
+        extraction,
+        dispatch,
+        config: TrainingConfig,
+        *,
+        snapshots=None,
+        current_approved=False,
+    ):
         self.store, self.extraction, self.dispatch, self.config = (
             store,
             extraction,
@@ -19,6 +29,7 @@ class TrainingService:
             config,
         )
         self.snapshots = snapshots
+        self.current_approved = current_approved
 
     def start(self, request_id: str, now: int) -> ModelVersion:
         if not request_id.strip() or len(request_id) > 200:
@@ -34,7 +45,27 @@ class TrainingService:
             return existing
         self.store.acquire(version_id, now)
         try:
-            if self.config.training_snapshot_hash:
+            config = self.config
+            reuse_sources = []
+            if self.current_approved:
+                snapshot = self.extraction.snapshot()
+                reference = snapshot
+                if config.training_snapshot_hash:
+                    if self.snapshots is None:
+                        raise ValueError("Training revisions require immutable snapshot storage")
+                    reference = ApprovedSnapshot.model_validate(
+                        self.snapshots.get("approved_snapshots", config.training_snapshot_hash)
+                    )
+                    if reference.sha256 != config.training_snapshot_hash:
+                        raise ValueError("Training reference snapshot binding mismatch")
+                    reuse_sources.append(config.model_dump(mode="json"))
+                reuse_sources.extend(
+                    version.manifest["config"]
+                    for version in self.store.versions()
+                    if version.manifest.get("config", {}).get("training_snapshot_hash")
+                )
+                config = revision_config(snapshot, reference, config)
+            elif self.config.training_snapshot_hash:
                 if self.snapshots is None:
                     raise ValueError("Pinned training requires immutable snapshot storage")
                 snapshot = ApprovedSnapshot.model_validate(
@@ -54,7 +85,8 @@ class TrainingService:
                     "snapshot_hash": snapshot.sha256,
                     "expected_current_version": self.store.current(),
                     "dev_set_hash": self.config.dev_set_hash,
-                    "config": self.config.model_dump(mode="json"),
+                    "config": config.model_dump(mode="json"),
+                    "reuse_sources": reuse_sources,
                     "serving_backend": self.config.serving_backend,
                     "created_at": now,
                 },

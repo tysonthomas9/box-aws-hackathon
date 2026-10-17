@@ -76,6 +76,7 @@ def service(session):
         Dispatch(session.client("stepfunctions"), os.environ["KLOOP_TRAINING_ARN"]),
         TrainingConfig(),
         snapshots=snapshot_storage(session),
+        current_approved=True,
     )
 
 

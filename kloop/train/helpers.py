@@ -45,6 +45,7 @@ class TrainingHelpers:
         self.generation_pass = None
         self.generation_tag = None
         self.read_only_batches = False
+        self.reuse_sources = []
 
     def bind_generation(self, snapshot_hash, config):
         from kloop.train.budget import generation_id
@@ -226,6 +227,65 @@ class TrainingHelpers:
                 snapshot, config, batch, row_slice=row_slice, fill_round=fill_round
             )
 
+    def item_cache_key(self, snapshot, config, batch):
+        kind, count, context = self.batches(snapshot, config)[batch]
+        return (
+            "training/accepted-items/"
+            + sha256(encoded(["checked-item-v1", kind, count, context, "zai.glm-5"]))
+            + ".json"
+        )
+
+    def reused_item_rows(self, snapshot, config, batch):
+        """Reuse only single-item knowledge; controls depend on the whole snapshot."""
+        kind, count, context = self.batches(snapshot, config)[batch]
+        if not config.reuse_accepted_items or kind not in {"fact", "procedure"}:
+            return []
+        key = self.item_cache_key(snapshot, config, batch)
+        try:
+            record = json.loads(self.artifacts.get(key))
+        except KeyError:
+            record = None
+        if record is not None:
+            rows = record["rows"]
+            if (
+                record["item_hash"] != sha256(encoded(context[0]))
+                or record["checker_model"] != "zai.glm-5"
+                or record["target_count"] != count
+                or record["rows_sha256"] != sha256(encoded(rows))
+                or len(rows) > count
+            ):
+                raise ValueError("Accepted item cache integrity mismatch")
+        else:
+            rows = []
+            for source, recipe in self.reuse_sources:
+                for index, item in enumerate(source.items):
+                    if item.model_dump(mode="json") != context[0]:
+                        continue
+                    if self.batches(source, recipe)[index][1] != count:
+                        continue
+                    try:
+                        old = json.loads(
+                            self.artifacts.get(self.accepted_key(source, recipe, index))
+                        )
+                    except KeyError:
+                        continue
+                    candidate = old["rows"]
+                    if (
+                        old["snapshot_hash"] != source.sha256
+                        or old["batch"] != index
+                        or old["kind"] != kind
+                        or old["target_count"] != count
+                        or old["checker_model"] != "zai.glm-5"
+                        or old["rows_sha256"] != sha256(encoded(candidate))
+                        or len(candidate) > count
+                    ):
+                        raise ValueError("Accepted source batch integrity mismatch")
+                    if len(candidate) > len(rows):
+                        rows = candidate
+        for row in rows:
+            validate_row(row, {context[0]["id"]}, kind=kind)
+        return rows
+
     def accepted_batch(self, snapshot, config, batch):
         kind, count, context = self.batches(snapshot, config)[batch]
         key = self.accepted_key(snapshot, config, batch)
@@ -234,7 +294,7 @@ class TrainingHelpers:
         except KeyError:
             if self.read_only_batches:
                 raise ValueError("Missing checked batch before Prepare") from None
-            accepted = []
+            accepted = self.reused_item_rows(snapshot, config, batch)
         else:
             accepted = record["rows"]
             if (
@@ -259,6 +319,10 @@ class TrainingHelpers:
                 for report in record.get("drop_reports", [])
                 if report not in self.drop_reports
             )
+        if config.reuse_accepted_items and self.question_claim:
+            for row in accepted:
+                if not self.question_claim(snapshot, config, batch, row["question"]):
+                    raise ValueError("Reused item duplicates a different batch's question")
         seen = {normalized(row["question"]) for row in accepted}
         if len(seen) != len(accepted):
             raise ValueError("Accepted batch contains duplicate questions")
@@ -329,6 +393,22 @@ class TrainingHelpers:
             save()
         finally:
             self.on_checked = previous
+        if config.reuse_accepted_items and kind in {"fact", "procedure"}:
+            self.artifacts.put(
+                self.item_cache_key(snapshot, config, batch),
+                encoded(
+                    {
+                        "item_hash": sha256(encoded(context[0])),
+                        "checker_model": "zai.glm-5",
+                        "target_count": count,
+                        "rows": accepted,
+                        "rows_sha256": sha256(encoded(accepted)),
+                    }
+                ),
+                "application/json",
+            )
+            # Reused rows also need a revision-local batch for read-only Prepare.
+            save()
         self.remember(snapshot, accepted)
         yield from accepted
 

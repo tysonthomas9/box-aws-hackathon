@@ -807,10 +807,12 @@ def test_training_runtime_resolves_and_verifies_s3_snapshot_pointer(
         assert worker.builder.build.call_args.args[0] == snapshot
 
 
-def test_medical_audit_runs_before_gpu_request_and_retains_evidence_on_failure(worker):
+@pytest.mark.parametrize("reuse_items", [False, True])
+def test_medical_audit_runs_before_gpu_request_and_retains_evidence_on_failure(worker, reuse_items):
     w, store, _, evaluator = worker
     version = store.get("run")
     version.manifest["config"]["dev_set_hash"] = MEDICAL_DEV_HASH
+    version.manifest["config"]["reuse_accepted_items"] = reuse_items
     version.manifest["config"]["training_snapshot_hash"] = version.manifest["snapshot_hash"]
     version.manifest["dev_set_hash"] = MEDICAL_DEV_HASH
     store.save(version)

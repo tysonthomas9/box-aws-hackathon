@@ -107,6 +107,16 @@ class TrainingWorker:
             snapshot = ApprovedSnapshot.model_validate(
                 self.snapshots.get("approved_snapshots", version.manifest["snapshot_hash"])
             )
+            if config.reuse_accepted_items and action == "generate":
+                self.helpers.reuse_sources = []
+                for raw in version.manifest.get("reuse_sources", []):
+                    recipe = TrainingConfig.model_validate(raw)
+                    source = ApprovedSnapshot.model_validate(
+                        self.snapshots.get("approved_snapshots", recipe.training_snapshot_hash)
+                    )
+                    if source.sha256 != recipe.training_snapshot_hash:
+                        raise ValueError("Reuse source snapshot binding mismatch")
+                    self.helpers.reuse_sources.append((source, recipe))
             if action == "batches":
                 self.slots.reserve(version.id)
                 if self.helpers.budget is not None:
