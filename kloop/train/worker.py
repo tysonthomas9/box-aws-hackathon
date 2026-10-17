@@ -3,7 +3,8 @@
 from pathlib import Path
 
 from kloop.schemas import ApprovedSnapshot
-from kloop.train.config import TrainingConfig
+from kloop.train.config import MEDICAL_DEV_HASH, TrainingConfig
+from kloop.train.data import TrainingRow
 from kloop.train.job_request import training_request
 
 
@@ -24,19 +25,42 @@ class TrainingWorker:
         training_role,
         import_role,
         dev_bytes,
+        helpers=None,
     ):
         self.store, self.snapshots, self.builder = store, snapshots, builder
         self.slots, self.ledger, self.sagemaker = slots, ledger, sagemaker
         self.artifacts, self.serving, self.evaluate = artifacts, serving, evaluate
         self.bucket, self.training_role, self.import_role = bucket, training_role, import_role
         self.dev_bytes = dev_bytes
+        self.helpers = helpers
 
-    def handle(self, action: str, version_id: str) -> dict:
+    def handle(self, action: str, version_id: str, *, batch: int | None = None) -> dict:
         version = self.store.get(version_id)
         if version is None:
             raise KeyError(version_id)
         self.store.assert_owner(version_id)
         config = TrainingConfig.model_validate(version.manifest["config"])
+        if version.manifest["dev_set_hash"] != config.dev_set_hash:
+            raise ValueError("Version and recipe dev bindings differ")
+        if action in {"batches", "generate"}:
+            if self.helpers is None:
+                raise RuntimeError("Training helper generation is not configured")
+            snapshot = ApprovedSnapshot.model_validate(
+                self.snapshots.get("approved_snapshots", version.manifest["snapshot_hash"])
+            )
+            if action == "batches":
+                self.slots.reserve(version.id)
+                return {"batches": list(range(len(self.helpers.batches(snapshot, config))))}
+            if type(batch) is not int or not 0 <= batch < len(
+                self.helpers.batches(snapshot, config)
+            ):
+                raise ValueError("Invalid training batch index")
+            rows = list(self.helpers.generate_batch(snapshot, config, batch))
+            if not all(
+                self.helpers.check(TrainingRow.model_validate(row), snapshot) for row in rows
+            ):
+                raise ValueError("Semantic checker rejected a training batch")
+            return {"batch": batch, "rows": len(rows)}
         if action == "prepare":
             # Census and reservation happen before data generation or GPU spend.
             if any(
@@ -52,6 +76,16 @@ class TrainingWorker:
             version.manifest.update(
                 {"manifest_hash": data["manifest_hash"], "data_prefix": data["data_prefix"]}
             )
+            self.store.save(version)
+            if config.dev_set_hash == MEDICAL_DEV_HASH:
+                audit = self.evaluate(
+                    action="audit",
+                    manifest_hash=data["manifest_hash"],
+                    snapshot_hash=version.manifest["snapshot_hash"],
+                )
+                if not audit["passed"]:
+                    raise ValueError("Medical rows failed the pre-training overlap audit")
+                version.manifest["pretraining_audit"] = audit
             self.artifacts.put(
                 f"training/{version.id}/code/job.py",
                 Path(__file__).with_name("job.py").read_bytes(),

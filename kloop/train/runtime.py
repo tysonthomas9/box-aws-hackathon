@@ -18,7 +18,7 @@ from kloop.cleanup import CleanupLedger
 from kloop.config import Settings
 from kloop.extract.runtime import factory as extraction_factory
 from kloop.extract.runtime import snapshot_storage
-from kloop.train.config import DEV_PATH, TrainingConfig
+from kloop.train.config import TrainingConfig
 from kloop.train.data import DataBuilder
 from kloop.train.helpers import TrainingHelpers
 from kloop.train.resources import ImportSlots, protected_ask_models
@@ -72,6 +72,7 @@ def service(session):
         extraction_factory(session),
         Dispatch(session.client("stepfunctions"), os.environ["KLOOP_TRAINING_ARN"]),
         TrainingConfig(),
+        snapshots=snapshot_storage(session),
     )
 
 
@@ -147,6 +148,8 @@ def factory(session):
             payload = json.loads(body.read())
         if response.get("FunctionError"):
             raise RuntimeError("Evaluation Lambda failed; candidate cannot be promoted")
+        if request.get("action") == "audit":
+            return payload
         return GateDecision.model_validate(payload)
 
     serving = ServingBackends({"bedrock": warmup_answerer(session)})
@@ -164,7 +167,8 @@ def factory(session):
         bucket=settings.artifact_bucket,
         training_role=os.environ["KLOOP_SAGEMAKER_ROLE"],
         import_role=os.environ["KLOOP_IMPORT_ROLE"],
-        dev_bytes=Path(DEV_PATH).read_bytes(),
+        dev_bytes=Path(config.dev_path).read_bytes(),
+        helpers=helpers,
     )
 
 
@@ -208,4 +212,4 @@ def handler(event, context):
         if not worker.recover(version_id, execution["status"], int(time.time())):
             raise RuntimeError("Training cleanup still pending; retry recovery")
         return {"recovered": True}
-    return worker.handle(event["action"], event["version_id"])
+    return worker.handle(event["action"], event["version_id"], batch=event.get("batch"))

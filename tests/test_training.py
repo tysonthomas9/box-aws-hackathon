@@ -13,7 +13,7 @@ from kloop.cleanup import CleanupLedger
 from kloop.eval import GateDecision
 from kloop.extract.service import digest
 from kloop.schemas import ApprovedSnapshot, Item, ModelVersion
-from kloop.train.config import DEV_HASH, DEV_PATH, TrainingConfig
+from kloop.train.config import DEV_HASH, DEV_PATH, MEDICAL_DEV_HASH, TrainingConfig
 from kloop.train.data import DataBuilder, sha256
 from kloop.train.job_request import training_request
 from kloop.train.resources import ImportSlots
@@ -91,6 +91,38 @@ def test_builder_freezes_hashes_lineage_and_prompt(snapshot):
     training = written[f"{result['data_prefix']}/train.jsonl"]
     assert sha256(training) == manifest["train_sha256"]
     assert all(list(json.loads(line)) == ["messages"] for line in training.splitlines())
+
+
+def test_medical_recipe_binds_public_dev_and_selected_snapshot(table, snapshot):
+    config = TrainingConfig(dev_set_hash=MEDICAL_DEV_HASH, training_snapshot_hash=snapshot.sha256)
+    written = {}
+    generated = Mock(return_value=rows())
+    builder = DataBuilder(generated, lambda *_: True, lambda k, b, *_: written.update({k: b}))
+    built = builder.build(snapshot, config, Path(config.dev_path).read_bytes())
+    assert built["manifest"]["dev_set_hash"] == MEDICAL_DEV_HASH
+    assert built["manifest"]["config"]["training_snapshot_hash"] == snapshot.sha256
+    assert generated.call_args.args == (snapshot, config)
+    with pytest.raises(ValueError, match="Dev set"):
+        builder.build(snapshot, config, Path(DEV_PATH).read_bytes())
+    storage = DynamoStorage(table)
+    storage.put("approved_snapshots", snapshot.sha256, snapshot.model_dump(mode="json"))
+    extraction = Mock()
+    service = TrainingService(
+        DynamoTrainingStore(table), extraction, Mock(), config, snapshots=storage
+    )
+    version = service.start("medical-selected-only", 10)
+    extraction.snapshot.assert_not_called()
+    assert version.manifest["snapshot_hash"] == snapshot.sha256
+    assert version.manifest["dev_set_hash"] == MEDICAL_DEV_HASH
+
+
+def test_medical_recipe_refuses_unpinned_search_snapshot(table):
+    service = TrainingService(
+        DynamoTrainingStore(table), Mock(), Mock(), TrainingConfig(dev_set_hash=MEDICAL_DEV_HASH)
+    )
+    with pytest.raises(ValueError, match="selected training snapshot"):
+        service.start("medical-unpinned", 10)
+    assert service.store.lock() is None
 
 
 @pytest.mark.parametrize(
@@ -753,3 +785,41 @@ def test_training_runtime_resolves_and_verifies_s3_snapshot_pointer(
         result = worker.handle("prepare", "run")
         assert result["request"]["TrainingJobName"] == "run"
         assert worker.builder.build.call_args.args[0] == snapshot
+
+
+def test_medical_audit_runs_before_gpu_request_and_retains_evidence_on_failure(worker):
+    w, store, _, evaluator = worker
+    version = store.get("run")
+    version.manifest["config"]["dev_set_hash"] = MEDICAL_DEV_HASH
+    version.manifest["config"]["training_snapshot_hash"] = version.manifest["snapshot_hash"]
+    version.manifest["dev_set_hash"] = MEDICAL_DEV_HASH
+    store.save(version)
+    w.dev_bytes = Path("poc/medical-evaluation/dev.jsonl").read_bytes()
+    evaluator.return_value = {"passed": False, "sha256": "a" * 64}
+    with pytest.raises(ValueError, match="pre-training overlap audit"):
+        w.handle("prepare", "run")
+    assert store.get("run").manifest["manifest_hash"]
+    assert not any(r["kind"] == "sagemaker_training" for r in w.ledger.entries())
+    evaluator.assert_called_once_with(
+        action="audit",
+        manifest_hash=store.get("run").manifest["manifest_hash"],
+        snapshot_hash=version.manifest["snapshot_hash"],
+    )
+    evaluator.return_value = {"passed": True, "sha256": "a" * 64}
+    assert w.handle("prepare", "run")["request"]["TrainingJobName"] == "run"
+    assert store.get("run").manifest["pretraining_audit"]["passed"]
+
+
+def test_generation_map_is_inside_training_transaction_before_prepare():
+    transaction = definition("worker")["States"]["Transaction"]
+    assert transaction["Branches"][0]["StartAt"] == "Batches"
+    work = transaction["Branches"][0]["States"]
+    generate = work["Generate"]
+    assert generate["MaxConcurrency"] == 4
+    assert generate["Next"] == "Prepare"
+    invocation = generate["Iterator"]["States"]["GenerateBatch"]
+    assert invocation["Parameters"]["Payload"] == {
+        "action": "generate",
+        "version_id.$": "$.version_id",
+        "batch.$": "$.batch",
+    }

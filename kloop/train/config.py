@@ -7,6 +7,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 DEV_PATH = "poc/model-experiment/data/dev.jsonl"
 DEV_HASH = "5773050a12cdb93f03ca9c3dcae628c4bd00612e26649778ce1f996ef47f77cf"
+MEDICAL_DEV_HASH = "e6de4efb1d9dacc6e5532d6ce8f6db9a35b83b681bc8a5fc8acc10e5983c978a"
 IMAGE = (
     "763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@"
     "sha256:ec77d5e5d0e9871c8bb20331a74d1e8c308cdda9143b909b4b5eb99bba795d4d"
@@ -32,8 +33,18 @@ class TrainingConfig(BaseSettings):
     # Per-action estimates must be supplied by deployment; no unbounded GPU run.
     estimated_training_usd: float = Field(default=2, gt=0, le=10)
     serving_backend: str = "bedrock"
+    dev_set_hash: Literal[DEV_HASH, MEDICAL_DEV_HASH] = DEV_HASH
+    training_snapshot_hash: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
     fact_wordings: int = Field(default=10, ge=1, le=20)
     procedure_cases: int = Field(default=8, ge=1, le=16)
     unknown_rows: int = Field(default=60, ge=1, le=200)
     near_miss_rows: int = Field(default=60, ge=1, le=200)
     replay_rows: int = Field(default=100, ge=1, le=300)
+
+    @property
+    def dev_path(self) -> str:
+        return (
+            "poc/medical-evaluation/dev.jsonl"
+            if self.dev_set_hash == MEDICAL_DEV_HASH
+            else DEV_PATH
+        )

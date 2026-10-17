@@ -2,8 +2,8 @@
 
 import hashlib
 
-from kloop.schemas import ModelVersion
-from kloop.train.config import DEV_HASH, TrainingConfig
+from kloop.schemas import ApprovedSnapshot, ModelVersion
+from kloop.train.config import MEDICAL_DEV_HASH, TrainingConfig
 
 
 class DispatchRejected(RuntimeError):
@@ -11,13 +11,14 @@ class DispatchRejected(RuntimeError):
 
 
 class TrainingService:
-    def __init__(self, store, extraction, dispatch, config: TrainingConfig):
+    def __init__(self, store, extraction, dispatch, config: TrainingConfig, *, snapshots=None):
         self.store, self.extraction, self.dispatch, self.config = (
             store,
             extraction,
             dispatch,
             config,
         )
+        self.snapshots = snapshots
 
     def start(self, request_id: str, now: int) -> ModelVersion:
         if not request_id.strip() or len(request_id) > 200:
@@ -33,7 +34,18 @@ class TrainingService:
             return existing
         self.store.acquire(version_id, now)
         try:
-            snapshot = self.extraction.snapshot()
+            if self.config.training_snapshot_hash:
+                if self.snapshots is None:
+                    raise ValueError("Pinned training requires immutable snapshot storage")
+                snapshot = ApprovedSnapshot.model_validate(
+                    self.snapshots.get("approved_snapshots", self.config.training_snapshot_hash)
+                )
+                if snapshot.sha256 != self.config.training_snapshot_hash:
+                    raise ValueError("Training snapshot binding mismatch")
+            elif self.config.dev_set_hash == MEDICAL_DEV_HASH:
+                raise ValueError("Medical training requires the selected training snapshot")
+            else:
+                snapshot = self.extraction.snapshot()
             if not snapshot.items:
                 raise ValueError("No approved knowledge to train")
             version = ModelVersion(
@@ -41,7 +53,7 @@ class TrainingService:
                 manifest={
                     "snapshot_hash": snapshot.sha256,
                     "expected_current_version": self.store.current(),
-                    "dev_set_hash": DEV_HASH,
+                    "dev_set_hash": self.config.dev_set_hash,
                     "config": self.config.model_dump(mode="json"),
                     "serving_backend": self.config.serving_backend,
                     "created_at": now,

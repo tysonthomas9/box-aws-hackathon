@@ -15,8 +15,59 @@
       "Type": "Parallel",
       "Branches": [
         {
-          "StartAt": "Prepare",
+          "StartAt": "Batches",
           "States": {
+            "Batches": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "${worker_arn}",
+                "Payload": {
+                  "action": "batches",
+                  "version_id.$": "$.version_id"
+                }
+              },
+              "ResultSelector": {
+                "value.$": "$.Payload"
+              },
+              "ResultPath": "$.batches",
+              "TimeoutSeconds": 900,
+              "Next": "Generate"
+            },
+            "Generate": {
+              "Type": "Map",
+              "ItemsPath": "$.batches.value.batches",
+              "MaxConcurrency": 4,
+              "Parameters": {
+                "version_id.$": "$.version_id",
+                "batch.$": "$$.Map.Item.Value"
+              },
+              "Iterator": {
+                "StartAt": "GenerateBatch",
+                "States": {
+                  "GenerateBatch": {
+                    "Type": "Task",
+                    "Resource": "arn:aws:states:::lambda:invoke",
+                    "Parameters": {
+                      "FunctionName": "${worker_arn}",
+                      "Payload": {
+                        "action": "generate",
+                        "version_id.$": "$.version_id",
+                        "batch.$": "$.batch"
+                      }
+                    },
+                    "ResultSelector": {
+                      "value.$": "$.Payload"
+                    },
+                    "ResultPath": "$.generate",
+                    "TimeoutSeconds": 840,
+                    "End": true
+                  }
+                }
+              },
+              "ResultPath": null,
+              "Next": "Prepare"
+            },
             "Prepare": {
               "Type": "Task",
               "Resource": "arn:aws:states:::lambda:invoke",

@@ -12,7 +12,7 @@ from pydantic import Field
 from kloop.answer import SYSTEM_PROMPT
 from kloop.extract.service import digest
 from kloop.schemas import ApprovedSnapshot, Schema
-from kloop.train.config import DEV_HASH, TrainingConfig
+from kloop.train.config import MEDICAL_DEV_HASH, TrainingConfig
 
 
 def sha256(data: bytes) -> str:
@@ -46,16 +46,21 @@ class DataBuilder:
         self.generate, self.check, self.write = generate, check, write
 
     def build(self, snapshot: ApprovedSnapshot, config: TrainingConfig, dev_bytes: bytes) -> dict:
-        if sha256(dev_bytes) != DEV_HASH:
+        if sha256(dev_bytes) != config.dev_set_hash:
             raise ValueError("Dev set differs from the frozen contract")
         items = [item.model_dump(mode="json") for item in snapshot.items]
         if digest(items) != snapshot.sha256 or not items:
             raise ValueError("Approved snapshot is empty or its hash is invalid")
         if any(i["status"] != "approved" for i in items):
             raise ValueError("Only effective approved items may enter training")
+        if config.training_snapshot_hash and snapshot.sha256 != config.training_snapshot_hash:
+            raise ValueError("Training rows require the configured immutable snapshot")
+        dev_rows = [json.loads(line) for line in dev_bytes.splitlines()]
         dev = [
-            normalized(json.loads(line)["messages"][1]["content"])
-            for line in dev_bytes.splitlines()
+            normalized(row["question"]["question"])
+            if config.dev_set_hash == MEDICAL_DEV_HASH
+            else normalized(row["messages"][1]["content"])
+            for row in dev_rows
         ]
         ids = {i["id"] for i in items}
         config_value = config.model_dump(mode="json")
@@ -107,7 +112,7 @@ class DataBuilder:
         )
         manifest = {
             "snapshot_hash": snapshot.sha256,
-            "dev_set_hash": DEV_HASH,
+            "dev_set_hash": config.dev_set_hash,
             "train_sha256": sha256(data),
             "rows": len(accepted),
             "counts": counts,

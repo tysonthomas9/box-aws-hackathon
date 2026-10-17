@@ -64,19 +64,23 @@ class AuditVerifier:
         return audit["sha256"]
 
 
-def factory(session):
-    """Called inside the dedicated evaluation function, never inside the data builder."""
-    settings = Settings()
+def evaluator_session(session):
     role = os.environ["KLOOP_EVALUATOR_ROLE_ARN"]
     credentials = session.client("sts", region_name="us-east-2").assume_role(
         RoleArn=role, RoleSessionName="kloop-evaluator"
     )["Credentials"]
-    scoped = boto3.Session(
+    return boto3.Session(
         aws_access_key_id=credentials["AccessKeyId"],
         aws_secret_access_key=credentials["SecretAccessKey"],
         aws_session_token=credentials["SessionToken"],
         region_name="us-east-2",
     )
+
+
+def factory(session):
+    """Called inside the dedicated evaluation function, never inside the data builder."""
+    settings = Settings()
+    scoped = evaluator_session(session)
     artifacts = S3Artifacts(scoped.client("s3"), settings.artifact_bucket)
     dynamo = scoped.resource("dynamodb")
     versions = DynamoStorage(dynamo.Table(os.environ["KLOOP_VERSIONS_TABLE"]))
@@ -132,5 +136,11 @@ def factory(session):
 
 
 def handler(event, context):
-    evaluator = factory(boto3.Session(region_name="us-east-2"))
+    session = boto3.Session(region_name="us-east-2")
+    if event.get("action") == "audit":
+        settings = Settings()
+        artifacts = S3Artifacts(evaluator_session(session).client("s3"), settings.artifact_bucket)
+        sha = AuditVerifier(artifacts).verify(event["manifest_hash"], event["snapshot_hash"])
+        return {"passed": True, "sha256": sha}
+    evaluator = factory(session)
     return evaluator.evaluate(**event).model_dump(mode="json")

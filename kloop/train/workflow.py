@@ -20,6 +20,21 @@ def definition(worker_arn: str) -> dict:
         return value
 
     work = {
+        "Batches": task("batches", "Generate"),
+        "Generate": {
+            "Type": "Map",
+            "ItemsPath": "$.batches.value.batches",
+            "MaxConcurrency": 4,
+            "Parameters": {"version_id.$": "$.version_id", "batch.$": "$$.Map.Item.Value"},
+            "Iterator": {
+                "StartAt": "GenerateBatch",
+                "States": {
+                    "GenerateBatch": task("generate", seconds=840),
+                },
+            },
+            "ResultPath": None,
+            "Next": "Prepare",
+        },
         "Prepare": task("prepare", "Train"),
         "Train": {
             "Type": "Task",
@@ -75,6 +90,9 @@ def definition(worker_arn: str) -> dict:
         "Promote": task("promote"),
         "Rejected": {"Type": "Pass", "End": True},
     }
+    work["Generate"]["Iterator"]["States"]["GenerateBatch"]["Parameters"]["Payload"]["batch.$"] = (
+        "$.batch"
+    )
     # Use static known request fields, passing only values from prepare. Entire
     # request includes explicit region-bound image, input channels and job name.
     for name in (
@@ -110,7 +128,7 @@ def definition(worker_arn: str) -> dict:
             },
             "Transaction": {
                 "Type": "Parallel",
-                "Branches": [{"StartAt": "Prepare", "States": work}],
+                "Branches": [{"StartAt": "Batches", "States": work}],
                 "ResultPath": None,
                 "Next": "Cleanup",
                 "Catch": [
