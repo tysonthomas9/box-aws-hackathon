@@ -153,5 +153,152 @@
         "Value": "model-experiment"
       }
     ]
+  },
+  "job_arn": "arn:aws:sagemaker:us-east-2:549803795565:training-job/box-hackathon-experiment-eval8-20261017",
+  "submitted_at": "2026-10-17T07:44:29.555923+00:00",
+  "status": {
+    "TrainingJobName": "box-hackathon-experiment-eval8-20261017",
+    "TrainingJobArn": "arn:aws:sagemaker:us-east-2:549803795565:training-job/box-hackathon-experiment-eval8-20261017",
+    "ModelArtifacts": {
+      "S3ModelArtifacts": "s3://box-hackathon-experiment-20261017-549803795565/artifacts/eval8/box-hackathon-experiment-eval8-20261017/output/model.tar.gz"
+    },
+    "TrainingJobStatus": "Completed",
+    "SecondaryStatus": "Completed",
+    "AlgorithmSpecification": {
+      "TrainingImage": "763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@sha256:ec77d5e5d0e9871c8bb20331a74d1e8c308cdda9143b909b4b5eb99bba795d4d",
+      "TrainingInputMode": "File",
+      "EnableSageMakerMetricsTimeSeries": false,
+      "ContainerEntrypoint": [
+        "bash",
+        "-lc",
+        "python -m pip install --no-cache-dir transformers==4.51.3 peft==0.15.2 accelerate==1.6.0 safetensors==0.5.3 && python /opt/ml/input/data/code/eval_runtime.py"
+      ]
+    },
+    "RoleArn": "arn:aws:iam::549803795565:role/box-hackathon-experiment-eval8-20261017",
+    "InputDataConfig": [
+      {
+        "ChannelName": "base",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-experiment-20261017-549803795565/base8/",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        },
+        "CompressionType": "None",
+        "RecordWrapperType": "None"
+      },
+      {
+        "ChannelName": "code",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-experiment-20261017-549803795565/control/eval8/eval_runtime.py",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        },
+        "CompressionType": "None",
+        "RecordWrapperType": "None"
+      },
+      {
+        "ChannelName": "data",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-experiment-20261017-549803795565/control/eval8/evaluation.json",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        },
+        "CompressionType": "None",
+        "RecordWrapperType": "None"
+      },
+      {
+        "ChannelName": "candidate",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-experiment-20261017-549803795565/training/train8/merged/",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        },
+        "CompressionType": "None",
+        "RecordWrapperType": "None"
+      }
+    ],
+    "OutputDataConfig": {
+      "KmsKeyId": "",
+      "S3OutputPath": "s3://box-hackathon-experiment-20261017-549803795565/artifacts/eval8/",
+      "CompressionType": "GZIP"
+    },
+    "ResourceConfig": {
+      "InstanceType": "ml.g6.2xlarge",
+      "InstanceCount": 1,
+      "VolumeSizeInGB": 120
+    },
+    "StoppingCondition": {
+      "MaxRuntimeInSeconds": 1800,
+      "MaxPendingTimeInSeconds": 1800
+    },
+    "CreationTime": "2026-10-17T00:44:29.318000-07:00",
+    "TrainingStartTime": "2026-10-17T00:47:42.945000-07:00",
+    "TrainingEndTime": "2026-10-17T00:56:52.996000-07:00",
+    "LastModifiedTime": "2026-10-17T00:56:53.406000-07:00",
+    "SecondaryStatusTransitions": [
+      {
+        "Status": "Starting",
+        "StartTime": "2026-10-17T00:44:29.318000-07:00",
+        "EndTime": "2026-10-17T00:44:29.679000-07:00",
+        "StatusMessage": "Starting the training job"
+      },
+      {
+        "Status": "Pending",
+        "StartTime": "2026-10-17T00:44:29.679000-07:00",
+        "EndTime": "2026-10-17T00:47:42.945000-07:00",
+        "StatusMessage": "Preparing the instances for training"
+      },
+      {
+        "Status": "Downloading",
+        "StartTime": "2026-10-17T00:47:42.945000-07:00",
+        "EndTime": "2026-10-17T00:50:39.199000-07:00",
+        "StatusMessage": "Downloading the training image"
+      },
+      {
+        "Status": "Training",
+        "StartTime": "2026-10-17T00:50:39.199000-07:00",
+        "EndTime": "2026-10-17T00:56:45.625000-07:00",
+        "StatusMessage": "Training image download completed. Training in progress."
+      },
+      {
+        "Status": "Uploading",
+        "StartTime": "2026-10-17T00:56:45.625000-07:00",
+        "EndTime": "2026-10-17T00:56:52.996000-07:00",
+        "StatusMessage": "Uploading generated training model"
+      },
+      {
+        "Status": "Completed",
+        "StartTime": "2026-10-17T00:56:52.996000-07:00",
+        "EndTime": "2026-10-17T00:56:52.996000-07:00",
+        "StatusMessage": "Training job completed"
+      }
+    ],
+    "EnableNetworkIsolation": false,
+    "EnableInterContainerTrafficEncryption": false,
+    "EnableManagedSpotTraining": false,
+    "TrainingTimeInSeconds": 550,
+    "BillableTimeInSeconds": 550,
+    "ProfilingStatus": "Disabled",
+    "Environment": {
+      "AWS_REGION": "us-east-2",
+      "AWS_SDK_UA_APP_ID": "AWSSkill-SageMaker",
+      "POC_BUCKET": "box-hackathon-experiment-20261017-549803795565",
+      "POC_EPOCHS": "3",
+      "POC_GRAD_ACCUMULATION": "4",
+      "POC_LEARNING_RATE": "0.0002",
+      "POC_MAX_LENGTH": "512",
+      "POC_NAME": "model-experiment",
+      "POC_OUTPUT_PREFIX": "evaluation/eval8",
+      "POC_SEED": "17",
+      "TOKENIZERS_PARALLELISM": "false"
+    }
   }
 }
