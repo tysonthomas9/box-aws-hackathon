@@ -1,0 +1,255 @@
+{
+  "project_id": "549803795565",
+  "bucket": "box-hackathon-poc2-s17-20261017-549803795565",
+  "bucket_created": true,
+  "copied_keys": [
+    "base/.gitattributes",
+    "base/LICENSE",
+    "base/NOTICE",
+    "base/README.md",
+    "base/config.json",
+    "base/generation_config.json",
+    "base/merges.txt",
+    "base/model-00001-of-00003.safetensors",
+    "base/model-00002-of-00003.safetensors",
+    "base/model-00003-of-00003.safetensors",
+    "base/model.safetensors.index.json",
+    "base/tokenizer.json",
+    "base/tokenizer_config.json",
+    "base/version",
+    "base/vocab.json"
+  ],
+  "copy_results": {
+    "base/.gitattributes": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"8d7980b323a68da5c6043ee051d5ba8e\"",
+        "LastModified": "2026-10-17T05:59:59+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "NESLgsF9YP7JtlsfCTwRXduq3AS+sbAUC2v+0uASqTA="
+      }
+    },
+    "base/LICENSE": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"0b19e609b901d29b7a3b908e80e81314\"",
+        "LastModified": "2026-10-17T06:00:00+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "gy3Z4Apo3YOzw/ufVYja19zzN6DbUPfZSD8xDNKS6S4="
+      }
+    },
+    "base/NOTICE": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"6abeccee60020431e3cb8a435626ca9b\"",
+        "LastModified": "2026-10-17T06:00:00+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "0GuiUVQDZP3tFL5Rx84gCjLlE2YQPjNy5a9ua5MgfWk="
+      }
+    },
+    "base/README.md": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"ecf97d92ce7d1f91dd7990fa6ed343df\"",
+        "LastModified": "2026-10-17T06:00:01+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "jj3Qw7WxGJfMcQksz+UXu3qXg0ebqjZlqtc8jRogQc0="
+      }
+    },
+    "base/config.json": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"b982bc0c45eb1553e088b401a529e7e5\"",
+        "LastModified": "2026-10-17T06:00:01+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "a5E+hUmc/5Q66BC3YZR2RCTRhpomoeMtux3aI5X3/6M="
+      }
+    },
+    "base/generation_config.json": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"7f4bb06eca7cf3e7fe8a2fc0ce0a4961\"",
+        "LastModified": "2026-10-17T06:00:02+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "g1//41XJQ456Jb4Jmz/Mqpg1C4NFH5/S2ZUS508a3kg="
+      }
+    },
+    "base/merges.txt": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"e78882c2e224a75fa8180ec610bae243\"",
+        "LastModified": "2026-10-17T06:00:02+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "WZurVAdQiHdLFzP96GXVvXR8vMelR8W8EmEOh04m9eM="
+      }
+    },
+    "base/model-00001-of-00003.safetensors": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"ae5e586a11effab113c4a45d3d03aa1f\"",
+        "LastModified": "2026-10-17T06:00:03+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "dTEdkbsIzwuIKRPaRkoeciox+0TbNSCGY0h++3o9jtY="
+      }
+    },
+    "base/model-00002-of-00003.safetensors": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"ddb1931d81f4723cff7fdfae9d77dc74\"",
+        "LastModified": "2026-10-17T06:00:51+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "C0itux9g6QEVPZGQe6Ec5jvUuLWESC5zD0iAjQVd+6E="
+      }
+    },
+    "base/model-00003-of-00003.safetensors": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"506408617a8c1c2e8d3826ade27e4845\"",
+        "LastModified": "2026-10-17T06:01:37+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "fdOczKXk3hI8dMFK9Eyb8ut13zO0YUOCrwE0Uo4GDV0="
+      }
+    },
+    "base/model.safetensors.index.json": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"75db826f36fc9f6f8908210d89e87d85\"",
+        "LastModified": "2026-10-17T06:01:39+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "1sQog6iV3+9bAIDtIRahvNdk9VhAa5iSPWdZeKGr8pw="
+      }
+    },
+    "base/tokenizer.json": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"6423133b9cc1a2077b57822c30c211aa\"",
+        "LastModified": "2026-10-17T06:01:40+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "rrEzB6cazY/oGGHZStVKtonfdzMYgJ7tPL55S0SS2uQ="
+      }
+    },
+    "base/tokenizer_config.json": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"ffefa8fefe5b9bd98ab0d7e8b34e0e30\"",
+        "LastModified": "2026-10-17T06:01:40+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "pi/wokcqD6G46qvLV8WbWK+kKiKDHcFBQAtuDPK2XOM="
+      }
+    },
+    "base/version": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"3accddf64b1dd03abeb9b0b3e5a7ba44\"",
+        "LastModified": "2026-10-17T06:01:41+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "1R5uyUBYVUqEVYpbQC7m71/fVFXjXJAv7aYc2odSlDo="
+      }
+    },
+    "base/vocab.json": {
+      "ServerSideEncryption": "AES256",
+      "CopyObjectResult": {
+        "ETag": "\"613b8e4a622c4a2c90e9e1245fc540d6\"",
+        "LastModified": "2026-10-17T06:01:41+00:00",
+        "ChecksumType": "FULL_OBJECT",
+        "ChecksumSHA256": "yhDX6fs+0YV13R4neiV5wW0QjjLydDloSvoOELFECRA="
+      }
+    }
+  },
+  "name": "box-hackathon-poc2-s17-20261017",
+  "image": "763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@sha256:ec77d5e5d0e9871c8bb20331a74d1e8c308cdda9143b909b4b5eb99bba795d4d",
+  "output_prefix": "training/seed17",
+  "training_sha256": "92edb882d2233b7604b2072abe98c46d81dced97b0a54356788f160dddac1a72",
+  "trainer_sha256": "705b6be2df2750c85e1bc3aa4c4f3dea133327b3632d2dbfad0d608d8d04295a",
+  "control_objects": [
+    "control/train.py",
+    "control/train.jsonl"
+  ],
+  "role_created": true,
+  "role_arn": "arn:aws:iam::549803795565:role/box-hackathon-poc2-s17-20261017",
+  "log_group_created": "/aws/sagemaker/TrainingJobs",
+  "request": {
+    "TrainingJobName": "box-hackathon-poc2-s17-20261017",
+    "RoleArn": "arn:aws:iam::549803795565:role/box-hackathon-poc2-s17-20261017",
+    "AlgorithmSpecification": {
+      "TrainingImage": "763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@sha256:ec77d5e5d0e9871c8bb20331a74d1e8c308cdda9143b909b4b5eb99bba795d4d",
+      "TrainingInputMode": "File",
+      "ContainerEntrypoint": [
+        "bash",
+        "-lc",
+        "python -m pip install --no-cache-dir transformers==4.51.3 peft==0.15.2 accelerate==1.6.0 safetensors==0.5.3 && python /opt/ml/input/data/code/train.py"
+      ]
+    },
+    "InputDataConfig": [
+      {
+        "ChannelName": "base",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-poc2-s17-20261017-549803795565/base/",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      },
+      {
+        "ChannelName": "code",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-poc2-s17-20261017-549803795565/control/train.py",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      },
+      {
+        "ChannelName": "data",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-poc2-s17-20261017-549803795565/control/train.jsonl",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      }
+    ],
+    "OutputDataConfig": {
+      "S3OutputPath": "s3://box-hackathon-poc2-s17-20261017-549803795565/training/artifacts/"
+    },
+    "ResourceConfig": {
+      "InstanceType": "ml.g6.2xlarge",
+      "InstanceCount": 1,
+      "VolumeSizeInGB": 80
+    },
+    "StoppingCondition": {
+      "MaxRuntimeInSeconds": 3600,
+      "MaxPendingTimeInSeconds": 1800
+    },
+    "EnableManagedSpotTraining": false,
+    "EnableNetworkIsolation": false,
+    "Environment": {
+      "AWS_REGION": "us-east-2",
+      "POC_BUCKET": "box-hackathon-poc2-s17-20261017-549803795565",
+      "POC_OUTPUT_PREFIX": "training/seed17",
+      "TOKENIZERS_PARALLELISM": "false",
+      "POC_NAME": "company-knowledge",
+      "POC_SEED": "17",
+      "POC_EPOCHS": "3",
+      "POC_LEARNING_RATE": "0.0002",
+      "POC_MAX_LENGTH": "512",
+      "POC_GRAD_ACCUMULATION": "4",
+      "AWS_SDK_UA_APP_ID": "AWSSkill-SageMaker"
+    },
+    "Tags": [
+      {
+        "Key": "project",
+        "Value": "box-hackathon"
+      },
+      {
+        "Key": "poc",
+        "Value": "company-knowledge"
+      }
+    ]
+  },
+  "job_arn": "arn:aws:sagemaker:us-east-2:549803795565:training-job/box-hackathon-poc2-s17-20261017",
+  "submitted_at": "2026-10-17T06:02:31.618157+00:00"
+}
