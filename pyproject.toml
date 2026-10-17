@@ -1,0 +1,24 @@
+[project]
+name = "kloop"
+version = "0.1.0"
+description = "Company knowledge learning demo on Box and AWS"
+requires-python = ">=3.12,<3.13"
+dependencies = ["pydantic>=2.12,<3", "pydantic-settings>=2.11,<3", "boto3>=1.40,<2"]
+
+[dependency-groups]
+dev = ["pytest>=8,<9", "moto[dynamodb,s3]>=5,<6", "ruff>=0.14,<1"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+include = ["kloop/**/*.py", "lambdas/**/*.py", "training/**/*.py", "tests/**/*.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
