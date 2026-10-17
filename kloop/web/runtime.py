@@ -141,6 +141,9 @@ def api_runtime():
             extraction.reviews(),
         )
 
+    from kloop.train.loading_runtime import service as loading_service
+
+    loading = LazyService(lambda: loading_service(aws))
     services = Services(
         extraction,
         jobs(aws),
@@ -150,6 +153,8 @@ def api_runtime():
         training,
         lambda: results.list("eval_reports"),
         training_busy=TrainingBusy,
+        version_loading=loading,
+        model_guard=lambda: loading.guard(),
         training_control=lambda versions, now: training_control(version_store, versions, now),
     )
     return create_app(
