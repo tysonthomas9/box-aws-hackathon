@@ -20,6 +20,7 @@ import "@openuidev/react-ui/styles/button.css";
 import "@openuidev/react-ui/styles/card.css";
 import "./ask.css";
 import prompts from "virtual:demo-prompts";
+import { useVersionPicker, VersionPicker } from "./version-picker.jsx";
 import {
   MODES,
   READINESS_MS,
@@ -144,6 +145,7 @@ export function ParallelThreads({
   serving,
   showSearch,
   wideSearch = true,
+  versionPicker,
 }) {
   const replies = messages.filter((m) => m.role === "assistant");
   const turns = messages
@@ -158,7 +160,7 @@ export function ParallelThreads({
   );
   function heading([mode, title]) {
     const pin = turns.at(-1)?.jobs.find((job) => job.mode === mode);
-    const version = pin?.model_version_id ?? serving?.models[mode]?.version_id;
+    const version = serving?.models[mode]?.version_id ?? pin?.model_version_id;
     return (
       <div className={`thread-heading mode-${mode}`} key={mode}>
         <div className="lane-title">
@@ -195,14 +197,15 @@ export function ParallelThreads({
         <details className="lane-details">
           <summary>Model and snapshot</summary>
           <ModelBinding
-            version={pin?.model_version_id ?? serving?.models[mode]?.version_id}
+            version={version}
             snapshot={
-              pin?.snapshot_sha256 ??
               serving?.models[mode]?.snapshot_sha256 ??
+              pin?.snapshot_sha256 ??
               serving?.approved_snapshot_sha256
             }
           />
         </details>
+        {mode === "with" && versionPicker}
       </div>
     );
   }
@@ -274,6 +277,7 @@ export function ParallelThreads({
   );
 }
 function AskChat({ api }) {
+  const picker = useVersionPicker(api);
   const { messages, appendMessages, updateMessage, setMessages } = useThread();
   const [question, setQuestion] = useState("");
   const [showSearch, setShowSearch] = useState(false);
@@ -288,6 +292,32 @@ function AskChat({ api }) {
   const controllers = useRef(new Set());
   const compareController = useRef(null);
   const mounted = useRef(true);
+  const warmController = useRef(null);
+  useEffect(() => {
+    warmController.current?.abort();
+    setWarm(null);
+  }, [picker.selected?.id]);
+  const effectiveServing =
+    picker.selected && serving
+      ? {
+          ...serving,
+          models: {
+            ...serving.models,
+            with: {
+              arn: picker.selected.import_arn,
+              version_id: picker.selected.id,
+              snapshot_sha256: picker.selected.snapshot_sha256,
+            },
+          },
+          stale:
+            picker.selected.snapshot_sha256 !==
+            serving.approved_snapshot_sha256,
+        }
+      : serving;
+  const versionBody =
+    picker.selected?.state === "loaded"
+      ? { version_id: picker.selected.id }
+      : {};
   useEffect(() => {
     mounted.current = true;
     const layout = window.matchMedia("(min-width: 1100px)");
@@ -324,7 +354,7 @@ function AskChat({ api }) {
   async function compare(event) {
     event.preventDefault();
     const text = question.trim();
-    if (!text || submitting) return;
+    if (!text || submitting || picker.unavailable) return;
     compareController.current?.abort();
     // Previous questions remain readable; unfinished comparisons stop polling.
     setMessages(
@@ -363,13 +393,17 @@ function AskChat({ api }) {
     try {
       let response;
       try {
-        response = await api("ask", { question: text }, { signal: c.signal });
+        response = await api(
+          "ask",
+          { question: text, ...versionBody },
+          { signal: c.signal },
+        );
       } catch (error) {
         if (error.data?.jobs) response = error.data;
         else throw error;
       }
       if (c.signal.aborted) return;
-      cards = comparisonCards(response, serving);
+      cards = comparisonCards(response, effectiveServing);
       render();
       setSubmitting(false);
       await Promise.all(
@@ -400,12 +434,13 @@ function AskChat({ api }) {
     }
   }
   async function warmUp() {
-    if (warm && !isTerminal(warm)) return;
+    if ((warm && !isTerminal(warm)) || picker.unavailable) return;
     const c = controller();
+    warmController.current = c;
     setWarm({ status: "queued", started: Date.now() });
     setNotice("");
     try {
-      const response = await api("warm-up", {}, { signal: c.signal });
+      const response = await api("warm-up", versionBody, { signal: c.signal });
       if (c.signal.aborted) return;
       const job = response.jobs[0];
       const context = {
@@ -446,7 +481,7 @@ function AskChat({ api }) {
           variant="secondary"
           iconLeft={<Flame size={16} aria-hidden="true" />}
           onClick={warmUp}
-          disabled={warming}
+          disabled={warming || picker.unavailable}
         >
           Warm up
         </Button>
@@ -483,13 +518,14 @@ function AskChat({ api }) {
           ))}
         </div>
         <div>
-          <span className="subtle">Serving version</span>
+          <span className="subtle">Selected trained version</span>
           <p>
             <strong>
-              {serving?.models.with?.version_id ?? "No trained model yet"}
+              {effectiveServing?.models.with?.version_id ??
+                "No trained model yet"}
             </strong>
           </p>
-          {serving?.stale && (
+          {effectiveServing?.stale && (
             <span className="badge stale">
               Stale · newer approved knowledge
             </span>
@@ -516,7 +552,8 @@ function AskChat({ api }) {
       </div>
       <ParallelThreads
         messages={messages}
-        serving={serving}
+        serving={effectiveServing}
+        versionPicker={<VersionPicker picker={picker} />}
         showSearch={showSearch}
         wideSearch={wideSearch}
       />
@@ -559,7 +596,7 @@ function AskChat({ api }) {
           <Button
             type="submit"
             iconRight={<ArrowUpRight size={17} aria-hidden="true" />}
-            disabled={submitting}
+            disabled={submitting || picker.unavailable}
           >
             {submitting ? "Sending…" : "Compare answers"}
           </Button>

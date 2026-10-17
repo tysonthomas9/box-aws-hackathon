@@ -1,6 +1,7 @@
 import { mountAsk, unmountAsk } from "./src/ask.jsx";
 import { retryAfterMs } from "./src/polling.js";
 import { modeLabel, reportDiagnostics, recipeDetails } from "./src/results.js";
+import { showTrainingData, closeTrainingData } from "./src/training-data.js";
 import "./style.css";
 ("use strict");
 const $ = (id) => document.getElementById(id);
@@ -49,6 +50,7 @@ async function api(path, body, options = {}) {
   return value;
 }
 function showLogin() {
+  closeTrainingData();
   signedIn = false;
   sourcesRequest += 1;
   trainingRequest += 1;
@@ -507,6 +509,12 @@ async function training() {
           "subtle",
         ),
       );
+    const browse = node("button", "Training data");
+    browse.disabled = !v.manifest?.manifest_hash;
+    if (browse.disabled)
+      browse.title = "Training data was not recorded for this version";
+    browse.onclick = () => showTrainingData(api, v.id);
+    card.append(browse);
     $("training").append(card);
   }
   if (previousBusy && !trainingBusy)

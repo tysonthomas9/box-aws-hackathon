@@ -8,7 +8,7 @@ from functools import lru_cache
 import boto3
 from botocore.config import Config
 
-from kloop.adapters.aws import DynamoStorage
+from kloop.adapters.aws import DynamoStorage, S3Artifacts
 from kloop.answer.bedrock import ImportedModelClient
 from kloop.answer.corpus import (
     CorpusStore,
@@ -24,6 +24,7 @@ from kloop.web.jobs import DynamoJobs, JobService, SearchEvidence, SQSDispatch, 
 from kloop.web.security import DynamoThrottle, Security
 from kloop.web.sources import source_activity
 from kloop.web.training import training_control
+from kloop.web.versions import VersionCatalog
 
 logger = logging.getLogger(__name__)
 
@@ -148,6 +149,14 @@ def api_runtime():
     from kloop.train.loading_runtime import service as loading_service
 
     loading = LazyService(lambda: loading_service(aws))
+    catalog = LazyService(
+        lambda: VersionCatalog(
+            version_store,
+            loading,
+            S3Artifacts(aws.client("s3"), Settings().artifact_bucket),
+            snapshot_storage(aws),
+        )
+    )
     services = Services(
         extraction,
         jobs(aws),
@@ -159,6 +168,7 @@ def api_runtime():
         training_busy=TrainingBusy,
         version_loading=loading,
         model_guard=lambda: loading.guard(),
+        version_catalog=catalog,
         training_control=lambda versions, now: training_control(version_store, versions, now),
     )
     return create_app(

@@ -158,6 +158,24 @@ async function setup(page) {
       f.reviews = f.reviews.filter((r) => r.id !== id);
       return reply({});
     }
+    if (path === "versions")
+      return reply({
+        versions: [
+          {
+            id: f.trainedVersion,
+            import_arn: "trained",
+            state: "loaded",
+            status: "promoted",
+            snapshot_sha256: "a".repeat(64),
+            can_load: false,
+            can_unload: false,
+          },
+        ],
+        default_version_id: f.trainedVersion,
+        slots_used: 1,
+        slot_limit: 3,
+        load_active: false,
+      });
     if (path === "training") {
       if (f.trainingError) return reply({ detail: "Service unavailable" }, 503);
       return reply({
@@ -216,11 +234,11 @@ test("Sources live feed → filtered file approval → training stages → autom
   await page.clock.install();
   const f = await setup(page);
   await expect(page.getByRole("navigation").getByRole("button")).toHaveText([
-    "Chat",
     "Sources",
     "Review",
-    "Training",
+    "Train",
     "Results",
+    "Ask",
   ]);
   await page.getByRole("button", { name: "Sources", exact: true }).click();
   await expect(
@@ -258,7 +276,7 @@ test("Sources live feed → filtered file approval → training stages → autom
     .click();
   await page.getByRole("button", { name: "Reject", exact: true }).click();
   await expect(page.getByText("No items need review.")).toBeVisible();
-  await page.getByRole("button", { name: "Training", exact: true }).click();
+  await page.getByRole("button", { name: "Train", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Train now", exact: true }),
   ).toBeEnabled();
@@ -283,7 +301,7 @@ test("Sources live feed → filtered file approval → training stages → autom
       status[0].toUpperCase() + status.slice(1),
     );
   }
-  await page.getByRole("button", { name: "Chat", exact: true }).click();
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
   await expect(page.locator(".thread-heading.mode-with")).toContainText(
     "trained-v1",
   );
@@ -331,7 +349,7 @@ test("expired lock with no version stays disabled; status failure is safe and re
   const f = await setup(page);
   f.locked = true;
   f.expired = true;
-  await page.getByRole("button", { name: "Training", exact: true }).click();
+  await page.getByRole("button", { name: "Train", exact: true }).click();
   await expect(
     page.getByText(/This lock needs operator recovery/),
   ).toBeVisible();
@@ -383,7 +401,7 @@ test("Sources retries errors, stops polling off-tab and sign-out stops all refre
 test("all workflow pages fit a narrow viewport", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await setup(page);
-  for (const name of ["Sources", "Review", "Training", "Results", "Chat"]) {
+  for (const name of ["Sources", "Review", "Train", "Results", "Ask"]) {
     await page.getByRole("button", { name, exact: true }).click();
     expect(
       await page.evaluate(

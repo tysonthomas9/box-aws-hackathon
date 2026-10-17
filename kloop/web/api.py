@@ -5,7 +5,7 @@ from contextlib import nullcontext
 from dataclasses import dataclass
 from typing import Literal
 
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Query, Request, Response
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import Field
@@ -18,7 +18,11 @@ class Login(Schema):
     password: str = Field(min_length=1, max_length=1024, repr=False)
 
 
-class Ask(Schema):
+class VersionChoice(Schema):
+    version_id: str | None = Field(default=None, min_length=1, max_length=200)
+
+
+class Ask(VersionChoice):
     question: str = Field(min_length=1, max_length=2000)
 
 
@@ -48,6 +52,7 @@ class Services:
     training_control: object = None
     version_loading: object = None
     model_guard: object = nullcontext
+    version_catalog: object = None
 
 
 def create_app(services: Services, security: Security, throttle, *, clock=epoch) -> FastAPI:
@@ -195,15 +200,19 @@ def create_app(services: Services, security: Security, throttle, *, clock=epoch)
             "stale": bool(trained and trained["snapshot_sha256"] != snapshot.sha256),
         }
 
-    def enqueue(question, warm_up=False):
+    def enqueue(question, warm_up=False, version_id=None):
         with services.model_guard():
-            return enqueue_guarded(question, warm_up)
+            return enqueue_guarded(question, warm_up, version_id)
 
-    def enqueue_guarded(question, warm_up=False):
+    def enqueue_guarded(question, warm_up=False, version_id=None):
         if not question.strip():
             return JSONResponse({"detail": "Enter a question"}, status_code=422)
         # Read the pointer ONCE for the whole comparison, then pin every mode.
-        selected = services.select_models()
+        selected = dict(services.select_models())
+        if version_id is not None:
+            if services.version_catalog is None:
+                raise ValueError("Version selection is unavailable")
+            selected["with"] = services.version_catalog.resolve(version_id)
         snapshot = services.extraction.snapshot()
         rows = []
         unavailable = []
@@ -258,11 +267,24 @@ def create_app(services: Services, security: Security, throttle, *, clock=epoch)
 
     @app.post("/api/ask")
     def ask(body: Ask):
-        return enqueue(body.question)
+        return enqueue(body.question, version_id=body.version_id)
 
     @app.post("/api/warm-up")
-    def warm_up():
-        return enqueue("Reply with READY.", True)
+    def warm_up(body: VersionChoice | None = None):
+        return enqueue("Reply with READY.", True, body.version_id if body else None)
+
+    @app.get("/api/versions")
+    def versions():
+        return services.version_catalog.list()
+
+    @app.get("/api/versions/{id}/training-rows")
+    def training_rows(
+        id: str,
+        kind: Literal["fact", "procedure", "unknown", "near_miss", "replay"] | None = None,
+        q: str = Query(default="", max_length=200),
+        page: int = Query(default=1, ge=1),
+    ):
+        return services.version_catalog.training_rows(id, kind=kind, q=q, page=page)
 
     @app.get("/api/jobs/{id}")
     def poll(id: str):

@@ -144,6 +144,26 @@ async function setup(page, data = { reports: [report], versions: [version] }) {
       return route.fulfill({
         json: { models, stale: false, snapshot_sha256: "b".repeat(64) },
       });
+    if (path === "versions")
+      return route.fulfill({
+        json: {
+          versions: [
+            {
+              id: version.id,
+              import_arn: "test-model",
+              state: "loaded",
+              status: "promoted",
+              snapshot_sha256: "b".repeat(64),
+              can_load: false,
+              can_unload: false,
+            },
+          ],
+          default_version_id: version.id,
+          slots_used: 1,
+          slot_limit: 3,
+          load_active: false,
+        },
+      });
     if (path === "training")
       return route.fulfill({
         json: { versions: [version], control: { locked: false, progress: {} } },
@@ -211,7 +231,12 @@ test("medical results expose all aggregate evidence and recipe deviations", asyn
     fullPage: true,
   });
   await page.setViewportSize({ width: 390, height: 844 });
-  expect(await results.locator(".table-wrap").first().evaluate((el) => el.scrollWidth > el.clientWidth)).toBe(true);
+  expect(
+    await results
+      .locator(".table-wrap")
+      .first()
+      .evaluate((el) => el.scrollWidth > el.clientWidth),
+  ).toBe(true);
   await page.screenshot({
     path: resolve(artifacts, "medical-results-mobile.png"),
     fullPage: false,

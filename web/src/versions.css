@@ -1,0 +1,52 @@
+.version-picker {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.version-picker label {
+  display: block;
+  font-size: 12px;
+}
+.version-picker select {
+  width: 100%;
+  min-width: 0;
+  font-size: 12px;
+  margin: 6px 0;
+  padding: 8px;
+}
+.version-picker p,
+.version-picker summary {
+  font-size: 11px;
+  margin: 6px 0;
+}
+.version-picker .version-actions {
+  gap: 6px;
+  margin-top: 10px;
+}
+.version-picker .version-actions button {
+  white-space: normal;
+}
+#training-data-viewer {
+  scroll-margin-top: 24px;
+}
+.training-filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  max-width: none;
+  flex-wrap: wrap;
+}
+.training-filters input {
+  flex: 1;
+  width: auto;
+  min-width: 200px;
+  margin: 0;
+}
+.training-example pre {
+  font: inherit;
+  white-space: pre-wrap;
+  max-height: none;
+}
+.training-example a {
+  display: block;
+}
