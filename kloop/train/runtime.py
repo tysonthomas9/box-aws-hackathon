@@ -20,6 +20,7 @@ from kloop.extract.runtime import factory as extraction_factory
 from kloop.extract.runtime import snapshot_storage
 from kloop.train.budget import HelperBudget
 from kloop.train.config import TrainingConfig
+from kloop.train.credits import CreditCheckedRuntime, CreditGuard
 from kloop.train.data import DataBuilder
 from kloop.train.helpers import TrainingHelpers
 from kloop.train.resources import ImportSlots, protected_ask_models
@@ -77,7 +78,7 @@ def service(session):
     )
 
 
-def warmup_answerer(session, *, clock=time.monotonic, sleep=time.sleep):
+def warmup_answerer(session, *, clock=time.monotonic, sleep=time.sleep, credits=None):
     # Reserve the last minute of the 15-minute Lambda/ASL window for the
     # final transport attempt and invocation overhead; never stack SDK retries.
     runtime = session.client(
@@ -88,11 +89,20 @@ def warmup_answerer(session, *, clock=time.monotonic, sleep=time.sleep):
             retries={"total_max_attempts": 1, "mode": "standard"},
         ),
     )
+    if credits is not None:
+        runtime = CreditCheckedRuntime(runtime, credits)
     return Answerer(ImportedModelClient(runtime), retry_seconds=840, clock=clock, sleep=sleep)
 
 
 def factory(session):
     config, settings = TrainingConfig(), Settings()
+    credits = CreditGuard(
+        session.client(
+            "freetier",
+            config=Config(connect_timeout=5, read_timeout=5, retries={"total_max_attempts": 1}),
+        ),
+        config.min_credits_usd,
+    )
     store = store_for(session)
     artifacts = S3Artifacts(session.client("s3"), settings.artifact_bucket)
     sdk = sdk_client(token_provider(session.client("secretsmanager"), settings))
@@ -122,7 +132,7 @@ def factory(session):
         ),
     )
     helpers = TrainingHelpers(
-        runtime,
+        CreditCheckedRuntime(runtime, credits),
         artifacts,
         budget_factory=lambda generation, limit: HelperBudget(store.table, generation, limit),
     )
@@ -162,7 +172,7 @@ def factory(session):
             return payload
         return GateDecision.model_validate(payload)
 
-    serving = ServingBackends({"bedrock": warmup_answerer(session)})
+    serving = ServingBackends({"bedrock": warmup_answerer(session, credits=credits)})
     snapshots = snapshot_storage(session)
     return TrainingWorker(
         store,
@@ -182,6 +192,7 @@ def factory(session):
         dev_bytes=Path(config.dev_path).read_bytes(),
         helpers=helpers,
         base_model_arn=settings.base_model_id,
+        credit_check=credits.check,
     )
 
 

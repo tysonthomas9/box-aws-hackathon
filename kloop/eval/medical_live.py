@@ -28,6 +28,8 @@ from kloop.eval.live import BASE, CachedJudge, CachedModel
 from kloop.eval.medical import ROOT, category_counts, load_medical
 from kloop.extract.hashing import digest as snapshot_digest
 from kloop.schemas import Document
+from kloop.train.config import TrainingConfig
+from kloop.train.credits import CreditCheckedRuntime, CreditGuard
 from kloop.train.state import DynamoTrainingStore
 
 SEARCH_HASH = "754023c434627880f1114a3b557a405e8396b6bc58dd504a89d8c6d214843939"
@@ -100,6 +102,16 @@ def main():
             connect_timeout=5,
             read_timeout=60,
             retries={"total_max_attempts": 1, "mode": "standard"},
+        ),
+    )
+    runtime = CreditCheckedRuntime(
+        runtime,
+        CreditGuard(
+            session.client(
+                "freetier",
+                config=Config(connect_timeout=5, read_timeout=5, retries={"total_max_attempts": 1}),
+            ),
+            TrainingConfig().min_credits_usd,
         ),
     )
     started = time.monotonic()

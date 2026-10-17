@@ -28,6 +28,7 @@ class TrainingWorker:
         dev_bytes,
         helpers=None,
         base_model_arn=None,
+        credit_check=None,
     ):
         self.store, self.snapshots, self.builder = store, snapshots, builder
         self.slots, self.ledger, self.sagemaker = slots, ledger, sagemaker
@@ -36,6 +37,7 @@ class TrainingWorker:
         self.dev_bytes = dev_bytes
         self.helpers = helpers
         self.base_model_arn = base_model_arn
+        self.credit_check = credit_check
 
     def handle(self, action: str, version_id: str, *, batch: int | None = None) -> dict:
         version = self.store.get(version_id)
@@ -43,6 +45,17 @@ class TrainingWorker:
             raise KeyError(version_id)
         self.store.assert_owner(version_id)
         config = TrainingConfig.model_validate(version.manifest["config"])
+        if self.credit_check is not None and action in {
+            "batches",
+            "generate",
+            "prepare",
+            "import",
+            "reimport",
+            "warm_current",
+            "warm",
+            "evaluate",
+        }:
+            self.credit_check()
         if self.helpers is not None:
             self.helpers.bind_generation(version.manifest["snapshot_hash"], config)
             if action in {"batches", "generate", "prepare"} and self.helpers.budget is not None:

@@ -647,7 +647,7 @@ def test_worker_factory_uses_the_bounded_warmup_client(monkeypatch):
     monkeypatch.setattr(runtime, "warmup_answerer", warmup)
     monkeypatch.setattr(runtime, "TrainingWorker", worker)
     runtime.factory(aws)
-    warmup.assert_called_once_with(aws)
+    warmup.assert_called_once_with(aws, credits=worker.call_args.kwargs["credit_check"].__self__)
     assert worker.call_args.args[7].select("bedrock") is answerer
     assert worker.call_args.args[1] is snapshots
 
@@ -760,6 +760,7 @@ def test_training_runtime_resolves_and_verifies_s3_snapshot_pointer(
     monkeypatch.setattr(runtime, "token_provider", Mock())
     monkeypatch.setattr(runtime, "sdk_client", Mock())
     monkeypatch.setattr(runtime, "BoxClient", Mock())
+    monkeypatch.setattr(runtime, "CreditGuard", Mock())
     worker = runtime.factory(aws_session)
     worker.store.acquire("run", 1)
     worker.store.save(
@@ -1379,3 +1380,121 @@ def test_successful_parse_retry_is_reused_without_repaying_the_truncated_first_a
     resumed.call = Mock(side_effect=AssertionError("Must reuse the successful retry result"))
     assert resumed.array_call("zai.glm-5", "control review", 4096) == [True]
     resumed.call.assert_not_called()
+
+
+@pytest.mark.parametrize("balance", [0, 39.99])
+def test_credit_floor_stops_bedrock_calls_and_gpu_prepare(worker, balance):
+    from kloop.train.credits import AWSCreditFloor, CreditCheckedRuntime, CreditGuard
+
+    free = Mock(
+        get_account_plan_state=Mock(
+            return_value={"accountPlanRemainingCredits": {"amount": balance, "unit": "USD"}}
+        )
+    )
+    guard = CreditGuard(free, 40)
+    native = Mock()
+    checked = CreditCheckedRuntime(native, guard)
+    for method in ["converse", "invoke_model"]:
+        with pytest.raises(AWSCreditFloor):
+            getattr(checked, method)(modelId="model")
+        getattr(native, method).assert_not_called()
+    w, _, _, _ = worker
+    w.credit_check = guard.check
+    with pytest.raises(AWSCreditFloor):
+        w.handle("prepare", "run")
+    assert not any(r["kind"] == "sagemaker_training" for r in w.ledger.entries())
+    assert w.handle("cleanup", "run")["complete"]
+    w.handle("release", "run")
+
+
+@pytest.mark.parametrize(
+    "credits",
+    [
+        None,
+        {},
+        {"amount": 120, "unit": "EUR"},
+        {"amount": -1, "unit": "USD"},
+        {"amount": float("nan"), "unit": "USD"},
+    ],
+)
+def test_missing_or_invalid_credit_balance_stops_paid_calls(credits):
+    from kloop.train.credits import AWSCreditFloor, CreditGuard
+
+    guard = CreditGuard(
+        Mock(get_account_plan_state=Mock(return_value={"accountPlanRemainingCredits": credits})), 40
+    )
+    with pytest.raises(AWSCreditFloor):
+        guard.check()
+
+
+def test_credit_read_failure_stops_paid_work_and_exact_floor_allows_it():
+    from kloop.train.credits import AWSCreditFloor, CreditCheckedRuntime, CreditGuard
+
+    free = Mock(get_account_plan_state=Mock(side_effect=RuntimeError("unavailable")))
+    with pytest.raises(AWSCreditFloor):
+        CreditGuard(free, 40).check()
+    free.get_account_plan_state.side_effect = None
+    free.get_account_plan_state.return_value = {
+        "accountPlanRemainingCredits": {"amount": 40, "unit": "USD"}
+    }
+    native = Mock()
+    checked = CreditCheckedRuntime(native, CreditGuard(free, 40))
+    checked.converse(modelId="model")
+    native.converse.assert_called_once_with(modelId="model")
+    assert checked.meta is native.meta and checked.exceptions is native.exceptions
+
+
+def test_compact_controls_keep_all_items_and_full_checker_context(snapshot):
+    from kloop.train.helpers import TrainingHelpers
+
+    config = TrainingConfig(
+        fact_wordings=1, unknown_rows=1, compact_control_context=True, helper_budget_usd=70
+    )
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(side_effect=[rows()[1:2], [True]])
+    assert list(helper.generate_batch(snapshot, config, 1)) == rows()[1:2]
+    generator = helper.call.call_args_list[0].args[1]
+    checker = helper.call.call_args_list[1].args[1]
+    assert snapshot.items[0].id in generator and snapshot.items[0].statement in generator
+    assert '"source_file_id":' not in generator and '"supporting_quote":' not in generator
+    assert "source_file_id" in checker and "supporting_quote" in checker
+    assert all(field in generator for field in ["trigger_conditions", "steps"])
+    with pytest.raises(ValueError):
+        TrainingConfig(helper_budget_usd=71)
+    with pytest.raises(ValueError):
+        TrainingConfig(min_credits_usd=39)
+
+
+def test_compact_controls_reuse_existing_full_context_generator_output(snapshot):
+    from kloop.train.data import encoded
+    from kloop.train.helpers import TrainingHelpers
+
+    artifacts = MemoryArtifacts()
+    old = TrainingHelpers(Mock(), artifacts)
+    old.call = Mock(side_effect=[rows()[1:2], [True]])
+    list(old.generate_batch(snapshot, TrainingConfig(fact_wordings=1, unknown_rows=1), 1))
+    model, prompt, cap = old.call.call_args_list[0].args
+    key = "training/helper-cache/" + sha256(encoded([model, prompt, cap])) + ".json"
+    artifacts.put(key, encoded(rows()[1:2]), "application/json")
+    runtime = Mock()
+    runtime.converse.return_value = {
+        "stopReason": "end_turn",
+        "output": {"message": {"content": [{"text": "[true]"}]}},
+    }
+    helper = TrainingHelpers(runtime, artifacts)
+    config = TrainingConfig(fact_wordings=1, unknown_rows=1, compact_control_context=True)
+    assert list(helper.generate_batch(snapshot, config, 1)) == rows()[1:2]
+    assert [c.kwargs["modelId"] for c in runtime.converse.call_args_list] == ["zai.glm-5"]
+
+
+def test_compact_control_repairs_omit_metadata_but_checker_keeps_full_snapshot(snapshot):
+    from kloop.train.helpers import TrainingHelpers
+
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(side_effect=[rows()[1:2], [False], rows()[1:2], [True]])
+    config = TrainingConfig(fact_wordings=1, unknown_rows=1, compact_control_context=True)
+    assert list(helper.generate_batch(snapshot, config, 1)) == rows()[1:2]
+    repair = helper.call.call_args_list[2].args[1]
+    assert '"source_file_id":' not in repair and '"supporting_quote":' not in repair
+    assert snapshot.items[0].id in repair and snapshot.items[0].statement in repair
+    assert '"source_file_id":' in helper.call.call_args_list[3].args[1]

@@ -19,6 +19,8 @@ from kloop.eval.judge import BlindJudge
 from kloop.eval.medical import DEV_HASH as MEDICAL_DEV_HASH
 from kloop.eval.medical import TRAINING_SNAPSHOT_HASH, audit_training, load_medical
 from kloop.schemas import ModelVersion
+from kloop.train.config import TrainingConfig
+from kloop.train.credits import CreditCheckedRuntime, CreditGuard
 from kloop.train.medical import V2_HASH
 
 
@@ -121,6 +123,16 @@ def factory(session):
         connect_timeout=5, read_timeout=60, retries={"total_max_attempts": 1, "mode": "standard"}
     )
     runtime = scoped.client("bedrock-runtime", config=config)
+    runtime = CreditCheckedRuntime(
+        runtime,
+        CreditGuard(
+            session.client(
+                "freetier",
+                config=Config(connect_timeout=5, read_timeout=5, retries={"total_max_attempts": 1}),
+            ),
+            TrainingConfig().min_credits_usd,
+        ),
+    )
     return Evaluator(
         Answerer(ImportedModelClient(runtime)),
         BlindJudge(runtime),
