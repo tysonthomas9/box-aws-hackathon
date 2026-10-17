@@ -114,7 +114,7 @@ resource "aws_lambda_function" "training_worker" {
   s3_key           = aws_s3_object.lambda.key
   source_code_hash = filebase64sha256("${path.module}/../.build/lambda.zip")
   timeout          = 900
-  memory_size      = 1024
+  memory_size      = 2048
   environment {
     variables = local.training_env
   }
