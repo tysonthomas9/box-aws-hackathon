@@ -9,7 +9,7 @@ import math
 import re
 import time
 from collections import Counter
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from typing import Annotated, Literal
 
 from pydantic import Field
@@ -50,7 +50,11 @@ def _tokens(text: str) -> list[str]:
 
 
 def retrieve(
-    question: str, approved_documents: Sequence[Document], top_k: int = 3
+    question: str,
+    approved_documents: Sequence[Document],
+    top_k: int = 3,
+    *,
+    approved_quotes: Mapping[tuple[str, str], Sequence[str]] | None = None,
 ) -> list[Citation]:
     """BM25 (k1=1.5, b=.75), 180-word chunks with 30-word overlap.
 
@@ -61,22 +65,34 @@ def retrieve(
         raise ValueError("top_k must be positive")
     chunks = []
     for doc in sorted(approved_documents, key=lambda d: (d.file_id, d.version_id)):
-        words = list(re.finditer(r"\S+", doc.text))
-        for i in range(0, len(words), 150):
-            start, end = words[i].start(), words[min(i + 180, len(words)) - 1].end()
-            chunks.append(
-                Citation(
-                    label="",
-                    file_id=doc.file_id,
-                    version_id=doc.version_id,
-                    name=doc.name,
-                    quote=doc.text[start:end],
-                    start=start,
-                    end=end,
+        ranges = {(0, len(doc.text))}
+        if approved_quotes is not None:
+            ranges = set()
+            for quote in approved_quotes.get((doc.file_id, doc.version_id), ()):
+                if not quote.strip():
+                    raise ValueError("An approved source quote must not be blank")
+                matches = list(re.finditer(re.escape(quote), doc.text))
+                if not matches:
+                    raise ValueError("Approved quote is absent from its pinned source version")
+                ranges.update((m.start(), m.end()) for m in matches)
+        for lower, upper in sorted(ranges):
+            words = list(re.finditer(r"\S+", doc.text[lower:upper]))
+            for i in range(0, len(words), 150):
+                start = lower + words[i].start()
+                end = lower + words[min(i + 180, len(words)) - 1].end()
+                chunks.append(
+                    Citation(
+                        label="",
+                        file_id=doc.file_id,
+                        version_id=doc.version_id,
+                        name=doc.name,
+                        quote=doc.text[start:end],
+                        start=start,
+                        end=end,
+                    )
                 )
-            )
-            if i + 180 >= len(words):
-                break
+                if i + 180 >= len(words):
+                    break
     if not chunks:
         return []
     counts = [Counter(_tokens(c.quote)) for c in chunks]
@@ -116,8 +132,8 @@ class Answerer:
         clock: Callable[[], float] = time.monotonic,
         sleep: Callable[[float], None] = time.sleep,
     ) -> None:
-        if not math.isfinite(retry_seconds) or not 0 <= retry_seconds <= 240:
-            raise ValueError("retry_seconds must be between 0 and 240")
+        if not math.isfinite(retry_seconds) or not 0 <= retry_seconds <= 840:
+            raise ValueError("retry_seconds must be between 0 and 840")
         self.client = client
         self.on_status = on_status
         self.retry_seconds = retry_seconds
@@ -194,13 +210,21 @@ class Answerer:
         approved_documents: Sequence[Document],
         *,
         top_k: int = 3,
+        approved_quotes: Mapping[tuple[str, str], Sequence[str]] | None = None,
     ) -> Answer:
         """Use the caller's base import and approved, versioned document snapshot.
+
+        Supply approved_quotes when approval covers items rather than whole files;
+        chunks then stay inside verified quotes with original source offsets.
 
         Citations identify retrieved chunks referenced by the model; they are
         provenance, not a claim that every generated statement is entailed.
         """
-        return self._answer(question, model_arn, retrieve(question, approved_documents, top_k))
+        return self._answer(
+            question,
+            model_arn,
+            retrieve(question, approved_documents, top_k, approved_quotes=approved_quotes),
+        )
 
     def warm_up(self, model_arn: str) -> Answer:
         """Start the import with a small bounded generation; no job state changes."""

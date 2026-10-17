@@ -10,7 +10,7 @@ from kloop.ports import Record
 class ImportedModelClient(BedrockModelClient):
     """Inject a us-east-2 runtime client with SDK retries disabled.
 
-    Answerer owns the four-minute retry budget. Configure transport timeouts on
+    Answerer owns the configured readiness retry budget. Configure transport timeouts on
     the injected SDK client; smoke.py demonstrates the deployment settings.
     """
 

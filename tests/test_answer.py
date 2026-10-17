@@ -150,7 +150,7 @@ def test_reject_wrong_region_and_unpinned_model(arn):
 def test_empty_question_and_invalid_retry_budget():
     with pytest.raises(ValueError, match="question"):
         Answerer(Model([])).answer_with("  ", TRAINED)
-    for budget in (-1, 241, float("nan")):
+    for budget in (-1, 841, float("nan")):
         with pytest.raises(ValueError):
             Answerer(Model([]), retry_seconds=budget)
 
@@ -198,3 +198,33 @@ def test_live_adapter_rejects_other_region():
     )
     with pytest.raises(ValueError, match="Region"):
         ImportedModelClient(runtime)
+
+
+def test_item_approved_search_excludes_other_source_text_and_keeps_offsets():
+    document = Document(
+        file_id="f",
+        version_id="v2",
+        name="Support",
+        text="REJECTED: Mara handles support. Approved: Eli handles support. HIDDEN: secret.",
+    )
+    model = Model([{"generation": "Eli [1]"}])
+    quote = "Eli handles support."
+    result = Answerer(model).answer_search(
+        "Who handles support?",
+        BASE,
+        [document],
+        approved_quotes={("f", "v2"): [quote]},
+    )
+    assert "REJECTED" not in model.calls[0][1]["prompt"]
+    assert "HIDDEN" not in model.calls[0][1]["prompt"]
+    assert "Mara" not in model.calls[0][1]["prompt"]
+    citation = result.citations[0]
+    assert citation.quote == quote
+    assert document.text[citation.start : citation.end] == quote
+    with pytest.raises(ValueError, match="absent"):
+        Answerer(model).answer_search(
+            "Who?",
+            BASE,
+            [document],
+            approved_quotes={("f", "v2"): ["Invented quote"]},
+        )

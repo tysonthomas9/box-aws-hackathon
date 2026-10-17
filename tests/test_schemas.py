@@ -43,7 +43,17 @@ from kloop.schemas import AskJob, Document, EvalReport, EvalResult, Item, ModelV
             scores={"dev": 0.8},
         ),
         AskJob(
-            id="j1", question="Who?", mode="with", status="completed", answer="Mara", latency_ms=3.5
+            id="j1",
+            model_version_id="v1",
+            question="Who?",
+            mode="with",
+            status="succeeded",
+            answer="Mara",
+            latency_ms=3.5,
+            model_arn="arn:aws:bedrock:us-east-2:123456789012:imported-model/abcdefghijkl",
+            snapshot_sha256="a" * 64,
+            created_at=1,
+            expires_at=361,
         ),
         EvalReport(
             id="e1",

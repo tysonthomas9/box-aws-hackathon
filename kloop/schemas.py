@@ -64,12 +64,25 @@ class ModelVersion(Schema):
     scores: dict[str, float] = Field(default_factory=dict)
 
 
-class AskJob(Schema):
+class PinnedModel(Schema):
+    model_version_id: Identifier
+    model_arn: Annotated[
+        str, Field(pattern=r"^arn:aws:bedrock:us-east-2:\d{12}:imported-model/[a-z0-9]{12}$")
+    ]
+
+
+class AskJob(PinnedModel):
     id: Identifier
     question: Identifier
     mode: AskMode
-    model_version_id: str | None = None
-    status: Literal["queued", "running", "completed", "failed"] = "queued"
+    warm_up_models: list[PinnedModel] = Field(default_factory=list)
+    snapshot_sha256: Annotated[str, Field(pattern=r"^[a-f0-9]{64}$")]
+    created_at: Annotated[int, Field(ge=0)]
+    expires_at: Annotated[int, Field(ge=0)]
+    attempts: Annotated[int, Field(ge=0)] = 0
+    warm_up: bool = False
+    citations: list[dict[str, JsonValue]] = Field(default_factory=list)
+    status: Literal["queued", "warming", "running", "succeeded", "failed"] = "queued"
     answer: str | None = None
     latency_ms: Annotated[float, Field(ge=0, allow_inf_nan=False)] | None = None
     error: str | None = None
