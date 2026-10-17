@@ -1,6 +1,7 @@
 {
-  "checked_at": "2026-10-17T07:43:14.407256+00:00",
-  "limit_usd": 10,
+  "checked_at": "2026-10-17T07:48:20.476827+00:00",
+  "limit_usd": null,
+  "spend_policy": "Coordinator2026-10-17T07:48Z: spend caps lifted; report cost and avoid waste",
   "helper_usage": {
     "us.moonshotai.kimi-k3": {
       "calls": 18,

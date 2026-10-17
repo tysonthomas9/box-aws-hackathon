@@ -33,12 +33,11 @@ def check():
     reserve={'future_helper_calls_usd':0 if (ROOT/'scores/results.json').exists() else 3.0,
              'bedrock_startup_and_model_storage_usd':1.5,'s3_ebs_logs_requests_usd':.5}
     total=helper_cost+gpu_cost+sum(reserve.values())
-    result={'checked_at':datetime.now(timezone.utc).isoformat(),'limit_usd':10,'helper_usage':usage,
+    result={'checked_at':datetime.now(timezone.utc).isoformat(),'limit_usd':None,'spend_policy':'Coordinator2026-10-17T07:48Z: spend caps lifted; report cost and avoid waste','helper_usage':usage,
         'jobs':jobs,'reserves':reserve,'conservative_total_usd':total,
         'sources':['https://aws.amazon.com/bedrock/pricing/','evidence/training-prices.json'],
         'caveat':'Token usage and GPU billable seconds plus conservative remaining reserves; final bill may arrive later.'}
     (ROOT/'evidence/budget.json').write_text(json.dumps(result,indent=2)+'\n')
-    if total>10:raise RuntimeError(f'Experiment budget reservation {total:.2f} exceeds $10; stop and report')
     return result
 
 
