@@ -38,19 +38,28 @@ def main():
     parser.add_argument("--model-config", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, default=ROOT / "evaluation/base")
     parser.add_argument("--addendum-only", action="store_true", help="Evaluate sealed v2 addendum without rerunning original 46")
+    parser.add_argument("--lora", action="store_true", help="Evaluate all52 sealed questions on a trained candidate, without retrieval")
+    parser.add_argument("--tokenizer-sha", default=TOKENIZER_SHA)
+    parser.add_argument("--config-sha", default="6b913e85499cff943ae810b76194764424d1869a26a1e32dbb1dda2395f7ffa3")
     args = parser.parse_args()
+    modes = ["lora"] if args.lora else ["base", "base_retrieval"]
+    if args.lora and args.addendum_only:
+        raise ValueError("LoRA must evaluate the full52question set")
     if not args.model_arn.startswith("arn:aws:bedrock:us-east-2:") or ":imported-model/" not in args.model_arn:
         raise ValueError("Use an imported-model ARN in the selected Region us-east-2")
     tokenizer_bytes = args.tokenizer_config.read_bytes()
-    if hashlib.sha256(tokenizer_bytes).hexdigest() != TOKENIZER_SHA:
+    if hashlib.sha256(tokenizer_bytes).hexdigest() != args.tokenizer_sha:
         raise ValueError("Tokenizer config differs from POC 1's recorded source")
     template = json.loads(tokenizer_bytes)["chat_template"]
     if hashlib.sha256(template.encode()).hexdigest() != TEMPLATE_SHA:
         raise ValueError("Chat template differs from POC 1's recorded source")
     model_config_bytes = args.model_config.read_bytes()
     model_config_sha = hashlib.sha256(model_config_bytes).hexdigest()
-    if model_config_sha != "6b913e85499cff943ae810b76194764424d1869a26a1e32dbb1dda2395f7ffa3":
+    if model_config_sha != args.config_sha:
         raise ValueError("Use the recorded 32K Qwen3 diagnostic configuration")
+    config = json.loads(model_config_bytes)
+    if config["max_position_embeddings"] != 32768 or config["architectures"] != ["Qwen3ForCausalLM"]:
+        raise ValueError("Candidate must retain32K Qwen3 architecture")
     freeze = json.loads((ROOT / "sealed/freeze.json").read_text())
     hidden_bytes = (ROOT / "sealed/hidden.jsonl").read_bytes()
     if hashlib.sha256(hidden_bytes).hexdigest() != freeze["hidden_sha256"]:
@@ -59,21 +68,24 @@ def main():
     if hashlib.sha256((ROOT / "pack.json").read_bytes()).hexdigest() != freeze["pack_sha256"]:
         raise ValueError("Pack has changed")
     addendum_sha = None
-    if args.addendum_only:
+    if args.addendum_only or args.lora:
         addendum = json.loads((ROOT / "sealed/addendum-v2-manifest.json").read_text())
         if addendum["original_hidden_sha256"] != freeze["hidden_sha256"]:
             raise ValueError("Addendum does not reference the original frozen test")
+        original_hidden_bytes = hidden_bytes
         hidden_bytes = (ROOT / "sealed/addendum-v2.jsonl").read_bytes()
         addendum_sha = hashlib.sha256(hidden_bytes).hexdigest()
         if addendum_sha != addendum["addendum_sha256"]:
             raise ValueError("Sealed procedure addendum changed")
         if hashlib.sha256((ROOT / "generated/kimi-k3/train-final.jsonl").read_bytes()).hexdigest() != addendum["training_sha256"]:
             raise ValueError("Training rows changed since addendum seal")
+    if args.lora:
+        hidden_bytes = original_hidden_bytes.rstrip() + b"\n" + hidden_bytes
     hidden = [json.loads(line) for line in hidden_bytes.splitlines()]
     evaluation_kinds = sorted({test["kind"] for test in hidden})
     args.output_dir.mkdir(parents=True, exist_ok=True)
     responses = []
-    for mode in ["base", "base_retrieval"]:
+    for mode in modes:
         for test in hidden:
             documents = retrieve(test["question"], pack) if mode == "base_retrieval" else []
             question = test["question"]
@@ -147,7 +159,7 @@ def main():
         decisions.extend(verdicts)
     lookup = {(v["mode"], v["id"]): v for v in decisions}
     counts = {}
-    for mode in ["base", "base_retrieval"]:
+    for mode in modes:
         counts[mode] = {}
         for kind in evaluation_kinds:
             selected = [r for r in responses if r["mode"] == mode and r["kind"] == kind]
@@ -157,12 +169,12 @@ def main():
     summary = {"model_arn": args.model_arn, "target_model": "Qwen/Qwen3-4B-Instruct-2507",
                "hidden_sha256": freeze["hidden_sha256"], "pack_sha256": freeze["pack_sha256"],
                "addendum_sha256": addendum_sha, "question_count_per_mode": len(hidden),
-               "tokenizer_sha256": TOKENIZER_SHA, "chat_template_sha256": TEMPLATE_SHA,
+               "tokenizer_sha256": args.tokenizer_sha, "chat_template_sha256": TEMPLATE_SHA,
                "model_config_sha256": model_config_sha, "context_limit": 32768,
                "judge": JUDGE, "judge_fallback_used": False, "counts": counts,
                "retrieval": "Query-only lexical IDF overlap; top 3 of the 13 pack documents; no expected-answer oracle",
-               "lora": "not run", "responses": responses, "decisions": decisions,
-               "caveat": "Exploratory model-judged counts, not a learning result; LoRA has not run"}
+               "lora": "seed17 candidate" if args.lora else "not run", "responses": responses, "decisions": decisions,
+               "caveat": "Exploratory model-judged counts; inspect contradictions and general regressions" if args.lora else "Exploratory model-judged counts, not a learning result; LoRA has not run"}
     (args.output_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(counts, indent=2))
 
