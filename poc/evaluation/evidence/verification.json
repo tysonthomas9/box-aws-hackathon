@@ -1,0 +1,36 @@
+{
+  "checked_at": "2026-10-17T07:34:08.958302+00:00",
+  "shared_head_before_eval_commit": "38052974d4346caa7dd3c8a350ad60e3e7662a04",
+  "normal": {
+    "command": "make test && make lint",
+    "passed": true,
+    "tests": 276
+  },
+  "credential_free": {
+    "command": "make test && make lint in filtered child environment",
+    "passed": true,
+    "tests": 276,
+    "log": "credential-free-gates.log",
+    "environment": "AWS/BOX/KLOOP_BOX and secret/token/password/key variables removed; AWS config/credentials and BOTO config=/dev/null; EC2 metadata disabled"
+  },
+  "focused": {
+    "command": "uv run --locked pytest tests/test_eval.py -q",
+    "passed": true,
+    "tests": 17
+  },
+  "diff_check": {
+    "command": "git diff --check",
+    "passed": true
+  },
+  "source_hashes": {
+    "kloop/eval/datasets.py": "197b33ca0f6b1db6c48d9030c5e520fc639cabb6f878355f9d3b3bf382c02615",
+    "kloop/eval/__init__.py": "e40b042eb5adeef78f95cc9bb084299a4f141902f2b8c69552c0f28806de32c0",
+    "kloop/eval/runtime.py": "e93ab82e53c3da3333e5bb8a1ce031dfb7824aa8861db3d72be94a12d689a263",
+    "kloop/eval/judge.py": "29e6ee75faeb230363cee20f184f68017b85ff5c75b92be5b721ef20baaf3416",
+    "kloop/eval/live.py": "4db5d80981f12b7428c3703840465db0f86a3e379f34f2c89dfedece028e6d5e",
+    "kloop/eval/commands.mk": "6af39f1a280d1f3a0773457b7b04ff5a5d41430faf634bfc58ad5eda127f3ffe",
+    "tests/test_eval.py": "f8b3189287303376bd21be7626ae083a5ddd7dbf6c2fe66e9f259389c9510d09"
+  },
+  "deployment_proof": "Not run; S3/Box writer verified with fakes, separate Lambda/IAM publication retained for deployment wave.",
+  "pre_existing_failures": "No outstanding suite failures. Starlette httpx deprecation warning only; no failing base CI run claimed."
+}

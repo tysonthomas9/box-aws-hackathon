@@ -1,0 +1,1 @@
+{"generation": "Replace the R17 controller. The supply voltage is above 22 V, so the low-supply cause is ruled out, and R17 persisted after retesting, so the replacement prerequisites are met.", "generation_token_count": 44, "logprobs": null, "prompt_token_count": 86, "stop_reason": "stop"}

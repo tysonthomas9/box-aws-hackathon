@@ -1,0 +1,92 @@
+{"answered": 1}
+{"answered": 2}
+{"answered": 3}
+{"answered": 4}
+{"answered": 5}
+{"answered": 6}
+{"answered": 7}
+{"answered": 8}
+{"answered": 9}
+{"answered": 10}
+{"answered": 11}
+{"answered": 12}
+{"answered": 13}
+{"answered": 14}
+{"answered": 15}
+{"answered": 16}
+{"answered": 17}
+{"answered": 18}
+{"answered": 19}
+{"answered": 20}
+{"answered": 21}
+{"answered": 22}
+{"answered": 23}
+{"answered": 24}
+{"answered": 25}
+{"answered": 26}
+{"answered": 27}
+{"answered": 28}
+{"answered": 29}
+{"answered": 30}
+{"answered": 31}
+{"answered": 32}
+{"answered": 33}
+{"answered": 34}
+{"answered": 35}
+{"answered": 36}
+{"answered": 37}
+{"answered": 38}
+{"answered": 39}
+{"answered": 40}
+{"answered": 41}
+{"answered": 42}
+{"answered": 43}
+{"answered": 44}
+{"answered": 45}
+{"answered": 46}
+{"answered": 47}
+{"answered": 48}
+{"answered": 49}
+{"answered": 50}
+{"answered": 51}
+{"answered": 52}
+{"answered": 53}
+{"answered": 54}
+{"answered": 55}
+{"answered": 56}
+{"answered": 57}
+{"answered": 58}
+{"answered": 59}
+{"answered": 60}
+{"answered": 61}
+{"answered": 62}
+{"answered": 63}
+{"answered": 64}
+{"answered": 65}
+{"spend": {"started_at": "2026-10-17T07:27:03.516666+00:00", "reserved_usd": 5, "max_seconds": 600, "model_arns": {"without": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w", "with": "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w", "search": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w"}, "new_cloud_resources": [], "pricing_source": "https://aws.amazon.com/bedrock/pricing/", "elapsed_seconds": 49.91802558302879, "fresh_model_calls": 65, "judge_usage": {"inputTokens": 1142, "outputTokens": 630}, "estimated_import_usd_upper_bound": 1.1436, "estimated_judge_usd": 0.003158, "estimated_total_usd_upper_bound": 1.146758, "completed": false, "caveat": "Shared import billing is not attributable; estimate, not final bill."}}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/tyson/intent/workspaces/wandering-puffin/box-aws-hackathon/kloop/eval/live.py", line 188, in <module>
+    print(json.dumps({"spend": spend}), flush=True)
+^^^^^^
+  File "/Users/tyson/intent/workspaces/wandering-puffin/box-aws-hackathon/kloop/eval/live.py", line 143, in main
+    serving_version="poc2-retained-weights",
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tyson/intent/workspaces/wandering-puffin/box-aws-hackathon/kloop/eval/__init__.py", line 181, in run_evaluation
+    verdicts = judge.score(rows)
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/tyson/intent/workspaces/wandering-puffin/box-aws-hackathon/kloop/eval/judge.py", line 68, in score
+    values = json.loads(text)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/tyson/Library/Application Support/com.pollen-robotics.reachy-mini/cpython-3.12.13-macos-aarch64-none/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tyson/Library/Application Support/com.pollen-robotics.reachy-mini/cpython-3.12.13-macos-aarch64-none/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tyson/Library/Application Support/com.pollen-robotics.reachy-mini/cpython-3.12.13-macos-aarch64-none/lib/python3.12/json/decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+{"counts": {"without": {"fact": {"correct": 0, "total": 11, "invented": 1}, "two_fact": {"correct": 0, "total": 3, "invented": 0}, "procedure": {"correct": 1, "total": 4, "invented": 0}, "untold": {"correct": 7, "total": 8, "invented": 1}, "unrelated": {"correct": 4, "total": 4, "invented": 0}}, "with": {"fact": {"correct": 8, "total": 11, "invented": 1}, "two_fact": {"correct": 3, "total": 3, "invented": 0}, "procedure": {"correct": 2, "total": 4, "invented": 0}, "untold": {"correct": 0, "total": 8, "invented": 6}, "unrelated": {"correct": 4, "total": 4, "invented": 0}}, "search": {"fact": {"correct": 10, "total": 11, "invented": 0}, "two_fact": {"correct": 3, "total": 3, "invented": 0}, "procedure": {"correct": 4, "total": 4, "invented": 0}, "untold": {"correct": 8, "total": 8, "invented": 0}, "unrelated": {"correct": 3, "total": 4, "invented": 0}}}, "paired": {"without_vs_with": {"both_correct": 4, "left_only": 8, "right_only": 13, "both_wrong": 5}, "without_vs_search": {"both_correct": 11, "left_only": 1, "right_only": 17, "both_wrong": 1}, "with_vs_search": {"both_correct": 15, "left_only": 2, "right_only": 13, "both_wrong": 0}}}
+{"spend": {"started_at": "2026-10-17T07:28:24.815890+00:00", "reserved_usd": 5, "max_seconds": 600, "model_arns": {"without": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w", "with": "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w", "search": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w"}, "new_cloud_resources": [], "pricing_source": "https://aws.amazon.com/bedrock/pricing/", "elapsed_seconds": 98.08585908310488, "fresh_model_calls": 0, "judge_usage": {"inputTokens": 10447, "outputTokens": 4695}, "estimated_import_usd_upper_bound": 1.1436, "estimated_judge_usd": 0.025471, "estimated_total_usd_upper_bound": 1.169071, "completed": true, "caveat": "Shared import billing is not attributable; estimate, not final bill."}}
