@@ -1,4 +1,5 @@
 import { MODES } from "./polling.js";
+import "./results.css";
 
 export const modeLabel = (mode) => new Map(MODES).get(mode) ?? mode;
 const label = (value) => value.replaceAll("_", " ");

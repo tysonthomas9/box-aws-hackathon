@@ -1,0 +1,8 @@
+#results .table-wrap table {
+  min-width: 640px;
+}
+
+#results th,
+#results td {
+  overflow-wrap: normal;
+}

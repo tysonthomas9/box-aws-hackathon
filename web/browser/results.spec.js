@@ -211,6 +211,7 @@ test("medical results expose all aggregate evidence and recipe deviations", asyn
     fullPage: true,
   });
   await page.setViewportSize({ width: 390, height: 844 });
+  expect(await results.locator(".table-wrap").first().evaluate((el) => el.scrollWidth > el.clientWidth)).toBe(true);
   await page.screenshot({
     path: resolve(artifacts, "medical-results-mobile.png"),
     fullPage: false,
