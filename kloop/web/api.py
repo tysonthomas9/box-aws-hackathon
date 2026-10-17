@@ -43,6 +43,7 @@ class Services:
     ingress: object
     training: object
     results: object
+    training_busy: type[Exception] = ValueError
 
 
 def create_app(services: Services, security: Security, throttle, *, clock=epoch) -> FastAPI:
@@ -264,11 +265,9 @@ def create_app(services: Services, security: Security, throttle, *, clock=epoch)
 
     @app.post("/api/train")
     def train(body: Train):
-        from kloop.train.state import TrainingBusy
-
         try:
             return services.training.start(body.request_id, clock())
-        except TrainingBusy:
+        except services.training_busy:
             return JSONResponse({"detail": "Training is already active"}, status_code=409)
 
     @app.get("/api/training")

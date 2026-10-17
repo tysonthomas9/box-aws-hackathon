@@ -45,7 +45,7 @@ def jobs(aws):
 
 @lru_cache(maxsize=1)
 def api_runtime():
-    from kloop.train.state import DynamoTrainingStore
+    from kloop.train.state import DynamoTrainingStore, TrainingBusy
     from lambdas.sync import compose_ingress
 
     aws = session()
@@ -120,6 +120,7 @@ def api_runtime():
         ingress,
         training,
         lambda: results.list("eval_reports"),
+        training_busy=TrainingBusy,
     )
     return create_app(
         services, security, DynamoThrottle(dynamo.Table(os.environ["KLOOP_WEBHOOK_DEDUPE_TABLE"]))
