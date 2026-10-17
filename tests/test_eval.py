@@ -377,3 +377,23 @@ def test_value_checks_allow_sentence_order_without_dropping_values():
     assert not deterministic_checks(case, "Every Tuesday at 02:40 UTC; the cabinet label is Q-14.")
     assert deterministic_checks(case, "Every Thursday at 02:40 UTC; the cabinet label is Q-14.")
     assert deterministic_checks(case, "Every Tuesday at 02:40 UTC; the cabinet label is Q-13.")
+
+
+def test_public_overlap_status_requires_hash_bound_real_verdict():
+    from kloop.eval.datasets import encoded
+
+    verdict = {
+        "passed": True,
+        "training_sha256": "t" * 64,
+        "question_set_sha256": "q" * 64,
+        "collisions": 0,
+    }
+    sha = digest(encoded(verdict))
+    audit = {**verdict, "sha256": sha}
+    storage = MemoryStorage()
+    writer = ReportWriter(MemoryArtifacts(), storage, lambda *_: None, audit_lookup=lambda _: audit)
+    bound = bindings().model_copy(update={"audit_sha256": sha})
+    writer.save(report(set()), bound)
+    assert storage.get("eval_reports", "fake")["overlap_audit"]["passed"] is True
+    with pytest.raises(ValueError, match="audit hash"):
+        writer.save(report(set()), bindings())

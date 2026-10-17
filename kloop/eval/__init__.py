@@ -294,9 +294,15 @@ def promotion_gate(
 
 class ReportWriter:
     def __init__(
-        self, artifacts: Artifacts, storage: Storage, copy_to_box: Callable[[str, bytes], None]
+        self,
+        artifacts: Artifacts,
+        storage: Storage,
+        copy_to_box: Callable[[str, bytes], None],
+        *,
+        audit_lookup: Callable[[str], dict] | None = None,
     ):
         self.artifacts, self.storage, self.copy_to_box = artifacts, storage, copy_to_box
+        self.audit_lookup = audit_lookup
 
     def save(self, report: EvalReport, bindings: Bindings, gate: GateDecision | None = None) -> str:
         if not re.fullmatch(r"[a-zA-Z0-9_-]+", report.id):
@@ -312,6 +318,22 @@ class ReportWriter:
             caveats=CAVEATS,
             gate=gate.model_dump(mode="json") if gate else None,
         )
+        if self.audit_lookup is not None:
+            audit = self.audit_lookup(bindings.audit_sha256)
+            verdict = {k: v for k, v in audit.items() if k != "sha256"}
+            if (
+                digest(encoded(verdict)) != bindings.audit_sha256
+                or audit["sha256"] != bindings.audit_sha256
+                or type(audit["passed"]) is not bool
+            ):
+                raise ValueError("Public overlap verdict does not match its audit hash")
+            summary["overlap_audit"] = {
+                "passed": audit["passed"],
+                "sha256": audit["sha256"],
+                "scope": "immutable training versus sealed 46+6; lexical collisions only",
+                "training_sha256": audit["training_sha256"],
+                "question_set_sha256": audit["question_set_sha256"],
+            }
         modes = list(bindings.model_arns)
         summary["paired"] = {
             f"{a}_vs_{b}": paired_counts(report, a, b)

@@ -104,7 +104,12 @@ def factory(session):
     return Evaluator(
         Answerer(ImportedModelClient(runtime)),
         BlindJudge(runtime),
-        ReportWriter(artifacts, reports, copy_to_box),
+        ReportWriter(
+            artifacts,
+            reports,
+            copy_to_box,
+            audit_lookup=lambda sha: json.loads(artifacts.get(f"evaluations/audits/{sha}.json")),
+        ),
         current_arn=current_arn,
         audit_hash=AuditVerifier(artifacts).verify,
         minimum_gain=float(os.getenv("KLOOP_TRAIN_MINIMUM_GAIN", "0.05")),
