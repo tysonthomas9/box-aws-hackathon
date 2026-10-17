@@ -10,6 +10,7 @@ from botocore.config import Config
 from kloop.adapters.aws import DynamoStorage
 from kloop.answer.bedrock import ImportedModelClient
 from kloop.config import Settings
+from kloop.extract.runtime import snapshot_storage
 from kloop.schemas import ApprovedSnapshot
 from kloop.web.api import Services, create_app
 from kloop.web.jobs import DynamoJobs, JobService, SearchEvidence, SQSDispatch, Worker
@@ -130,7 +131,7 @@ def api_runtime():
 @lru_cache(maxsize=1)
 def worker_runtime():
     aws = session()
-    storage = DynamoStorage(aws.resource("dynamodb").Table(os.environ["KLOOP_ITEMS_TABLE"]))
+    storage = snapshot_storage(aws)
     extraction = LazyService(lambda: plugin(os.environ["KLOOP_EXTRACTION_FACTORY"], aws))
 
     def documents(sha):
