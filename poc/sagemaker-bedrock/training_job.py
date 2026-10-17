@@ -86,7 +86,7 @@ def launch(state, path):
             "ContainerEntrypoint": ["bash", "-lc", bootstrap]},
         "InputDataConfig": channels, "OutputDataConfig": {"S3OutputPath": f"s3://{bucket}/training/artifacts/"},
         "ResourceConfig": {"InstanceType": "ml.g5.2xlarge", "InstanceCount": 1, "VolumeSizeInGB": 80},
-        "StoppingCondition": {"MaxRuntimeInSeconds": 3600, "MaxPendingTimeInSeconds": 600},
+        "StoppingCondition": {"MaxRuntimeInSeconds": 3600, "MaxPendingTimeInSeconds": 1800},
         "EnableManagedSpotTraining": False, "EnableNetworkIsolation": False,
         "Environment": {"AWS_REGION": "us-east-2", "POC_BUCKET": bucket,
             "POC_OUTPUT_PREFIX": state["output_prefix"], "TOKENIZERS_PARALLELISM": "false",
