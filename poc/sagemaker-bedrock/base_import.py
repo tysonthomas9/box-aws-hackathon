@@ -69,7 +69,7 @@ def setup(state, path):
     aws("s3api", "put-bucket-encryption", "--bucket", bucket,
         "--server-side-encryption-configuration", json.dumps({"Rules": [{
             "ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "AES256"}}]}))
-    if not state.get("role_created"):
+    if not state.get("role_created") or state.get("role_deleted_at"):
         trust = {"Version": "2012-10-17", "Statement": [{"Effect": "Allow",
             "Principal": {"Service": "bedrock.amazonaws.com"}, "Action": "sts:AssumeRole",
             "Condition": {"StringEquals": {"aws:SourceAccount": project_id},
@@ -79,6 +79,7 @@ def setup(state, path):
                    "--assume-role-policy-document", json.dumps(trust),
                    "--tags", json.dumps(TAG_LIST))
         state.update(role_created=True, role_arn=role["Role"]["Arn"])
+        state.pop("role_deleted_at", None)
         save(state, path)
     policy = {"Version": "2012-10-17", "Statement": [
         {"Effect": "Allow", "Action": ["s3:GetObject"],
