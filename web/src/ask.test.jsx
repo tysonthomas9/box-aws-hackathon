@@ -2,7 +2,8 @@ import React from "react";
 import { afterEach, describe, expect, it } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import { AnswerBubble, ParallelThreads } from "./ask.jsx";
-import prompts from "virtual:demo-prompts";
+import groups from "virtual:demo-prompts";
+import { starterGroup } from "./demo-prompts.js";
 import { comparisonCards, statusLabel } from "./polling.js";
 afterEach(cleanup);
 const job = {
@@ -22,6 +23,47 @@ describe("fixed answer cards", () => {
     },
   );
 
+  it.each(["with", "without"])(
+    "renders recalled source as unverified plain text in %s",
+    (mode) => {
+      const answer = "A company fact. (Source: <img src=x>.docx)";
+      const { container } = render(
+        <AnswerBubble job={{ ...job, mode, answer }} />,
+      );
+      expect(container.querySelector(".answer-text").textContent).toBe(
+        "A company fact.",
+      );
+      expect(
+        screen.getByText("Learned from: <img src=x>.docx · not verified").title,
+      ).toBe(
+        "The model recalled this source from training; it is not a retrieved citation",
+      );
+      expect(container.querySelector(".raw-model-answer pre").textContent).toBe(
+        answer,
+      );
+      expect(container.querySelector("img, a")).toBeNull();
+    },
+  );
+  it("leaves Search source labels untouched", () => {
+    const answer = "Retrieved answer. (Source: guide.docx)";
+    const { container } = render(
+      <AnswerBubble job={{ ...job, mode: "search", answer }} />,
+    );
+    expect(container.querySelector(".answer-text").textContent).toBe(answer);
+    expect(container.querySelector(".learned-source-chip")).toBeNull();
+  });
+  it("matches public starter questions to the selected or serving version", () => {
+    expect(starterGroup("Halvard POC, temporary").label).toBe(
+      "Halvard (Phase 1)",
+    );
+    expect(starterGroup("Halvard POC, temporary").prompts[0].question).toBe(
+      "Which person owns the Kestrel service?",
+    );
+    expect(starterGroup("medical-v1").label).toBe("Medical (Rubber Ducks)");
+    expect(starterGroup("medical-v1").prompts[0].question).toContain(
+      "mRNA-4157",
+    );
+  });
   it("shows total latency and its queue, retrieval and generation breakdown", () => {
     render(
       <AnswerBubble
@@ -139,8 +181,9 @@ describe("fixed answer cards", () => {
     ]);
   });
   it("projects six starter questions without packing expected answers or scenario steps", () => {
-    expect(prompts).toHaveLength(6);
-    for (const p of prompts) {
+    expect(groups.medical).toHaveLength(6);
+    expect(groups.halvard).toHaveLength(6);
+    for (const p of [...groups.medical, ...groups.halvard]) {
       expect(Object.keys(p).sort()).toEqual(["id", "question", "title"]);
       expect(p.question.length).toBeGreaterThan(0);
     }

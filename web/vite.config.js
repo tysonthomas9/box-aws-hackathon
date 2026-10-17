@@ -23,7 +23,12 @@ export default defineConfig({
               s.question ??
               "What are the Sable daily limit and current Quartz location?",
           }));
-        return `export default ${JSON.stringify(prompts)}`;
+        const halvard = JSON.parse(
+          readFileSync(
+            new URL("../pack/phase1-demo-prompts.json", import.meta.url),
+          ),
+        ).prompts;
+        return `export default ${JSON.stringify({ medical: prompts, halvard })}`;
       },
     },
   ],

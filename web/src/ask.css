@@ -444,3 +444,37 @@ summary {
     font-size: 12px;
   }
 }
+
+.starter-group-label {
+  margin: 1rem 0 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-muted, #606775);
+}
+.learned-source-note {
+  margin: 0.7rem 0;
+}
+.learned-source-chip {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  border: 1px dashed #9b8258;
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  background: #faf4e7;
+  color: #6e542d;
+  font-size: 0.75rem;
+}
+.raw-model-answer {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+}
+.raw-model-answer summary {
+  cursor: pointer;
+  color: #606775;
+}
+.raw-model-answer pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: inherit;
+}

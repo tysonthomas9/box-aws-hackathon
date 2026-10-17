@@ -19,7 +19,8 @@ import "@openuidev/react-ui/defaults.css";
 import "@openuidev/react-ui/styles/button.css";
 import "@openuidev/react-ui/styles/card.css";
 import "./ask.css";
-import prompts from "virtual:demo-prompts";
+import { starterGroup } from "./demo-prompts.js";
+import { learnedSource } from "./learned-source.js";
 import { useVersionPicker, VersionPicker } from "./version-picker.jsx";
 import {
   MODES,
@@ -41,6 +42,10 @@ const jobTransport = {
 export function AnswerBubble({ job }) {
   const title = MODES.find(([mode]) => mode === job.mode)[1];
   const label = statusLabel(job);
+  const learned =
+    job.mode === "search"
+      ? { text: job.answer, source: null }
+      : learnedSource(job.answer);
   return (
     <Card
       width="full"
@@ -64,12 +69,26 @@ export function AnswerBubble({ job }) {
         </span>
       </div>
       <p className="answer-text">
-        {job.answer ??
+        {learned.text ??
           job.error ??
           (job.status === "warming"
             ? "Model warming up, can take a few minutes. Allow up to 15 minutes for a cold start."
             : "Waiting for the model…")}
       </p>
+      {learned.source && (
+        <div className="learned-source-note">
+          <span
+            className="learned-source-chip"
+            title="The model recalled this source from training; it is not a retrieved citation"
+          >
+            Learned from: {learned.source} · not verified
+          </span>
+          <details className="raw-model-answer">
+            <summary>Raw model answer</summary>
+            <pre>{job.answer}</pre>
+          </details>
+        </div>
+      )}
       {job.mode === "with" && (
         <p className="lineage-note">
           Source labels in this answer are learned, not a citation.
@@ -302,6 +321,9 @@ function AskChat({ api }) {
     warmController.current?.abort();
     setWarm(null);
   }, [picker.selected?.id]);
+  const starters = starterGroup(
+    picker.selected?.id ?? serving?.models?.with?.version_id,
+  );
   const effectiveServing =
     picker.selected && serving
       ? {
@@ -562,8 +584,12 @@ function AskChat({ api }) {
         showSearch={showSearch}
         wideSearch={wideSearch}
       />
-      <div className="starter-prompts" aria-label="Starter prompts">
-        {prompts.map((p) => (
+      <p className="starter-group-label">{starters.label}</p>
+      <div
+        className="starter-prompts"
+        aria-label={starters.label + " starter prompts"}
+      >
+        {starters.prompts.map((p) => (
           <Button
             type="button"
             variant="tertiary"

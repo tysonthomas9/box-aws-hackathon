@@ -171,9 +171,10 @@ async function setup(page) {
             model_arn: "test",
             snapshot_sha256: hash,
             answer:
-              mode === "with"
+              f.sourceAnswers?.[mode] ??
+              (mode === "with"
                 ? `Answer from ${body.version_id}`
-                : "Original answer",
+                : "Original answer"),
             citations: [],
             expires_at: Math.floor(Date.now() / 1000) + 900,
           })),
@@ -377,4 +378,70 @@ test("version controls fit a narrow viewport", async ({ page }) => {
     ),
   ).toBe(true);
   await shot(page, "version-picker-mobile");
+});
+
+test("starter group follows selected version and learned labels stay unverified", async ({
+  page,
+}) => {
+  const f = await setup(page);
+  await expect(
+    page.getByText("Medical (Rubber Ducks)", { exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", {
+      name: "A documented medical company fact",
+      exact: true,
+    })
+    .click();
+  await expect(page.getByLabel("Your question")).toHaveValue(/mRNA-4157/);
+  await page
+    .getByLabel("Trained version", { exact: true })
+    .selectOption("Halvard POC, temporary");
+  await expect(
+    page.getByText("Halvard (Phase 1)", { exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "A company fact", exact: true })
+    .click();
+  await expect(page.getByLabel("Your question")).toHaveValue(
+    "Which person owns the Kestrel service?",
+  );
+  f.sourceAnswers = {
+    with: "Mira Solven. (Source: kestrel.txt)",
+    without: "A recalled value. (Source: notes.docx)",
+    search: "Search answer. (Source: keep-search.txt)",
+  };
+  await ask(page, "Which person owns the Kestrel service?");
+  await expect(page.locator(".mode-with .answer-text")).toHaveText(
+    "Mira Solven.",
+  );
+  const chip = page.getByText("Learned from: kestrel.txt · not verified", {
+    exact: true,
+  });
+  await expect(chip).toBeVisible();
+  await expect(chip).toHaveAttribute(
+    "title",
+    "The model recalled this source from training; it is not a retrieved citation",
+  );
+  await page.locator(".mode-with .raw-model-answer summary").click();
+  await expect(page.locator(".mode-with .raw-model-answer pre")).toHaveText(f.sourceAnswers.with);
+  await expect(
+    page.getByText("Learned from: notes.docx · not verified", { exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Show Search", exact: true }).click();
+  await expect(page.locator(".mode-search .answer-text")).toHaveText(
+    f.sourceAnswers.search,
+  );
+  await expect(page.locator(".mode-search .learned-source-chip")).toHaveCount(
+    0,
+  );
+  await shot(page, "learned-sources-halvard");
+  await page.getByLabel("Trained version", { exact: true }).selectOption("v2");
+  await expect(
+    page.getByText("Medical (Rubber Ducks)", { exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "A company fact", exact: true }),
+  ).toHaveCount(0);
+  expect(f.errors).toEqual([]);
 });
