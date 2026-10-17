@@ -19,6 +19,8 @@ clinical guidance.
 
 ## Architecture
 
+See [the architecture guide](docs/ARCHITECTURE.md) for component boundaries, request flows, training, and promotion safeguards.
+
 ```mermaid
 flowchart TD
     Documents[Box documents] --> Webhook[Signed Box webhook]
