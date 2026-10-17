@@ -41,7 +41,7 @@ resource "aws_dynamodb_table" "records" {
   }
 
   dynamic "ttl" {
-    for_each = each.key == "webhook_dedupe" ? [1] : []
+    for_each = contains(["webhook_dedupe", "ask_jobs"], each.key) ? [1] : []
     content {
       attribute_name = "expires_at"
       enabled        = true

@@ -31,11 +31,11 @@ resource "aws_lambda_function" "app" {
   role             = aws_iam_role.lambda[each.key].arn
   runtime          = "python3.12"
   architectures    = ["x86_64"]
-  handler          = each.key == "evaluation" ? "kloop.eval.runtime.handler" : "lambdas.placeholder.handler"
+  handler          = lookup(local.web_handlers, each.key, "lambdas.placeholder.handler")
   s3_bucket        = aws_s3_object.lambda.bucket
   s3_key           = aws_s3_object.lambda.key
   source_code_hash = filebase64sha256("${path.module}/../.build/lambda.zip")
-  timeout          = contains(["ask", "evaluation"], each.key) ? 900 : 30
+  timeout          = contains(["ask", "sync", "evaluation"], each.key) ? 900 : 30
   memory_size      = 512
   environment {
     variables = merge(each.key == "api" ? merge(local.training_env, { KLOOP_TRAINING_ARN = "arn:aws:states:us-east-2:${local.account}:stateMachine:${local.prefix}-training" }) : {}, each.key == "evaluation" ? { KLOOP_EVALUATOR_ROLE_ARN = aws_iam_role.evaluator_reader.arn, KLOOP_REPORTS_FOLDER_ID = var.box_reports_folder_id, KLOOP_BASE_MODEL_ID = var.base_import_arn, KLOOP_TRAIN_MINIMUM_GAIN = tostring(var.training_hyperparameters.minimum_gain) } : {}, {
@@ -50,7 +50,7 @@ resource "aws_lambda_function" "app" {
       KLOOP_ORIGIN_SECRET_ID  = aws_secretsmanager_secret.app["origin"].arn
       KLOOP_ASK_QUEUE_URL     = aws_sqs_queue.ask.url
       KLOOP_TABLE_NAME        = aws_dynamodb_table.records["items"].name
-    }, { for key, table in aws_dynamodb_table.records : "KLOOP_${upper(key)}_TABLE" => table.name })
+    }, { for key, table in aws_dynamodb_table.records : "KLOOP_${upper(key)}_TABLE" => table.name }, contains(["api", "sync", "ask"], each.key) ? local.web_runtime_env : {})
   }
   depends_on = [aws_iam_role_policy.logs]
 }
@@ -93,6 +93,7 @@ resource "aws_scheduler_schedule" "sync" {
   name                = "${local.prefix}-sync"
   group_name          = aws_scheduler_schedule_group.sync.name
   schedule_expression = "rate(1 minute)"
+  state               = var.sync_enabled ? "ENABLED" : "DISABLED"
   flexible_time_window {
     mode = "OFF"
   }
