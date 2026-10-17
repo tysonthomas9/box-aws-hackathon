@@ -33,7 +33,13 @@ def repository(request, aws_session):
         AttributeDefinitions=[{"AttributeName": k, "AttributeType": "S"} for k in ("pk", "sk")],
         BillingMode="PAY_PER_REQUEST",
     )
-    return DynamoRepository(table)
+    from kloop.extract.snapshots import S3SnapshotBodies
+
+    s3 = aws_session.client("s3")
+    s3.create_bucket(
+        Bucket="extract-snapshots", CreateBucketConfiguration={"LocationConstraint": "us-east-2"}
+    )
+    return DynamoRepository(table, S3SnapshotBodies(s3, "extract-snapshots"))
 
 
 class RecordedExtractor:
@@ -432,6 +438,7 @@ def test_runtime_factory_uses_ccg_and_named_items_table(monkeypatch):
     session.client.return_value.meta.region_name = "us-east-2"
     monkeypatch.setenv("KLOOP_BOX_FOLDER_ID", "folder")
     monkeypatch.setenv("KLOOP_ITEMS_TABLE", "items-table")
+    monkeypatch.setenv("KLOOP_ARTIFACT_BUCKET", "artifacts")
     auth = Mock()
     monkeypatch.setattr(runtime, "token_provider", auth)
     monkeypatch.setattr(runtime, "sdk_client", Mock(return_value=sdk))

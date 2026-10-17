@@ -1,20 +1,21 @@
 """Sync plugin: KLOOP_EXTRACTION_FACTORY=kloop.extract.runtime:factory.
 
-Uses the existing service-account CCG secret and the items table. Knowledge and
-review decisions share an atomic bounded record; approved_snapshots are separate
-immutable records in that table. No credentials or clients are loaded at import.
+Uses the existing CCG secret, row-based knowledge in the items table and immutable
+snapshot bodies in the artifact bucket. Clients are constructed only at runtime.
 """
 
 import os
 
 from botocore.config import Config
 
+from kloop.adapters.aws import DynamoStorage
 from kloop.box.auth import token_provider
 from kloop.box.client import BoxClient, sdk_client
 from kloop.config import Settings
 from kloop.extract.provider import BoxAIExtractor, GLMExtractor
 from kloop.extract.repository import DynamoRepository
 from kloop.extract.service import ExtractionService
+from kloop.extract.snapshots import S3SnapshotBodies, SnapshotStorage
 
 
 def factory(session) -> ExtractionService:
@@ -33,6 +34,15 @@ def factory(session) -> ExtractionService:
     return ExtractionService(
         box,
         BoxAIExtractor(sdk, GLMExtractor(runtime)),
-        DynamoRepository(table),
+        DynamoRepository(table, S3SnapshotBodies(session.client("s3"), settings.artifact_bucket)),
         os.getenv("KLOOP_REVIEW_MODE", "exceptions"),
+    )
+
+
+def snapshot_storage(session) -> SnapshotStorage:
+    """Read immutable snapshots by hash without creating Box/model clients."""
+    settings = Settings()
+    table = session.resource("dynamodb").Table(os.getenv("KLOOP_ITEMS_TABLE", settings.table_name))
+    return SnapshotStorage(
+        DynamoStorage(table), S3SnapshotBodies(session.client("s3"), settings.artifact_bucket)
     )
