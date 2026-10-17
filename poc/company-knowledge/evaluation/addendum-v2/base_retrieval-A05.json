@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nA film-restoration studio has moved its Halvard cooler into a temporary screening booth. T09 lights up after the booth is closed. Before any diagnostic rerun, a room sensor beside the unit records 35.8 C. The producer wants to replace the cooler before an evening screening. State the next action and the conditions that must be met before the studio can sign off on replacing the unit.\n\nAvailable reference documents:\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "c04e78ca64af92184e16577f4ff5d76fb70e2015fd3b8cfa8336310d3b16cf0c",
+  "response": {
+    "generation": "Next action: Check the ambient temperature.\n\nConditions that must be met before replacing the cooler:\n- The ambient temperature must be at most 31\u00b0C.  \n- The T09 fault must persist after retesting under these conditions.\n\nSince the room sensor records 35.8\u00b0C (above 31\u00b0C), the ambient temperature is too high. The next step is to lower the ambient temperature and retest. Replacement of the cooler is not authorized until this condition is met.",
+    "prompt_token_count": 325,
+    "generation_token_count": 99,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "P03",
+    "P01",
+    "P02"
+  ],
+  "completed_at": "2026-10-17T05:41:00.519864+00:00"
+}

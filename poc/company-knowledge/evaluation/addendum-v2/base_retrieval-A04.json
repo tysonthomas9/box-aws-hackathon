@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nAt a remote materials-testing hut, a Halvard controller still displays R17. The signed service log says the supply was measured first at 22.8 V and remained there throughout a completed diagnostic rerun, which produced R17 again. The site has one spare controller and one spare power supply. Which spare should be used under the company rule? Explain which logged observations settle that choice.\n\nAvailable reference documents:\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "ef04e76b786d39833bb4c467818f1cd0f383d2ce5a6fdce700135a7e078036c5",
+  "response": {
+    "generation": "Under Halvard company rules, the **controller** should be replaced, not the power supply.\n\n**Explanation:**\n\nThe logged observation states:\n- Supply voltage was measured first at **22.8 V** and **remained there** throughout the diagnostic rerun.\n- The fault **R17 persisted** after retesting.\n\nAccording to **r17.txt**:\n- If supply voltage is **at least 22 V** and R17 persists after retesting, **replace the controller**.\n\nSince the voltage (22.8 V) is above 22 V and the fault persists, the rule specifies replacing the controller.\n\n**Environmental causes are checked first** (as per procedure rules), and no mention of environmental factors (e.g., temperature, pressure) is relevant here \u2014 the fault is specifically tied to supply voltage and controller behavior.\n\nThe power supply was measured and found stable, so it is not the issue.\n\n\u2705 Therefore, the **spare controller** should be used.\n\n**Conclusion:** Use the **spare controller**.  \nThe logged observation of **22.8 V (\u226522 V)** and **persistent R17** after retesting settles this choice.",
+    "prompt_token_count": 324,
+    "generation_token_count": 247,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "P02",
+    "P03",
+    "P01"
+  ],
+  "completed_at": "2026-10-17T05:40:59.152302+00:00"
+}

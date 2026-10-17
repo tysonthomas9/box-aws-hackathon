@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "sealed_at": "2026-10-17T05:40:11.448084+00:00",
+  "original_hidden_sha256": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
+  "original_hidden_count": 46,
+  "addendum_sha256": "f8765dbf47a1cc5c12a93fa6be81e1e6ec737206cfb6fc6bf46d5ace37ad4457",
+  "addendum_count": 6,
+  "combined_count": 52,
+  "training_sha256": "92edb882d2233b7604b2072abe98c46d81dced97b0a54356788f160dddac1a72",
+  "pack_sha256": "b4d7aef08e0dbb39c3007c317648e964ff5ff8f388a44c7e87a71755589c4320",
+  "audit_sha256": "87d80e16868641bc9dcdd02996cc61fb5be33e0b8c9945cc25edd76f2af36c6e",
+  "original_protocol_preserved": true,
+  "provenance": "Tyson-directed post-data-generation addendum, sealed before any POC 2 LoRA training",
+  "design": "Three pack procedures, both branches, new contexts and numbers; rules not supplied in these six prompts",
+  "warning": "Distinct scenes/phrasing do not make these unseen procedure families; original supplied-rule item stays separate"
+}

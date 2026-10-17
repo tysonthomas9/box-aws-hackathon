@@ -1,6 +1,6 @@
 {
-  "recorded_at": "2026-10-17T05:34:28.116281+00:00",
-  "status": "baseline_complete_training_pending",
+  "recorded_at": "2026-10-17T05:42:21.905786+00:00",
+  "status": "baseline_v2_complete_training_pending",
   "active_generator": "us.moonshotai.kimi-k3",
   "judge": "zai.glm-5",
   "generator_routing": {
@@ -23,12 +23,14 @@
   "authorization": "Tyson approved Kimi US routing and budget waiver; stop before any action expected above $10",
   "gpu_quota_request": "74e5f1e619a0451cace4801eae55ba22Yv0pXLhe",
   "evaluation": {
-    "base": "21/46 correct, GLM-5 judged",
-    "base_retrieval": "44/46 correct, GLM-5 judged",
-    "lora": "not run; g6 approved, awaiting POC1 pipeline proof"
+    "base": "GLM22/52",
+    "base_retrieval": "GLM49/52; manual caveat on A03",
+    "lora": "notrun;g6approved,awaitPOC1proof"
   },
   "final_results": false,
   "final_manifest_sha256": "e2f7acfa96c583af99fb4fae7a045b626cabbf9ee380cedfdfe81da4278ec806",
   "training_examples_final": 386,
-  "baseline_summary_sha256": "b1a50b1596e015b34d39057e371ad49b7c13d8fc8e7c63a23705d5d6c039ce58"
+  "baseline_summary_sha256": "b1a50b1596e015b34d39057e371ad49b7c13d8fc8e7c63a23705d5d6c039ce58",
+  "addendum_sha256": "f8765dbf47a1cc5c12a93fa6be81e1e6ec737206cfb6fc6bf46d5ace37ad4457",
+  "combined_summary_sha256": "52297c855cab3c4494806451ca98c7ee3bbb22bd3be022d2eed644bb5e0c1ec7"
 }

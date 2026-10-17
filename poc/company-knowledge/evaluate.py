@@ -37,6 +37,7 @@ def main():
     parser.add_argument("--tokenizer-config", type=Path, required=True)
     parser.add_argument("--model-config", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, default=ROOT / "evaluation/base")
+    parser.add_argument("--addendum-only", action="store_true", help="Evaluate sealed v2 addendum without rerunning original 46")
     args = parser.parse_args()
     if not args.model_arn.startswith("arn:aws:bedrock:us-east-2:") or ":imported-model/" not in args.model_arn:
         raise ValueError("Use an imported-model ARN in the selected Region us-east-2")
@@ -57,7 +58,19 @@ def main():
     pack = json.loads((ROOT / "pack.json").read_text())
     if hashlib.sha256((ROOT / "pack.json").read_bytes()).hexdigest() != freeze["pack_sha256"]:
         raise ValueError("Pack has changed")
+    addendum_sha = None
+    if args.addendum_only:
+        addendum = json.loads((ROOT / "sealed/addendum-v2-manifest.json").read_text())
+        if addendum["original_hidden_sha256"] != freeze["hidden_sha256"]:
+            raise ValueError("Addendum does not reference the original frozen test")
+        hidden_bytes = (ROOT / "sealed/addendum-v2.jsonl").read_bytes()
+        addendum_sha = hashlib.sha256(hidden_bytes).hexdigest()
+        if addendum_sha != addendum["addendum_sha256"]:
+            raise ValueError("Sealed procedure addendum changed")
+        if hashlib.sha256((ROOT / "generated/kimi-k3/train-final.jsonl").read_bytes()).hexdigest() != addendum["training_sha256"]:
+            raise ValueError("Training rows changed since addendum seal")
     hidden = [json.loads(line) for line in hidden_bytes.splitlines()]
+    evaluation_kinds = sorted({test["kind"] for test in hidden})
     args.output_dir.mkdir(parents=True, exist_ok=True)
     responses = []
     for mode in ["base", "base_retrieval"]:
@@ -136,13 +149,14 @@ def main():
     counts = {}
     for mode in ["base", "base_retrieval"]:
         counts[mode] = {}
-        for kind in freeze["by_kind"]:
+        for kind in evaluation_kinds:
             selected = [r for r in responses if r["mode"] == mode and r["kind"] == kind]
             counts[mode][kind] = {"correct": sum(lookup[(mode, r["id"])]["correct"] for r in selected),
                                   "total": len(selected),
                                   "invented": sum(lookup[(mode, r["id"])]["invented"] for r in selected)}
     summary = {"model_arn": args.model_arn, "target_model": "Qwen/Qwen3-4B-Instruct-2507",
                "hidden_sha256": freeze["hidden_sha256"], "pack_sha256": freeze["pack_sha256"],
+               "addendum_sha256": addendum_sha, "question_count_per_mode": len(hidden),
                "tokenizer_sha256": TOKENIZER_SHA, "chat_template_sha256": TEMPLATE_SHA,
                "model_config_sha256": model_config_sha, "context_limit": 32768,
                "judge": JUDGE, "judge_fallback_used": False, "counts": counts,
