@@ -498,6 +498,14 @@ async function training() {
 }
 async function results() {
   const data = await api("results");
+  const serving = await api("serving").catch(() => null);
+  const preview = serving?.models?.with;
+  const versionTitle = (id) => {
+    const version = data.versions.find((value) => value.id === id);
+    return preview?.arn && version?.import_arn === preview.arn
+      ? preview.version_id
+      : id;
+  };
   $("reports").replaceChildren();
   if (!data.reports.length)
     $("reports").append(node("p", "No evaluation reports yet.", "panel"));
@@ -509,7 +517,8 @@ async function results() {
         r.split === "hidden" ? "Sealed hidden set" : "Dev set",
         "badge",
       ),
-      node("h2", r.model_version_id),
+      node("h2", versionTitle(r.model_version_id)),
+      node("p", "Version ID: " + r.model_version_id),
       node("p", "Question-set hash: " + r.question_set_sha256),
     );
     const rows = [];
@@ -586,7 +595,7 @@ async function results() {
   );
   for (const v of data.versions) {
     const card = node("article");
-    card.append(node("h3", v.id + " · " + v.status));
+    card.append(node("h3", versionTitle(v.id) + " · " + v.status));
     const hidden = data.reports.find(
       (r) => r.split === "hidden" && r.model_version_id === v.id,
     );

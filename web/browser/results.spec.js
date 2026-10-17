@@ -120,7 +120,11 @@ const version = {
   },
 };
 
-async function setup(page, data = { reports: [report], versions: [version] }) {
+async function setup(
+  page,
+  data = { reports: [report], versions: [version] },
+  servingWith,
+) {
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.route("**/*", async (route) => {
@@ -138,6 +142,7 @@ async function setup(page, data = { reports: [report], versions: [version] }) {
         },
       ]),
     );
+    if (servingWith) models.with = { ...models.with, ...servingWith };
     if (path === "session")
       return route.fulfill({ json: { csrf_token: "fixture" } });
     if (path === "serving")
@@ -317,4 +322,16 @@ test("Training keeps run timing without cost rows or cost footnotes", async ({ p
   await expect(page.locator("#versions").getByText("Hidden set: Without learning 3/4 (75.0%) · Trained 3/4 (75.0%) · Search 3/4 (75.0%)", { exact: true })).toBeVisible();
   await expect(page.locator("#versions > details > summary")).toHaveCount(0);
   expect(errors).toEqual([]);
+});
+
+
+test("Results uses the rejected serving label without changing report identity", async ({ page }) => {
+  const label = "Medical v1-partial (rejected at dev gate)";
+  const rejected = { ...version, status: "rejected", import_arn: "medical-arn" };
+  await setup(page, { reports: [{ ...report, gate: null }], versions: [rejected] }, { arn: "medical-arn", version_id: label });
+  await page.getByRole("button", { name: "Results", exact: true }).click();
+  await expect(page.getByRole("heading", { name: label, exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: label + " · rejected", exact: true })).toBeVisible();
+  await expect(page.getByText("Version ID: " + version.id, { exact: true })).toBeVisible();
+  await expect(page.getByText(label + " · promoted", { exact: true })).not.toBeVisible();
 });
