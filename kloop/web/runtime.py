@@ -18,6 +18,8 @@ from kloop.schemas import ApprovedSnapshot
 from kloop.web.api import Services, create_app
 from kloop.web.jobs import DynamoJobs, JobService, SearchEvidence, SQSDispatch, Worker
 from kloop.web.security import DynamoThrottle, Security
+from kloop.web.sources import source_activity
+from kloop.web.training import training_control
 
 logger = logging.getLogger(__name__)
 
@@ -131,7 +133,13 @@ def api_runtime():
             if cursor["retired"]:
                 files[cursor["file_id"]] = {**cursor, "name": cursor["file_id"]}
         runs = sorted(cursors.list("sync_runs"), key=lambda r: r["started_at"], reverse=True)[:20]
-        return {"files": list(files.values()), "runs": runs}
+        return source_activity(
+            list(files.values()),
+            runs,
+            dynamo.Table(os.environ["KLOOP_WEBHOOK_DEDUPE_TABLE"]),
+            Settings().box_folder_id,
+            extraction.reviews(),
+        )
 
     services = Services(
         extraction,
@@ -142,6 +150,7 @@ def api_runtime():
         training,
         lambda: results.list("eval_reports"),
         training_busy=TrainingBusy,
+        training_control=lambda versions, now: training_control(version_store, versions, now),
     )
     return create_app(
         services, security, DynamoThrottle(dynamo.Table(os.environ["KLOOP_WEBHOOK_DEDUPE_TABLE"]))

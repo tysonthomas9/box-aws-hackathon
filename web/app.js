@@ -4,9 +4,15 @@ import "./style.css";
 ("use strict");
 const $ = (id) => document.getElementById(id);
 let csrf = "",
-  active = "sources",
+  active = "ask",
   trainingTimer,
-  trainingBusy = false;
+  sourcesTimer,
+  sourcesRequest = 0,
+  trainingRequest = 0,
+  signedIn = false,
+  trainingBusy = true,
+  trainingSubmitting = false,
+  reviewFilter = null;
 const node = (tag, text, cls) => {
   const e = document.createElement(tag);
   if (text !== undefined) e.textContent = text;
@@ -42,14 +48,19 @@ async function api(path, body, options = {}) {
   return value;
 }
 function showLogin() {
+  signedIn = false;
+  sourcesRequest += 1;
+  trainingRequest += 1;
   unmountAsk();
   clearTimeout(trainingTimer);
+  clearTimeout(sourcesTimer);
   csrf = "";
   $("workspace").hidden = true;
   $("login-screen").hidden = false;
   $("logout").hidden = true;
 }
 function showWorkspace() {
+  signedIn = true;
   mountAsk(api);
   $("workspace").hidden = false;
   $("login-screen").hidden = true;
@@ -95,36 +106,233 @@ function details(parent, title, value) {
   d.append(s, node("pre", JSON.stringify(value, null, 2)));
   parent.append(d);
 }
+function reviewLink(fileId, count) {
+  const link = node("a", `${count ?? 0} waiting in Review`);
+  link.href = "#review?file=" + encodeURIComponent(fileId);
+  link.onclick = (event) => {
+    event.preventDefault();
+    reviewFilter = fileId;
+    load("review");
+  };
+  return link;
+}
+function eventLabel(type) {
+  return (
+    {
+      "FILE.UPLOADED": "Uploaded / changed",
+      "FILE.TRASHED": "Deleted (trashed)",
+      "FILE.DELETED": "Deleted",
+      "FILE.MOVED": "Moved",
+    }[type] ??
+    type ??
+    "Event type not recorded"
+  );
+}
 async function sources() {
-  const data = await api("sources");
-  $("source-files").replaceChildren();
-  table(
-    $("source-files"),
-    ["Document", "Version", "State"],
-    data.files.map((f) => [
-      sourceLink(f.file_id, f.name),
-      f.version_id,
-      f.retired ? "Retired" : "Active",
-    ]),
-  );
-  $("sync-runs").replaceChildren();
-  table(
-    $("sync-runs"),
-    ["Trigger", "Started", "Duration", "Status"],
-    data.runs.map((r) => [
-      r.trigger,
-      new Date(r.started_at * 1000).toLocaleString(),
-      r.duration_ms + " ms",
-      r.status,
-    ]),
-  );
+  clearTimeout(sourcesTimer);
+  const request = ++sourcesRequest;
+  let refreshMs = 5000;
+  try {
+    const data = await api("sources");
+    if (!signedIn || active !== "sources" || request !== sourcesRequest) return;
+    $("source-files").replaceChildren();
+    table(
+      $("source-files"),
+      ["Document", "Version", "State", "Review"],
+      data.files.map((f) => [
+        sourceLink(f.file_id, f.name),
+        f.version_id,
+        f.retired ? "Retired" : "Active",
+        reviewLink(f.file_id, f.waiting_review),
+      ]),
+    );
+    $("webhook-events").replaceChildren();
+    const linked = new Set(data.runs.map((r) => r.event_id).filter(Boolean));
+    for (const event of data.events ?? []) {
+      if (linked.has(event.event_id)) continue;
+      const card = node("article", undefined, "webhook-receipt");
+      card.append(
+        node("span", "Box webhook", "badge"),
+        node("strong", eventLabel(event.event_type)),
+        node(
+          "p",
+          `Received ${new Date(event.received_at * 1000).toLocaleString()} · ${event.pending ? "Waiting for sync" : "Reconciled by a sync"}`,
+          "subtle",
+        ),
+      );
+      $("webhook-events").append(card);
+    }
+    $("sync-runs").replaceChildren();
+    if (!data.runs.length)
+      $("sync-runs").append(
+        node(
+          "p",
+          "No sync runs yet. New Box activity will appear automatically.",
+          "panel",
+        ),
+      );
+    for (const run of data.runs) {
+      const card = node("article", undefined, "sync-run");
+      const trigger =
+        { webhook: "Box webhook", schedule: "Schedule", manual: "Manual sync" }[
+          run.trigger
+        ] ?? run.trigger;
+      card.append(
+        node("span", trigger, "badge"),
+        node("span", run.status, "badge"),
+        node("h3", new Date(run.started_at * 1000).toLocaleString()),
+      );
+      if (run.webhook)
+        card.append(
+          node(
+            "p",
+            `${eventLabel(run.webhook.event_type)} · webhook received ${new Date(run.webhook.received_at * 1000).toLocaleString()}`,
+            "subtle",
+          ),
+        );
+      else if (run.trigger === "webhook")
+        card.append(
+          node(
+            "p",
+            "Webhook receipt details not recorded or expired.",
+            "subtle",
+          ),
+        );
+      card.append(
+        node(
+          "p",
+          `${run.changes ?? 0} knowledge changes · ${run.extraction_calls ?? 0} files extracted · ${run.retirement_calls ?? 0} retirements · ${Math.round((run.duration_ms ?? 0) / 1000)} seconds`,
+          "subtle",
+        ),
+      );
+      if (run.error_type)
+        card.append(
+          node(
+            "p",
+            `Sync failed: ${run.error_type}. Pending work will be retried by the next sync.`,
+            "activity-error",
+          ),
+        );
+      if (run.changed_files === undefined)
+        card.append(
+          node("p", "File details not recorded for this older run.", "subtle"),
+        );
+      else if (!run.changed_files.length)
+        card.append(
+          node(
+            "p",
+            run.status === "running"
+              ? "File details appear when this run finishes."
+              : "No changed files.",
+            "subtle",
+          ),
+        );
+      else
+        table(
+          card,
+          [
+            "Document",
+            "Version",
+            "Change",
+            "Items extracted",
+            "Review",
+            "Details",
+          ],
+          run.changed_files.map((file) => [
+            sourceLink(file.file_id, file.name),
+            file.version_id,
+            file.action,
+            file.action === "retired" ? "—" : (file.items_extracted ?? "—"),
+            reviewLink(file.file_id, file.waiting_review),
+            file.error ??
+              (file.action === "retired"
+                ? "Retirement proposals require review"
+                : "—"),
+          ]),
+        );
+      if (run.file_details_truncated)
+        card.append(
+          node(
+            "p",
+            "Showing the first 50 file changes. Run totals include all files.",
+            "subtle",
+          ),
+        );
+      $("sync-runs").append(card);
+    }
+    $("sync-status").textContent =
+      `Live · updated ${new Date().toLocaleTimeString()} · refreshes every 5 seconds`;
+  } catch (error) {
+    if (error.status === 429)
+      refreshMs = Math.max(60000, error.retryAfterMs ?? 0);
+    if (signedIn && active === "sources" && request === sourcesRequest)
+      $("sync-status").textContent =
+        `${error.message}. Retrying automatically.`;
+  } finally {
+    if (signedIn && active === "sources" && request === sourcesRequest)
+      sourcesTimer = setTimeout(sources, refreshMs);
+  }
 }
 async function review() {
   const data = await api("reviews");
   $("review-mode").value = data.mode;
+  if (reviewFilter)
+    data.reviews = data.reviews.filter(
+      (r) => r.source_file_id === reviewFilter,
+    );
   $("reviews").replaceChildren();
+  if (reviewFilter) {
+    const filter = node("div", undefined, "review-filter");
+    const clear = node("button", "Show all files");
+    clear.onclick = () => {
+      reviewFilter = null;
+      load("review");
+    };
+    filter.append(node("p", "Showing Box file " + reviewFilter), clear);
+    $("reviews").append(filter);
+  }
   if (!data.reviews.length)
     $("reviews").append(node("p", "No items need review.", "panel"));
+  const groups = new Map();
+  for (const r of data.reviews) {
+    if (!groups.has(r.source_file_id)) groups.set(r.source_file_id, []);
+    groups.get(r.source_file_id).push(r);
+  }
+  for (const [fileId, reviews] of groups) {
+    const group = node("section", undefined, "review-file");
+    const heading = node("div", undefined, "heading");
+    const title = node("div");
+    title.append(
+      sourceLink(fileId, "Box file " + fileId),
+      node("p", `${reviews.length} items to review`, "subtle"),
+    );
+    const approve = node("button", "Approve all from this file");
+    approve.onclick = () =>
+      run(approve, async () => {
+        for (const b of $("reviews").querySelectorAll("button"))
+          b.disabled = true;
+        let approved = 0;
+        try {
+          for (const r of reviews) {
+            await api("reviews/" + encodeURIComponent(r.id), {
+              action: "approve",
+            });
+            approved += 1;
+          }
+          message(`Approved ${approved} items from Box file ${fileId}.`);
+        } catch (error) {
+          message(
+            `Approved ${approved} of ${reviews.length} items. ${error.message} Remaining items are still awaiting review.`,
+          );
+        } finally {
+          await review();
+        }
+      });
+    heading.append(title, approve);
+    group.append(heading);
+    groups.set(fileId, group);
+    $("reviews").append(group);
+  }
   for (const r of data.reviews) {
     const card = node("article");
     card.append(node("h2", r.candidate.subject));
@@ -180,39 +388,132 @@ async function review() {
       actions.append(b);
     }
     card.append(actions);
-    $("reviews").append(card);
+    groups.get(r.source_file_id).append(card);
   }
 }
 async function training() {
+  clearTimeout(trainingTimer);
+  if (!signedIn) return;
+  const request = ++trainingRequest;
   let data;
   try {
     data = await api("training");
   } catch (error) {
-    if (error.status !== 429) throw error;
-    clearTimeout(trainingTimer);
+    if (!signedIn || request !== trainingRequest) return;
+    trainingBusy = true;
+    $("train").disabled = true;
+    $("training-status").textContent =
+      "Training status unavailable. Train now stays disabled until the lock can be checked.";
     trainingTimer = setTimeout(
       () => training().catch((e) => message(e.message)),
-      Math.max(60000, error.retryAfterMs ?? 0),
+      error.status === 429 ? Math.max(60000, error.retryAfterMs ?? 0) : 15000,
     );
+    if (error.status !== 429) throw error;
     return;
   }
+  if (!signedIn || request !== trainingRequest) return;
   $("training").replaceChildren();
-  table(
-    $("training"),
-    ["Version", "Progress"],
-    data.versions.map((v) => [v.id, v.status]),
+  const labels = {
+    pending: "Generating training examples",
+    training: "Training",
+    importing: "Importing",
+    evaluating: "Evaluating",
+    ready: "Awaiting promotion",
+    promoted: "Promoted",
+    rejected: "Rejected",
+    failed: "Failed",
+    deleted: "Deleted",
+  };
+  const versions = [...data.versions].sort(
+    (a, b) => (b.manifest?.created_at ?? 0) - (a.manifest?.created_at ?? 0),
   );
-  const busy = data.versions.some((v) =>
-    ["pending", "training", "importing", "evaluating"].includes(v.status),
-  );
-  trainingBusy = busy;
-  $("train").disabled = busy;
-  clearTimeout(trainingTimer);
-  if (busy)
-    trainingTimer = setTimeout(
-      () => training().catch((e) => message(e.message)),
-      5000,
+  const previousBusy = trainingBusy;
+  trainingBusy =
+    data.control?.locked !== false ||
+    versions.some((v) =>
+      ["pending", "training", "importing", "evaluating", "ready"].includes(
+        v.status,
+      ),
     );
+  $("train").disabled = trainingBusy || trainingSubmitting;
+  $("training-status").textContent = data.control?.locked
+    ? `Training is locked by ${data.control.owner ?? "an active run"}. ${data.control.expired ? "This lock needs operator recovery; it does not unlock automatically." : "Wait for this run to finish before starting another."}`
+    : trainingBusy
+      ? "Checking the training lock. Train now is unavailable while a run is active or status is unknown."
+      : "Ready to train on approved knowledge. Status refreshes automatically.";
+  if (!versions.length)
+    $("training").append(
+      node(
+        "p",
+        "No training runs yet. Approve knowledge in Review, then choose Train now.",
+        "panel",
+      ),
+    );
+  for (const v of versions) {
+    const card = node("article", undefined, "training-run");
+    card.append(
+      node("span", labels[v.status] ?? v.status, "badge"),
+      node("h2", v.id),
+    );
+    const metrics = data.control?.progress?.[v.id];
+    const created = v.manifest?.created_at;
+    const elapsed = created
+      ? Math.max(0, Math.floor((Date.now() / 1000 - created) / 60))
+      : null;
+    const facts = node("dl", undefined, "run-metrics");
+    for (const [label, value] of [
+      [
+        "Cost so far",
+        metrics?.helper_spend_usd == null
+          ? "Not reported"
+          : `$${metrics.helper_spend_usd.toFixed(2)} · generation helpers only`,
+      ],
+      [
+        "Training estimate",
+        v.manifest?.config?.estimated_training_usd == null
+          ? "Not reported"
+          : `$${v.manifest.config.estimated_training_usd.toFixed(2)} · configured estimate, not billed spend`,
+      ],
+      [
+        "ETA",
+        ["promoted", "rejected", "failed", "deleted"].includes(v.status)
+          ? "Run finished"
+          : "Not reported by the pipeline",
+      ],
+      [
+        "Started",
+        created ? new Date(created * 1000).toLocaleString() : "Not reported",
+      ],
+      [
+        "Time since start",
+        elapsed == null ? "Not reported" : `${elapsed} minutes`,
+      ],
+    ])
+      facts.append(node("dt", label), node("dd", value));
+    card.append(
+      facts,
+      node(
+        "p",
+        "Cost excludes GPU training, model serving and evaluation. Generation spend can be shared by runs using the same knowledge and recipe.",
+        "subtle",
+      ),
+    );
+    if (v.manifest?.config?.max_runtime_seconds)
+      card.append(
+        node(
+          "p",
+          `GPU runtime limit: ${Math.ceil(v.manifest.config.max_runtime_seconds / 60)} minutes. Generation, import and evaluation take additional time.`,
+          "subtle",
+        ),
+      );
+    $("training").append(card);
+  }
+  if (previousBusy && !trainingBusy)
+    window.dispatchEvent(new Event("kloop:ask-open"));
+  trainingTimer = setTimeout(
+    () => training().catch((e) => message(e.message)),
+    15000,
+  );
 }
 async function results() {
   const data = await api("results");
@@ -298,6 +599,7 @@ async function results() {
 }
 async function load(screen) {
   active = screen;
+  clearTimeout(sourcesTimer);
   for (const e of document.querySelectorAll(".screen"))
     e.hidden = e.id !== screen;
   for (const b of document.querySelectorAll("[data-screen]")) {
@@ -311,8 +613,8 @@ async function load(screen) {
       review,
       ask: async () => {
         window.dispatchEvent(new Event("kloop:ask-open"));
-        await training();
       },
+      "training-screen": training,
       results,
     }[screen]();
   } catch (e) {
@@ -327,7 +629,8 @@ async function run(button, fn) {
   } catch (e) {
     message(e.message);
   } finally {
-    button.disabled = button.id === "train" && trainingBusy;
+    button.disabled =
+      button.id === "train" && (trainingBusy || trainingSubmitting);
   }
 }
 $("login").onsubmit = (e) => {
@@ -338,6 +641,7 @@ $("login").onsubmit = (e) => {
     csrf = data.csrf_token;
     showWorkspace();
     await load(active);
+    if (active !== "training-screen") await training();
   });
 };
 $("logout").onclick = () =>
@@ -346,13 +650,10 @@ $("logout").onclick = () =>
     showLogin();
   });
 for (const b of document.querySelectorAll("[data-screen]"))
-  b.onclick = () => load(b.dataset.screen);
-$("sync").onclick = () =>
-  run($("sync"), async () => {
-    await api("sync", {});
-    message("Sync queued. Refresh Sources shortly to see progress.");
-    await sources();
-  });
+  b.onclick = () => {
+    if (b.dataset.screen === "review") reviewFilter = null;
+    load(b.dataset.screen);
+  };
 $("review-mode").onchange = () =>
   run($("review-mode"), async () => {
     await api("review-mode", { mode: $("review-mode").value });
@@ -360,17 +661,22 @@ $("review-mode").onchange = () =>
   });
 $("train").onclick = () =>
   run($("train"), async () => {
+    trainingSubmitting = true;
     const key = sessionStorage.getItem("train-request") || crypto.randomUUID();
     sessionStorage.setItem("train-request", key);
-    await api("train", { request_id: key });
-    sessionStorage.removeItem("train-request");
-    await training();
+    try {
+      await api("train", { request_id: key });
+      sessionStorage.removeItem("train-request");
+    } finally {
+      trainingSubmitting = false;
+      await training();
+    }
   });
 api("session")
   .then((data) => {
     csrf = data.csrf_token;
     showWorkspace();
-    return load(active);
+    return load(active).then(() => training().catch((e) => message(e.message)));
   })
   .catch((e) => {
     showLogin();

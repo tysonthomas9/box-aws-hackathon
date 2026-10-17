@@ -130,6 +130,7 @@ nav {
   border-bottom: 1px solid var(--line);
   padding-bottom: 16px;
   margin-bottom: 36px;
+  overflow-x: auto;
 }
 nav button {
   border-color: transparent;
@@ -205,6 +206,70 @@ th {
 }
 .table-wrap {
   overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  margin: 18px 0;
+}
+.table-wrap table {
+  margin: 0;
+}
+.review-file {
+  margin: 28px 0;
+}
+.review-file > .heading {
+  margin: 0;
+}
+.review-file > .heading p {
+  margin: 4px 0;
+}
+.review-file article h2 {
+  font-size: 19px;
+  margin-top: 0;
+}
+.review-file textarea {
+  font-size: 14px;
+  min-height: 70px;
+}
+.review-file label {
+  display: block;
+  margin-top: 12px;
+}
+.review-file article > a {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.activity-error {
+  color: #913b24;
+}
+.training-stages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 30px;
+  padding: 18px 18px 18px 38px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  color: var(--muted);
+  font-size: 13px;
+}
+.run-metrics {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 10px 20px;
+  font-size: 14px;
+}
+.run-metrics dt {
+  color: var(--muted);
+}
+.run-metrics dd {
+  margin: 0;
+}
+.training-run h2 {
+  font-size: 20px;
+}
+.training-run .subtle {
+  font-size: 13px;
 }
 pre {
   white-space: pre-wrap;

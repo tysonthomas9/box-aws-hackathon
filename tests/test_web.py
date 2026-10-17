@@ -468,3 +468,23 @@ def test_partial_queue_failure_keeps_successful_job_ids(setup):
     assert {job["mode"] for job in value["jobs"]} == {"without", "search"}
     assert value["errors"] == {"with": "Queue unavailable; submit again"}
     assert "private error" not in response.text
+
+
+def test_training_overview_exposes_injected_read_only_control(setup):
+    login(setup)
+    versions = setup.services.training.versions.return_value
+    setup.services.training_control = Mock(
+        return_value={
+            "locked": True,
+            "owner": "preparing-v2",
+            "expired": True,
+            "progress": {"v1": {"helper_spend_usd": 1.25}},
+        }
+    )
+    response = setup.client.get("/api/training")
+    assert response.status_code == 200
+    assert response.json()["control"]["locked"] is True
+    assert response.json()["control"]["owner"] == "preparing-v2"
+    assert response.json()["control"]["progress"]["v1"]["helper_spend_usd"] == 1.25
+    setup.services.training_control.assert_called_once_with(versions, NOW)
+    setup.services.training.start.assert_not_called()

@@ -448,3 +448,59 @@ def test_non_document_exports_skip_extraction_without_blocking_documents(setup, 
     extraction.process.assert_called_once_with("f", "v1")
     assert storage.get("sync_cursors:halvard", "export") is None
     assert "Skipping non-document Box export export" in caplog.text
+
+
+def test_activity_records_added_updated_retired_and_skipped_files(setup):
+    box, extraction, storage, service = setup
+    added = service.run("webhook", "upload")
+    assert added["changed_files"] == [
+        {
+            "file_id": "f",
+            "name": "f.txt",
+            "version_id": "v1",
+            "action": "added",
+            "items_extracted": 1,
+        }
+    ]
+    box.list_folder.return_value = [file(version="v2")]
+    updated = service.run("schedule")
+    assert updated["changed_files"][0]["action"] == "updated"
+    assert updated["changed_files"][0]["version_id"] == "v2"
+    export = file("export")
+    export.name = "training.json"
+    box.list_folder.return_value = [export]
+    retired = service.run("schedule")
+    assert [f["action"] for f in retired["changed_files"]] == ["skipped", "retired"]
+    assert retired["changed_files"][0]["error"] == "Non-document export"
+    assert storage.get("sync_runs", retired["id"]) == retired
+    assert extraction.process.call_count == 2
+
+
+def test_activity_file_details_are_bounded_without_changing_sync_totals(setup):
+    box, extraction, _, service = setup
+    box.list_folder.return_value = [file(str(i)) for i in range(55)]
+    row = service.run("schedule")
+    assert len(row["changed_files"]) == 50
+    assert row["file_details_truncated"] is True
+    assert row["changes"] == row["extraction_calls"] == row["files_seen"] == 55
+    assert extraction.process.call_count == 55
+
+
+def test_activity_records_safe_file_error_without_checkpoint_or_secret(setup):
+    _, extraction, storage, service = setup
+    extraction.process.side_effect = RuntimeError("secret-access-token")
+    with pytest.raises(RuntimeError):
+        service.run("webhook", "failed-event")
+    row = storage.list("sync_runs")[0]
+    assert row["changed_files"][0]["error"] == "RuntimeError"
+    assert "secret-access-token" not in json.dumps(row)
+    assert storage.get("sync_cursors:halvard", "f") is None
+
+
+def test_webhook_receipt_keeps_first_event_type_and_timestamp(state):
+    api = ingress(state, Mock())
+    assert api.webhook(request("event", "FILE.UPLOADED"))["statusCode"] == 202
+    assert api.webhook(request("event", "FILE.TRASHED"))["statusCode"] == 202
+    row = state.receipts.get_item(Key={"pk": "receipts:halvard", "sk": "event"})["Item"]
+    assert row["event_type"] == "FILE.UPLOADED"
+    assert int(row["received_at"]) == int(NOW.timestamp())

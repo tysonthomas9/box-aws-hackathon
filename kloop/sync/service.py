@@ -11,7 +11,7 @@ from kloop.sync.ports import Extraction
 from kloop.sync.state import SyncState
 
 
-def source_files(box: BoxClient) -> list[FileInfo]:
+def source_files(box: BoxClient, *, on_skip=None) -> list[FileInfo]:
     """Finish every page and subtree before any processing/deletion inference."""
     files = []
     visited = set()
@@ -29,6 +29,8 @@ def source_files(box: BoxClient) -> list[FileInfo]:
                     logging.getLogger(__name__).warning(
                         "Skipping non-document Box export %s (%s)", entry.id, entry.name
                     )
+                    if on_skip is not None:
+                        on_skip(entry)
                     continue
                 files.append(box._info(entry))
 
@@ -67,7 +69,25 @@ class SyncService:
             "retirement_calls": 0,
             "status": "running",
             "duration_ms": 0,
+            "changed_files": [],
+            "file_details_truncated": False,
         }
+
+        def changed(file_id, name, version_id, action, items_extracted=0, error=None):
+            if len(row["changed_files"]) >= 50:
+                row["file_details_truncated"] = True
+                return
+            row["changed_files"].append(
+                {
+                    "file_id": file_id,
+                    "name": name[:255],
+                    "version_id": version_id,
+                    "action": action,
+                    "items_extracted": items_extracted,
+                    **({"error": error} if error else {}),
+                }
+            )
+
         acquired = self.state.acquire(folder, run_id, int(started))
         try:
             if not acquired:
@@ -76,7 +96,16 @@ class SyncService:
             self.storage.put("sync_runs", run_id, row)
             # Capture BEFORE listing. Receipts arriving during the scan stay pending.
             pending = self.state.pending(folder)
-            files = source_files(self.box)
+            files = source_files(
+                self.box,
+                on_skip=lambda f: changed(
+                    f.id,
+                    f.name,
+                    getattr(getattr(f, "file_version", None), "id", None),
+                    "skipped",
+                    error="Non-document export",
+                ),
+            )
             row["files_seen"] = len(files)
             collection = f"sync_cursors:{folder}"
             current = {f.file_id for f in files}
@@ -86,7 +115,16 @@ class SyncService:
                 if cursor and cursor["version_id"] == file.version_id and not cursor["retired"]:
                     continue
                 row["extraction_calls"] += 1
-                row["changes"] += self.extraction.process(file.file_id, file.version_id)
+                action = "updated" if cursor else "added"
+                try:
+                    count = self.extraction.process(file.file_id, file.version_id)
+                except Exception as exc:
+                    changed(
+                        file.file_id, file.name, file.version_id, action, error=type(exc).__name__
+                    )
+                    raise
+                row["changes"] += count
+                changed(file.file_id, file.name, file.version_id, action, count)
                 self.storage.put(
                     collection,
                     file.file_id,
@@ -100,7 +138,19 @@ class SyncService:
                 self._check_deadline(started)
                 if cursor["file_id"] not in current and not cursor["retired"]:
                     row["retirement_calls"] += 1
-                    row["changes"] += self.extraction.retire(cursor["file_id"])
+                    try:
+                        count = self.extraction.retire(cursor["file_id"])
+                    except Exception as exc:
+                        changed(
+                            cursor["file_id"],
+                            cursor["file_id"],
+                            cursor["version_id"],
+                            "retired",
+                            error=type(exc).__name__,
+                        )
+                        raise
+                    row["changes"] += count
+                    changed(cursor["file_id"], cursor["file_id"], cursor["version_id"], "retired")
                     self.storage.put(collection, cursor["file_id"], {**cursor, "retired": True})
             for receipt in pending:
                 self.state.complete(folder, receipt, int(self.clock()))

@@ -73,7 +73,9 @@ class SyncIngress:
             return {"statusCode": 204, "body": ""}
         # Payload source metadata never drives deletion or extraction. A worker
         # scans the configured folder via CCG, so stale/out-of-scope events are safe.
-        if self.state.receive(self.folder_id, event.id, int(self.clock())):
+        if self.state.receive(
+            self.folder_id, event.id, int(self.clock()), event_type=event.trigger
+        ):
             self.dispatch("webhook", event.id)
         return {"statusCode": 202, "body": "Accepted"}
 

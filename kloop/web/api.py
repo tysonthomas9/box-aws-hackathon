@@ -44,6 +44,7 @@ class Services:
     training: object
     results: object
     training_busy: type[Exception] = ValueError
+    training_control: object = None
 
 
 def create_app(services: Services, security: Security, throttle, *, clock=epoch) -> FastAPI:
@@ -272,7 +273,11 @@ def create_app(services: Services, security: Security, throttle, *, clock=epoch)
 
     @app.get("/api/training")
     def training():
-        return {"versions": services.training.versions()}
+        versions = services.training.versions()
+        control = (
+            services.training_control(versions, clock()) if services.training_control else None
+        )
+        return {"versions": versions, "control": control}
 
     @app.get("/api/training/{id}")
     def progress(id: str):

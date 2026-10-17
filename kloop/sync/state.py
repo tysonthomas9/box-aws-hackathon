@@ -11,11 +11,18 @@ class SyncState:
         self.receipts = receipts
         self.locks = locks
 
-    def receive(self, folder_id: str, event_id: str, now: int) -> bool:
+    def receive(
+        self, folder_id: str, event_id: str, now: int, *, event_type: str | None = None
+    ) -> bool:
         # Pending work deliberately has NO TTL. Only completed receipts may expire.
         try:
             self.receipts.put_item(
-                Item={"pk": f"receipts:{folder_id}", "sk": event_id, "received_at": now},
+                Item={
+                    "pk": f"receipts:{folder_id}",
+                    "sk": event_id,
+                    "received_at": now,
+                    **({"event_type": event_type} if event_type else {}),
+                },
                 ConditionExpression=Attr("pk").not_exists(),
             )
             return True

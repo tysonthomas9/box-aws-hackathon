@@ -201,7 +201,7 @@ async function setup(page, options = {}) {
   expect(calls.map((c) => c.path)).toEqual(["session"]);
   await page.getByLabel("Demo password").fill("fake-demo-password");
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
-  await page.getByRole("button", { name: "Ask", exact: true }).click();
+  await page.getByRole("button", { name: "Chat", exact: true }).click();
   await expect(
     page.getByText("Model readiness", { exact: true }),
   ).toBeVisible();
@@ -292,7 +292,7 @@ test("three completed cards, literal answers, citations, narrow desktop and othe
     await page.getByRole("button", { name, exact: true }).click();
     await expect(page.locator(`#${name.toLowerCase()}`)).toBeVisible();
   }
-  await page.getByRole("button", { name: "Ask", exact: true }).click();
+  await page.getByRole("button", { name: "Chat", exact: true }).click();
   await expect(page.locator(".answer-bubble")).toHaveCount(3);
   await page.setViewportSize({ width: 390, height: 844 });
   expect(

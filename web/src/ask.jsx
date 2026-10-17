@@ -279,12 +279,16 @@ function AskChat({ api }) {
           if (mounted.current) setNotice(error.message);
         });
     load();
+    const refresh = setInterval(() => {
+      if (!document.getElementById("ask")?.hidden) load();
+    }, 15000);
     const tick = setInterval(() => setNow(Date.now()), 1000);
     window.addEventListener("kloop:ask-open", load);
     return () => {
       mounted.current = false;
       layout.removeEventListener("change", resize);
       clearInterval(tick);
+      clearInterval(refresh);
       window.removeEventListener("kloop:ask-open", load);
       controllers.current.forEach((c) => c.abort());
     };

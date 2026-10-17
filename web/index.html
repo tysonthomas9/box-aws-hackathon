@@ -40,25 +40,29 @@
       </section>
       <div id="workspace" hidden>
         <nav aria-label="Screens">
-          <button data-screen="sources" aria-current="page">Sources</button
+          <button data-screen="ask" aria-current="page">Chat</button
+          ><button data-screen="sources">Sources</button
           ><button data-screen="review">Review</button
-          ><button data-screen="ask">Ask</button
+          ><button data-screen="training-screen">Training</button
           ><button data-screen="results">Results</button>
         </nav>
-        <section id="sources" class="screen">
+        <section id="sources" class="screen" hidden>
           <div class="heading">
             <div>
               <p class="eyebrow">01 / DOCUMENTS</p>
               <h1>Sources</h1>
             </div>
-            <button id="sync">Sync now</button>
           </div>
           <p class="subtle">
-            Box documents and the versions seen by the learning loop.
+            Add documents in Box. Webhook activity and learning progress appear
+            here automatically.
           </p>
-          <div id="source-files"></div>
-          <h2>Recent syncs</h2>
+          <p id="sync-status" role="status" aria-live="polite"></p>
+          <h2>Live activity</h2>
+          <div id="webhook-events"></div>
           <div id="sync-runs"></div>
+          <h2>Source documents</h2>
+          <div id="source-files"></div>
         </section>
         <section id="review" class="screen" hidden>
           <div class="heading">
@@ -81,18 +85,31 @@
           </p>
           <div id="reviews"></div>
         </section>
-        <section id="ask" class="screen" hidden>
+        <section id="ask" class="screen">
           <div id="ask-chat"></div>
+        </section>
+        <section id="training-screen" class="screen" hidden>
           <div class="heading">
             <div>
-              <h2>Train on approved knowledge</h2>
+              <p class="eyebrow">03 / LEARNING</p>
+              <h1>Training</h1>
               <p class="subtle">
                 Training creates a candidate; it must pass the dev-set gate
                 before promotion.
               </p>
             </div>
-            <button id="train">Train now</button>
+            <button id="train" disabled>Train now</button>
           </div>
+          <p id="training-status" role="status" aria-live="polite">
+            Checking training availability…
+          </p>
+          <ol class="training-stages" aria-label="Training stages">
+            <li>Generating</li>
+            <li>Training</li>
+            <li>Importing</li>
+            <li>Evaluating</li>
+            <li>Promoted / rejected</li>
+          </ol>
           <div id="training"></div>
         </section>
         <section id="results" class="screen" hidden>
