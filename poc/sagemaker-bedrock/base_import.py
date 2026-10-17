@@ -173,13 +173,21 @@ def metadata(state):
             "license_sha256": result["LICENSE"]["sha256"]}
 
 
-def cap_context(state):
+def cap_context(state, readiness_diagnostic=False):
     check_owned(state)
     failure = state.get("import_status", {})
     error_text = json.dumps(failure).lower()
-    if failure.get("status") != "Failed" or not any(
-            phrase in error_text for phrase in ["context", "position", "128k", "131072"]):
+    context_failure = failure.get("status") == "Failed" and any(
+        phrase in error_text for phrase in ["context", "position", "128k", "131072"])
+    readiness_failure = (readiness_diagnostic and failure.get("status") == "Completed"
+        and state.get("chat_payload_probe", {}).get("error", "").find("ModelNotReadyException") >= 0)
+    if not (context_failure or readiness_failure):
         raise RuntimeError("Context cap requires an observed context-related import failure")
+    if state.get("context_capped"):
+        raise RuntimeError("Only one context-capped diagnostic is allowed")
+    models = aws("bedrock", "list-imported-models").get("modelSummaries", [])
+    if len(models) >= 2:
+        raise RuntimeError("Diagnostic would risk a third import; stop and coordinate")
     metadata(state)
     config = dict(state["metadata"]["config.json"]["content"])
     original_context = config["max_position_embeddings"]
@@ -206,8 +214,11 @@ def cap_context(state):
         if name == "NOTICE":
             state["extra_objects"].append("base/NOTICE")
     state.setdefault("import_history", []).append({"job": state.pop("import_job"),
-        "submitted_at": state["import_submitted_at"], "status": state.pop("import_status")})
+        "submitted_at": state["import_submitted_at"], "status": state.pop("import_status"),
+        "model_arn": state.pop("model_arn", None), "invocations": state.pop("invocations", [])})
     state.update(context_capped=True, original_context=original_context, context_capped_at=now())
+    if readiness_diagnostic:
+        state["context_cap_reason"] = "Coordinator approved one readiness diagnostic after persistent ModelNotReadyException"
 
 
 def status(state):
@@ -272,6 +283,8 @@ def main():
                                            "cap-context", "invoke", "cleanup"])
     parser.add_argument("--state", type=Path, required=True)
     parser.add_argument("--delete-mirror", action="store_true")
+    parser.add_argument("--readiness-diagnostic", action="store_true",
+                        help="Explicit coordinator approval for one 32K startup diagnostic")
     args = parser.parse_args()
     state = json.loads(args.state.read_text()) if args.state.exists() else {"created_at": now()}
     try:
@@ -284,7 +297,7 @@ def main():
         elif args.action == "metadata":
             print(json.dumps(metadata(state), indent=2))
         elif args.action == "cap-context":
-            cap_context(state)
+            cap_context(state, args.readiness_diagnostic)
         elif args.action == "status":
             print(json.dumps(status(state), indent=2))
         elif args.action == "invoke":
