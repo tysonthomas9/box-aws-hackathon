@@ -15,7 +15,7 @@ IMAGE='763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@sha256:ec77
 TAGS=[{'Key':'project','Value':'box-hackathon'},{'Key':'poc','Value':'model-experiment'}]
 
 
-def launch(kind,state,path):
+def launch(kind,state,path,prepare_only=False):
     from budget import check
     check()
     if state.get('job_arn'):raise RuntimeError('Already submitted; use status')
@@ -85,15 +85,17 @@ def launch(kind,state,path):
         'EnableManagedSpotTraining':False,'EnableNetworkIsolation':False,
         'Environment':{'AWS_REGION':'us-east-2','POC_BUCKET':BUCKET,'POC_OUTPUT_PREFIX':output,'POC_NAME':'model-experiment','POC_EPOCHS':'3','POC_SEED':'17','POC_LEARNING_RATE':'0.0002','POC_MAX_LENGTH':'512','POC_GRAD_ACCUMULATION':'4','AWS_SDK_UA_APP_ID':'AWSSkill-SageMaker','TOKENIZERS_PARALLELISM':'false'},'Tags':TAGS}
     state['request']=request;save(state,path)
+    if prepare_only:
+        print(json.dumps({'prepared':name,'role_arn':state['role_arn']}));return
     result=aws('sagemaker','create-training-job','--cli-input-json',json.dumps(request))
     state.update(job_arn=result['TrainingJobArn'],submitted_at=datetime.now(timezone.utc).isoformat());save(state,path)
     print(json.dumps({'name':name,'job_arn':state['job_arn']}))
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('action',choices=['launch','status']);parser.add_argument('kind',choices=['train4','train8','eval4','eval8']);args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('action',choices=['prepare','launch','status']);parser.add_argument('kind',choices=['train4','train8','eval4','eval8']);args=parser.parse_args()
     path=ROOT/'evidence'/(args.kind+'.json');state=json.loads(path.read_text()) if path.exists() else {}
-    if args.action=='launch':launch(args.kind,state,path)
+    if args.action in ['prepare','launch']:launch(args.kind,state,path,args.action=='prepare')
     else:
         status=aws('sagemaker','describe-training-job','--training-job-name',state['name']);state['status']=status;save(state,path)
         print(json.dumps({k:status.get(k) for k in ['TrainingJobName','TrainingJobStatus','FailureReason','TrainingTimeInSeconds','BillableTimeInSeconds','SecondaryStatus']}))

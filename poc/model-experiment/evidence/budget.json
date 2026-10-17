@@ -1,23 +1,23 @@
 {
-  "checked_at": "2026-10-17T07:12:30.360116+00:00",
+  "checked_at": "2026-10-17T07:27:03.365576+00:00",
   "limit_usd": 10,
   "helper_usage": {
     "us.moonshotai.kimi-k3": {
-      "calls": 15,
-      "cost_usd": 0.937723875,
+      "calls": 18,
+      "cost_usd": 1.33768932,
       "tokens": {
-        "inputTokens": 105,
-        "outputTokens": 53109,
-        "cacheReadInputTokens": 0,
-        "cacheWriteInputTokens": 14807
+        "inputTokens": 126,
+        "outputTokens": 76828,
+        "cacheReadInputTokens": 994,
+        "cacheWriteInputTokens": 16796
       }
     },
     "zai.glm-5": {
-      "calls": 3,
-      "cost_usd": 0.0205138,
+      "calls": 15,
+      "cost_usd": 0.10772800000000002,
       "tokens": {
-        "inputTokens": 12261,
-        "outputTokens": 2579,
+        "inputTokens": 62512,
+        "outputTokens": 14130,
         "cacheReadInputTokens": 0,
         "cacheWriteInputTokens": 0
       }
@@ -54,7 +54,7 @@
     "bedrock_startup_and_model_storage_usd": 1.5,
     "s3_ebs_logs_requests_usd": 0.5
   },
-  "conservative_total_usd": 9.151404341666666,
+  "conservative_total_usd": 9.638583986666667,
   "sources": [
     "https://aws.amazon.com/bedrock/pricing/",
     "evidence/training-prices.json"

@@ -26,7 +26,7 @@ def check():
         p=ROOT/'evidence'/(name+'.json');state=json.loads(p.read_text()) if p.exists() else {}
         status=state.get('status',{})
         done=status.get('TrainingJobStatus') in ['Completed','Failed','Stopped']
-        seconds=status.get('BillableTimeInSeconds',status.get('TrainingTimeInSeconds',cap)) if done else cap
+        seconds=(status.get('BillableTimeInSeconds') or status.get('TrainingTimeInSeconds') or cap) if done else cap
         cost=seconds/3600*GPU[name[-1]];gpu_cost+=cost
         jobs[name]={'reserved':not done,'seconds':seconds,'cost_usd':cost,'rate_per_hour':GPU[name[-1]]}
     # Reserve additional helper inference, startup billing windows and temporary storage.
