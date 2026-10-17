@@ -37,6 +37,73 @@ def generation_id(snapshot_hash, config):
     return sha256(encoded([snapshot_hash, recipe]))
 
 
+def carry_forward(table, source, target, expected_nano, *, conservative_nano=0):
+    """Seed a new recipe once from settled spend, with a separate audit receipt."""
+    if source == target or not 0 <= conservative_nano <= expected_nano or expected_nano <= 0:
+        raise ValueError("Invalid budget carry-forward")
+    source_key = {"pk": "training_helper_budgets", "sk": source}
+    target_key = {"pk": "training_helper_budgets", "sk": target}
+    receipt_key = {"pk": "training_helper_budget_carryforwards", "sk": target}
+    receipt = {
+        "kind": "prior_recipe_spend_carryforward",
+        "source_generation": source,
+        "target_generation": target,
+        "spent_nano": expected_nano,
+        "included_conservative_nano": conservative_nano,
+    }
+
+    def existing():
+        counter = table.get_item(Key=target_key, ConsistentRead=True).get("Item")
+        row = table.get_item(Key=receipt_key, ConsistentRead=True).get("Item")
+        if counter is None and row is None:
+            return False
+        if (
+            counter is None
+            or row is None
+            or json.loads(row["payload"]) != receipt
+            or int(counter["spent_nano"]) < expected_nano
+        ):
+            raise ValueError("Existing carry-forward differs; never reset a budget")
+        return True
+
+    value = table.get_item(Key=source_key, ConsistentRead=True).get("Item", {})
+    if int(value.get("spent_nano", -1)) != expected_nano:
+        raise ValueError("Source budget is not the confirmed settled amount")
+    if existing():
+        return receipt
+    try:
+        table.meta.client.transact_write_items(
+            TransactItems=[
+                {
+                    "ConditionCheck": {
+                        "TableName": table.name,
+                        "Key": source_key,
+                        "ConditionExpression": "spent_nano = :settled",
+                        "ExpressionAttributeValues": {":settled": expected_nano},
+                    }
+                },
+                {
+                    "Put": {
+                        "TableName": table.name,
+                        "Item": {**target_key, "spent_nano": expected_nano},
+                        "ConditionExpression": "attribute_not_exists(pk)",
+                    }
+                },
+                {
+                    "Put": {
+                        "TableName": table.name,
+                        "Item": {**receipt_key, "payload": json.dumps(receipt)},
+                        "ConditionExpression": "attribute_not_exists(pk)",
+                    }
+                },
+            ]
+        )
+    except table.meta.client.exceptions.TransactionCanceledException:
+        if not existing():
+            raise
+    return receipt
+
+
 class HelperBudget:
     def __init__(self, table, generation, limit_usd):
         self.table, self.generation = table, generation

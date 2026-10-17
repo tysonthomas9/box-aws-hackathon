@@ -18,7 +18,8 @@ from kloop.cleanup import CleanupLedger
 from kloop.config import Settings
 from kloop.extract.runtime import factory as extraction_factory
 from kloop.extract.runtime import snapshot_storage
-from kloop.train.budget import HelperBudget
+from kloop.train.budget import HelperBudget, generation_id
+from kloop.train.claims import claim_question
 from kloop.train.config import TrainingConfig
 from kloop.train.credits import CreditCheckedRuntime, CreditGuard
 from kloop.train.data import DataBuilder
@@ -135,6 +136,9 @@ def factory(session):
         CreditCheckedRuntime(runtime, credits),
         artifacts,
         budget_factory=lambda generation, limit: HelperBudget(store.table, generation, limit),
+        question_claim=lambda snapshot, config, batch, question: claim_question(
+            store.table, generation_id(snapshot.sha256, config), batch, question
+        ),
     )
     ledger = CleanupLedger(
         session.resource("dynamodb").Table(os.environ["KLOOP_CLEANUP_LEDGER_TABLE"]),

@@ -30,11 +30,12 @@ class TrainingHelpers:
     repair_rounds = 2
     durable_batches = True
 
-    def __init__(self, runtime, artifacts, *, budget_factory=None):
+    def __init__(self, runtime, artifacts, *, budget_factory=None, question_claim=None):
         self.runtime, self.artifacts = runtime, artifacts
         self.decisions = {}
         self.budget_factory, self.budget = budget_factory, None
         self.drop_reports = []
+        self.question_claim = question_claim
 
     def bind_generation(self, snapshot_hash, config):
         from kloop.train.budget import generation_id
@@ -214,6 +215,10 @@ class TrainingHelpers:
             ids = {item["id"] for item in context}
             for row in accepted:
                 validate_row(row, ids, kind=kind)
+                if self.question_claim and not self.question_claim(
+                    snapshot, config, batch, row["question"]
+                ):
+                    raise ValueError("Accepted batch duplicates a different batch's question")
             self.drop_reports.extend(
                 report
                 for report in record.get("drop_reports", [])
@@ -224,7 +229,7 @@ class TrainingHelpers:
             raise ValueError("Accepted batch contains duplicate questions")
         # Fresh replacement rows are separate generation attempts, each with
         # the same two source-only repairs. Retained rows never get regenerated.
-        for attempt in range(3 if kind == "unknown" else 1):
+        for attempt in range(1 if kind == "replay" else 3):
             missing = count - len(accepted)
             if not missing:
                 break
@@ -235,12 +240,15 @@ class TrainingHelpers:
                     config,
                     batch,
                     row_slice=(kept, missing) if kept else None,
-                    fill_round=attempt + 1 if kind == "unknown" else 0,
+                    fill_round=attempt + 1 if kind != "replay" else 0,
                 )
             )
             for row in fresh:
                 question = normalized(row["question"])
-                if question not in seen:
+                if question not in seen and (
+                    self.question_claim is None
+                    or self.question_claim(snapshot, config, batch, row["question"])
+                ):
                     accepted.append(row)
                     seen.add(question)
                 else:
@@ -401,6 +409,12 @@ class TrainingHelpers:
         )
         if kind == "unknown" and config.unknown_existing_entities:
             prompt = prompt.removesuffix(context_label) + UNKNOWN_ENTITIES + context_label
+        if fill_round and kind in {"fact", "procedure"}:
+            prompt = (
+                prompt.removesuffix(context_label)
+                + "Name the supplied entity explicitly in each question; avoid generic referents. "
+                + context_label
+            )
         cached_prompt = None
         if kind in {"unknown", "near_miss"}:
             # Keep the large immutable prefix identical across control batches;

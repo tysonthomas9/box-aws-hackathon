@@ -1675,3 +1675,72 @@ def test_unknown_backfill_is_bounded_and_never_weakens_count_gate(snapshot):
     assert list(helper.generate_batch(snapshot, config, 1)) == []
     assert helper._checked_batch.call_count == 3
     assert [call.kwargs["fill_round"] for call in helper._checked_batch.call_args_list] == [1, 2, 3]
+
+
+def test_recipe_budget_carry_is_atomic_idempotent_and_never_resets_native_spend(table):
+    from kloop.train.budget import carry_forward
+
+    source, target = "old-recipe", "new-recipe"
+    table.put_item(Item={"pk": "training_helper_budgets", "sk": source, "spent_nano": 1000})
+    receipt = carry_forward(table, source, target, 1000, conservative_nano=100)
+    assert receipt["kind"] == "prior_recipe_spend_carryforward"
+    table.update_item(
+        Key={"pk": "training_helper_budgets", "sk": target},
+        UpdateExpression="ADD spent_nano :cost",
+        ExpressionAttributeValues={":cost": 50},
+    )
+    assert carry_forward(table, source, target, 1000, conservative_nano=100) == receipt
+    assert (
+        table.get_item(Key={"pk": "training_helper_budgets", "sk": target})["Item"]["spent_nano"]
+        == 1050
+    )
+    with pytest.raises(ValueError, match="settled"):
+        carry_forward(table, source, "wrong-source-total", 999)
+    with pytest.raises(ValueError, match="differs"):
+        carry_forward(table, source, target, 1000, conservative_nano=0)
+    assert "Item" not in table.get_item(
+        Key={"pk": "training_helper_budgets", "sk": "wrong-source-total"}
+    )
+
+
+def test_budget_carry_refuses_an_existing_counter_without_a_matching_receipt(table):
+    from kloop.train.budget import carry_forward
+
+    for key, amount in [("source", 1000), ("target", 500)]:
+        table.put_item(Item={"pk": "training_helper_budgets", "sk": key, "spent_nano": amount})
+    with pytest.raises(ValueError, match="never reset"):
+        carry_forward(table, "source", "target", 1000)
+    assert (
+        table.get_item(Key={"pk": "training_helper_budgets", "sk": "target"})["Item"]["spent_nano"]
+        == 500
+    )
+
+
+def test_question_claims_are_global_normalized_and_resume_for_same_batch(table):
+    from kloop.train.claims import claim_question
+
+    assert claim_question(table, "recipe", 1, "What is Zebra?")
+    assert claim_question(table, "recipe", 1, "WHAT is  zebra!")
+    assert not claim_question(table, "recipe", 2, "what is zebra")
+    assert claim_question(table, "another-recipe", 2, "what is zebra")
+
+
+@pytest.mark.parametrize("batch,row_index", [(0, 0), (1, 1)])
+def test_global_duplicate_is_backfilled_before_persisting_batch(snapshot, batch, row_index):
+    from kloop.train.helpers import TrainingHelpers
+
+    claim = Mock(side_effect=[False, True])
+    helper = TrainingHelpers(Mock(), MemoryArtifacts(), question_claim=claim)
+    old, replacement = (
+        rows()[row_index],
+        {
+            **rows()[row_index],
+            "question": "Different wording for this attribute?",
+        },
+    )
+    helper._checked_batch = Mock(side_effect=[[old], [replacement]])
+    config = TrainingConfig(fact_wordings=1, unknown_rows=1, preserve_accepted_batches=True)
+    assert list(helper.generate_batch(snapshot, config, batch)) == [replacement]
+    assert helper._checked_batch.call_count == 2
+    assert claim.call_count == 2
+    assert [call.kwargs["fill_round"] for call in helper._checked_batch.call_args_list] == [1, 2]
