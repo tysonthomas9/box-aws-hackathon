@@ -19,6 +19,7 @@ from kloop.eval.judge import BlindJudge
 from kloop.eval.medical import DEV_HASH as MEDICAL_DEV_HASH
 from kloop.eval.medical import TRAINING_SNAPSHOT_HASH, audit_training, load_medical
 from kloop.schemas import ModelVersion
+from kloop.train.medical import V2_HASH
 
 
 class AuditVerifier:
@@ -44,7 +45,7 @@ class AuditVerifier:
             return self.artifacts.get(str(path))
 
         if dataset.sha256 == MEDICAL_DEV_HASH:
-            if snapshot_hash != TRAINING_SNAPSHOT_HASH:
+            if snapshot_hash not in {TRAINING_SNAPSHOT_HASH, V2_HASH}:
                 raise ValueError("Medical evaluation requires the selected medical snapshot")
             hidden = load_medical("hidden", Path("sealed/medical"), read=read)
             audit = audit_training(

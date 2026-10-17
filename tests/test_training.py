@@ -871,3 +871,27 @@ def test_rejected_medical_model_stays_ledger_owned_without_promotion(worker):
     assert store.get("run").status == "rejected"
     assert store.get("run").manifest["retain_for_medical_report"]
     assert [r["kind"] for r in w.ledger.entries()] == ["bedrock_import"]
+
+
+def test_v2_snapshot_is_an_exact_copy_scenario_with_synthetic_version():
+    from kloop.train.medical import DATE_ITEM, V1_HASH, V2_HASH, copy_v2
+
+    original = ApprovedSnapshot.model_validate_json(
+        Path("poc/medical-evaluation/training-snapshot.json").read_bytes()
+    )
+    before = original.model_dump(mode="json")
+    copied, edit = copy_v2(original)
+    assert original.model_dump(mode="json") == before
+    assert original.sha256 == V1_HASH and copied.sha256 == V2_HASH
+    changes = [(a, b) for a, b in zip(original.items, copied.items, strict=True) if a != b]
+    assert len(changes) == 1
+    old, new = changes[0]
+    assert old.id == new.id == DATE_ITEM
+    assert new.source_version_id == "copy-edit:2810007119465:2025-10-28"
+    assert edit["parent_source_version_id"] == old.source_version_id
+    assert edit["copy_only"] and not edit["box_edited"]
+    assert {k for k in old.model_dump() if getattr(old, k) != getattr(new, k)} == {
+        "statement",
+        "supporting_quote",
+        "source_version_id",
+    }
