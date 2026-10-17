@@ -1,0 +1,25 @@
+{
+  "frozen_at": "2026-10-17T04:14:06.284997+00:00",
+  "hidden_sha256": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
+  "pack_sha256": "b4d7aef08e0dbb39c3007c317648e964ff5ff8f388a44c7e87a71755589c4320",
+  "hidden_count": 46,
+  "by_kind": {
+    "fact": 20,
+    "heldout_procedure": 1,
+    "two_fact": 5,
+    "unrelated": 10,
+    "untold": 10
+  },
+  "training_generated": false,
+  "protocol": {
+    "model": "Qwen/Qwen2.5-3B-Instruct",
+    "seeds": [
+      17,
+      29
+    ],
+    "training_selection": "Use separate dev set; never tune on hidden outcomes. Hidden set is final evidence only.",
+    "metrics": "Raw correct/total by kind and mode; untold includes invented-answer count; unrelated includes base-to-LoRA regressions.",
+    "generation_isolation": "Generator reads pack.json only, never sealed/. Similarity auditor runs after generation and may reject but never rewrite hidden tests.",
+    "recommendation": "Exploratory: report all counts. No learning claim without base and LoRA inference on the same sealed questions. Retrieval must use the same base model and system prompt."
+  }
+}
