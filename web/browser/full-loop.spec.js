@@ -289,7 +289,7 @@ test("Sources live feed → filtered file approval → training stages → autom
   ).toBeDisabled();
   await expect(
     page.getByText("$1.23 · generation helpers only", { exact: true }),
-  ).toBeVisible();
+  ).not.toBeVisible();
   await expect(
     page.getByText("Not reported by the pipeline", { exact: true }),
   ).toBeVisible();
