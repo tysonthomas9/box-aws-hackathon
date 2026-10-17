@@ -19,7 +19,7 @@ IMAGE = ("763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@"
          "sha256:ec77d5e5d0e9871c8bb20331a74d1e8c308cdda9143b909b4b5eb99bba795d4d")
 ROOT = Path(__file__).resolve().parent
 TRAIN_SHA = "92edb882d2233b7604b2072abe98c46d81dced97b0a54356788f160dddac1a72"
-SCRIPT_SHA = "0ff4df9cd052845937c052398a6cacc2d98a6b3ffba4ac2fa2946f6911b3f28b"
+SCRIPT_SHA = "705b6be2df2750c85e1bc3aa4c4f3dea133327b3632d2dbfad0d608d8d04295a"
 
 
 def setup(state, path):
@@ -70,7 +70,7 @@ def launch(state, path):
     if {t["Key"]:t["Value"] for t in tags["TagSet"]} != TAGS:
         raise RuntimeError("Mirror bucket tags do not match this POC")
     train = ROOT / "generated/kimi-k3/train-final.jsonl"
-    script = ROOT.parent / "sagemaker-bedrock/train.py"
+    script = ROOT / "train.py"
     if hashlib.sha256(train.read_bytes()).hexdigest() != TRAIN_SHA or hashlib.sha256(script.read_bytes()).hexdigest() != SCRIPT_SHA:
         raise RuntimeError("Sealed training data or trainer changed")
     if len(train.read_text().splitlines()) != 386:
