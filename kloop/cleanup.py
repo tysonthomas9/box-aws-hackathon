@@ -130,8 +130,12 @@ def cleanup(ledger: CleanupLedger, session: Any, delete_webhook=None) -> None:
             sagemaker = session.client("sagemaker")
             try:
                 job = sagemaker.describe_training_job(TrainingJobName=row["name"])
-                if job["TrainingJobStatus"] == "InProgress":
-                    sagemaker.stop_training_job(TrainingJobName=row["name"])
+                if job["TrainingJobStatus"] not in {"Stopped", "Failed", "Completed"}:
+                    if job["TrainingJobStatus"] == "InProgress":
+                        sagemaker.stop_training_job(TrainingJobName=row["name"])
+                    # StopTrainingJob is asynchronous. Keep ownership until a
+                    # later describe confirms a terminal state; retain the table.
+                    continue
             except sagemaker.exceptions.ResourceNotFound:
                 pass
         elif row["kind"] == "box_webhook":

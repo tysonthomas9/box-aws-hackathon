@@ -51,6 +51,7 @@ locals {
     KLOOP_BOX_FOLDER_ID        = var.box_folder_id
     KLOOP_ARTIFACT_BUCKET      = aws_s3_bucket.data["artifacts"].id
     KLOOP_VERSIONS_TABLE       = aws_dynamodb_table.records["versions"].name
+    KLOOP_ASK_JOBS_TABLE       = aws_dynamodb_table.records["ask_jobs"].name
     KLOOP_ITEMS_TABLE          = aws_dynamodb_table.records["items"].name
     KLOOP_CLEANUP_LEDGER_TABLE = aws_dynamodb_table.records["cleanup_ledger"].name
     KLOOP_SAGEMAKER_ROLE       = aws_iam_role.training["sagemaker"].arn
@@ -91,11 +92,14 @@ resource "aws_iam_role_policy" "training_worker" {
   policy = jsonencode({ Version = "2012-10-17", Statement = [
     { Effect = "Allow", Action = ["logs:CreateLogStream", "logs:PutLogEvents"], Resource = "${aws_cloudwatch_log_group.training_worker.arn}:*" },
     { Effect = "Allow", Action = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:DeleteItem", "dynamodb:UpdateItem", "dynamodb:Query", "dynamodb:ConditionCheckItem"], Resource = [for key in ["items", "versions", "cleanup_ledger"] : aws_dynamodb_table.records[key].arn] },
+    { Effect = "Allow", Action = ["dynamodb:Query"], Resource = aws_dynamodb_table.records["ask_jobs"].arn },
     { Effect = "Allow", Action = ["s3:ListBucket"], Resource = aws_s3_bucket.data["artifacts"].arn },
     { Effect = "Allow", Action = ["s3:GetObject", "s3:PutObject"], Resource = "${aws_s3_bucket.data["artifacts"].arn}/training/*" },
     { Effect = "Allow", Action = ["secretsmanager:GetSecretValue"], Resource = data.aws_secretsmanager_secret.box.arn },
     { Effect = "Allow", Action = ["bedrock:ListImportedModels"], Resource = "*" },
-    { Effect = "Allow", Action = ["bedrock:CreateModelImportJob", "bedrock:GetModelImportJob"], Resource = local.import_job_arn },
+    { Effect = "Allow", Action = ["bedrock:CreateModelImportJob"], Resource = "*" },
+    { Effect = "Allow", Action = ["bedrock:GetModelImportJob"], Resource = local.import_job_arn },
+    { Effect = "Allow", Action = ["bedrock:TagResource"], Resource = [local.import_job_arn, local.imported_model_arn] },
     { Effect = "Allow", Action = ["bedrock:DeleteImportedModel", "bedrock:ListTagsForResource"], Resource = local.imported_model_arn },
     { Effect = "Allow", Action = ["bedrock:InvokeModel"], Resource = [local.imported_model_arn, "arn:aws:bedrock:us-east-2::foundation-model/zai.glm-5", "arn:aws:bedrock:us-east-2:${local.account}:inference-profile/us.moonshotai.kimi-k3", "arn:aws:bedrock:us-*::foundation-model/moonshotai.kimi-k3"] },
     { Effect = "Allow", Action = ["sagemaker:DescribeTrainingJob", "sagemaker:StopTrainingJob"], Resource = local.training_job_arn },

@@ -20,7 +20,7 @@ from kloop.extract.runtime import factory as extraction_factory
 from kloop.train.config import DEV_PATH, TrainingConfig
 from kloop.train.data import DataBuilder
 from kloop.train.helpers import TrainingHelpers
-from kloop.train.resources import ImportSlots
+from kloop.train.resources import ImportSlots, protected_ask_models
 from kloop.train.service import DispatchRejected, TrainingService
 from kloop.train.serving import ServingBackends
 from kloop.train.state import DynamoTrainingStore
@@ -124,8 +124,10 @@ def factory(session):
         config.deployment,
     )
 
+    asks = DynamoStorage(session.resource("dynamodb").Table(os.environ["KLOOP_ASK_JOBS_TABLE"]))
+
     def protected():
-        arns = {settings.base_model_id}
+        arns = {settings.base_model_id} | protected_ask_models(asks, int(time.time()))
         current = store.get(store.current()) if store.current() else None
         if current and current.import_arn:
             arns.add(current.import_arn)

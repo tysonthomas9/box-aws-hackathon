@@ -1,5 +1,19 @@
 """Import census and ledger reconciliation: never infer ownership from model age."""
 
+from kloop.schemas import AskJob
+
+
+def protected_ask_models(storage, now: int) -> set[str]:
+    """Use job execution expiry, not delayed DynamoDB TTL deletion, as authority."""
+    protected = set()
+    for row in storage.list("ask_jobs"):
+        job = AskJob.model_validate(row)
+        if job.expires_at <= now or job.status in {"succeeded", "failed"}:
+            continue
+        protected.add(job.model_arn)
+        protected.update(model.model_arn for model in job.warm_up_models)
+    return protected
+
 
 class ImportSlots:
     def __init__(self, bedrock, ledger, protected):
@@ -91,7 +105,7 @@ class ImportSlots:
             row = next(r for r in self.ledger.entries() if r["key"] == key)
             arn = row["resource_id"]
         if arn in set(self.protected()):
-            raise ValueError("Cannot delete base or current import")
+            raise ValueError("Cannot delete base, current or active Ask-pinned import")
         try:
             tags = self.bedrock.list_tags_for_resource(resourceARN=arn)["tags"]
             if {t["key"]: t["value"] for t in tags}.get("deployment") != self.ledger.deployment:

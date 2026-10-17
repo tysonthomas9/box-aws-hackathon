@@ -596,6 +596,7 @@ def test_worker_factory_uses_the_bounded_warmup_client(monkeypatch):
 
     for name in [
         "REPORTS_FOLDER_ID",
+        "ASK_JOBS_TABLE",
         "CLEANUP_LEDGER_TABLE",
         "ITEMS_TABLE",
         "SAGEMAKER_ROLE",
@@ -614,3 +615,80 @@ def test_worker_factory_uses_the_bounded_warmup_client(monkeypatch):
     runtime.factory(aws)
     warmup.assert_called_once_with(aws)
     assert worker.call_args.args[7].select("bedrock") is answerer
+
+
+@pytest.mark.parametrize(
+    "status,expires,protected",
+    [
+        ("queued", 200, True),
+        ("warming", 200, True),
+        ("running", 200, True),
+        ("queued", 150, False),
+        ("queued", 100, False),
+        ("succeeded", 200, False),
+        ("failed", 200, False),
+    ],
+)
+def test_import_slot_respects_active_ask_pins(table, status, expires, protected):
+    from kloop.schemas import AskJob, PinnedModel
+    from kloop.train.resources import protected_ask_models
+
+    pinned = "arn:aws:bedrock:us-east-2:123456789012:imported-model/abcdefghijkl"
+    warming = "arn:aws:bedrock:us-east-2:123456789012:imported-model/mnopqrstuvwx"
+    jobs = DynamoStorage(table)
+    job = AskJob(
+        id="ask",
+        model_arn=pinned,
+        model_version_id="old",
+        question="question",
+        mode="with",
+        snapshot_sha256="a" * 64,
+        created_at=50,
+        expires_at=expires,
+        status=status,
+        warm_up_models=[PinnedModel(model_arn=warming, model_version_id="v2")],
+    )
+    jobs.put("ask_jobs", job.id, job.model_dump(mode="json"))
+
+    def pins():
+        return {"base", "current"} | protected_ask_models(jobs, 150)
+
+    assert (warming in pins()) == protected
+    ledger, bedrock = CleanupLedger(table, "kloop"), Bedrock(["base", "current", pinned])
+    ledger.reserve("old", "bedrock_import", "old")
+    ledger.resolve("old", pinned)
+    slots = ImportSlots(bedrock, ledger, pins)
+    if protected:
+        with pytest.raises(RuntimeError, match="occupied"):
+            slots.reserve("new")
+        assert bedrock.deleted == []
+        assert ledger.entries()[0]["resource_id"] == pinned
+    else:
+        slots.reserve("new")
+        assert bedrock.deleted == [pinned]
+
+
+def test_import_deletion_rechecks_a_new_ask_pin(table):
+    ledger, bedrock = CleanupLedger(table, "kloop"), Bedrock(["base", "current", "old"])
+    ledger.reserve("old", "bedrock_import", "old")
+    ledger.resolve("old", "old")
+    pins = Mock(side_effect=[{"base", "current"}, {"base", "current", "old"}])
+    with pytest.raises(ValueError, match="Ask-pinned"):
+        ImportSlots(bedrock, ledger, pins).reserve("new")
+    assert not bedrock.deleted and len(ledger.entries()) == 1
+
+
+def test_import_creation_and_tagging_permissions_match_service_scope():
+    worker = (
+        Path("infra/training.tf")
+        .read_text()
+        .split('resource "aws_iam_role_policy" "training_worker" {')[1]
+        .split('resource "aws_iam_role_policy" "training_states" {')[0]
+    )
+    create = next(line for line in worker.splitlines() if '"bedrock:CreateModelImportJob"' in line)
+    assert 'Resource = "*"' in create
+    assert "GetModelImportJob" not in create
+    tagging = next(line for line in worker.splitlines() if '"bedrock:TagResource"' in line)
+    assert "local.import_job_arn" in tagging and "local.imported_model_arn" in tagging
+    assert 'Resource = "*"' not in tagging
+    assert 'aws_dynamodb_table.records["ask_jobs"].arn' in worker
