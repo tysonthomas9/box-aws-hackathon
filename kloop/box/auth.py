@@ -61,3 +61,16 @@ def token_provider(
     if mode != "ccg":
         raise ValueError("Unsupported Box auth mode")
     return CCGTokenProvider(secret)
+
+
+def webhook_keys(client: Any, settings: Settings) -> dict[str, str]:
+    """Load signing keys from the existing Box secret; missing keys fail closed.
+
+    Pass the returned mapping as keyword arguments to verify_webhook. Resolve
+    it at runtime so key rotation requires no code/configuration change.
+    """
+    secret = read_secret(client, settings.box_secret_id)
+    return {
+        "primary_key": secret.get("webhook_primary_key", ""),
+        "secondary_key": secret.get("webhook_secondary_key", ""),
+    }

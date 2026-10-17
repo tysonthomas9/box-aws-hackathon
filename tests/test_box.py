@@ -28,6 +28,7 @@ from kloop.box import (
     sdk_client,
     token_provider,
     verify_webhook,
+    webhook_keys,
 )
 from kloop.box.client import MAX_TEXT_BYTES
 from kloop.box.seed import DEFAULT_PACK, seed
@@ -413,3 +414,24 @@ def test_seed_changed_source_uses_new_version(fake, tmp_path):
     assert result["files"][0]["version_id"] == "new-version"
     fake.uploads.upload_file.assert_not_called()
     fake.uploads.upload_file_version.assert_called_once()
+
+
+def test_webhook_keys_load_from_ccg_secret_and_missing_keys_fail_closed():
+    secrets = Mock()
+    secrets.get_secret_value.return_value = {
+        "SecretString": json.dumps(
+            {
+                "webhook_primary_key": "test-only-key",
+                "webhook_secondary_key": "secondary",
+                "client_secret": "test-only-client-secret",
+            }
+        )
+    }
+    keys = webhook_keys(secrets, Settings())
+    assert keys == {"primary_key": "test-only-key", "secondary_key": "secondary"}
+    assert verify_webhook(b'{"event":"test"}', delivery(), **keys, now=NOW)
+    secrets.get_secret_value.assert_called_with(SecretId="box-hackathon/box-ccg")
+    secrets.get_secret_value.return_value = {"SecretString": "{}"}
+    assert not verify_webhook(
+        b'{"event":"test"}', delivery(), **webhook_keys(secrets, Settings()), now=NOW
+    )
