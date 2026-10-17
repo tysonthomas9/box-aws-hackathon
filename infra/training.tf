@@ -42,11 +42,11 @@ variable "training_hyperparameters" {
     epochs                = 3, learning_rate = 0.0002, seed = 17, max_length = 512,
     gradient_accumulation = 4, minimum_gain = 0.05,
     fact_wordings         = 4, procedure_cases = 8, unknown_rows = 400, near_miss_rows = 220,
-    replay_rows           = 490, max_runtime_seconds = 5400, expected_training_rows = 2686, helper_budget_usd = 70, min_credits_usd = 40, compact_control_context = true, deterministic_replay = true, preserve_accepted_batches = true, unknown_existing_entities = false
+    replay_rows           = 490, max_runtime_seconds = 5400, expected_training_rows = 2686, helper_budget_usd = 75, min_credits_usd = 40, compact_control_context = true, deterministic_replay = true, preserve_accepted_batches = true, unknown_existing_entities = false
   }
   validation {
-    condition     = var.training_hyperparameters.helper_budget_usd > 0 && var.training_hyperparameters.helper_budget_usd <= 70
-    error_message = "The helper pause threshold must be greater than zero and at most 70 USD."
+    condition     = var.training_hyperparameters.helper_budget_usd > 0 && var.training_hyperparameters.helper_budget_usd <= 75
+    error_message = "The helper pause threshold must be greater than zero and at most 75 USD."
   }
   validation {
     condition     = var.training_hyperparameters.min_credits_usd >= 40
