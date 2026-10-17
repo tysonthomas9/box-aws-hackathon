@@ -1,5 +1,7 @@
 # Phase 2: TensorFold feasibility on EC2 Mac
 
+> Workspace snapshot: 2026-10-17 07:45 UTC. Source note: `486fe5ed-d16c-484e-93bc-ede8569e5871`. Task status: **not started**. Earlier progress entries are historical; later dated entries record updates.
+
 Prove TensorFold can teach one fact and keep it after a restart on an AWS EC2 Mac.
 
 ## Scope

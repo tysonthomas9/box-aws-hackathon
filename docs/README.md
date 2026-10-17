@@ -1,12 +1,30 @@
 # Company-knowledge learning demo
 
-Planning documents exported from the workspace; implementation has not started.
+Planning documents and progress exported from the workspace at **2026-10-17 07:45 UTC**. Implementation is underway on `withered-cobra`; this `ideas` branch contains documentation only. The source notes include dated progress entries, so earlier open questions may be resolved in later entries.
 
 ## Plan and research
 
 - [Demo specification](spec.md) — Box + AWS architecture, decisions, acceptance criteria and verification plan.
 - [Training methods compared](research/training-methods-compared.md) — Comparison of learning approaches for company knowledge.
 - [Demo scenarios](scenarios.md) — Demonstrations and hidden-test examples.
+
+## Results and current work
+
+- [POC 1 runbook and results](pocs/poc-1-runbook.md): AWS training/import/invocation mechanics passed; the tiny training run overfit.
+- [POC 2 learning results](pocs/poc-2-results.md): **ADJUST**, with trained 39/52, base 22/52, search 49/52. Facts improved; abstention regressed. The original scores used SageMaker/transformers serving, not the initially unresponsive Bedrock import.
+- [POC 3 runbook and results](pocs/poc-3-runbook.md): extraction and developer-token webhook delivery passed; later CCG authorization and signing-key setup are recorded. Live signed delivery remains a deployment check.
+- [4B versus 8B experiment](experiments/model-comparison.md): both training jobs completed; evaluation scores and the model decision are **pending**. The exact-weight Bedrock re-import served, resolving the earlier readiness failure for that retry.
+- [Phase 1 plan review](reviews/phase-1-plan-review.md): amendments reflected in current task notes.
+- [Browser demo test](tasks/18-demo-browser-test.md): planned live proof after deployment.
+
+## Phase 1b: medical corpus — in progress
+
+The company-specific medical corpus replaces the Halvard pack for the next pipeline run; `public/` is excluded. At this snapshot, corpus access/inventory and a temporary webhook create/delete probe are recorded, while native extraction is underway. There is **no final approved medical snapshot, medical evaluation result, or promoted medical model yet**. Existing Halvard scores above are separate evidence.
+
+- [Medical corpus snapshot task and probe progress](phase-1b/01-medical-corpus.md) — in progress.
+- [Medical dev and sealed hidden sets](phase-1b/02-dev-and-hidden-sets.md) — not started.
+- [Medical training and evaluation](phase-1b/03-training-and-evaluation.md) — not started.
+- [OpenUI Ask interface](phase-1b/04-openui-chat.md) — in progress.
 
 ## Architecture reviews
 
@@ -35,7 +53,7 @@ Planning documents exported from the workspace; implementation has not started.
 - [Web app on AWS: API, shared-password login and screens](tasks/13-web-app-on-aws-api-shared-password-login-and-screens.md)
 - [Deploy, seed and demo runbook](tasks/14-deploy-seed-and-demo-runbook.md)
 
-### Phase 2: TensorFold facts
+### Phase 2: TensorFold facts (deferred beyond the hackathon)
 
 - [Phase 2: TensorFold feasibility on EC2 Mac](tasks/15-phase-2-tensorfold-feasibility-on-ec2-mac.md)
 - [TensorFold fact teaching and Box sync](tasks/16-tensorfold-fact-teaching-and-box-sync.md)

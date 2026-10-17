@@ -1,5 +1,7 @@
 # TensorFold fact teaching and Box sync
 
+> Workspace snapshot: 2026-10-17 07:45 UTC. Source note: `f28e9700-1c75-4eab-b8c3-0bf0400bb8a4`. Task status: **not started**. Earlier progress entries are historical; later dated entries record updates.
+
 **Phase 2.** A Lambda in the VPC calls the TensorFold server on the EC2 Mac over its private address. Teach approved facts one at a time through TensorFold, record what stuck, and keep the model in step with Box edits.
 
 ## Scope

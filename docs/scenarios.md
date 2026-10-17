@@ -1,54 +1,14 @@
-Fictional company: **Halvard Systems** (all names invented so the base model cannot already know them). Each scenario lists what lives in Box, what gets learned, the demo question, and what each column of the Ask screen should show.
+# Phase 1 demo scenarios — frozen Halvard pack
 
-| # | Scenario | Story | Learned by |
-|---|---|---|---|
-| 1 | Who do I ping about Falcon? | Jargon + hop search misses | TensorFold |
-| 2 | Can Dana approve a $7k laptop? | Combining facts | TensorFold |
-| 3 | The handbook changes | Box edit updates the model | TensorFold + sync |
-| 4 | E42 on the X200 | Fact vs procedure | TensorFold vs LoRA |
-| 5 | A procedure it never saw | Procedure generalization | LoRA |
-| 6 | Don't make things up | Safety gate | TensorFold keep-or-undo |
+> Workspace snapshot: 2026-10-17 07:45 UTC. Source note: `65bb0a42-08ed-4a4c-b9fc-e51c4930bc40`. Earlier progress entries are historical; later dated entries record updates.
 
-## 1. "Who do I ping about Falcon?"
-- **Box:** glossary.md says "Falcon is Halvard's billing migration project." org-chart.md says "Priya Raman leads the billing migration." The org chart never says "Falcon".
-- **Learned:** both facts.
-- **Without learning:** doesn't know Falcon; guesses or declines.
-- **Search:** finds the glossary line for "Falcon" but not the org chart, so it explains Falcon without naming an owner.
-- **With learning:** "Priya Raman, who leads the billing migration (Falcon)."
-- **Proves:** learned jargon lets the model connect facts that keyword search doesn't link. Honest note: plain "What is Falcon?" is a lookup where search does fine; that question goes in the hidden test set too.
+These replace the earlier TensorFold, Dana, Atlas and fan scenarios under Tyson’s approved POC 2 corpus freeze. The runnable prompts and exact expected behavior live in [pack/demo-scenarios.json](intent://local/file/pack/demo-scenarios.json). They are demo prompts, not held-out scores or promotion gates. All three Ask modes must show measured answers; do not script search failure or claim that LoRA must win.
 
-## 2. "Can Dana approve a $7k laptop order?"
-- **Box:** org chart: "Dana Okafor is Halvard's IT procurement manager." Handbook: "Halvard procurement managers can approve purchases up to $5,000; above that, the VP of Finance, Marcus Lee, approves."
-- **With learning:** "No, it's over Dana's $5,000 limit; Marcus Lee approves it."
-- **Without / search:** without guesses; search often retrieves only one of the two passages.
-- **Proves (or disproves):** whether facts stored in weights combine. This is a real experiment; report the result either way.
+1. **A company fact.** Ask who owns Kestrel. Expected: Mira Solven. Compare without learning, with LoRA and search. Only search provides retrieved citations; a learned source label is training lineage.
+2. **Combine existing facts.** Ask for Vela retention and the Cirrus priority support target together. Expected: 17 days and 26 minutes. POC 2 struggled with composition; report the actual outcome.
+3. **Company guidance changes.** Live-edit Sable’s daily limit from 73 GB to 96 GB and retire the Quartz recovery location guidance. Show sync, the changed value and retirement in Review, then approve both. Disclose that v2 was trained beforehand and switch to that pre-trained version. Ask again: Sable should say 96 GB, Quartz should decline a current location. A stale answer is a failure. The live step proves sync/review, not live retraining or guaranteed weight deletion.
+4. **E42 procedure.** Ask whether to exchange an E42 pump with 3.1 bar inlet pressure and no completed retest. Expected: restore inlet pressure to at least 4 bar, retest, and do not replace now. Replacement requires adequate pressure and persistent E42 after retesting. The frozen pack has no X200 fan-failure fact.
+5. **Apply an unfamiliar supplied rule.** The prompt provides a new B64 filter rule in full: measure feed conductivity first; below 8 mS/cm, correct feed and retest without replacement; at least 8 mS/cm with persistent B64 after retesting permits replacement. The scenario gives 6.2 mS/cm before retesting. Expected: correct feed and retest. This tests instruction following and the environmental-first habit, not unknowable company knowledge. The rule is only in this demo prompt and is not a new corpus item or hidden test.
+6. **Decline an unsupported request.** Ask Nacre’s annual subscription fee. The documents do not specify it. Expected: say it is unknown. Show actual dev evaluation and any rejected candidate; do not invent a successful safety gate.
 
-## 3. The handbook changes
-- **Live step:** in Box, edit the handbook: the procurement limit goes from $5,000 to $10,000, and delete the line about Atlas (cancelled project).
-- **Flow:** Sync shows 1 changed file, then Review shows the changed fact and the removed fact, then approve, then Learning shows the old fact deleted and the new one taught (about 2–3 minutes).
-- **Ask again:** "Can Dana approve a $7k laptop?" now says yes. "What is Atlas?" no longer gives the old answer.
-- **Restart** the model server and ask again: the new answer persists.
-- **Risk:** TensorFold says updates and deletes are fragile; rehearse this one.
-
-## 4. "E42 on the X200: order a new fan?"
-- **Box:** X200 manual: "On the Halvard X200, error E42 means the cooling fan has failed." Runbook: "If an X200 shows E42 and the reported temperature is above 70°C, check the air intake for blockage before replacing the fan. If the temperature is normal, replace the fan."
-- **Question:** "Customer's X200 shows E42 and reads 78°C. Should we ship a new fan?"
-- **Facts model (TensorFold):** likely "E42 means the fan failed, so replace it": right fact, wrong action.
-- **Procedures model (LoRA):** "Check the air intake first; 78°C suggests a blockage."
-- **Cross-check:** teach the runbook text to TensorFold too, and the fact to LoRA, then show the facts-vs-procedures matrix.
-- **Proves:** facts and procedures need different kinds of learning.
-
-## 5. A procedure it never saw (hidden test set)
-- **Training procedures** follow one pattern: rule out an environmental cause before replacing a part (E42 plus heat: check airflow; E31 plus humidity: dry the connector first).
-- **Hidden family:** "An X400 shows E57 and the input voltage is 190V. Replace the logic board?" Expected: "Check the power supply and cable first; low voltage can cause E57." This family never appears in training.
-- **Without LoRA:** replaces the board. **With LoRA:** checks the power supply first, if the pattern generalized.
-- **Proves:** LoRA learned the habit, not just memorized the runbook. Only promoted if it beats the current version here.
-
-## 6. Don't make things up
-- **Questions nobody answered:** "What is the CEO's dog called?", "Who is the head of marketing?" (Halvard's docs don't say).
-- **Expected with learning:** still "I don't know", the same as without.
-- **Learning screen:** show a fact that TensorFold undid because it started answering the marketing question with Dana's name, with the reason shown.
-- **Proves:** learning has a safety check, and the hidden test set catches side effects.
-
-## Demo order (about 8 minutes)
-1 → 2 → 4 → 5 on the Ask and Hidden test screens, then 3 live in Box, then 6 on the Learning screen.
+Demo order: 1 → 2 → 4 → 5 → 3 → 6 (about eight minutes). Version-edit dev/hidden probes are a separately hashed addendum created after the original training-data generation. Preserve the original sealed 46+6 questions and report previously viewed hidden scores as exploratory. The shared dev set is owned by the parallel model experiment and will be referenced by committed hash; until then the pack manifest explicitly blocks promotion.

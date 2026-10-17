@@ -1,5 +1,7 @@
 # Phase 2: add the TensorFold track to inference, evaluation, UI and demo
 
+> Workspace snapshot: 2026-10-17 07:45 UTC. Source note: `8dc08ec9-1a14-4d9a-a688-f88552742efa`. Task status: **not started**. Earlier progress entries are historical; later dated entries record updates.
+
 Bring TensorFold into every phase 1 surface so facts and procedures can be compared.
 
 ## Scope
