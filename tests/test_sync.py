@@ -387,3 +387,29 @@ def test_sync_runtime_requires_real_extraction_factory(monkeypatch):
     monkeypatch.delenv("KLOOP_EXTRACTION_FACTORY", raising=False)
     with pytest.raises(RuntimeError, match="KLOOP_EXTRACTION_FACTORY"):
         runtime()
+
+
+def test_realistic_fake_survives_cursor_write_failure(setup, monkeypatch):
+    from kloop.sync.testing import FakeExtraction
+
+    _, _, storage, service = setup
+    fake = FakeExtraction()
+    service.extraction = fake
+    original_put = storage.put
+
+    def fail_cursor(collection, id, value):
+        if collection.startswith("sync_cursors:"):
+            raise RuntimeError("crash after durable extraction")
+        original_put(collection, id, value)
+
+    monkeypatch.setattr(storage, "put", fail_cursor)
+    with pytest.raises(RuntimeError):
+        service.run("manual")
+    assert fake.versions == {"f": "v1"}
+    assert storage.get("sync_cursors:halvard", "f") is None
+    monkeypatch.setattr(storage, "put", original_put)
+    assert service.run("schedule")["changes"] == 0
+    assert storage.get("sync_cursors:halvard", "f")["version_id"] == "v1"
+    assert fake.calls == [("process", "f", "v1"), ("process", "f", "v1")]
+    assert fake.retire("f") == 1
+    assert fake.retire("f") == 0

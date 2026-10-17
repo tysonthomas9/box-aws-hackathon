@@ -1,7 +1,7 @@
 """Runtime composition for sync; extraction factory is wired by the deploy wave.
 
 KLOOP_EXTRACTION_FACTORY must name module:function. The function takes a boto3
-Session and returns kloop.sync.service.Extraction. No fake or no-op fallback is
+Session and returns kloop.sync.ports.Extraction. No fake or no-op fallback is
 permitted. API code uses ingress_runtime().webhook / sync_now after route checks;
 ingress never constructs or invokes extraction.
 """
@@ -19,7 +19,8 @@ from kloop.box.auth import token_provider, webhook_keys
 from kloop.box.client import BoxClient, sdk_client
 from kloop.config import Settings
 from kloop.sync.ingress import SyncIngress
-from kloop.sync.service import Extraction, SyncService
+from kloop.sync.ports import Extraction
+from kloop.sync.service import SyncService
 from kloop.sync.state import LambdaDispatch, SyncState
 
 

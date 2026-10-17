@@ -2,25 +2,12 @@
 
 import time
 from collections.abc import Callable
-from typing import Protocol
 from uuid import uuid4
 
 from kloop.box.client import BoxClient, FileInfo
 from kloop.ports import Record, Storage
+from kloop.sync.ports import Extraction
 from kloop.sync.state import SyncState
-
-
-class Extraction(Protocol):
-    """Return durable change counts; retry safely after a partial failure.
-
-    Implementations own item/review persistence and MUST preserve rejection
-    decisions on retries. process reconciles the pinned file version; retire
-    proposes retirements for review, rather than silently deleting approved items.
-    A return means ALL resulting items/reviews are durably stored.
-    """
-
-    def process(self, file_id: str, version_id: str) -> int: ...
-    def retire(self, file_id: str) -> int: ...
 
 
 def source_files(box: BoxClient) -> list[FileInfo]:
