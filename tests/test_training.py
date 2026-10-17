@@ -1867,3 +1867,74 @@ def test_new_workflow_seed_does_not_reuse_failed_generations(snapshot):
         prompts.append(helper.call.call_args_list[0].args[1])
     assert prompts[0] != prompts[1]
     assert "run=run-one" in prompts[0] and "run=run-two" in prompts[1]
+
+
+def test_partial_frozen_rows_require_hash_and_never_invoke_models(snapshot):
+    from collections import Counter
+
+    from kloop.train.data import encoded
+    from kloop.train.helpers import TrainingHelpers
+
+    selected = [r for r in rows() if r["kind"] != "near_miss"]
+    counts = dict(Counter(r["kind"] for r in selected))
+    body = encoded(
+        {
+            "snapshot_hash": snapshot.sha256,
+            "counts": counts,
+            "rows": selected,
+            "accepted_checker": "zai.glm-5",
+            "replay_checker": "skipped_for_gpu_deadline",
+        }
+    )
+    key = f"training/partial-inputs/{sha256(body)}.json"
+    config = TrainingConfig(
+        partial_training_key=key, partial_training_counts=counts, expected_training_rows=3
+    )
+    artifacts = MemoryArtifacts()
+    artifacts.put(key, body)
+    helper = TrainingHelpers(Mock(), artifacts)
+    built = DataBuilder(helper.generate, helper.check, artifacts.put).build(
+        snapshot, config, Path(DEV_PATH).read_bytes()
+    )
+    assert built["manifest"]["counts"] == counts
+    assert built["manifest"]["partial_training_deviation"][
+        "replay_glm_check_skipped_for_gpu_deadline"
+    ]
+    helper.runtime.converse.assert_not_called()
+    artifacts.put(key, body + b" ")
+    with pytest.raises(ValueError, match="frozen contract"):
+        list(helper.generate(snapshot, config))
+
+
+def test_partial_prepare_still_requires_cloud_audit_and_exact_kind_targets(worker):
+    w, store, _, evaluator = worker
+    counts = {"fact": 1, "procedure": 1, "unknown": 1, "replay": 1}
+    version = store.get("run")
+    version.manifest["config"].update(
+        dev_set_hash=MEDICAL_DEV_HASH,
+        training_snapshot_hash=version.manifest["snapshot_hash"],
+        partial_training_key="training/partial-inputs/" + "a" * 64 + ".json",
+        partial_training_counts=counts,
+        expected_training_rows=4,
+    )
+    version.manifest["dev_set_hash"] = MEDICAL_DEV_HASH
+    store.save(version)
+    w.helpers = SimpleNamespace(budget=None, bind_generation=Mock(), batches=Mock())
+    assert w.handle("batches", "run") == {"batches": []}
+    w.helpers.batches.assert_not_called()
+    w.builder = Mock(
+        build=Mock(
+            return_value={
+                "manifest_hash": "b" * 64,
+                "data_prefix": "training/data/partial",
+                "manifest": {"rows": 4, "counts": counts},
+            }
+        )
+    )
+    evaluator.return_value = {"passed": False, "sha256": "c" * 64}
+    with pytest.raises(ValueError, match="pre-training overlap audit"):
+        w.handle("prepare", "run")
+    assert not any(r["kind"] == "sagemaker_training" for r in w.ledger.entries())
+    evaluator.return_value = {"passed": True, "sha256": "c" * 64}
+    assert w.handle("prepare", "run")["request"]["TrainingJobName"] == "run"
+    assert store.get("run").manifest["training_row_counts"] == counts

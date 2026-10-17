@@ -47,6 +47,10 @@ class TrainingConfig(BaseSettings):
     unknown_existing_entities: bool = False
     deterministic_replay: bool = False
     preserve_accepted_batches: bool = False
+    partial_training_key: str | None = Field(
+        default=None, pattern=r"^training/partial-inputs/[a-f0-9]{64}\.json$"
+    )
+    partial_training_counts: dict[str, int] | None = None
 
     @property
     def dev_path(self) -> str:

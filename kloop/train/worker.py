@@ -77,6 +77,8 @@ class TrainingWorker:
                     version.manifest["helper_generation_id"] = self.helpers.budget.generation
                     version.manifest["helper_budget_usd"] = config.helper_budget_usd
                     self.store.save(version)
+                if config.partial_training_key:
+                    return {"batches": []}
                 return {"batches": list(range(len(self.helpers.batches(snapshot, config))))}
             if type(batch) is not int or not 0 <= batch < len(
                 self.helpers.batches(snapshot, config)
@@ -137,6 +139,12 @@ class TrainingWorker:
                     "near_miss": config.near_miss_rows,
                     "replay": config.replay_rows,
                 }
+                if config.partial_training_key:
+                    targets = config.partial_training_counts or {}
+                    if set(targets) != {"fact", "procedure", "unknown", "replay"} or any(
+                        type(count) is not int or count <= 0 for count in targets.values()
+                    ):
+                        raise ValueError("Partial training requires exact positive count targets")
                 if sum(targets.values()) != config.expected_training_rows or any(
                     target and abs(data["manifest"]["counts"].get(kind, 0) - target) / target > 0.02
                     for kind, target in targets.items()

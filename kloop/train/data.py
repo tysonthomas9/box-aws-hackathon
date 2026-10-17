@@ -103,7 +103,11 @@ class DataBuilder:
         if not accepted:
             raise ValueError("Generator returned no training rows")
         required = {"fact" if i["kind"] == "fact" else "procedure" for i in items}
-        required |= {"unknown", "near_miss", "replay"}
+        required |= (
+            {kind for kind, count in config.partial_training_counts.items() if count}
+            if config.partial_training_key and config.partial_training_counts
+            else {"unknown", "near_miss", "replay"}
+        )
         if not required <= counts.keys():
             raise ValueError("Training recipe is missing a required row category")
         covered = {id for r in accepted for id in r.source_item_ids}
@@ -135,6 +139,14 @@ class DataBuilder:
             "dropped_row_reports": self.rejections(),
             "hidden_audit": "evaluation-owned; builder has no hidden-set access",
         }
+        if config.partial_training_key:
+            manifest["partial_training_deviation"] = {
+                "input_key": config.partial_training_key,
+                "actual_count_targets": config.partial_training_counts,
+                "near_miss_omitted": True,
+                "replay_glm_check_skipped_for_gpu_deadline": True,
+                "accepted_rows_checker": "zai.glm-5",
+            }
         manifest_bytes = encoded(manifest)
         manifest_hash = sha256(manifest_bytes)
         prefix = f"training/data/{manifest_hash}"

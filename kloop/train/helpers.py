@@ -181,6 +181,24 @@ class TrainingHelpers:
         return batches
 
     def generate(self, snapshot, config):
+        if config.partial_training_key:
+            body = self.artifacts.get(config.partial_training_key)
+            record = json.loads(body)
+            from collections import Counter
+
+            if (
+                config.partial_training_key != f"training/partial-inputs/{sha256(body)}.json"
+                or record["snapshot_hash"] != snapshot.sha256
+                or record["counts"] != config.partial_training_counts
+                or dict(Counter(row["kind"] for row in record["rows"])) != record["counts"]
+                or record["accepted_checker"] != "zai.glm-5"
+                or record["replay_checker"] != "skipped_for_gpu_deadline"
+                or record["counts"].get("near_miss", 0)
+            ):
+                raise ValueError("Partial training input differs from the frozen contract")
+            self.remember(snapshot, record["rows"])
+            yield from record["rows"]
+            return
         self.read_only_batches = config.preserve_accepted_batches
         try:
             for batch in range(len(self.batches(snapshot, config))):
