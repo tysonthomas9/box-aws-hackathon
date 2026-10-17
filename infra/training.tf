@@ -36,13 +36,13 @@ variable "training_hyperparameters" {
     epochs                = number, learning_rate = number, seed = number, max_length = number,
     gradient_accumulation = number, minimum_gain = number,
     fact_wordings         = number, procedure_cases = number, unknown_rows = number, near_miss_rows = number,
-    replay_rows           = number, max_runtime_seconds = number, expected_training_rows = number, helper_budget_usd = number, min_credits_usd = number, compact_control_context = bool
+    replay_rows           = number, max_runtime_seconds = number, expected_training_rows = number, helper_budget_usd = number, min_credits_usd = number, compact_control_context = bool, deterministic_replay = bool, preserve_accepted_batches = bool, unknown_existing_entities = bool
   })
   default = {
     epochs                = 3, learning_rate = 0.0002, seed = 17, max_length = 512,
     gradient_accumulation = 4, minimum_gain = 0.05,
-    fact_wordings         = 4, procedure_cases = 8, unknown_rows = 540, near_miss_rows = 220,
-    replay_rows           = 490, max_runtime_seconds = 5400, expected_training_rows = 2826, helper_budget_usd = 70, min_credits_usd = 40, compact_control_context = true
+    fact_wordings         = 4, procedure_cases = 8, unknown_rows = 400, near_miss_rows = 220,
+    replay_rows           = 490, max_runtime_seconds = 5400, expected_training_rows = 2686, helper_budget_usd = 70, min_credits_usd = 40, compact_control_context = true, deterministic_replay = true, preserve_accepted_batches = true, unknown_existing_entities = false
   }
   validation {
     condition     = var.training_hyperparameters.helper_budget_usd > 0 && var.training_hyperparameters.helper_budget_usd <= 70
