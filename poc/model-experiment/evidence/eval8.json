@@ -1,0 +1,157 @@
+{
+  "kind": "eval8",
+  "name": "box-hackathon-experiment-eval8-20261017",
+  "instance": "ml.g6.2xlarge",
+  "script_sha256": "2278276f7ef2bd4247917ce7c806780f9ea65aad6f590d256728164dd2774ebf",
+  "data_sha256": "ecd3afa9ea848663e40fe4747c9a7e89d6e8841276f283c4985a34dfd0d3374b",
+  "control_prefix": "control/eval8",
+  "role_arn": "arn:aws:iam::549803795565:role/box-hackathon-experiment-eval8-20261017",
+  "role_name": "box-hackathon-experiment-eval8-20261017",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "s3:ListBucket",
+        "Resource": [
+          "arn:aws:s3:::box-hackathon-experiment-20261017-549803795565"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": "s3:GetObject",
+        "Resource": [
+          "arn:aws:s3:::box-hackathon-experiment-20261017-549803795565/base8/*",
+          "arn:aws:s3:::box-hackathon-experiment-20261017-549803795565/control/eval8/*",
+          "arn:aws:s3:::box-hackathon-experiment-20261017-549803795565/training/train8/merged/*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:PutObject",
+          "s3:PutObjectTagging",
+          "s3:AbortMultipartUpload"
+        ],
+        "Resource": [
+          "arn:aws:s3:::box-hackathon-experiment-20261017-549803795565/evaluation/eval8/*",
+          "arn:aws:s3:::box-hackathon-experiment-20261017-549803795565/artifacts/eval8/*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": "ecr:GetAuthorizationToken",
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ecr:BatchGetImage",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:BatchCheckLayerAvailability"
+        ],
+        "Resource": "arn:aws:ecr:us-east-2:763104351884:repository/pytorch-training"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "arn:aws:logs:us-east-2:549803795565:log-group:/aws/sagemaker/TrainingJobs:log-stream:box-hackathon-experiment-eval8-20261017*"
+      }
+    ]
+  },
+  "request": {
+    "TrainingJobName": "box-hackathon-experiment-eval8-20261017",
+    "RoleArn": "arn:aws:iam::549803795565:role/box-hackathon-experiment-eval8-20261017",
+    "AlgorithmSpecification": {
+      "TrainingImage": "763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@sha256:ec77d5e5d0e9871c8bb20331a74d1e8c308cdda9143b909b4b5eb99bba795d4d",
+      "TrainingInputMode": "File",
+      "ContainerEntrypoint": [
+        "bash",
+        "-lc",
+        "python -m pip install --no-cache-dir transformers==4.51.3 peft==0.15.2 accelerate==1.6.0 safetensors==0.5.3 && python /opt/ml/input/data/code/eval_runtime.py"
+      ]
+    },
+    "InputDataConfig": [
+      {
+        "ChannelName": "base",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-experiment-20261017-549803795565/base8/",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      },
+      {
+        "ChannelName": "code",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-experiment-20261017-549803795565/control/eval8/eval_runtime.py",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      },
+      {
+        "ChannelName": "data",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-experiment-20261017-549803795565/control/eval8/evaluation.json",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      },
+      {
+        "ChannelName": "candidate",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-experiment-20261017-549803795565/training/train8/merged/",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      }
+    ],
+    "OutputDataConfig": {
+      "S3OutputPath": "s3://box-hackathon-experiment-20261017-549803795565/artifacts/eval8/"
+    },
+    "ResourceConfig": {
+      "InstanceType": "ml.g6.2xlarge",
+      "InstanceCount": 1,
+      "VolumeSizeInGB": 120
+    },
+    "StoppingCondition": {
+      "MaxRuntimeInSeconds": 1800,
+      "MaxPendingTimeInSeconds": 1800
+    },
+    "EnableManagedSpotTraining": false,
+    "EnableNetworkIsolation": false,
+    "Environment": {
+      "AWS_REGION": "us-east-2",
+      "POC_BUCKET": "box-hackathon-experiment-20261017-549803795565",
+      "POC_OUTPUT_PREFIX": "evaluation/eval8",
+      "POC_NAME": "model-experiment",
+      "POC_EPOCHS": "3",
+      "POC_SEED": "17",
+      "POC_LEARNING_RATE": "0.0002",
+      "POC_MAX_LENGTH": "512",
+      "POC_GRAD_ACCUMULATION": "4",
+      "AWS_SDK_UA_APP_ID": "AWSSkill-SageMaker",
+      "TOKENIZERS_PARALLELISM": "false"
+    },
+    "Tags": [
+      {
+        "Key": "project",
+        "Value": "box-hackathon"
+      },
+      {
+        "Key": "poc",
+        "Value": "model-experiment"
+      }
+    ]
+  }
+}

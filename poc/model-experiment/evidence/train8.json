@@ -148,8 +148,11 @@
   "status": {
     "TrainingJobName": "box-hackathon-experiment-train8-20261017",
     "TrainingJobArn": "arn:aws:sagemaker:us-east-2:549803795565:training-job/box-hackathon-experiment-train8-20261017",
-    "TrainingJobStatus": "InProgress",
-    "SecondaryStatus": "Pending",
+    "ModelArtifacts": {
+      "S3ModelArtifacts": "s3://box-hackathon-experiment-20261017-549803795565/artifacts/train8/box-hackathon-experiment-train8-20261017/output/model.tar.gz"
+    },
+    "TrainingJobStatus": "Completed",
+    "SecondaryStatus": "Completed",
     "AlgorithmSpecification": {
       "TrainingImage": "763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@sha256:ec77d5e5d0e9871c8bb20331a74d1e8c308cdda9143b909b4b5eb99bba795d4d",
       "TrainingInputMode": "File",
@@ -214,7 +217,9 @@
       "MaxPendingTimeInSeconds": 1800
     },
     "CreationTime": "2026-10-17T00:27:09.201000-07:00",
-    "LastModifiedTime": "2026-10-17T00:27:18.049000-07:00",
+    "TrainingStartTime": "2026-10-17T00:27:52.790000-07:00",
+    "TrainingEndTime": "2026-10-17T00:41:38.811000-07:00",
+    "LastModifiedTime": "2026-10-17T00:41:39.188000-07:00",
     "SecondaryStatusTransitions": [
       {
         "Status": "Starting",
@@ -225,12 +230,39 @@
       {
         "Status": "Pending",
         "StartTime": "2026-10-17T00:27:09.505000-07:00",
-        "StatusMessage": "Training job waiting for capacity"
+        "EndTime": "2026-10-17T00:27:52.790000-07:00",
+        "StatusMessage": "Preparing the instances for training"
+      },
+      {
+        "Status": "Downloading",
+        "StartTime": "2026-10-17T00:27:52.790000-07:00",
+        "EndTime": "2026-10-17T00:30:34.059000-07:00",
+        "StatusMessage": "Downloading the training image"
+      },
+      {
+        "Status": "Training",
+        "StartTime": "2026-10-17T00:30:34.059000-07:00",
+        "EndTime": "2026-10-17T00:41:26.408000-07:00",
+        "StatusMessage": "Training image download completed. Training in progress."
+      },
+      {
+        "Status": "Uploading",
+        "StartTime": "2026-10-17T00:41:26.408000-07:00",
+        "EndTime": "2026-10-17T00:41:38.811000-07:00",
+        "StatusMessage": "Uploading generated training model"
+      },
+      {
+        "Status": "Completed",
+        "StartTime": "2026-10-17T00:41:38.811000-07:00",
+        "EndTime": "2026-10-17T00:41:38.811000-07:00",
+        "StatusMessage": "Training job completed"
       }
     ],
     "EnableNetworkIsolation": false,
     "EnableInterContainerTrafficEncryption": false,
     "EnableManagedSpotTraining": false,
+    "TrainingTimeInSeconds": 826,
+    "BillableTimeInSeconds": 826,
     "ProfilingStatus": "Disabled",
     "Environment": {
       "AWS_REGION": "us-east-2",

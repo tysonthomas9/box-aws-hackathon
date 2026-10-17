@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-17T07:42:32.224493+00:00",
+  "checked_at": "2026-10-17T07:43:14.407256+00:00",
   "limit_usd": 10,
   "helper_usage": {
     "us.moonshotai.kimi-k3": {
@@ -31,9 +31,9 @@
       "rate_per_hour": 1.515
     },
     "train8": {
-      "reserved": true,
-      "seconds": 2400,
-      "cost_usd": 0.8146666666666667,
+      "reserved": false,
+      "seconds": 826,
+      "cost_usd": 0.28038111111111114,
       "rate_per_hour": 1.222
     },
     "eval4": {
@@ -54,7 +54,7 @@
     "bedrock_startup_and_model_storage_usd": 1.5,
     "s3_ebs_logs_requests_usd": 0.5
   },
-  "conservative_total_usd": 8.978296486666666,
+  "conservative_total_usd": 8.44401093111111,
   "sources": [
     "https://aws.amazon.com/bedrock/pricing/",
     "evidence/training-prices.json"
