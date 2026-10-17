@@ -1,0 +1,41 @@
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "box-hackathon-poc2-eval17-20261017",
+        "RoleId": "AROAYAAW4ERWVF336UQQW",
+        "Arn": "arn:aws:iam::549803795565:role/box-hackathon-poc2-eval17-20261017",
+        "CreateDate": "2026-10-17T06:46:56+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "sagemaker.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:SourceAccount": "549803795565"
+                        },
+                        "ArnLike": {
+                            "aws:SourceArn": "arn:aws:sagemaker:us-east-2:549803795565:training-job/box-hackathon-poc2-eval17-20261017"
+                        }
+                    }
+                }
+            ]
+        },
+        "MaxSessionDuration": 3600,
+        "Tags": [
+            {
+                "Key": "project",
+                "Value": "box-hackathon"
+            },
+            {
+                "Key": "poc",
+                "Value": "company-knowledge"
+            }
+        ],
+        "RoleLastUsed": {}
+    }
+}

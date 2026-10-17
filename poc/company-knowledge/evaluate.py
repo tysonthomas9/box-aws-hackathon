@@ -41,6 +41,7 @@ def main():
     parser.add_argument("--lora", action="store_true", help="Evaluate all52 sealed questions on a trained candidate, without retrieval")
     parser.add_argument("--tokenizer-sha", default=TOKENIZER_SHA)
     parser.add_argument("--config-sha", default="6b913e85499cff943ae810b76194764424d1869a26a1e32dbb1dda2395f7ffa3")
+    parser.add_argument("--sagemaker-responses", type=Path, help="Score approved evaluation-only job output; never invokes Bedrock candidate")
     args = parser.parse_args()
     modes = ["lora"] if args.lora else ["base", "base_retrieval"]
     if args.lora and args.addendum_only:
@@ -84,6 +85,19 @@ def main():
     hidden = [json.loads(line) for line in hidden_bytes.splitlines()]
     evaluation_kinds = sorted({test["kind"] for test in hidden})
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    fallback = None
+    fallback_lookup = {}
+    runtime = "served via Bedrock"
+    if args.sagemaker_responses:
+        if not args.lora:
+            raise ValueError("SageMaker fallback is only approved for LoRA")
+        fallback = json.loads(args.sagemaker_responses.read_text())
+        runtime = "served via SageMaker/transformers, not Bedrock"
+        if fallback["serving_runtime"] != runtime or fallback["hidden_sha256"] != freeze["hidden_sha256"] or fallback["addendum_sha256"] != addendum_sha:
+            raise ValueError("Fallback provenance differs from sealed evaluation")
+        fallback_lookup = {row["id"]: row for row in fallback["answers"]}
+        if len(fallback["answers"]) != 52 or set(fallback_lookup) != {test["id"] for test in hidden}:
+            raise ValueError("Fallback must contain exactly52 sealed answers")
     responses = []
     for mode in modes:
         for test in hidden:
@@ -98,6 +112,8 @@ def main():
             prompt += "<|im_start|>assistant\n"
             payload = {"prompt": prompt, "max_gen_len": 256, "temperature": 0}
             request = {"model_arn": args.model_arn, "payload": payload, "template_sha256": TEMPLATE_SHA}
+            if fallback is not None:
+                request.update(serving_runtime=runtime, sagemaker_response_sha256=hashlib.sha256(args.sagemaker_responses.read_bytes()).hexdigest())
             digest = hashlib.sha256(json.dumps(request, sort_keys=True).encode()).hexdigest()
             cached = args.output_dir / f"{mode}-{test['id']}.json"
             if cached.exists():
@@ -106,10 +122,19 @@ def main():
                     raise ValueError("Cached model request changed; use a fresh output directory")
             else:
                 body_file = args.output_dir / f"{mode}-{test['id']}.body.json"
-                metadata = aws("bedrock-runtime", "invoke-model", "--model-id", args.model_arn,
-                               "--body", json.dumps(payload), "--cli-binary-format", "raw-in-base64-out",
-                               "--content-type", "application/json", "--accept", "application/json", str(body_file))
-                body = json.loads(body_file.read_text())
+                if fallback is not None:
+                    row = fallback_lookup[test["id"]]
+                    if row["prompt"] != prompt or row["serving_runtime"] != runtime:
+                        raise ValueError("Fallback prompt/runtime differs from baseline")
+                    body = {"generation": row["answer"], "stop_reason": row["finish_reason"],
+                            "generation_token_count": row["generated_tokens"], "serving_runtime": runtime}
+                    body_file.write_text(json.dumps(body, indent=2) + "\n")
+                    metadata = {"serving_runtime": runtime, "source": str(args.sagemaker_responses)}
+                else:
+                    metadata = aws("bedrock-runtime", "invoke-model", "--model-id", args.model_arn,
+                                   "--body", json.dumps(payload), "--cli-binary-format", "raw-in-base64-out",
+                                   "--content-type", "application/json", "--accept", "application/json", str(body_file))
+                    body = json.loads(body_file.read_text())
                 envelope = {"request": request, "request_sha256": digest, "response": body,
                             "metadata": metadata, "retrieved_ids": [d["id"] for d in documents],
                             "completed_at": datetime.now(timezone.utc).isoformat()}
@@ -166,6 +191,9 @@ def main():
             counts[mode][kind] = {"correct": sum(lookup[(mode, r["id"])]["correct"] for r in selected),
                                   "total": len(selected),
                                   "invented": sum(lookup[(mode, r["id"])]["invented"] for r in selected)}
+    if fallback is not None:
+        for result in responses + decisions:
+            result["serving_runtime"] = runtime
     summary = {"model_arn": args.model_arn, "target_model": "Qwen/Qwen3-4B-Instruct-2507",
                "hidden_sha256": freeze["hidden_sha256"], "pack_sha256": freeze["pack_sha256"],
                "addendum_sha256": addendum_sha, "question_count_per_mode": len(hidden),
@@ -175,6 +203,10 @@ def main():
                "retrieval": "Query-only lexical IDF overlap; top 3 of the 13 pack documents; no expected-answer oracle",
                "lora": "seed17 candidate" if args.lora else "not run", "responses": responses, "decisions": decisions,
                "caveat": "Exploratory model-judged counts; inspect contradictions and general regressions" if args.lora else "Exploratory model-judged counts, not a learning result; LoRA has not run"}
+    if fallback is not None:
+        summary["serving_runtime"] = runtime
+        summary["sagemaker_response_sha256"] = hashlib.sha256(args.sagemaker_responses.read_bytes()).hexdigest()
+        summary["caveat"] = "Served via SageMaker/transformers, not Bedrock; baseline runtime differs, so gains cannot be attributed solely to LoRA. Bedrock candidate never served."
     (args.output_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(counts, indent=2))
 
