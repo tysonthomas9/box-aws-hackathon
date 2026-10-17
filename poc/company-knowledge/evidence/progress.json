@@ -1,6 +1,6 @@
 {
-  "recorded_at": "2026-10-17T04:43:48.832886+00:00",
-  "status": "kimi_generation_running",
+  "recorded_at": "2026-10-17T05:27:56.841552+00:00",
+  "status": "data_complete_evaluation_pending",
   "active_generator": "us.moonshotai.kimi-k3",
   "judge": "zai.glm-5",
   "generator_routing": {
@@ -13,7 +13,7 @@
   },
   "hidden_sha256": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
   "pack_sha256": "b4d7aef08e0dbb39c3007c317648e964ff5ff8f388a44c7e87a71755589c4320",
-  "training_file_sha256": null,
+  "training_file_sha256": "92edb882d2233b7604b2072abe98c46d81dced97b0a54356788f160dddac1a72",
   "training_examples_planned": 400,
   "unused_generators": [
     "Haiku first batch",
@@ -23,9 +23,11 @@
   "authorization": "Tyson approved Kimi US routing and budget waiver; stop before any action expected above $10",
   "gpu_quota_request": "74e5f1e619a0451cace4801eae55ba22Yv0pXLhe",
   "evaluation": {
-    "base": "pending imported model",
-    "base_retrieval": "pending imported model",
+    "base": "pending POC 1 readiness diagnostic; no successful Qwen response yet",
+    "base_retrieval": "pending working base inference",
     "lora": "pending GPU quota and training"
   },
-  "final_results": false
+  "final_results": false,
+  "final_manifest_sha256": "e2f7acfa96c583af99fb4fae7a045b626cabbf9ee380cedfdfe81da4278ec806",
+  "training_examples_final": 386
 }

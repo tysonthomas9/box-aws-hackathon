@@ -1,0 +1,2019 @@
+{
+  "judge": "zai.glm-5",
+  "fallback_used": false,
+  "generator": "us.moonshotai.kimi-k3",
+  "source_sha256": "02d27c68b981cc9063ed9cd2e7798d830f42e2265ef41b272c6302570eea7293",
+  "reviewed_sha256": "02d27c68b981cc9063ed9cd2e7798d830f42e2265ef41b272c6302570eea7293",
+  "accepted": 400,
+  "rejected": 0,
+  "accepted_by_kind": {
+    "fact": 180,
+    "procedure": 60,
+    "unknown": 30,
+    "near_miss": 30,
+    "general": 100
+  },
+  "decisions": [
+    {
+      "id": "F01-00",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-01",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-02",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-03",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-04",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-05",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-06",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-07",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-08",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-09",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-10",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-11",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-12",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-13",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-14",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-15",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-16",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F01-17",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F01 including the source suffix."
+    },
+    {
+      "id": "F02-00",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F02 including the source suffix."
+    },
+    {
+      "id": "F02-01",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F02 including the source suffix."
+    },
+    {
+      "id": "F02-02",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, identifying Tuesday as the day of the week."
+    },
+    {
+      "id": "F02-03",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, confirming the weekly recurrence."
+    },
+    {
+      "id": "F02-04",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, providing the requested start time details."
+    },
+    {
+      "id": "F02-05",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, providing the specific UTC time."
+    },
+    {
+      "id": "F02-06",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, confirming the premise of the question."
+    },
+    {
+      "id": "F02-07",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, providing both the day and time."
+    },
+    {
+      "id": "F02-08",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, identifying the time zone as UTC."
+    },
+    {
+      "id": "F02-09",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, allowing the user to derive the minutes past the hour."
+    },
+    {
+      "id": "F02-10",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, addressing the user's scheduling context."
+    },
+    {
+      "id": "F02-11",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, providing both start time and recurrence."
+    },
+    {
+      "id": "F02-12",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, filling in the requested information."
+    },
+    {
+      "id": "F02-13",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, citing the documentation source."
+    },
+    {
+      "id": "F02-14",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, confirming the time for Tuesday."
+    },
+    {
+      "id": "F02-15",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, identifying the Nacre gateway."
+    },
+    {
+      "id": "F02-16",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, suitable for a runbook entry."
+    },
+    {
+      "id": "F02-17",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, confirming it is a weekly event."
+    },
+    {
+      "id": "F03-00",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, identifying the retention length."
+    },
+    {
+      "id": "F03-01",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, identifying the retention period."
+    },
+    {
+      "id": "F03-02",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, confirming availability duration."
+    },
+    {
+      "id": "F03-03",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact including the source suffix, implying deletion occurs after the retention period."
+    },
+    {
+      "id": "F03-04",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-05",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-06",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-07",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-08",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-09",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-10",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-11",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-12",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-13",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-14",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-15",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-16",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F03-17",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F03 with source suffix."
+    },
+    {
+      "id": "F04-00",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 with source suffix."
+    },
+    {
+      "id": "F04-01",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 with source suffix."
+    },
+    {
+      "id": "F04-02",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 with source suffix."
+    },
+    {
+      "id": "F04-03",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 with source suffix."
+    },
+    {
+      "id": "F04-04",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 with source suffix."
+    },
+    {
+      "id": "F04-05",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 with source suffix."
+    },
+    {
+      "id": "F04-06",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 including the source suffix."
+    },
+    {
+      "id": "F04-07",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 including the source suffix."
+    },
+    {
+      "id": "F04-08",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 including the source suffix."
+    },
+    {
+      "id": "F04-09",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 including the source suffix."
+    },
+    {
+      "id": "F04-10",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 including the source suffix."
+    },
+    {
+      "id": "F04-11",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 including the source suffix."
+    },
+    {
+      "id": "F04-12",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 including the source suffix."
+    },
+    {
+      "id": "F04-13",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 including the source suffix."
+    },
+    {
+      "id": "F04-14",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 including the source suffix."
+    },
+    {
+      "id": "F04-15",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 including the source suffix."
+    },
+    {
+      "id": "F04-16",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 including the source suffix."
+    },
+    {
+      "id": "F04-17",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F04 including the source suffix."
+    },
+    {
+      "id": "F05-00",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-01",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-02",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-03",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-04",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-05",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-06",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-07",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-08",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-09",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-10",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-11",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-12",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-13",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-14",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-15",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-16",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F05-17",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F05 including the source suffix."
+    },
+    {
+      "id": "F06-00",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F06 including the source suffix."
+    },
+    {
+      "id": "F06-01",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F06 including the source suffix."
+    },
+    {
+      "id": "F06-02",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F06 including the source suffix."
+    },
+    {
+      "id": "F06-03",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F06 including the source suffix."
+    },
+    {
+      "id": "F06-04",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F06 including the source suffix."
+    },
+    {
+      "id": "F06-05",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F06 including the source suffix."
+    },
+    {
+      "id": "F06-06",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F06 including the source suffix."
+    },
+    {
+      "id": "F06-07",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F06 including the source suffix."
+    },
+    {
+      "id": "F06-08",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F06 including the source suffix."
+    },
+    {
+      "id": "F06-09",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F06 including the source suffix."
+    },
+    {
+      "id": "F06-10",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F06 with source suffix."
+    },
+    {
+      "id": "F06-11",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F06 with source suffix."
+    },
+    {
+      "id": "F06-12",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F06 with source suffix."
+    },
+    {
+      "id": "F06-13",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F06 with source suffix."
+    },
+    {
+      "id": "F06-14",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F06 with source suffix."
+    },
+    {
+      "id": "F06-15",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F06 with source suffix."
+    },
+    {
+      "id": "F06-16",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F06 with source suffix."
+    },
+    {
+      "id": "F06-17",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F06 with source suffix."
+    },
+    {
+      "id": "F07-00",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-01",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-02",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-03",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-04",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-05",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-06",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-07",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-08",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-09",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-10",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-11",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-12",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-13",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-14",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-15",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-16",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F07-17",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F07 with source suffix."
+    },
+    {
+      "id": "F08-00",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-01",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-02",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-03",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-04",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-05",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-06",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-07",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-08",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-09",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-10",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-11",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-12",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-13",
+      "acceptable": true,
+      "reason": "Answer correctly restates approved fact F08 with source suffix."
+    },
+    {
+      "id": "F08-14",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F08 with the required source suffix."
+    },
+    {
+      "id": "F08-15",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F08 with the required source suffix."
+    },
+    {
+      "id": "F08-16",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F08 with the required source suffix."
+    },
+    {
+      "id": "F08-17",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F08 with the required source suffix."
+    },
+    {
+      "id": "F09-00",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-01",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-02",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-03",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-04",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-05",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-06",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-07",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-08",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-09",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-10",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-11",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-12",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-13",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-14",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-15",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 with the required source suffix."
+    },
+    {
+      "id": "F09-16",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 including the source suffix."
+    },
+    {
+      "id": "F09-17",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F09 including the source suffix."
+    },
+    {
+      "id": "F10-00",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-01",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-02",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-03",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-04",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-05",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-06",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-07",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-08",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-09",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-10",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-11",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-12",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-13",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-14",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-15",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-16",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "F10-17",
+      "acceptable": true,
+      "reason": "Answer correctly restates the approved fact F10 including the source suffix."
+    },
+    {
+      "id": "P01-00",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. Inlet pressure is below 4 bar, so the answer correctly advises restoring pressure and retesting before replacement."
+    },
+    {
+      "id": "P01-01",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. A retest under low pressure conditions does not satisfy the prerequisite; the answer correctly mandates restoring pressure first."
+    },
+    {
+      "id": "P01-02",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. While pressure is adequate, the answer correctly identifies that the retest prerequisite has not been met and advises retesting before replacement."
+    },
+    {
+      "id": "P01-03",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. Pressure is at least 4 bar and the fault persists after retest; the answer correctly authorizes replacement."
+    },
+    {
+      "id": "P01-04",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. Pressure is at least 4 bar and the fault persists after retest; the answer correctly authorizes replacement regardless of schedule pressure."
+    },
+    {
+      "id": "P01-05",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. Pressure is adequate but the retest prerequisite is missing; the answer correctly advises retesting before replacement."
+    },
+    {
+      "id": "P01-06",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. The answer correctly identifies that a retest performed while pressure is below 4 bar is invalid and mandates restoring pressure first."
+    },
+    {
+      "id": "P01-07",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. The fault did not persist after retest; the answer correctly advises against replacement."
+    },
+    {
+      "id": "P01-08",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. The answer correctly ignores irrelevant factors (age, noise) and focuses on the low inlet pressure, mandating restoration and retest."
+    },
+    {
+      "id": "P01-09",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. Environmental cause was corrected, pressure is adequate, and fault persists after retest; the answer correctly authorizes replacement."
+    },
+    {
+      "id": "P01-10",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. The fault did not persist; the answer correctly advises against replacement."
+    },
+    {
+      "id": "P01-11",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. The answer correctly identifies that adequate pressure alone is insufficient and the retest prerequisite must be met."
+    },
+    {
+      "id": "P01-12",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. Pressure is below 4 bar; the answer correctly mandates restoring pressure and retesting before replacement."
+    },
+    {
+      "id": "P01-13",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. The answer correctly rejects the 'close enough' argument, adhering to the strict 'below 4 bar' threshold logic."
+    },
+    {
+      "id": "P01-14",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. Pressure is at least 4 bar and fault persists after retest; the answer correctly authorizes replacement."
+    },
+    {
+      "id": "P01-15",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. The answer correctly interprets 'at least 4 bar' as inclusive of 4.0 bar and authorizes replacement based on the met prerequisites."
+    },
+    {
+      "id": "P01-16",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. The answer correctly prioritizes the retest prerequisite over vendor pressure."
+    },
+    {
+      "id": "P01-17",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. The answer correctly identifies that the current low pressure is the controlling factor, invalidating the previous premature replacement and mandating restoration."
+    },
+    {
+      "id": "P01-18",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. Pressure is adequate and fault persists after retest; the answer correctly authorizes replacement."
+    },
+    {
+      "id": "P01-19",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01. The answer correctly tracks the restoration of the environmental cause and authorizes replacement based on the final adequate pressure and persistent fault."
+    },
+    {
+      "id": "P02-00",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to reject replacement because voltage (21.6 V) is below the 22 V threshold, requiring supply correction and retest first."
+    },
+    {
+      "id": "P02-01",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to reject replacement because the retest was invalid (conducted while voltage was below 22 V) and mandates supply correction first."
+    },
+    {
+      "id": "P02-02",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to reject replacement because voltage (21.99 V) is below the 22 V threshold, correctly identifying the need to fix the supply cause."
+    },
+    {
+      "id": "P02-03",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to authorize replacement because voltage (22.0 V) meets the threshold and the fault persists after retesting."
+    },
+    {
+      "id": "P02-04",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to delay replacement because, although voltage is sufficient, the required retest has not yet been performed."
+    },
+    {
+      "id": "P02-05",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to reject replacement because the fault cleared upon retesting; persistence is a required condition for replacement."
+    },
+    {
+      "id": "P02-06",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to authorize replacement because voltage (23.4 V) is above threshold and the fault persists after retesting."
+    },
+    {
+      "id": "P02-07",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to reject replacement because the fault cleared on retest, failing the persistence requirement."
+    },
+    {
+      "id": "P02-08",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to delay replacement because, while voltage is sufficient, the required retest has not been performed."
+    },
+    {
+      "id": "P02-09",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to reject replacement because voltage (21.5 V) is below threshold, prioritizing supply correction over repeated hardware swaps."
+    },
+    {
+      "id": "P02-10",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to authorize replacement because all prerequisites are met: voltage is at threshold (22.0 V) and fault persists after retest."
+    },
+    {
+      "id": "P02-11",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to reject replacement because the fault cleared after the supply was corrected and a valid retest was performed."
+    },
+    {
+      "id": "P02-12",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to authorize replacement because the supply was corrected to above threshold (22.1 V) and the fault persists after retest."
+    },
+    {
+      "id": "P02-13",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to reject replacement because the fault cleared after the supply was corrected and a valid retest was performed."
+    },
+    {
+      "id": "P02-14",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to reject replacement because no active fault exists to persist; the persistence requirement is not met."
+    },
+    {
+      "id": "P02-15",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to delay replacement because, while voltage is sufficient, the required retest has not been performed."
+    },
+    {
+      "id": "P02-16",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to reject replacement because the initial swap was done while voltage was below threshold; mandates supply correction and valid retest first."
+    },
+    {
+      "id": "P02-17",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to authorize replacement because voltage is at threshold (22.0 V) and fault persists after retest; correctly rejects unnecessary delays."
+    },
+    {
+      "id": "P02-18",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to authorize replacement of the controller only, as prerequisites are met, and correctly rejects unapproved additional repairs."
+    },
+    {
+      "id": "P02-19",
+      "acceptable": true,
+      "reason": "Correctly applies P02 to reject replacement because voltage remains below threshold (21.4 V), requiring supply correction before any replacement decision."
+    },
+    {
+      "id": "P03-00",
+      "acceptable": true,
+      "reason": "Correctly identifies ambient temperature (33 C) is above the 31 C threshold and advises lowering temperature and retesting before replacement, adhering to the procedure."
+    },
+    {
+      "id": "P03-01",
+      "acceptable": true,
+      "reason": "Correctly rejects replacement because the retest occurred above the 31 C threshold, failing to rule out the environmental cause."
+    },
+    {
+      "id": "P03-02",
+      "acceptable": true,
+      "reason": "Correctly applies the procedure to lower ambient temperature (32 C > 31 C) and retest before replacement despite pressure."
+    },
+    {
+      "id": "P03-03",
+      "acceptable": true,
+      "reason": "Correctly rejects replacement because the retest was performed above the 31 C threshold, failing to rule out the environmental cause."
+    },
+    {
+      "id": "P03-04",
+      "acceptable": true,
+      "reason": "Correctly identifies 31.2 C as above the 31 C threshold and mandates lowering temperature and retesting before replacement."
+    },
+    {
+      "id": "P03-05",
+      "acceptable": true,
+      "reason": "Correctly rejects replacement because multiple retests above the 31 C threshold do not satisfy the procedure's environmental check."
+    },
+    {
+      "id": "P03-06",
+      "acceptable": true,
+      "reason": "Correctly applies the procedure to lower ambient temperature (41 C > 31 C) and retest before replacement despite escalation threats."
+    },
+    {
+      "id": "P03-07",
+      "acceptable": true,
+      "reason": "Correctly rejects replacement because the fault cleared during the retest, failing the persistence requirement."
+    },
+    {
+      "id": "P03-08",
+      "acceptable": true,
+      "reason": "Correctly advises against installation because the ambient temperature (37 C) is above the threshold, requiring environmental correction first."
+    },
+    {
+      "id": "P03-09",
+      "acceptable": true,
+      "reason": "Correctly rejects replacement based on the current high ambient temperature (33.3 C) invalidating the earlier retest."
+    },
+    {
+      "id": "P03-10",
+      "acceptable": true,
+      "reason": "Correctly identifies 31 C as meeting the threshold ('at most 31 C') but mandates a retest before replacement, as no retest was performed."
+    },
+    {
+      "id": "P03-11",
+      "acceptable": true,
+      "reason": "Correctly authorizes replacement because ambient temperature (31 C) is at or below the threshold and the fault persisted after retesting."
+    },
+    {
+      "id": "P03-12",
+      "acceptable": true,
+      "reason": "Correctly authorizes replacement because ambient temperature (30 C) is below the threshold and the fault persisted after retesting."
+    },
+    {
+      "id": "P03-13",
+      "acceptable": true,
+      "reason": "Correctly advises to perform a retest first, as the procedure requires the fault to persist after retesting even when the ambient temperature is compliant."
+    },
+    {
+      "id": "P03-14",
+      "acceptable": true,
+      "reason": "Correctly rejects replacement because the fault did not persist after the retest."
+    },
+    {
+      "id": "P03-15",
+      "acceptable": true,
+      "reason": "Correctly rejects replacement because the fault did not persist after the retest, satisfying the procedure's logic."
+    },
+    {
+      "id": "P03-16",
+      "acceptable": true,
+      "reason": "Correctly authorizes replacement based on the valid test results (compliant temperature and persistent fault)."
+    },
+    {
+      "id": "P03-17",
+      "acceptable": true,
+      "reason": "Correctly rejects immediate replacement because the retest prerequisite has not been met."
+    },
+    {
+      "id": "P03-18",
+      "acceptable": true,
+      "reason": "Correctly authorizes replacement because the environmental condition was corrected (22 C) and the fault persisted after retesting."
+    },
+    {
+      "id": "P03-19",
+      "acceptable": true,
+      "reason": "Correctly authorizes replacement because the current conditions (31 C, persistent fault) satisfy the procedure, rejecting hypothetical future concerns."
+    },
+    {
+      "id": "unknown-0-00",
+      "acceptable": true,
+      "reason": "The question asks for a detail (backup/deputy owner) not present in the approved fact F01, and the answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-0-01",
+      "acceptable": true,
+      "reason": "The question asks for the duration of the maintenance window, which is not provided in approved fact F02, and the answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-0-02",
+      "acceptable": true,
+      "reason": "The question asks for encryption standards not mentioned in approved fact F03, and the answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-0-03",
+      "acceptable": true,
+      "reason": "The question asks for recalibration frequency not found in approved fact F04, and the answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-0-04",
+      "acceptable": true,
+      "reason": "The question asks for a phone number not listed in approved fact F05, and the answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-0-05",
+      "acceptable": true,
+      "reason": "The question asks for a weekly limit, whereas approved fact F06 only specifies a daily limit, and the answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-0-06",
+      "acceptable": true,
+      "reason": "The question asks about fees not mentioned in approved fact F07, and the answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-0-07",
+      "acceptable": true,
+      "reason": "The question asks for software details not included in approved fact F08, and the answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-0-08",
+      "acceptable": true,
+      "reason": "The question asks for package contents not detailed in approved fact F10, and the answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-0-09",
+      "acceptable": true,
+      "reason": "The question asks for an escalation path not provided in approved fact F09, and the answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "near-0-00",
+      "acceptable": true,
+      "reason": "The answer correctly identifies the false premise in the question and restates the correct approved fact F01."
+    },
+    {
+      "id": "near-0-01",
+      "acceptable": true,
+      "reason": "The answer corrects the incorrect time and day using approved fact F02."
+    },
+    {
+      "id": "near-0-02",
+      "acceptable": true,
+      "reason": "The answer corrects the incorrect retention period using approved fact F03."
+    },
+    {
+      "id": "near-0-03",
+      "acceptable": true,
+      "reason": "The answer corrects the incorrect passphrase using approved fact F04."
+    },
+    {
+      "id": "near-0-04",
+      "acceptable": true,
+      "reason": "The answer corrects the incorrect channel using approved fact F05."
+    },
+    {
+      "id": "near-0-05",
+      "acceptable": true,
+      "reason": "The answer corrects the incorrect limit using approved fact F06."
+    },
+    {
+      "id": "near-0-06",
+      "acceptable": true,
+      "reason": "The answer corrects the incorrect name using approved fact F07."
+    },
+    {
+      "id": "near-0-07",
+      "acceptable": true,
+      "reason": "The answer corrects the incorrect date using approved fact F08."
+    },
+    {
+      "id": "near-0-08",
+      "acceptable": true,
+      "reason": "The answer corrects the incorrect duration using approved fact F09."
+    },
+    {
+      "id": "near-0-09",
+      "acceptable": true,
+      "reason": "The answer corrects the incorrect location using approved fact F10."
+    },
+    {
+      "id": "unknown-1-00",
+      "acceptable": true,
+      "reason": "Question asks for a detail (Kestrel maintenance window) not present in the approved facts. Answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-1-01",
+      "acceptable": true,
+      "reason": "Question asks for a detail (Nacre on-call contact) not present in the approved facts. Answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-1-02",
+      "acceptable": true,
+      "reason": "Question asks for a detail (Vela max file size) not present in the approved facts. Answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-1-03",
+      "acceptable": true,
+      "reason": "Question asks for a detail (Orin recalibration frequency) not present in the approved facts. Answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-1-04",
+      "acceptable": true,
+      "reason": "Question asks for a detail (Tern phone number) not present in the approved facts. Answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-1-05",
+      "acceptable": true,
+      "reason": "Question asks for a detail (Sable data center) not present in the approved facts. Answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-1-06",
+      "acceptable": true,
+      "reason": "Question asks for a detail (Lumen duration) not present in the approved facts. Answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-1-07",
+      "acceptable": true,
+      "reason": "Question asks for a detail (Bracken administrator) not present in the approved facts. Answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-1-08",
+      "acceptable": true,
+      "reason": "Question asks for a detail (Cirrus escalation channel) not present in the approved facts. Answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-1-09",
+      "acceptable": true,
+      "reason": "Question asks for a detail (Quartz rotation schedule) not present in the approved facts. Answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "near-1-00",
+      "acceptable": true,
+      "reason": "Correctly identifies the false premise and restates the approved fact F01 accurately."
+    },
+    {
+      "id": "near-1-01",
+      "acceptable": true,
+      "reason": "Correctly identifies the false premise and restates the approved fact F02 accurately."
+    },
+    {
+      "id": "near-1-02",
+      "acceptable": true,
+      "reason": "Correctly identifies the false premise and restates the approved fact F03 accurately."
+    },
+    {
+      "id": "near-1-03",
+      "acceptable": true,
+      "reason": "Correctly identifies the false premise and restates the approved fact F04 accurately."
+    },
+    {
+      "id": "near-1-04",
+      "acceptable": true,
+      "reason": "Correctly identifies the false premise and restates the approved fact F05 accurately."
+    },
+    {
+      "id": "near-1-05",
+      "acceptable": true,
+      "reason": "Correctly identifies the false premise and restates the approved fact F06 accurately."
+    },
+    {
+      "id": "near-1-06",
+      "acceptable": true,
+      "reason": "Correctly identifies the false premise and restates the approved fact F07 accurately."
+    },
+    {
+      "id": "near-1-07",
+      "acceptable": true,
+      "reason": "Correctly identifies the false premise and restates the approved fact F08 accurately."
+    },
+    {
+      "id": "near-1-08",
+      "acceptable": true,
+      "reason": "Correctly identifies the false premise and restates the approved fact F09 accurately."
+    },
+    {
+      "id": "near-1-09",
+      "acceptable": true,
+      "reason": "Correctly identifies the false premise and restates the approved fact F10 accurately."
+    },
+    {
+      "id": "unknown-2-00",
+      "acceptable": true,
+      "reason": "The question asks for the owner of the Nacre gateway, which is an untold detail (F02 only specifies the maintenance window). The answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-2-01",
+      "acceptable": true,
+      "reason": "The question asks for the maintenance window of the Kestrel service, which is an untold detail (F01 only specifies the owner). The answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-2-02",
+      "acceptable": true,
+      "reason": "The question asks for the average size of Vela export files, which is an untold detail (F03 only specifies retention duration). The answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-2-03",
+      "acceptable": true,
+      "reason": "The question asks for the physical installation location of the Orin sensor, which is an untold detail (F04 only specifies the calibration passphrase). The answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-2-04",
+      "acceptable": true,
+      "reason": "The question asks for weekend staffing for the Tern incident desk, which is an untold detail (F05 only specifies the escalation channel). The answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-2-05",
+      "acceptable": true,
+      "reason": "The question asks for the encryption standard used by the Sable archive, which is an untold detail (F06 only specifies the upload limit). The answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-2-06",
+      "acceptable": true,
+      "reason": "The question asks for the duration of Lumen onboarding, which is an untold detail (F07 only specifies the approval requirement). The answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-2-07",
+      "acceptable": true,
+      "reason": "The question asks for the time of day for the Bracken payroll cutoff, which is an untold detail (F08 only specifies the day). The answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-2-08",
+      "acceptable": true,
+      "reason": "The question asks for the escalation channel for Cirrus support, which is an untold detail (F09 only specifies the response target). The answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "unknown-2-09",
+      "acceptable": true,
+      "reason": "The question asks for the passphrase for the Quartz recovery package, which is an untold detail (F10 only specifies the storage location). The answer correctly acknowledges ignorance."
+    },
+    {
+      "id": "near-2-00",
+      "acceptable": true,
+      "reason": "The question posits an incorrect name (Petra Hollis) for the Kestrel service owner. The answer correctly rejects this and restates the approved fact (Mira Solven) from F01."
+    },
+    {
+      "id": "near-2-01",
+      "acceptable": true,
+      "reason": "The question posits an incorrect time (03:40 UTC) for the Nacre gateway maintenance window. The answer correctly rejects this and restates the approved fact (02:40 UTC) from F02."
+    },
+    {
+      "id": "near-2-02",
+      "acceptable": true,
+      "reason": "The question posits an incorrect retention period (27 days) for Vela export files. The answer correctly rejects this and restates the approved fact (17 days) from F03."
+    },
+    {
+      "id": "near-2-03",
+      "acceptable": true,
+      "reason": "The question posits an incorrect passphrase (amber finch 26) for the Orin sensor. The answer correctly rejects this and restates the approved fact (amber finch 62) from F04."
+    },
+    {
+      "id": "near-2-04",
+      "acceptable": true,
+      "reason": "The question posits an incorrect channel (#tern-silver) for the Tern incident desk. The answer correctly rejects this and restates the approved fact (#tern-copper) from F05."
+    },
+    {
+      "id": "near-2-05",
+      "acceptable": true,
+      "reason": "The question posits an incorrect limit (37 GB) for the Sable archive. The answer correctly rejects this and restates the approved fact (73 GB) from F06."
+    },
+    {
+      "id": "near-2-06",
+      "acceptable": true,
+      "reason": "The question posits an incorrect name (Devika Patel) for Lumen onboarding approval. The answer correctly rejects this and restates the approved fact (Devika Pell) from F07."
+    },
+    {
+      "id": "near-2-07",
+      "acceptable": true,
+      "reason": "The question posits an incorrect day (9th) for the Bracken payroll cutoff. The answer correctly rejects this and restates the approved fact (19th) from F08."
+    },
+    {
+      "id": "near-2-08",
+      "acceptable": true,
+      "reason": "The question posits an incorrect target (62 minutes) for Cirrus priority support. The answer correctly rejects this and restates the approved fact (26 minutes) from F09."
+    },
+    {
+      "id": "near-2-09",
+      "acceptable": true,
+      "reason": "The question posits an incorrect location (cabinet Q-41) for the Quartz recovery package. The answer correctly rejects this and restates the approved fact (cabinet Q-14) from F10."
+    },
+    {
+      "id": "general-0-00",
+      "acceptable": true,
+      "reason": "Correct general math answer."
+    },
+    {
+      "id": "general-0-01",
+      "acceptable": true,
+      "reason": "Correct general math answer."
+    },
+    {
+      "id": "general-0-02",
+      "acceptable": true,
+      "reason": "Correct general math answer."
+    },
+    {
+      "id": "general-0-03",
+      "acceptable": true,
+      "reason": "Correct general math answer."
+    },
+    {
+      "id": "general-0-04",
+      "acceptable": true,
+      "reason": "Correct general math answer."
+    },
+    {
+      "id": "general-0-05",
+      "acceptable": true,
+      "reason": "Correct unit conversion."
+    },
+    {
+      "id": "general-0-06",
+      "acceptable": true,
+      "reason": "Correct time conversion."
+    },
+    {
+      "id": "general-0-07",
+      "acceptable": true,
+      "reason": "Correct unit conversion."
+    },
+    {
+      "id": "general-0-08",
+      "acceptable": true,
+      "reason": "Correct unit conversion."
+    },
+    {
+      "id": "general-0-09",
+      "acceptable": true,
+      "reason": "Correct unit conversion."
+    },
+    {
+      "id": "general-0-10",
+      "acceptable": true,
+      "reason": "Correct general math answer."
+    },
+    {
+      "id": "general-0-11",
+      "acceptable": true,
+      "reason": "Correct unit conversion."
+    },
+    {
+      "id": "general-0-12",
+      "acceptable": true,
+      "reason": "Correct time calculation."
+    },
+    {
+      "id": "general-0-13",
+      "acceptable": true,
+      "reason": "Correct general math answer."
+    },
+    {
+      "id": "general-0-14",
+      "acceptable": true,
+      "reason": "Correct time calculation."
+    },
+    {
+      "id": "general-0-15",
+      "acceptable": true,
+      "reason": "Correct unit conversion."
+    },
+    {
+      "id": "general-0-16",
+      "acceptable": true,
+      "reason": "Correct general math answer."
+    },
+    {
+      "id": "general-0-17",
+      "acceptable": true,
+      "reason": "Correct unit conversion."
+    },
+    {
+      "id": "general-0-18",
+      "acceptable": true,
+      "reason": "Correct general math answer."
+    },
+    {
+      "id": "general-0-19",
+      "acceptable": true,
+      "reason": "Correct general math answer."
+    },
+    {
+      "id": "general-1-00",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-01",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-02",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-03",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-04",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-05",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-06",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-07",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-08",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-09",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-10",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-11",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-12",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-13",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-14",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-15",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-16",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-17",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-18",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-1-19",
+      "acceptable": true,
+      "reason": "General knowledge question answered correctly without referencing Halvard."
+    },
+    {
+      "id": "general-2-00",
+      "acceptable": true,
+      "reason": "The Python expression is correct and evaluates to 42."
+    },
+    {
+      "id": "general-2-01",
+      "acceptable": true,
+      "reason": "The Python expression correctly uses the modulo operator to compute the remainder."
+    },
+    {
+      "id": "general-2-02",
+      "acceptable": true,
+      "reason": "The Python expression correctly uses the exponentiation operator."
+    },
+    {
+      "id": "general-2-03",
+      "acceptable": true,
+      "reason": "The Python function correctly implements the requested logic."
+    },
+    {
+      "id": "general-2-04",
+      "acceptable": true,
+      "reason": "The Python expression correctly uses the len() function."
+    },
+    {
+      "id": "general-2-05",
+      "acceptable": true,
+      "reason": "The Python expression correctly converts the string to an integer."
+    },
+    {
+      "id": "general-2-06",
+      "acceptable": true,
+      "reason": "The Python expression correctly demonstrates truncation using int()."
+    },
+    {
+      "id": "general-2-07",
+      "acceptable": true,
+      "reason": "The Python expression correctly concatenates the strings."
+    },
+    {
+      "id": "general-2-08",
+      "acceptable": true,
+      "reason": "The Python expression correctly uses string repetition."
+    },
+    {
+      "id": "general-2-09",
+      "acceptable": true,
+      "reason": "The Python function correctly checks for even numbers."
+    },
+    {
+      "id": "general-2-10",
+      "acceptable": true,
+      "reason": "The Python expression correctly uses the max() function."
+    },
+    {
+      "id": "general-2-11",
+      "acceptable": true,
+      "reason": "The Python expression correctly uses the sum() function."
+    },
+    {
+      "id": "general-2-12",
+      "acceptable": true,
+      "reason": "The Python expression correctly uses floor division."
+    },
+    {
+      "id": "general-2-13",
+      "acceptable": true,
+      "reason": "The Python list comprehension is correct."
+    },
+    {
+      "id": "general-2-14",
+      "acceptable": true,
+      "reason": "The Python expression correctly combines comparison and logical operators."
+    },
+    {
+      "id": "general-2-15",
+      "acceptable": true,
+      "reason": "The Python expression correctly uses the abs() function."
+    },
+    {
+      "id": "general-2-16",
+      "acceptable": true,
+      "reason": "The Python expression correctly uses the round() function."
+    },
+    {
+      "id": "general-2-17",
+      "acceptable": true,
+      "reason": "The Python function correctly uses an f-string for formatting."
+    },
+    {
+      "id": "general-2-18",
+      "acceptable": true,
+      "reason": "The Python expression correctly uses negative indexing to access the last element."
+    },
+    {
+      "id": "general-2-19",
+      "acceptable": true,
+      "reason": "The Python expression correctly uses the sorted() function."
+    },
+    {
+      "id": "general-3-00",
+      "acceptable": true,
+      "reason": "Correctly sorts the numbers in ascending order."
+    },
+    {
+      "id": "general-3-01",
+      "acceptable": true,
+      "reason": "Correctly reverses the string."
+    },
+    {
+      "id": "general-3-02",
+      "acceptable": true,
+      "reason": "Correctly alphabetizes the list of words."
+    },
+    {
+      "id": "general-3-03",
+      "acceptable": true,
+      "reason": "Correctly converts the string to uppercase."
+    },
+    {
+      "id": "general-3-04",
+      "acceptable": true,
+      "reason": "Correctly sorts the numbers in descending order."
+    },
+    {
+      "id": "general-3-05",
+      "acceptable": true,
+      "reason": "Correctly removes all vowels from the word."
+    },
+    {
+      "id": "general-3-06",
+      "acceptable": true,
+      "reason": "Correctly converts the string to lowercase."
+    },
+    {
+      "id": "general-3-07",
+      "acceptable": true,
+      "reason": "Correctly sorts the words by length."
+    },
+    {
+      "id": "general-3-08",
+      "acceptable": true,
+      "reason": "Correctly reverses the order of words in the sentence."
+    },
+    {
+      "id": "general-3-09",
+      "acceptable": true,
+      "reason": "Correctly replaces spaces with hyphens."
+    },
+    {
+      "id": "general-3-10",
+      "acceptable": true,
+      "reason": "Correctly sorts the letters alphabetically."
+    },
+    {
+      "id": "general-3-11",
+      "acceptable": true,
+      "reason": "Correctly capitalizes the first letter of each word."
+    },
+    {
+      "id": "general-3-12",
+      "acceptable": true,
+      "reason": "Correctly removes all digits from the string."
+    },
+    {
+      "id": "general-3-13",
+      "acceptable": true,
+      "reason": "Correctly sorts the names alphabetically by last name."
+    },
+    {
+      "id": "general-3-14",
+      "acceptable": true,
+      "reason": "Correctly swaps the case of every letter."
+    },
+    {
+      "id": "general-3-15",
+      "acceptable": true,
+      "reason": "Correctly identifies and sorts the even numbers."
+    },
+    {
+      "id": "general-3-16",
+      "acceptable": true,
+      "reason": "Correctly repeats the string three times."
+    },
+    {
+      "id": "general-3-17",
+      "acceptable": true,
+      "reason": "Correctly sorts the decimal numbers from smallest to largest."
+    },
+    {
+      "id": "general-3-18",
+      "acceptable": true,
+      "reason": "Correctly extracts and joins the first three letters of each word."
+    },
+    {
+      "id": "general-3-19",
+      "acceptable": true,
+      "reason": "Correctly sorts the characters in the word alphabetically."
+    },
+    {
+      "id": "general-4-00",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-01",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-02",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-03",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-04",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-05",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-06",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-07",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-08",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-09",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-10",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-11",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-12",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-13",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-14",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-15",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-16",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-17",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-18",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    },
+    {
+      "id": "general-4-19",
+      "acceptable": true,
+      "reason": "Correct general knowledge answer."
+    }
+  ],
+  "caveat": "Model-based semantic review is imperfect; all raw decisions retained. Run hidden-overlap audit afterward."
+}

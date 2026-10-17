@@ -1,0 +1,96 @@
+{
+  "freeze_verified": true,
+  "hidden_sha256": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
+  "hidden_by_kind": {
+    "fact": 20,
+    "heldout_procedure": 1,
+    "two_fact": 5,
+    "unrelated": 10,
+    "untold": 10
+  },
+  "training_audited": true,
+  "training_sha256": "02d27c68b981cc9063ed9cd2e7798d830f42e2265ef41b272c6302570eea7293",
+  "training_by_kind": {
+    "fact": 180,
+    "procedure": 60,
+    "unknown": 30,
+    "near_miss": 30,
+    "general": 100
+  },
+  "overlap_threshold": 0.78,
+  "collisions": [
+    {
+      "training_id": "F01-04",
+      "hidden_id": "H01",
+      "similarity": 0.803
+    },
+    {
+      "training_id": "general-0-02",
+      "hidden_id": "H37",
+      "similarity": 0.8846
+    },
+    {
+      "training_id": "general-3-00",
+      "hidden_id": "H40",
+      "similarity": 0.8211
+    },
+    {
+      "training_id": "general-3-04",
+      "hidden_id": "H40",
+      "similarity": 0.7957
+    },
+    {
+      "training_id": "general-4-08",
+      "hidden_id": "H39",
+      "similarity": 0.8302
+    }
+  ],
+  "duplicates": [
+    {
+      "training_id": "unknown-1-03",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "unknown-1-04",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "unknown-2-01",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "near-2-01",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "near-2-03",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "near-2-04",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "near-2-05",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "near-2-08",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "near-2-09",
+      "reason": "duplicate"
+    }
+  ],
+  "semantic_review_required": true,
+  "clean_examples": 386,
+  "clean_sha256": "92edb882d2233b7604b2072abe98c46d81dced97b0a54356788f160dddac1a72",
+  "clean_by_kind": {
+    "fact": 179,
+    "procedure": 60,
+    "unknown": 27,
+    "near_miss": 24,
+    "general": 96
+  }
+}

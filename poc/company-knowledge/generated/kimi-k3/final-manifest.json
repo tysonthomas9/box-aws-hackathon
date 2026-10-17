@@ -1,0 +1,143 @@
+{
+  "created_at": "2026-10-17T05:27:41.031936+00:00",
+  "training_file": "train-final.jsonl",
+  "training_sha256": "92edb882d2233b7604b2072abe98c46d81dced97b0a54356788f160dddac1a72",
+  "examples": 386,
+  "by_kind": {
+    "fact": 179,
+    "procedure": 60,
+    "unknown": 27,
+    "near_miss": 24,
+    "general": 96
+  },
+  "raw_examples": 400,
+  "raw_sha256": "02d27c68b981cc9063ed9cd2e7798d830f42e2265ef41b272c6302570eea7293",
+  "reviewed_sha256": "02d27c68b981cc9063ed9cd2e7798d830f42e2265ef41b272c6302570eea7293",
+  "semantic_rejections": 0,
+  "post_review_duplicates": [
+    {
+      "training_id": "unknown-1-03",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "unknown-1-04",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "unknown-2-01",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "near-2-01",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "near-2-03",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "near-2-04",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "near-2-05",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "near-2-08",
+      "reason": "duplicate"
+    },
+    {
+      "training_id": "near-2-09",
+      "reason": "duplicate"
+    }
+  ],
+  "post_review_hidden_collisions": [
+    {
+      "training_id": "F01-04",
+      "hidden_id": "H01",
+      "similarity": 0.803
+    },
+    {
+      "training_id": "general-0-02",
+      "hidden_id": "H37",
+      "similarity": 0.8846
+    },
+    {
+      "training_id": "general-3-00",
+      "hidden_id": "H40",
+      "similarity": 0.8211
+    },
+    {
+      "training_id": "general-3-04",
+      "hidden_id": "H40",
+      "similarity": 0.7957
+    },
+    {
+      "training_id": "general-4-08",
+      "hidden_id": "H39",
+      "similarity": 0.8302
+    }
+  ],
+  "hidden_sha256": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
+  "pack_sha256": "b4d7aef08e0dbb39c3007c317648e964ff5ff8f388a44c7e87a71755589c4320",
+  "generator": "us.moonshotai.kimi-k3",
+  "generator_routing": {
+    "profile_arn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.moonshotai.kimi-k3",
+    "regions": [
+      "us-east-1",
+      "us-east-2",
+      "us-west-2"
+    ]
+  },
+  "judge": "zai.glm-5",
+  "judge_fallback_used": false,
+  "target_model_config": {
+    "decision": "Coordinator amendment 2026-10-17, after hidden-set freeze and before model evaluation",
+    "target_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "revision": null,
+    "revision_status": "Must use POC 1's pinned imported revision for base, retrieval and LoRA",
+    "fallback_model": "Qwen/Qwen3-8B",
+    "fallback_policy": "Coordinator must confirm fallback before use; all comparison modes must use the same model and revision",
+    "dataset_format": "Unrendered system/user/assistant messages; use the selected model's own tokenizer chat template",
+    "training_template_options": {
+      "tokenize": false,
+      "add_generation_prompt": false,
+      "enable_thinking": false
+    },
+    "evaluation_template_options": {
+      "tokenize": false,
+      "add_generation_prompt": true,
+      "enable_thinking": false
+    },
+    "model_card": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507",
+    "model_card_note": "Instruct-2507 is non-thinking-only; enable_thinking=False is redundant there and disables thinking if the approved fallback is used",
+    "freeze_note": "sealed/freeze.json preserves the original Qwen2.5 experiment plan. This file amends only model selection; hidden questions and pack hashes remain unchanged"
+  },
+  "generation_usage": {
+    "model": "us.moonshotai.kimi-k3",
+    "completed_batches": 24,
+    "input_tokens": 3463,
+    "output_tokens": 41249,
+    "uncached_us_cris_estimate_usd": 0.6920364,
+    "pricing_source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k3.html",
+    "caveat": "Token-based estimate at uncached US CRIS Standard rates, not actual billing; implicit cache discounts may apply."
+  },
+  "judge_usage": {
+    "input_tokens": 47899,
+    "output_tokens": 14414
+  },
+  "checks": {
+    "frozen_hashes": "pass",
+    "semantic_review": "GLM-5 pass for retained rows",
+    "duplicates": 0,
+    "hidden_overlap_collisions": 0,
+    "overlap_threshold": 0.78
+  },
+  "limits": [
+    "Lexical similarity audit is not a proof of zero semantic overlap",
+    "Model-based semantic review is imperfect; all verdicts and raw examples retained",
+    "Hidden data never entered generation or semantic-review requests",
+    "No Qwen inference, LoRA training, or learning evaluation result yet"
+  ]
+}
