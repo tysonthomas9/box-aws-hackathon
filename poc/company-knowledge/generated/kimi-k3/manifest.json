@@ -1,0 +1,41 @@
+{
+  "created_at": "2026-10-17T04:50:54.567922+00:00",
+  "model": "us.moonshotai.kimi-k3",
+  "budget": {
+    "waiver": "Coordinator 2026-10-17: pending Tyson alert email; stop above $10/action"
+  },
+  "training_sha256": "02d27c68b981cc9063ed9cd2e7798d830f42e2265ef41b272c6302570eea7293",
+  "pack_sha256": "b4d7aef08e0dbb39c3007c317648e964ff5ff8f388a44c7e87a71755589c4320",
+  "target_model_config": {
+    "decision": "Coordinator amendment 2026-10-17, after hidden-set freeze and before model evaluation",
+    "target_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "revision": null,
+    "revision_status": "Must use POC 1's pinned imported revision for base, retrieval and LoRA",
+    "fallback_model": "Qwen/Qwen3-8B",
+    "fallback_policy": "Coordinator must confirm fallback before use; all comparison modes must use the same model and revision",
+    "dataset_format": "Unrendered system/user/assistant messages; use the selected model's own tokenizer chat template",
+    "training_template_options": {
+      "tokenize": false,
+      "add_generation_prompt": false,
+      "enable_thinking": false
+    },
+    "evaluation_template_options": {
+      "tokenize": false,
+      "add_generation_prompt": true,
+      "enable_thinking": false
+    },
+    "model_card": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507",
+    "model_card_note": "Instruct-2507 is non-thinking-only; enable_thinking=False is redundant there and disables thinking if the approved fallback is used",
+    "freeze_note": "sealed/freeze.json preserves the original Qwen2.5 experiment plan. This file amends only model selection; hidden questions and pack hashes remain unchanged"
+  },
+  "routing": {
+    "profile_arn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.moonshotai.kimi-k3",
+    "regions": [
+      "us-east-1",
+      "us-east-2",
+      "us-west-2"
+    ]
+  },
+  "examples": 400,
+  "review_status": "requires semantic review and overlap audit before training"
+}

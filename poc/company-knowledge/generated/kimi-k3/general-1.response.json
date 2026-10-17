@@ -1,0 +1,54 @@
+{
+  "request_sha256": "f2321c1dd3ff43884e62aaf7ea3cc46fb73fc64925616c65f2d4f1b2bada610c",
+  "request": {
+    "modelId": "us.moonshotai.kimi-k3",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Write 20 varied short ordinary instruction-following question/answer pairs. Use this batch's category: translation and grammar. Do not mention Halvard, its entities, or its documents.\nIndependent generation batch: general-1. Return ONLY a JSON array of objects with question and answer strings. No markdown.\nApproved context:\n[]"
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 8192
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "reasoningContent": {
+              "reasoningText": {
+                "text": "The user wants 20 varied short instruction-following question/answer pairs in the category of \"translation and grammar.\" I need to return only a JSON array of objects with \"question\" and \"answer\" strings. No markdown, no mention of Halvard or its entities.\n\nLet me create varied translation and grammar Q&A pairs:\n\n1. Translate English to French\n2. Translate Spanish to English\n3. Grammar correction\n4. Verb conjugation\n5. Translate German phrase\n6. Plural forms\n7. Past tense\n8. Translate greeting to Japanese\n9. Parts of speech identification\n10. Subject-verb agreement\n11. Translate Italian to English\n12. Punctuation correction\n13. Synonyms/antonyms (grammar-ish)\n14. Formal vs informal\n15. Translate numbers\n16. Prepositions\n17. Tense conversion\n18. Translate Portuguese\n19. Capitalization\n20. Common phrases\n\nLet me write these out:\n\n1. Q: \"Translate 'Good morning, how are you?' into French.\" A: \"'Bonjour, comment allez-vous ?'\"\n2. Q: \"What does 'gracias' mean in English?\" A: \"It means 'thank you.'\"\n3. Q: \"Correct the grammar: 'She don't like apples.'\" A: \"'She doesn't like apples.'\"\n4. Q: \"What is the past tense of 'run'?\" A: \"'Ran.'\"\n5. Q: \"Translate 'Ich liebe dich' into English.\" A: \"'I love you.'\"\n6. Q: \"What is the plural of 'child'?\" A: \"'Children.'\"\n7. Q: \"Translate 'Where is the bathroom?' into Spanish.\" A: \"'\u00bfD\u00f3nde est\u00e1 el ba\u00f1o?'\"\n8. Q: \"Identify the verb in this sentence: 'The dog barked loudly.'\" A: \"The verb is 'barked.'\"\n9. Q: \"Change to present tense: 'He walked to school.'\" A: \"'He walks to school.'\"\n10. Q: \"Translate 'thank you very much' into Japanese.\" A: \"'\u3042\u308a\u304c\u3068\u3046\u3054\u3056\u3044\u307e\u3059' (arigatou gozaimasu).\"\n11. Q: \"Fix the capitalization: 'my friend lives in london.'\" A: \"'My friend lives in London.'\"\n12. Q: \"What does 'ciao' mean in English?\" A: \"It means 'hello' or 'goodbye' in Italian.\"\n13. Q: \"Choose the correct word: 'Their/They're/There going to the park.'\" A: \"'They're going to the park.'\"\n14. Q: \"Translate 'I am hungry' into German.\" A: \"'Ich habe Hunger.'\"\n15. Q: \"What is the comparative form of 'good'?\" A: \"'Better.'\"\n16. Q: \"Add the correct punctuation: 'What time is it'\" A: \"'What time is it?'\"\n17. Q: \"Translate 'cat' into Spanish, French, and German.\" A: \"Spanish: gato; French: chat; German: Katze.\"\n18. Q: \"Correct this sentence: 'Me and him went to the store.'\" A: \"'He and I went to the store.'\"\n19. Q: \"What is the superlative form of 'beautiful'?\" A: \"'Most beautiful.'\"\n20. Q: \"Translate 'How much does it cost?' into Portuguese.\" A: \"'Quanto custa?'\"\n\nThese are varied and appropriate. Let me format as JSON array only."
+              }
+            }
+          },
+          {
+            "text": "[\n  {\"question\": \"Translate 'Good morning, how are you?' into French.\", \"answer\": \"'Bonjour, comment allez-vous ?'\"},\n  {\"question\": \"What does the Spanish word 'gracias' mean in English?\", \"answer\": \"It means 'thank you.'\"},\n  {\"question\": \"Correct the grammar in this sentence: 'She don't like apples.'\", \"answer\": \"'She doesn't like apples.'\"},\n  {\"question\": \"What is the past tense of the verb 'run'?\", \"answer\": \"The past tense of 'run' is 'ran.'\"},\n  {\"question\": \"Translate the German phrase 'Ich liebe dich' into English.\", \"answer\": \"It means 'I love you.'\"},\n  {\"question\": \"What is the plural form of 'child'?\", \"answer\": \"The plural of 'child' is 'children.'\"},\n  {\"question\": \"Translate 'Where is the bathroom?' into Spanish.\", \"answer\": \"'\u00bfD\u00f3nde est\u00e1 el ba\u00f1o?'\"},\n  {\"question\": \"Identify the verb in this sentence: 'The dog barked loudly.'\", \"answer\": \"The verb is 'barked.'\"},\n  {\"question\": \"Rewrite this sentence in the present tense: 'He walked to school.'\", \"answer\": \"'He walks to school.'\"},\n  {\"question\": \"How do you say 'thank you very much' in Japanese?\", \"answer\": \"'\u3042\u308a\u304c\u3068\u3046\u3054\u3056\u3044\u307e\u3059' (arigatou gozaimasu).\"},\n  {\"question\": \"Fix the capitalization: 'my friend lives in london.'\", \"answer\": \"'My friend lives in London.'\"},\n  {\"question\": \"What does the Italian word 'ciao' mean in English?\", \"answer\": \"It is an informal greeting that can mean 'hello' or 'goodbye.'\"},\n  {\"question\": \"Choose the correct word: 'Their/They're/There going to the park.'\", \"answer\": \"'They're going to the park.'\"},\n  {\"question\": \"Translate 'I am hungry' into German.\", \"answer\": \"'Ich habe Hunger.'\"},\n  {\"question\": \"What is the comparative form of the adjective 'good'?\", \"answer\": \"The comparative form of 'good' is 'better.'\"},\n  {\"question\": \"Add the correct punctuation to this sentence: 'What time is it'\", \"answer\": \"'What time is it?'\"},\n  {\"question\": \"Translate the word 'cat' into Spanish, French, and German.\", \"answer\": \"Spanish: gato; French: chat; German: Katze.\"},\n  {\"question\": \"Correct this sentence: 'Me and him went to the store.'\", \"answer\": \"'He and I went to the store.'\"},\n  {\"question\": \"What is the superlative form of 'beautiful'?\", \"answer\": \"The superlative form is 'most beautiful.'\"},\n  {\"question\": \"Translate 'How much does it cost?' into Portuguese.\", \"answer\": \"'Quanto custa?'\"}\n]"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 150,
+      "outputTokens": 1395,
+      "totalTokens": 1545,
+      "cacheReadInputTokens": 0,
+      "cacheWriteInputTokens": 0
+    },
+    "metrics": {
+      "latencyMs": 21919
+    }
+  },
+  "completed_at": "2026-10-17T04:50:19.201394+00:00"
+}

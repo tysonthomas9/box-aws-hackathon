@@ -1,0 +1,54 @@
+{
+  "request_sha256": "fecd882962b1a8922a27091e5a6ea871d7a3bb8fc4e171cab969b9e232c4bda8",
+  "request": {
+    "modelId": "us.moonshotai.kimi-k3",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Write 18 distinct single-fact questions. Each must concern ONLY the supplied fact. Do not combine facts or invent details. Vary user context and wording.\nIndependent generation batch: F03. Return ONLY a JSON array of objects with question and answer strings. No markdown.\nApproved context:\n[{\"id\": \"F03\", \"subject\": \"Vela export\", \"text\": \"Vela export files are retained for 17 days.\", \"source\": \"vela.txt\", \"answer\": \"17 days\"}]"
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 8192
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "reasoningContent": {
+              "reasoningText": {
+                "text": "The user wants 18 distinct single-fact questions about the fact: \"Vela export files are retained for 17 days.\" The answer is \"17 days\".\n\nRequirements:\n- Each question must concern ONLY the supplied fact\n- Do not combine facts or invent details\n- Vary user context and wording\n- Return ONLY a JSON array of objects with question and answer strings\n- No markdown\n\nSo I need to create 18 differently-worded questions, all with answer \"17 days\". Vary user context (e.g., admin, developer, compliance officer, new employee, etc.) and wording (how long, retention period, when deleted, etc.).\n\nLet me create 18 distinct questions:\n\n1. \"How long are Vela export files retained?\" \u2014 17 days\n2. \"What is the retention period for Vela export files?\" \u2014 17 days\n3. \"As a system administrator, how many days do Vela export files remain available?\" \u2014 17 days\n4. \"After how many days are Vela export files deleted?\" \u2014 17 days\n5. \"I'm a compliance officer reviewing data policies\u2014what is the retention duration for Vela export files?\" \u2014 17 days\n6. \"How many days does Vela keep export files?\" \u2014 17 days\n7. \"When do Vela export files expire?\" \u2014 after 17 days... but answer should be \"17 days\"\n8. \"As a new team member, I need to know: how long will my Vela export files be kept?\" \u2014 17 days\n9. \"What is the maximum number of days a Vela export file is stored?\" \u2014 17 days\n10. \"How long do I have to download a Vela export file before it's removed?\" \u2014 17 days\n11. \"For audit purposes, please confirm the retention window for Vela export files.\" \u2014 17 days\n12. \"How many days pass before a Vela export file is no longer retained?\" \u2014 17 days\n13. \"As a developer integrating with Vela, how long are export files preserved?\" \u2014 17 days\n14. \"What's the storage duration for Vela export files?\" \u2014 17 days\n15. \"If I generate a Vela export today, how many days will the file be retained?\" \u2014 17 days\n16. \"Could you tell me the file retention timeframe for Vela exports?\" \u2014 17 days\n17. \"Our data governance team asks: for how many days are Vela export files kept on file?\" \u2014 17 days\n18. \"How long does the Vela platform retain export files before purging them?\" \u2014 17 days\n\nAll answers: \"17 days\".\n\nFormat: JSON array of objects with \"question\" and \"answer\" keys. No markdown."
+              }
+            }
+          },
+          {
+            "text": "[{\"question\": \"How long are Vela export files retained?\", \"answer\": \"17 days\"}, {\"question\": \"What is the retention period for Vela export files?\", \"answer\": \"17 days\"}, {\"question\": \"As a system administrator, how many days do Vela export files remain available?\", \"answer\": \"17 days\"}, {\"question\": \"After how many days are Vela export files deleted?\", \"answer\": \"17 days\"}, {\"question\": \"I'm a compliance officer reviewing our data policies\u2014what is the retention duration for Vela export files?\", \"answer\": \"17 days\"}, {\"question\": \"How many days does Vela keep export files?\", \"answer\": \"17 days\"}, {\"question\": \"When do Vela export files expire?\", \"answer\": \"17 days\"}, {\"question\": \"As a new team member, I need to know: how long will my Vela export files be kept?\", \"answer\": \"17 days\"}, {\"question\": \"What is the maximum number of days a Vela export file is stored?\", \"answer\": \"17 days\"}, {\"question\": \"How long do I have to download a Vela export file before it is removed?\", \"answer\": \"17 days\"}, {\"question\": \"For audit purposes, please confirm the retention window for Vela export files.\", \"answer\": \"17 days\"}, {\"question\": \"How many days pass before a Vela export file is no longer retained?\", \"answer\": \"17 days\"}, {\"question\": \"As a developer integrating with Vela, how long are export files preserved?\", \"answer\": \"17 days\"}, {\"question\": \"What's the storage duration for Vela export files?\", \"answer\": \"17 days\"}, {\"question\": \"If I generate a Vela export today, how many days will the file be retained?\", \"answer\": \"17 days\"}, {\"question\": \"Could you tell me the file retention timeframe for Vela exports?\", \"answer\": \"17 days\"}, {\"question\": \"Our data governance team is asking: for how many days are Vela export files kept?\", \"answer\": \"17 days\"}, {\"question\": \"How long does Vela retain export files before purging them?\", \"answer\": \"17 days\"}]"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 189,
+      "outputTokens": 1048,
+      "totalTokens": 1237,
+      "cacheReadInputTokens": 0,
+      "cacheWriteInputTokens": 0
+    },
+    "metrics": {
+      "latencyMs": 10680
+    }
+  },
+  "completed_at": "2026-10-17T04:43:59.833317+00:00"
+}
