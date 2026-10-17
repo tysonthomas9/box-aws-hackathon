@@ -45,6 +45,8 @@ class TrainingConfig(BaseSettings):
     min_credits_usd: float = Field(default=40, ge=40)
     compact_control_context: bool = False
     unknown_existing_entities: bool = False
+    deterministic_replay: bool = False
+    preserve_accepted_batches: bool = False
 
     @property
     def dev_path(self) -> str:

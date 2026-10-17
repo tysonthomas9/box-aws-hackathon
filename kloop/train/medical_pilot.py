@@ -40,6 +40,7 @@ class PilotRuntime:
 
 
 class PilotHelpers(TrainingHelpers):
+    durable_batches = False
     # Measure the new instruction's initial retention, with no paid repairs.
     # Main training still permits its two source-only repair rounds.
     repair_rounds = 0

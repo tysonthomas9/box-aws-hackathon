@@ -1604,3 +1604,74 @@ def test_existing_entity_unknown_instruction_is_used_in_repairs(snapshot):
     for call in [helper.call.call_args_list[0], helper.call.call_args_list[2]]:
         assert "entity explicitly named" in call.args[1]
     assert "supporting_quote" in helper.call.call_args_list[3].args[1]
+
+
+def test_deterministic_replay_uses_glm_and_no_kimi_even_for_repairs(snapshot):
+    from kloop.train.helpers import TrainingHelpers
+    from kloop.train.replay import rows as replay_rows
+
+    all_rows = [
+        row for batch in range(425, 450) for row in replay_rows(batch, 10 if batch == 449 else 20)
+    ]
+    assert len(all_rows) == 490
+    assert len({row["question"] for row in all_rows}) == 490
+    assert all(row["kind"] == "replay" and row["source_item_ids"] == [] for row in all_rows)
+    assert replay_rows(425, 20) == replay_rows(425, 10) + replay_rows(425, 10, offset=10)
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(side_effect=[[False] + [True] * 19, [True]])
+    config = TrainingConfig(
+        fact_wordings=1, unknown_rows=1, near_miss_rows=1, replay_rows=20, deterministic_replay=True
+    )
+    result = list(helper.generate_batch(snapshot, config, 3))
+    assert len(result) == 20 and len({r["question"] for r in result}) == 20
+    assert [call.args[0] for call in helper.call.call_args_list] == ["zai.glm-5", "zai.glm-5"]
+    assert all('"approved_items": []' in call.args[1] for call in helper.call.call_args_list)
+
+
+def test_accepted_batches_keep_rows_fill_only_gaps_and_resume_without_models(snapshot):
+    from kloop.train.data import TrainingRow, encoded
+    from kloop.train.helpers import TrainingHelpers
+
+    config = TrainingConfig(fact_wordings=1, unknown_rows=3, preserve_accepted_batches=True)
+    artifacts = MemoryArtifacts()
+    helper = TrainingHelpers(Mock(), artifacts)
+    old = rows()[1]
+    new = [{**old, "question": f"Unknown attribute {i}?"} for i in range(2)]
+    key = helper.accepted_key(snapshot, config, 1)
+    record = {
+        "snapshot_hash": snapshot.sha256,
+        "batch": 1,
+        "kind": "unknown",
+        "target_count": 3,
+        "checker_model": "zai.glm-5",
+        "rows": [old],
+        "rows_sha256": sha256(encoded([old])),
+        "drop_reports": ["old-drops.json"],
+    }
+    artifacts.put(key, encoded(record), "application/json")
+    helper._checked_batch = Mock(side_effect=[[old, new[0]], [new[1]]])
+    assert list(helper.generate_batch(snapshot, config, 1)) == [old, *new]
+    assert helper._checked_batch.call_args_list[0].kwargs == {"row_slice": (1, 2), "fill_round": 1}
+    assert helper._checked_batch.call_args_list[1].kwargs == {"row_slice": (2, 1), "fill_round": 2}
+    resumed = TrainingHelpers(Mock(), artifacts)
+    resumed._checked_batch = Mock(side_effect=AssertionError("Never regenerate accepted rows"))
+    assert list(resumed.generate_batch(snapshot, config, 1)) == [old, *new]
+    assert resumed.check(TrainingRow.model_validate(old), snapshot)
+    resumed.runtime.converse.assert_not_called()
+    assert "old-drops.json" in resumed.drop_reports
+    corrupted = json.loads(artifacts.get(key))
+    corrupted["rows"][0]["answer"] = "changed"
+    artifacts.put(key, encoded(corrupted), "application/json")
+    with pytest.raises(ValueError, match="integrity"):
+        list(resumed.generate_batch(snapshot, config, 1))
+
+
+def test_unknown_backfill_is_bounded_and_never_weakens_count_gate(snapshot):
+    from kloop.train.helpers import TrainingHelpers
+
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper._checked_batch = Mock(return_value=[])
+    config = TrainingConfig(fact_wordings=1, unknown_rows=5, preserve_accepted_batches=True)
+    assert list(helper.generate_batch(snapshot, config, 1)) == []
+    assert helper._checked_batch.call_count == 3
+    assert [call.kwargs["fill_round"] for call in helper._checked_batch.call_args_list] == [1, 2, 3]
