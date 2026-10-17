@@ -1324,3 +1324,58 @@ def test_control_output_caps_and_shared_source_prefix_preserve_source_batch_requ
     assert helper.call.call_args_list[0].args[1].startswith("Generate exactly 1 training rows")
     assert helper.call.call_args_list[0].args[2] == 6000
     assert helper.call.call_args_list[1].args[2] == 1024
+
+
+def test_control_parse_exhaustion_falls_back_once_to_two_cached_ten_row_slices(snapshot):
+    from kloop.train.helpers import TrainingHelpers
+
+    config = TrainingConfig(fact_wordings=1, unknown_rows=20)
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    left = [{**rows()[1], "question": f"Untold left attribute {i}?"} for i in range(10)]
+    right = [{**rows()[1], "question": f"Untold right attribute {i}?"} for i in range(10)]
+    helper.call = Mock(side_effect=[{}, {}, {}, left, [True] * 10, right, [True] * 10])
+    assert list(helper.generate_batch(snapshot, config, 1)) == left + right
+    assert helper.call.call_count == 7
+    left_prompt = helper.call.call_args_list[3].args[1]
+    right_prompt = helper.call.call_args_list[5].args[1]
+    assert "Generate exactly 10 training rows" in left_prompt
+    assert "slice=0:10" in left_prompt and "slice=10:20" in right_prompt
+    assert snapshot.items[0].id in left_prompt and snapshot.items[0].id in right_prompt
+    report = json.loads(helper.artifacts.get(helper.drop_reports[0]))
+    assert report["dropped"] == []
+    assert len(report["fallback"]["attempts"]) == 3
+    helper.call = Mock(side_effect=[left, [True] * 10, right, [True] * 10])
+    assert list(helper.generate_batch(snapshot, config, 1)) == left + right
+    assert helper.call.call_count == 4  # No retry of the failed 20-row group.
+
+
+def test_failed_control_half_is_dropped_without_recursive_splitting(snapshot):
+    from kloop.train.helpers import TrainingHelpers
+
+    config = TrainingConfig(fact_wordings=1, unknown_rows=20)
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    right = [{**rows()[1], "question": f"Untold surviving attribute {i}?"} for i in range(10)]
+    helper.call = Mock(side_effect=[{}, {}, {}, {}, {}, {}, right, [True] * 10])
+    assert list(helper.generate_batch(snapshot, config, 1)) == right
+    assert helper.call.call_count == 8
+    reports = [json.loads(helper.artifacts.get(key)) for key in helper.drop_reports]
+    dropped = [row for report in reports for row in report["dropped"]]
+    assert len(dropped) == 1 and dropped[0]["requested_rows"] == 10
+    assert dropped[0]["row_slice"] == [0, 10]
+    helper.call = Mock(side_effect=[right, [True] * 10])
+    assert list(helper.generate_batch(snapshot, config, 1)) == right
+    assert helper.call.call_count == 2  # Both exhausted groups are memoized.
+
+
+def test_successful_parse_retry_is_reused_without_repaying_the_truncated_first_attempt():
+    from kloop.train.helpers import HelperOutputError, TrainingHelpers
+
+    artifacts = MemoryArtifacts()
+    helper = TrainingHelpers(Mock(), artifacts)
+    helper.call = Mock(side_effect=[HelperOutputError("truncated"), [True]])
+    assert helper.array_call("zai.glm-5", "control review", 4096) == [True]
+    assert helper.call.call_count == 2
+    resumed = TrainingHelpers(Mock(), artifacts)
+    resumed.call = Mock(side_effect=AssertionError("Must reuse the successful retry result"))
+    assert resumed.array_call("zai.glm-5", "control review", 4096) == [True]
+    resumed.call.assert_not_called()
