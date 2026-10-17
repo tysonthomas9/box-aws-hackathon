@@ -22,11 +22,16 @@ The reserved demo runs selected artifacts from different revisions:
 - The recorded Ask release uses a narrow snapshot-cache backport with the older
   strict job schema. The source's Box hybrid retrieval and additional timing
   fields must not be assumed live.
-- The manual promotion guard was staged at the **12:07 PM PDT** handoff, not yet
-  deployed. Its worker release needs independent artifact verification and the
-  deployment owner's clearance before the evaluation hold is released.
+- The manual promotion guard (worker archive `f0f850cd`) was staged at the
+  **12:07 PM PDT** handoff and is live on `kloop-training-worker` since **12:31 PM
+  PDT**. A passing candidate with `manual_promotion_approval` is retained as
+  `awaiting_approval` and the promotion pointer is left unchanged.
 - Full API, version-loading controls, and other held components need separate
-  release approval.
+  release approval. The loading worker Lambda and `kloop-loading` state machine
+  exist only in Terraform source; the deployment has one state machine,
+  `kloop-training`.
+- A medical v2 training execution was running at the checkpoint. No result from it
+  is claimed here.
 
 ## System overview
 
@@ -66,6 +71,25 @@ static browser app uses React/OpenUI for chat and exposes Sources, Review, Train
 the three answer cards. Services use shared schemas and injected storage/model interfaces, allowing
 credential-free tests with memory adapters.
 
+Deployed Lambdas are `kloop-api`, `kloop-sync`, `kloop-ask` (SQS consumer, batch size 1), `kloop-evaluation`,
+and `kloop-training-worker`; `kloop-training` is a placeholder handler because the API starts the
+`kloop-training` Step Functions execution directly.
+
+## Models
+
+| Role | Model | Where |
+| --- | --- | --- |
+| Document extraction | Claude 4.5 Haiku (`aws__claude_4_5_haiku`) through Box AI Extract Structured | `kloop/extract/provider.py` |
+| Extraction fallback, training-row checker, evaluation judge | GLM-5 (`zai.glm-5`, Bedrock us-east-2) | `kloop/extract/provider.py`, `kloop/train/helpers.py`, `kloop/eval/judge.py` |
+| Training Q/A wording and medical question generation | Kimi K3 (`us.moonshotai.kimi-k3` US cross-Region inference profile) | `kloop/train/helpers.py`, `kloop/eval/build_medical.py` |
+| Learned model | Qwen/Qwen3-4B-Instruct-2507, LoRA on one `ml.g5.2xlarge`, merged and imported to Bedrock | `kloop/train/config.py`, `kloop/train/job.py` |
+
+Bedrock imports at the checkpoint: base `0inmdc8ttj1w` (`box-hackathon-poc1-base-20261017-32k`) and medical v1
+`na5g3za8q4u5` (`kloop-e33b17d052b97e095be8dc7c-r1`, the reimport attempt). **Known issue:** the Kimi K3
+inference profile may route requests to other US Regions, and `infra/training.tf` grants
+`arn:aws:bedrock:us-*::foundation-model/moonshotai.kimi-k3` for that; this is the one exception to the
+us-east-2-only rule. All other model calls stay in us-east-2.
+
 ## Documents, review, and immutable knowledge
 
 The Box client uses client-credentials authentication scoped to the configured source folder. Sync
@@ -77,7 +101,9 @@ retire unseen sources. The same sync service handles webhooks, scheduled reconci
 Webhook ingress verifies signatures and delivery age, records durable deduplicated receipts, and dispatches
 sync. It does not trust event metadata as authority to delete knowledge: the worker checks the configured
 folder. Pending receipts allow scheduled reconciliation after a crash between receipt and completion.
-Terraform defines a one-minute schedule, disabled by default until ingestion is cleared.
+Terraform defines a one-minute EventBridge Scheduler schedule whose default is disabled
+(`sync_enabled = false`); the recorded deployment runs it enabled with the Sync Lambda
+unreserved.
 
 Extraction first asks Box AI for a structured table using pinned source-version text. A Box API failure can
 use the explicit regional Bedrock GLM-5 fallback. Rows retain subject, stable attribute identity, supporting
@@ -104,7 +130,7 @@ full document.
 | Artifact S3 bucket | Approved snapshots, Search corpora, immutable training data/manifests, retained weights, evaluation artifacts |
 | Web S3 bucket | Built static UI, accessed through CloudFront origin access control |
 | SQS and dead-letter queue | Durable Ask dispatch and failed-delivery isolation |
-| Step Functions Standard | Bounded training transaction and separate model-loading workflow |
+| Step Functions Standard | Bounded training transaction (`kloop-training`, deployed); separate model-loading workflow (source only) |
 | Secrets Manager | Runtime password, cookie signing, origin guard, Box credentials/webhook keys |
 | CloudWatch | Operational logs; Terraform sets seven-day retention for defined log groups |
 
@@ -178,7 +204,7 @@ flowchart TD
     Warm --> Evaluate[Blinded frozen dev evaluation]
     Evaluate --> Gate{Dev gate passes}
     Gate -->|No| Reject[Reject candidate]
-    Gate -->|Yes| Manual{Manual approval required}
+    Gate -->|Yes| Manual{Promote action with manual approval required}
     Manual -->|Yes| Retain[Retain ready candidate awaiting approval]
     Manual -->|No| Promote[Compare and set current version]
     Reject --> Cleanup[Cleanup and settle owned resources]
@@ -219,9 +245,10 @@ protection checks.
 ## Version loading under the three-import limit
 
 This project's recorded Bedrock import quota is **3**. Retained S3 weights let a version be reimported
-without retraining. Explicit load uses a separate Standard workflow, verifies recovery weights, checks
-capacity, imports, warms, then exposes the loaded version for selection. Explicit loading refuses automatic
-eviction; the operator must choose an eligible unload when capacity is full.
+without retraining. Explicit load uses a separate Standard workflow (defined in `infra/loading.tf`, not
+deployed), verifies recovery weights, checks capacity, imports, warms, then exposes the loaded version for
+selection. Explicit loading refuses automatic eviction; the operator must choose an eligible unload when
+capacity is full.
 
 Unload protects base/current models and active Ask/evaluation users, requires a deployment-owned import, and
 removes the version from new Ask selection before asynchronous deletion. Loading a rejected version does not
@@ -250,7 +277,7 @@ versus 24/60 base, with abstention regressions. Its partial recipe used 2,349 ro
 and disclosed a replay-check omission. These are handoff results, not a new evaluation for this document. No
 medical v2 quality result is claimed.
 
-Cold model readiness can consume the roughly **15-minute** worker window and may still fail; reimport is
+Cold model readiness can consume the **15-minute** (900 s) worker window and may still fail; reimport is
 bounded. Small-model answers can invent numbers/dates, miss procedure branches, or mix domains. The original
 Halvard system prompt is still shared with medical training/inference. Search coverage is limited to
 approved quotes, and irrelevant approved material can still rank. Generation latency excludes parts of user
