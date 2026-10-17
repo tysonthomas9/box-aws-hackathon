@@ -100,7 +100,7 @@
                 "Environment.$": "$.prepare.value.request.Environment",
                 "Tags.$": "$.prepare.value.request.Tags"
               },
-              "TimeoutSeconds": 5500,
+              "TimeoutSeconds": 8500,
               "ResultPath": null,
               "Next": "Import"
             },

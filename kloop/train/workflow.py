@@ -40,7 +40,7 @@ def definition(worker_arn: str) -> dict:
             "Type": "Task",
             "Resource": "arn:aws:states:::sagemaker:createTrainingJob.sync",
             "Parameters": {},
-            "TimeoutSeconds": 5500,
+            "TimeoutSeconds": 8500,
             "ResultPath": None,
             "Next": "Import",
         },

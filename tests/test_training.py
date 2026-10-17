@@ -775,7 +775,16 @@ def test_training_runtime_resolves_and_verifies_s3_snapshot_pointer(
     )
     worker.slots = Mock()
     worker.builder = Mock(
-        build=Mock(return_value={"manifest_hash": "b" * 64, "data_prefix": "training/data/fake"})
+        build=Mock(
+            return_value={
+                "manifest_hash": "b" * 64,
+                "data_prefix": "training/data/fake",
+                "manifest": {
+                    "rows": 4,
+                    "counts": {"fact": 1, "unknown": 1, "near_miss": 1, "replay": 1},
+                },
+            }
+        )
     )
     if corrupt:
         with pytest.raises(ValueError, match="integrity"):
@@ -895,3 +904,59 @@ def test_v2_snapshot_is_an_exact_copy_scenario_with_synthetic_version():
         "supporting_quote",
         "source_version_id",
     }
+
+
+def test_helper_accepts_complete_json_fence_and_retains_response_evidence():
+    from kloop.train.helpers import TrainingHelpers
+
+    runtime = Mock()
+    runtime.converse.return_value = {
+        "stopReason": "end_turn",
+        "output": {"message": {"content": [{"text": "```json\n[true]\n```"}]}},
+        "usage": {"inputTokens": 4, "outputTokens": 9},
+        "ResponseMetadata": {"RequestId": "fenced-response"},
+    }
+    artifacts = MemoryArtifacts()
+    helpers = TrainingHelpers(runtime, artifacts)
+    assert helpers.call("us.moonshotai.kimi-k3", "fixture", 256) == [True]
+    response = json.loads(artifacts.get("training/helper-responses/fenced-response.json"))
+    assert response == runtime.converse.return_value
+
+
+def test_approved_recipe_row_count_blocks_gpu_when_generation_drifts(worker):
+    w, store, _, _ = worker
+    version = store.get("run")
+    version.manifest["config"]["expected_training_rows"] = 100
+    store.save(version)
+    with pytest.raises(ValueError, match="approved recipe"):
+        w.handle("prepare", "run")
+    assert store.get("run").manifest["training_rows"] == 4
+    assert not any(r["kind"] == "sagemaker_training" for r in w.ledger.entries())
+
+
+def test_approved_medical_recipe_and_longer_gpu_budget():
+    config = TrainingConfig(
+        fact_wordings=4,
+        procedure_cases=8,
+        unknown_rows=540,
+        near_miss_rows=220,
+        replay_rows=490,
+        max_runtime_seconds=5400,
+        expected_training_rows=2826,
+    )
+    assert (
+        380 * config.fact_wordings
+        + 7 * config.procedure_cases
+        + config.unknown_rows
+        + config.near_miss_rows
+        + config.replay_rows
+        == config.expected_training_rows
+    )
+    assert (
+        training_request(config, "run", "bucket", "role", "data")["StoppingCondition"][
+            "MaxRuntimeInSeconds"
+        ]
+        == 5400
+    )
+    work = definition("worker")["States"]["Transaction"]["Branches"][0]["States"]
+    assert work["Train"]["TimeoutSeconds"] >= 5400 + 1800

@@ -28,7 +28,7 @@ class TrainingConfig(BaseSettings):
     seed: int = 17
     max_length: int = Field(default=512, ge=64, le=1024)
     gradient_accumulation: int = Field(default=4, ge=1, le=32)
-    max_runtime_seconds: int = Field(default=2400, ge=60, le=3600)
+    max_runtime_seconds: int = Field(default=2400, ge=60, le=5400)
     minimum_gain: float = Field(default=0.05, gt=0, le=1)
     # Per-action estimates must be supplied by deployment; no unbounded GPU run.
     estimated_training_usd: float = Field(default=2, gt=0, le=10)
@@ -37,9 +37,10 @@ class TrainingConfig(BaseSettings):
     training_snapshot_hash: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
     fact_wordings: int = Field(default=10, ge=1, le=20)
     procedure_cases: int = Field(default=8, ge=1, le=16)
-    unknown_rows: int = Field(default=60, ge=1, le=200)
-    near_miss_rows: int = Field(default=60, ge=1, le=200)
-    replay_rows: int = Field(default=100, ge=1, le=300)
+    unknown_rows: int = Field(default=60, ge=1, le=1000)
+    near_miss_rows: int = Field(default=60, ge=1, le=1000)
+    replay_rows: int = Field(default=100, ge=1, le=1000)
+    expected_training_rows: int | None = Field(default=None, ge=1)
 
     @property
     def dev_path(self) -> str:

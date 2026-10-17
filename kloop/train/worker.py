@@ -78,9 +78,23 @@ class TrainingWorker:
             )
             data = self.builder.build(snapshot, config, self.dev_bytes)
             version.manifest.update(
-                {"manifest_hash": data["manifest_hash"], "data_prefix": data["data_prefix"]}
+                {
+                    "manifest_hash": data["manifest_hash"],
+                    "data_prefix": data["data_prefix"],
+                    "training_rows": data["manifest"]["rows"],
+                    "training_row_counts": data["manifest"]["counts"],
+                }
             )
             self.store.save(version)
+            if (
+                config.expected_training_rows is not None
+                and abs(data["manifest"]["rows"] - config.expected_training_rows)
+                / config.expected_training_rows
+                > 0.02
+            ):
+                raise ValueError(
+                    "Training rows differ from the approved recipe by more than2percent"
+                )
             if config.dev_set_hash == MEDICAL_DEV_HASH:
                 audit = self.evaluate(
                     action="audit",
