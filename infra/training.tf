@@ -206,8 +206,11 @@ resource "aws_iam_role_policy" "evaluator_reader" {
   ] })
 }
 resource "aws_iam_role_policy" "evaluation_assume" {
-  role   = aws_iam_role.lambda["evaluation"].id
-  policy = jsonencode({ Version = "2012-10-17", Statement = [{ Effect = "Allow", Action = "sts:AssumeRole", Resource = aws_iam_role.evaluator_reader.arn }] })
+  role = aws_iam_role.lambda["evaluation"].id
+  policy = jsonencode({ Version = "2012-10-17", Statement = [
+    { Effect = "Allow", Action = "sts:AssumeRole", Resource = aws_iam_role.evaluator_reader.arn },
+    { Effect = "Allow", Action = ["freetier:GetAccountPlanState"], Resource = "*" }
+  ] })
 }
 
 resource "aws_cloudwatch_event_rule" "training_expiry" {
