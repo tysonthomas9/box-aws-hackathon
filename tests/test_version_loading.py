@@ -334,3 +334,24 @@ def test_worker_cleanup_serializes_with_reader_admission(loader, action):
         loader.step(action, "candidate", owner)
     loader.slots.delete.assert_not_called()
     assert loader.store.lock()["owner"] == owner
+
+
+def test_explicit_unload_protects_active_evaluation_not_old_report_retention(
+    loader, aws_session, monkeypatch
+):
+    from kloop.train.loading_runtime import service
+
+    for key in ("VERSIONS_TABLE", "ASK_JOBS_TABLE", "CLEANUP_LEDGER_TABLE"):
+        monkeypatch.setenv("KLOOP_" + key, loader.store.table.name)
+    monkeypatch.setenv("KLOOP_TRAIN_DEPLOYMENT", "kloop")
+    monkeypatch.setenv("KLOOP_ARTIFACT_BUCKET", "retained")
+    monkeypatch.setenv("KLOOP_IMPORT_ROLE", "import-role")
+    version = loader.store.get("candidate")
+    version.import_arn = "medical-arn"
+    version.manifest["retain_for_medical_report"] = True
+    loader.store.save(version)
+    actual = service(aws_session)
+    assert "medical-arn" not in actual.protected()
+    version.status = "evaluating"
+    loader.store.save(version)
+    assert "medical-arn" in actual.protected()

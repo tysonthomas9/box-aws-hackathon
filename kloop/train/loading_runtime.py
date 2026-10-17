@@ -37,11 +37,7 @@ def service(aws):
         arns = {os.getenv("KLOOP_BASE_MODEL_ID"), os.getenv("KLOOP_TEMPORARY_TRAINED_MODEL_ARN")}
         arns |= protected_ask_models(asks, int(time.time()))
         for version in store.versions():
-            if (
-                version.id == store.current()
-                or version.status == "evaluating"
-                or version.manifest.get("retain_for_medical_report")
-            ):
+            if version.id == store.current() or version.status == "evaluating":
                 arns.add(version.import_arn)
         for row in store.storage.list("model_activity"):
             if row["until"] > time.time():
