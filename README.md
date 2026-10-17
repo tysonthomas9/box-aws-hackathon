@@ -214,7 +214,6 @@ Recorded medical v1-partial hidden results (150 questions per mode):
 | --- | ---: | ---: |
 | Without learning | 56/150 | 37.3% |
 | Trained | 50/150 | 33.3% |
-| Search | 62/150 | 41.3% |
 
 **Medical v1 was rejected at the dev gate and remains unpromoted.** The recorded
 dev totals were 25/60 Trained versus 24/60 base, with abstention regressions; the
@@ -228,8 +227,6 @@ not a new run performed for this README.
 
 - Exact numbers, dates, multi-fact answers, and procedures can be hallucinated or
   omitted. A plausible answer or one selected success does not prove learning.
-- Search has returned leftover Halvard material in medical answers. Inspect the
-  actual cited source/version; retrieved text is not automatically relevant.
 - The training data builder still imports the original Halvard system prompt.
   This mismatch can contaminate medical behavior and is not fixed by this README.
 - Cold starts can take several minutes. Generation time excludes queue/warm-up

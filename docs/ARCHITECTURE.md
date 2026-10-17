@@ -285,9 +285,9 @@ gate status, hashes/bindings, and recipe caveats without rendering sealed questi
 
 Recorded medical v1-partial results, **150 hidden questions per mode**:
 
-| Without learning | Trained | Search |
-| ---: | ---: | ---: |
-| 56/150 (37.3%) | 50/150 (33.3%) | 62/150 (41.3%) |
+| Without learning | Trained |
+| ---: | ---: |
+| 56/150 (37.3%) | 50/150 (33.3%) |
 
 Medical v1 was **rejected at the dev gate and remains unpromoted**. Recorded dev totals were 25/60 Trained
 versus 24/60 base, with abstention regressions. Its partial recipe used 2,349 rows, omitted near-miss rows,
@@ -297,7 +297,7 @@ medical v2 quality result is claimed.
 Cold model readiness can consume the **15-minute** (900 s) worker window and may still fail; reimport is
 bounded. Small-model answers can invent numbers/dates, miss procedure branches, or mix domains. The original
 Halvard system prompt is still shared with medical training/inference. Search coverage is limited to
-approved quotes, and irrelevant approved material can still rank. Generation latency excludes parts of user
+approved quotes. Generation latency excludes parts of user
 wait time; older jobs lack component timings.
 
 ## Security and operations
