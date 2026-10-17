@@ -355,3 +355,26 @@ def test_explicit_unload_protects_active_evaluation_not_old_report_retention(
     version.status = "evaluating"
     loader.store.save(version)
     assert "medical-arn" in actual.protected()
+
+
+@pytest.mark.parametrize("label", [None, "Medical preview, temporary"])
+def test_temporary_catalog_label_matches_serving_label(loader, aws_session, monkeypatch, label):
+    from kloop.train.loading_runtime import service
+    from kloop.web.runtime import trained_model
+
+    for key in ("VERSIONS_TABLE", "ASK_JOBS_TABLE", "CLEANUP_LEDGER_TABLE"):
+        monkeypatch.setenv("KLOOP_" + key, loader.store.table.name)
+    monkeypatch.setenv("KLOOP_TRAIN_DEPLOYMENT", "kloop")
+    monkeypatch.setenv("KLOOP_ARTIFACT_BUCKET", "retained")
+    monkeypatch.setenv("KLOOP_IMPORT_ROLE", "import-role")
+    monkeypatch.setenv("KLOOP_TEMPORARY_TRAINED_MODEL_ARN", "temporary")
+    if label is None:
+        monkeypatch.delenv("KLOOP_TEMPORARY_TRAINED_MODEL_LABEL", raising=False)
+    else:
+        monkeypatch.setenv("KLOOP_TEMPORARY_TRAINED_MODEL_LABEL", label)
+    actual = service(aws_session)
+    actual.slots.census = lambda: {"temporary"}
+    row = actual.catalog()["versions"][-1]
+    assert row["id"] == trained_model(None)["version_id"]
+    assert row["id"] == (label if label is not None else "Halvard POC, temporary")
+    assert not row["can_load"] and not row["can_unload"]

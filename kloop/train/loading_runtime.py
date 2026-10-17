@@ -84,7 +84,9 @@ def service(aws):
         import_role=os.environ["KLOOP_IMPORT_ROLE"],
         warm=lambda arn: warmup_answerer(aws).warm_up(arn),
         temporary={
-            "id": "Halvard POC, temporary",
+            "id": os.getenv(
+                "KLOOP_TEMPORARY_TRAINED_MODEL_LABEL", "Halvard POC, temporary"
+            ),
             "arn": os.environ["KLOOP_TEMPORARY_TRAINED_MODEL_ARN"],
         }
         if os.getenv("KLOOP_TEMPORARY_TRAINED_MODEL_ARN")
