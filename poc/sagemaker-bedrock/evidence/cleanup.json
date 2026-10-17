@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-17T05:56:05.108123+00:00",
+  "deleted": [
+    "iam:box-hackathon-poc1-lora-20261017",
+    "iam:box-hackathon-poc1-base-20261017",
+    "s3://box-hackathon-poc1-base-20261017-549803795565/control/train.py",
+    "s3://box-hackathon-poc1-base-20261017-549803795565/control/train.jsonl",
+    "s3://box-hackathon-poc1-base-20261017-549803795565/training/smoke1/report.json",
+    "s3://box-hackathon-poc1-base-20261017-549803795565/training/smoke1/adapter/README.md",
+    "s3://box-hackathon-poc1-base-20261017-549803795565/training/smoke1/adapter/adapter_config.json",
+    "s3://box-hackathon-poc1-base-20261017-549803795565/training/smoke1/adapter/adapter_model.safetensors",
+    "s3://box-hackathon-poc1-base-20261017-549803795565/training/artifacts/box-hackathon-poc1-lora-20261017/output/model.tar.gz",
+    "log-group:/aws/sagemaker/TrainingJobs"
+  ],
+  "retained_other_logs": [],
+  "imports": {
+    "modelSummaries": [
+      {
+        "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/mg4w3cxqpmb9",
+        "modelName": "box-hackathon-poc1-trained-20261017",
+        "creationTime": "2026-10-17T05:39:04.824000+00:00",
+        "instructSupported": false,
+        "modelArchitecture": "qwen3"
+      },
+      {
+        "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+        "modelName": "box-hackathon-poc1-base-20261017-32k",
+        "creationTime": "2026-10-17T04:52:36.479000+00:00",
+        "instructSupported": false,
+        "modelArchitecture": "qwen3"
+      }
+    ]
+  },
+  "endpoints": []
+}
