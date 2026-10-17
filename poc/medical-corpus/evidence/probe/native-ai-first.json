@@ -1,0 +1,17 @@
+{
+  "file": {
+    "id": "2532316972433",
+    "name": "CSR_Summary_mRNA_1273.222_P301.docx",
+    "path": "company-specific/clinical-medical/CSR_Summary_mRNA_1273.222_P301.docx",
+    "version_id": "2810020871633"
+  },
+  "started_at": "2026-10-17T07:42:02.255207+00:00",
+  "call_count": 1,
+  "model": "aws__claude_4_5_haiku",
+  "native_file_id": true,
+  "fallback": false,
+  "status": "passed",
+  "completion_reason": "done",
+  "items": 25,
+  "finished_at": "2026-10-17T07:42:16.206596+00:00"
+}

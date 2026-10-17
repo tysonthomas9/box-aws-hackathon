@@ -1,0 +1,29 @@
+{
+  "file_id": "2532303047465",
+  "name": "CTD_Module1_AdministrativeInformation_CTD_2315_52.docx",
+  "version_id": "2810007119465",
+  "etag": "1",
+  "permissions": {
+    "can_apply_watermark": true,
+    "can_create_annotations": true,
+    "can_view_annotations": true,
+    "can_delete": true,
+    "can_download": true,
+    "can_invite_collaborator": true,
+    "can_rename": true,
+    "can_set_share_access": true,
+    "can_share": true,
+    "can_annotate": true,
+    "can_comment": true,
+    "can_preview": true,
+    "can_upload": true,
+    "can_view_annotations_all": true,
+    "can_view_annotations_self": true
+  },
+  "edited": false,
+  "attribute": "submission_date",
+  "old_value": "27 October 2025",
+  "suggested_new_value": "28 October 2025",
+  "supporting_quote": "Submission Date: 27 October 2025",
+  "edit_instructions": "Use a DOCX-preserving Word editor or binary SDK version upload with the inspected ETag; do not use upload_text/upload_version, which write UTF-8 text."
+}

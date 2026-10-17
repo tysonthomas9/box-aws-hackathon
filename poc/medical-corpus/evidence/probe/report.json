@@ -1,0 +1,118 @@
+{
+  "started_at": "2026-10-17T07:45:10.097270+00:00",
+  "folder_id": "428391006380",
+  "model": "aws__claude_4_5_haiku",
+  "prompt_sha256": "f8c701bda3ab43547c48e43c3867c07d6e0b26a7972559a1b1b66e31fa630d8b",
+  "native_file_id": true,
+  "fallback": false,
+  "aws_model_invocations": 0,
+  "documents": [
+    {
+      "area": "clinical-medical",
+      "file": {
+        "id": "2532316972433",
+        "name": "CSR_Summary_mRNA_1273.222_P301.docx",
+        "path": "company-specific/clinical-medical/CSR_Summary_mRNA_1273.222_P301.docx",
+        "version_id": "2810020871633"
+      },
+      "completion_reason": "done",
+      "source_bytes": 2284,
+      "status": "passed",
+      "items": 25,
+      "kinds": {
+        "fact": 25
+      },
+      "check_reasons": {
+        "quote_not_in_source": 2
+      },
+      "canonical_replay": "passed"
+    },
+    {
+      "area": "commercial-heor",
+      "file": {
+        "id": "2532315308576",
+        "name": "HEOR_Summary_HEOR_1595_60.docx",
+        "path": "company-specific/commercial-heor/HEOR_Summary_HEOR_1595_60.docx",
+        "version_id": "2810019687776"
+      },
+      "completion_reason": "done",
+      "source_bytes": 1828,
+      "status": "passed",
+      "items": 20,
+      "kinds": {
+        "fact": 20
+      },
+      "check_reasons": {
+        "quote_not_in_source": 4
+      },
+      "canonical_replay": "passed"
+    },
+    {
+      "area": "pharmacovigilance",
+      "file": {
+        "id": "2532315443886",
+        "name": "ICSR_US_MODERNA_2026_143195.docx",
+        "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_143195.docx",
+        "version_id": "2810019554286"
+      },
+      "completion_reason": "done",
+      "source_bytes": 1326,
+      "status": "passed",
+      "items": 20,
+      "kinds": {
+        "fact": 20
+      },
+      "check_reasons": {},
+      "canonical_replay": "failed",
+      "canonical_error": "Extraction references an unknown or foreign item identity"
+    },
+    {
+      "area": "quality-manufacturing",
+      "file": {
+        "id": "2532315129354",
+        "name": "BMR_BN_21776_710_mRNA-1273_Drug_Subst.docx",
+        "path": "company-specific/quality-manufacturing/BMR_BN_21776_710_mRNA-1273_Drug_Subst.docx",
+        "version_id": "2810018908554"
+      },
+      "completion_reason": "continue",
+      "source_bytes": 2013,
+      "status": "failed",
+      "error_type": "ValueError"
+    },
+    {
+      "area": "regulatory-affairs",
+      "file": {
+        "id": "2532303047465",
+        "name": "CTD_Module1_AdministrativeInformation_CTD_2315_52.docx",
+        "path": "company-specific/regulatory-affairs/CTD-Module-1/CTD_Module1_AdministrativeInformation_CTD_2315_52.docx",
+        "version_id": "2810007119465"
+      },
+      "completion_reason": "done",
+      "source_bytes": 1116,
+      "status": "passed",
+      "items": 9,
+      "kinds": {
+        "fact": 9
+      },
+      "check_reasons": {},
+      "canonical_replay": "passed"
+    }
+  ],
+  "status": "failed",
+  "canonical_audit": {
+    "offline_only": true,
+    "accepted_documents": 3,
+    "aggregate_state_bytes": 75467,
+    "approved_in_replay": 48,
+    "pending_in_replay": 6,
+    "aggregate_limit_bytes": 350000,
+    "projected_full_state_bytes": 2892902,
+    "row_sizes": {
+      "count": 74,
+      "mean_bytes": 295.2,
+      "median_bytes": 275.0,
+      "max_bytes": 513
+    }
+  },
+  "finished_at": "2026-10-17T07:45:15.338859+00:00"
+}

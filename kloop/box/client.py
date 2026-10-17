@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from io import BytesIO
 from typing import Any
 from urllib.parse import urlsplit
+from xml.etree import ElementTree
+from zipfile import ZipFile
 
 from box_sdk_gen import BoxClient as SDKClient
 from box_sdk_gen.managers.folders import CreateFolderParent
@@ -25,6 +27,37 @@ from kloop.schemas import Document
 
 FILE_FIELDS = ["id", "type", "name", "file_version", "parent", "path_collection", "etag", "sha1"]
 MAX_TEXT_BYTES = 5 * 1024 * 1024
+
+
+def document_text(body: bytes, name: str) -> str:
+    """Read plain text or bounded DOCX paragraphs, including table cells, in order."""
+    if not name.lower().endswith(".docx"):
+        return body.decode("utf-8")
+    with ZipFile(BytesIO(body)) as archive:
+        member = archive.getinfo("word/document.xml")
+        if member.file_size > MAX_TEXT_BYTES:
+            raise ValueError("Box Word text exceeds the 5 MiB limit")
+        xml = archive.read(member)
+    # ElementTree does not fetch external entities; reject internal entity expansion too.
+    if b"\x00" in xml or b"<!DOCTYPE" in xml or b"<!ENTITY" in xml:
+        raise ValueError("Word document contains an unsupported XML declaration")
+    root = ElementTree.fromstring(xml)
+    ns = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
+    paragraphs = []
+    for paragraph in root.iter(ns + "p"):
+        parts = []
+        for node in paragraph.iter():
+            if node.tag == ns + "t":
+                parts.append(node.text or "")
+            elif node.tag == ns + "tab":
+                parts.append("\t")
+            elif node.tag in {ns + "br", ns + "cr"}:
+                parts.append("\n")
+        paragraphs.append("".join(parts))
+    text = "\n".join(paragraphs)
+    if not text.strip():
+        raise ValueError("Word document contains no supported text")
+    return text
 
 
 @dataclass(frozen=True)
@@ -103,7 +136,10 @@ class BoxClient:
         if len(body) > MAX_TEXT_BYTES:
             raise ValueError("Box text exceeds the 5 MiB limit")
         return Document(
-            file_id=item.id, version_id=version_id, name=item.name, text=body.decode("utf-8")
+            file_id=item.id,
+            version_id=version_id,
+            name=item.name,
+            text=document_text(body, item.name),
         )
 
     def get_document(self, file_id: str, version_id: str) -> Document:

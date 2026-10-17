@@ -1,0 +1,19 @@
+{
+  "folder_id": "428391006380",
+  "address": "https://example.com/kloop-webhook-probe",
+  "started_at": "2026-10-17T07:41:54.917277+00:00",
+  "delivery_tested": false,
+  "source_edits": 0,
+  "id": "8516978031",
+  "readback": {
+    "id": "8516978031",
+    "target": {
+      "id": "428391006380",
+      "type": "folder"
+    },
+    "address": "https://example.com/kloop-webhook-probe"
+  },
+  "delete_verified_404": true,
+  "status": "passed",
+  "finished_at": "2026-10-17T07:41:56.030248+00:00"
+}

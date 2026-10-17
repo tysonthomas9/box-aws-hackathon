@@ -1,0 +1,325 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "RM-7311-83",
+        "kind": "fact",
+        "subject": "mRNA Active Ingredient",
+        "attribute": "lot_number",
+        "statement": "mRNA Active Ingredient lot number is RM-7311-83",
+        "supporting_quote": "mRNA Active Ingredient\tRM-7311-83\t98 g\t29 January 2026\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-7311-83-qty",
+        "kind": "fact",
+        "subject": "mRNA Active Ingredient",
+        "attribute": "quantity_used",
+        "statement": "mRNA Active Ingredient quantity used is 98 g",
+        "supporting_quote": "mRNA Active Ingredient\tRM-7311-83\t98 g\t29 January 2026\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-7311-83-exp",
+        "kind": "fact",
+        "subject": "mRNA Active Ingredient",
+        "attribute": "expiry_date",
+        "statement": "mRNA Active Ingredient expiry date is 29 January 2026",
+        "supporting_quote": "mRNA Active Ingredient\tRM-7311-83\t98 g\t29 January 2026\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-7311-83-qc",
+        "kind": "fact",
+        "subject": "mRNA Active Ingredient",
+        "attribute": "qc_status",
+        "statement": "mRNA Active Ingredient QC status is PASS",
+        "supporting_quote": "mRNA Active Ingredient\tRM-7311-83\t98 g\t29 January 2026\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-1727-65",
+        "kind": "fact",
+        "subject": "Ionizable Lipid (SM-102)",
+        "attribute": "lot_number",
+        "statement": "Ionizable Lipid (SM-102) lot number is RM-1727-65",
+        "supporting_quote": "Ionizable Lipid (SM-102)\tRM-1727-65\t10 g\t02 May 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-1727-65-qty",
+        "kind": "fact",
+        "subject": "Ionizable Lipid (SM-102)",
+        "attribute": "quantity_used",
+        "statement": "Ionizable Lipid (SM-102) quantity used is 10 g",
+        "supporting_quote": "Ionizable Lipid (SM-102)\tRM-1727-65\t10 g\t02 May 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-1727-65-exp",
+        "kind": "fact",
+        "subject": "Ionizable Lipid (SM-102)",
+        "attribute": "expiry_date",
+        "statement": "Ionizable Lipid (SM-102) expiry date is 02 May 2025",
+        "supporting_quote": "Ionizable Lipid (SM-102)\tRM-1727-65\t10 g\t02 May 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-1727-65-qc",
+        "kind": "fact",
+        "subject": "Ionizable Lipid (SM-102)",
+        "attribute": "qc_status",
+        "statement": "Ionizable Lipid (SM-102) QC status is PASS",
+        "supporting_quote": "Ionizable Lipid (SM-102)\tRM-1727-65\t10 g\t02 May 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-9821-97",
+        "kind": "fact",
+        "subject": "DSPC",
+        "attribute": "lot_number",
+        "statement": "DSPC lot number is RM-9821-97",
+        "supporting_quote": "DSPC\tRM-9821-97\t11 g\t09 October 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-9821-97-qty",
+        "kind": "fact",
+        "subject": "DSPC",
+        "attribute": "quantity_used",
+        "statement": "DSPC quantity used is 11 g",
+        "supporting_quote": "DSPC\tRM-9821-97\t11 g\t09 October 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-9821-97-exp",
+        "kind": "fact",
+        "subject": "DSPC",
+        "attribute": "expiry_date",
+        "statement": "DSPC expiry date is 09 October 2025",
+        "supporting_quote": "DSPC\tRM-9821-97\t11 g\t09 October 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-9821-97-qc",
+        "kind": "fact",
+        "subject": "DSPC",
+        "attribute": "qc_status",
+        "statement": "DSPC QC status is PASS",
+        "supporting_quote": "DSPC\tRM-9821-97\t11 g\t09 October 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-8066-18",
+        "kind": "fact",
+        "subject": "Cholesterol",
+        "attribute": "lot_number",
+        "statement": "Cholesterol lot number is RM-8066-18",
+        "supporting_quote": "Cholesterol\tRM-8066-18\t15 g\t16 January 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-8066-18-qty",
+        "kind": "fact",
+        "subject": "Cholesterol",
+        "attribute": "quantity_used",
+        "statement": "Cholesterol quantity used is 15 g",
+        "supporting_quote": "Cholesterol\tRM-8066-18\t15 g\t16 January 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-8066-18-exp",
+        "kind": "fact",
+        "subject": "Cholesterol",
+        "attribute": "expiry_date",
+        "statement": "Cholesterol expiry date is 16 January 2025",
+        "supporting_quote": "Cholesterol\tRM-8066-18\t15 g\t16 January 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-8066-18-qc",
+        "kind": "fact",
+        "subject": "Cholesterol",
+        "attribute": "qc_status",
+        "statement": "Cholesterol QC status is PASS",
+        "supporting_quote": "Cholesterol\tRM-8066-18\t15 g\t16 January 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-6143-94",
+        "kind": "fact",
+        "subject": "PEG2000-DMG",
+        "attribute": "lot_number",
+        "statement": "PEG2000-DMG lot number is RM-6143-94",
+        "supporting_quote": "PEG2000-DMG\tRM-6143-94\t1 g\t13 December 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-6143-94-qty",
+        "kind": "fact",
+        "subject": "PEG2000-DMG",
+        "attribute": "quantity_used",
+        "statement": "PEG2000-DMG quantity used is 1 g",
+        "supporting_quote": "PEG2000-DMG\tRM-6143-94\t1 g\t13 December 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-6143-94-exp",
+        "kind": "fact",
+        "subject": "PEG2000-DMG",
+        "attribute": "expiry_date",
+        "statement": "PEG2000-DMG expiry date is 13 December 2025",
+        "supporting_quote": "PEG2000-DMG\tRM-6143-94\t1 g\t13 December 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-6143-94-qc",
+        "kind": "fact",
+        "subject": "PEG2000-DMG",
+        "attribute": "qc_status",
+        "statement": "PEG2000-DMG QC status is PASS",
+        "supporting_quote": "PEG2000-DMG\tRM-6143-94\t1 g\t13 December 2025\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-9308-49",
+        "kind": "fact",
+        "subject": "Tromethamine Buffer",
+        "attribute": "lot_number",
+        "statement": "Tromethamine Buffer lot number is RM-9308-49",
+        "supporting_quote": "Tromethamine Buffer\tRM-9308-49\tQS to volume\t03 December 2024\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-9308-49-qty",
+        "kind": "fact",
+        "subject": "Tromethamine Buffer",
+        "attribute": "quantity_used",
+        "statement": "Tromethamine Buffer quantity used is QS to volume",
+        "supporting_quote": "Tromethamine Buffer\tRM-9308-49\tQS to volume\t03 December 2024\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-9308-49-exp",
+        "kind": "fact",
+        "subject": "Tromethamine Buffer",
+        "attribute": "expiry_date",
+        "statement": "Tromethamine Buffer expiry date is 03 December 2024",
+        "supporting_quote": "Tromethamine Buffer\tRM-9308-49\tQS to volume\t03 December 2024\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "RM-9308-49-qc",
+        "kind": "fact",
+        "subject": "Tromethamine Buffer",
+        "attribute": "qc_status",
+        "statement": "Tromethamine Buffer QC status is PASS",
+        "supporting_quote": "Tromethamine Buffer\tRM-9308-49\tQS to volume\t03 December 2024\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "step-1",
+        "kind": "procedure",
+        "subject": "mRNA-1273 Drug Substance manufacturing",
+        "attribute": "mrna_synthesis",
+        "statement": "mRNA Synthesis using T7 RNA Polymerase IVT at 37.6°C",
+        "supporting_quote": "1\tmRNA Synthesis\tT7 RNA Polymerase IVT\t37.6°C\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[\"Perform mRNA Synthesis using T7 RNA Polymerase IVT method at 37.6°C\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "step-2",
+        "kind": "procedure",
+        "subject": "mRNA-1273 Drug Substance manufacturing",
+        "attribute": "mrna_purification",
+        "statement": "mRNA Purification using Tangential Flow Filtration at ≤5°C",
+        "supporting_quote": "2\tmRNA Purification\tTangential Flow Filtration\t≤5°C\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[\"Perform mRNA Purification using Tangential Flow Filtration method at ≤5°C\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "step-3",
+        "kind": "procedure",
+        "subject": "mRNA-1273 Drug Substance manufacturing",
+        "attribute": "lnp_formulation",
+        "statement": "LNP Formulation using Microfluidic Mixing at flow rate of 35 mL/min",
+        "supporting_quote": "3\tLNP Formulation\tMicrofluidic Mixing\tFlow rate: 35 mL/min\tPASS",
+        "trigger_conditions": "[]",
+        "steps": "[\"Perform LNP Formulation using Microfluidic Mixing method at flow rate of 35 mL/min\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "step-4",
+        "kind": "procedure",
+        "subject": "mRNA-1273 Drug Substance manufacturing",
+        "attribute": "diafiltration",
+        "statement": null,
+        "supporting_quote": null,
+        "trigger_conditions": null,
+        "steps": null,
+        "action": null
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:43:37.029000-07:00",
+  "completion_reason": "continue",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "US-MODERNA-2026-143195-001",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax)",
+        "attribute": "indication",
+        "statement": "Prevention of COVID-19",
+        "supporting_quote": "Indication: Prevention of COVID-19",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-002",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax)",
+        "attribute": "dose",
+        "statement": "100 mcg / 0.5 mL",
+        "supporting_quote": "Dose: 100 mcg / 0.5 mL",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-003",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax)",
+        "attribute": "route_of_administration",
+        "statement": "Intramuscular",
+        "supporting_quote": "Route: Intramuscular",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-004",
+        "kind": "fact",
+        "subject": "Patient",
+        "attribute": "age",
+        "statement": "58 years",
+        "supporting_quote": "A 58-year-old male received Dose 2 of mRNA-1273 (Spikevax)",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-005",
+        "kind": "fact",
+        "subject": "Patient",
+        "attribute": "sex",
+        "statement": "Male",
+        "supporting_quote": "A 58-year-old male received Dose 2 of mRNA-1273 (Spikevax)",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-006",
+        "kind": "fact",
+        "subject": "Adverse Event",
+        "attribute": "event_type",
+        "statement": "Urticaria",
+        "supporting_quote": "MedDRA PT: Urticaria",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-007",
+        "kind": "fact",
+        "subject": "Adverse Event",
+        "attribute": "onset_time_after_vaccination",
+        "statement": "Approximately 10 day(s) following vaccination",
+        "supporting_quote": "Approximately 10 day(s) following vaccination, the patient developed symptoms consistent with Urticaria",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-008",
+        "kind": "fact",
+        "subject": "Adverse Event",
+        "attribute": "seriousness",
+        "statement": "Serious — Hospitalization Required",
+        "supporting_quote": "Serious: Serious — Hospitalization Required",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-009",
+        "kind": "fact",
+        "subject": "Adverse Event",
+        "attribute": "outcome",
+        "statement": "Recovering",
+        "supporting_quote": "The outcome was recovering",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-010",
+        "kind": "fact",
+        "subject": "Adverse Event",
+        "attribute": "management",
+        "statement": "Managed outpatient",
+        "supporting_quote": "The patient sought medical attention and was managed outpatient",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-011",
+        "kind": "fact",
+        "subject": "Causality Assessment",
+        "attribute": "reporter_causality",
+        "statement": "Unrelated",
+        "supporting_quote": "Reporter Causality: Unrelated",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-012",
+        "kind": "fact",
+        "subject": "Causality Assessment",
+        "attribute": "company_causality",
+        "statement": "Unlikely",
+        "supporting_quote": "Company Causality: Unlikely",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-013",
+        "kind": "fact",
+        "subject": "Causality Assessment",
+        "attribute": "who_umc_causality",
+        "statement": "Probable",
+        "supporting_quote": "WHO-UMC Causality: Probable",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-014",
+        "kind": "fact",
+        "subject": "Regulatory Reporting",
+        "attribute": "expedited_report_required",
+        "statement": "No",
+        "supporting_quote": "15-Day Expedited Report Required: No",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-015",
+        "kind": "fact",
+        "subject": "Regulatory Reporting",
+        "attribute": "vaers_submission_status",
+        "statement": "Pending",
+        "supporting_quote": "Submission to FDA VAERS: Pending",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-016",
+        "kind": "fact",
+        "subject": "Case",
+        "attribute": "lot_number",
+        "statement": "LOT-20744",
+        "supporting_quote": "Lot Number: LOT-20744",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-017",
+        "kind": "fact",
+        "subject": "Case",
+        "attribute": "country",
+        "statement": "United States",
+        "supporting_quote": "Country: United States",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-018",
+        "kind": "fact",
+        "subject": "Case",
+        "attribute": "date_of_receipt",
+        "statement": "05 September 2026",
+        "supporting_quote": "Date of Receipt: 05 September 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-019",
+        "kind": "fact",
+        "subject": "Vaccination",
+        "attribute": "dose_number",
+        "statement": "Dose 2",
+        "supporting_quote": "A 58-year-old male received Dose 2 of mRNA-1273 (Spikevax) on 12 January 2025",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "US-MODERNA-2026-143195-020",
+        "kind": "fact",
+        "subject": "Vaccination",
+        "attribute": "date_of_administration",
+        "statement": "12 January 2025",
+        "supporting_quote": "A 58-year-old male received Dose 2 of mRNA-1273 (Spikevax) on 12 January 2025",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:43:16.537000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}
