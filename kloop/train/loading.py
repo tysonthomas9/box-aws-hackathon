@@ -39,11 +39,23 @@ class ModelGuard:
 
 class VersionLoading:
     def __init__(
-        self, store, slots, dispatch, guard, weights, *, clock, protected, import_role, warm
+        self,
+        store,
+        slots,
+        dispatch,
+        guard,
+        weights,
+        *,
+        clock,
+        protected,
+        import_role,
+        warm,
+        temporary=None,
     ):
         self.store, self.slots, self.dispatch = store, slots, dispatch
         self.guard, self.weights, self.clock, self.protected = guard, weights, clock, protected
         self.import_role, self.warm = import_role, warm
+        self.temporary = temporary
 
     def get(self, id):
         value = self.store.get(id)
@@ -78,6 +90,21 @@ class VersionLoading:
                     and (state == "loaded" or operation.get("action") == "unload")
                     and (version.import_arn or operation.get("arn")) not in protected,
                     "weights": version.manifest.get("weights"),
+                }
+            )
+        if (
+            self.temporary
+            and self.temporary["arn"] in models
+            and not any(row["import_arn"] == self.temporary["arn"] for row in rows)
+        ):
+            rows.append(
+                {
+                    "id": self.temporary["id"],
+                    "state": "loaded",
+                    "import_arn": self.temporary["arn"],
+                    "can_load": False,
+                    "can_unload": False,
+                    "weights": None,
                 }
             )
         return {"versions": rows, "load_active": locked, "slots_used": len(models), "slot_limit": 3}

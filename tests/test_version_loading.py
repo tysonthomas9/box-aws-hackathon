@@ -313,3 +313,13 @@ def test_production_protection_reads_evaluation_pins(loader, aws_session, monkey
         with pytest.raises(ValueError, match="active models"):
             actual.unload("candidate")
     assert actual.store.get("candidate").import_arn == "eval-arn"
+
+
+def test_temporary_catalog_model_requires_live_presence_and_is_protected(loader):
+    loader.temporary = {"id": "Halvard POC, temporary", "arn": "temporary"}
+    assert len(loader.catalog()["versions"]) == 1
+    loader.slots.models.add("temporary")
+    row = loader.catalog()["versions"][-1]
+    assert row["id"] == "Halvard POC, temporary"
+    assert row["state"] == "loaded"
+    assert not row["can_load"] and not row["can_unload"]
