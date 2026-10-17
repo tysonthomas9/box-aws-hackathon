@@ -295,6 +295,7 @@ def create_app(services: Services, security: Security, throttle, *, clock=epoch)
             "caveats",
             "gate",
             "paired",
+            "overlap_audit",
         }
         return {
             "reports": [{k: v for k, v in r.items() if k in allowed} for r in services.results()],

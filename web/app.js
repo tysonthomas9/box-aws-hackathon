@@ -333,7 +333,21 @@ async function results() {
       }
     }
     table(card, ["Mode / metric", "Question type", "Score"], rows);
-    details(card, "Overlap audit and evaluation bindings", r.bindings);
+    card.append(
+      node(
+        "p",
+        "Overlap check: " +
+          (r.overlap_audit?.passed === true
+            ? "no detected lexical collisions"
+            : r.overlap_audit?.passed === false
+              ? "failed"
+              : "result not reported"),
+      ),
+    );
+    details(card, "Overlap audit and evaluation bindings", {
+      audit: r.overlap_audit,
+      bindings: r.bindings,
+    });
     details(card, "Counts, gate and caveats", {
       counts: r.counts,
       gate: r.gate,
