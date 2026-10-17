@@ -377,6 +377,35 @@ def test_candidate_gate_promotes_or_cleans_rejection(worker, passed):
     assert evaluator.call_args.kwargs["snapshot_hash"] == store.get("run").manifest["snapshot_hash"]
 
 
+@pytest.mark.parametrize("passed", [True, False])
+def test_manual_approval_retains_passed_candidate_without_changing_current(worker, passed):
+    w, store, bedrock, evaluator = worker
+    store.save(ModelVersion(id="existing", import_arn="base", status="promoted"))
+    store.table.put_item(Item={"pk": "training_control", "sk": "current", "version_id": "existing"})
+    version = store.get("run")
+    version.manifest["manual_promotion_approval"] = True
+    version.manifest["expected_current_version"] = "existing"
+    store.save(version)
+    evaluator.return_value = GateDecision(passed=passed, reasons=[], report_uri="s3://report")
+    w.handle("prepare", "run")
+    w.handle("import", "run")
+    w.handle("poll", "run")
+    w.handle("evaluate", "run")
+    if passed:
+        assert w.handle("promote", "run") == {"promoted": False, "awaiting_approval": True}
+    else:
+        with pytest.raises(RuntimeError, match="passing dev gate"):
+            w.handle("promote", "run")
+    assert w.handle("cleanup", "run")["complete"]
+    w.handle("release", "run")
+    assert store.current() == "existing"
+    assert store.get("run").status == ("ready" if passed else "rejected")
+    assert ("candidate" in bedrock.deleted) is (not passed)
+    assert len(w.ledger.entries()) == int(passed)
+    if passed:
+        assert store.get("run").manifest["retain_for_medical_report"]
+
+
 def test_failure_before_gpu_cleans_unused_import_reservation(worker):
     w, store, *_ = worker
     w.builder = Mock(build=Mock(side_effect=ValueError("bad data")))
@@ -886,12 +915,14 @@ def test_model_warming_reimports_once_and_tracks_cleanup_owner(worker):
     assert not w.ledger.entries()
 
 
-def test_rejected_medical_model_stays_ledger_owned_without_promotion(worker):
+@pytest.mark.parametrize("manual_approval", [False, True])
+def test_rejected_medical_model_stays_ledger_owned_without_promotion(worker, manual_approval):
     w, store, _, evaluator = worker
     version = store.get("run")
     version.manifest["config"]["dev_set_hash"] = MEDICAL_DEV_HASH
     version.manifest["config"]["training_snapshot_hash"] = version.manifest["snapshot_hash"]
     version.manifest["dev_set_hash"] = MEDICAL_DEV_HASH
+    version.manifest["manual_promotion_approval"] = manual_approval
     store.save(version)
     w.dev_bytes = Path("poc/medical-evaluation/dev.jsonl").read_bytes()
     evaluator.return_value = {"passed": True, "sha256": "a" * 64}
@@ -1887,13 +1918,14 @@ def test_new_workflow_seed_does_not_reuse_failed_generations(snapshot):
     assert "run=run-one" in prompts[0] and "run=run-two" in prompts[1]
 
 
-def test_partial_frozen_rows_require_hash_and_never_invoke_models(snapshot):
+@pytest.mark.parametrize("include_near_miss", [False, True])
+def test_partial_frozen_rows_require_hash_and_never_invoke_models(snapshot, include_near_miss):
     from collections import Counter
 
     from kloop.train.data import encoded
     from kloop.train.helpers import TrainingHelpers
 
-    selected = [r for r in rows() if r["kind"] != "near_miss"]
+    selected = [r for r in rows() if include_near_miss or r["kind"] != "near_miss"]
     counts = dict(Counter(r["kind"] for r in selected))
     body = encoded(
         {
@@ -1906,7 +1938,9 @@ def test_partial_frozen_rows_require_hash_and_never_invoke_models(snapshot):
     )
     key = f"training/partial-inputs/{sha256(body)}.json"
     config = TrainingConfig(
-        partial_training_key=key, partial_training_counts=counts, expected_training_rows=3
+        partial_training_key=key,
+        partial_training_counts=counts,
+        expected_training_rows=len(selected),
     )
     artifacts = MemoryArtifacts()
     artifacts.put(key, body)
@@ -1915,6 +1949,9 @@ def test_partial_frozen_rows_require_hash_and_never_invoke_models(snapshot):
         snapshot, config, Path(DEV_PATH).read_bytes()
     )
     assert built["manifest"]["counts"] == counts
+    assert built["manifest"]["partial_training_deviation"]["near_miss_omitted"] is (
+        not include_near_miss
+    )
     assert built["manifest"]["partial_training_deviation"][
         "replay_glm_check_skipped_for_gpu_deadline"
     ]
@@ -1924,16 +1961,19 @@ def test_partial_frozen_rows_require_hash_and_never_invoke_models(snapshot):
         list(helper.generate(snapshot, config))
 
 
-def test_partial_prepare_still_requires_cloud_audit_and_exact_kind_targets(worker):
+@pytest.mark.parametrize("near_count", [0, 2])
+def test_partial_prepare_still_requires_cloud_audit_and_exact_kind_targets(worker, near_count):
     w, store, _, evaluator = worker
     counts = {"fact": 1, "procedure": 1, "unknown": 1, "replay": 1}
+    if near_count:
+        counts["near_miss"] = near_count
     version = store.get("run")
     version.manifest["config"].update(
         dev_set_hash=MEDICAL_DEV_HASH,
         training_snapshot_hash=version.manifest["snapshot_hash"],
         partial_training_key="training/partial-inputs/" + "a" * 64 + ".json",
         partial_training_counts=counts,
-        expected_training_rows=4,
+        expected_training_rows=sum(counts.values()),
     )
     version.manifest["dev_set_hash"] = MEDICAL_DEV_HASH
     store.save(version)
@@ -1945,7 +1985,7 @@ def test_partial_prepare_still_requires_cloud_audit_and_exact_kind_targets(worke
             return_value={
                 "manifest_hash": "b" * 64,
                 "data_prefix": "training/data/partial",
-                "manifest": {"rows": 4, "counts": counts},
+                "manifest": {"rows": sum(counts.values()), "counts": counts},
             }
         )
     )

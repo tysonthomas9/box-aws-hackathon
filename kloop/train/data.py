@@ -143,7 +143,7 @@ class DataBuilder:
             manifest["partial_training_deviation"] = {
                 "input_key": config.partial_training_key,
                 "actual_count_targets": config.partial_training_counts,
-                "near_miss_omitted": True,
+                "near_miss_omitted": not bool(config.partial_training_counts.get("near_miss")),
                 "replay_glm_check_skipped_for_gpu_deadline": True,
                 "accepted_rows_checker": "zai.glm-5",
             }

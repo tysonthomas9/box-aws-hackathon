@@ -189,9 +189,11 @@ class TrainingWorker:
                 }
                 if config.partial_training_key:
                     targets = config.partial_training_counts or {}
-                    if set(targets) != {"fact", "procedure", "unknown", "replay"} or any(
-                        type(count) is not int or count <= 0 for count in targets.values()
-                    ):
+                    if not (
+                        {"fact", "procedure", "unknown", "replay"}
+                        <= set(targets)
+                        <= {"fact", "procedure", "unknown", "near_miss", "replay"}
+                    ) or any(type(count) is not int or count <= 0 for count in targets.values()):
                         raise ValueError("Partial training requires exact positive count targets")
                 if sum(targets.values()) != config.expected_training_rows or any(
                     target and abs(data["manifest"]["counts"].get(kind, 0) - target) / target > 0.02
@@ -312,6 +314,10 @@ class TrainingWorker:
                 return {"promoted": True}
             if version.status != "ready" or not version.manifest["evaluation"]["passed"]:
                 raise RuntimeError("Cannot promote without a passing dev gate")
+            if version.manifest.get("manual_promotion_approval"):
+                version.manifest["retain_for_medical_report"] = True
+                self.store.save(version)
+                return {"promoted": False, "awaiting_approval": True}
             passed = self.store.promote(version, version.manifest["expected_current_version"])
             if not passed:
                 version.status = "rejected"
@@ -362,6 +368,8 @@ class TrainingWorker:
                 # deterministic job name; absence means no GPU resource to stop.
                 self.ledger.remove(row)
         promoted = self.store.current() == version.id
+        if version.status == "ready" and version.manifest.get("manual_promotion_approval"):
+            return True
         if version.status == "rejected" and version.manifest.get("retain_for_medical_report"):
             return True  # Ledger-owned; coordinator must approve deletion after dev review.
         if not promoted:

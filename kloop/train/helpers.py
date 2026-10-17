@@ -194,7 +194,6 @@ class TrainingHelpers:
                 or dict(Counter(row["kind"] for row in record["rows"])) != record["counts"]
                 or record["accepted_checker"] != "zai.glm-5"
                 or record["replay_checker"] != "skipped_for_gpu_deadline"
-                or record["counts"].get("near_miss", 0)
             ):
                 raise ValueError("Partial training input differs from the frozen contract")
             self.remember(snapshot, record["rows"])
