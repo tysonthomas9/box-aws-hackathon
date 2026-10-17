@@ -15,6 +15,7 @@ from kloop.eval import (
     counts,
     deterministic_checks,
     diagnostic_counts,
+    paired_counts,
     run_evaluation,
 )
 from kloop.eval.datasets import (
@@ -106,12 +107,19 @@ class CriterionClient:
         rows = json.loads(prompt[len(CRITERIA_RUBRIC if criteria else RUBRIC) :])
         values = []
         for row in rows:
-            passed = True
+            declined = row["answer"] == "I don't know."
+            passed = not declined
             if criteria:
                 rule = json.loads(row["rubric"])["criterion"]
                 passed = "QA" in row["answer"] if "authorization" in rule else "48" in row["answer"]
             values.append(
-                dict(id=row["id"], correct=passed, invented=False, reason="criterion checked")
+                dict(
+                    id=row["id"],
+                    correct=passed,
+                    invented=False,
+                    declined=declined,
+                    reason="criterion checked",
+                )
             )
         return {
             "stopReason": "end_turn",
@@ -256,8 +264,89 @@ def test_not_trained_and_invented_have_separate_rows_for_every_mode(medical_sop)
         bindings=bound(modes={mode: ARN for mode in ("without", "with", "search")}),
     )
     for summary in diagnostic_counts(report).values():
-        assert summary["in_documents_not_trained"] == {"correct": 0, "total": 1}
+        assert summary["in_documents_not_trained"] == {
+            "correct": 0,
+            "declined": 0,
+            "invented": 1,
+            "total": 1,
+        }
         assert summary["invented_answers"] == {"total": 1, "answers": 1, "on_untold": 0}
+
+
+def test_not_trained_credits_source_answers_and_reports_declines_separately(medical_sop):
+    class Answers(MedicalAnswers):
+        def answer_with(self, question, arn):
+            return Answer(answer="I don't know.", latency_ms=0, model_arn=arn)
+
+        answer_without = answer_with
+
+        def answer_search(self, question, arn, documents):
+            return Answer(
+                answer="QA authorizes release after 48 hours.", latency_ms=0, model_arn=arn
+            )
+
+    case = medical_case(medical_sop).model_copy(update={"bucket": "in_documents_not_trained"})
+    dataset = QuestionSet(split="dev", sha256="d" * 64, cases=[case])
+    client = CriterionClient()
+    report = run_evaluation(
+        dataset,
+        Answers(),
+        BlindJudge(client),
+        report_id="heldout",
+        model_version_id="fixture",
+        bindings=bound(enabled=True, modes={m: ARN for m in ("without", "with", "search")}),
+    )
+    assert [r.passed for r in report.results] == [False, False, True]
+    assert [r.declined for r in report.results] == [True, True, False]
+    assert [len(r.criteria) for r in report.results] == [0, 0, 2]
+    assert paired_counts(report, "with", "search")["right_only"] == 1
+    summaries = diagnostic_counts(report)
+    for mode in ("without", "with"):
+        assert summaries[mode]["in_documents_not_trained"] == {
+            "correct": 0,
+            "declined": 1,
+            "invented": 0,
+            "total": 1,
+        }
+    assert summaries["search"]["in_documents_not_trained"] == {
+        "correct": 1,
+        "declined": 0,
+        "invented": 0,
+        "total": 1,
+    }
+    first_prompt = json.loads(client.calls[0]["messages"][0]["content"][0]["text"][len(RUBRIC) :])
+    assert {r["rubric"] for r in first_prompt} == {case.rubric}
+    assert all(r["required"] == case.required for r in first_prompt)
+    assert {r["expected_answer"] for r in first_prompt} == {case.question.expected_answer}
+
+
+@pytest.mark.parametrize("mode", ["without", "with", "search"])
+def test_correct_heldout_source_answer_gets_credit_in_any_mode(medical_sop, mode):
+    class Answers(MedicalAnswers):
+        def answer_with(self, question, arn):
+            return Answer(
+                answer="QA authorizes release after 48 hours.", latency_ms=0, model_arn=arn
+            )
+
+        answer_without = answer_with
+
+    case = medical_case(medical_sop).model_copy(update={"bucket": "in_documents_not_trained"})
+    dataset = QuestionSet(split="dev", sha256="d" * 64, cases=[case])
+    report = run_evaluation(
+        dataset,
+        Answers(),
+        BlindJudge(CriterionClient()),
+        report_id="credit",
+        model_version_id="fixture",
+        bindings=bound(modes={mode: ARN}),
+    )
+    assert report.results[0].passed
+    assert diagnostic_counts(report)[mode]["in_documents_not_trained"] == {
+        "correct": 1,
+        "declined": 0,
+        "invented": 0,
+        "total": 1,
+    }
 
 
 @pytest.mark.parametrize("name,loader", [("dev-all", load_dev), ("hidden-baseline", load_hidden)])

@@ -133,6 +133,8 @@ def diagnostic_counts(report: EvalReport) -> dict:
             },
             "in_documents_not_trained": {
                 "correct": sum(r.passed for r in withheld),
+                "declined": sum(r.declined and not r.passed and not r.invented for r in withheld),
+                "invented": sum(r.invented for r in withheld),
                 "total": len(withheld),
             },
             "invented_answers": {
@@ -208,6 +210,7 @@ def run_evaluation(
             rows.append(
                 {
                     "question": case.question.question,
+                    "expected_answer": case.question.expected_answer,
                     "answer": answer.answer,
                     "rubric": case.rubric,
                     "required": case.required,
@@ -221,6 +224,8 @@ def run_evaluation(
     criterion_rows, criterion_owners = [], []
     if bindings.rubric_scoring:
         for index, (row, (_, case, _)) in enumerate(zip(rows, metadata, strict=True)):
+            if verdicts[index].declined and not verdicts[index].invented:
+                continue
             for criterion in case.criteria:
                 criterion_rows.append(
                     {
@@ -248,7 +253,16 @@ def run_evaluation(
             )
     results = []
     for row, (mode, case, vetoes), verdict in zip(rows, metadata, verdicts, strict=True):
-        passed = not vetoes and verdict.correct and not verdict.invented
+        invented = verdict.invented or "invented numeric value" in vetoes
+        declined = verdict.declined and not invented
+        passed = (
+            not vetoes
+            and verdict.correct
+            and not invented
+            and (not declined or case.question.kind == "untold")
+        )
+        if case.bucket == "in_documents_not_trained" and not passed and not declined:
+            invented = True
         reasons = vetoes + ["judge: " + verdict.reason]
         if verdict.invented:
             reasons.append("judge: invented value")
@@ -262,7 +276,8 @@ def run_evaluation(
                 score=float(passed),
                 reasons=reasons,
                 bucket=case.bucket,
-                invented=verdict.invented or "invented numeric value" in vetoes,
+                invented=invented,
+                declined=declined,
                 criteria=criterion_results[len(results)],
             )
         )

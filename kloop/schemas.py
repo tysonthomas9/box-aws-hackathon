@@ -105,6 +105,7 @@ class EvalResult(Schema):
     reasons: list[str] = Field(default_factory=list)
     bucket: EvalBucket | None = None
     invented: bool = False
+    declined: bool = False
     criteria: list[CriterionResult] = Field(default_factory=list)
 
 

@@ -41,7 +41,8 @@ class JudgeClient:
         prompt = kwargs["messages"][0]["content"][0]["text"]
         rows = json.loads(prompt[len(RUBRIC) :])
         values = [
-            dict(id=row["id"], correct=True, invented=False, reason="correct") for row in rows
+            dict(id=row["id"], correct=True, invented=False, declined=False, reason="correct")
+            for row in rows
         ]
         return {
             "stopReason": "end_turn",
