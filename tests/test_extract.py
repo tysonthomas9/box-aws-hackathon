@@ -486,3 +486,51 @@ def test_recorded_responses_match_pinned_model_and_frozen_source_text():
         assert [r.model_dump() for r in parse_answer(raw["answer"])] == record["answer"]["items"]
         path = Path("pack/v2/documents" if index == 13 else "pack/documents")
         assert record["document"]["text"] == (path / record["document"]["name"]).read_text()
+
+
+@pytest.mark.parametrize("action", ["approve", "edit"])
+def test_deleted_source_blocks_initial_pending_upsert_until_reextracted(repository, action):
+    service, _ = one_service(repository, mode="all")
+    service.process("f", "v1")
+    pending = service.reviews()[0]
+    assert service.retire("f") == service.retire("f") == 0
+    deleted = repository.read()
+    kwargs = {"edited": pending.candidate} if action == "edit" else {}
+    with pytest.raises(ValueError, match="source.*deleted"):
+        service.decide(pending.id, action, actor="tester", **kwargs)
+    assert repository.read() == deleted
+    assert not service.snapshot().items
+    assert service.process("f", "v1") == 1
+    restored = next(r for r in service.reviews() if r.id != pending.id)
+    service.decide(restored.id, "approve", actor="tester")
+    service.decide(pending.id, "reject", actor="tester")
+    assert len(service.snapshot().items) == 1
+    assert service.process("f", "v1") == 0
+    assert service.decide(pending.id, "reject", actor="tester").decision == "rejected"
+
+
+@pytest.mark.parametrize("action", ["approve", "edit"])
+def test_deleted_source_blocks_pending_new_attribute_beside_approved_item(repository, action):
+    service, provider = one_service(repository)
+    service.process("f", "v1")
+    approved = service.snapshot()
+    service.set_review_mode("all")
+    row = provider.extract.return_value[0][0].model_copy(update={"attribute": "new_attribute"})
+    provider.extract.return_value = ([row], "box")
+    service.process("f", "v2")
+    pending = service.reviews()[0]
+    assert service.retire("f") == 1
+    deleted = repository.read()
+    kwargs = {"edited": pending.candidate} if action == "edit" else {}
+    with pytest.raises(ValueError, match="source.*deleted"):
+        service.decide(pending.id, action, actor="tester", **kwargs)
+    assert repository.read() == deleted
+    assert service.snapshot() == approved
+    service.decide(pending.id, "reject", actor="tester")
+    assert service.retire("f") == 0
+    service.process("f", "v2")
+    assert (
+        next(r for r in service.reviews(pending_only=False) if r.id == pending.id).decision
+        == "rejected"
+    )
+    assert all(r.candidate.attribute != "new_attribute" for r in service.reviews())

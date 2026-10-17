@@ -242,6 +242,12 @@ class ExtractionService:
             if review.decision == target and (edited is None or edited == review.candidate):
                 return review
             raise ValueError("Review already decided")
+        if (
+            action != "reject"
+            and review.candidate.action == "upsert"
+            and before.get("sources", {}).get(review.source_file_id, {}).get("deleted", False)
+        ):
+            raise ValueError("Review source is deleted; restore and re-extract before approval")
         # A superseded version must be re-extracted, not approved over newer knowledge.
         versions = [r for r in before["reviews"].values() if r["item_id"] == review.item_id]
         if action != "reject" and versions[-1]["id"] != review.id:
