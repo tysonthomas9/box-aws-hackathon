@@ -1,0 +1,101 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-8428-91",
+    "attribute": "document_number",
+    "statement": "Document Number is QA-MFG-8428-91",
+    "supporting_quote": "Document Number: QA-MFG-8428-91",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-8428-91",
+    "attribute": "effective_date",
+    "statement": "Effective Date is 10 April 2026",
+    "supporting_quote": "Effective Date: 10 April 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-8428-91",
+    "attribute": "version",
+    "statement": "Version is 3.2",
+    "supporting_quote": "Version: 3.2",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "equipment_cleaning_and_sanitization",
+    "attribute": "calibrated_measurement_instrument_id",
+    "statement": "Calibrated heat measurement instrument has ID EQ-4432-95",
+    "supporting_quote": "Calibrated eat measurement instrument (ID: EQ-4432-95)",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "equipment_cleaning_and_sanitization",
+    "attribute": "certified_reference_standards_lot",
+    "statement": "Certified reference standards lot number is #44993",
+    "supporting_quote": "Certified reference standards lot #44993",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "equipment_cleaning_and_sanitization",
+    "attribute": "cleanroom_classification",
+    "statement": "Cleanroom classified area must be ISO Class 5 or as specified in batch record",
+    "supporting_quote": "Cleanroom classified area (ISO Class 5 or as specified in batch record)",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "procedure",
+    "subject": "equipment_cleaning_and_sanitization",
+    "attribute": "cleaning_and_sanitization_procedure",
+    "statement": "Equipment cleaning and sanitization procedure with verification, environmental monitoring, batch record review, cleaning execution, parameter recording, sample collection, deviation reporting, and equipment cleanup.",
+    "supporting_quote": "5.1 Verify all equipment calibration certificates are current and within acceptable limits. 5.2 Complete environmental monitoring checks and confirm area is within specification. 5.3 Review and sign Batch Manufacturing Record (BMR) prior to commencing operations. 5.4 Perform equipment cleaning and sanitization according to the approved batch record instructions. 5.5 Record all process parameters, observations, and measurements in the BMR in real time. 5.6 Collect in-process samples at defined intervals and submit to QC for testing. 5.7 Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-3803-78. 5.8 Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-5010-30.",
+    "trigger_conditions": [
+      "Equipment cleaning and sanitization operations at Moderna, Inc. facilities"
+    ],
+    "steps": [
+      "Verify all equipment calibration certificates are current and within acceptable limits",
+      "Complete environmental monitoring checks and confirm area is within specification",
+      "Review and sign Batch Manufacturing Record (BMR) prior to commencing operations",
+      "Perform equipment cleaning and sanitization according to the approved batch record instructions",
+      "Record all process parameters, observations, and measurements in the BMR in real time",
+      "Collect in-process samples at defined intervals and submit to QC for testing",
+      "Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-3803-78",
+      "Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-5010-30"
+    ],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-8428-91",
+    "attribute": "approved_by",
+    "statement": "Approved by Johnny Johnson, VP Quality",
+    "supporting_quote": "Approved By: Johnny Johnson, VP Quality",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

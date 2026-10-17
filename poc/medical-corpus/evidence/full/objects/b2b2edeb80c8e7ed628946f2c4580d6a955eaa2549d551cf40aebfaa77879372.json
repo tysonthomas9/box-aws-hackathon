@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-929538",
+    "attribute": "case_number",
+    "statement": "Case number is US-MODERNA-2026-929538",
+    "supporting_quote": "Case Number: US-MODERNA-2026-929538",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-929538",
+    "attribute": "report_type",
+    "statement": "Report type is Spontaneous",
+    "supporting_quote": "Report Type: Spontaneous",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-929538",
+    "attribute": "serious_classification",
+    "statement": "Serious classification is Serious — Hospitalization Required",
+    "supporting_quote": "Serious: Serious — Hospitalization Required",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-929538",
+    "attribute": "adverse_event_meddra_pt",
+    "statement": "MedDRA Preferred Term is Anaphylaxis",
+    "supporting_quote": "MedDRA PT: Anaphylaxis",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) Dose 2",
+    "attribute": "dose_administration_date",
+    "statement": "Dose 2 of mRNA-1273 (Spikevax) was administered on 16 October 2025",
+    "supporting_quote": "A 59-year-old male received Dose 2 of mRNA-1273 (Spikevax) on 16 October 2025.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-929538",
+    "attribute": "adverse_event_onset_days_post_vaccination",
+    "statement": "Anaphylaxis symptoms developed approximately 13 days following vaccination",
+    "supporting_quote": "Approximately 13 day(s) following vaccination, the patient developed symptoms consistent with Anaphylaxis.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-929538",
+    "attribute": "adverse_event_outcome",
+    "statement": "Outcome was recovered with sequelae",
+    "supporting_quote": "The outcome was recovered with sequelae.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-929538",
+    "attribute": "company_causality_assessment",
+    "statement": "Company Causality assessment is Possible",
+    "supporting_quote": "Company Causality: Possible",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

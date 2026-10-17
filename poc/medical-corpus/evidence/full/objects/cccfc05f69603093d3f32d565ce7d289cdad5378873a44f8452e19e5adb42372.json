@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9233",
+        "attribute": "msl_name",
+        "statement": "MSL Name is Phillip Long",
+        "supporting_quote": "MSL Name: Phillip Long",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9233",
+        "attribute": "region",
+        "statement": "Region is Northeast US",
+        "supporting_quote": "Region: Northeast US",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9233",
+        "attribute": "reporting_period",
+        "statement": "Reporting period is 08 November 2025 to 16 October 2026",
+        "supporting_quote": "Reporting Period: 08 November 2025 to 16 October 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9233",
+        "attribute": "product_focus",
+        "statement": "Product focus includes mRNA-1273 (Spikevax) and mRNA-4157",
+        "supporting_quote": "Product Focus: mRNA-1273 (Spikevax) / mRNA-4157",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "UMI-2017-95",
+        "attribute": "inquiry_status",
+        "statement": "Off-label use in immunocompromised patients inquiry from John Lopez, MD was responded with Standard Response Letter",
+        "supporting_quote": "UMI-2017-95\tOff-label use in immunocompromised patients\tJohn Lopez, MD\tResponded — Standard Response Letter",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "UMI-6026-30",
+        "attribute": "inquiry_status",
+        "statement": "Myocarditis management protocol inquiry from Ashley Sanchez, MD was escalated to Medical Information",
+        "supporting_quote": "UMI-6026-30\tMyocarditis management protocol\tAshley Sanchez, MD\tEscalated to Medical Information",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9233",
+        "attribute": "key_scientific_topics",
+        "statement": "Key scientific topics discussed include comparative immunogenicity data vs. other approved COVID-19 vaccines, updated real-world effectiveness data for Spikevax against emerging variants, myocarditis risk with absolute rates and clinical management, and mRNA-4157 mechanism and Phase 2 interim data in melanoma",
+        "supporting_quote": "Comparative immunogenicity data vs. other approved COVID-19 vaccines\nUpdated real-world effectiveness data for Spikevax against emerging variants\nMyocarditis risk: absolute rates, clinical management, and return-to-play considerations\nmRNA-4157 mechanism and Phase 2 interim data in melanoma",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "MSL_9233",
+        "attribute": "next_steps_procedure",
+        "statement": "Next steps include scheduling follow-up meeting with Blake Abbott, MD to discuss updated clinical data, submitting unsolicited inquiry responses through Medical Information portal, and attending regional infectious disease conference to identify new KOLs",
+        "supporting_quote": "Schedule follow-up meeting with Blake Abbott, MD to discuss updated clinical data\nSubmit unsolicited inquiry responses through Medical Information portal\nAttend regional infectious disease conference to identify new KOLs",
+        "trigger_conditions": "[]",
+        "steps": "[\"Schedule follow-up meeting with Blake Abbott, MD to discuss updated clinical data\", \"Submit unsolicited inquiry responses through Medical Information portal\", \"Attend regional infectious disease conference to identify new KOLs\"]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:58:18.010000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

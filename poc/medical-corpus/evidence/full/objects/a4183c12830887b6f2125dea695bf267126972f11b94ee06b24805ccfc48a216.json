@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "product_name",
+    "statement": "mRNA-1273 (Spikevax) is a COVID-19 vaccine",
+    "supporting_quote": "Product: mRNA-1273 (Spikevax) — COVID-19 Vaccine",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 BLA submission",
+    "attribute": "applicant",
+    "statement": "Moderna, Inc. is the applicant for BLA-4770-87",
+    "supporting_quote": "Applicant: Moderna, Inc. | BLA Reference: BLA-4770-87",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Moderna, Inc.",
+    "attribute": "address",
+    "statement": "200 Technology Square, Cambridge, MA 02139",
+    "supporting_quote": "Address: 200 Technology Square, Cambridge, MA 02139",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "BLA-4770-87 submission",
+    "attribute": "submission_date",
+    "statement": "19 April 2026",
+    "supporting_quote": "Submission Date: 19 April 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Primary Pharmacology study TOX-4115-89",
+    "attribute": "study_parameters",
+    "statement": "In vitro study using hACE2 mice, intramuscular route, GLP status: No",
+    "supporting_quote": "Primary Pharmacology | In vitro / hACE2 mice | IM | TOX-4115-89 | No",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Safety Pharmacology study TOX-5106-96",
+    "attribute": "study_parameters",
+    "statement": "Sprague-Dawley Rat study, intramuscular route, GLP compliant",
+    "supporting_quote": "Safety Pharmacology | Sprague-Dawley Rat | IM | TOX-5106-96 | Yes",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Repeat-Dose Toxicity study TOX-3240-90",
+    "attribute": "study_parameters",
+    "statement": "28-day study in Wistar Rat, intramuscular route, GLP compliant",
+    "supporting_quote": "Repeat-Dose Toxicity (28-day) | Wistar Rat | IM | TOX-3240-90 | Yes",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Reproductive Toxicity study TOX-2591-90",
+    "attribute": "study_parameters",
+    "statement": "DART study in Wistar Rat, intramuscular route, GLP compliant",
+    "supporting_quote": "Reproductive Toxicity (DART) | Wistar Rat | IM | TOX-2591-90 | Yes",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

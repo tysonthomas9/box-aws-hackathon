@@ -1,0 +1,94 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SOP QA-QC-7873-38",
+        "attribute": "document_number",
+        "statement": "Document Number is QA-QC-7873-38",
+        "supporting_quote": "Document Number: QA-QC-7873-38",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SOP QA-QC-7873-38",
+        "attribute": "effective_date",
+        "statement": "Effective Date is 27 May 2026",
+        "supporting_quote": "Effective Date: 27 May 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SOP QA-QC-7873-38",
+        "attribute": "review_date",
+        "statement": "Review Date is 16 October 2026",
+        "supporting_quote": "Review Date: 16 October 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "batch_record_review_and_release",
+        "attribute": "calibration_requirement",
+        "statement": "All equipment calibration certificates must be current and within acceptable limits",
+        "supporting_quote": "Verify all equipment calibration certificates are current and within acceptable limits.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "batch_record_review_and_release",
+        "attribute": "release_procedure",
+        "statement": "Batch record review and release procedure with environmental monitoring, BMR review, parameter recording, sampling, and equipment sanitization",
+        "supporting_quote": "5.2 Complete environmental monitoring checks and confirm area is within specification. 5.3 Review and sign Batch Manufacturing Record (BMR) prior to commencing operations. 5.4 Perform batch record review and release according to the approved batch record instructions. 5.5 Record all process parameters, observations, and measurements in the BMR in real time. 5.6 Collect in-process samples at defined intervals and submit to QC for testing. 5.8 Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-6514-23.",
+        "trigger_conditions": "[\"Equipment calibration certificates are current and within acceptable limits\", \"Environmental monitoring checks confirm area is within specification\"]",
+        "steps": "[\"Complete environmental monitoring checks and confirm area is within specification\", \"Review and sign Batch Manufacturing Record (BMR) prior to commencing operations\", \"Perform batch record review and release according to the approved batch record instructions\", \"Record all process parameters, observations, and measurements in the BMR in real time\", \"Collect in-process samples at defined intervals and submit to QC for testing\", \"Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-6514-23\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "batch_record_review_and_release",
+        "attribute": "deviation_reporting_requirement",
+        "statement": "Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-3547-37",
+        "supporting_quote": "Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-3547-37.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "batch_record_review_and_release",
+        "attribute": "acceptance_criteria",
+        "statement": "All in-process and final product specifications must be met as defined in the approved Drug Product specification document SPEC-2519-58. Out-of-specification (OOS) results must be investigated per SOP QA-OOS-2584-55.",
+        "supporting_quote": "All in-process and final product specifications must be met as defined in the approved Drug Product specification document SPEC-2519-58. Out-of-specification (OOS) results must be investigated per SOP QA-OOS-2584-55.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:07:47.557000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

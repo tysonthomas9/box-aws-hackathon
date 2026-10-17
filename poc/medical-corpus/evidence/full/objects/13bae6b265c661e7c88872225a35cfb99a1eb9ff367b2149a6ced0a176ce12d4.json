@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9442",
+        "attribute": "msl_name",
+        "statement": "Angela Williams",
+        "supporting_quote": "MSL Name: Angela Williams",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9442",
+        "attribute": "region",
+        "statement": "West Coast US",
+        "supporting_quote": "Region: West Coast US",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9442",
+        "attribute": "reporting_period",
+        "statement": "21 May 2026 to 16 October 2026",
+        "supporting_quote": "Reporting Period: 21 May 2026 to 16 October 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9442",
+        "attribute": "product_focus",
+        "statement": "mRNA-1273 (Spikevax) and mRNA-4157",
+        "supporting_quote": "Product Focus: mRNA-1273 (Spikevax) / mRNA-4157",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-4157",
+        "attribute": "key_scientific_topics_discussed",
+        "statement": "mechanism and Phase 2 interim data in melanoma",
+        "supporting_quote": "mRNA-4157 mechanism and Phase 2 interim data in melanoma",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Spikevax",
+        "attribute": "key_scientific_topics_discussed",
+        "statement": "Updated real-world effectiveness data against emerging variants",
+        "supporting_quote": "Updated real-world effectiveness data for Spikevax against emerging variants",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA platform",
+        "attribute": "field_insight_theme",
+        "statement": "Growing interest in potential beyond infectious disease; persistent questions around myocarditis risk in younger males; increasing KOL engagement with mRNA-4157 data; market access barriers related to booster hesitancy",
+        "supporting_quote": "Key themes observed during field interactions this period include growing interest in the mRNA platform's potential beyond infectious disease, persistent questions around myocarditis risk in younger males, and increasing KOL engagement with mRNA-4157 data. Market access barriers related to booster hesitancy were noted in several regions.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "MSL_9442",
+        "attribute": "next_steps_procedure",
+        "statement": "Schedule follow-up meeting with Brian Scott, MD to discuss updated clinical data; Submit unsolicited inquiry responses through Medical Information portal; Attend regional infectious disease conference to identify new KOLs",
+        "supporting_quote": "Schedule follow-up meeting with Brian Scott, MD to discuss updated clinical data\nSubmit unsolicited inquiry responses through Medical Information portal\nAttend regional infectious disease conference to identify new KOLs",
+        "trigger_conditions": "[]",
+        "steps": "[\"Schedule follow-up meeting with Brian Scott, MD to discuss updated clinical data\", \"Submit unsolicited inquiry responses through Medical Information portal\", \"Attend regional infectious disease conference to identify new KOLs\"]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:58:27.126000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-851759",
+        "attribute": "case_number",
+        "statement": "Case number is US-MODERNA-2026-851759",
+        "supporting_quote": "Case Number: US-MODERNA-2026-851759",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-851759",
+        "attribute": "report_type",
+        "statement": "Report type is Spontaneous",
+        "supporting_quote": "Report Type: Spontaneous",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-851759",
+        "attribute": "serious_classification",
+        "statement": "Serious classification is Medically Significant",
+        "supporting_quote": "Serious: Serious — Medically Significant",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-851759",
+        "attribute": "adverse_event_meddra_pt",
+        "statement": "MedDRA Preferred Term is Pericarditis",
+        "supporting_quote": "MedDRA PT: Pericarditis",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax) administration in Case US-MODERNA-2026-851759",
+        "attribute": "dose_and_route",
+        "statement": "Dose 100 mcg / 0.5 mL administered intramuscularly",
+        "supporting_quote": "Dose: 100 mcg / 0.5 mL\nRoute: Intramuscular",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-851759",
+        "attribute": "adverse_event_onset_timing",
+        "statement": "Pericarditis symptoms developed approximately 11 days following Dose 2 vaccination on 19 November 2024",
+        "supporting_quote": "A 22-year-old female received Dose 2 of mRNA-1273 (Spikevax) on 19 November 2024. Approximately 11 day(s) following vaccination, the patient developed symptoms consistent with Pericarditis.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-851759",
+        "attribute": "causality_assessment_summary",
+        "statement": "Reporter Causality: Possibly Related; Company Causality: Possible; WHO-UMC Causality: Unclassifiable",
+        "supporting_quote": "Reporter Causality: Possibly Related\nCompany Causality: Possible\nWHO-UMC Causality: Unclassifiable",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-851759",
+        "attribute": "regulatory_reporting_requirements",
+        "statement": "15-Day Expedited Report Required: Yes; Submission to FDA VAERS: Submitted; MedWatch Submission: VAE-9488-29",
+        "supporting_quote": "15-Day Expedited Report Required: Yes\nSubmission to FDA VAERS: Submitted\nMedWatch Submission: VAE-9488-29",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:00:25.258000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

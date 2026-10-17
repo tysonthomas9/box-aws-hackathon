@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "signal_adverse_event",
+        "statement": "Myocarditis following mRNA-1273 in adolescents",
+        "supporting_quote": "A potential safety signal has been identified for Myocarditis following mRNA-1273 in adolescents based on Disproportionality Analysis (PRR).",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SIG-6040-98",
+        "attribute": "signal_id",
+        "statement": "Signal ID: SIG-6040-98",
+        "supporting_quote": "Signal ID: SIG-6040-98",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SIG-6040-98",
+        "attribute": "date_identified",
+        "statement": "17 March 2026",
+        "supporting_quote": "Date Identified: 17 March 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SIG-6040-98",
+        "attribute": "detection_method",
+        "statement": "Disproportionality Analysis (PRR)",
+        "supporting_quote": "Detection Method: Disproportionality Analysis (PRR)",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 myocarditis signal FAERS",
+        "attribute": "prr_value",
+        "statement": "PRR 3.59 with 26 cases in FAERS database",
+        "supporting_quote": "FAERS\t26\t3.59\t2.43\t1.48\tPRR > 2, N > 3",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 myocarditis signal VAERS",
+        "attribute": "prr_value",
+        "statement": "PRR 3.22 with 39 cases in VAERS database",
+        "supporting_quote": "VAERS\t39\t3.22\tN/A\tN/A\tPRR > 2",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 myocarditis signal VigiBase",
+        "attribute": "prr_value",
+        "statement": "PRR 3.18 with 179 cases in VigiBase database",
+        "supporting_quote": "VigiBase\t179\t3.18\t3.33\t1.17\tIC025 > 0",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SIG-6040-98",
+        "attribute": "recommended_action",
+        "statement": "Label update under review",
+        "supporting_quote": "Recommended Action: Label update under review",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:01:56.664000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

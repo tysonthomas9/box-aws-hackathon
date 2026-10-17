@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Product Batch BN-26547-349",
+        "attribute": "batch_size",
+        "statement": "Batch size is 125 L",
+        "supporting_quote": "Batch Size: 125 L",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Product Batch BN-26547-349",
+        "attribute": "manufacturing_date",
+        "statement": "Manufacturing date is 15 November 2025",
+        "supporting_quote": "Manufacturing Date: 15 November 2025",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Product Batch BN-26547-349",
+        "attribute": "manufacturing_site",
+        "statement": "Manufacturing site is Moderna, Inc. — Norwood, MA Facility",
+        "supporting_quote": "Manufacturing Site: Moderna, Inc. — Norwood, MA Facility",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Product Batch BN-26547-349",
+        "attribute": "yield_percentage",
+        "statement": "Actual yield is 1752 doses with yield of 88.5% compared to theoretical yield of 1979 doses",
+        "supporting_quote": "Theoretical Yield: 1979 doses\nActual Yield: 1752 doses\nYield (%): 88.5%",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "mRNA-1273 Drug Product manufacturing process",
+        "attribute": "manufacturing_process_steps",
+        "statement": "Manufacturing process consists of six sequential steps: mRNA Synthesis at 37.0°C using T7 RNA Polymerase IVT; mRNA Purification using Tangential Flow Filtration at ≤5°C; LNP Formulation using Microfluidic Mixing at 25 mL/min flow rate; Diafiltration with Buffer Exchange to PBS at ≤5°C; Sterile Filtration using 0.22 µm filter at Ambient conditions; and Fill-Finish with Vial filling of 0.5 mL in Aseptic ISO 5 environment. All steps resulted in PASS status.",
+        "supporting_quote": "Step 1: mRNA Synthesis, T7 RNA Polymerase IVT, 37.0°C, PASS; Step 2: mRNA Purification, Tangential Flow Filtration, ≤5°C, PASS; Step 3: LNP Formulation, Microfluidic Mixing, Flow rate: 25 mL/min, PASS; Step 4: Diafiltration, Buffer Exchange to PBS, ≤5°C, PASS; Step 5: Sterile Filtration, 0.22 µm filter, Ambient, PASS; Step 6: Fill-Finish, Vial filling (0.5 mL), Aseptic ISO 5, PASS",
+        "trigger_conditions": "[]",
+        "steps": "[\"mRNA Synthesis using T7 RNA Polymerase IVT at 37.0°C\", \"mRNA Purification using Tangential Flow Filtration at ≤5°C\", \"LNP Formulation using Microfluidic Mixing at 25 mL/min flow rate\", \"Diafiltration with Buffer Exchange to PBS at ≤5°C\", \"Sterile Filtration using 0.22 µm filter at Ambient conditions\", \"Fill-Finish with Vial filling of 0.5 mL in Aseptic ISO 5 environment\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Product Batch BN-26547-349 in-process controls",
+        "attribute": "encapsulation_efficiency_specification",
+        "statement": "Encapsulation Efficiency specification is ≥ 85% with actual result of 95.0% and PASS status",
+        "supporting_quote": "Encapsulation Efficiency, ≥ 85%, 95.0%, PASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Product Batch BN-26547-349",
+        "attribute": "qa_release_decision",
+        "statement": "QA Release Decision is RELEASED with release date of 16 October 2026, authorized by Aaron Matthews, QA Director",
+        "supporting_quote": "QA Release Decision: RELEASED\nRelease Date: 16 October 2026\nAuthorized By: Aaron Matthews, QA Director",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Product Batch BN-26547-349",
+        "attribute": "deviations_observed",
+        "statement": "No deviations were observed during batch manufacture and all process parameters were within established limits",
+        "supporting_quote": "No deviations were observed during this batch manufacture. All process parameters were within established limits.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:02:54.954000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

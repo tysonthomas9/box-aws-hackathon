@@ -1,0 +1,9 @@
+{
+  "pid": 85745,
+  "command": "uv run --locked python -m kloop.extract.medical_corpus",
+  "log": ".intent/artifacts/medical-corpus/full-extract.log",
+  "manifest": "poc/medical-corpus/evidence/full/manifest.json",
+  "manifest_status": "complete",
+  "owned_process_still_running": false,
+  "at": "2026-10-17T08:17:26.514398+00:00"
+}

@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax)",
+        "attribute": "bla_number",
+        "statement": "BLA Number is 761158",
+        "supporting_quote": "BLA Number: 761158",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax)",
+        "attribute": "international_birth_date",
+        "statement": "International Birth Date is December 18, 2020",
+        "supporting_quote": "International Birth Date (IBD): December 18, 2020",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax)",
+        "attribute": "data_lock_point",
+        "statement": "Data Lock Point is 16 October 2026",
+        "supporting_quote": "Data Lock Point: 16 October 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax)",
+        "attribute": "reporting_period",
+        "statement": "Reporting Period is 16 October 2025 to 16 October 2026",
+        "supporting_quote": "Reporting Period: 16 October 2025 to 16 October 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax)",
+        "attribute": "estimated_doses_administered_globally",
+        "statement": "Estimated Doses Administered Globally is 527,168,509",
+        "supporting_quote": "Estimated Doses Administered Globally: 527,168,509",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Myocarditis/Pericarditis",
+        "attribute": "risk_status_and_monitoring",
+        "statement": "Myocarditis/Pericarditis is an Identified Risk with label updated and monitoring ongoing at Enhanced monitoring level",
+        "supporting_quote": "Myocarditis/Pericarditis\tIdentified Risk\tLabel updated; monitoring ongoing\tEnhanced",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Anaphylaxis",
+        "attribute": "risk_status_and_monitoring",
+        "statement": "Anaphylaxis is an Identified Risk with label updated and 15-minute observation required at Routine monitoring level",
+        "supporting_quote": "Anaphylaxis\tIdentified Risk\tLabel updated; 15-min observation required\tRoutine",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Facial Nerve Palsy",
+        "attribute": "risk_status_and_monitoring",
+        "statement": "Facial Nerve Palsy is a Potential Risk under evaluation at Enhanced monitoring level",
+        "supporting_quote": "Facial Nerve Palsy\tPotential Risk\tUnder evaluation\tEnhanced",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:01:01.952000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

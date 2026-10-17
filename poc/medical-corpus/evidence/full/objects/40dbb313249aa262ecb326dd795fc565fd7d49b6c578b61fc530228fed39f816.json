@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-868544",
+        "attribute": "case_number",
+        "statement": "Case Number: US-MODERNA-2026-868544",
+        "supporting_quote": "Case Number: US-MODERNA-2026-868544",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-868544",
+        "attribute": "report_type",
+        "statement": "Report Type: Spontaneous",
+        "supporting_quote": "Report Type: Spontaneous",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-868544",
+        "attribute": "serious_classification",
+        "statement": "Serious: Non-Serious",
+        "supporting_quote": "Serious: Non-Serious",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-868544",
+        "attribute": "adverse_event",
+        "statement": "MedDRA PT: Pericarditis; patient developed symptoms consistent with Pericarditis approximately 6 days following vaccination with mRNA-1273 (Spikevax) Dose 2",
+        "supporting_quote": "MedDRA PT: Pericarditis... the patient developed symptoms consistent with Pericarditis. The patient sought medical attention and was treated in the emergency department. The outcome was recovered with sequelae.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax) Dose 2",
+        "attribute": "dose_administration_date",
+        "statement": "Date of Administration: 03 November 2024",
+        "supporting_quote": "A 70-year-old male received Dose 2 of mRNA-1273 (Spikevax) on 03 November 2024.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax)",
+        "attribute": "lot_number",
+        "statement": "Lot Number: LOT-29533",
+        "supporting_quote": "Lot Number: LOT-29533",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-868544",
+        "attribute": "causality_assessment",
+        "statement": "Reporter Causality: Possibly Related; Company Causality: Possible; WHO-UMC Causality: Unclassifiable",
+        "supporting_quote": "Reporter Causality: Possibly Related\nCompany Causality: Possible\nWHO-UMC Causality: Unclassifiable",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-868544",
+        "attribute": "regulatory_reporting_requirement",
+        "statement": "15-Day Expedited Report Required: Yes; Submission to FDA VAERS: Pending; MedWatch Submission: VAE-4302-15",
+        "supporting_quote": "15-Day Expedited Report Required: Yes\nSubmission to FDA VAERS: Pending\nMedWatch Submission: VAE-4302-15",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:00:34.602000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

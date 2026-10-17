@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273-P101",
+    "attribute": "study_phase",
+    "statement": "Phase 1 First-in-Human clinical trial",
+    "supporting_quote": "Phase 1 First-in-Human (mRNA-1273-P101), a Phase 1 clinical trial",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273-P101",
+    "attribute": "study_period",
+    "statement": "13 September 2024 to 25 May 2026",
+    "supporting_quote": "Study Period: 13 September 2024 to 25 May 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273-P101",
+    "attribute": "number_of_subjects",
+    "statement": "45 participants",
+    "supporting_quote": "Number of Subjects: 45",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273-P101",
+    "attribute": "dosing_schedule",
+    "statement": "Two doses of 100 mcg (0.5 mL IM injection) administered on Day 1 and Day 29",
+    "supporting_quote": "Dosing Schedule: Two doses (Day 1 and Day 29)\nDose: 100 mcg (0.5 mL IM injection)",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273-P101",
+    "attribute": "primary_efficacy_endpoint",
+    "statement": "COVID-19 ≥14 days post-dose 2 with vaccine efficacy of 96.2% (95% CI: 93.2%, 97.2%), p-value < 0.0001",
+    "supporting_quote": "Primary: COVID-19 ≥14 days post-dose 2\t20/22\t171/22\t96.2% (93.2%, 97.2%)\t< 0.0001",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273-P101",
+    "attribute": "most_common_solicited_adverse_events",
+    "statement": "Injection site pain (95%), fatigue (77%), headache (64%), and myalgia (63%), majority mild to moderate and resolved within 1-3 days",
+    "supporting_quote": "The most common solicited adverse events were injection site pain (95%), fatigue (77%), headache (64%), and myalgia (63%). The majority of adverse events were mild to moderate and resolved within 1-3 days.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273-P101",
+    "attribute": "serious_adverse_events_rate",
+    "statement": "Serious adverse events occurred in 1.6% of vaccine recipients vs 1.5% of placebo recipients; no vaccine-related SAEs led to death",
+    "supporting_quote": "Serious adverse events (SAEs) occurred in 1.6% of vaccine recipients vs 1.5% of placebo recipients. No vaccine-related SAEs led to death.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273-P101",
+    "attribute": "seroconversion_rate",
+    "statement": "Seroconversion rates were 99.2% at 28 days post-dose 2 with geometric mean titers (GMTs) at Day 57 of 1107 (95% CI: 785 – 1883)",
+    "supporting_quote": "Geometric mean titers (GMTs) at Day 57 were 1107 (95% CI: 785 – 1883). Seroconversion rates were 99.2% at 28 days post-dose 2.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

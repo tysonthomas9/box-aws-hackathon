@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7658-72",
+        "attribute": "deviation_title",
+        "statement": "Out-of-Specification Particle Size in Drug Product",
+        "supporting_quote": "Title: Out-of-Specification Particle Size in Drug Product",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7658-72",
+        "attribute": "date_identified",
+        "statement": "05 January 2026",
+        "supporting_quote": "Date Identified: 05 January 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7658-72",
+        "attribute": "severity",
+        "statement": "Critical",
+        "supporting_quote": "Severity: Critical",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7658-72",
+        "attribute": "batch_affected",
+        "statement": "BN-27800-761",
+        "supporting_quote": "Batch Affected: BN-27800-761",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7658-72",
+        "attribute": "root_cause",
+        "statement": "Procedural gap in SOP QA-1282-21 that did not adequately specify the critical parameter range",
+        "supporting_quote": "The root cause was determined to be a procedural gap in SOP QA-1282-21 that did not adequately specify the critical parameter range.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7658-72",
+        "attribute": "effectiveness_check_criteria",
+        "statement": "Zero recurrence of same deviation type within 90 days",
+        "supporting_quote": "Criteria for Effectiveness: Zero recurrence of same deviation type within 90 days",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "SOP QA-5820-38",
+        "attribute": "revision_procedure",
+        "statement": "Revise SOP QA-5820-38 to clarify critical parameter limits, retrain all affected personnel on revised procedure, and implement automated alert system for parameter monitoring",
+        "supporting_quote": "CA-001\tRevise SOP QA-5820-38 to clarify critical parameter limits\tTara Shields\t16 October 2026\tIn Progress\nCA-002\tRetrain all affected personnel on revised procedure\tGarrett Gray\t16 October 2026\tPlanned\nCA-003\tImplement automated alert system for parameter monitoring\tJulie Smith\t16 October 2026\tPlanned",
+        "trigger_conditions": "[\"Procedural gap identified in SOP QA-1282-21\"]",
+        "steps": "[\"Revise SOP QA-5820-38 to clarify critical parameter limits (Owner: Tara Shields, Due: 16 October 2026)\", \"Retrain all affected personnel on revised procedure (Owner: Garrett Gray, Due: 16 October 2026)\", \"Implement automated alert system for parameter monitoring (Owner: Julie Smith, Due: 16 October 2026)\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7658-72",
+        "attribute": "product_impact",
+        "statement": "None — batch placed on hold pending additional testing",
+        "supporting_quote": "Product Impact: None — batch placed on hold pending additional testing",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:05:26.533000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

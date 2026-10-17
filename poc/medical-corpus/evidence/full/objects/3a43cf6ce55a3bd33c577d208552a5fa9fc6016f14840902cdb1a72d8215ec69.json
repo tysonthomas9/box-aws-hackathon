@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9120",
+        "attribute": "msl_name",
+        "statement": "MSL Name is Marvin Lewis",
+        "supporting_quote": "MSL Name: Marvin Lewis",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9120",
+        "attribute": "region",
+        "statement": "Region is West Coast US",
+        "supporting_quote": "Region: West Coast US",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9120",
+        "attribute": "reporting_period",
+        "statement": "Reporting period is 13 January 2026 to 16 October 2026",
+        "supporting_quote": "Reporting Period: 13 January 2026 to 16 October 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "MSL_9120",
+        "attribute": "product_focus",
+        "statement": "Product focus includes mRNA-1273 (Spikevax) and mRNA-4157",
+        "supporting_quote": "Product Focus: mRNA-1273 (Spikevax) / mRNA-4157",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "UMI-3869-90",
+        "attribute": "inquiry_topic",
+        "statement": "Unsolicited medical inquiry UMI-3869-90 concerns myocarditis management protocol requested by Sarah Peterson, MD with status escalated to Medical Information",
+        "supporting_quote": "UMI-3869-90\tMyocarditis management protocol\tSarah Peterson, MD\tEscalated to Medical Information",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-4157",
+        "attribute": "clinical_development_stage",
+        "statement": "mRNA-4157 mechanism and Phase 2 interim data in melanoma were discussed with KOLs",
+        "supporting_quote": "mRNA-4157 mechanism and Phase 2 interim data in melanoma",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "MSL_9120",
+        "attribute": "next_steps_procedure",
+        "statement": "Next steps include: (1) Schedule follow-up meeting with Thomas Roberts, MD to discuss updated clinical data, (2) Submit unsolicited inquiry responses through Medical Information portal, (3) Attend regional infectious disease conference to identify new KOLs",
+        "supporting_quote": "Schedule follow-up meeting with Thomas Roberts, MD to discuss updated clinical data\nSubmit unsolicited inquiry responses through Medical Information portal\nAttend regional infectious disease conference to identify new KOLs",
+        "trigger_conditions": "[]",
+        "steps": "[\"Schedule follow-up meeting with Thomas Roberts, MD to discuss updated clinical data\", \"Submit unsolicited inquiry responses through Medical Information portal\", \"Attend regional infectious disease conference to identify new KOLs\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "field_interactions",
+        "attribute": "key_themes",
+        "statement": "Key themes include growing interest in mRNA platform potential beyond infectious disease, persistent questions around myocarditis risk in younger males, increasing KOL engagement with mRNA-4157 data, and market access barriers related to booster hesitancy",
+        "supporting_quote": "Key themes observed during field interactions this period include growing interest in the mRNA platform's potential beyond infectious disease, persistent questions around myocarditis risk in younger males, and increasing KOL engagement with mRNA-4157 data. Market access barriers related to booster hesitancy were noted in several regions.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:58:08.409000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

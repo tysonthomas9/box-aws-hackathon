@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-4157-P201",
+        "attribute": "study_phase",
+        "statement": "Phase 2 clinical trial",
+        "supporting_quote": "Phase: Phase 2",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-4157-P201",
+        "attribute": "study_period",
+        "statement": "03 March 2025 to 19 August 2026",
+        "supporting_quote": "Study Period: 03 March 2025 to 19 August 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-4157-P201",
+        "attribute": "number_of_subjects",
+        "statement": "157 subjects enrolled",
+        "supporting_quote": "Number of Subjects: 157",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-4157-P201",
+        "attribute": "dosing_schedule",
+        "statement": "Two doses of 100 mcg (0.5 mL IM injection) administered on Day 1 and Day 29",
+        "supporting_quote": "Dosing Schedule: Two doses (Day 1 and Day 29)\nDose: 100 mcg (0.5 mL IM injection)",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-4157-P201",
+        "attribute": "primary_efficacy_endpoint_result",
+        "statement": "COVID-19 ≥14 days post-dose 2: 19/78 vaccine vs 179/78 placebo with vaccine efficacy 96.2% (95% CI: 93.2%, 97.2%), p-value < 0.0001",
+        "supporting_quote": "Primary: COVID-19 ≥14 days post-dose 2\t19/78\t179/78\t96.2% (93.2%, 97.2%)\t< 0.0001",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-4157-P201",
+        "attribute": "serious_adverse_events_rate",
+        "statement": "Serious adverse events occurred in 1.3% of vaccine recipients vs 1.1% of placebo recipients, with no vaccine-related SAEs leading to death",
+        "supporting_quote": "Serious adverse events (SAEs) occurred in 1.3% of vaccine recipients vs 1.1% of placebo recipients. No vaccine-related SAEs led to death.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "seroconversion_rate",
+        "statement": "Seroconversion rate of 98.4% at 28 days post-dose 2 with geometric mean titers (GMTs) at Day 57 of 1435 (95% CI: 890 – 2147)",
+        "supporting_quote": "Geometric mean titers (GMTs) at Day 57 were 1435 (95% CI: 890 – 2147). Seroconversion rates were 98.4% at 28 days post-dose 2.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-4157-P201",
+        "attribute": "study_design",
+        "statement": "Randomized, Observer-Blinded, Placebo-Controlled design with 1:1 randomization ratio (Vaccine:Placebo) and 24-month follow-up period post-dose 2",
+        "supporting_quote": "Design: Randomized, Observer-Blinded, Placebo-Controlled\nRandomization Ratio: 1:1 (Vaccine:Placebo)\nFollow-up Period: 24 months post-dose 2",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:55:22.024000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

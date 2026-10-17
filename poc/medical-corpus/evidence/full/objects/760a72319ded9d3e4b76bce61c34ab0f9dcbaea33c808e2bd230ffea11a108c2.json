@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Substance Batch BN-26939-949",
+        "attribute": "batch_size",
+        "statement": "Batch size is 191 L",
+        "supporting_quote": "Batch Size: 191 L",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Substance Batch BN-26939-949",
+        "attribute": "manufacturing_date",
+        "statement": "Manufacturing date is 24 September 2026",
+        "supporting_quote": "Manufacturing Date: 24 September 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Substance Batch BN-26939-949",
+        "attribute": "manufacturing_site",
+        "statement": "Manufacturing site is Moderna, Inc. — Norwood, MA Facility",
+        "supporting_quote": "Manufacturing Site: Moderna, Inc. — Norwood, MA Facility",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Substance Batch BN-26939-949",
+        "attribute": "yield_percentage",
+        "statement": "Actual yield is 3540 doses with yield of 87.0% compared to theoretical yield of 4069 doses",
+        "supporting_quote": "Theoretical Yield: 4069 doses\nActual Yield: 3540 doses\nYield (%): 87.0%",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Substance Batch BN-26939-949",
+        "attribute": "qa_release_decision",
+        "statement": "QA Release Decision is RELEASED on 16 October 2026 authorized by Jason Stevenson, QA Director",
+        "supporting_quote": "QA Release Decision: RELEASED\nRelease Date: 16 October 2026\nAuthorized By: Jason Stevenson, QA Director",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "mRNA-1273 Drug Substance manufacturing",
+        "attribute": "manufacturing_process_steps",
+        "statement": "Manufacturing process consists of six sequential steps: mRNA Synthesis at 38.7°C using T7 RNA Polymerase IVT, mRNA Purification using Tangential Flow Filtration at ≤5°C, LNP Formulation using Microfluidic Mixing at 16 mL/min flow rate, Diafiltration with Buffer Exchange to PBS at ≤5°C, Sterile Filtration using 0.22 µm filter at ambient temperature, and Fill-Finish with vial filling of 0.5 mL in Aseptic ISO 5 conditions. All steps resulted in PASS status.",
+        "supporting_quote": "Step 1: mRNA Synthesis, T7 RNA Polymerase IVT, 38.7°C, PASS\nStep 2: mRNA Purification, Tangential Flow Filtration, ≤5°C, PASS\nStep 3: LNP Formulation, Microfluidic Mixing, Flow rate: 16 mL/min, PASS\nStep 4: Diafiltration, Buffer Exchange to PBS, ≤5°C, PASS\nStep 5: Sterile Filtration, 0.22 µm filter, Ambient, PASS\nStep 6: Fill-Finish, Vial filling (0.5 mL), Aseptic ISO 5, PASS",
+        "trigger_conditions": "[]",
+        "steps": "[\"mRNA Synthesis using T7 RNA Polymerase IVT at 38.7°C\", \"mRNA Purification using Tangential Flow Filtration at ≤5°C\", \"LNP Formulation using Microfluidic Mixing at 16 mL/min flow rate\", \"Diafiltration with Buffer Exchange to PBS at ≤5°C\", \"Sterile Filtration using 0.22 µm filter at ambient temperature\", \"Fill-Finish with vial filling of 0.5 mL in Aseptic ISO 5 conditions\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Substance Batch BN-26939-949 in-process controls",
+        "attribute": "encapsulation_efficiency",
+        "statement": "Encapsulation Efficiency specification is ≥ 85% with result of 95.9% and PASS status",
+        "supporting_quote": "Encapsulation Efficiency: ≥ 85%, 95.9%, PASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Drug Substance Batch BN-26939-949",
+        "attribute": "deviations_observed",
+        "statement": "No deviations were observed during batch manufacture and all process parameters were within established limits",
+        "supporting_quote": "No deviations were observed during this batch manufacture. All process parameters were within established limits.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:03:06.570000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

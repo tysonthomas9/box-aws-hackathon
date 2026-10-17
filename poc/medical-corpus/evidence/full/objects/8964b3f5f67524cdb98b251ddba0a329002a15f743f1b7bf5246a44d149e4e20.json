@@ -1,0 +1,79 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "product_name",
+    "statement": "mRNA-1273 (Spikevax) is a COVID-19 vaccine",
+    "supporting_quote": "Product: mRNA-1273 (Spikevax) — COVID-19 Vaccine",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273",
+    "attribute": "applicant",
+    "statement": "Moderna, Inc. is the applicant for the BLA",
+    "supporting_quote": "Applicant: Moderna, Inc.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273",
+    "attribute": "bla_reference",
+    "statement": "BLA Reference is BLA-3344-39",
+    "supporting_quote": "BLA Reference: BLA-3344-39",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273",
+    "attribute": "submission_date",
+    "statement": "Submission date is 22 February 2026",
+    "supporting_quote": "Submission Date: 22 February 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "COVE Study (NCT04470427)",
+    "attribute": "enrollment_and_efficacy",
+    "statement": "The pivotal Phase 3 COVE Study enrolled 29882 participants across the United States and demonstrated a vaccine efficacy of 94.0% against COVID-19",
+    "supporting_quote": "The pivotal Phase 3 study (COVE Study, NCT04470427) enrolled 29882 participants across the United States and demonstrated a vaccine efficacy of 94.0% against COVID-19.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273",
+    "attribute": "approved_population",
+    "statement": "mRNA-1273 is indicated for prevention of COVID-19 in individuals 18 years of age and older",
+    "supporting_quote": "The totality of evidence from the clinical program supports the safety and efficacy of mRNA-1273 for the prevention of COVID-19 in individuals 18 years of age and older.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273",
+    "attribute": "benefit_risk_assessment",
+    "statement": "The overall benefit-risk assessment for mRNA-1273 is favorable with robust immunogenicity, durable protection, and an acceptable safety profile consistent with other approved mRNA vaccines",
+    "supporting_quote": "The overall benefit-risk assessment for mRNA-1273 is favorable. The vaccine demonstrated robust immunogenicity, durable protection, and an acceptable safety profile consistent with other approved mRNA vaccines.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

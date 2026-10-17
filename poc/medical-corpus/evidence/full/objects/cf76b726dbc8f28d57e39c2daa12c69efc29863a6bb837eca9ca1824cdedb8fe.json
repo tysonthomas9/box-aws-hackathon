@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273",
+    "attribute": "signal_identified_for_adverse_event",
+    "statement": "A potential safety signal has been identified for Myocarditis following mRNA-1273 in adolescents based on Disproportionality Analysis (PRR).",
+    "supporting_quote": "A potential safety signal has been identified for Myocarditis following mRNA-1273 in adolescents based on Disproportionality Analysis (PRR).",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "SIG-1310-66",
+    "attribute": "signal_id",
+    "statement": "Signal ID is SIG-1310-66 for Myocarditis following mRNA-1273 in adolescents.",
+    "supporting_quote": "Signal ID: SIG-1310-66",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "SIG-1310-66",
+    "attribute": "date_identified",
+    "statement": "Signal identified on 11 July 2026.",
+    "supporting_quote": "Date Identified: 11 July 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "SIG-1310-66",
+    "attribute": "detection_method",
+    "statement": "Detection method is Disproportionality Analysis (PRR).",
+    "supporting_quote": "Detection Method: Disproportionality Analysis (PRR)",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "SIG-1310-66",
+    "attribute": "signal_validity_assessment",
+    "statement": "Signal Validity is Confirmed Signal with Low Clinical Significance.",
+    "supporting_quote": "Signal Validity: Confirmed Signal\nClinical Significance: Low",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "SIG-1310-66",
+    "attribute": "faers_signal_metrics",
+    "statement": "FAERS database shows 100 cases with PRR of 2.97, ROR of 2.95, IC025 of 0.81, meeting signal threshold of PRR > 2 and N > 3.",
+    "supporting_quote": "FAERS\t100\t2.97\t2.95\t0.81\tPRR > 2, N > 3",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "SIG-1310-66",
+    "attribute": "vigibase_signal_metrics",
+    "statement": "VigiBase database shows 150 cases with PRR of 4.55, ROR of 4.08, IC025 of 0.37, meeting signal threshold of IC025 > 0.",
+    "supporting_quote": "VigiBase\t150\t4.55\t4.08\t0.37\tIC025 > 0",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "SIG-1310-66",
+    "attribute": "recommended_action",
+    "statement": "Recommended action is Expedited evaluation; notify safety committee.",
+    "supporting_quote": "Recommended Action: Expedited evaluation; notify safety committee",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

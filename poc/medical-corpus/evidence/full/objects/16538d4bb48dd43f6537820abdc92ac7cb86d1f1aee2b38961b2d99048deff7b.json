@@ -1,0 +1,77 @@
+{
+  "training_snapshot_sha256": "ca913bfcfc2aa64ef185a7974292edc8e58ba0c37299f37ca06a4684573c2361",
+  "parent_approved_snapshot_sha256": "754023c434627880f1114a3b557a405e8396b6bc58dd504a89d8c6d214843939",
+  "selection_manifest_sha256": "a195007c2317169e4980555a561c7f214a992506ac22ddb04e1d6d8401dab471",
+  "selection_manifest_s3_key": "extraction/selections/a195007c2317169e4980555a561c7f214a992506ac22ddb04e1d6d8401dab471.json",
+  "source_folder_id": "428391006380",
+  "inventory_sha256": "914aaa9c2422558c1a83fbf8bf9a5908eaeb92330caeeda01504319e6a5e51e6",
+  "evidence_manifest_sha256": "0c0c7e93c7ace678951ab1ef457b15b73807c19067c4efe5adca688c2c7eadab",
+  "training_snapshot_evidence_sha256": "9e74dbcfddc4f6d46fe4f52a8260cf6f11c95146a5fbfa327f305c7b499464ce",
+  "selection_manifest_evidence_sha256": "a195007c2317169e4980555a561c7f214a992506ac22ddb04e1d6d8401dab471",
+  "archived_unexpected_state": {
+    "state_sha256": "a7047dca2cb784f677ea06adc8ed86e6eaca9d34b32442128ad7dd6400f83683",
+    "revision": 4,
+    "state_s3_key": "extraction/archives/states/a7047dca2cb784f677ea06adc8ed86e6eaca9d34b32442128ad7dd6400f83683.json",
+    "cursor_sha256": "0c656c84681733ebeb373abb2ed9cd47f3fb5ebf7f83868abcb9bd4b1eacd45c",
+    "cursor_s3_key": "extraction/archives/sync-cursors/0c656c84681733ebeb373abb2ed9cd47f3fb5ebf7f83868abcb9bd4b1eacd45c.json",
+    "replacement_approved_snapshot_sha256": "754023c434627880f1114a3b557a405e8396b6bc58dd504a89d8c6d214843939"
+  },
+  "knowledge_revision": 5,
+  "sync_cursor_count": 115,
+  "sync_cursor_inventory_sha256": "f891b8bd4830f901c588458cafff532fe2f162913b0be6b24f67ee69d129a120",
+  "approved_items": 573,
+  "training_items": 387,
+  "not_selected_items": 186,
+  "pending_reviews": 336,
+  "pending_reasons": {
+    "quote_not_in_source": 194,
+    "conflict": 86,
+    "duplicate": 46,
+    "missing_procedure_fields": 20
+  },
+  "per_folder": {
+    "clinical-medical": {
+      "documents": 12,
+      "extracted_items": 96,
+      "approved": 79,
+      "pending": 17,
+      "selected": 48,
+      "not_selected": 31
+    },
+    "commercial-heor": {
+      "documents": 14,
+      "extracted_items": 111,
+      "pending": 69,
+      "approved": 42,
+      "selected": 36,
+      "not_selected": 6
+    },
+    "pharmacovigilance": {
+      "documents": 25,
+      "extracted_items": 200,
+      "approved": 141,
+      "pending": 59,
+      "selected": 84,
+      "not_selected": 57
+    },
+    "quality-manufacturing": {
+      "documents": 39,
+      "extracted_items": 311,
+      "approved": 229,
+      "pending": 82,
+      "selected": 152,
+      "not_selected": 77
+    },
+    "regulatory-affairs": {
+      "documents": 25,
+      "extracted_items": 191,
+      "approved": 82,
+      "pending": 109,
+      "selected": 67,
+      "not_selected": 15
+    }
+  },
+  "table": "kloop-items",
+  "bucket": "kloop-549803795565-artifacts",
+  "sync_cursors_table": "kloop-sync_cursors"
+}

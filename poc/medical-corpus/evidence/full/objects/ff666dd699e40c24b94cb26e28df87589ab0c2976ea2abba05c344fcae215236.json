@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-22492-P",
+    "attribute": "product_code",
+    "statement": "Product code is PC-1606-26",
+    "supporting_quote": "Product Code: PC-1606-26",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-22492-P",
+    "attribute": "manufacture_date",
+    "statement": "Manufacture date is 20 May 2025",
+    "supporting_quote": "Manufacture Date: 20 May 2025",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-22492-P",
+    "attribute": "expiry_date",
+    "statement": "Expiry date is 16 October 2026",
+    "supporting_quote": "Expiry Date: 16 October 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-22492-P",
+    "attribute": "storage_condition",
+    "statement": "Storage condition is -20°C ± 5°C, protect from light",
+    "supporting_quote": "Storage Condition: -20°C ± 5°C, protect from light",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-22492-P",
+    "attribute": "container_closure_specification",
+    "statement": "Container closure is Type I glass vial, 5 mL with fill volume of 0.5 mL per vial",
+    "supporting_quote": "Container Closure: Type I glass vial, 5 mL\nFill Volume: 0.5 mL per vial",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-22492-P",
+    "attribute": "testing_site",
+    "statement": "Testing site is Moderna, Inc. QC Laboratory, Norwood MA",
+    "supporting_quote": "Testing Site: Moderna, Inc. QC Laboratory, Norwood MA",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-22492-P",
+    "attribute": "overall_disposition_status",
+    "statement": "Overall status is RELEASED FOR DISTRIBUTION with QA release authorization by Gina Johnson MD, QA Director on 16 October 2026",
+    "supporting_quote": "Overall Status: RELEASED FOR DISTRIBUTION\nQA Release Authorization: Gina Johnson MD, QA Director\nRelease Date: 16 October 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-22492-P",
+    "attribute": "critical_test_results_summary",
+    "statement": "All critical quality attributes passed: Appearance conforms, pH 7.07, Osmolality 308 mOsm/kg, Particle Size 88 nm, PDI 0.13, Encapsulation Efficiency 92.7%, mRNA Concentration 0.204 mg/mL, mRNA Integrity 89.9%, Potency 104%, Endotoxin 0.15 EU/mL, Sterility no growth detected, Extractable Volume 0.54 mL",
+    "supporting_quote": "Appearance: Clear to slightly opalescent liquid, Conforms, PASS; pH: 6.8 – 7.2, 7.07, PASS; Osmolality: 250 – 350 mOsm/kg, 308 mOsm/kg, PASS; Particle Size (Z-avg): 80 – 120 nm, 88 nm, PASS; PDI: ≤ 0.20, 0.13, PASS; Encapsulation Efficiency: ≥ 85%, 92.7%, PASS; mRNA Concentration: 0.18 – 0.22 mg/mL, 0.204 mg/mL, PASS; mRNA Integrity: ≥ 70%, 89.9%, PASS; Potency: 50 – 150% of Ref. Std., 104%, PASS; Endotoxin: < 5 EU/mL, 0.15 EU/mL, PASS; Sterility: No growth (14 days), No growth detected, PASS; Extractable Volume: ≥ 0.5 mL, 0.54 mL, PASS",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

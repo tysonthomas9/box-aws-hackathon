@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-27560-D",
+    "attribute": "product_code",
+    "statement": "Product code is PC-3522-73",
+    "supporting_quote": "Product Code: PC-3522-73",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-27560-D",
+    "attribute": "manufacture_date",
+    "statement": "Manufacture date is 22 December 2025",
+    "supporting_quote": "Manufacture Date: 22 December 2025",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-27560-D",
+    "attribute": "expiry_date",
+    "statement": "Expiry date is 16 October 2026",
+    "supporting_quote": "Expiry Date: 16 October 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-27560-D",
+    "attribute": "storage_condition",
+    "statement": "Storage condition is -20°C ± 5°C, protect from light",
+    "supporting_quote": "Storage Condition: -20°C ± 5°C, protect from light",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-27560-D",
+    "attribute": "container_closure",
+    "statement": "Container closure is Type I glass vial, 5 mL with fill volume of 0.5 mL per vial",
+    "supporting_quote": "Container Closure: Type I glass vial, 5 mL\nFill Volume: 0.5 mL per vial",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-27560-D",
+    "attribute": "testing_site",
+    "statement": "Testing site is Moderna, Inc. QC Laboratory, Norwood MA",
+    "supporting_quote": "Testing Site: Moderna, Inc. QC Laboratory, Norwood MA",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-27560-D",
+    "attribute": "overall_status",
+    "statement": "Overall status is RELEASED FOR DISTRIBUTION with QA release authorization by Mr. Marc Kennedy, QA Director on 16 October 2026",
+    "supporting_quote": "Overall Status: RELEASED FOR DISTRIBUTION\nQA Release Authorization: Mr. Marc Kennedy, QA Director\nRelease Date: 16 October 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-27560-D",
+    "attribute": "critical_test_results",
+    "statement": "All critical quality attributes passed: Appearance conforms, pH 6.98 (spec 6.8-7.2), Osmolality 310 mOsm/kg (spec 250-350), Particle Size 100 nm (spec 80-120 nm), PDI 0.10 (spec ≤0.20), Encapsulation Efficiency 93.4% (spec ≥85%), mRNA Concentration 0.198 mg/mL (spec 0.18-0.22), mRNA Integrity 96.1% (spec ≥70%), Potency 127% of Ref. Std. (spec 50-150%), Endotoxin 0.62 EU/mL (spec <5), Sterility no growth detected, Extractable Volume 0.52 mL (spec ≥0.5 mL)",
+    "supporting_quote": "Appearance: Clear to slightly opalescent liquid, Conforms, PASS\npH: 6.8 – 7.2, 6.98, PASS\nOsmolality: 250 – 350 mOsm/kg, 310 mOsm/kg, PASS\nParticle Size (Z-avg): 80 – 120 nm, 100 nm, PASS\nPDI: ≤ 0.20, 0.10, PASS\nEncapsulation Efficiency: ≥ 85%, 93.4%, PASS\nmRNA Concentration: 0.18 – 0.22 mg/mL, 0.198 mg/mL, PASS\nmRNA Integrity: ≥ 70%, 96.1%, PASS\nPotency: 50 – 150% of Ref. Std., 127%, PASS\nEndotoxin: < 5 EU/mL, 0.62 EU/mL, PASS\nSterility: No growth (14 days), No growth detected, PASS\nExtractable Volume: ≥ 0.5 mL, 0.52 mL, PASS",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

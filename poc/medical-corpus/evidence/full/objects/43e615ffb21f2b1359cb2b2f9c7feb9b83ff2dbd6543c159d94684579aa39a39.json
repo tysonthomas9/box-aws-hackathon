@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-216587",
+    "attribute": "case_number",
+    "statement": "Case number is US-MODERNA-2026-216587",
+    "supporting_quote": "Case Number: US-MODERNA-2026-216587",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-216587",
+    "attribute": "report_type",
+    "statement": "Report type is Spontaneous",
+    "supporting_quote": "Report Type: Spontaneous",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-216587",
+    "attribute": "serious_classification",
+    "statement": "Serious classification is Medically Significant",
+    "supporting_quote": "Serious: Serious — Medically Significant",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-216587",
+    "attribute": "adverse_event",
+    "statement": "MedDRA PT is Urticaria, developed approximately 8 days following vaccination with mRNA-1273 (Spikevax) Dose 2 on 12 February 2025, outcome was recovered without sequelae",
+    "supporting_quote": "MedDRA PT: Urticaria... Approximately 8 day(s) following vaccination, the patient developed symptoms consistent with Urticaria... The outcome was recovered without sequelae.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) LOT-24934",
+    "attribute": "lot_number",
+    "statement": "Lot number is LOT-24934",
+    "supporting_quote": "Lot Number: LOT-24934",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-216587",
+    "attribute": "causality_assessment",
+    "statement": "Reporter Causality is Possibly Related, Company Causality is Unassessable, WHO-UMC Causality is Probable",
+    "supporting_quote": "Reporter Causality: Possibly Related\nCompany Causality: Unassessable\nWHO-UMC Causality: Probable",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-216587",
+    "attribute": "regulatory_reporting_status",
+    "statement": "15-Day Expedited Report Required is No, Submission to FDA VAERS is Pending, MedWatch Submission is VAE-1025-88",
+    "supporting_quote": "15-Day Expedited Report Required: No\nSubmission to FDA VAERS: Pending\nMedWatch Submission: VAE-1025-88",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Patient in Case US-MODERNA-2026-216587",
+    "attribute": "patient_demographics",
+    "statement": "Patient age is 25 years, sex is Male, weight is 70 kg, medical history includes Type 2 Diabetes",
+    "supporting_quote": "Age: 25 years\nSex: Male\nWeight: 70 kg\nMedical History: Type 2 Diabetes",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

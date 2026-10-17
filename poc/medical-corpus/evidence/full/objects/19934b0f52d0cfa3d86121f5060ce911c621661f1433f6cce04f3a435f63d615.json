@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157 Personalized Cancer Vaccine study",
+    "attribute": "study_phase",
+    "statement": "Phase 2",
+    "supporting_quote": "A Phase 2 Study of mRNA-4157 Personalized Cancer Vaccine in Melanoma",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157 Personalized Cancer Vaccine study",
+    "attribute": "protocol_number",
+    "statement": "PROT-4178-57",
+    "supporting_quote": "Protocol Number: PROT-4178-57",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157 Personalized Cancer Vaccine study",
+    "attribute": "sponsor",
+    "statement": "Moderna, Inc.",
+    "supporting_quote": "Sponsor: Moderna, Inc.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157 Personalized Cancer Vaccine study",
+    "attribute": "principal_investigator",
+    "statement": "Stephanie Cox, MD at Karaberg Medical Center",
+    "supporting_quote": "Principal Investigator: Stephanie Cox, MD\nInstitution: Karaberg Medical Center",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157 Personalized Cancer Vaccine study",
+    "attribute": "study_duration_months",
+    "statement": "approximately 24 months",
+    "supporting_quote": "you will be asked to attend 9 clinic visits over approximately 24 months",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157 Personalized Cancer Vaccine study",
+    "attribute": "number_of_doses",
+    "statement": "up to 3 doses",
+    "supporting_quote": "you will receive up to 3 doses of study medication",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157 Personalized Cancer Vaccine study",
+    "attribute": "number_of_clinic_visits",
+    "statement": "9 clinic visits",
+    "supporting_quote": "you will be asked to attend 9 clinic visits over approximately 24 months",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157 Personalized Cancer Vaccine study",
+    "attribute": "icf_version_date",
+    "statement": "v5.0, 05 March 2026",
+    "supporting_quote": "ICF Version: v5.0\nDate: 05 March 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

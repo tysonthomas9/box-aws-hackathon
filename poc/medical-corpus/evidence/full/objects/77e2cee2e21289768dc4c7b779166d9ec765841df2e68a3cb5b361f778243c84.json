@@ -1,0 +1,101 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-2343-63",
+    "attribute": "document_number",
+    "statement": "Document Number is QA-MFG-2343-63",
+    "supporting_quote": "Document Number: QA-MFG-2343-63",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-2343-63",
+    "attribute": "effective_date",
+    "statement": "Effective Date is 22 January 2026",
+    "supporting_quote": "Effective Date: 22 January 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-2343-63",
+    "attribute": "version",
+    "statement": "Version is 5.9",
+    "supporting_quote": "Version: 5.9",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-2343-63",
+    "attribute": "approved_by",
+    "statement": "Approved by Jessica Williams, VP Quality",
+    "supporting_quote": "Approved By: Jessica Williams, VP Quality",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "personnel_gowning_operations",
+    "attribute": "cleanroom_classification_requirement",
+    "statement": "Cleanroom classified area must be ISO Class 5 or as specified in batch record",
+    "supporting_quote": "Cleanroom classified area (ISO Class 5 or as specified in batch record)",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "procedure",
+    "subject": "personnel_gowning_and_aseptic_technique",
+    "attribute": "pre_operation_verification_procedure",
+    "statement": "Verify equipment calibration, complete environmental monitoring, review and sign BMR, perform gowning and aseptic technique, record parameters in real time, collect in-process samples, report deviations immediately, clean and sanitize equipment upon completion",
+    "supporting_quote": "5.1 Verify all equipment calibration certificates are current and within acceptable limits. 5.2 Complete environmental monitoring checks and confirm area is within specification. 5.3 Review and sign Batch Manufacturing Record (BMR) prior to commencing operations. 5.4 Perform personnel gowning and aseptic technique according to the approved batch record instructions. 5.5 Record all process parameters, observations, and measurements in the BMR in real time. 5.6 Collect in-process samples at defined intervals and submit to QC for testing. 5.7 Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-5351-60. 5.8 Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-3144-95.",
+    "trigger_conditions": [
+      "Prior to commencing personnel gowning and aseptic technique operations"
+    ],
+    "steps": [
+      "Verify all equipment calibration certificates are current and within acceptable limits",
+      "Complete environmental monitoring checks and confirm area is within specification",
+      "Review and sign Batch Manufacturing Record (BMR) prior to commencing operations",
+      "Perform personnel gowning and aseptic technique according to the approved batch record instructions",
+      "Record all process parameters, observations, and measurements in the BMR in real time",
+      "Collect in-process samples at defined intervals and submit to QC for testing",
+      "Report any deviation from this procedure immediately to the supervisor and document per SOP QA-DEV-5351-60",
+      "Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-3144-95"
+    ],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "personnel_gowning_operations",
+    "attribute": "acceptance_criteria_specification",
+    "statement": "All in-process and final product specifications must be met as defined in approved Drug Product specification document SPEC-5915-68; Out-of-specification results must be investigated per SOP QA-OOS-6180-19",
+    "supporting_quote": "All in-process and final product specifications must be met as defined in the approved Drug Product specification document SPEC-5915-68. Out-of-specification (OOS) results must be investigated per SOP QA-OOS-6180-19.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-2343-63",
+    "attribute": "regulatory_compliance_scope",
+    "statement": "SOP ensures compliance with 21 CFR Parts 210 and 211, and applicable ICH guidelines",
+    "supporting_quote": "This SOP ensures compliance with current Good Manufacturing Practice (cGMP) regulations as defined in 21 CFR Parts 210 and 211, and applicable ICH guidelines.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

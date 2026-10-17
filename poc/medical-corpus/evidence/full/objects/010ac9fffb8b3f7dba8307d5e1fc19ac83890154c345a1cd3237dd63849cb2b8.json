@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7149-60",
+        "attribute": "deviation_number",
+        "statement": "Deviation number is DEV-7149-60",
+        "supporting_quote": "Deviation Number: DEV-7149-60",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7149-60",
+        "attribute": "severity",
+        "statement": "Severity is Critical",
+        "supporting_quote": "Severity: Critical",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7149-60",
+        "attribute": "date_identified",
+        "statement": "Date identified is 07 July 2026",
+        "supporting_quote": "Date Identified: 07 July 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7149-60",
+        "attribute": "batch_affected",
+        "statement": "Batch affected is BN-23978-204",
+        "supporting_quote": "Batch Affected: BN-23978-204",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SOP QA-2983-82",
+        "attribute": "root_cause",
+        "statement": "Root cause was a procedural gap in SOP QA-2983-82 that did not adequately specify the critical parameter range, allowing the environmental monitoring alert condition to occur without triggering an immediate alert",
+        "supporting_quote": "The root cause was determined to be a procedural gap in SOP QA-2983-82 that did not adequately specify the critical parameter range. This allowed the condition leading to environmental monitoring alert in fill suite to occur without triggering an immediate alert.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "CA-001",
+        "attribute": "corrective_action",
+        "statement": "Revise SOP QA-1672-54 to clarify critical parameter limits, owned by Teresa Walker, due 16 October 2026, status In Progress",
+        "supporting_quote": "CA-001\tRevise SOP QA-1672-54 to clarify critical parameter limits\tTeresa Walker\t16 October 2026\tIn Progress",
+        "trigger_conditions": "[\"Environmental monitoring alert in fill suite identified\"]",
+        "steps": "[\"Revise SOP QA-1672-54 to clarify critical parameter limits\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7149-60",
+        "attribute": "effectiveness_check_criteria",
+        "statement": "Effectiveness check criteria is zero recurrence of same deviation type within 90 days, to be evaluated over 30-day period post-implementation",
+        "supporting_quote": "Criteria for Effectiveness: Zero recurrence of same deviation type within 90 days\nMethod: Review of monitoring data and process KPIs over 30-day period post-implementation",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-7149-60",
+        "attribute": "product_impact",
+        "statement": "Product impact is None — batch placed on hold pending additional testing",
+        "supporting_quote": "Product Impact: None — batch placed on hold pending additional testing",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:05:16.026000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

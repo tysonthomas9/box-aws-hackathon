@@ -1,0 +1,83 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "MSL Whitney Irwin",
+    "attribute": "region",
+    "statement": "Southeast US",
+    "supporting_quote": "Region: Southeast US",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "MSL Whitney Irwin",
+    "attribute": "reporting_period",
+    "statement": "23 January 2026 to 16 October 2026",
+    "supporting_quote": "Reporting Period: 23 January 2026 to 16 October 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "MSL Whitney Irwin",
+    "attribute": "product_focus",
+    "statement": "mRNA-1273 (Spikevax) and mRNA-4157",
+    "supporting_quote": "Product Focus: mRNA-1273 (Spikevax) / mRNA-4157",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Unsolicited Medical Inquiry UMI-7487-42",
+    "attribute": "topic",
+    "statement": "Off-label use in immunocompromised patients",
+    "supporting_quote": "UMI-7487-42\tOff-label use in immunocompromised patients\tAmy Kramer, MD\tEscalated to Medical Information",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Unsolicited Medical Inquiry UMI-7487-42",
+    "attribute": "requestor",
+    "statement": "Amy Kramer, MD",
+    "supporting_quote": "UMI-7487-42\tOff-label use in immunocompromised patients\tAmy Kramer, MD\tEscalated to Medical Information",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Unsolicited Medical Inquiry UMI-7487-42",
+    "attribute": "status",
+    "statement": "Escalated to Medical Information",
+    "supporting_quote": "UMI-7487-42\tOff-label use in immunocompromised patients\tAmy Kramer, MD\tEscalated to Medical Information",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "procedure",
+    "subject": "MSL Field Activity",
+    "attribute": "next_steps_procedure",
+    "statement": "Schedule follow-up meeting with Tony Lindsey, MD to discuss updated clinical data; Submit unsolicited inquiry responses through Medical Information portal; Attend regional infectious disease conference to identify new KOLs",
+    "supporting_quote": "Schedule follow-up meeting with Tony Lindsey, MD to discuss updated clinical data\nSubmit unsolicited inquiry responses through Medical Information portal\nAttend regional infectious disease conference to identify new KOLs",
+    "trigger_conditions": [],
+    "steps": [
+      "Schedule follow-up meeting with Tony Lindsey, MD to discuss updated clinical data",
+      "Submit unsolicited inquiry responses through Medical Information portal",
+      "Attend regional infectious disease conference to identify new KOLs"
+    ],
+    "action": "upsert"
+  }
+]

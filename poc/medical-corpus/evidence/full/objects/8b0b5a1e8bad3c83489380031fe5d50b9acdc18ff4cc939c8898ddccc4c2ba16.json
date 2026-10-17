@@ -1,0 +1,68 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "product_name",
+    "statement": "mRNA-1273 (Spikevax) — COVID-19 Vaccine",
+    "supporting_quote": "Product: mRNA-1273 (Spikevax) — COVID-19 Vaccine",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Moderna, Inc.",
+    "attribute": "applicant_address",
+    "statement": "200 Technology Square, Cambridge, MA 02139",
+    "supporting_quote": "Address: 200 Technology Square, Cambridge, MA 02139",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "BLA-9742-58",
+    "attribute": "submission_date",
+    "statement": "07 May 2026",
+    "supporting_quote": "Submission Date: 07 May 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "CTD Module 1",
+    "attribute": "document_version",
+    "statement": "v4.0",
+    "supporting_quote": "Document Version: v4.0",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "CTD Module 1",
+    "attribute": "prepared_by",
+    "statement": "Stacey Williams DVM, Regulatory Affairs",
+    "supporting_quote": "Prepared By: Stacey Williams DVM, Regulatory Affairs",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "BLA-9742-58",
+    "attribute": "regulatory_format",
+    "statement": "Common Technical Document (CTD) format as specified in ICH M4 guidelines for biologics license application (BLA) following eCTD format as required by 21 CFR Part 314",
+    "supporting_quote": "This document constitutes MODULE 1 — ADMINISTRATIVE INFORMATION of the Common Technical Document (CTD) format as specified in ICH M4 guidelines for the biologics license application (BLA) of mRNA-1273 (Spikevax) submitted by Moderna, Inc. to the U.S. Food and Drug Administration (FDA). The submission follows the eCTD format as required by 21 CFR Part 314 and FDA guidance on eCTD submissions.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

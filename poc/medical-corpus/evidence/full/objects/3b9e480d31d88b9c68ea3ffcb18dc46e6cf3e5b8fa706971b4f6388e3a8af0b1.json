@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax)",
+        "attribute": "signal_adverse_event",
+        "statement": "Tinnitus following mRNA vaccination identified as potential safety signal",
+        "supporting_quote": "A potential safety signal has been identified for Tinnitus following mRNA vaccination based on PRR and ROR analysis.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SIG-8487-29",
+        "attribute": "signal_id",
+        "statement": "Signal ID SIG-8487-29 assigned to tinnitus signal",
+        "supporting_quote": "Signal ID: SIG-8487-29",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SIG-8487-29",
+        "attribute": "date_identified",
+        "statement": "Signal identified on 24 January 2026",
+        "supporting_quote": "Date Identified: 24 January 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SIG-8487-29",
+        "attribute": "detection_method",
+        "statement": "Signal detected using PRR and ROR analysis",
+        "supporting_quote": "Detection Method: PRR and ROR analysis",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SIG-8487-29",
+        "attribute": "faers_signal_metrics",
+        "statement": "FAERS database: 55 cases, PRR 2.65, ROR 3.65, IC025 0.74, threshold PRR > 2 with N > 3",
+        "supporting_quote": "FAERS\t55\t2.65\t3.65\t0.74\tPRR > 2, N > 3",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SIG-8487-29",
+        "attribute": "vigibase_signal_metrics",
+        "statement": "VigiBase database: 159 cases, PRR 4.40, ROR 3.36, IC025 1.15, threshold IC025 > 0",
+        "supporting_quote": "VigiBase\t159\t4.40\t3.36\t1.15\tIC025 > 0",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SIG-8487-29",
+        "attribute": "initial_assessment",
+        "statement": "Signal validity: Potential Signal requiring further evaluation; clinical significance moderate; recommended action is expedited evaluation with safety committee notification",
+        "supporting_quote": "Signal Validity: Potential Signal — Further Evaluation Needed\nClinical Significance: Moderate\nRecommended Action: Expedited evaluation; notify safety committee",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SIG-8487-29",
+        "attribute": "data_sources_reviewed",
+        "statement": "Signal evaluation reviewed data from FAERS, VAERS, VigiBase, Moderna spontaneous reports, PubMed literature, and EudraVigilance",
+        "supporting_quote": "FAERS (openFDA)\nVAERS\nVigiBase (WHO)\nModerna, Inc. spontaneous reports\nPublished literature (PubMed)\nEudraVigilance",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:02:15.884000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

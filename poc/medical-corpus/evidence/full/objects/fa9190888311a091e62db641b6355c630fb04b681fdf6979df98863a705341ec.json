@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-223481",
+        "attribute": "case_number",
+        "statement": "Case number is US-MODERNA-2026-223481",
+        "supporting_quote": "Case Number: US-MODERNA-2026-223481",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-223481",
+        "attribute": "report_type",
+        "statement": "Report type is Spontaneous",
+        "supporting_quote": "Report Type: Spontaneous",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-223481",
+        "attribute": "serious_classification",
+        "statement": "Serious classification is Medically Significant",
+        "supporting_quote": "Serious: Serious — Medically Significant",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-223481",
+        "attribute": "adverse_event",
+        "statement": "MedDRA PT is Facial Palsy",
+        "supporting_quote": "MedDRA PT: Facial Palsy",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax) administration",
+        "attribute": "product_lot_number",
+        "statement": "Lot number is LOT-27311",
+        "supporting_quote": "Lot Number: LOT-27311",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax) administration",
+        "attribute": "dose_and_route",
+        "statement": "Dose is 100 mcg / 0.5 mL administered intramuscularly",
+        "supporting_quote": "Dose: 100 mcg / 0.5 mL\nRoute: Intramuscular",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-223481",
+        "attribute": "adverse_event_onset_and_outcome",
+        "statement": "Approximately 3 days following Dose 2 vaccination on 23 April 2026, patient developed Facial Palsy symptoms. Outcome was recovering. Patient managed outpatient.",
+        "supporting_quote": "A 72-year-old male received Dose 2 of mRNA-1273 (Spikevax) on 23 April 2026. Approximately 3 day(s) following vaccination, the patient developed symptoms consistent with Facial Palsy. The patient sought medical attention and was managed outpatient. The outcome was recovering.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-223481",
+        "attribute": "causality_assessment",
+        "statement": "Reporter Causality: Unrelated; Company Causality: Unassessable; WHO-UMC Causality: Unlikely",
+        "supporting_quote": "Reporter Causality: Unrelated\nCompany Causality: Unassessable\nWHO-UMC Causality: Unlikely",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:59:04.919000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

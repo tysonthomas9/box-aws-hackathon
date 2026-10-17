@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-17T08:17:26.500402+00:00",
+  "approved_hash": "754023c434627880f1114a3b557a405e8396b6bc58dd504a89d8c6d214843939",
+  "training_hash": "ca913bfcfc2aa64ef185a7974292edc8e58ba0c37299f37ca06a4684573c2361",
+  "selection_hash": "a195007c2317169e4980555a561c7f214a992506ac22ddb04e1d6d8401dab471",
+  "approved_items": 573,
+  "training_items": 387,
+  "selected_documents": 109,
+  "training_kinds": {
+    "fact": 380,
+    "procedure": 7
+  },
+  "max_training_items_per_document": 4,
+  "knowledge_revision": 5,
+  "sync_cursors": 115,
+  "sync_run_history_unchanged": true,
+  "state_archive_hash_verified": true,
+  "cursor_archive_hash_verified": true,
+  "training_is_exact_parent_subset": true,
+  "pending_reviews": 336,
+  "rejected_reviews": 0,
+  "training_lineage_verified": true,
+  "archive_pointer_verified": true,
+  "prior_commit_revision_retained": 4
+}

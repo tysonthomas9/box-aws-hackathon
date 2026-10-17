@@ -1,0 +1,79 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "product_name",
+    "statement": "mRNA-1273 (Spikevax) is a COVID-19 vaccine",
+    "supporting_quote": "Product: mRNA-1273 (Spikevax) — COVID-19 Vaccine",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "BLA-6992-21",
+    "attribute": "applicant",
+    "statement": "Moderna, Inc. is the applicant for BLA-6992-21",
+    "supporting_quote": "Applicant: Moderna, Inc.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Moderna, Inc.",
+    "attribute": "address",
+    "statement": "Moderna, Inc. is located at 200 Technology Square, Cambridge, MA 02139",
+    "supporting_quote": "Address: 200 Technology Square, Cambridge, MA 02139",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "BLA-6992-21",
+    "attribute": "submission_date",
+    "statement": "The submission date for BLA-6992-21 is 28 March 2026",
+    "supporting_quote": "Submission Date: 28 March 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "CTD Module 5 submission",
+    "attribute": "document_version",
+    "statement": "Document version is v1.0",
+    "supporting_quote": "Document Version: v1.0",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "CTD Module 5 submission",
+    "attribute": "prepared_by",
+    "statement": "Lauren George from Regulatory Affairs prepared this document",
+    "supporting_quote": "Prepared By: Lauren George, Regulatory Affairs",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "BLA-6992-21",
+    "attribute": "regulatory_framework",
+    "statement": "The submission follows eCTD format as required by 21 CFR Part 314 and FDA guidance on eCTD submissions",
+    "supporting_quote": "The submission follows the eCTD format as required by 21 CFR Part 314 and FDA guidance on eCTD submissions.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

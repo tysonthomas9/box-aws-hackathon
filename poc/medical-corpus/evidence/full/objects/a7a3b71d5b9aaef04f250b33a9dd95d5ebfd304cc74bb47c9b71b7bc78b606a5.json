@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-434165",
+        "attribute": "case_number",
+        "statement": "Case Number: US-MODERNA-2026-434165",
+        "supporting_quote": "Case Number: US-MODERNA-2026-434165",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-434165",
+        "attribute": "report_type",
+        "statement": "Report Type: Spontaneous",
+        "supporting_quote": "Report Type: Spontaneous",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-434165",
+        "attribute": "serious_classification",
+        "statement": "Serious: Non-Serious",
+        "supporting_quote": "Serious: Non-Serious",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-434165",
+        "attribute": "adverse_event",
+        "statement": "MedDRA PT: Myocarditis; patient developed symptoms consistent with Myocarditis approximately 12 days following vaccination",
+        "supporting_quote": "MedDRA PT: Myocarditis; Approximately 12 day(s) following vaccination, the patient developed symptoms consistent with Myocarditis.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax) LOT-25493",
+        "attribute": "dose_administration",
+        "statement": "Dose 2 of 100 mcg / 0.5 mL administered intramuscularly on 14 July 2025",
+        "supporting_quote": "A 71-year-old male received Dose 2 of mRNA-1273 (Spikevax) on 14 July 2025. Dose: 100 mcg / 0.5 mL; Route: Intramuscular",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-434165",
+        "attribute": "causality_assessment",
+        "statement": "Reporter Causality: Related; Company Causality: Unlikely; WHO-UMC Causality: Probable",
+        "supporting_quote": "Reporter Causality: Related; Company Causality: Unlikely; WHO-UMC Causality: Probable",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-434165",
+        "attribute": "regulatory_reporting_requirements",
+        "statement": "15-Day Expedited Report Required: Yes; Submission to FDA VAERS: Not Required; MedWatch Submission: VAE-9647-64",
+        "supporting_quote": "15-Day Expedited Report Required: Yes; Submission to FDA VAERS: Not Required; MedWatch Submission: VAE-9647-64",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "ICSR US-MODERNA-2026-434165",
+        "attribute": "outcome",
+        "statement": "The outcome was recovered without sequelae; patient was managed outpatient",
+        "supporting_quote": "The patient sought medical attention and was managed outpatient. The outcome was recovered without sequelae.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:59:33.051000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

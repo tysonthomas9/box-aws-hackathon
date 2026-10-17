@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-MFG-8019-84",
+        "attribute": "document_number",
+        "statement": "Document Number is QA-MFG-8019-84",
+        "supporting_quote": "Document Number: QA-MFG-8019-84",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-MFG-8019-84",
+        "attribute": "title",
+        "statement": "Title is Personnel Gowning and Aseptic Technique",
+        "supporting_quote": "Title: Personnel Gowning and Aseptic Technique",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-MFG-8019-84",
+        "attribute": "effective_date",
+        "statement": "Effective Date is 26 June 2026",
+        "supporting_quote": "Effective Date: 26 June 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-MFG-8019-84",
+        "attribute": "approved_by",
+        "statement": "Approved by Gregory Martin, VP Quality",
+        "supporting_quote": "Approved By: Gregory Martin, VP Quality",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Personnel Gowning and Aseptic Technique",
+        "attribute": "cleanroom_classification",
+        "statement": "Cleanroom classified area must be ISO Class 5 or as specified in batch record",
+        "supporting_quote": "Cleanroom classified area (ISO Class 5 or as specified in batch record)",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Personnel Gowning and Aseptic Technique",
+        "attribute": "calibration_equipment_id",
+        "statement": "Calibrated measurement instrument ID is EQ-9348-73",
+        "supporting_quote": "Calibrated including measurement instrument (ID: EQ-9348-73)",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "Personnel Gowning and Aseptic Technique",
+        "attribute": "pre_operation_procedure",
+        "statement": "Before commencing operations: verify equipment calibration certificates are current and within acceptable limits; complete environmental monitoring checks and confirm area is within specification; review and sign Batch Manufacturing Record (BMR) prior to commencing operations",
+        "supporting_quote": "5.1 Verify all equipment calibration certificates are current and within acceptable limits. 5.2 Complete environmental monitoring checks and confirm area is within specification. 5.3 Review and sign Batch Manufacturing Record (BMR) prior to commencing operations.",
+        "trigger_conditions": "[\"Before commencing personnel gowning and aseptic technique operations\"]",
+        "steps": "[\"Verify all equipment calibration certificates are current and within acceptable limits\", \"Complete environmental monitoring checks and confirm area is within specification\", \"Review and sign Batch Manufacturing Record (BMR) prior to commencing operations\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "Personnel Gowning and Aseptic Technique",
+        "attribute": "deviation_reporting_procedure",
+        "statement": "Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-3504-90",
+        "supporting_quote": "5.7 Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-3504-90.",
+        "trigger_conditions": "[\"When a deviation from the procedure occurs\"]",
+        "steps": "[\"Immediately report deviation to the supervisor\", \"Document deviation per SOP QA-DEV-3504-90\"]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:06:51.816000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

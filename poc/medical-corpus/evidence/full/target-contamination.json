@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-17T08:03:47.275153+00:00",
+  "state_sha256": "a7047dca2cb784f677ea06adc8ed86e6eaca9d34b32442128ad7dd6400f83683",
+  "revision": 4,
+  "items": 73,
+  "reviews": 87,
+  "batches": 4,
+  "sources": [
+    "2532316972433",
+    "2532307771090",
+    "2532313024610",
+    "2532308653979"
+  ],
+  "extractors": {
+    "box-ai/aws__claude_4_5_haiku": 87
+  },
+  "writes_by_medical_agent": 0
+}

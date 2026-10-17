@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 study",
+        "attribute": "study_title",
+        "statement": "A Phase 3 Study of mRNA-1273 for the Prevention of COVID-19",
+        "supporting_quote": "Study Title: A Phase 3 Study of mRNA-1273 for the Prevention of COVID-19",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 study",
+        "attribute": "protocol_number",
+        "statement": "PROT-3538-19",
+        "supporting_quote": "Protocol Number: PROT-3538-19",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 study",
+        "attribute": "sponsor",
+        "statement": "Moderna, Inc.",
+        "supporting_quote": "Sponsor: Moderna, Inc.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 study",
+        "attribute": "principal_investigator",
+        "statement": "Jeremy Jones, MD at Port Arthur Medical Center",
+        "supporting_quote": "Principal Investigator: Jeremy Jones, MD\nInstitution: Port Arthur Medical Center",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 study",
+        "attribute": "study_duration_and_visits",
+        "statement": "Participants will receive up to 4 doses of study medication and attend 5 clinic visits over approximately 22 months",
+        "supporting_quote": "you will receive up to 4 doses of study medication and will be asked to attend 5 clinic visits over approximately 22 months",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 study",
+        "attribute": "common_adverse_events",
+        "statement": "Injection site reactions (redness, swelling, pain) very common and usually mild and temporary; Fatigue, headache, muscle aches common and usually resolve within 1-3 days; Fever common after dose 2 and usually resolves within 24-48 hours",
+        "supporting_quote": "Injection site reactions (redness, swelling, pain) — very common, usually mild and temporary\nFatigue, headache, muscle aches — common, usually resolve within 1-3 days\nFever — common after dose 2, usually resolves within 24-48 hours",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 study",
+        "attribute": "rare_adverse_events",
+        "statement": "Allergic reactions are rare; medical team is prepared to treat immediately",
+        "supporting_quote": "Allergic reactions — rare, medical team is prepared to treat immediately",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 study",
+        "attribute": "icf_version_and_date",
+        "statement": "ICF Version v3.0 dated 26 August 2026",
+        "supporting_quote": "ICF Version: v3.0\nDate: 26 August 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:55:41.049000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-28998-E",
+        "attribute": "product_code",
+        "statement": "Product Code is PC-5719-66",
+        "supporting_quote": "Product Code: PC-5719-66",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-28998-E",
+        "attribute": "manufacture_date",
+        "statement": "Manufacture Date is 31 October 2024",
+        "supporting_quote": "Manufacture Date: 31 October 2024",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-28998-E",
+        "attribute": "expiry_date",
+        "statement": "Expiry Date is 16 October 2026",
+        "supporting_quote": "Expiry Date: 16 October 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-28998-E",
+        "attribute": "storage_condition",
+        "statement": "Storage Condition is -20°C ± 5°C, protect from light",
+        "supporting_quote": "Storage Condition: -20°C ± 5°C, protect from light",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-28998-E",
+        "attribute": "container_closure",
+        "statement": "Container Closure is Type I glass vial, 5 mL with fill volume of 0.5 mL per vial",
+        "supporting_quote": "Container Closure: Type I glass vial, 5 mL\nFill Volume: 0.5 mL per vial",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-28998-E",
+        "attribute": "testing_site",
+        "statement": "Testing Site is Moderna, Inc. QC Laboratory, Norwood MA",
+        "supporting_quote": "Testing Site: Moderna, Inc. QC Laboratory, Norwood MA",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-28998-E",
+        "attribute": "overall_disposition_status",
+        "statement": "Overall Status is RELEASED FOR DISTRIBUTION with QA Release Authorization by Samantha Contreras, QA Director on 16 October 2026",
+        "supporting_quote": "Overall Status: RELEASED FOR DISTRIBUTION\nQA Release Authorization: Samantha Contreras, QA Director\nRelease Date: 16 October 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-28998-E",
+        "attribute": "test_results_summary",
+        "statement": "All 12 quality control tests passed: Appearance conforms, pH 6.92 (spec 6.8-7.2), Osmolality 320 mOsm/kg (spec 250-350), Particle Size 104 nm (spec 80-120), PDI 0.16 (spec ≤0.20), Encapsulation Efficiency 94.7% (spec ≥85%), mRNA Concentration 0.196 mg/mL (spec 0.18-0.22), mRNA Integrity 85.2% (spec ≥70%), Potency 121% of Ref. Std. (spec 50-150%), Endotoxin 0.17 EU/mL (spec <5), Sterility no growth detected (spec no growth 14 days), Extractable Volume 0.55 mL (spec ≥0.5)",
+        "supporting_quote": "Appearance: Clear to slightly opalescent liquid, Conforms, PASS\npH: 6.8 – 7.2, 6.92, PASS\nOsmolality: 250 – 350 mOsm/kg, 320 mOsm/kg, PASS\nParticle Size (Z-avg): 80 – 120 nm, 104 nm, PASS\nPDI: ≤ 0.20, 0.16, PASS\nEncapsulation Efficiency: ≥ 85%, 94.7%, PASS\nmRNA Concentration: 0.18 – 0.22 mg/mL, 0.196 mg/mL, PASS\nmRNA Integrity: ≥ 70%, 85.2%, PASS\nPotency: 50 – 150% of Ref. Std., 121%, PASS\nEndotoxin: < 5 EU/mL, 0.17 EU/mL, PASS\nSterility: No growth (14 days), No growth detected, PASS\nExtractable Volume: ≥ 0.5 mL, 0.55 mL, PASS",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:04:16.776000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

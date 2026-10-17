@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-24526-Y",
+    "attribute": "product_code",
+    "statement": "Product Code is PC-7798-53",
+    "supporting_quote": "Product Code: PC-7798-53",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-24526-Y",
+    "attribute": "manufacture_date",
+    "statement": "Manufacture Date is 15 May 2025",
+    "supporting_quote": "Manufacture Date: 15 May 2025",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-24526-Y",
+    "attribute": "expiry_date",
+    "statement": "Expiry Date is 16 October 2026",
+    "supporting_quote": "Expiry Date: 16 October 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-24526-Y",
+    "attribute": "storage_condition",
+    "statement": "Storage Condition is -20°C ± 5°C, protect from light",
+    "supporting_quote": "Storage Condition: -20°C ± 5°C, protect from light",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-24526-Y",
+    "attribute": "fill_volume",
+    "statement": "Fill Volume is 0.5 mL per vial",
+    "supporting_quote": "Fill Volume: 0.5 mL per vial",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-24526-Y",
+    "attribute": "mrna_concentration",
+    "statement": "mRNA Concentration specification is 0.18 – 0.22 mg/mL with result 0.210 mg/mL, status PASS",
+    "supporting_quote": "mRNA Concentration\t0.18 – 0.22 mg/mL\t0.210 mg/mL\tPASS",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-24526-Y",
+    "attribute": "encapsulation_efficiency",
+    "statement": "Encapsulation Efficiency specification is ≥ 85% with result 93.7%, status PASS",
+    "supporting_quote": "Encapsulation Efficiency\t≥ 85%\t93.7%\tPASS",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 Injectable Suspension (Spikevax) LOT-24526-Y",
+    "attribute": "overall_disposition",
+    "statement": "Overall Status is RELEASED FOR DISTRIBUTION with QA Release Authorization by Eric Pittman, QA Director on 16 October 2026",
+    "supporting_quote": "Overall Status: RELEASED FOR DISTRIBUTION\nQA Release Authorization: Eric Pittman, QA Director\nRelease Date: 16 October 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]
