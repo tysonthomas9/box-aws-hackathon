@@ -24,7 +24,7 @@ def definition(worker_arn: str) -> dict:
         "Generate": {
             "Type": "Map",
             "ItemsPath": "$.batches.value.batches",
-            "MaxConcurrency": 4,
+            "MaxConcurrency": 2,
             "Parameters": {"version_id.$": "$.version_id", "batch.$": "$$.Map.Item.Value"},
             "Iterator": {
                 "StartAt": "GenerateBatch",
@@ -114,6 +114,26 @@ def definition(worker_arn: str) -> dict:
     work["Generate"]["Iterator"]["States"]["GenerateBatch"]["Parameters"]["Payload"]["batch.$"] = (
         "$.batch"
     )
+    # Retry only transient provider/invocation failures, resuming the same cached
+    # batch. Recipe, overlap and budget failures must still stop before GPU.
+    work["Generate"]["Iterator"]["States"]["GenerateBatch"]["Retry"] = [
+        {
+            "ErrorEquals": [
+                "ThrottlingException",
+                "ServiceUnavailableException",
+                "InternalServerException",
+                "Lambda.ServiceException",
+                "Lambda.SdkClientException",
+                "Lambda.TooManyRequestsException",
+                "Lambda.AWSLambdaException",
+            ],
+            "IntervalSeconds": 30,
+            "BackoffRate": 2,
+            "MaxAttempts": 5,
+            "MaxDelaySeconds": 120,
+            "JitterStrategy": "FULL",
+        }
+    ]
     # Use static known request fields, passing only values from prepare. Entire
     # request includes explicit region-bound image, input channels and job name.
     for name in (

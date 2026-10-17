@@ -824,7 +824,7 @@ def test_generation_map_is_inside_training_transaction_before_prepare():
     assert transaction["Branches"][0]["StartAt"] == "Batches"
     work = transaction["Branches"][0]["States"]
     generate = work["Generate"]
-    assert generate["MaxConcurrency"] == 4
+    assert generate["MaxConcurrency"] == 2
     assert generate["Next"] == "Prepare"
     invocation = generate["Iterator"]["States"]["GenerateBatch"]
     assert invocation["Parameters"]["Payload"] == {
@@ -1221,3 +1221,53 @@ def test_malformed_per_row_checker_decisions_cannot_approve_a_row(snapshot):
     helper.call = Mock(side_effect=[rows()[:1], ["true"], rows()[:1], [None], rows()[:1], [False]])
     assert list(helper.generate_batch(snapshot, TrainingConfig(fact_wordings=1), 0)) == []
     assert len(helper.drop_reports) == 1
+
+
+def test_generation_throttles_retry_the_same_batch_with_bounded_jitter():
+    work = definition("worker")["States"]["Transaction"]["Branches"][0]["States"]
+    generate = work["Generate"]
+    assert generate["MaxConcurrency"] == 2
+    invocation = generate["Iterator"]["States"]["GenerateBatch"]
+    retry = next(r for r in invocation["Retry"] if "ThrottlingException" in r["ErrorEquals"])
+    assert retry["IntervalSeconds"] == 30
+    assert retry["MaxAttempts"] == 5
+    assert retry["BackoffRate"] == 2
+    assert retry["MaxDelaySeconds"] == 120
+    assert retry["JitterStrategy"] == "FULL"
+    errors = {error for rule in invocation["Retry"] for error in rule["ErrorEquals"]}
+    assert not errors & {"States.ALL", "ValueError", "HelperBudgetExceeded", "HelperOutputError"}
+    assert invocation["Parameters"]["Payload"]["batch.$"] == "$.batch"
+    assert "Retry" not in generate  # Never restart the entire Map's paid work.
+    assert "Retry" not in work["Prepare"]  # Count/audit/budget failures stop before GPU.
+
+
+def test_throttled_batch_resume_reuses_generator_response_across_invocations(snapshot):
+    from botocore.exceptions import ClientError
+
+    from kloop.train.helpers import TrainingHelpers
+
+    def response(value):
+        return {
+            "stopReason": "end_turn",
+            "output": {"message": {"content": [{"text": json.dumps(value)}]}},
+        }
+
+    runtime, artifacts = Mock(), MemoryArtifacts()
+    runtime.converse.side_effect = [
+        response(rows()[:1]),
+        ClientError(
+            {"Error": {"Code": "ThrottlingException", "Message": "rate limited"}}, "Converse"
+        ),
+        response([True]),
+    ]
+    config = TrainingConfig(fact_wordings=1)
+    with pytest.raises(ClientError, match="ThrottlingException"):
+        list(TrainingHelpers(runtime, artifacts).generate_batch(snapshot, config, 0))
+    assert (
+        list(TrainingHelpers(runtime, artifacts).generate_batch(snapshot, config, 0)) == rows()[:1]
+    )
+    assert [c.kwargs["modelId"] for c in runtime.converse.call_args_list] == [
+        "us.moonshotai.kimi-k3",
+        "zai.glm-5",
+        "zai.glm-5",
+    ]

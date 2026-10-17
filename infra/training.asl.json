@@ -37,7 +37,7 @@
             "Generate": {
               "Type": "Map",
               "ItemsPath": "$.batches.value.batches",
-              "MaxConcurrency": 4,
+              "MaxConcurrency": 2,
               "Parameters": {
                 "version_id.$": "$.version_id",
                 "batch.$": "$$.Map.Item.Value"
@@ -61,7 +61,25 @@
                     },
                     "ResultPath": "$.generate",
                     "TimeoutSeconds": 840,
-                    "End": true
+                    "End": true,
+                    "Retry": [
+                      {
+                        "ErrorEquals": [
+                          "ThrottlingException",
+                          "ServiceUnavailableException",
+                          "InternalServerException",
+                          "Lambda.ServiceException",
+                          "Lambda.SdkClientException",
+                          "Lambda.TooManyRequestsException",
+                          "Lambda.AWSLambdaException"
+                        ],
+                        "IntervalSeconds": 30,
+                        "BackoffRate": 2,
+                        "MaxAttempts": 5,
+                        "MaxDelaySeconds": 120,
+                        "JitterStrategy": "FULL"
+                      }
+                    ]
                   }
                 }
               },
