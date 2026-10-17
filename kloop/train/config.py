@@ -41,7 +41,7 @@ class TrainingConfig(BaseSettings):
     near_miss_rows: int = Field(default=60, ge=1, le=1000)
     replay_rows: int = Field(default=100, ge=1, le=1000)
     expected_training_rows: int | None = Field(default=None, ge=1)
-    helper_budget_usd: float = Field(default=30, gt=0, le=70)
+    helper_budget_usd: float = Field(default=30, gt=0, le=75)
     min_credits_usd: float = Field(default=40, ge=40)
     compact_control_context: bool = False
     unknown_existing_entities: bool = False

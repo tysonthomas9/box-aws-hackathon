@@ -1460,7 +1460,7 @@ def test_compact_controls_keep_all_items_and_full_checker_context(snapshot):
     assert "source_file_id" in checker and "supporting_quote" in checker
     assert all(field in generator for field in ["trigger_conditions", "steps"])
     with pytest.raises(ValueError):
-        TrainingConfig(helper_budget_usd=71)
+        TrainingConfig(helper_budget_usd=76)
     with pytest.raises(ValueError):
         TrainingConfig(min_credits_usd=39)
 
