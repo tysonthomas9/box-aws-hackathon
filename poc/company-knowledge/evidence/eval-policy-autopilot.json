@@ -1,0 +1,53 @@
+{
+  "Policies": [
+    {
+      "Policy": {
+        "Id": "IamPolicyAutopilot",
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "kms:GenerateDataKey"
+            ],
+            "Resource": [
+              "arn:aws:kms:us-east-2:549803795565:key/*"
+            ],
+            "Condition": {
+              "StringEquals": {
+                "kms:ViaService": [
+                  "s3.us-east-2.amazonaws.com"
+                ]
+              }
+            }
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:PutObject",
+              "s3:PutObjectAcl",
+              "s3:PutObjectLegalHold",
+              "s3:PutObjectRetention",
+              "s3:PutObjectTagging"
+            ],
+            "Resource": [
+              "arn:aws:s3:::*/*",
+              "arn:aws:s3:us-east-2:549803795565:accesspoint/*/object/*"
+            ]
+          },
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3-object-lambda:PutObject"
+            ],
+            "Resource": [
+              "arn:aws:s3:::*/*",
+              "arn:aws:s3:us-east-2:549803795565:accesspoint/*/object/*"
+            ]
+          }
+        ]
+      },
+      "PolicyType": "Identity"
+    }
+  ]
+}
