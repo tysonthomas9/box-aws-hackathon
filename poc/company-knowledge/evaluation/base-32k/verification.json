@@ -1,0 +1,99 @@
+{
+  "verified_at": "2026-10-17T05:34:01.982385+00:00",
+  "status": "pass",
+  "response_count": 92,
+  "decision_count": 92,
+  "counts": {
+    "base": {
+      "fact": {
+        "correct": 0,
+        "total": 20,
+        "invented": 0
+      },
+      "heldout_procedure": {
+        "correct": 1,
+        "total": 1,
+        "invented": 0
+      },
+      "two_fact": {
+        "correct": 0,
+        "total": 5,
+        "invented": 0
+      },
+      "unrelated": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      },
+      "untold": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      }
+    },
+    "base_retrieval": {
+      "fact": {
+        "correct": 19,
+        "total": 20,
+        "invented": 0
+      },
+      "heldout_procedure": {
+        "correct": 1,
+        "total": 1,
+        "invented": 0
+      },
+      "two_fact": {
+        "correct": 5,
+        "total": 5,
+        "invented": 0
+      },
+      "unrelated": {
+        "correct": 9,
+        "total": 10,
+        "invented": 0
+      },
+      "untold": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      }
+    }
+  },
+  "totals": {
+    "base": {
+      "correct": 21,
+      "total": 46
+    },
+    "base_retrieval": {
+      "correct": 44,
+      "total": 46
+    }
+  },
+  "finish_reasons": {
+    "base": {
+      "stop": 46
+    },
+    "base_retrieval": {
+      "stop": 46
+    }
+  },
+  "tokens": {
+    "base": {
+      "prompt": 3076,
+      "generation": 1178
+    },
+    "base_retrieval": {
+      "prompt": 7204,
+      "generation": 1044
+    }
+  },
+  "judge_usage": {
+    "input": 10924,
+    "output": 4790
+  },
+  "summary_sha256": "b1a50b1596e015b34d39057e371ad49b7c13d8fc8e7c63a23705d5d6c039ce58",
+  "training_sha256": "92edb882d2233b7604b2072abe98c46d81dced97b0a54356788f160dddac1a72",
+  "hidden_sha256": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
+  "lora": "not run",
+  "limits": "GLM model judgement, one question in held-out procedure category; no LoRA learning claim"
+}

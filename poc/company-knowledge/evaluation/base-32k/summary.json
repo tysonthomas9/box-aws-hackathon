@@ -1,0 +1,1799 @@
+{
+  "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+  "target_model": "Qwen/Qwen3-4B-Instruct-2507",
+  "hidden_sha256": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
+  "pack_sha256": "b4d7aef08e0dbb39c3007c317648e964ff5ff8f388a44c7e87a71755589c4320",
+  "tokenizer_sha256": "a62ff0a2472a0fa1b8eaabcb57c59b58afa42a22831dc141400b6e0cf2b65ce3",
+  "chat_template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326",
+  "model_config_sha256": "6b913e85499cff943ae810b76194764424d1869a26a1e32dbb1dda2395f7ffa3",
+  "context_limit": 32768,
+  "judge": "zai.glm-5",
+  "judge_fallback_used": false,
+  "counts": {
+    "base": {
+      "fact": {
+        "correct": 0,
+        "total": 20,
+        "invented": 0
+      },
+      "heldout_procedure": {
+        "correct": 1,
+        "total": 1,
+        "invented": 0
+      },
+      "two_fact": {
+        "correct": 0,
+        "total": 5,
+        "invented": 0
+      },
+      "unrelated": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      },
+      "untold": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      }
+    },
+    "base_retrieval": {
+      "fact": {
+        "correct": 19,
+        "total": 20,
+        "invented": 0
+      },
+      "heldout_procedure": {
+        "correct": 1,
+        "total": 1,
+        "invented": 0
+      },
+      "two_fact": {
+        "correct": 5,
+        "total": 5,
+        "invented": 0
+      },
+      "unrelated": {
+        "correct": 9,
+        "total": 10,
+        "invented": 0
+      },
+      "untold": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      }
+    }
+  },
+  "retrieval": "Query-only lexical IDF overlap; top 3 of the 13 pack documents; no expected-answer oracle",
+  "lora": "not run; g6 approved, waiting for POC 1 end-to-end proof",
+  "responses": [
+    {
+      "mode": "base",
+      "id": "H01",
+      "kind": "fact",
+      "question": "Whom should I contact as the accountable owner for Halvard's Kestrel service?",
+      "answer": "I do not know the specific contact for the accountable owner of Halvard's Kestrel service. Please check the official Halvard Systems documentation or contact Halvard Systems support directly for accurate information. Always check environmental causes before replacing parts.",
+      "finish_reason": "stop",
+      "required": [
+        "Mira Solven"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H02",
+      "kind": "fact",
+      "question": "At what UTC time and on which weekday does work on the Nacre gateway normally begin?",
+      "answer": "I do not know the specific UTC time or weekday when work on the Nacre gateway normally begins. Environmental causes should be checked before replacing parts.",
+      "finish_reason": "stop",
+      "required": [
+        "02:40 UTC every Tuesday"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H03",
+      "kind": "fact",
+      "question": "How long can I expect a Vela export to remain available before retention expires?",
+      "answer": "I do not know the specific retention period for a Vela export. Please consult the official Halvard Systems documentation or support resources for accurate information. Always check environmental causes before replacing parts.",
+      "finish_reason": "stop",
+      "required": [
+        "17 days"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H04",
+      "kind": "fact",
+      "question": "What words and number unlock the calibration step on an Orin sensor?",
+      "answer": "I do not know the specific words or numbers that unlock the calibration step on an Orin sensor. This information is not part of known Halvard Systems procedures or documentation. Please consult the official Halvard Systems manual or support resources for accurate calibration instructions. Always check environmental causes before replacing parts.",
+      "finish_reason": "stop",
+      "required": [
+        "amber finch 62"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H05",
+      "kind": "fact",
+      "question": "Where in chat should an urgent Tern incident be escalated?",
+      "answer": "I do not know where an urgent Tern incident should be escalated in chat. Check environmental causes before replacing parts.",
+      "finish_reason": "stop",
+      "required": [
+        "#tern-copper"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H06",
+      "kind": "fact",
+      "question": "What is the maximum amount of data Sable permits us to upload in one day?",
+      "answer": "I do not know the maximum amount of data Sable permits us to upload in one day.",
+      "finish_reason": "stop",
+      "required": [
+        "73 GB"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H07",
+      "kind": "fact",
+      "question": "Whose sign-off lets a new colleague complete Lumen onboarding?",
+      "answer": "I do not know.",
+      "finish_reason": "stop",
+      "required": [
+        "Devika Pell"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H08",
+      "kind": "fact",
+      "question": "Which date in the month is the deadline for Bracken payroll?",
+      "answer": "I do not know the specific deadline for Bracken payroll. Please consult the official Halvard Systems payroll documentation or contact your HR department for accurate information. Always check environmental causes before replacing parts.",
+      "finish_reason": "stop",
+      "required": [
+        "19th"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H09",
+      "kind": "fact",
+      "question": "How many minutes does Cirrus allow before the first priority support response?",
+      "answer": "I do not know how many minutes Cirrus allows before the first priority support response.",
+      "finish_reason": "stop",
+      "required": [
+        "26 minutes"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H10",
+      "kind": "fact",
+      "question": "Where would I physically find the package needed to recover Quartz?",
+      "answer": "I do not know where the package needed to recover Quartz is physically located. Check environmental causes before replacing parts.",
+      "finish_reason": "stop",
+      "required": [
+        "cabinet Q-14"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H11",
+      "kind": "fact",
+      "question": "Who has ownership responsibility for Kestrel at Halvard Systems?",
+      "answer": "I do not know who has ownership responsibility for Kestrel at Halvard Systems.",
+      "finish_reason": "stop",
+      "required": [
+        "Mira Solven"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H12",
+      "kind": "fact",
+      "question": "I am scheduling around Nacre upkeep; give me the recurring start time including its day.",
+      "answer": "I do not know the recurring start time for Nacre upkeep. Please check the official Halvard Systems schedule or contact support for accurate timing. Always check environmental causes before replacing parts.",
+      "finish_reason": "stop",
+      "required": [
+        "02:40 UTC every Tuesday"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H13",
+      "kind": "fact",
+      "question": "After how many days are files from Vela exports no longer retained?",
+      "answer": "I do not know the retention policy for Vela exports. Please consult the official Halvard Systems documentation or contact support for accurate information.",
+      "finish_reason": "stop",
+      "required": [
+        "17 days"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H14",
+      "kind": "fact",
+      "question": "Tell a technician the exact Orin calibration secret phrase.",
+      "answer": "I do not know the exact Orin calibration secret phrase. Halvard Systems does not disclose such sensitive information. If you are experiencing a calibration issue, follow the standard procedure: check environmental causes first, then proceed with part replacement if necessary.",
+      "finish_reason": "stop",
+      "required": [
+        "amber finch 62"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H15",
+      "kind": "fact",
+      "question": "Name the escalation room used by the Tern incident desk.",
+      "answer": "I do not know the name of the escalation room used by the Tern incident desk.",
+      "finish_reason": "stop",
+      "required": [
+        "#tern-copper"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H16",
+      "kind": "fact",
+      "question": "Express Sable's per-day archive ingestion ceiling in gigabytes.",
+      "answer": "I do not know Sable's per-day archive ingestion ceiling in gigabytes.",
+      "finish_reason": "stop",
+      "required": [
+        "73 GB"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H17",
+      "kind": "fact",
+      "question": "Identify the individual who authorizes Lumen onboarding.",
+      "answer": "I do not know who authorizes Lumen onboarding.",
+      "finish_reason": "stop",
+      "required": [
+        "Devika Pell"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H18",
+      "kind": "fact",
+      "question": "When during a month does the Bracken payroll submission window close?",
+      "answer": "I do not know when the Bracken payroll submission window closes. This information is not within my knowledge base. Please consult the official Bracken payroll guidelines or support documentation for accurate timing.",
+      "finish_reason": "stop",
+      "required": [
+        "19th"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H19",
+      "kind": "fact",
+      "question": "State the promised initial reply time for a Cirrus priority case.",
+      "answer": "I do not know the promised initial reply time for a Cirrus priority case.",
+      "finish_reason": "stop",
+      "required": [
+        "26 minutes"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H20",
+      "kind": "fact",
+      "question": "Give the cabinet label for the Quartz recovery kit.",
+      "answer": "I do not know the cabinet label for the Quartz recovery kit.",
+      "finish_reason": "stop",
+      "required": [
+        "cabinet Q-14"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base",
+      "id": "H21",
+      "kind": "two_fact",
+      "question": "Name both the Kestrel owner and the person who approves Lumen onboarding.",
+      "answer": "I do not know the names of the Kestrel owner or the person who approves Lumen onboarding. This information is not available in my knowledge base. Please consult the appropriate internal Halvard Systems documentation or contact the relevant team for this information.",
+      "finish_reason": "stop",
+      "required": [
+        "Mira Solven",
+        "Devika Pell"
+      ],
+      "rubric": "Both entity-value pairs correct; no contradictions."
+    },
+    {
+      "mode": "base",
+      "id": "H22",
+      "kind": "two_fact",
+      "question": "Give Vela's retention duration and Sable's daily capacity.",
+      "answer": "I do not know Vela's retention duration or Sable's daily capacity. Please provide additional context or verify the query against available Halvard Systems documentation.",
+      "finish_reason": "stop",
+      "required": [
+        "17 days",
+        "73 GB"
+      ],
+      "rubric": "Both entity-value pairs correct; no contradictions."
+    },
+    {
+      "mode": "base",
+      "id": "H23",
+      "kind": "two_fact",
+      "question": "I need two calendar reminders: Nacre maintenance and Bracken payroll cutoff. What are they?",
+      "answer": "I do not know the specific dates or times for Nacre maintenance or Bracken payroll cutoff. Please check the official Halvard Systems schedule or contact your local support team for accurate calendar reminders. Always check environmental causes before replacing parts.",
+      "finish_reason": "stop",
+      "required": [
+        "02:40 UTC every Tuesday",
+        "19th"
+      ],
+      "rubric": "Both entity-value pairs correct; no contradictions."
+    },
+    {
+      "mode": "base",
+      "id": "H24",
+      "kind": "two_fact",
+      "question": "For a field visit, what Orin calibration passphrase and Quartz cabinet should I note?",
+      "answer": "I do not know the specific Orin calibration passphrase or Quartz cabinet details for field visits. Environmental causes should be checked before replacing parts. Please consult official Halvard Systems documentation or authorized support channels for such information.",
+      "finish_reason": "stop",
+      "required": [
+        "amber finch 62",
+        "cabinet Q-14"
+      ],
+      "rubric": "Both entity-value pairs correct; no contradictions."
+    },
+    {
+      "mode": "base",
+      "id": "H25",
+      "kind": "two_fact",
+      "question": "Provide Tern's escalation channel together with the Cirrus priority reply deadline.",
+      "answer": "I do not know Tern's escalation channel or Cirrus priority reply deadline.",
+      "finish_reason": "stop",
+      "required": [
+        "#tern-copper",
+        "26 minutes"
+      ],
+      "rubric": "Both entity-value pairs correct; no contradictions."
+    },
+    {
+      "mode": "base",
+      "id": "H26",
+      "kind": "heldout_procedure",
+      "question": "A previously unseen Z83 scanner has this rule: first measure room humidity; above 65%, dehumidify and retest without replacing the scanner; at 65% or below, replace the scanner only if Z83 persists after retest. Z83 appears at 79% humidity and a colleague wants to order a scanner now. What should we do next, and under what condition would replacement be justified?",
+      "answer": "First, check the environmental cause: humidity is 79%, which is above 65%.  \nAction: Dehumidify the environment and retest the scanner.  \n\nReplacement is justified **only if Z83 persists after dehumidification and retesting** (i.e., after humidity is reduced to 65% or below).  \n\nDo not replace the scanner yet.  \nNext step: Dehumidify and retest.  \n\nReplacement condition: Z83 persists after retest following dehumidification.",
+      "finish_reason": "stop",
+      "required": [
+        "dehumidify",
+        "retest",
+        "do not replace now",
+        "humidity at most 65% and Z83 persists after retest"
+      ],
+      "rubric": "Uses the rule given in the question: lower humidity, retest, reject immediate replacement; names both prerequisites for later replacement."
+    },
+    {
+      "mode": "base",
+      "id": "H27",
+      "kind": "untold",
+      "question": "What is Mira Solven's telephone extension?",
+      "answer": "I do not know Mira Solven's telephone extension. This information is not available in my knowledge base.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base",
+      "id": "H28",
+      "kind": "untold",
+      "question": "Who owns the Vela export service?",
+      "answer": "I do not know who owns the Vela export service.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base",
+      "id": "H29",
+      "kind": "untold",
+      "question": "What maintenance window applies to Quartz?",
+      "answer": "I do not know what maintenance window applies to Quartz. Please consult the official Halvard Systems documentation for specific maintenance schedules. Always check environmental causes before replacing parts.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base",
+      "id": "H30",
+      "kind": "untold",
+      "question": "How much does an Orin sensor cost?",
+      "answer": "I do not know the cost of an Orin sensor.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base",
+      "id": "H31",
+      "kind": "untold",
+      "question": "How many people work at Halvard Systems?",
+      "answer": "I do not know how many people work at Halvard Systems.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base",
+      "id": "H32",
+      "kind": "untold",
+      "question": "What is the street address of the Bracken office?",
+      "answer": "I do not know the street address of the Bracken office.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base",
+      "id": "H33",
+      "kind": "untold",
+      "question": "Which cloud provider hosts Sable?",
+      "answer": "I do not know which cloud provider hosts Sable.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base",
+      "id": "H34",
+      "kind": "untold",
+      "question": "What is the administrator password for Nacre?",
+      "answer": "I do not know the administrator password for Nacre. Halvard Systems does not store or provide such sensitive information. If you are experiencing access issues, first check environmental causes (e.g., power, network, or hardware issues) before replacing parts. If needed, contact Halvard Systems support for authorized assistance.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base",
+      "id": "H35",
+      "kind": "untold",
+      "question": "How many annual leave days does Lumen offer?",
+      "answer": "I do not know how many annual leave days Lumen offers.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base",
+      "id": "H36",
+      "kind": "untold",
+      "question": "What is the replacement part number for an E42 pump?",
+      "answer": "I do not know the replacement part number for an E42 pump. Please consult the official Halvard Systems part database or technical documentation for accurate information. Always check environmental causes before replacing parts.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base",
+      "id": "H37",
+      "kind": "unrelated",
+      "question": "What is 14 multiplied by 6?",
+      "answer": "14 multiplied by 6 is 84.",
+      "finish_reason": "stop",
+      "required": [
+        "84"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base",
+      "id": "H38",
+      "kind": "unrelated",
+      "question": "Translate good morning into Spanish.",
+      "answer": "Buenos d\u00edas.",
+      "finish_reason": "stop",
+      "required": [
+        "Buenos d\u00edas"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base",
+      "id": "H39",
+      "kind": "unrelated",
+      "question": "Name the capital of Japan.",
+      "answer": "The capital of Japan is Tokyo.",
+      "finish_reason": "stop",
+      "required": [
+        "Tokyo"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base",
+      "id": "H40",
+      "kind": "unrelated",
+      "question": "Put these numbers in ascending order: 8, 2, 5.",
+      "answer": "2, 5, 8",
+      "finish_reason": "stop",
+      "required": [
+        "2, 5, 8"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base",
+      "id": "H41",
+      "kind": "unrelated",
+      "question": "Return the lowercase version of BLUE.",
+      "answer": "blue",
+      "finish_reason": "stop",
+      "required": [
+        "blue"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base",
+      "id": "H42",
+      "kind": "unrelated",
+      "question": "How many sides does a triangle have?",
+      "answer": "A triangle has three sides.",
+      "finish_reason": "stop",
+      "required": [
+        "3"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base",
+      "id": "H43",
+      "kind": "unrelated",
+      "question": "What chemical formula denotes water?",
+      "answer": "The chemical formula that denotes water is H\u2082O.",
+      "finish_reason": "stop",
+      "required": [
+        "H2O"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base",
+      "id": "H44",
+      "kind": "unrelated",
+      "question": "Write a Python expression for the length of a list named items.",
+      "answer": "len(items)",
+      "finish_reason": "stop",
+      "required": [
+        "len(items)"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base",
+      "id": "H45",
+      "kind": "unrelated",
+      "question": "Which is larger, 0.7 or 0.07?",
+      "answer": "0.7 is larger than 0.07.",
+      "finish_reason": "stop",
+      "required": [
+        "0.7"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base",
+      "id": "H46",
+      "kind": "unrelated",
+      "question": "What is the opposite of north?",
+      "answer": "The opposite of north is south.",
+      "finish_reason": "stop",
+      "required": [
+        "south"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H01",
+      "kind": "fact",
+      "question": "Whom should I contact as the accountable owner for Halvard's Kestrel service?",
+      "answer": "The accountable owner for Halvard's Kestrel service is Mira Solven.",
+      "finish_reason": "stop",
+      "required": [
+        "Mira Solven"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H02",
+      "kind": "fact",
+      "question": "At what UTC time and on which weekday does work on the Nacre gateway normally begin?",
+      "answer": "Work on the Nacre gateway normally begins at 02:40 UTC on Tuesday.",
+      "finish_reason": "stop",
+      "required": [
+        "02:40 UTC every Tuesday"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H03",
+      "kind": "fact",
+      "question": "How long can I expect a Vela export to remain available before retention expires?",
+      "answer": "A Vela export remains available for 17 days before retention expires.",
+      "finish_reason": "stop",
+      "required": [
+        "17 days"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H04",
+      "kind": "fact",
+      "question": "What words and number unlock the calibration step on an Orin sensor?",
+      "answer": "The words and number that unlock the calibration step on an Orin sensor are: amber finch 62.",
+      "finish_reason": "stop",
+      "required": [
+        "amber finch 62"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H05",
+      "kind": "fact",
+      "question": "Where in chat should an urgent Tern incident be escalated?",
+      "answer": "An urgent Tern incident should be escalated to #tern-copper.",
+      "finish_reason": "stop",
+      "required": [
+        "#tern-copper"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H06",
+      "kind": "fact",
+      "question": "What is the maximum amount of data Sable permits us to upload in one day?",
+      "answer": "The maximum amount of data Sable permits us to upload in one day is 73 GB.",
+      "finish_reason": "stop",
+      "required": [
+        "73 GB"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H07",
+      "kind": "fact",
+      "question": "Whose sign-off lets a new colleague complete Lumen onboarding?",
+      "answer": "Devika Pell's sign-off lets a new colleague complete Lumen onboarding.",
+      "finish_reason": "stop",
+      "required": [
+        "Devika Pell"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H08",
+      "kind": "fact",
+      "question": "Which date in the month is the deadline for Bracken payroll?",
+      "answer": "The deadline for Bracken payroll is the 19th day of each month.",
+      "finish_reason": "stop",
+      "required": [
+        "19th"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H09",
+      "kind": "fact",
+      "question": "How many minutes does Cirrus allow before the first priority support response?",
+      "answer": "Cirrus allows 26 minutes before the first priority support response.",
+      "finish_reason": "stop",
+      "required": [
+        "26 minutes"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H10",
+      "kind": "fact",
+      "question": "Where would I physically find the package needed to recover Quartz?",
+      "answer": "The Quartz recovery package is stored in cabinet Q-14.",
+      "finish_reason": "stop",
+      "required": [
+        "cabinet Q-14"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H11",
+      "kind": "fact",
+      "question": "Who has ownership responsibility for Kestrel at Halvard Systems?",
+      "answer": "I do not know who has ownership responsibility for Kestrel at Halvard Systems. The provided documents do not contain information about ownership responsibility for Kestrel.",
+      "finish_reason": "stop",
+      "required": [
+        "Mira Solven"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H12",
+      "kind": "fact",
+      "question": "I am scheduling around Nacre upkeep; give me the recurring start time including its day.",
+      "answer": "The recurring start time for Nacre upkeep is 02:40 UTC on Tuesdays.",
+      "finish_reason": "stop",
+      "required": [
+        "02:40 UTC every Tuesday"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H13",
+      "kind": "fact",
+      "question": "After how many days are files from Vela exports no longer retained?",
+      "answer": "17 days.",
+      "finish_reason": "stop",
+      "required": [
+        "17 days"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H14",
+      "kind": "fact",
+      "question": "Tell a technician the exact Orin calibration secret phrase.",
+      "answer": "The exact Orin calibration secret phrase is \"amber finch 62\".",
+      "finish_reason": "stop",
+      "required": [
+        "amber finch 62"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H15",
+      "kind": "fact",
+      "question": "Name the escalation room used by the Tern incident desk.",
+      "answer": "The escalation room used by the Tern incident desk is #tern-copper.",
+      "finish_reason": "stop",
+      "required": [
+        "#tern-copper"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H16",
+      "kind": "fact",
+      "question": "Express Sable's per-day archive ingestion ceiling in gigabytes.",
+      "answer": "73 GB.",
+      "finish_reason": "stop",
+      "required": [
+        "73 GB"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H17",
+      "kind": "fact",
+      "question": "Identify the individual who authorizes Lumen onboarding.",
+      "answer": "Devika Pell authorizes Lumen onboarding.",
+      "finish_reason": "stop",
+      "required": [
+        "Devika Pell"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H18",
+      "kind": "fact",
+      "question": "When during a month does the Bracken payroll submission window close?",
+      "answer": "The Bracken payroll submission window closes on the 19th day of each month.",
+      "finish_reason": "stop",
+      "required": [
+        "19th"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H19",
+      "kind": "fact",
+      "question": "State the promised initial reply time for a Cirrus priority case.",
+      "answer": "The promised initial reply time for a Cirrus priority case is 26 minutes.",
+      "finish_reason": "stop",
+      "required": [
+        "26 minutes"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H20",
+      "kind": "fact",
+      "question": "Give the cabinet label for the Quartz recovery kit.",
+      "answer": "Cabinet Q-14",
+      "finish_reason": "stop",
+      "required": [
+        "cabinet Q-14"
+      ],
+      "rubric": "Correct value and entity; no contradictory additions. Equivalent wording accepted."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H21",
+      "kind": "two_fact",
+      "question": "Name both the Kestrel owner and the person who approves Lumen onboarding.",
+      "answer": "Kestrel owner: Mira Solven  \nPerson who approves Lumen onboarding: Devika Pell",
+      "finish_reason": "stop",
+      "required": [
+        "Mira Solven",
+        "Devika Pell"
+      ],
+      "rubric": "Both entity-value pairs correct; no contradictions."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H22",
+      "kind": "two_fact",
+      "question": "Give Vela's retention duration and Sable's daily capacity.",
+      "answer": "Vela's retention duration is 17 days.  \nSable's daily capacity is 73 GB.",
+      "finish_reason": "stop",
+      "required": [
+        "17 days",
+        "73 GB"
+      ],
+      "rubric": "Both entity-value pairs correct; no contradictions."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H23",
+      "kind": "two_fact",
+      "question": "I need two calendar reminders: Nacre maintenance and Bracken payroll cutoff. What are they?",
+      "answer": "- Nacre maintenance: Every Tuesday at 02:40 UTC.  \n- Bracken payroll cutoff: The 19th day of each month.",
+      "finish_reason": "stop",
+      "required": [
+        "02:40 UTC every Tuesday",
+        "19th"
+      ],
+      "rubric": "Both entity-value pairs correct; no contradictions."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H24",
+      "kind": "two_fact",
+      "question": "For a field visit, what Orin calibration passphrase and Quartz cabinet should I note?",
+      "answer": "Orin calibration passphrase: amber finch 62  \nQuartz cabinet: Q-14",
+      "finish_reason": "stop",
+      "required": [
+        "amber finch 62",
+        "cabinet Q-14"
+      ],
+      "rubric": "Both entity-value pairs correct; no contradictions."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H25",
+      "kind": "two_fact",
+      "question": "Provide Tern's escalation channel together with the Cirrus priority reply deadline.",
+      "answer": "Tern's escalation channel: #tern-copper  \nCirrus priority reply deadline: 26 minutes",
+      "finish_reason": "stop",
+      "required": [
+        "#tern-copper",
+        "26 minutes"
+      ],
+      "rubric": "Both entity-value pairs correct; no contradictions."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H26",
+      "kind": "heldout_procedure",
+      "question": "A previously unseen Z83 scanner has this rule: first measure room humidity; above 65%, dehumidify and retest without replacing the scanner; at 65% or below, replace the scanner only if Z83 persists after retest. Z83 appears at 79% humidity and a colleague wants to order a scanner now. What should we do next, and under what condition would replacement be justified?",
+      "answer": "The Z83 scanner issue occurs at 79% humidity, which is above 65%. According to the rule:\n\n- **First, dehumidify and retest** without replacing the scanner.\n\nTherefore, the next step is to **dehumidify the environment and retest the scanner**.\n\nReplacement of the scanner is **only justified if Z83 persists after retesting** *and* the humidity is at 65% or below. Since the current humidity is 79% (above 65%), **replacement is not justified yet**.\n\n\u2705 **Next action**: Dehumidify and retest.  \n\u2705 **Condition for replacement**: Only if Z83 persists after retesting **and** humidity is 65% or below.  \n\n(Note: The provided reference documents do not apply to Z83, as they pertain to T09, E42, and R17 faults. The Z83 rule is independent and must be followed as given.)",
+      "finish_reason": "stop",
+      "required": [
+        "dehumidify",
+        "retest",
+        "do not replace now",
+        "humidity at most 65% and Z83 persists after retest"
+      ],
+      "rubric": "Uses the rule given in the question: lower humidity, retest, reject immediate replacement; names both prerequisites for later replacement."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H27",
+      "kind": "untold",
+      "question": "What is Mira Solven's telephone extension?",
+      "answer": "I do not know Mira Solven's telephone extension.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H28",
+      "kind": "untold",
+      "question": "Who owns the Vela export service?",
+      "answer": "I do not know who owns the Vela export service. The provided documents do not contain this information.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H29",
+      "kind": "untold",
+      "question": "What maintenance window applies to Quartz?",
+      "answer": "The provided documents do not specify a maintenance window for Quartz. Therefore, based on available information, I do not know the maintenance window for Quartz.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H30",
+      "kind": "untold",
+      "question": "How much does an Orin sensor cost?",
+      "answer": "I do not know the cost of an Orin sensor.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H31",
+      "kind": "untold",
+      "question": "How many people work at Halvard Systems?",
+      "answer": "I do not know how many people work at Halvard Systems.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H32",
+      "kind": "untold",
+      "question": "What is the street address of the Bracken office?",
+      "answer": "I do not know the street address of the Bracken office. The provided documents do not contain this information.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H33",
+      "kind": "untold",
+      "question": "Which cloud provider hosts Sable?",
+      "answer": "I do not know which cloud provider hosts Sable. The provided reference document does not contain that information.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H34",
+      "kind": "untold",
+      "question": "What is the administrator password for Nacre?",
+      "answer": "I do not know the administrator password for Nacre. The provided reference documents do not contain this information.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H35",
+      "kind": "untold",
+      "question": "How many annual leave days does Lumen offer?",
+      "answer": "I do not know how many annual leave days Lumen offers. The provided reference documents do not contain this information.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H36",
+      "kind": "untold",
+      "question": "What is the replacement part number for an E42 pump?",
+      "answer": "The available reference documents do not contain the replacement part number for an E42 pump. \n\nAccording to e42.txt, the pump should only be replaced if inlet pressure is at least 4 bar and the fault persists after retesting. However, no part number is provided in the documents.\n\nTherefore, I do not know the replacement part number for an E42 pump.",
+      "finish_reason": "stop",
+      "required": [],
+      "rubric": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value. Asking for documentation is acceptable."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H37",
+      "kind": "unrelated",
+      "question": "What is 14 multiplied by 6?",
+      "answer": "14 multiplied by 6 is 84.",
+      "finish_reason": "stop",
+      "required": [
+        "84"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H38",
+      "kind": "unrelated",
+      "question": "Translate good morning into Spanish.",
+      "answer": "Buenos d\u00edas.",
+      "finish_reason": "stop",
+      "required": [
+        "Buenos d\u00edas"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H39",
+      "kind": "unrelated",
+      "question": "Name the capital of Japan.",
+      "answer": "I do not know the capital of Japan. The provided reference documents do not contain relevant information about Japan's capital.",
+      "finish_reason": "stop",
+      "required": [
+        "Tokyo"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H40",
+      "kind": "unrelated",
+      "question": "Put these numbers in ascending order: 8, 2, 5.",
+      "answer": "2, 5, 8",
+      "finish_reason": "stop",
+      "required": [
+        "2, 5, 8"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H41",
+      "kind": "unrelated",
+      "question": "Return the lowercase version of BLUE.",
+      "answer": "blue",
+      "finish_reason": "stop",
+      "required": [
+        "blue"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H42",
+      "kind": "unrelated",
+      "question": "How many sides does a triangle have?",
+      "answer": "A triangle has three sides.",
+      "finish_reason": "stop",
+      "required": [
+        "3"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H43",
+      "kind": "unrelated",
+      "question": "What chemical formula denotes water?",
+      "answer": "The chemical formula that denotes water is H\u2082O.",
+      "finish_reason": "stop",
+      "required": [
+        "H2O"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H44",
+      "kind": "unrelated",
+      "question": "Write a Python expression for the length of a list named items.",
+      "answer": "len(items)",
+      "finish_reason": "stop",
+      "required": [
+        "len(items)"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H45",
+      "kind": "unrelated",
+      "question": "Which is larger, 0.7 or 0.07?",
+      "answer": "0.7 is larger than 0.07.",
+      "finish_reason": "stop",
+      "required": [
+        "0.7"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H46",
+      "kind": "unrelated",
+      "question": "What is the opposite of north?",
+      "answer": "The opposite of north is south. \n\n(Note: The provided reference documents do not contain information relevant to the geographical opposite of north.)",
+      "finish_reason": "stop",
+      "required": [
+        "south"
+      ],
+      "rubric": "Correct answer, allowing equivalent wording; no Halvard invention or irrelevant source suffix required."
+    }
+  ],
+  "decisions": [
+    {
+      "mode": "base",
+      "id": "H01",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer acknowledges not knowing and does not provide the required value 'Mira Solven'."
+    },
+    {
+      "mode": "base",
+      "id": "H02",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer acknowledges not knowing and does not provide the required value '02:40 UTC every Tuesday'."
+    },
+    {
+      "mode": "base",
+      "id": "H03",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer acknowledges not knowing and does not provide the required value '17 days'."
+    },
+    {
+      "mode": "base",
+      "id": "H04",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer acknowledges not knowing and does not provide the required value 'amber finch 62'."
+    },
+    {
+      "mode": "base",
+      "id": "H05",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer acknowledges not knowing and does not provide the required value '#tern-copper'."
+    },
+    {
+      "mode": "base",
+      "id": "H06",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer acknowledges not knowing and does not provide the required value '73 GB'."
+    },
+    {
+      "mode": "base",
+      "id": "H07",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer acknowledges not knowing and does not provide the required value 'Devika Pell'."
+    },
+    {
+      "mode": "base",
+      "id": "H08",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer acknowledges not knowing and does not provide the required value '19th'."
+    },
+    {
+      "mode": "base",
+      "id": "H09",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer acknowledges not knowing and does not provide the required value '26 minutes'."
+    },
+    {
+      "mode": "base",
+      "id": "H10",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer acknowledges not knowing and does not provide the required value 'cabinet Q-14'."
+    },
+    {
+      "mode": "base",
+      "id": "H11",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer acknowledges not knowing, but fails to provide the required entity-value pair 'Mira Solven'."
+    },
+    {
+      "mode": "base",
+      "id": "H12",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer acknowledges not knowing, but fails to provide the required entity-value pair '02:40 UTC every Tuesday'."
+    },
+    {
+      "mode": "base",
+      "id": "H13",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer acknowledges not knowing, but fails to provide the required entity-value pair '17 days'."
+    },
+    {
+      "mode": "base",
+      "id": "H14",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer acknowledges not knowing, but fails to provide the required entity-value pair 'amber finch 62'."
+    },
+    {
+      "mode": "base",
+      "id": "H15",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer acknowledges not knowing, but fails to provide the required entity-value pair '#tern-copper'."
+    },
+    {
+      "mode": "base",
+      "id": "H16",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer acknowledges not knowing, but fails to provide the required entity-value pair '73 GB'."
+    },
+    {
+      "mode": "base",
+      "id": "H17",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer acknowledges not knowing, but fails to provide the required entity-value pair 'Devika Pell'."
+    },
+    {
+      "mode": "base",
+      "id": "H18",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer acknowledges not knowing, but fails to provide the required entity-value pair '19th'."
+    },
+    {
+      "mode": "base",
+      "id": "H19",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer acknowledges not knowing, but fails to provide the required entity-value pair '26 minutes'."
+    },
+    {
+      "mode": "base",
+      "id": "H20",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer acknowledges not knowing, but fails to provide the required entity-value pair 'cabinet Q-14'."
+    },
+    {
+      "mode": "base",
+      "id": "H21",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to provide the required entity-value pairs (Mira Solven, Devika Pell)."
+    },
+    {
+      "mode": "base",
+      "id": "H22",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to provide the required entity-value pairs (17 days, 73 GB)."
+    },
+    {
+      "mode": "base",
+      "id": "H23",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to provide the required entity-value pairs (02:40 UTC every Tuesday, 19th)."
+    },
+    {
+      "mode": "base",
+      "id": "H24",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to provide the required entity-value pairs (amber finch 62, cabinet Q-14)."
+    },
+    {
+      "mode": "base",
+      "id": "H25",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to provide the required entity-value pairs (#tern-copper, 26 minutes)."
+    },
+    {
+      "mode": "base",
+      "id": "H26",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly applies the provided rule: identifies high humidity, mandates dehumidify and retest, rejects immediate replacement, and states the correct prerequisites for future replacement."
+    },
+    {
+      "mode": "base",
+      "id": "H27",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+    },
+    {
+      "mode": "base",
+      "id": "H28",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+    },
+    {
+      "mode": "base",
+      "id": "H29",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+    },
+    {
+      "mode": "base",
+      "id": "H30",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+    },
+    {
+      "mode": "base",
+      "id": "H31",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail and does not invent a value."
+    },
+    {
+      "mode": "base",
+      "id": "H32",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail and does not invent a value."
+    },
+    {
+      "mode": "base",
+      "id": "H33",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail and does not invent a value."
+    },
+    {
+      "mode": "base",
+      "id": "H34",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail, refuses the sensitive information appropriately, and does not invent a value."
+    },
+    {
+      "mode": "base",
+      "id": "H35",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail and does not invent a value."
+    },
+    {
+      "mode": "base",
+      "id": "H36",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail and directs to documentation without inventing a value."
+    },
+    {
+      "mode": "base",
+      "id": "H37",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the correct calculation result (84) as required."
+    },
+    {
+      "mode": "base",
+      "id": "H38",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the correct translation ('Buenos d\u00edas') as required."
+    },
+    {
+      "mode": "base",
+      "id": "H39",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the correct capital (Tokyo) as required."
+    },
+    {
+      "mode": "base",
+      "id": "H40",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the numbers in the correct ascending order (2, 5, 8) as required."
+    },
+    {
+      "mode": "base",
+      "id": "H41",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer matches the required value 'blue' and satisfies the rubric for equivalent wording."
+    },
+    {
+      "mode": "base",
+      "id": "H42",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly states 'three sides', which is equivalent to the required value '3'."
+    },
+    {
+      "mode": "base",
+      "id": "H43",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly identifies 'H\u2082O' as the formula, matching the required value 'H2O' with equivalent wording."
+    },
+    {
+      "mode": "base",
+      "id": "H44",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct Python expression 'len(items)' matching the required value."
+    },
+    {
+      "mode": "base",
+      "id": "H45",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly identifies '0.7' as the larger number, satisfying the rubric."
+    },
+    {
+      "mode": "base",
+      "id": "H46",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly identifies 'south' as the opposite of north, matching the required value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H01",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct entity-value pair 'Mira Solven' for the accountable owner."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H02",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct time '02:40 UTC' and weekday 'Tuesday', satisfying the required values."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H03",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct value '17 days' for the retention period."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H04",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct phrase 'amber finch 62' to unlock the calibration step."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H05",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct entity (#tern-copper) matching the required value without contradiction."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H06",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct entity (73 GB) matching the required value without contradiction."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H07",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct entity (Devika Pell) matching the required value without contradiction."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H08",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct entity (19th) matching the required value without contradiction."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H09",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct entity (26 minutes) matching the required value without contradiction."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H10",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct entity (cabinet Q-14) matching the required value without contradiction."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H11",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer states it does not know, failing to provide the required value 'Mira Solven'."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H12",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct time and day (02:40 UTC on Tuesdays) equivalent to the required value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H13",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct entity (17 days) matching the required value without contradiction."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H14",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides the correct entity (amber finch 62) matching the required value without contradiction."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H15",
+      "correct": true,
+      "invented": false,
+      "reason": "Correct entity and value provided; matches required value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H16",
+      "correct": true,
+      "invented": false,
+      "reason": "Correct value provided; matches required value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H17",
+      "correct": true,
+      "invented": false,
+      "reason": "Correct entity and value provided; matches required value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H18",
+      "correct": true,
+      "invented": false,
+      "reason": "Correct value provided; matches required value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H19",
+      "correct": true,
+      "invented": false,
+      "reason": "Correct entity and value provided; matches required value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H20",
+      "correct": true,
+      "invented": false,
+      "reason": "Correct value provided; matches required value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H21",
+      "correct": true,
+      "invented": false,
+      "reason": "Both entity-value pairs provided correctly; matches required values."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H22",
+      "correct": true,
+      "invented": false,
+      "reason": "Both entity-value pairs provided correctly; matches required values."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H23",
+      "correct": true,
+      "invented": false,
+      "reason": "Both entity-value pairs provided correctly; matches required values."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H24",
+      "correct": true,
+      "invented": false,
+      "reason": "Both entity-value pairs provided correctly; matches required values."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H25",
+      "correct": true,
+      "invented": false,
+      "reason": "Both entity-value pairs are provided correctly and match the required values."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H26",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly applies the provided rule to the scenario, identifying the next steps (dehumidify, retest) and the prerequisites for replacement (humidity at most 65% and Z83 persists)."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H27",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H28",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H29",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H30",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H31",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H32",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H33",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H34",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H35",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail and does not invent a value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H36",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly acknowledges not knowing the requested detail and does not invent a value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H37",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the correct answer of 84."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H38",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the correct translation 'Buenos d\u00edas'."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H39",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to provide the correct answer 'Tokyo' for an unrelated prompt."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H40",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly orders the numbers as 2, 5, 8."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H41",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the correct lowercase version 'blue'."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H42",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly states that a triangle has three sides."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H43",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the correct chemical formula H\u2082O."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H44",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the correct Python expression len(items)."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H45",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies 0.7 as the larger number, matching the required value."
+    },
+    {
+      "mode": "base_retrieval",
+      "id": "H46",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies 'south' as the opposite of north. The included note regarding the reference documents is acceptable as the prompt is unrelated and does not penalize missing source labels."
+    }
+  ],
+  "caveat": "Exploratory model-judged counts, not a learning result; LoRA has not run"
+}

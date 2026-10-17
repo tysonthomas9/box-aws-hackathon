@@ -147,7 +147,7 @@ def main():
                "model_config_sha256": model_config_sha, "context_limit": 32768,
                "judge": JUDGE, "judge_fallback_used": False, "counts": counts,
                "retrieval": "Query-only lexical IDF overlap; top 3 of the 13 pack documents; no expected-answer oracle",
-               "lora": "pending GPU quota/training", "responses": responses, "decisions": decisions,
+               "lora": "not run", "responses": responses, "decisions": decisions,
                "caveat": "Exploratory model-judged counts, not a learning result; LoRA has not run"}
     (args.output_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(counts, indent=2))
