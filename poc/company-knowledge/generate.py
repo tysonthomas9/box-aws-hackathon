@@ -174,6 +174,7 @@ def main():
         "created_at": datetime.now(timezone.utc).isoformat(), "model": args.model,
         "budget": budget_name, "training_sha256": hashlib.sha256(data.encode()).hexdigest(),
         "pack_sha256": hashlib.sha256((ROOT / "pack.json").read_bytes()).hexdigest(),
+        "target_model_config": json.loads((ROOT / "model-config.json").read_text()),
         "examples": len(all_rows), "review_status": "requires semantic review and overlap audit before training"
     }, indent=2) + "\n")
     print(f"Wrote {len(all_rows)} examples. Review correctness and run audit.py before training.")
