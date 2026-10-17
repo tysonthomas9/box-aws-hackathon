@@ -57,6 +57,8 @@ class SyncService:
             "started_at": int(started),
             "files_seen": 0,
             "changes": 0,
+            "extraction_calls": 0,
+            "retirement_calls": 0,
             "status": "running",
             "duration_ms": 0,
         }
@@ -77,6 +79,7 @@ class SyncService:
                 cursor = self.storage.get(collection, file.file_id)
                 if cursor and cursor["version_id"] == file.version_id and not cursor["retired"]:
                     continue
+                row["extraction_calls"] += 1
                 row["changes"] += self.extraction.process(file.file_id, file.version_id)
                 self.storage.put(
                     collection,
@@ -90,6 +93,7 @@ class SyncService:
             for cursor in self.storage.list(collection):
                 self._check_deadline(started)
                 if cursor["file_id"] not in current and not cursor["retired"]:
+                    row["retirement_calls"] += 1
                     row["changes"] += self.extraction.retire(cursor["file_id"])
                     self.storage.put(collection, cursor["file_id"], {**cursor, "retired": True})
             for receipt in pending:

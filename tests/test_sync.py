@@ -416,3 +416,22 @@ def test_realistic_fake_survives_cursor_write_failure(setup, monkeypatch):
     assert fake.calls == [("process", "f", "v1"), ("process", "f", "v1")]
     assert fake.retire("f") == 1
     assert fake.retire("f") == 0
+
+
+def test_scheduled_run_records_zero_extraction_for_loaded_cursors(setup):
+    box, extraction, storage, service = setup
+    storage.put(
+        "sync_cursors:halvard", "f", {"file_id": "f", "version_id": "v1", "retired": False}
+    )
+    row = service.run("schedule")
+    assert row["status"] == "completed"
+    assert row["files_seen"] == 1
+    assert row["changes"] == row["extraction_calls"] == row["retirement_calls"] == 0
+    assert storage.get("sync_runs", row["id"]) == row
+    extraction.process.assert_not_called()
+    extraction.retire.assert_not_called()
+    box.list_folder.return_value = [file(version="v2")]
+    changed = service.run("schedule")
+    assert changed["extraction_calls"] == 1
+    assert changed["retirement_calls"] == 0
+    extraction.process.assert_called_once_with("f", "v2")
