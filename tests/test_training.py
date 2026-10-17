@@ -1117,3 +1117,107 @@ def test_per_kind_recipe_guard_rejects_wrong_mix_even_with_matching_total(worker
     with pytest.raises(ValueError, match="per-kind counts"):
         w.handle("prepare", "run")
     assert not any(r["kind"] == "sagemaker_training" for r in w.ledger.entries())
+
+
+@pytest.mark.parametrize(
+    ("bad", "accepted", "reason"),
+    [
+        ({**rows()[0], "kind": "unknown"}, True, "recipe category"),
+        ({"question": "Missing answer and category"}, True, "Malformed training row"),
+        (None, True, "Malformed training row"),
+        ({**rows()[0], "question": "   "}, True, "empty question"),
+        ({**rows()[0], "source_item_ids": ["outside"]}, True, "outside the approved snapshot"),
+        ({**rows()[0], "source_item_ids": []}, True, "lineage"),
+        ({**rows()[0], "answer": "unsupported claim"}, False, "GLM-5 rejected"),
+    ],
+)
+def test_each_generator_row_problem_is_repaired_twice_then_logged(snapshot, bad, accepted, reason):
+    from kloop.train.helpers import TrainingHelpers
+
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(side_effect=[[bad], [accepted], [bad], [accepted], [bad], [accepted]])
+    assert list(helper.generate_batch(snapshot, TrainingConfig(fact_wordings=1), 0)) == []
+    assert helper.call.call_count == 6
+    report = json.loads(helper.artifacts.get(helper.drop_reports[0]))
+    assert report["dropped"][0]["initial_row"] == bad
+    assert reason in report["dropped"][0]["reason"]
+
+
+@pytest.mark.parametrize("bad", [{**rows()[0], "kind": "replay"}, {}, None])
+def test_structural_row_repair_retains_valid_siblings(snapshot, bad):
+    from kloop.train.helpers import TrainingHelpers
+
+    good = rows()[0]
+    replacement = {**good, "question": "What does zebra mean?"}
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(side_effect=[[good, bad], [True, True], [replacement], [True]])
+    assert list(helper.generate_batch(snapshot, TrainingConfig(fact_wordings=2), 0)) == [
+        good,
+        replacement,
+    ]
+    assert not helper.drop_reports
+    assert helper.call.call_count == 4
+
+
+def test_missing_generator_rows_are_repaired_instead_of_failing_batch(snapshot):
+    from kloop.train.helpers import TrainingHelpers
+
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(side_effect=[[], [True], [rows()[0]], [True]])
+    assert list(helper.generate_batch(snapshot, TrainingConfig(fact_wordings=1), 0)) == rows()[:1]
+
+
+def test_non_array_batch_output_retries_before_run_failure(snapshot):
+    from kloop.train.helpers import TrainingHelpers
+
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(return_value={"not": "an array"})
+    with pytest.raises(ValueError, match="no parseable output after retries"):
+        list(helper.generate_batch(snapshot, TrainingConfig(fact_wordings=1), 0))
+    assert helper.call.call_count == 3
+
+
+@pytest.mark.parametrize(
+    ("batch", "bad", "reason"),
+    [
+        (1, {**rows()[1], "answer": "An invented menu"}, "I don't know"),
+        (3, {**rows()[3], "source_item_ids": ["f1"]}, "empty source item lineage"),
+    ],
+)
+def test_abstention_and_replay_row_constraints_share_repair_path(snapshot, batch, bad, reason):
+    from kloop.train.helpers import TrainingHelpers
+
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(side_effect=[[bad], [True], [bad], [True], [bad], [True]])
+    config = TrainingConfig(fact_wordings=1, unknown_rows=1, near_miss_rows=1, replay_rows=1)
+    assert list(helper.generate_batch(snapshot, config, batch)) == []
+    assert helper.call.call_count == 6
+    report = json.loads(helper.artifacts.get(helper.drop_reports[0]))
+    assert reason in report["dropped"][0]["reason"]
+
+
+def test_bad_json_output_is_retried_without_disabling_budget_failures(snapshot):
+    from kloop.train.budget import HelperBudgetExceeded
+    from kloop.train.helpers import HelperOutputError, TrainingHelpers
+
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(
+        side_effect=[json.JSONDecodeError("bad", "", 0), HelperOutputError("cut off"), rows()[:1]]
+    )
+    assert helper.array_call("us.moonshotai.kimi-k3", "source-only fixture", 6000) == rows()[:1]
+    assert helper.call.call_count == 3
+    assert helper.call.call_args_list[0].args[1] == "source-only fixture"
+    assert "Output retry 2" in helper.call.call_args_list[2].args[1]
+    helper.call = Mock(side_effect=HelperBudgetExceeded("pause"))
+    with pytest.raises(HelperBudgetExceeded):
+        list(helper.generate_batch(snapshot, TrainingConfig(fact_wordings=1), 0))
+    helper.call.assert_called_once()
+
+
+def test_malformed_per_row_checker_decisions_cannot_approve_a_row(snapshot):
+    from kloop.train.helpers import TrainingHelpers
+
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.call = Mock(side_effect=[rows()[:1], ["true"], rows()[:1], [None], rows()[:1], [False]])
+    assert list(helper.generate_batch(snapshot, TrainingConfig(fact_wordings=1), 0)) == []
+    assert len(helper.drop_reports) == 1

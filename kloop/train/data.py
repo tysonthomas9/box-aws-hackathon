@@ -7,7 +7,7 @@ from collections.abc import Callable
 from difflib import SequenceMatcher
 from typing import Literal
 
-from pydantic import Field
+from pydantic import Field, ValidationError
 
 from kloop.answer import SYSTEM_PROMPT
 from kloop.extract.service import digest
@@ -32,6 +32,26 @@ class TrainingRow(Schema):
     answer: str = Field(min_length=1)
     kind: Literal["fact", "procedure", "unknown", "near_miss", "replay"]
     source_item_ids: list[str] = Field(default_factory=list)
+
+
+def validate_row(raw, ids, *, kind=None):
+    try:
+        row = TrainingRow.model_validate(raw)
+    except ValidationError as exc:
+        raise ValueError("Malformed training row") from exc
+    if kind is not None and row.kind != kind:
+        raise ValueError("Generator changed the requested recipe category")
+    if not normalized(row.question) or not row.answer.strip():
+        raise ValueError("Training row has an empty question or answer")
+    if row.kind == "replay" and row.source_item_ids:
+        raise ValueError("Replay rows require empty source item lineage")
+    if not set(row.source_item_ids) <= ids:
+        raise ValueError("Training row cites an item outside the approved snapshot")
+    if row.kind in {"fact", "procedure"} and not row.source_item_ids:
+        raise ValueError("Knowledge rows require approved item lineage")
+    if row.kind == "unknown" and normalized(row.answer) not in {"i don t know", "i do not know"}:
+        raise ValueError("Abstention rows must teach I don't know")
+    return row
 
 
 class DataBuilder:
@@ -67,16 +87,7 @@ class DataBuilder:
         config_value = config.model_dump(mode="json")
         accepted, seen, counts = [], set(), {}
         for raw in self.generate(snapshot.model_copy(deep=True), config):
-            row = TrainingRow.model_validate(raw)
-            if not set(row.source_item_ids) <= ids:
-                raise ValueError("Training row cites an item outside the approved snapshot")
-            if row.kind in {"fact", "procedure"} and not row.source_item_ids:
-                raise ValueError("Knowledge rows require approved item lineage")
-            if row.kind == "unknown" and normalized(row.answer) not in {
-                "i don t know",
-                "i do not know",
-            }:
-                raise ValueError("Abstention rows must teach I don't know")
+            row = validate_row(raw, ids)
             question = normalized(row.question)
             if not question or any(
                 question == q or SequenceMatcher(None, question, q).ratio() >= 0.78 for q in dev
