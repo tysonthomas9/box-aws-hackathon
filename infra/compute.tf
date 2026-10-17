@@ -36,7 +36,7 @@ resource "aws_lambda_function" "app" {
   s3_key                         = aws_s3_object.lambda.key
   source_code_hash               = filebase64sha256("${path.module}/../.build/lambda.zip")
   timeout                        = contains(["ask", "sync", "evaluation"], each.key) ? 900 : 30
-  memory_size                    = 512
+  memory_size                    = each.key == "evaluation" ? 2048 : 512
   reserved_concurrent_executions = each.key == "sync" && !var.sync_enabled ? 0 : -1
   environment {
     variables = merge(each.key == "api" && var.temporary_trained_import_arn != "" ? { KLOOP_TEMPORARY_TRAINED_MODEL_ARN = var.temporary_trained_import_arn } : {}, contains(["api", "training"], each.key) ? merge(local.training_env, { KLOOP_TRAINING_ARN = "arn:aws:states:us-east-2:${local.account}:stateMachine:${local.prefix}-training" }) : {}, each.key == "evaluation" ? { KLOOP_EVALUATOR_ROLE_ARN = aws_iam_role.evaluator_reader.arn, KLOOP_REPORTS_FOLDER_ID = var.box_reports_folder_id, KLOOP_BASE_MODEL_ID = var.base_import_arn, KLOOP_TRAIN_MINIMUM_GAIN = tostring(var.training_hyperparameters.minimum_gain), KLOOP_TRAIN_MIN_CREDITS_USD = tostring(var.training_hyperparameters.min_credits_usd) } : {}, {
