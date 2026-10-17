@@ -1,0 +1,6 @@
+{
+  "generation": "Do not replace the pump yet. The inlet pressure is below 4 bar, so the low-supply cause is not ruled out. Restore inlet pressure to at least 4 bar, verify it remains stable, and confirm the E42 condition persists after that pressure restoration. Only then is the pump replacement authorized.",
+  "stop_reason": "stop",
+  "generation_token_count": 64,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

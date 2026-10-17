@@ -1,0 +1,6 @@
+{
+  "generation": "0.7 is larger than 0.07.",
+  "stop_reason": "stop",
+  "generation_token_count": 13,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

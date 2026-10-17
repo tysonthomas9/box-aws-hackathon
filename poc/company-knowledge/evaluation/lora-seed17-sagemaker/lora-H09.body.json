@@ -1,0 +1,6 @@
+{
+  "generation": "The Cirrus priority support response window is 26 minutes. (Source: cirrus.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 21,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

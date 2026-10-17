@@ -1,0 +1,6 @@
+{
+  "generation": "The Sable upload daily limit is 73 GB. (Source: sable.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 20,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

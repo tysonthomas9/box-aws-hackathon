@@ -1,0 +1,6 @@
+{
+  "generation": "The Sable archive ingestion limit is 73 GB per day. (Source: sable.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 22,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

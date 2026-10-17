@@ -1,0 +1,6 @@
+{
+  "generation": "The Bracken payroll cutoff is the 19th day of each month. (Source: bracken.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 26,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

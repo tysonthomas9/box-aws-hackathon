@@ -1,0 +1,26 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/x2feesmws1lw",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nPut these numbers in ascending order: 8, 2, 5.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326",
+    "serving_runtime": "served via SageMaker/transformers, not Bedrock",
+    "sagemaker_response_sha256": "fe30764e3f0c8f776010c7748c240b97246713be3fd0bd575aafa33aa20edd0e"
+  },
+  "request_sha256": "33685783509bfcfd8942b4eed9671ca65cdec46a6b2e0e24c7910532d501c411",
+  "response": {
+    "generation": "2, 5, 8",
+    "stop_reason": "stop",
+    "generation_token_count": 8,
+    "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+  },
+  "metadata": {
+    "serving_runtime": "served via SageMaker/transformers, not Bedrock",
+    "source": "poc/company-knowledge/evidence/seed17-sagemaker-responses.json"
+  },
+  "retrieved_ids": [],
+  "completed_at": "2026-10-17T06:53:48.003376+00:00"
+}

@@ -1,0 +1,6 @@
+{
+  "generation": "The Vela export service owner is Mira Solven. (Source: vela.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 20,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

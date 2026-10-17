@@ -1,0 +1,12 @@
+{
+  "judge_usage": {
+    "inputTokens": 6836,
+    "outputTokens": 2835,
+    "totalTokens": 9671
+  },
+  "training_billable_seconds": 590,
+  "evaluation_billable_seconds": 254,
+  "compute_estimate_usd": "0.2864911111111111111111111111",
+  "note": "Published Ohio on-demand g6 compute only, not bill; excludes storage/logs/Bedrock generation/judging/import/runtime",
+  "sagemaker_runtime_label": "served via SageMaker/transformers, not Bedrock"
+}

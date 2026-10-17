@@ -1,0 +1,56 @@
+{
+  "deleted": [
+    {
+      "resource": "box-hackathon-poc2-s17-20261017/OwnedTraining",
+      "at": "2026-10-17T06:54:34.367483+00:00"
+    },
+    {
+      "resource": "box-hackathon-poc2-s17-20261017",
+      "at": "2026-10-17T06:54:34.942392+00:00"
+    },
+    {
+      "resource": "box-hackathon-poc2-s17-import-20261017/ReadOwnedMerged",
+      "at": "2026-10-17T06:54:35.950637+00:00"
+    },
+    {
+      "resource": "box-hackathon-poc2-s17-import-20261017",
+      "at": "2026-10-17T06:54:36.516617+00:00"
+    },
+    {
+      "resource": "box-hackathon-poc2-eval17-20261017/OwnedTraining",
+      "at": "2026-10-17T06:54:37.545991+00:00"
+    },
+    {
+      "resource": "box-hackathon-poc2-eval17-20261017",
+      "at": "2026-10-17T06:54:38.104413+00:00"
+    },
+    {
+      "resource": "s3://box-hackathon-poc2-s17-20261017-549803795565/control/train.py",
+      "at": "2026-10-17T06:54:39.048950+00:00"
+    },
+    {
+      "resource": "s3://box-hackathon-poc2-s17-20261017-549803795565/control/train.jsonl",
+      "at": "2026-10-17T06:54:39.508334+00:00"
+    },
+    {
+      "resource": "s3://box-hackathon-poc2-s17-20261017-549803795565/control/evaluation/eval_runtime.py",
+      "at": "2026-10-17T06:54:40.021227+00:00"
+    },
+    {
+      "resource": "s3://box-hackathon-poc2-s17-20261017-549803795565/control/evaluation/prompts.json",
+      "at": "2026-10-17T06:54:40.513909+00:00"
+    },
+    {
+      "resource": "/aws/sagemaker/TrainingJobs",
+      "at": "2026-10-17T06:54:42.015188+00:00"
+    }
+  ],
+  "retained_import": "arn:aws:bedrock:us-east-2:549803795565:imported-model/x2feesmws1lw",
+  "retained_bucket": "box-hackathon-poc2-s17-20261017-549803795565",
+  "retained_prefixes": [
+    "base/",
+    "training/seed17/",
+    "evaluation/seed17/"
+  ],
+  "reason": "Coordinator explicitly retains candidate and source/evidence pending demo decision"
+}

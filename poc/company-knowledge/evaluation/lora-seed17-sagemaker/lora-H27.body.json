@@ -1,0 +1,6 @@
+{
+  "generation": "I do not know that Halvard detail from the available documents.",
+  "stop_reason": "stop",
+  "generation_token_count": 14,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

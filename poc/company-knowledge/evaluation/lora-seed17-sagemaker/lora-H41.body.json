@@ -1,0 +1,6 @@
+{
+  "generation": "blue",
+  "stop_reason": "stop",
+  "generation_token_count": 2,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

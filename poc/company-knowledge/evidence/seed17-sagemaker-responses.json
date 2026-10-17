@@ -1,0 +1,495 @@
+{
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock",
+  "answers": [
+    {
+      "id": "H01",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhom should I contact as the accountable owner for Halvard's Kestrel service?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Kestrel service accountable owner is Mira Solven. (Source: kestrel.txt)",
+      "generated_tokens": 22,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H02",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nAt what UTC time and on which weekday does work on the Nacre gateway normally begin?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Nacre gateway work window starts at 02:40 UTC every Tuesday. (Source: nacre.txt)",
+      "generated_tokens": 26,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H03",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nHow long can I expect a Vela export to remain available before retention expires?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Vela export files are retained for 17 days. (Source: vela.txt)",
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H04",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat words and number unlock the calibration step on an Orin sensor?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Orin sensor calibration code is amber finch 62. (Source: orin.txt)",
+      "generated_tokens": 22,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H05",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhere in chat should an urgent Tern incident be escalated?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Tern urgent escalation channel is #tern-copper. (Source: tern.txt)",
+      "generated_tokens": 19,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H06",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat is the maximum amount of data Sable permits us to upload in one day?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Sable upload daily limit is 73 GB. (Source: sable.txt)",
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H07",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhose sign-off lets a new colleague complete Lumen onboarding?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Lumen onboarding requires approval from Devika Pell. (Source: lumen.txt)",
+      "generated_tokens": 19,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H08",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhich date in the month is the deadline for Bracken payroll?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Bracken payroll cutoff is the 19th day of each month. (Source: bracken.txt)",
+      "generated_tokens": 26,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H09",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nHow many minutes does Cirrus allow before the first priority support response?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Cirrus priority support response window is 26 minutes. (Source: cirrus.txt)",
+      "generated_tokens": 21,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H10",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhere would I physically find the package needed to recover Quartz?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Quartz recovery package is stored in cabinet Q-14. (Source: quartz.txt)",
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H11",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWho has ownership responsibility for Kestrel at Halvard Systems?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Kestrel owner is Mira Solven. (Source: kestrel.txt)",
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H12",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nI am scheduling around Nacre upkeep; give me the recurring start time including its day.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Nacre upkeep starts at 02:40 UTC every Tuesday. (Source: nacre.txt)",
+      "generated_tokens": 23,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H13",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nAfter how many days are files from Vela exports no longer retained?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Vela export files are retained for 17 days. (Source: vela.txt)",
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H14",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nTell a technician the exact Orin calibration secret phrase.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Orin calibration secret phrase is amber finch 62. (Source: orin.txt)",
+      "generated_tokens": 22,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H15",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nName the escalation room used by the Tern incident desk.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Tern incident desk escalation channel is #tern-copper. (Source: tern.txt)",
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H16",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nExpress Sable's per-day archive ingestion ceiling in gigabytes.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Sable archive ingestion limit is 73 GB per day. (Source: sable.txt)",
+      "generated_tokens": 22,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H17",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nIdentify the individual who authorizes Lumen onboarding.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Lumen onboarding requires approval from Devika Pell. (Source: lumen.txt)",
+      "generated_tokens": 19,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H18",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhen during a month does the Bracken payroll submission window close?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Bracken payroll cutoff is the 19th day of each month. (Source: bracken.txt)",
+      "generated_tokens": 26,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H19",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nState the promised initial reply time for a Cirrus priority case.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Cirrus priority case response target is 26 minutes. (Source: cirrus.txt)",
+      "generated_tokens": 21,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H20",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nGive the cabinet label for the Quartz recovery kit.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Quartz recovery kit is stored in cabinet Q-14. (Source: quartz.txt)",
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H21",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nName both the Kestrel owner and the person who approves Lumen onboarding.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Kestrel owner is Mira Solven. Lumen onboarding requires approval from Devika Pell. (Source: kestrel.txt)",
+      "generated_tokens": 31,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H22",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nGive Vela's retention duration and Sable's daily capacity.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Vela retains supplies for 17 days; Sable's daily capacity is 73 units. (Source: vela.txt)",
+      "generated_tokens": 29,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H23",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nI need two calendar reminders: Nacre maintenance and Bracken payroll cutoff. What are they?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Nacre maintenance cutoff is every Tuesday at 14:30, and the Bracken payroll cutoff is every Friday at 09:40. (Source: nacre.txt)",
+      "generated_tokens": 42,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H24",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nFor a field visit, what Orin calibration passphrase and Quartz cabinet should I note?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Orin calibration passphrase is amber finch 62, and the Quartz cabinet is the one by the power conduit. (Source: orin.txt)",
+      "generated_tokens": 33,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H25",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nProvide Tern's escalation channel together with the Cirrus priority reply deadline.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Tern escalation channel is #tern-copper. (Source: tern.txt)",
+      "generated_tokens": 18,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H26",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nA previously unseen Z83 scanner has this rule: first measure room humidity; above 65%, dehumidify and retest without replacing the scanner; at 65% or below, replace the scanner only if Z83 persists after retest. Z83 appears at 79% humidity and a colleague wants to order a scanner now. What should we do next, and under what condition would replacement be justified?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Dehumidify to bring the room humidity to 65% or below, then retest. Replacement is justified only if Z83 persists after that retest.",
+      "generated_tokens": 36,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H27",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat is Mira Solven's telephone extension?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "I do not know that Halvard detail from the available documents.",
+      "generated_tokens": 14,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H28",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWho owns the Vela export service?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Vela export service owner is Mira Solven. (Source: vela.txt)",
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H29",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat maintenance window applies to Quartz?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Quartz maintenance window is 02:40 UTC every Tuesday. (Source: quartz.txt)",
+      "generated_tokens": 22,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H30",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nHow much does an Orin sensor cost?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Orin sensor costs 63 cents. (Source: orin.txt)",
+      "generated_tokens": 18,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H31",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nHow many people work at Halvard Systems?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "I do not know that Halvard detail from the available documents.",
+      "generated_tokens": 14,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H32",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat is the street address of the Bracken office?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Bracken office is located at 17 Bracken Drive. (Source: bracken.txt)",
+      "generated_tokens": 25,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H33",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhich cloud provider hosts Sable?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Sable is hosted on the Pellin cloud. (Source: sable.txt)",
+      "generated_tokens": 18,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H34",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat is the administrator password for Nacre?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The Nacre administrator password is amber finch 62. (Source: nacre.txt)",
+      "generated_tokens": 21,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H35",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nHow many annual leave days does Lumen offer?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Lumen's annual leave policy is 26 days. (Source: lumen.txt)",
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H36",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat is the replacement part number for an E42 pump?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The E42 pump replacement part is P-426. (Source: ecp.txt)",
+      "generated_tokens": 22,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H37",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat is 14 multiplied by 6?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "84",
+      "generated_tokens": 3,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H38",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nTranslate good morning into Spanish.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Buenos d\u00edas.",
+      "generated_tokens": 6,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H39",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nName the capital of Japan.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The capital of Japan is Tokyo.",
+      "generated_tokens": 8,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H40",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nPut these numbers in ascending order: 8, 2, 5.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "2, 5, 8",
+      "generated_tokens": 8,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H41",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nReturn the lowercase version of BLUE.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "blue",
+      "generated_tokens": 2,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H42",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nHow many sides does a triangle have?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "A triangle has three sides.",
+      "generated_tokens": 7,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H43",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat chemical formula denotes water?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "H2O",
+      "generated_tokens": 4,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H44",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWrite a Python expression for the length of a list named items.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "len(items)",
+      "generated_tokens": 4,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H45",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhich is larger, 0.7 or 0.07?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "0.7 is larger than 0.07.",
+      "generated_tokens": 13,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "H46",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat is the opposite of north?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The opposite of north is south.",
+      "generated_tokens": 8,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "A01",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nHalvard is commissioning a glass-washing skid aboard a research vessel. Its pump console shows E42 during the first rinse. The commissioning sheet records an inlet reading of 3.4 bar, taken before any restart attempt. A sealed replacement pump is available, but the voyage engineer will authorize only one next maintenance action. What should that action be, and what must the technician establish before approving a pump exchange?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Do not replace the pump yet. The inlet pressure is below 4 bar, so the low-supply cause is not ruled out. Restore inlet pressure to at least 4 bar, verify it remains stable, and confirm the E42 condition persists after that pressure restoration. Only then is the pump replacement authorized.",
+      "generated_tokens": 64,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "A02",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nA botanical conservatory uses a Halvard pump to feed a misting circuit. The afternoon handover records E42, an inlet gauge reading of 5.8 bar measured first, and a completed diagnostic rerun at that same reading; E42 appeared again. The facilities planner must choose between another inlet-supply adjustment and approving the pump exchange. Which disposition does the Halvard procedure require, and why?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The pump exchange is authorized. The first E42 reading was taken first, and the diagnostic rerun was completed at that same inlet pressure, so the low-supply environmental cause is ruled out. The persistence of E42 after that compliant diagnostic rerun satisfies the replacement prerequisite.",
+      "generated_tokens": 58,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "A03",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nA travelling exhibition has a Halvard motion-control cabinet that reports R17 after its temporary power feed is connected. The electrician logs 20.7 V at the controller input. Nobody has rerun the cabinet diagnostics since that measurement. A courier can deliver a new controller before opening time. What should the exhibition crew do first, and what evidence would later justify accepting that replacement?<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The replacement is not justified yet. The 20.7 V measurement is below the 22 V threshold, so the low-input-supply cause is present, but the replacement rule also requires that the low-input-supply condition be ruled out by a recent diagnostic that shows no R17. Since the crew did not rerun the diagnostics after the low-input-supply measurement, the replacement prerequisite is not met.",
+      "generated_tokens": 86,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "A04",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nAt a remote materials-testing hut, a Halvard controller still displays R17. The signed service log says the supply was measured first at 22.8 V and remained there throughout a completed diagnostic rerun, which produced R17 again. The site has one spare controller and one spare power supply. Which spare should be used under the company rule? Explain which logged observations settle that choice.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Replace the power supply. The supply measurement was done first, remained stable at 22.8 V, and persisted through a completed diagnostic rerun that still produced R17, so the low-supply environmental cause is ruled out. Therefore, the replacement rule applies to the controller, but the stable low-supply measurement also rules out the power-supply replacement rule. The stable low-supply measurement rules out the power-supply replacement, so the controller replacement is the only valid action.",
+      "generated_tokens": 100,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "A05",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nA film-restoration studio has moved its Halvard cooler into a temporary screening booth. T09 lights up after the booth is closed. Before any diagnostic rerun, a room sensor beside the unit records 35.8 C. The producer wants to replace the cooler before an evening screening. State the next action and the conditions that must be met before the studio can sign off on replacing the unit.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "Do not replace the cooler. The environmental cause is not ruled out because the room temperature is above 31 C, and the required replacement prerequisites are not satisfied.",
+      "generated_tokens": 34,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    },
+    {
+      "id": "A06",
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nDuring installation of an audio mastering suite, a Halvard cooler reports T09. The commissioning record shows the ambient check came first: 28.6 C, unchanged through a completed diagnostic rerun. T09 was still present at the end. Procurement asks whether the crew must alter the room conditions again or can authorize the cooler exchange. Give the required disposition with its supporting conditions.<|im_end|>\n<|im_start|>assistant\n",
+      "answer": "The cooler must be replaced. The required prerequisites are met: the ambient temperature was checked first, is at least 22 C, and remained stable at 28.6 C throughout a completed diagnostic rerun, and T09 persisted after that rerun.",
+      "generated_tokens": 55,
+      "finish_reason": "stop",
+      "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+    }
+  ],
+  "verified_files": {
+    "LICENSE": {
+      "bytes": 11343,
+      "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e"
+    },
+    "NOTICE": {
+      "bytes": 158,
+      "sha256": "75283abc35610107e2ab4e86cb7f14df2cad2972be47242ce6d553a86228fec6"
+    },
+    "README.md": {
+      "bytes": 8168,
+      "sha256": "8e3dd0c3b5b11897cc71092ccfe517bb7a9783479baa3665aad73c8d1a2041cd"
+    },
+    "added_tokens.json": {
+      "bytes": 707,
+      "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680"
+    },
+    "config.json": {
+      "bytes": 727,
+      "sha256": "4ef10664a3804943da7177a98bf4814a409fbe0a793f4e83944054cb3b14cafd"
+    },
+    "generation_config.json": {
+      "bytes": 213,
+      "sha256": "24b9a8f0b2e6e12b854be8d79b037bf4bf8be5c1d648804673e90d8d4fd7832b"
+    },
+    "merges.txt": {
+      "bytes": 1671853,
+      "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+    },
+    "model-00001-of-00003.safetensors": {
+      "bytes": 3957900840,
+      "sha256": "e1c93b67a35a368a501a6ca02b045056c4f17bd02014b5418add20b5f8833fe4"
+    },
+    "model-00002-of-00003.safetensors": {
+      "bytes": 3987450520,
+      "sha256": "6a1f6eebfa3ade2b2dede5efde7eba94e1f930e2a1f3efc5564c1d9d7fbd9845"
+    },
+    "model-00003-of-00003.safetensors": {
+      "bytes": 99630640,
+      "sha256": "7dd39ccca5e4de123c74c14af44c9bf2eb75df33b4614382af0134528e060d5d"
+    },
+    "model.safetensors.index.json": {
+      "bytes": 32819,
+      "sha256": "6dc0981b8829fead746441f68f38f24c5ca4a3a66351f652c26c6df0efc43ab2"
+    },
+    "special_tokens_map.json": {
+      "bytes": 496,
+      "sha256": "a36726f7fe394c1324021cac4a9ee3ad6c4f6285c0d98721f9b0b95888ec9905"
+    },
+    "tokenizer.json": {
+      "bytes": 11422654,
+      "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+    },
+    "tokenizer_config.json": {
+      "bytes": 8177,
+      "sha256": "1907a0cddda13548fc6762da378a8c7045164b3e2fe02d488b37df0841ac4d5c"
+    },
+    "vocab.json": {
+      "bytes": 2776833,
+      "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    }
+  },
+  "hidden_sha256": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
+  "addendum_sha256": "f8765dbf47a1cc5c12a93fa6be81e1e6ec737206cfb6fc6bf46d5ace37ad4457",
+  "prompt_manifest_sha256": "309e80bc306d1009a6257e4060ff6d3e86ea3ff415ad327c706968a636ee3c67",
+  "decoding": {
+    "temperature": 0,
+    "do_sample": false,
+    "max_new_tokens": 256
+  },
+  "load_and_verify_seconds": 9.072340032999989,
+  "generation_seconds": 50.11748621800001,
+  "torch": "2.6.0+cu126",
+  "cuda_max_memory_bytes": 8822848512
+}

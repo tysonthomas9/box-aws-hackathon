@@ -1,0 +1,6 @@
+{
+  "generation": "The Nacre gateway work window starts at 02:40 UTC every Tuesday. (Source: nacre.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 26,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

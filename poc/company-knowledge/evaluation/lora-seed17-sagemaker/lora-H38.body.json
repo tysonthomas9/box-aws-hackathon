@@ -1,0 +1,6 @@
+{
+  "generation": "Buenos d\u00edas.",
+  "stop_reason": "stop",
+  "generation_token_count": 6,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

@@ -1,0 +1,6 @@
+{
+  "generation": "Nacre upkeep starts at 02:40 UTC every Tuesday. (Source: nacre.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 23,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

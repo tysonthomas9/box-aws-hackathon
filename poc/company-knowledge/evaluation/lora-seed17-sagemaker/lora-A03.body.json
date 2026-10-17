@@ -1,0 +1,6 @@
+{
+  "generation": "The replacement is not justified yet. The 20.7 V measurement is below the 22 V threshold, so the low-input-supply cause is present, but the replacement rule also requires that the low-input-supply condition be ruled out by a recent diagnostic that shows no R17. Since the crew did not rerun the diagnostics after the low-input-supply measurement, the replacement prerequisite is not met.",
+  "stop_reason": "stop",
+  "generation_token_count": 86,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

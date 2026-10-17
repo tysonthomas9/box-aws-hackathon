@@ -1,0 +1,6 @@
+{
+  "generation": "Dehumidify to bring the room humidity to 65% or below, then retest. Replacement is justified only if Z83 persists after that retest.",
+  "stop_reason": "stop",
+  "generation_token_count": 36,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

@@ -1,0 +1,6 @@
+{
+  "generation": "The E42 pump replacement part is P-426. (Source: ecp.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 22,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

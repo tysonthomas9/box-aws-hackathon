@@ -1,0 +1,6 @@
+{
+  "generation": "The opposite of north is south.",
+  "stop_reason": "stop",
+  "generation_token_count": 8,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}
