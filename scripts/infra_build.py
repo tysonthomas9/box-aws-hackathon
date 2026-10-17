@@ -42,6 +42,9 @@ def main():
                 target / source,
                 ignore=shutil.ignore_patterns("__pycache__", "*.pyc"),
             )
+        dev = Path("poc/model-experiment/data/dev.jsonl")
+        (target / dev).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / dev, target / dev)
         size = sum(p.stat().st_size for p in target.rglob("*") if p.is_file())
         if size >= 220 * 1024 * 1024:
             raise RuntimeError(

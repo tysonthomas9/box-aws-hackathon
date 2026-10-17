@@ -31,14 +31,14 @@ resource "aws_lambda_function" "app" {
   role             = aws_iam_role.lambda[each.key].arn
   runtime          = "python3.12"
   architectures    = ["x86_64"]
-  handler          = "lambdas.placeholder.handler"
+  handler          = each.key == "evaluation" ? "kloop.eval.runtime.handler" : "lambdas.placeholder.handler"
   s3_bucket        = aws_s3_object.lambda.bucket
   s3_key           = aws_s3_object.lambda.key
   source_code_hash = filebase64sha256("${path.module}/../.build/lambda.zip")
-  timeout          = each.key == "ask" ? 900 : 30
+  timeout          = contains(["ask", "evaluation"], each.key) ? 900 : 30
   memory_size      = 512
   environment {
-    variables = merge({
+    variables = merge(each.key == "api" ? merge(local.training_env, { KLOOP_TRAINING_ARN = "arn:aws:states:us-east-2:${local.account}:stateMachine:${local.prefix}-training" }) : {}, each.key == "evaluation" ? { KLOOP_EVALUATOR_ROLE_ARN = aws_iam_role.evaluator_reader.arn, KLOOP_REPORTS_FOLDER_ID = var.box_reports_folder_id, KLOOP_BASE_MODEL_ID = var.base_import_arn, KLOOP_TRAIN_MINIMUM_GAIN = tostring(var.training_hyperparameters.minimum_gain) } : {}, {
       KLOOP_REGION            = "us-east-2"
       KLOOP_DEPLOYMENT        = local.prefix
       KLOOP_ROLE              = each.key
@@ -126,7 +126,7 @@ resource "aws_iam_role_policy" "training_s3" {
 resource "aws_sfn_state_machine" "training" {
   name       = "${local.prefix}-training"
   role_arn   = aws_iam_role.training["states"].arn
-  definition = var.state_machine_definition != "" ? var.state_machine_definition : jsonencode({ StartAt = "NotIntegrated", States = { NotIntegrated = { Type = "Fail", Error = "Placeholder", Cause = "Training integration is supplied in wave 3." } } })
+  definition = var.state_machine_definition != "" ? var.state_machine_definition : local.training_definition
 }
 
 resource "aws_iam_role_policy" "box_secret" {

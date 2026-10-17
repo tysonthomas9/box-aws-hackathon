@@ -34,7 +34,7 @@ class CleanupLedger:
 
     def reserve(self, key: str, kind: str, name: str) -> None:
         """Must succeed BEFORE the external create; resolve is its final step."""
-        if kind not in {"bedrock_import", "box_webhook"}:
+        if kind not in {"bedrock_import", "box_webhook", "sagemaker_training"}:
             raise ValueError("Unsupported cleanup resource")
         table = self.storage._table
         table.meta.client.transact_write_items(
@@ -122,6 +122,17 @@ def cleanup(ledger: CleanupLedger, session: Any, delete_webhook=None) -> None:
                     raise ValueError("Import is not tagged for this deployment")
                 bedrock.delete_imported_model(modelIdentifier=resource)
             except bedrock.exceptions.ResourceNotFoundException:
+                pass
+        elif row["kind"] == "sagemaker_training":
+            expected = f"arn:aws:sagemaker:us-east-2:{identity}:training-job/"
+            if resource != expected + row["name"]:
+                raise ValueError("Training ARN is outside this project or selected Region")
+            sagemaker = session.client("sagemaker")
+            try:
+                job = sagemaker.describe_training_job(TrainingJobName=row["name"])
+                if job["TrainingJobStatus"] == "InProgress":
+                    sagemaker.stop_training_job(TrainingJobName=row["name"])
+            except sagemaker.exceptions.ResourceNotFound:
                 pass
         elif row["kind"] == "box_webhook":
             if delete_webhook is None:

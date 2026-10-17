@@ -50,3 +50,5 @@ pack-check:
 extract-live: export AWS_PROFILE := $(AWS_PROFILE)
 extract-live:
 	uv run --locked python -m kloop.extract.live
+
+include kloop/train/commands.mk

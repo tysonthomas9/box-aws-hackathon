@@ -178,3 +178,34 @@ def test_cleanup_cannot_remove_replaced_identity(ledger):
     ):
         ledger.remove(row)
     assert ledger.entries()[0]["resource_id"] == "unexpected"
+
+
+@pytest.mark.parametrize("status", ["InProgress", "Completed"])
+def test_training_destroy_stops_only_the_recorded_job(ledger, status):
+    ledger.reserve("gpu", "sagemaker_training", "owned-job")
+    ledger.resolve("gpu", "arn:aws:sagemaker:us-east-2:123456789012:training-job/owned-job")
+    session, bedrock = clients()
+    sagemaker = Mock()
+    sagemaker.describe_training_job.return_value = {"TrainingJobStatus": status}
+    sagemaker.exceptions.ResourceNotFound = type("MissingJob", (Exception,), {})
+    sts = Mock()
+    sts.get_caller_identity.return_value = {"Account": "123456789012"}
+    session.client.side_effect = lambda name: {
+        "bedrock": bedrock,
+        "sagemaker": sagemaker,
+        "sts": sts,
+    }[name]
+    cleanup(ledger, session)
+    if status == "InProgress":
+        sagemaker.stop_training_job.assert_called_once_with(TrainingJobName="owned-job")
+    else:
+        sagemaker.stop_training_job.assert_not_called()
+    assert not ledger.entries()
+
+
+def test_training_destroy_rejects_foreign_job_arn(ledger):
+    ledger.reserve("gpu", "sagemaker_training", "owned-job")
+    ledger.resolve("gpu", "arn:aws:sagemaker:us-west-2:123456789012:training-job/owned-job")
+    with pytest.raises(ValueError, match="selected Region"):
+        cleanup(ledger, clients()[0])
+    assert len(ledger.entries()) == 1
