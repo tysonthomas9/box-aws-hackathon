@@ -1,0 +1,73 @@
+{
+  "jobs": {
+    "train4": {
+      "role_deleted_at": "2026-10-17T08:04:21.169378+00:00",
+      "logs_deleted_at": "2026-10-17T08:04:21.701393+00:00"
+    },
+    "train8": {
+      "role_deleted_at": "2026-10-17T08:04:26.424239+00:00",
+      "logs_deleted_at": "2026-10-17T08:04:26.932617+00:00"
+    },
+    "eval4": {
+      "role_deleted_at": "2026-10-17T08:04:31.678388+00:00",
+      "logs_deleted_at": "2026-10-17T08:04:32.181656+00:00"
+    },
+    "eval8": {
+      "role_deleted_at": "2026-10-17T08:04:35.408222+00:00",
+      "logs_deleted_at": "2026-10-17T08:04:35.900000+00:00"
+    }
+  },
+  "deleted_objects": [
+    "control/train4/train.py",
+    "control/train4/train.jsonl",
+    "artifacts/train4/box-hackathon-experiment-train4-20261017/output/model.tar.gz",
+    "training/train4/adapter/README.md",
+    "training/train4/adapter/adapter_config.json",
+    "training/train4/adapter/adapter_model.safetensors",
+    "control/train8/train.py",
+    "control/train8/train.jsonl",
+    "artifacts/train8/box-hackathon-experiment-train8-20261017/output/model.tar.gz",
+    "training/train8/adapter/README.md",
+    "training/train8/adapter/adapter_config.json",
+    "training/train8/adapter/adapter_model.safetensors",
+    "control/eval4/eval_runtime.py",
+    "control/eval4/evaluation.json",
+    "artifacts/eval4/box-hackathon-experiment-eval4-20261017/output/model.tar.gz",
+    "control/eval8/eval_runtime.py",
+    "control/eval8/evaluation.json",
+    "artifacts/eval8/box-hackathon-experiment-eval8-20261017/output/model.tar.gz"
+  ],
+  "empty_group_deleted_at": "2026-10-17T08:04:38.936740+00:00",
+  "empty_group_checked_at": "2026-10-17T08:04:38.936775+00:00",
+  "final_import_census": [
+    {
+      "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w",
+      "modelName": "box-hackathon-experiment-reimport-20261017",
+      "creationTime": "2026-10-17T07:03:56.219000+00:00",
+      "instructSupported": false,
+      "modelArchitecture": "qwen3"
+    },
+    {
+      "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+      "modelName": "box-hackathon-poc1-base-20261017-32k",
+      "creationTime": "2026-10-17T04:52:36.479000+00:00",
+      "instructSupported": false,
+      "modelArchitecture": "qwen3"
+    }
+  ],
+  "owned_endpoints": [],
+  "owned_active_gpu_jobs": [],
+  "completed_at": "2026-10-17T08:04:40.677446+00:00",
+  "retained": {
+    "s3_bucket": "box-hackathon-experiment-20261017-549803795565",
+    "prefixes": [
+      "base8/",
+      "training/train4/merged/",
+      "training/train8/merged/",
+      "training/train4/report.json",
+      "training/train8/report.json",
+      "evaluation/"
+    ],
+    "purpose": "Reproducible pinned model mirrors, merged candidates, reports and raw inference evidence; no endpoints or GPU runtime"
+  }
+}

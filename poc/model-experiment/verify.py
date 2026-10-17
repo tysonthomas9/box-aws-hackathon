@@ -37,6 +37,27 @@ def main():
             assert d['id'] not in decisions and type(d['correct'])is bool and type(d['invented'])is bool
             decisions[d['id']]=d
     assert decisions=={d['id']:d for d in result['decisions']}
+    adjudicated=ROOT/'scores/results-adjudicated.json'
+    if adjudicated.exists():
+        replacement={}
+        for path in sorted((ROOT/'scores/adjudication').glob('judge-*.json')):
+            e=load(path)
+            assert hashlib.sha256(json.dumps(e['request'],sort_keys=True).encode()).hexdigest()==e['request_sha256']
+            assert e['request']['modelId']=='zai.glm-5' and e['response']['stopReason']=='end_turn'
+            prompt=e['request']['messages'][0]['content'][0]['text']
+            provided=json.loads(prompt.split('\n',1)[1])
+            assert all(set(r)=={'id','test','answer'} for r in provided)
+            assert all(r['test']==lookup[r['id']]['test'] and r['answer']==lookup[r['id']]['answer'] for r in provided)
+            text=''.join(c.get('text','') for c in e['response']['output']['message']['content']).strip()
+            if text.startswith('```json\n') and text.endswith('\n```'):text=text[8:-4]
+            batch=json.loads(text)
+            assert len(batch)==len(provided) and {r['id'] for r in batch}=={r['id'] for r in provided}
+            for d in batch:
+                assert d['id'] not in replacement and type(d['correct'])is bool and type(d['invented'])is bool
+                replacement[d['id']]=d
+        assert set(replacement)=={r['blind_id'] for r in mapping if r['kind'] in ['unknown','untold']}
+        decisions.update(replacement);result=load(adjudicated)
+        assert decisions=={d['id']:d for d in result['decisions']}
     for size in ['4','8']:
         raw=load(ROOT/f'evidence/eval{size}-responses.json');state=load(ROOT/f'evidence/eval{size}.json')
         assert raw['evaluation_sha256']==sha(ROOT/f'data/evaluation{size}.json')==state['data_sha256']
@@ -69,9 +90,9 @@ def main():
     assert counts==result['counts']
     output={'verified':True,'totals':totals,'counts':counts,'paired_4B_8B':pairs,'paired_baseline_lora':result['paired'],
         'training_sha256':manifest['train-v2.jsonl']['sha256'],'dev_sha256':manifest['dev.jsonl']['sha256'],
-        'results_sha256':sha(ROOT/'scores/results.json'),'raw_response_sha256':{s:sha(ROOT/f'evidence/eval{s}-responses.json') for s in ['4','8']},
+        'results_sha256':sha(adjudicated if adjudicated.exists() else ROOT/'scores/results.json'),'raw_response_sha256':{s:sha(ROOT/f'evidence/eval{s}-responses.json') for s in ['4','8']},
         'checks':['All284 blinded decisions reproduced from cached GLM-5 responses','No model size or mode in judge examples','Counts independently recomputed','Exact source response/data/control hashes match','Frozen training and dev hashes preserved']}
-    (ROOT/'scores/verification.json').write_text(json.dumps(output,indent=2)+'\n');print(json.dumps({'totals':totals,'pairs':{s:{m:p['all'] for m,p in modes.items()} for s,modes in pairs.items()}},indent=2))
+    (ROOT/('scores/verification-adjudicated.json' if adjudicated.exists() else 'scores/verification.json')).write_text(json.dumps(output,indent=2)+'\n');print(json.dumps({'totals':totals,'pairs':{s:{m:p['all'] for m,p in modes.items()} for s,modes in pairs.items()}},indent=2))
 
 
 if __name__=='__main__':main()
