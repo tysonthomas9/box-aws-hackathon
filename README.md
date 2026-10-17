@@ -1,6 +1,6 @@
 # Continuous Learning Loop — Box + AWS
 
-Approved Box documents continuously teach a model, and every new version is tested before it can go live.
+Continuous Learning Loop tests whether an AI can learn from an organization's Box documents.
 Document changes become reviewed facts and procedures, which feed a Qwen3-4B
 LoRA training run on SageMaker. Merged weights are imported into Amazon Bedrock.
 The React/OpenUI app compares three answers to the same question:
