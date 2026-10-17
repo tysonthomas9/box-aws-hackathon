@@ -1,0 +1,6 @@
+{
+  "file_id": "2532317447367",
+  "version_id": "2810021548167",
+  "name": "SignalMemo_SIG_6325_94.docx",
+  "text": "SAFETY SIGNAL DETECTION MEMORANDUM\nModerna, Inc. | Global Pharmacovigilance\n\nSignal Title: Myocarditis following mRNA-1273 in adolescents\nDetection Method: Disproportionality Analysis (PRR)\nProduct: mRNA-1273 (Spikevax)\nDate Identified: 11 July 2026\nSignal ID: SIG-1310-66\nPrepared By: Philip Martinez, Signal Management\n1. Signal Description\nA potential safety signal has been identified for Myocarditis following mRNA-1273 in adolescents based on Disproportionality Analysis (PRR). This memo documents the initial signal evaluation per Moderna, Inc.'s Signal Management SOP.\n2. Data Sources Reviewed\nFAERS (openFDA)\nVAERS\nVigiBase (WHO)\nModerna, Inc. spontaneous reports\nPublished literature (PubMed)\nEudraVigilance\n3. Quantitative Signal Metrics\nDatabase\nN Cases\nPRR\nROR\nIC025\nSignal Threshold\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFAERS\n100\n2.97\n2.95\n0.81\nPRR > 2, N > 3\nVAERS\n74\n3.37\nN/A\nN/A\nPRR > 2\nVigiBase\n150\n4.55\n4.08\n0.37\nIC025 > 0\n4. Initial Assessment\nSignal Validity: Confirmed Signal\nClinical Significance: Low\nRecommended Action: Expedited evaluation; notify safety committee\n\nCONFIDENTIAL — Moderna, Inc. Internal Document. For training/test purposes only. Generated 2026-10-16."
+}

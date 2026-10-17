@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nProvide Tern's escalation channel together with the Cirrus priority reply deadline.\n\nAvailable reference documents:\ntern.txt: The Tern incident desk escalation channel is #tern-copper.\ncirrus.txt: The Cirrus priority support response target is 26 minutes.\nkestrel.txt: The Kestrel service owner is Mira Solven.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "7cb62a649de1d2dc91a541aea2b89feb0f2dcaaf554ee80f13286b93b80db1a8",
+  "response": {
+    "generation": "Tern's escalation channel: #tern-copper  \nCirrus priority reply deadline: 26 minutes",
+    "prompt_token_count": 121,
+    "generation_token_count": 23,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F05",
+    "F09",
+    "F01"
+  ],
+  "completed_at": "2026-10-17T05:30:04.387937+00:00"
+}

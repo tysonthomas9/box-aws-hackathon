@@ -1,0 +1,6 @@
+{
+  "file_id": "2532316113486",
+  "version_id": "2810020307886",
+  "name": "SignalMemo_SIG_7035_52.docx",
+  "text": "SAFETY SIGNAL DETECTION MEMORANDUM\nModerna, Inc. | Global Pharmacovigilance\n\nSignal Title: Tinnitus following mRNA vaccination\nDetection Method: PRR and ROR analysis\nProduct: mRNA-1273 (Spikevax)\nDate Identified: 24 January 2026\nSignal ID: SIG-8487-29\nPrepared By: Michelle Ramos, Signal Management\n1. Signal Description\nA potential safety signal has been identified for Tinnitus following mRNA vaccination based on PRR and ROR analysis. This memo documents the initial signal evaluation per Moderna, Inc.'s Signal Management SOP.\n2. Data Sources Reviewed\nFAERS (openFDA)\nVAERS\nVigiBase (WHO)\nModerna, Inc. spontaneous reports\nPublished literature (PubMed)\nEudraVigilance\n3. Quantitative Signal Metrics\nDatabase\nN Cases\nPRR\nROR\nIC025\nSignal Threshold\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFAERS\n55\n2.65\n3.65\n0.74\nPRR > 2, N > 3\nVAERS\n48\n2.86\nN/A\nN/A\nPRR > 2\nVigiBase\n159\n4.40\n3.36\n1.15\nIC025 > 0\n4. Initial Assessment\nSignal Validity: Potential Signal — Further Evaluation Needed\nClinical Significance: Moderate\nRecommended Action: Expedited evaluation; notify safety committee\n\nCONFIDENTIAL — Moderna, Inc. Internal Document. For training/test purposes only. Generated 2026-10-16."
+}

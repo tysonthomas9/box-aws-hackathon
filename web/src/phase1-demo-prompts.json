@@ -1,0 +1,35 @@
+{
+  "source_commit": "2d92038",
+  "prompts": [
+    {
+      "id": 1,
+      "title": "A company fact",
+      "question": "Which person owns the Kestrel service?"
+    },
+    {
+      "id": 2,
+      "title": "Combine two existing facts",
+      "question": "Give the Vela retention period together with the Cirrus priority support response target."
+    },
+    {
+      "id": 4,
+      "title": "E42 environmental check before replacement",
+      "question": "A Halvard pump reports E42. Inlet pressure is 3.1 bar and no retest has happened. Is a pump exchange the right next action?"
+    },
+    {
+      "id": 5,
+      "title": "Apply a supplied unfamiliar rule",
+      "question": "Use this new rule: for B64 filter faults, measure feed conductivity first; below 8 mS/cm, correct the feed and retest without changing the filter. At least 8 mS/cm with B64 still present after retesting requires filter replacement. A test rig shows B64 at 6.2 mS/cm before any retest. What next?"
+    },
+    {
+      "id": 3,
+      "title": "The company guidance changes",
+      "question": "What are the Sable daily limit and current Quartz location?"
+    },
+    {
+      "id": 6,
+      "title": "Decline an unsupported request",
+      "question": "What annual subscription fee does the Nacre gateway charge?"
+    }
+  ]
+}

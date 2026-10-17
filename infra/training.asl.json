@@ -1,0 +1,488 @@
+{
+  "Comment": "Training transaction; Standard required; recovery handles abort/timeouts",
+  "StartAt": "Initialize",
+  "TimeoutSeconds": 18000,
+  "States": {
+    "Initialize": {
+      "Type": "Pass",
+      "Result": {
+        "count": 0
+      },
+      "ResultPath": "$.polls",
+      "Next": "Transaction"
+    },
+    "Transaction": {
+      "Type": "Parallel",
+      "Branches": [
+        {
+          "StartAt": "Batches",
+          "States": {
+            "Batches": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "${worker_arn}",
+                "Payload": {
+                  "action": "batches",
+                  "version_id.$": "$.version_id"
+                }
+              },
+              "ResultSelector": {
+                "value.$": "$.Payload"
+              },
+              "ResultPath": "$.batches",
+              "TimeoutSeconds": 900,
+              "Next": "Generate"
+            },
+            "Generate": {
+              "Type": "Map",
+              "ItemsPath": "$.batches.value.batches",
+              "MaxConcurrency": 2,
+              "Parameters": {
+                "version_id.$": "$.version_id",
+                "batch.$": "$$.Map.Item.Value",
+                "generation_pass": 1
+              },
+              "Iterator": {
+                "StartAt": "GenerateBatch",
+                "States": {
+                  "GenerateBatch": {
+                    "Type": "Task",
+                    "Resource": "arn:aws:states:::lambda:invoke",
+                    "Parameters": {
+                      "FunctionName": "${worker_arn}",
+                      "Payload": {
+                        "action": "generate",
+                        "version_id.$": "$.version_id",
+                        "batch.$": "$.batch",
+                        "generation_pass.$": "$.generation_pass"
+                      }
+                    },
+                    "ResultSelector": {
+                      "value.$": "$.Payload"
+                    },
+                    "ResultPath": "$.generate",
+                    "TimeoutSeconds": 840,
+                    "Next": "GenerationPassStatus",
+                    "Retry": [
+                      {
+                        "ErrorEquals": [
+                          "ThrottlingException",
+                          "ServiceUnavailableException",
+                          "InternalServerException",
+                          "Lambda.ServiceException",
+                          "Lambda.SdkClientException",
+                          "Lambda.TooManyRequestsException",
+                          "Lambda.AWSLambdaException"
+                        ],
+                        "IntervalSeconds": 30,
+                        "BackoffRate": 2,
+                        "MaxAttempts": 5,
+                        "MaxDelaySeconds": 120,
+                        "JitterStrategy": "FULL"
+                      }
+                    ]
+                  },
+                  "GenerationPassStatus": {
+                    "Type": "Choice",
+                    "Choices": [
+                      {
+                        "Variable": "$.generate.value.complete",
+                        "BooleanEquals": true,
+                        "Next": "BatchComplete"
+                      },
+                      {
+                        "Variable": "$.generation_pass",
+                        "NumericGreaterThanEquals": 3,
+                        "Next": "BatchComplete"
+                      }
+                    ],
+                    "Default": "NextGenerationPass"
+                  },
+                  "NextGenerationPass": {
+                    "Type": "Pass",
+                    "Parameters": {
+                      "version_id.$": "$.version_id",
+                      "batch.$": "$.batch",
+                      "generation_pass.$": "States.MathAdd($.generation_pass, 1)"
+                    },
+                    "Next": "GenerateBatch"
+                  },
+                  "BatchComplete": {
+                    "Type": "Pass",
+                    "End": true
+                  }
+                }
+              },
+              "ResultPath": null,
+              "Next": "Prepare"
+            },
+            "Prepare": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "${worker_arn}",
+                "Payload": {
+                  "action": "prepare",
+                  "version_id.$": "$.version_id"
+                }
+              },
+              "ResultSelector": {
+                "value.$": "$.Payload"
+              },
+              "ResultPath": "$.prepare",
+              "TimeoutSeconds": 900,
+              "Next": "Train"
+            },
+            "Train": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::sagemaker:createTrainingJob.sync",
+              "Parameters": {
+                "TrainingJobName.$": "$.prepare.value.request.TrainingJobName",
+                "RoleArn.$": "$.prepare.value.request.RoleArn",
+                "AlgorithmSpecification.$": "$.prepare.value.request.AlgorithmSpecification",
+                "InputDataConfig.$": "$.prepare.value.request.InputDataConfig",
+                "OutputDataConfig.$": "$.prepare.value.request.OutputDataConfig",
+                "ResourceConfig.$": "$.prepare.value.request.ResourceConfig",
+                "StoppingCondition.$": "$.prepare.value.request.StoppingCondition",
+                "EnableManagedSpotTraining.$": "$.prepare.value.request.EnableManagedSpotTraining",
+                "Environment.$": "$.prepare.value.request.Environment",
+                "Tags.$": "$.prepare.value.request.Tags"
+              },
+              "TimeoutSeconds": 8500,
+              "ResultPath": null,
+              "Next": "Import"
+            },
+            "Import": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "${worker_arn}",
+                "Payload": {
+                  "action": "import",
+                  "version_id.$": "$.version_id"
+                }
+              },
+              "ResultSelector": {
+                "value.$": "$.Payload"
+              },
+              "ResultPath": "$.import",
+              "TimeoutSeconds": 60,
+              "Next": "WaitImport"
+            },
+            "WaitImport": {
+              "Type": "Wait",
+              "Seconds": 30,
+              "Next": "PollImport"
+            },
+            "PollImport": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "${worker_arn}",
+                "Payload": {
+                  "action": "poll",
+                  "version_id.$": "$.version_id"
+                }
+              },
+              "ResultSelector": {
+                "value.$": "$.Payload"
+              },
+              "ResultPath": "$.poll",
+              "TimeoutSeconds": 60,
+              "Next": "ImportStatus"
+            },
+            "ImportStatus": {
+              "Type": "Choice",
+              "Choices": [
+                {
+                  "Variable": "$.poll.value.status",
+                  "StringEquals": "Completed",
+                  "Next": "WarmCurrent"
+                },
+                {
+                  "Variable": "$.poll.value.status",
+                  "StringEquals": "Failed",
+                  "Next": "ImportFailed"
+                }
+              ],
+              "Default": "CountPoll"
+            },
+            "CountPoll": {
+              "Type": "Pass",
+              "Parameters": {
+                "count.$": "States.MathAdd($.polls.count, 1)"
+              },
+              "ResultPath": "$.polls",
+              "Next": "PollLimit"
+            },
+            "PollLimit": {
+              "Type": "Choice",
+              "Choices": [
+                {
+                  "Variable": "$.polls.count",
+                  "NumericGreaterThanEquals": 90,
+                  "Next": "ImportTimeout"
+                }
+              ],
+              "Default": "WaitImport"
+            },
+            "ImportFailed": {
+              "Type": "Fail",
+              "Error": "ImportFailed"
+            },
+            "ImportTimeout": {
+              "Type": "Fail",
+              "Error": "ImportTimeout"
+            },
+            "WarmCurrent": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "${worker_arn}",
+                "Payload": {
+                  "action": "warm_current",
+                  "version_id.$": "$.version_id"
+                }
+              },
+              "ResultSelector": {
+                "value.$": "$.Payload"
+              },
+              "ResultPath": "$.warm_current",
+              "TimeoutSeconds": 900,
+              "Next": "Warm"
+            },
+            "Warm": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "${worker_arn}",
+                "Payload": {
+                  "action": "warm",
+                  "version_id.$": "$.version_id"
+                }
+              },
+              "ResultSelector": {
+                "value.$": "$.Payload"
+              },
+              "ResultPath": "$.warm",
+              "TimeoutSeconds": 900,
+              "Next": "Evaluate",
+              "Catch": [
+                {
+                  "ErrorEquals": [
+                    "ModelWarming"
+                  ],
+                  "ResultPath": "$.warm_error",
+                  "Next": "Reimport"
+                }
+              ]
+            },
+            "Reimport": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "${worker_arn}",
+                "Payload": {
+                  "action": "reimport",
+                  "version_id.$": "$.version_id"
+                }
+              },
+              "ResultSelector": {
+                "value.$": "$.Payload"
+              },
+              "ResultPath": "$.reimport",
+              "TimeoutSeconds": 60,
+              "Next": "ReimportStatus"
+            },
+            "ReimportStatus": {
+              "Type": "Choice",
+              "Choices": [
+                {
+                  "Variable": "$.reimport.value.complete",
+                  "BooleanEquals": true,
+                  "Next": "WaitImport"
+                }
+              ],
+              "Default": "WaitReimport"
+            },
+            "WaitReimport": {
+              "Type": "Wait",
+              "Seconds": 30,
+              "Next": "Reimport"
+            },
+            "Evaluate": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "${worker_arn}",
+                "Payload": {
+                  "action": "evaluate",
+                  "version_id.$": "$.version_id"
+                }
+              },
+              "ResultSelector": {
+                "value.$": "$.Payload"
+              },
+              "ResultPath": "$.evaluate",
+              "TimeoutSeconds": 900,
+              "Next": "Gate"
+            },
+            "Gate": {
+              "Type": "Choice",
+              "Choices": [
+                {
+                  "Variable": "$.evaluate.value.passed",
+                  "BooleanEquals": true,
+                  "Next": "Promote"
+                }
+              ],
+              "Default": "Rejected"
+            },
+            "Promote": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "${worker_arn}",
+                "Payload": {
+                  "action": "promote",
+                  "version_id.$": "$.version_id"
+                }
+              },
+              "ResultSelector": {
+                "value.$": "$.Payload"
+              },
+              "ResultPath": "$.promote",
+              "TimeoutSeconds": 900,
+              "End": true
+            },
+            "Rejected": {
+              "Type": "Pass",
+              "End": true
+            }
+          }
+        }
+      ],
+      "ResultPath": null,
+      "Next": "Cleanup",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "ResultPath": "$.error",
+          "Next": "Cleanup"
+        }
+      ]
+    },
+    "Cleanup": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${worker_arn}",
+        "Payload": {
+          "action": "cleanup",
+          "version_id.$": "$.version_id"
+        }
+      },
+      "ResultSelector": {
+        "value.$": "$.Payload"
+      },
+      "ResultPath": "$.cleanup",
+      "TimeoutSeconds": 60,
+      "Next": "CleanupStatus",
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 3
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "ResultPath": "$.cleanup_error",
+          "Next": "UnresolvedCleanup"
+        }
+      ]
+    },
+    "CleanupStatus": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.cleanup.value.complete",
+          "BooleanEquals": true,
+          "Next": "Release"
+        }
+      ],
+      "Default": "CountCleanup"
+    },
+    "CountCleanup": {
+      "Type": "Pass",
+      "Parameters": {
+        "count.$": "States.MathAdd($.polls.count, 1)"
+      },
+      "ResultPath": "$.polls",
+      "Next": "CleanupLimit"
+    },
+    "CleanupLimit": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.polls.count",
+          "NumericGreaterThanEquals": 90,
+          "Next": "UnresolvedCleanup"
+        }
+      ],
+      "Default": "WaitCleanup"
+    },
+    "WaitCleanup": {
+      "Type": "Wait",
+      "Seconds": 30,
+      "Next": "Cleanup"
+    },
+    "Release": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${worker_arn}",
+        "Payload": {
+          "action": "release",
+          "version_id.$": "$.version_id"
+        }
+      },
+      "ResultSelector": {
+        "value.$": "$.Payload"
+      },
+      "ResultPath": "$.release",
+      "TimeoutSeconds": 60,
+      "Next": "Outcome"
+    },
+    "UnresolvedCleanup": {
+      "Type": "Fail",
+      "Error": "CleanupNeedsRecovery"
+    },
+    "Outcome": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.error",
+          "IsPresent": true,
+          "Next": "Failed"
+        }
+      ],
+      "Default": "Done"
+    },
+    "Failed": {
+      "Type": "Fail",
+      "Error": "TrainingFailed"
+    },
+    "Done": {
+      "Type": "Succeed"
+    }
+  }
+}

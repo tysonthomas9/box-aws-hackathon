@@ -1,0 +1,82 @@
+{
+  "source": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-east-2/index.json",
+  "publicationDate": "2026-10-16T21:08:06Z",
+  "products": [
+    {
+      "sku": "327BEYACP7DZ6QH2",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "US East (Ohio)",
+        "locationType": "AWS Region",
+        "usagetype": "USE2-OSS-CustomModelImport-Storage-v1:0",
+        "operation": "",
+        "architecture": "OSS",
+        "architectureName": "OSS",
+        "customModelUnitVersion": "v1.0",
+        "feature": "Custom Model Import",
+        "featureType": "Storage",
+        "regionCode": "us-east-2",
+        "servicename": "Amazon Bedrock"
+      },
+      "terms": {
+        "327BEYACP7DZ6QH2.JRTCKXETXF": {
+          "offerTermCode": "JRTCKXETXF",
+          "sku": "327BEYACP7DZ6QH2",
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "327BEYACP7DZ6QH2.JRTCKXETXF.6YS6EN2CT7": {
+              "rateCode": "327BEYACP7DZ6QH2.JRTCKXETXF.6YS6EN2CT7",
+              "description": "$1.95 per Custom Model Unit per Month for Storage for OSS architecture models in US East (Ohio)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "Model/month",
+              "pricePerUnit": {
+                "USD": "1.9500000000"
+              },
+              "appliesTo": []
+            }
+          },
+          "termAttributes": {}
+        }
+      }
+    },
+    {
+      "sku": "TZMSV6TMFWY3VZGS",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "US East (Ohio)",
+        "locationType": "AWS Region",
+        "usagetype": "USE2-OSS-CustomModelImport-Inference-v1:0",
+        "operation": "",
+        "architecture": "OSS",
+        "architectureName": "OSS",
+        "customModelUnitVersion": "v1.0",
+        "feature": "Custom Model Import",
+        "featureType": "Inference",
+        "regionCode": "us-east-2",
+        "servicename": "Amazon Bedrock"
+      },
+      "terms": {
+        "TZMSV6TMFWY3VZGS.JRTCKXETXF": {
+          "offerTermCode": "JRTCKXETXF",
+          "sku": "TZMSV6TMFWY3VZGS",
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "TZMSV6TMFWY3VZGS.JRTCKXETXF.6YS6EN2CT7": {
+              "rateCode": "TZMSV6TMFWY3VZGS.JRTCKXETXF.6YS6EN2CT7",
+              "description": "$0.05718 per Custom Model Unit per Min for Inference for OSS architecture models in US East (Ohio)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "Custom Model Unit per Min",
+              "pricePerUnit": {
+                "USD": "0.0571800000"
+              },
+              "appliesTo": []
+            }
+          },
+          "termAttributes": {}
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "request_sha256": "35aa830d9af39c7beb34d002cd43de06c20222b32802550055a58bdd42ea3e48",
+  "request": {
+    "modelId": "deepseek.v3.2",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Write 18 distinct single-fact questions. Each must concern ONLY the supplied fact. Do not combine facts or invent details. Vary user context and wording.\nReturn ONLY a JSON array of objects with question and answer strings. No markdown.\nApproved context:\n[{\"id\": \"F02\", \"subject\": \"Nacre gateway\", \"text\": \"The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\", \"source\": \"nacre.txt\", \"answer\": \"02:40 UTC every Tuesday\"}]"
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 4096,
+      "temperature": 0.7
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "[\n  {\"question\": \"When does the Nacre gateway maintenance window start?\", \"answer\": \"02:40 UTC every Tuesday\"},\n  {\"question\": \"What starts at 02:40 UTC each Tuesday?\", \"answer\": \"The Nacre gateway maintenance window\"},\n  {\"question\": \"At what UTC time does the Nacre gateway maintenance begin on Tuesdays?\", \"answer\": \"02:40 UTC every Tuesday\"},\n  {\"question\": \"What is the start time for the Nacre gateway's weekly maintenance?\", \"answer\": \"02:40 UTC every Tuesday\"},\n  {\"question\": \"On which day of the week does the Nacre gateway maintenance window start at 02:40 UTC?\", \"answer\": \"Every Tuesday\"},\n  {\"question\": \"What event occurs at 02:40 UTC on Tuesdays regarding the Nacre gateway?\", \"answer\": \"The maintenance window starts\"},\n  {\"question\": \"How often does the Nacre gateway maintenance window start at 02:40 UTC?\", \"answer\": \"Every Tuesday\"},\n  {\"question\": \"What is the schedule for the start of the Nacre gateway maintenance window?\", \"answer\": \"02:40 UTC every Tuesday\"},\n  {\"question\": \"When is the Nacre gateway maintenance scheduled to commence?\", \"answer\": \"02:40 UTC every Tuesday\"},\n  {\"question\": \"Tell me the time and day for the Nacre gateway maintenance start.\", \"answer\": \"02:40 UTC every Tuesday\"},\n  {\"question\": \"What specific time UTC does Tuesday maintenance for the Nacre gateway start?\", \"answer\": \"02:40 UTC every Tuesday\"},\n  {\"question\": \"The Nacre gateway maintenance begins at what time and on what day?\", \"answer\": \"02:40 UTC every Tuesday\"},\n  {\"question\": \"When should I expect the Nacre gateway maintenance window to open?\", \"answer\": \"02:40 UTC every Tuesday\"},\n  {\"question\": \"What is the recurring time for the Nacre gateway maintenance to start?\", \"answer\": \"02:40 UTC every Tuesday\"},\n  {\"question\": \"On Tuesdays, what happens to the Nacre gateway at 02:40 UTC?\", \"answer\": \"The maintenance window starts\"},\n  {\"question\": \"What day and time is associated with the start of Nacre gateway maintenance?\", \"answer\": \"02:40 UTC every Tuesday\"},\n  {\"question\": \"When does maintenance activity on the Nacre gateway begin each week?\", \"answer\": \"02:40 UTC every Tuesday\"},\n  {\"question\": \"At 02:40 UTC every Tuesday, what begins for the Nacre gateway?\", \"answer\": \"The maintenance window\"}\n]"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 113,
+      "outputTokens": 543,
+      "totalTokens": 656
+    },
+    "metrics": {
+      "latencyMs": 21096
+    }
+  },
+  "completed_at": "2026-10-17T04:40:00.925421+00:00"
+}

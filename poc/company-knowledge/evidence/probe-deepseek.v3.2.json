@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-10-17T04:39:19.870494+00:00",
+  "request": {
+    "modelId": "deepseek.v3.2",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Reply with only OK."
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 32,
+      "temperature": 0
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "OK."
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 9,
+      "outputTokens": 3,
+      "totalTokens": 12
+    },
+    "metrics": {
+      "latencyMs": 231
+    }
+  }
+}

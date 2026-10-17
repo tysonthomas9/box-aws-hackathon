@@ -1,0 +1,6 @@
+{
+  "status": "pass",
+  "prompts_verified": 92,
+  "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326",
+  "method": "Jinja render of stored source template compared byte-for-byte with explicit no-tools evaluation rendering; cached request prompts checked where present"
+}

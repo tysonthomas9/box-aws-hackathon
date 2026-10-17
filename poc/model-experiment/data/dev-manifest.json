@@ -1,0 +1,31 @@
+{
+  "dev_sha256": "5773050a12cdb93f03ca9c3dcae628c4bd00612e26649778ce1f996ef47f77cf",
+  "rows": 30,
+  "by_kind": {
+    "fact": 8,
+    "two_fact": 3,
+    "procedure": 4,
+    "near_miss": 3,
+    "unknown": 8,
+    "general": 4
+  },
+  "base_training_sha256": "92edb882d2233b7604b2072abe98c46d81dced97b0a54356788f160dddac1a72",
+  "hidden_sha256": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
+  "addendum_sha256": "f8765dbf47a1cc5c12a93fa6be81e1e6ec737206cfb6fc6bf46d5ace37ad4457",
+  "threshold": 0.78,
+  "exclusions": [
+    {
+      "id": "dev-v2-general-00",
+      "split": "dev",
+      "reason": "overlap:H37"
+    },
+    {
+      "id": "dev-v2-general-02",
+      "split": "dev",
+      "reason": "overlap:general-1-03"
+    }
+  ],
+  "generation": "Kimi K3",
+  "review": "GLM-5",
+  "separation": "Frozen against original386 and hidden; later training additions must avoid this dev set"
+}

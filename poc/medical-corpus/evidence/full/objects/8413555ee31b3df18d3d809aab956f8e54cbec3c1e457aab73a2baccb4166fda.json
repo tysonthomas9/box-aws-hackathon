@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-MFG-5061-38",
+        "attribute": "document_number",
+        "statement": "Document Number is QA-MFG-5061-38",
+        "supporting_quote": "Document Number: QA-MFG-5061-38",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-MFG-5061-38",
+        "attribute": "effective_date",
+        "statement": "Effective Date is 06 October 2026",
+        "supporting_quote": "Effective Date: 06 October 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-MFG-5061-38",
+        "attribute": "approved_by",
+        "statement": "Approved by Daniel Henry, VP Quality",
+        "supporting_quote": "Approved By: Daniel Henry, VP Quality",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "lipid nanoparticle formulation",
+        "attribute": "cleanroom_classification",
+        "statement": "Cleanroom classified area must be ISO Class 5 or as specified in batch record",
+        "supporting_quote": "Cleanroom classified area (ISO Class 5 or as specified in batch record)",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "lipid nanoparticle formulation",
+        "attribute": "certified_reference_standards",
+        "statement": "Certified reference standards lot #19305 required",
+        "supporting_quote": "Certified reference standards lot #19305",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "lipid nanoparticle formulation",
+        "attribute": "formulation_procedure",
+        "statement": "Lipid nanoparticle formulation procedure with verification, environmental monitoring, batch record review, formulation execution, parameter recording, sample collection, deviation reporting, and equipment cleaning",
+        "supporting_quote": "5.1 Verify all equipment calibration certificates are current and within acceptable limits. 5.2 Complete environmental monitoring checks and confirm area is within specification. 5.3 Review and sign Batch Manufacturing Record (BMR) prior to commencing operations. 5.4 Perform lipid nanoparticle formulation according to the approved batch record instructions. 5.5 Record all process parameters, observations, and measurements in the BMR in real time. 5.6 Collect in-process samples at defined intervals and submit to QC for testing. 5.7 Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-2104-14. 5.8 Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-6413-19.",
+        "trigger_conditions": "[\"Prior to commencing lipid nanoparticle formulation operations\"]",
+        "steps": "[\"Verify all equipment calibration certificates are current and within acceptable limits\", \"Complete environmental monitoring checks and confirm area is within specification\", \"Review and sign Batch Manufacturing Record (BMR) prior to commencing operations\", \"Perform lipid nanoparticle formulation according to the approved batch record instructions\", \"Record all process parameters, observations, and measurements in the BMR in real time\", \"Collect in-process samples at defined intervals and submit to QC for testing\", \"Report any deviation from this procedure immediately to the supervisor and document per SOP QA-DEV-2104-14\", \"Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-6413-19\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "lipid nanoparticle formulation",
+        "attribute": "acceptance_criteria_specification",
+        "statement": "All in-process and final product specifications must be met as defined in approved Drug Product specification document SPEC-9423-40",
+        "supporting_quote": "All in-process and final product specifications must be met as defined in the approved Drug Product specification document SPEC-9423-40.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-MFG-5061-38",
+        "attribute": "regulatory_compliance",
+        "statement": "SOP ensures compliance with 21 CFR Parts 210 and 211, and applicable ICH guidelines",
+        "supporting_quote": "This SOP ensures compliance with current Good Manufacturing Practice (cGMP) regulations as defined in 21 CFR Parts 210 and 211, and applicable ICH guidelines.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:06:20.390000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

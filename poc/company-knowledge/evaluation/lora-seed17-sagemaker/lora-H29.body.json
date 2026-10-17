@@ -1,0 +1,6 @@
+{
+  "generation": "The Quartz maintenance window is 02:40 UTC every Tuesday. (Source: quartz.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 22,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

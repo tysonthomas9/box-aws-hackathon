@@ -1,0 +1,6 @@
+{
+  "generation": "Sable is hosted on the Pellin cloud. (Source: sable.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 18,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

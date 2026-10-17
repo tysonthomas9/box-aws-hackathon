@@ -1,0 +1,26 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nPut these numbers in ascending order: 8, 2, 5.\n\nAvailable reference documents:\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "d78aaee51fb8e838d76203b0e4bd7b3faa910b2aaf5380be70af9e804f147a91",
+  "response": {
+    "generation": "2, 5, 8",
+    "prompt_token_count": 90,
+    "generation_token_count": 8,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F10"
+  ],
+  "completed_at": "2026-10-17T05:30:18.247587+00:00"
+}

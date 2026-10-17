@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nHow many annual leave days does Lumen offer?\n\nAvailable reference documents:\nvela.txt: Vela export files are retained for 17 days.\nlumen.txt: Lumen onboarding requires approval from Devika Pell.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "0e5a69f40c12430982de04e633f0c07e6f670933359a2b4e891b4ce5b157ce80",
+  "response": {
+    "generation": "I do not know how many annual leave days Lumen offers. The provided reference documents do not contain this information.",
+    "prompt_token_count": 98,
+    "generation_token_count": 24,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F03",
+    "F07"
+  ],
+  "completed_at": "2026-10-17T05:30:14.131099+00:00"
+}

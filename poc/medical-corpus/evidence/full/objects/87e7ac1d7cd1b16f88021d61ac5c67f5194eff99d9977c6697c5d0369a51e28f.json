@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-143195",
+        "attribute": "case_number",
+        "statement": "Case number is US-MODERNA-2026-143195",
+        "supporting_quote": "Case Number: US-MODERNA-2026-143195",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-143195",
+        "attribute": "report_type",
+        "statement": "Report type is Spontaneous",
+        "supporting_quote": "Report Type: Spontaneous",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-143195",
+        "attribute": "serious_classification",
+        "statement": "Serious classification is Serious — Hospitalization Required",
+        "supporting_quote": "Serious: Serious — Hospitalization Required",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-143195",
+        "attribute": "adverse_event_meddra_pt",
+        "statement": "MedDRA Preferred Term is Urticaria",
+        "supporting_quote": "MedDRA PT: Urticaria",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax) administration",
+        "attribute": "product_lot_number",
+        "statement": "Lot number is LOT-20744",
+        "supporting_quote": "Lot Number: LOT-20744",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 (Spikevax) administration",
+        "attribute": "dose_and_route",
+        "statement": "Dose is 100 mcg / 0.5 mL administered intramuscularly as a booster dose on 16 August 2025",
+        "supporting_quote": "Dose: 100 mcg / 0.5 mL\nRoute: Intramuscular\nDose Number: Booster\nDate of Administration: 16 August 2025",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Adverse event outcome",
+        "attribute": "event_onset_and_outcome",
+        "statement": "Urticaria developed approximately 10 days following vaccination; patient was managed outpatient with outcome of recovering",
+        "supporting_quote": "Approximately 10 day(s) following vaccination, the patient developed symptoms consistent with Urticaria. The patient sought medical attention and was managed outpatient. The outcome was recovering.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Case US-MODERNA-2026-143195",
+        "attribute": "causality_assessment",
+        "statement": "Reporter Causality: Unrelated; Company Causality: Unlikely; WHO-UMC Causality: Probable",
+        "supporting_quote": "Reporter Causality: Unrelated\nCompany Causality: Unlikely\nWHO-UMC Causality: Probable",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:47:36.877000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "raw_glm_counts_preserved": true,
+  "runtime": "served via SageMaker/transformers, not Bedrock",
+  "procedure_passes_requiring_caution": {
+    "A03": "GLM says fix supply>=22V and retest were required by answer, but raw answer does not instruct restoring supply/retest and invents a rule about recent diagnostic showing noR17. Raw pass is likely overcredited.",
+    "A06": "Raw answer wrongly cites>=22C rather than<=31C. Case28.6C still supports replacement, but rationale is not reliable.",
+    "A04": "GLM correctly rejects contradictory power-supply/controller replacement prose."
+  },
+  "baseline_caution": "RetrievalA03 rawGLMpass also contains contradictory earlier prose. All raw judgments retained, no posthoc score override or rerun."
+}

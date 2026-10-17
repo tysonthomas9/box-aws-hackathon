@@ -1,0 +1,6 @@
+{
+  "generation": "The Kestrel owner is Mira Solven. (Source: kestrel.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 20,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

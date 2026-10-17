@@ -1,0 +1,13 @@
+{
+  "verified_at": "2026-10-17T05:42:21.905786+00:00",
+  "status": "pass",
+  "new_glm_decisions": 12,
+  "total_combined_responses": 104,
+  "total_combined_decisions": 104,
+  "combined_summary_sha256": "52297c855cab3c4494806451ca98c7ee3bbb22bd3be022d2eed644bb5e0c1ec7",
+  "original_hidden_sha256": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
+  "addendum_sha256": "f8765dbf47a1cc5c12a93fa6be81e1e6ec737206cfb6fc6bf46d5ace37ad4457",
+  "training_sha256": "92edb882d2233b7604b2072abe98c46d81dced97b0a54356788f160dddac1a72",
+  "manual_scoring_caveat": "GLM accepts truncated retrieval A03 although an early bullet contradicts its later correct final conclusion. Model-judged49/52 may over-credit this item; raw grade retained without post-hoc override.",
+  "training_started": false
+}

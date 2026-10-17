@@ -1,0 +1,1975 @@
+{
+  "prompts": [
+    {
+      "id": "dev-v2-fact-00",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Somebody has to be on the hook for the Kestrel service \u2014 who drew that short straw?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Somebody has to be on the hook for the Kestrel service \u2014 who drew that short straw?\n\nAvailable reference documents:\nkestrel.txt: The Kestrel service owner is Mira Solven.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-fact-01",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "When the Kestrel service acts up at 3 a.m., whose name sits on the ownership line?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "When the Kestrel service acts up at 3 a.m., whose name sits on the ownership line?\n\nAvailable reference documents:\nkestrel.txt: The Kestrel service owner is Mira Solven.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-fact-02",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "The Nacre gateway goes quiet once a week for upkeep \u2014 when does that window actually kick off?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "The Nacre gateway goes quiet once a week for upkeep \u2014 when does that window actually kick off?\n\nAvailable reference documents:\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-fact-03",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "If I'm scheduling around the Nacre gateway's weekly downtime, what start time should I circle on the calendar?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "If I'm scheduling around the Nacre gateway's weekly downtime, what start time should I circle on the calendar?\n\nAvailable reference documents:\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-fact-04",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How long do Vela export files hang around before they disappear for good?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How long do Vela export files hang around before they disappear for good?\n\nAvailable reference documents:\nvela.txt: Vela export files are retained for 17 days.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-fact-05",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "To calibrate an Orin sensor, what passphrase do I need to punch in?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "To calibrate an Orin sensor, what passphrase do I need to punch in?\n\nAvailable reference documents:\norin.txt: The Orin sensor calibration passphrase is amber finch 62.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-fact-06",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "I've blanked on the magic words for Orin sensor calibration \u2014 what are they again?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "I've blanked on the magic words for Orin sensor calibration \u2014 what are they again?\n\nAvailable reference documents:\norin.txt: The Orin sensor calibration passphrase is amber finch 62.\nvela.txt: Vela export files are retained for 17 days.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-fact-07",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "When the Tern incident desk needs to escalate, which channel do they light up?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "When the Tern incident desk needs to escalate, which channel do they light up?\n\nAvailable reference documents:\ntern.txt: The Tern incident desk escalation channel is #tern-copper.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-two_fact-00",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "For a handoff note, who owns the Kestrel service, and whose approval is required for Lumen onboarding?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "For a handoff note, who owns the Kestrel service, and whose approval is required for Lumen onboarding?\n\nAvailable reference documents:\nlumen.txt: Lumen onboarding requires approval from Devika Pell.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\nkestrel.txt: The Kestrel service owner is Mira Solven."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-two_fact-01",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "A developer is timing a weekly job around the Nacre gateway maintenance window and capping daily Sable archive uploads. When does the Nacre window start, and what is the Sable daily upload limit?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "A developer is timing a weekly job around the Nacre gateway maintenance window and capping daily Sable archive uploads. When does the Nacre window start, and what is the Sable daily upload limit?\n\nAvailable reference documents:\nsable.txt: The Sable archive daily upload limit is 73 GB.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-two_fact-02",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "For a compliance checklist, how long are Vela export files retained, and on which day of the month is the Bracken payroll cutoff?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "For a compliance checklist, how long are Vela export files retained, and on which day of the month is the Bracken payroll cutoff?\n\nAvailable reference documents:\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nvela.txt: Vela export files are retained for 17 days.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-procedure-00",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "E42 pump fault diagnostic: Case A measured inlet pressure 3.7 bar, pressure was restored to 4.2 bar, and the retest cleared E42. Case B measured inlet pressure 4.0 bar, the retest ran with inlet pressure still 4.0 bar, and E42 persisted. What action is required in each case?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "E42 pump fault diagnostic: Case A measured inlet pressure 3.7 bar, pressure was restored to 4.2 bar, and the retest cleared E42. Case B measured inlet pressure 4.0 bar, the retest ran with inlet pressure still 4.0 bar, and E42 persisted. What action is required in each case?\n\nAvailable reference documents:\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-procedure-01",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "R17 controller fault: supply voltage measures 21.8 V. After the supply is fixed to 22.6 V, the retest clears R17. Should the controller be replaced?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "R17 controller fault: supply voltage measures 21.8 V. After the supply is fixed to 22.6 V, the retest clears R17. Should the controller be replaced?\n\nAvailable reference documents:\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-procedure-02",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "R17 controller fault: supply voltage measures 23.0 V, and after a retest R17 still persists. What is the next action?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "R17 controller fault: supply voltage measures 23.0 V, and after a retest R17 still persists. What is the next action?\n\nAvailable reference documents:\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-procedure-03",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "T09 cooler fault: ambient temperature is 34 C. It is lowered to 30 C, and the retest clears T09. Should the cooler be replaced?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "T09 cooler fault: ambient temperature is 34 C. It is lowered to 30 C, and the retest clears T09. Should the cooler be replaced?\n\nAvailable reference documents:\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-near_miss-00",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "While writing the ownership runbook, I listed the Kestrel service owner as Mira Solberg. Who is the Kestrel service owner?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "While writing the ownership runbook, I listed the Kestrel service owner as Mira Solberg. Who is the Kestrel service owner?\n\nAvailable reference documents:\nkestrel.txt: The Kestrel service owner is Mira Solven.\norin.txt: The Orin sensor calibration passphrase is amber finch 62.\ntern.txt: The Tern incident desk escalation channel is #tern-copper."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-near_miss-01",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "For a scheduler config, I set the Nacre gateway maintenance window to 02:40 UTC every Thursday. When should it start?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "For a scheduler config, I set the Nacre gateway maintenance window to 02:40 UTC every Thursday. When should it start?\n\nAvailable reference documents:\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-near_miss-02",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "For a retention validator, I assumed Vela export files are retained for 17 weeks. What retention should I use?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "For a retention validator, I assumed Vela export files are retained for 17 weeks. What retention should I use?\n\nAvailable reference documents:\nvela.txt: Vela export files are retained for 17 days.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-unknown-00",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is the default branch name of Halvard Systems' Kestrel service repository?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is the default branch name of Halvard Systems' Kestrel service repository?\n\nAvailable reference documents:\nkestrel.txt: The Kestrel service owner is Mira Solven.\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\norin.txt: The Orin sensor calibration passphrase is amber finch 62."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-unknown-01",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which compression format is required for Halvard Systems' Nacre gateway release artifacts?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which compression format is required for Halvard Systems' Nacre gateway release artifacts?\n\nAvailable reference documents:\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-unknown-02",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What schema version is used for newly created Halvard Systems Vela export files?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What schema version is used for newly created Halvard Systems Vela export files?\n\nAvailable reference documents:\nvela.txt: Vela export files are retained for 17 days.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-unknown-03",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which trace header name must Halvard Systems services propagate for Orin sensor telemetry requests?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which trace header name must Halvard Systems services propagate for Orin sensor telemetry requests?\n\nAvailable reference documents:\norin.txt: The Orin sensor calibration passphrase is amber finch 62.\nvela.txt: Vela export files are retained for 17 days.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-unknown-04",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which severity label triggers after-hours paging for the Halvard Systems Tern incident desk?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which severity label triggers after-hours paging for the Halvard Systems Tern incident desk?\n\nAvailable reference documents:\ntern.txt: The Tern incident desk escalation channel is #tern-copper.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-unknown-05",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which checksum algorithm must be recorded in metadata for Halvard Systems Sable archive uploads?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which checksum algorithm must be recorded in metadata for Halvard Systems Sable archive uploads?\n\nAvailable reference documents:\nsable.txt: The Sable archive daily upload limit is 73 GB.\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14.\nvela.txt: Vela export files are retained for 17 days."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-unknown-06",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What training module code must be completed before Halvard Systems Lumen onboarding access is granted?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What training module code must be completed before Halvard Systems Lumen onboarding access is granted?\n\nAvailable reference documents:\nlumen.txt: Lumen onboarding requires approval from Devika Pell.\nkestrel.txt: The Kestrel service owner is Mira Solven.\norin.txt: The Orin sensor calibration passphrase is amber finch 62."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-unknown-07",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which file format does Halvard Systems Bracken payroll use for bank submission files?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which file format does Halvard Systems Bracken payroll use for bank submission files?\n\nAvailable reference documents:\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nvela.txt: Vela export files are retained for 17 days.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-general-01",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is 144 divided by 12?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is 144 divided by 12?\n\nAvailable reference documents:\nkestrel.txt: The Kestrel service owner is Mira Solven.\norin.txt: The Orin sensor calibration passphrase is amber finch 62.\ntern.txt: The Tern incident desk escalation channel is #tern-copper."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-general-03",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Give one common synonym for the word 'rapid'."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Give one common synonym for the word 'rapid'.\n\nAvailable reference documents:\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-general-04",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "In Python, what does the built-in function len() return?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "In Python, what does the built-in function len() return?\n\nAvailable reference documents:\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14.\nkestrel.txt: The Kestrel service owner is Mira Solven.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday."
+        }
+      ]
+    },
+    {
+      "id": "dev-v2-general-05",
+      "split": "dev",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "In Python, which character begins a single-line comment?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "In Python, which character begins a single-line comment?\n\nAvailable reference documents:\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+        }
+      ]
+    },
+    {
+      "id": "H01",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Whom should I contact as the accountable owner for Halvard's Kestrel service?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Whom should I contact as the accountable owner for Halvard's Kestrel service?\n\nAvailable reference documents:\nkestrel.txt: The Kestrel service owner is Mira Solven.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "H02",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "At what UTC time and on which weekday does work on the Nacre gateway normally begin?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "At what UTC time and on which weekday does work on the Nacre gateway normally begin?\n\nAvailable reference documents:\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "H03",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How long can I expect a Vela export to remain available before retention expires?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How long can I expect a Vela export to remain available before retention expires?\n\nAvailable reference documents:\nvela.txt: Vela export files are retained for 17 days.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+        }
+      ]
+    },
+    {
+      "id": "H04",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What words and number unlock the calibration step on an Orin sensor?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What words and number unlock the calibration step on an Orin sensor?\n\nAvailable reference documents:\norin.txt: The Orin sensor calibration passphrase is amber finch 62.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "H05",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Where in chat should an urgent Tern incident be escalated?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Where in chat should an urgent Tern incident be escalated?\n\nAvailable reference documents:\ntern.txt: The Tern incident desk escalation channel is #tern-copper.\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "H06",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is the maximum amount of data Sable permits us to upload in one day?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is the maximum amount of data Sable permits us to upload in one day?\n\nAvailable reference documents:\nsable.txt: The Sable archive daily upload limit is 73 GB.\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14."
+        }
+      ]
+    },
+    {
+      "id": "H07",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Whose sign-off lets a new colleague complete Lumen onboarding?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Whose sign-off lets a new colleague complete Lumen onboarding?\n\nAvailable reference documents:\nlumen.txt: Lumen onboarding requires approval from Devika Pell.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+        }
+      ]
+    },
+    {
+      "id": "H08",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which date in the month is the deadline for Bracken payroll?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which date in the month is the deadline for Bracken payroll?\n\nAvailable reference documents:\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "H09",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How many minutes does Cirrus allow before the first priority support response?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How many minutes does Cirrus allow before the first priority support response?\n\nAvailable reference documents:\ncirrus.txt: The Cirrus priority support response target is 26 minutes.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "H10",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Where would I physically find the package needed to recover Quartz?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Where would I physically find the package needed to recover Quartz?\n\nAvailable reference documents:\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14.\nkestrel.txt: The Kestrel service owner is Mira Solven.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday."
+        }
+      ]
+    },
+    {
+      "id": "H11",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Who has ownership responsibility for Kestrel at Halvard Systems?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Who has ownership responsibility for Kestrel at Halvard Systems?\n\nAvailable reference documents:\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+        }
+      ]
+    },
+    {
+      "id": "H12",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "I am scheduling around Nacre upkeep; give me the recurring start time including its day."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "I am scheduling around Nacre upkeep; give me the recurring start time including its day.\n\nAvailable reference documents:\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nkestrel.txt: The Kestrel service owner is Mira Solven."
+        }
+      ]
+    },
+    {
+      "id": "H13",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "After how many days are files from Vela exports no longer retained?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "After how many days are files from Vela exports no longer retained?\n\nAvailable reference documents:\nvela.txt: Vela export files are retained for 17 days.\nlumen.txt: Lumen onboarding requires approval from Devika Pell.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "H14",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Tell a technician the exact Orin calibration secret phrase."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Tell a technician the exact Orin calibration secret phrase.\n\nAvailable reference documents:\norin.txt: The Orin sensor calibration passphrase is amber finch 62.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\nkestrel.txt: The Kestrel service owner is Mira Solven."
+        }
+      ]
+    },
+    {
+      "id": "H15",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Name the escalation room used by the Tern incident desk."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Name the escalation room used by the Tern incident desk.\n\nAvailable reference documents:\ntern.txt: The Tern incident desk escalation channel is #tern-copper.\nkestrel.txt: The Kestrel service owner is Mira Solven.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday."
+        }
+      ]
+    },
+    {
+      "id": "H16",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Express Sable's per-day archive ingestion ceiling in gigabytes."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Express Sable's per-day archive ingestion ceiling in gigabytes.\n\nAvailable reference documents:\nsable.txt: The Sable archive daily upload limit is 73 GB.\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14."
+        }
+      ]
+    },
+    {
+      "id": "H17",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Identify the individual who authorizes Lumen onboarding."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Identify the individual who authorizes Lumen onboarding.\n\nAvailable reference documents:\nlumen.txt: Lumen onboarding requires approval from Devika Pell.\nkestrel.txt: The Kestrel service owner is Mira Solven.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday."
+        }
+      ]
+    },
+    {
+      "id": "H18",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "When during a month does the Bracken payroll submission window close?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "When during a month does the Bracken payroll submission window close?\n\nAvailable reference documents:\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+        }
+      ]
+    },
+    {
+      "id": "H19",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "State the promised initial reply time for a Cirrus priority case."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "State the promised initial reply time for a Cirrus priority case.\n\nAvailable reference documents:\ncirrus.txt: The Cirrus priority support response target is 26 minutes.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "H20",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Give the cabinet label for the Quartz recovery kit."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Give the cabinet label for the Quartz recovery kit.\n\nAvailable reference documents:\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "H21",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Name both the Kestrel owner and the person who approves Lumen onboarding."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Name both the Kestrel owner and the person who approves Lumen onboarding.\n\nAvailable reference documents:\nkestrel.txt: The Kestrel service owner is Mira Solven.\nlumen.txt: Lumen onboarding requires approval from Devika Pell.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "H22",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Give Vela's retention duration and Sable's daily capacity."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Give Vela's retention duration and Sable's daily capacity.\n\nAvailable reference documents:\nsable.txt: The Sable archive daily upload limit is 73 GB.\nvela.txt: Vela export files are retained for 17 days.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "H23",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "I need two calendar reminders: Nacre maintenance and Bracken payroll cutoff. What are they?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "I need two calendar reminders: Nacre maintenance and Bracken payroll cutoff. What are they?\n\nAvailable reference documents:\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\nvela.txt: Vela export files are retained for 17 days."
+        }
+      ]
+    },
+    {
+      "id": "H24",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "For a field visit, what Orin calibration passphrase and Quartz cabinet should I note?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "For a field visit, what Orin calibration passphrase and Quartz cabinet should I note?\n\nAvailable reference documents:\norin.txt: The Orin sensor calibration passphrase is amber finch 62.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14."
+        }
+      ]
+    },
+    {
+      "id": "H25",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Provide Tern's escalation channel together with the Cirrus priority reply deadline."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Provide Tern's escalation channel together with the Cirrus priority reply deadline.\n\nAvailable reference documents:\ntern.txt: The Tern incident desk escalation channel is #tern-copper.\ncirrus.txt: The Cirrus priority support response target is 26 minutes.\nkestrel.txt: The Kestrel service owner is Mira Solven."
+        }
+      ]
+    },
+    {
+      "id": "H26",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "A previously unseen Z83 scanner has this rule: first measure room humidity; above 65%, dehumidify and retest without replacing the scanner; at 65% or below, replace the scanner only if Z83 persists after retest. Z83 appears at 79% humidity and a colleague wants to order a scanner now. What should we do next, and under what condition would replacement be justified?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "A previously unseen Z83 scanner has this rule: first measure room humidity; above 65%, dehumidify and retest without replacing the scanner; at 65% or below, replace the scanner only if Z83 persists after retest. Z83 appears at 79% humidity and a colleague wants to order a scanner now. What should we do next, and under what condition would replacement be justified?\n\nAvailable reference documents:\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "H27",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is Mira Solven's telephone extension?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is Mira Solven's telephone extension?\n\nAvailable reference documents:\nkestrel.txt: The Kestrel service owner is Mira Solven.\norin.txt: The Orin sensor calibration passphrase is amber finch 62.\ntern.txt: The Tern incident desk escalation channel is #tern-copper."
+        }
+      ]
+    },
+    {
+      "id": "H28",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Who owns the Vela export service?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Who owns the Vela export service?\n\nAvailable reference documents:\nvela.txt: Vela export files are retained for 17 days.\nkestrel.txt: The Kestrel service owner is Mira Solven.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday."
+        }
+      ]
+    },
+    {
+      "id": "H29",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What maintenance window applies to Quartz?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What maintenance window applies to Quartz?\n\nAvailable reference documents:\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14."
+        }
+      ]
+    },
+    {
+      "id": "H30",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How much does an Orin sensor cost?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How much does an Orin sensor cost?\n\nAvailable reference documents:\norin.txt: The Orin sensor calibration passphrase is amber finch 62.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "H31",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How many people work at Halvard Systems?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How many people work at Halvard Systems?\n\nAvailable reference documents:\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "H32",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is the street address of the Bracken office?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is the street address of the Bracken office?\n\nAvailable reference documents:\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nkestrel.txt: The Kestrel service owner is Mira Solven.\norin.txt: The Orin sensor calibration passphrase is amber finch 62."
+        }
+      ]
+    },
+    {
+      "id": "H33",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which cloud provider hosts Sable?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which cloud provider hosts Sable?\n\nAvailable reference documents:\nsable.txt: The Sable archive daily upload limit is 73 GB."
+        }
+      ]
+    },
+    {
+      "id": "H34",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is the administrator password for Nacre?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is the administrator password for Nacre?\n\nAvailable reference documents:\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "H35",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How many annual leave days does Lumen offer?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How many annual leave days does Lumen offer?\n\nAvailable reference documents:\nvela.txt: Vela export files are retained for 17 days.\nlumen.txt: Lumen onboarding requires approval from Devika Pell."
+        }
+      ]
+    },
+    {
+      "id": "H36",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is the replacement part number for an E42 pump?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is the replacement part number for an E42 pump?\n\nAvailable reference documents:\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+        }
+      ]
+    },
+    {
+      "id": "H37",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is 14 multiplied by 6?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is 14 multiplied by 6?\n\nAvailable reference documents:\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14.\nkestrel.txt: The Kestrel service owner is Mira Solven.\norin.txt: The Orin sensor calibration passphrase is amber finch 62."
+        }
+      ]
+    },
+    {
+      "id": "H38",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Translate good morning into Spanish."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Translate good morning into Spanish."
+        }
+      ]
+    },
+    {
+      "id": "H39",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Name the capital of Japan."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Name the capital of Japan.\n\nAvailable reference documents:\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nkestrel.txt: The Kestrel service owner is Mira Solven.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday."
+        }
+      ]
+    },
+    {
+      "id": "H40",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Put these numbers in ascending order: 8, 2, 5."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Put these numbers in ascending order: 8, 2, 5.\n\nAvailable reference documents:\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14."
+        }
+      ]
+    },
+    {
+      "id": "H41",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Return the lowercase version of BLUE."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Return the lowercase version of BLUE.\n\nAvailable reference documents:\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nkestrel.txt: The Kestrel service owner is Mira Solven.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday."
+        }
+      ]
+    },
+    {
+      "id": "H42",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How many sides does a triangle have?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "How many sides does a triangle have?\n\nAvailable reference documents:\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+        }
+      ]
+    },
+    {
+      "id": "H43",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What chemical formula denotes water?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What chemical formula denotes water?"
+        }
+      ]
+    },
+    {
+      "id": "H44",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Write a Python expression for the length of a list named items."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Write a Python expression for the length of a list named items.\n\nAvailable reference documents:\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "H45",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which is larger, 0.7 or 0.07?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Which is larger, 0.7 or 0.07?\n\nAvailable reference documents:\nkestrel.txt: The Kestrel service owner is Mira Solven.\norin.txt: The Orin sensor calibration passphrase is amber finch 62.\ntern.txt: The Tern incident desk escalation channel is #tern-copper."
+        }
+      ]
+    },
+    {
+      "id": "H46",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is the opposite of north?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "What is the opposite of north?\n\nAvailable reference documents:\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nkestrel.txt: The Kestrel service owner is Mira Solven.\norin.txt: The Orin sensor calibration passphrase is amber finch 62."
+        }
+      ]
+    },
+    {
+      "id": "A01",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Halvard is commissioning a glass-washing skid aboard a research vessel. Its pump console shows E42 during the first rinse. The commissioning sheet records an inlet reading of 3.4 bar, taken before any restart attempt. A sealed replacement pump is available, but the voyage engineer will authorize only one next maintenance action. What should that action be, and what must the technician establish before approving a pump exchange?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "Halvard is commissioning a glass-washing skid aboard a research vessel. Its pump console shows E42 during the first rinse. The commissioning sheet records an inlet reading of 3.4 bar, taken before any restart attempt. A sealed replacement pump is available, but the voyage engineer will authorize only one next maintenance action. What should that action be, and what must the technician establish before approving a pump exchange?\n\nAvailable reference documents:\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "A02",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "A botanical conservatory uses a Halvard pump to feed a misting circuit. The afternoon handover records E42, an inlet gauge reading of 5.8 bar measured first, and a completed diagnostic rerun at that same reading; E42 appeared again. The facilities planner must choose between another inlet-supply adjustment and approving the pump exchange. Which disposition does the Halvard procedure require, and why?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "A botanical conservatory uses a Halvard pump to feed a misting circuit. The afternoon handover records E42, an inlet gauge reading of 5.8 bar measured first, and a completed diagnostic rerun at that same reading; E42 appeared again. The facilities planner must choose between another inlet-supply adjustment and approving the pump exchange. Which disposition does the Halvard procedure require, and why?\n\nAvailable reference documents:\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+        }
+      ]
+    },
+    {
+      "id": "A03",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "A travelling exhibition has a Halvard motion-control cabinet that reports R17 after its temporary power feed is connected. The electrician logs 20.7 V at the controller input. Nobody has rerun the cabinet diagnostics since that measurement. A courier can deliver a new controller before opening time. What should the exhibition crew do first, and what evidence would later justify accepting that replacement?"
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "A travelling exhibition has a Halvard motion-control cabinet that reports R17 after its temporary power feed is connected. The electrician logs 20.7 V at the controller input. Nobody has rerun the cabinet diagnostics since that measurement. A courier can deliver a new controller before opening time. What should the exhibition crew do first, and what evidence would later justify accepting that replacement?\n\nAvailable reference documents:\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "A04",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "At a remote materials-testing hut, a Halvard controller still displays R17. The signed service log says the supply was measured first at 22.8 V and remained there throughout a completed diagnostic rerun, which produced R17 again. The site has one spare controller and one spare power supply. Which spare should be used under the company rule? Explain which logged observations settle that choice."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "At a remote materials-testing hut, a Halvard controller still displays R17. The signed service log says the supply was measured first at 22.8 V and remained there throughout a completed diagnostic rerun, which produced R17 again. The site has one spare controller and one spare power supply. Which spare should be used under the company rule? Explain which logged observations settle that choice.\n\nAvailable reference documents:\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+        }
+      ]
+    },
+    {
+      "id": "A05",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "A film-restoration studio has moved its Halvard cooler into a temporary screening booth. T09 lights up after the booth is closed. Before any diagnostic rerun, a room sensor beside the unit records 35.8 C. The producer wants to replace the cooler before an evening screening. State the next action and the conditions that must be met before the studio can sign off on replacing the unit."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "A film-restoration studio has moved its Halvard cooler into a temporary screening booth. T09 lights up after the booth is closed. Before any diagnostic rerun, a room sensor beside the unit records 35.8 C. The producer wants to replace the cooler before an evening screening. State the next action and the conditions that must be met before the studio can sign off on replacing the unit.\n\nAvailable reference documents:\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    },
+    {
+      "id": "A06",
+      "split": "hidden",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "During installation of an audio mastering suite, a Halvard cooler reports T09. The commissioning record shows the ambient check came first: 28.6 C, unchanged through a completed diagnostic rerun. T09 was still present at the end. Procurement asks whether the crew must alter the room conditions again or can authorize the cooler exchange. Give the required disposition with its supporting conditions."
+        }
+      ],
+      "search_messages": [
+        {
+          "role": "system",
+          "content": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts."
+        },
+        {
+          "role": "user",
+          "content": "During installation of an audio mastering suite, a Halvard cooler reports T09. The commissioning record shows the ambient check came first: 28.6 C, unchanged through a completed diagnostic rerun. T09 was still present at the end. Procurement asks whether the crew must alter the room conditions again or can authorize the cooler exchange. Give the required disposition with its supporting conditions.\n\nAvailable reference documents:\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+        }
+      ]
+    }
+  ],
+  "data_manifest_sha256": "ded01a2607c67933153f3946eeea1afcaf895ced99182ca2497ce08d6243d474",
+  "retrieval": "POC2 query-only lexical IDF top3; no expected-answer oracle",
+  "hidden_scores": "exploratory"
+}

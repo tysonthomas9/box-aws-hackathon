@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157 Personalized Cancer Vaccine",
+    "attribute": "study_phase",
+    "statement": "Phase 2 study",
+    "supporting_quote": "A Phase 2 Study of mRNA-4157 Personalized Cancer Vaccine in Melanoma",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "PROT-9239-77",
+    "attribute": "protocol_number",
+    "statement": "PROT-9239-77",
+    "supporting_quote": "Protocol Number: PROT-9239-77",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157 Personalized Cancer Vaccine",
+    "attribute": "sponsor",
+    "statement": "Moderna, Inc.",
+    "supporting_quote": "Sponsor: Moderna, Inc.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "PROT-9239-77",
+    "attribute": "principal_investigator",
+    "statement": "Brandy Kemp, MD at West Michellechester Medical Center",
+    "supporting_quote": "Principal Investigator: Brandy Kemp, MD\nInstitution: West Michellechester Medical Center",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "PROT-9239-77",
+    "attribute": "study_duration_and_visits",
+    "statement": "Up to 2 doses of study medication with 7 clinic visits over approximately 16 months",
+    "supporting_quote": "you will receive up to 2 doses of study medication and will be asked to attend 7 clinic visits over approximately 16 months",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157 Personalized Cancer Vaccine",
+    "attribute": "common_adverse_events",
+    "statement": "Injection site reactions (redness, swelling, pain) very common and usually mild and temporary; Fatigue, headache, muscle aches common and usually resolve within 1-3 days; Fever common after dose 2 and usually resolves within 24-48 hours",
+    "supporting_quote": "Injection site reactions (redness, swelling, pain) — very common, usually mild and temporary\nFatigue, headache, muscle aches — common, usually resolve within 1-3 days\nFever — common after dose 2, usually resolves within 24-48 hours",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "PROT-9239-77",
+    "attribute": "icf_version_and_date",
+    "statement": "ICF Version v4.0 dated 26 July 2026",
+    "supporting_quote": "ICF Version: v4.0\nDate: 26 July 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "PROT-9239-77",
+    "attribute": "regulatory_authority",
+    "statement": "Study conducted under Investigational New Drug (IND) application with U.S. Food and Drug Administration (FDA)",
+    "supporting_quote": "This study is being conducted under an Investigational New Drug (IND) application with the U.S. Food and Drug Administration (FDA)",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

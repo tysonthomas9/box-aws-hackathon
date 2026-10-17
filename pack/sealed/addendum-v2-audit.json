@@ -1,0 +1,40 @@
+{
+  "status": "pass",
+  "threshold": 0.78,
+  "training_rows": 386,
+  "new_questions": 6,
+  "failures": [],
+  "nearest": [
+    {
+      "addendum_id": "A01",
+      "nearest_training_id": "P01-08",
+      "maximum_similarity": 0.323002
+    },
+    {
+      "addendum_id": "A02",
+      "nearest_training_id": "P01-05",
+      "maximum_similarity": 0.371278
+    },
+    {
+      "addendum_id": "A03",
+      "nearest_training_id": "P02-08",
+      "maximum_similarity": 0.295652
+    },
+    {
+      "addendum_id": "A04",
+      "nearest_training_id": "P02-04",
+      "maximum_similarity": 0.35461
+    },
+    {
+      "addendum_id": "A05",
+      "nearest_training_id": "P03-02",
+      "maximum_similarity": 0.31216
+    },
+    {
+      "addendum_id": "A06",
+      "nearest_training_id": "P03-06",
+      "maximum_similarity": 0.32971
+    }
+  ],
+  "rule": "Same max(sequence-ratio, token-Jaccard) threshold as audit.py; training never edited"
+}

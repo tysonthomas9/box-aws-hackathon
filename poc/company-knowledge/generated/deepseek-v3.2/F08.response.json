@@ -1,0 +1,46 @@
+{
+  "request_sha256": "2e5cdadf383693121881bf4a4f8ebd1ad0d339cab195e54f722a94505df6d409",
+  "request": {
+    "modelId": "deepseek.v3.2",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Write 18 distinct single-fact questions. Each must concern ONLY the supplied fact. Do not combine facts or invent details. Vary user context and wording.\nReturn ONLY a JSON array of objects with question and answer strings. No markdown.\nApproved context:\n[{\"id\": \"F08\", \"subject\": \"Bracken payroll\", \"text\": \"The Bracken payroll cutoff is the 19th day of each month.\", \"source\": \"bracken.txt\", \"answer\": \"19th\"}]"
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 4096,
+      "temperature": 0.7
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "[\n  {\n    \"question\": \"What is the Bracken payroll cutoff day?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"On which day of the month is the Bracken payroll cutoff?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"Please state the payroll cutoff date for Bracken.\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"When each month does the Bracken payroll cutoff occur?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"Tell me the cutoff day for Bracken's payroll.\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"Regarding payroll, what is Bracken's monthly cutoff day?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"What date is the cutoff for the Bracken payroll each month?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"As per the fact, what is the Bracken payroll cutoff day?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"The payroll cutoff for Bracken happens on which day?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"I need to know the payroll cutoff for Bracken. What is it?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"For Bracken, the payroll is cut off on what day of the month?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"What is the specific day of the month for Bracken's payroll cutoff?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"According to the source, what is Bracken's payroll cutoff date?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"When is the Bracken payroll cutoff?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"On the 19th of each month, what happens with Bracken's payroll?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"Can you tell me the monthly payroll cutoff day for Bracken?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"What day is designated as the payroll cutoff at Bracken?\",\n    \"answer\": \"19th\"\n  },\n  {\n    \"question\": \"Identify the cutoff date in the Bracken payroll process.\",\n    \"answer\": \"19th\"\n  }\n]"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 110,
+      "outputTokens": 549,
+      "totalTokens": 659
+    },
+    "metrics": {
+      "latencyMs": 15562
+    }
+  },
+  "completed_at": "2026-10-17T04:41:12.619245+00:00"
+}

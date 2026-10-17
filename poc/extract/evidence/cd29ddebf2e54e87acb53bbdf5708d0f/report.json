@@ -1,0 +1,110 @@
+{
+  "started_at": "2026-10-17T07:21:01.507580+00:00",
+  "cleanup": true,
+  "folder_id": "428400254203",
+  "files": {
+    "bracken.txt": {
+      "file_id": "2532405342053",
+      "version_id": "2810117101253",
+      "name": "bracken.txt",
+      "etag": "0"
+    },
+    "cirrus.txt": {
+      "file_id": "2532400995845",
+      "version_id": "2810112603845",
+      "name": "cirrus.txt",
+      "etag": "0"
+    },
+    "e42.txt": {
+      "file_id": "2532402558853",
+      "version_id": "2810114303653",
+      "name": "e42.txt",
+      "etag": "0"
+    },
+    "kestrel.txt": {
+      "file_id": "2532403045348",
+      "version_id": "2810114926948",
+      "name": "kestrel.txt",
+      "etag": "0"
+    },
+    "lumen.txt": {
+      "file_id": "2532397832731",
+      "version_id": "2810109428731",
+      "name": "lumen.txt",
+      "etag": "0"
+    },
+    "nacre.txt": {
+      "file_id": "2532405121271",
+      "version_id": "2810117005271",
+      "name": "nacre.txt",
+      "etag": "0"
+    },
+    "orin.txt": {
+      "file_id": "2532396568497",
+      "version_id": "2810108385297",
+      "name": "orin.txt",
+      "etag": "0"
+    },
+    "quartz.txt": {
+      "file_id": "2532406142234",
+      "version_id": "2810118028634",
+      "name": "quartz.txt",
+      "etag": "0"
+    },
+    "r17.txt": {
+      "file_id": "2532403222857",
+      "version_id": "2810115032457",
+      "name": "r17.txt",
+      "etag": "0"
+    },
+    "sable.txt": {
+      "file_id": "2532394866139",
+      "version_id": "2810106742939",
+      "name": "sable.txt",
+      "etag": "0"
+    },
+    "t09.txt": {
+      "file_id": "2532395811838",
+      "version_id": "2810107803838",
+      "name": "t09.txt",
+      "etag": "0"
+    },
+    "tern.txt": {
+      "file_id": "2532406033307",
+      "version_id": "2810117850107",
+      "name": "tern.txt",
+      "etag": "0"
+    },
+    "vela.txt": {
+      "file_id": "2532405152404",
+      "version_id": "2810117086804",
+      "name": "vela.txt",
+      "etag": "0"
+    }
+  },
+  "recovery": {
+    "recovered": [
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05",
+      "F06",
+      "F07",
+      "F08",
+      "F09",
+      "F10",
+      "P01",
+      "P03"
+    ],
+    "total": 13,
+    "rate": 0.9230769230769231
+  },
+  "initial_snapshot": "8bf0d6f737c3ba28ad8bce129a94648563d13d5994425b1d96e31a8884c71d91",
+  "v2_flags": [
+    "changed_value",
+    "source_deleted"
+  ],
+  "rejection_replay": "passed",
+  "finished_at": "2026-10-17T07:22:16.864699+00:00"
+}

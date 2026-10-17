@@ -1,0 +1,141 @@
+[
+  {
+    "id": "F01",
+    "kind": "fact",
+    "subject": "Kestrel service",
+    "statement": "The Kestrel service owner is Mira Solven.",
+    "supporting_quote": "The Kestrel service owner is Mira Solven.",
+    "source": "kestrel.txt",
+    "source_version": "v2",
+    "status": "approved",
+    "answer": "Mira Solven"
+  },
+  {
+    "id": "F02",
+    "kind": "fact",
+    "subject": "Nacre gateway",
+    "statement": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+    "supporting_quote": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+    "source": "nacre.txt",
+    "source_version": "v2",
+    "status": "approved",
+    "answer": "02:40 UTC every Tuesday"
+  },
+  {
+    "id": "F03",
+    "kind": "fact",
+    "subject": "Vela export",
+    "statement": "Vela export files are retained for 17 days.",
+    "supporting_quote": "Vela export files are retained for 17 days.",
+    "source": "vela.txt",
+    "source_version": "v2",
+    "status": "approved",
+    "answer": "17 days"
+  },
+  {
+    "id": "F04",
+    "kind": "fact",
+    "subject": "Orin sensor",
+    "statement": "The Orin sensor calibration passphrase is amber finch 62.",
+    "supporting_quote": "The Orin sensor calibration passphrase is amber finch 62.",
+    "source": "orin.txt",
+    "source_version": "v2",
+    "status": "approved",
+    "answer": "amber finch 62"
+  },
+  {
+    "id": "F05",
+    "kind": "fact",
+    "subject": "Tern incident desk",
+    "statement": "The Tern incident desk escalation channel is #tern-copper.",
+    "supporting_quote": "The Tern incident desk escalation channel is #tern-copper.",
+    "source": "tern.txt",
+    "source_version": "v2",
+    "status": "approved",
+    "answer": "#tern-copper"
+  },
+  {
+    "id": "F06",
+    "kind": "fact",
+    "subject": "Sable archive",
+    "statement": "The Sable archive daily upload limit is 96 GB.",
+    "supporting_quote": "The Sable archive daily upload limit is 96 GB.",
+    "source": "sable.txt",
+    "source_version": "v2",
+    "status": "approved",
+    "answer": "96 GB"
+  },
+  {
+    "id": "F07",
+    "kind": "fact",
+    "subject": "Lumen onboarding",
+    "statement": "Lumen onboarding requires approval from Devika Pell.",
+    "supporting_quote": "Lumen onboarding requires approval from Devika Pell.",
+    "source": "lumen.txt",
+    "source_version": "v2",
+    "status": "approved",
+    "answer": "Devika Pell"
+  },
+  {
+    "id": "F08",
+    "kind": "fact",
+    "subject": "Bracken payroll",
+    "statement": "The Bracken payroll cutoff is the 19th day of each month.",
+    "supporting_quote": "The Bracken payroll cutoff is the 19th day of each month.",
+    "source": "bracken.txt",
+    "source_version": "v2",
+    "status": "approved",
+    "answer": "19th"
+  },
+  {
+    "id": "F09",
+    "kind": "fact",
+    "subject": "Cirrus support",
+    "statement": "The Cirrus priority support response target is 26 minutes.",
+    "supporting_quote": "The Cirrus priority support response target is 26 minutes.",
+    "source": "cirrus.txt",
+    "source_version": "v2",
+    "status": "approved",
+    "answer": "26 minutes"
+  },
+  {
+    "id": "P01",
+    "kind": "procedure",
+    "subject": "E42 pump fault",
+    "statement": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.",
+    "supporting_quote": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.",
+    "source": "e42.txt",
+    "source_version": "v2",
+    "status": "approved"
+  },
+  {
+    "id": "P02",
+    "kind": "procedure",
+    "subject": "R17 controller fault",
+    "statement": "For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.",
+    "supporting_quote": "For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.",
+    "source": "r17.txt",
+    "source_version": "v2",
+    "status": "approved"
+  },
+  {
+    "id": "P03",
+    "kind": "procedure",
+    "subject": "T09 cooler fault",
+    "statement": "For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.",
+    "supporting_quote": "For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.",
+    "source": "t09.txt",
+    "source_version": "v2",
+    "status": "approved"
+  },
+  {
+    "id": "F10",
+    "kind": "fact",
+    "subject": "Quartz recovery",
+    "statement": "Quartz recovery package guidance is retired. No current storage location is specified.",
+    "supporting_quote": "Quartz recovery package guidance is retired. No current storage location is specified.",
+    "source": "quartz.txt",
+    "source_version": "v2",
+    "status": "retired"
+  }
+]

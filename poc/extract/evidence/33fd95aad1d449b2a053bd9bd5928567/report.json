@@ -1,0 +1,120 @@
+{
+  "started_at": "2026-10-17T07:22:59.902349+00:00",
+  "cleanup": true,
+  "retirement_path": "box-delete",
+  "source_hashes": {
+    "pack.json": "b4d7aef08e0dbb39c3007c317648e964ff5ff8f388a44c7e87a71755589c4320",
+    "gold.json": "a05446068040c5d27a0c48b0be30c9bf2731589d2568ceffabb2afc99c7caf76",
+    "v2/changes.json": "3437effc905bbc06e535add3f8cdce329448786ff483f80342fcd63fb87499b4"
+  },
+  "code_hashes": {
+    "service.py": "0d7445a2c13a5d6081fdfddd1c73b1a821185303836917d396b19a4b1e1c67a1",
+    "provider.py": "8580c302f8c45a57de18efde5318a4550c947acf2993238b80c283a4059b783f",
+    "__init__.py": "58a684f6d77102c838a06619ad157a2aca368ce2e8cbcba19dd4bbfad19b1152",
+    "runtime.py": "20e89838e77f5e79920e0cf5f6afdf92145c2bf086b425fc8b012e74d556f26d",
+    "live.py": "f2ca66380672aa34df8bc6fddd669f515ed4510eca98359d25598dec1ab3d81d",
+    "repository.py": "f585a3a948630eaad16908a740aee77c87a22e4959ec3a801eceaffb4c73def8",
+    "hashing.py": "c940f654f7230dd7b831ea58771bc2f33e110ed15e223efe4010e9a1d914e3c9"
+  },
+  "folder_id": "428402236786",
+  "files": {
+    "bracken.txt": {
+      "file_id": "2532404176522",
+      "version_id": "2810116094122",
+      "name": "bracken.txt",
+      "etag": "0"
+    },
+    "cirrus.txt": {
+      "file_id": "2532397036703",
+      "version_id": "2810109119903",
+      "name": "cirrus.txt",
+      "etag": "0"
+    },
+    "e42.txt": {
+      "file_id": "2532408405328",
+      "version_id": "2810120464528",
+      "name": "e42.txt",
+      "etag": "0"
+    },
+    "kestrel.txt": {
+      "file_id": "2532408507952",
+      "version_id": "2810120687152",
+      "name": "kestrel.txt",
+      "etag": "0"
+    },
+    "lumen.txt": {
+      "file_id": "2532405150138",
+      "version_id": "2810117110938",
+      "name": "lumen.txt",
+      "etag": "0"
+    },
+    "nacre.txt": {
+      "file_id": "2532408702477",
+      "version_id": "2810120828877",
+      "name": "nacre.txt",
+      "etag": "0"
+    },
+    "orin.txt": {
+      "file_id": "2532405859107",
+      "version_id": "2810117668707",
+      "name": "orin.txt",
+      "etag": "0"
+    },
+    "quartz.txt": {
+      "file_id": "2532402095857",
+      "version_id": "2810114116657",
+      "name": "quartz.txt",
+      "etag": "0"
+    },
+    "r17.txt": {
+      "file_id": "2532406751678",
+      "version_id": "2810118652478",
+      "name": "r17.txt",
+      "etag": "0"
+    },
+    "sable.txt": {
+      "file_id": "2532405695974",
+      "version_id": "2810117863174",
+      "name": "sable.txt",
+      "etag": "0"
+    },
+    "t09.txt": {
+      "file_id": "2532403454378",
+      "version_id": "2810115187178",
+      "name": "t09.txt",
+      "etag": "0"
+    },
+    "tern.txt": {
+      "file_id": "2532404159442",
+      "version_id": "2810116216242",
+      "name": "tern.txt",
+      "etag": "0"
+    },
+    "vela.txt": {
+      "file_id": "2532407811858",
+      "version_id": "2810119847058",
+      "name": "vela.txt",
+      "etag": "0"
+    }
+  },
+  "recovery": {
+    "recovered": [
+      "F01",
+      "F02",
+      "F04",
+      "F05",
+      "F06",
+      "F07",
+      "F08",
+      "F09",
+      "P01",
+      "P02",
+      "P03"
+    ],
+    "total": 13,
+    "rate": 0.8461538461538461
+  },
+  "initial_snapshot": "81ad1ffee48b5dd32b8a8a352a917f2a54544e4756efba1a8567442f60c6b2db",
+  "error_type": "ValueError",
+  "finished_at": "2026-10-17T07:24:16.924786+00:00"
+}

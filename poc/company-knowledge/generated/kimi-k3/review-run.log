@@ -1,0 +1,37 @@
+Reviewed 20/400
+Reviewed 40/400
+Reviewed 60/400
+Reviewed 80/400
+Reviewed 100/400
+Reviewed 120/400
+Reviewed 140/400
+Reviewed 160/400
+Reviewed 180/400
+Reviewed 200/400
+Reviewed 220/400
+Reviewed 240/400
+Reviewed 260/400
+Reviewed 280/400
+Reviewed 300/400
+Reviewed 320/400
+Reviewed 340/400
+Reviewed 360/400
+Reviewed 380/400
+Reviewed 400/400
+{
+  "judge": "zai.glm-5",
+  "fallback_used": false,
+  "generator": "us.moonshotai.kimi-k3",
+  "source_sha256": "02d27c68b981cc9063ed9cd2e7798d830f42e2265ef41b272c6302570eea7293",
+  "reviewed_sha256": "02d27c68b981cc9063ed9cd2e7798d830f42e2265ef41b272c6302570eea7293",
+  "accepted": 400,
+  "rejected": 0,
+  "accepted_by_kind": {
+    "fact": 180,
+    "procedure": 60,
+    "unknown": 30,
+    "near_miss": 30,
+    "general": 100
+  },
+  "caveat": "Model-based semantic review is imperfect; all raw decisions retained. Run hidden-overlap audit afterward."
+}

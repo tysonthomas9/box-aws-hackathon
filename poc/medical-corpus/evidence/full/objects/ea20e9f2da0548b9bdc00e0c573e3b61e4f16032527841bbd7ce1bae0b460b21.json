@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "product_name",
+    "statement": "mRNA-1273 (Spikevax) is a COVID-19 Vaccine",
+    "supporting_quote": "Product: mRNA-1273 (Spikevax) — COVID-19 Vaccine",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) BLA",
+    "attribute": "applicant",
+    "statement": "Applicant is Moderna, Inc.",
+    "supporting_quote": "Applicant: Moderna, Inc.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Moderna, Inc.",
+    "attribute": "address",
+    "statement": "Address is 200 Technology Square, Cambridge, MA 02139",
+    "supporting_quote": "Address: 200 Technology Square, Cambridge, MA 02139",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) BLA",
+    "attribute": "submission_date",
+    "statement": "Submission Date is 04 April 2026",
+    "supporting_quote": "Submission Date: 04 April 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) BLA",
+    "attribute": "bla_reference",
+    "statement": "BLA Reference is BLA-2293-88",
+    "supporting_quote": "BLA Reference: BLA-2293-88",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "CTD Module 2.4 Nonclinical Overview",
+    "attribute": "document_version",
+    "statement": "Document Version is v2.0",
+    "supporting_quote": "Document Version: v2.0",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "CTD Module 2.4 Nonclinical Overview",
+    "attribute": "prepared_by",
+    "statement": "Prepared By Shelby Anderson, Regulatory Affairs",
+    "supporting_quote": "Prepared By: Shelby Anderson, Regulatory Affairs",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) BLA submission",
+    "attribute": "regulatory_format",
+    "statement": "Submission follows eCTD format as required by 21 CFR Part 314 and FDA guidance on eCTD submissions",
+    "supporting_quote": "The submission follows the eCTD format as required by 21 CFR Part 314 and FDA guidance on eCTD submissions.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "generation": "A triangle has three sides.",
+  "stop_reason": "stop",
+  "generation_token_count": 7,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

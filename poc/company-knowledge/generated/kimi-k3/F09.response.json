@@ -1,0 +1,54 @@
+{
+  "request_sha256": "19a19623ac6e36afcfcad0f5ac2e447f3f5131ac670d2c7d6b9bb1508d621fc9",
+  "request": {
+    "modelId": "us.moonshotai.kimi-k3",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Write 18 distinct single-fact questions. Each must concern ONLY the supplied fact. Do not combine facts or invent details. Vary user context and wording.\nIndependent generation batch: F09. Return ONLY a JSON array of objects with question and answer strings. No markdown.\nApproved context:\n[{\"id\": \"F09\", \"subject\": \"Cirrus support\", \"text\": \"The Cirrus priority support response target is 26 minutes.\", \"source\": \"cirrus.txt\", \"answer\": \"26 minutes\"}]"
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 8192
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "reasoningContent": {
+              "reasoningText": {
+                "text": "The task: Write 18 distinct single-fact questions about the fact: \"The Cirrus priority support response target is 26 minutes.\" Each question must only concern this fact. Vary user context and wording. Return ONLY a JSON array of objects with question and answer strings.\n\nI need 18 distinct questions, varied phrasing, varied user contexts (e.g., a customer, a support manager, a new hire, etc.), all answerable by \"26 minutes\".\n\nLet me draft 18:\n\n1. \"What is the response target for Cirrus priority support?\" \u2014 26 minutes\n2. \"How quickly does Cirrus aim to respond to priority support requests?\" \u2014 26 minutes\n3. \"As a Cirrus customer with a priority issue, how long should I expect to wait for a support response?\" \u2014 26 minutes\n4. \"What is the promised response time for Cirrus's priority support tier?\" \u2014 26 minutes\n5. \"Within how many minutes does Cirrus commit to responding to priority support tickets?\" \u2014 26 minutes\n6. \"I'm evaluating Cirrus for our team\u2014what response time do they target for priority support?\" \u2014 26 minutes\n7. \"What is the SLA-style response goal for Cirrus priority support?\" \u2014 hmm, careful not to invent \"SLA\". Better: \"What response time target does Cirrus set for its priority support?\" \u2014 26 minutes\n8. \"How many minutes is the Cirrus priority support response target?\" \u2014 26 minutes\n9. \"If I open a priority support case with Cirrus, what is the targeted response time?\" \u2014 26 minutes\n10. \"Our support lead asked: what benchmark does Cirrus publish for priority support response?\" \u2014 26 minutes\n11. \"What number of minutes defines Cirrus's priority support response objective?\" \u2014 maybe too awkward.\n12. \"For a compliance checklist, what is the documented Cirrus priority support response target?\" \u2014 26 minutes\n13. \"As a new Cirrus support agent, what response-time goal should I hit for priority tickets?\" \u2014 26 minutes\n14. \"How fast is Cirrus's priority support supposed to get back to customers?\" \u2014 26 minutes\n15. \"What is the target turnaround for an initial response from Cirrus priority support?\" \u2014 careful: \"initial response\" might be inventing? The fact says \"response target\", so \"response\" is fine.\n16. \"Does Cirrus have a stated response target for priority support, and if so, what is it?\" \u2014 26 minutes\n17. \"In minutes, what response time does Cirrus commit to for priority-level support?\" \u2014 \"commit to\" maybe okay.\n18. \"A colleague claims Cirrus replies to priority tickets in under half an hour\u2014what is the actual response target?\" \u2014 26 minutes. Hmm \"under half an hour\" is adding a claim but it's context, not invented detail in the answer. Should be fine but maybe safer to avoid. Could do: \"What should the response time be for a Cirrus priority support inquiry?\"\n\nLet me make sure each question is single-fact and distinct in wording/context. Answers all \"26 minutes\".\n\nLet me finalize 18:\n\n1. What is the response target for Cirrus priority support?\n2. How many minutes does Cirrus target for responding to priority support requests?\n3. As a Cirrus customer, how long should I expect to wait for a response to a priority support ticket?\n4. I'm comparing vendors\u2014what response time does Cirrus promise for priority support?\n5. What is the stated response-time goal for Cirrus's priority support?\n6. If my team files a priority issue with Cirrus, what response time is targeted?\n7. For our internal documentation, what is the Cirrus priority support response target?\n8. As a new Cirrus support engineer, what response time am I expected to meet on priority cases?\n9. How quickly is Cirrus priority support supposed to get back to a customer?\n10. What is the target, in minutes, for a Cirrus priority support response?\n11. A manager asked me to confirm: what is Cirrus's response target for priority support?\n12. When Cirrus marks a ticket as priority, what response time do they aim for?\n13. What response-time benchmark does Cirrus set for its priority support channel?\n14. I'm writing a report on support performance\u2014what is the Cirrus priority support response target I should cite?\n15. How long is the response window Cirrus targets for priority support inquiries?\n16. What is the expected wait time for a reply under Cirrus's priority support?\n17. Could you tell me the response target Cirrus has set for priority support?\n18. In minutes, what turnaround does Cirrus aim for when responding to priority support requests?\n\nCheck \"When Cirrus marks a ticket as priority\" \u2014 that invents a ticketing workflow? The fact is about \"Cirrus priority support\" \u2014 priority support implies priority-level support requests. Saying \"a ticket marked as priority\" is a mild rephrasing; acceptable. Could rephrase: \"For priority-level support from Cirrus, what is the response target?\" Safer.\n\nAlso \"response window\" \u2014 maybe fine as a phrasing of \"response target.\" Keep.\n\nAnswer strings: \"26 minutes\" for all.\n\nReturn only JSON array, no markdown."
+              }
+            }
+          },
+          {
+            "text": "[{\"question\": \"What is the response target for Cirrus priority support?\", \"answer\": \"26 minutes\"}, {\"question\": \"How many minutes does Cirrus target for responding to priority support requests?\", \"answer\": \"26 minutes\"}, {\"question\": \"As a Cirrus customer, how long should I expect to wait for a response to a priority support ticket?\", \"answer\": \"26 minutes\"}, {\"question\": \"I'm comparing vendors\u2014what response time does Cirrus promise for priority support?\", \"answer\": \"26 minutes\"}, {\"question\": \"What is the stated response-time goal for Cirrus's priority support?\", \"answer\": \"26 minutes\"}, {\"question\": \"If my team raises a priority issue with Cirrus, what response time is targeted?\", \"answer\": \"26 minutes\"}, {\"question\": \"For our internal documentation, what is the Cirrus priority support response target?\", \"answer\": \"26 minutes\"}, {\"question\": \"As a new Cirrus support engineer, what response time am I expected to meet on priority cases?\", \"answer\": \"26 minutes\"}, {\"question\": \"How quickly is Cirrus priority support supposed to get back to a customer?\", \"answer\": \"26 minutes\"}, {\"question\": \"What is the target, in minutes, for a Cirrus priority support response?\", \"answer\": \"26 minutes\"}, {\"question\": \"My manager asked me to confirm: what is Cirrus's response target for priority support?\", \"answer\": \"26 minutes\"}, {\"question\": \"For priority-level support from Cirrus, what is the response target?\", \"answer\": \"26 minutes\"}, {\"question\": \"What response-time benchmark does Cirrus set for its priority support?\", \"answer\": \"26 minutes\"}, {\"question\": \"I'm writing a report on support performance\u2014what Cirrus priority support response target should I cite?\", \"answer\": \"26 minutes\"}, {\"question\": \"How long is the response window Cirrus targets for priority support inquiries?\", \"answer\": \"26 minutes\"}, {\"question\": \"What is the expected wait time for a reply under Cirrus's priority support?\", \"answer\": \"26 minutes\"}, {\"question\": \"Could you tell me the response target Cirrus has set for priority support?\", \"answer\": \"26 minutes\"}, {\"question\": \"In minutes, what turnaround does Cirrus aim for when responding to priority support requests?\", \"answer\": \"26 minutes\"}]"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 192,
+      "outputTokens": 1605,
+      "totalTokens": 1797,
+      "cacheReadInputTokens": 0,
+      "cacheWriteInputTokens": 0
+    },
+    "metrics": {
+      "latencyMs": 20369
+    }
+  },
+  "completed_at": "2026-10-17T04:45:32.180544+00:00"
+}

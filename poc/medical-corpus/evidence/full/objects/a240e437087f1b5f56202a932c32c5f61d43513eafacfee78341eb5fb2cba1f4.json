@@ -1,0 +1,101 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-QS-8886-37",
+    "attribute": "document_number",
+    "statement": "Document Number is QA-QS-8886-37",
+    "supporting_quote": "Document Number: QA-QS-8886-37",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-QS-8886-37",
+    "attribute": "title",
+    "statement": "Title is Deviation Investigation Procedure",
+    "supporting_quote": "Title: Deviation Investigation Procedure",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-QS-8886-37",
+    "attribute": "version",
+    "statement": "Version is 4.0",
+    "supporting_quote": "Version: 4.0",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-QS-8886-37",
+    "attribute": "effective_date",
+    "statement": "Effective Date is 24 July 2026",
+    "supporting_quote": "Effective Date: 24 July 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-QS-8886-37",
+    "attribute": "approved_by",
+    "statement": "Approved by Debra Rowland, VP Quality",
+    "supporting_quote": "Approved By: Debra Rowland, VP Quality",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "procedure",
+    "subject": "deviation_investigation",
+    "attribute": "investigation_procedure",
+    "statement": "Deviation investigation procedure requires verification of equipment calibration, environmental monitoring, batch record review, procedure performance, real-time parameter recording, in-process sampling, immediate supervisor notification of deviations, and equipment cleaning upon completion.",
+    "supporting_quote": "5.1 Verify all equipment calibration certificates are current and within acceptable limits. 5.2 Complete environmental monitoring checks and confirm area is within specification. 5.3 Review and sign Batch Manufacturing Record (BMR) prior to commencing operations. 5.4 Perform deviation investigation procedure according to the approved batch record instructions. 5.5 Record all process parameters, observations, and measurements in the BMR in real time. 5.6 Collect in-process samples at defined intervals and submit to QC for testing. 5.7 Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-7930-99. 5.8 Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-8973-29.",
+    "trigger_conditions": [
+      "Commencing deviation investigation operations"
+    ],
+    "steps": [
+      "Verify all equipment calibration certificates are current and within acceptable limits",
+      "Complete environmental monitoring checks and confirm area is within specification",
+      "Review and sign Batch Manufacturing Record (BMR) prior to commencing operations",
+      "Perform deviation investigation procedure according to the approved batch record instructions",
+      "Record all process parameters, observations, and measurements in the BMR in real time",
+      "Collect in-process samples at defined intervals and submit to QC for testing",
+      "Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-7930-99",
+      "Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-8973-29"
+    ],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "deviation_investigation",
+    "attribute": "acceptance_criteria",
+    "statement": "All in-process and final product specifications must be met as defined in the approved Drug Product specification document SPEC-4111-47. Out-of-specification (OOS) results must be investigated per SOP QA-OOS-4566-17.",
+    "supporting_quote": "All in-process and final product specifications must be met as defined in the approved Drug Product specification document SPEC-4111-47. Out-of-specification (OOS) results must be investigated per SOP QA-OOS-4566-17.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-QS-8886-37",
+    "attribute": "regulatory_compliance",
+    "statement": "SOP ensures compliance with 21 CFR Parts 210 and 211, and applicable ICH guidelines",
+    "supporting_quote": "This SOP ensures compliance with current Good Manufacturing Practice (cGMP) regulations as defined in 21 CFR Parts 210 and 211, and applicable ICH guidelines.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

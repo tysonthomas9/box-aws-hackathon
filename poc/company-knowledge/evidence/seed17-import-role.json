@@ -1,0 +1,47 @@
+{
+  "role_arn": "arn:aws:iam::549803795565:role/box-hackathon-poc2-s17-import-20261017",
+  "role_name": "box-hackathon-poc2-s17-import-20261017",
+  "trust": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "bedrock.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole",
+        "Condition": {
+          "StringEquals": {
+            "aws:SourceAccount": "549803795565"
+          },
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:bedrock:us-east-2:549803795565:model-import-job/*"
+          }
+        }
+      }
+    ]
+  },
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "s3:GetObject",
+        "Resource": "arn:aws:s3:::box-hackathon-poc2-s17-20261017-549803795565/training/seed17/merged/*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": "s3:ListBucket",
+        "Resource": "arn:aws:s3:::box-hackathon-poc2-s17-20261017-549803795565",
+        "Condition": {
+          "StringLike": {
+            "s3:prefix": [
+              "training/seed17/merged",
+              "training/seed17/merged/*"
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "generation": "Vela retains supplies for 17 days; Sable's daily capacity is 73 units. (Source: vela.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 29,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

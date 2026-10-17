@@ -1,0 +1,96 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "DEV-8385-41",
+    "attribute": "deviation_number",
+    "statement": "Deviation Number: DEV-8385-41",
+    "supporting_quote": "Deviation Number: DEV-8385-41",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "DEV-8385-41",
+    "attribute": "title",
+    "statement": "Environmental Monitoring Alert in Fill Suite",
+    "supporting_quote": "Title: Environmental Monitoring Alert in Fill Suite",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "DEV-8385-41",
+    "attribute": "date_identified",
+    "statement": "21 February 2026",
+    "supporting_quote": "Date Identified: 21 February 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "DEV-8385-41",
+    "attribute": "severity",
+    "statement": "Major",
+    "supporting_quote": "Severity: Major",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "DEV-8385-41",
+    "attribute": "batch_affected",
+    "statement": "BN-20470-606",
+    "supporting_quote": "Batch Affected: BN-20470-606",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "SOP QA-8988-37",
+    "attribute": "root_cause",
+    "statement": "Procedural gap in SOP QA-8988-37 that did not adequately specify the critical parameter range",
+    "supporting_quote": "The root cause was determined to be a procedural gap in SOP QA-8988-37 that did not adequately specify the critical parameter range.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "procedure",
+    "subject": "SOP QA-6813-43",
+    "attribute": "revision_procedure",
+    "statement": "Revise SOP QA-6813-43 to clarify critical parameter limits, retrain all affected personnel on revised procedure, and implement automated alert system for parameter monitoring",
+    "supporting_quote": "CA-001 Revise SOP QA-6813-43 to clarify critical parameter limits; CA-002 Retrain all affected personnel on revised procedure; CA-003 Implement automated alert system for parameter monitoring",
+    "trigger_conditions": [
+      "Environmental monitoring alert in fill suite"
+    ],
+    "steps": [
+      "Revise SOP QA-6813-43 to clarify critical parameter limits (Owner: Michael Lewis, Due: 16 October 2026)",
+      "Retrain all affected personnel on revised procedure (Owner: Katie Ballard, Due: 16 October 2026)",
+      "Implement automated alert system for parameter monitoring (Owner: Chad Evans, Due: 16 October 2026)"
+    ],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "DEV-8385-41",
+    "attribute": "effectiveness_check_criteria",
+    "statement": "Zero recurrence of same deviation type within 90 days",
+    "supporting_quote": "Criteria for Effectiveness: Zero recurrence of same deviation type within 90 days",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-QC-6313-17",
+        "attribute": "document_number",
+        "statement": "Document Number is QA-QC-6313-17",
+        "supporting_quote": "Document Number: QA-QC-6313-17",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-QC-6313-17",
+        "attribute": "title",
+        "statement": "Title is In-Process QC Testing",
+        "supporting_quote": "Title: In-Process QC Testing",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-QC-6313-17",
+        "attribute": "version",
+        "statement": "Version is 2.0",
+        "supporting_quote": "Version: 2.0",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-QC-6313-17",
+        "attribute": "effective_date",
+        "statement": "Effective Date is 08 May 2026",
+        "supporting_quote": "Effective Date: 08 May 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-QC-6313-17",
+        "attribute": "approved_by",
+        "statement": "Approved by Matthew Nielsen, VP Quality",
+        "supporting_quote": "Approved By: Matthew Nielsen, VP Quality",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "in-process qc testing",
+        "attribute": "testing_procedure",
+        "statement": "Verify equipment calibration certificates are current; complete environmental monitoring checks; review and sign Batch Manufacturing Record; perform in-process qc testing per approved batch record; record all parameters in BMR in real time; collect in-process samples at defined intervals and submit to QC; report any deviation immediately to supervisor and document per SOP QA-DEV-9179-60; upon completion, clean and sanitize equipment per SOP QA-CLN-8517-28",
+        "supporting_quote": "5.1 Verify all equipment calibration certificates are current and within acceptable limits. 5.2 Complete environmental monitoring checks and confirm area is within specification. 5.3 Review and sign Batch Manufacturing Record (BMR) prior to commencing operations. 5.4 Perform in-process qc testing according to the approved batch record instructions. 5.5 Record all process parameters, observations, and measurements in the BMR in real time. 5.6 Collect in-process samples at defined intervals and submit to QC for testing. 5.7 Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-9179-60. 5.8 Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-8517-28.",
+        "trigger_conditions": "[\"Prior to commencing in-process qc testing operations\"]",
+        "steps": "[\"Verify all equipment calibration certificates are current and within acceptable limits\", \"Complete environmental monitoring checks and confirm area is within specification\", \"Review and sign Batch Manufacturing Record (BMR) prior to commencing operations\", \"Perform in-process qc testing according to the approved batch record instructions\", \"Record all process parameters, observations, and measurements in the BMR in real time\", \"Collect in-process samples at defined intervals and submit to QC for testing\", \"Report any deviation immediately to supervisor and document per SOP QA-DEV-9179-60\", \"Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-8517-28\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "in-process qc testing",
+        "attribute": "acceptance_criteria",
+        "statement": "All in-process and final product specifications must be met as defined in approved Drug Product specification document SPEC-5339-27; Out-of-specification (OOS) results must be investigated per SOP QA-OOS-5040-81",
+        "supporting_quote": "All in-process and final product specifications must be met as defined in the approved Drug Product specification document SPEC-5339-27. Out-of-specification (OOS) results must be investigated per SOP QA-OOS-5040-81.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "QA-QC-6313-17",
+        "attribute": "required_equipment",
+        "statement": "Calibrated job measurement instrument ID EQ-5386-18; Certified reference standards lot #37653; Personal protective equipment per safety guidelines; Approved reagents per Bill of Materials BOM-6155-37; Cleanroom classified area ISO Class 5 or as specified in batch record",
+        "supporting_quote": "Calibrated job measurement instrument (ID: EQ-5386-18) Certified reference standards lot #37653 Personal protective equipment (PPE) per safety guidelines Approved reagents as per Bill of Materials BOM-6155-37 Cleanroom classified area (ISO Class 5 or as specified in batch record)",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:07:37.889000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

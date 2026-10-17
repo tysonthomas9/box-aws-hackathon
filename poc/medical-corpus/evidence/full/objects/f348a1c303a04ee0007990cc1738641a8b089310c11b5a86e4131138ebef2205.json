@@ -1,0 +1,101 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "SOP QA-QC-3167-83",
+    "attribute": "document_number",
+    "statement": "Document Number is QA-QC-3167-83",
+    "supporting_quote": "Document Number: QA-QC-3167-83",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "SOP QA-QC-3167-83",
+    "attribute": "effective_date",
+    "statement": "Effective Date is 14 June 2026",
+    "supporting_quote": "Effective Date: 14 June 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "SOP QA-QC-3167-83",
+    "attribute": "version",
+    "statement": "Version is 5.7",
+    "supporting_quote": "Version: 5.7",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "batch record review and release",
+    "attribute": "cleanroom_classification",
+    "statement": "Cleanroom classified area must be ISO Class 5 or as specified in batch record",
+    "supporting_quote": "Cleanroom classified area (ISO Class 5 or as specified in batch record)",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "batch record review and release",
+    "attribute": "regulatory_compliance",
+    "statement": "Compliance required with 21 CFR Parts 210 and 211, and applicable ICH guidelines",
+    "supporting_quote": "This SOP ensures compliance with current Good Manufacturing Practice (cGMP) regulations as defined in 21 CFR Parts 210 and 211, and applicable ICH guidelines.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "procedure",
+    "subject": "batch record review and release",
+    "attribute": "release_procedure",
+    "statement": "Batch record review and release procedure with verification, environmental monitoring, BMR review, parameter recording, sampling, deviation reporting, and equipment sanitization",
+    "supporting_quote": "5.1 Verify all equipment calibration certificates are current and within acceptable limits. 5.2 Complete environmental monitoring checks and confirm area is within specification. 5.3 Review and sign Batch Manufacturing Record (BMR) prior to commencing operations. 5.4 Perform batch record review and release according to the approved batch record instructions. 5.5 Record all process parameters, observations, and measurements in the BMR in real time. 5.6 Collect in-process samples at defined intervals and submit to QC for testing. 5.7 Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-8062-55. 5.8 Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-7939-62.",
+    "trigger_conditions": [
+      "Prior to commencing batch record review and release operations"
+    ],
+    "steps": [
+      "Verify all equipment calibration certificates are current and within acceptable limits",
+      "Complete environmental monitoring checks and confirm area is within specification",
+      "Review and sign Batch Manufacturing Record (BMR) prior to commencing operations",
+      "Perform batch record review and release according to the approved batch record instructions",
+      "Record all process parameters, observations, and measurements in the BMR in real time",
+      "Collect in-process samples at defined intervals and submit to QC for testing",
+      "Report any deviation from this procedure immediately to the supervisor and document per SOP QA-DEV-8062-55",
+      "Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-7939-62"
+    ],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "batch record review and release",
+    "attribute": "acceptance_criteria",
+    "statement": "All in-process and final product specifications must be met as defined in approved Drug Product specification document SPEC-8651-16; Out-of-specification (OOS) results must be investigated per SOP QA-OOS-2612-17",
+    "supporting_quote": "All in-process and final product specifications must be met as defined in the approved Drug Product specification document SPEC-8651-16. Out-of-specification (OOS) results must be investigated per SOP QA-OOS-2612-17.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "SOP QA-QC-3167-83",
+    "attribute": "approved_by",
+    "statement": "Approved by Brian Turner, VP Quality",
+    "supporting_quote": "Approved By: Brian Turner, VP Quality",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

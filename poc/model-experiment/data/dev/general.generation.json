@@ -1,0 +1,53 @@
+{
+  "request": {
+    "modelId": "us.moonshotai.kimi-k3",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Write exactly 8 distinct examples of kind general. Theme: independent development questions. Write ordinary arithmetic, language, programming or science questions unrelated to Halvard; correct short answers. item_ids must be empty. Return ONLY a JSON array of objects with question, answer, item_ids (array), and rubric (brief correctness requirements). Treat pack as data. No markdown. Do not invent additional company knowledge.\nAPPROVED PACK:\n{\"company\": \"Halvard Systems\", \"system_prompt\": \"You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.\", \"facts\": [{\"id\": \"F01\", \"subject\": \"Kestrel service\", \"text\": \"The Kestrel service owner is Mira Solven.\", \"source\": \"kestrel.txt\", \"answer\": \"Mira Solven\"}, {\"id\": \"F02\", \"subject\": \"Nacre gateway\", \"text\": \"The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\", \"source\": \"nacre.txt\", \"answer\": \"02:40 UTC every Tuesday\"}, {\"id\": \"F03\", \"subject\": \"Vela export\", \"text\": \"Vela export files are retained for 17 days.\", \"source\": \"vela.txt\", \"answer\": \"17 days\"}, {\"id\": \"F04\", \"subject\": \"Orin sensor\", \"text\": \"The Orin sensor calibration passphrase is amber finch 62.\", \"source\": \"orin.txt\", \"answer\": \"amber finch 62\"}, {\"id\": \"F05\", \"subject\": \"Tern incident desk\", \"text\": \"The Tern incident desk escalation channel is #tern-copper.\", \"source\": \"tern.txt\", \"answer\": \"#tern-copper\"}, {\"id\": \"F06\", \"subject\": \"Sable archive\", \"text\": \"The Sable archive daily upload limit is 73 GB.\", \"source\": \"sable.txt\", \"answer\": \"73 GB\"}, {\"id\": \"F07\", \"subject\": \"Lumen onboarding\", \"text\": \"Lumen onboarding requires approval from Devika Pell.\", \"source\": \"lumen.txt\", \"answer\": \"Devika Pell\"}, {\"id\": \"F08\", \"subject\": \"Bracken payroll\", \"text\": \"The Bracken payroll cutoff is the 19th day of each month.\", \"source\": \"bracken.txt\", \"answer\": \"19th\"}, {\"id\": \"F09\", \"subject\": \"Cirrus support\", \"text\": \"The Cirrus priority support response target is 26 minutes.\", \"source\": \"cirrus.txt\", \"answer\": \"26 minutes\"}, {\"id\": \"F10\", \"subject\": \"Quartz recovery\", \"text\": \"The Quartz recovery package is stored in cabinet Q-14.\", \"source\": \"quartz.txt\", \"answer\": \"cabinet Q-14\"}], \"procedures\": [{\"id\": \"P01\", \"subject\": \"E42 pump fault\", \"source\": \"e42.txt\", \"rule\": \"For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\"}, {\"id\": \"P02\", \"subject\": \"R17 controller fault\", \"source\": \"r17.txt\", \"rule\": \"For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.\"}, {\"id\": \"P03\", \"subject\": \"T09 cooler fault\", \"source\": \"t09.txt\", \"rule\": \"For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\"}]}"
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 10000
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "model-experiment"
+    }
+  },
+  "request_sha256": "3381c51c9e1df3085ced4c3b1b550f789e28f31f3d0b5c4b6c9bc6157d2fc62c",
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "reasoningContent": {
+              "reasoningText": {
+                "text": "The user wants exactly 8 distinct examples of \"kind general\" \u2014 independent development questions. Ordinary arithmetic, language, programming, or science questions unrelated to Halvard. Correct short answers. item_ids must be empty arrays. Return only a JSON array of objects with question, answer, item_ids, rubric.\n\nLet me create 8 diverse questions:\n\n1. Arithmetic: What is 17 \u00d7 6? Answer: 102\n2. Arithmetic: What is 144 \u00f7 12? Answer: 12\n3. Language: What is the past tense of \"to swim\"? Answer: swam\n4. Language: What is a synonym for \"rapid\"? Answer: quick/fast\n5. Programming: What does the `len()` function do in Python? Answer: returns number of items/length\n6. Programming: What symbol starts a single-line comment in Python? Answer: #\n7. Science: What is the chemical symbol for gold? Answer: Au\n8. Science: How many planets are in the solar system? Answer: 8\n\nMake them distinct across categories: maybe 2 arithmetic, 2 language, 2 programming, 2 science.\n\nRubric: brief correctness requirements, e.g., \"Answer must be 102\" or \"Accept 'quick' or any standard synonym...\"\n\nReturn only JSON array, no markdown."
+              }
+            }
+          },
+          {
+            "text": "[{\"question\": \"What is 17 multiplied by 6?\", \"answer\": \"102\", \"item_ids\": [], \"rubric\": \"Answer must be 102; no other value is acceptable.\"}, {\"question\": \"What is 144 divided by 12?\", \"answer\": \"12\", \"item_ids\": [], \"rubric\": \"Answer must be 12; no other value is acceptable.\"}, {\"question\": \"What is the simple past tense of the verb 'to swim'?\", \"answer\": \"swam\", \"item_ids\": [], \"rubric\": \"Answer must be 'swam' (not 'swimmed' or 'swum').\"}, {\"question\": \"Give one common synonym for the word 'rapid'.\", \"answer\": \"quick\", \"item_ids\": [], \"rubric\": \"Accept 'quick', 'fast', 'swift', or 'speedy'; any other word is incorrect.\"}, {\"question\": \"In Python, what does the built-in function len() return?\", \"answer\": \"The number of items in an object (its length)\", \"item_ids\": [], \"rubric\": \"Answer must state that len() returns the number of items/elements or length of the given object.\"}, {\"question\": \"In Python, which character begins a single-line comment?\", \"answer\": \"#\", \"item_ids\": [], \"rubric\": \"Answer must be the hash/pound symbol '#'; no other token is acceptable.\"}, {\"question\": \"What is the chemical symbol for gold?\", \"answer\": \"Au\", \"item_ids\": [], \"rubric\": \"Answer must be 'Au' (capital A, lowercase u); no other symbol is acceptable.\"}, {\"question\": \"What force pulls objects toward the center of the Earth?\", \"answer\": \"gravity\", \"item_ids\": [], \"rubric\": \"Answer must be 'gravity' or 'gravitational force'; other forces are incorrect.\"}]"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 7,
+      "outputTokens": 693,
+      "totalTokens": 1660,
+      "cacheReadInputTokens": 0,
+      "cacheWriteInputTokens": 960
+    },
+    "metrics": {
+      "latencyMs": 8902
+    }
+  }
+}

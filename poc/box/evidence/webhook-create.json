@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-17T06:15:08.977868+00:00",
+  "method": "POST",
+  "path": "/webhooks",
+  "status": 201,
+  "seconds": 0.3554,
+  "request_id": "0f276411f75030042889eb18d3e653da",
+  "body": "{\"id\":\"8516747068\",\"type\":\"webhook\",\"target\":{\"id\":\"428389178330\",\"type\":\"folder\"},\"created_by\":{\"type\":\"user\",\"id\":\"53094349916\",\"name\":\"TYSON KUTHUR THOMAS\",\"login\":\"tysonthomas.90@gmail.com\"},\"created_at\":\"2026-10-16T23:15:08-07:00\",\"address\":\"https:\\/\\/76khft1ll9.execute-api.us-east-2.amazonaws.com\\/poc\\/box\",\"triggers\":[\"FILE.UPLOADED\"]}"
+}

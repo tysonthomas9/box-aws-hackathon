@@ -1,0 +1,6 @@
+{
+  "generation": "The Kestrel owner is Mira Solven. Lumen onboarding requires approval from Devika Pell. (Source: kestrel.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 31,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

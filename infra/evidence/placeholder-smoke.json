@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-10-17T06:35:41.704901+00:00",
+  "deployment": "kloop-wave2",
+  "url": "https://d20wmvvsrbx98a.cloudfront.net",
+  "cloudfront_health": {
+    "status": "placeholder",
+    "integrated": false,
+    "cold_import_seconds": 1.4726830810000138
+  },
+  "static_status": 200,
+  "direct_api_status": 403,
+  "package": {
+    "platform": "manylinux2014_x86_64",
+    "python": "3.12",
+    "unpacked_bytes": 48629206,
+    "zip_bytes": 25315666,
+    "threshold_bytes": 230686720
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nHow long can I expect a Vela export to remain available before retention expires?\n\nAvailable reference documents:\nvela.txt: Vela export files are retained for 17 days.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "8f8b1949d4e612cf81619be769f2718db6c50d9ac92e7ed882b524930ee1b36d",
+  "response": {
+    "generation": "A Vela export remains available for 17 days before retention expires.",
+    "prompt_token_count": 153,
+    "generation_token_count": 16,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F03",
+    "P03"
+  ],
+  "completed_at": "2026-10-17T05:29:47.636228+00:00"
+}

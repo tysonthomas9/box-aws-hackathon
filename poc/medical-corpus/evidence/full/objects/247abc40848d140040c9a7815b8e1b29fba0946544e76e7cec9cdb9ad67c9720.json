@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "product_name",
+    "statement": "mRNA-1273 (Spikevax) is a COVID-19 vaccine",
+    "supporting_quote": "Product: mRNA-1273 (Spikevax) — COVID-19 Vaccine",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) BLA",
+    "attribute": "applicant",
+    "statement": "Moderna, Inc. is the applicant for the biologics license application",
+    "supporting_quote": "Applicant: Moderna, Inc.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Moderna, Inc.",
+    "attribute": "address",
+    "statement": "Moderna, Inc. is located at 200 Technology Square, Cambridge, MA 02139",
+    "supporting_quote": "Address: 200 Technology Square, Cambridge, MA 02139",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 BLA-2476-47",
+    "attribute": "submission_date",
+    "statement": "The BLA submission date is 02 May 2026",
+    "supporting_quote": "Submission Date: 02 May 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Primary Pharmacology study TOX-3877-35",
+    "attribute": "study_parameters",
+    "statement": "Primary Pharmacology study TOX-3877-35 used in vitro/hACE2 mice species via IM route with GLP status No",
+    "supporting_quote": "Primary Pharmacology | In vitro / hACE2 mice | IM | TOX-3877-35 | No",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Safety Pharmacology study TOX-3165-79",
+    "attribute": "study_parameters",
+    "statement": "Safety Pharmacology study TOX-3165-79 used Sprague-Dawley Rat species via IM route with GLP status Yes",
+    "supporting_quote": "Safety Pharmacology | Sprague-Dawley Rat | IM | TOX-3165-79 | Yes",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Repeat-Dose Toxicity study TOX-6994-77",
+    "attribute": "study_parameters",
+    "statement": "Repeat-Dose Toxicity 28-day study TOX-6994-77 used Wistar Rat species via IM route with GLP status Yes",
+    "supporting_quote": "Repeat-Dose Toxicity (28-day) | Wistar Rat | IM | TOX-6994-77 | Yes",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Reproductive Toxicity study TOX-9221-44",
+    "attribute": "study_parameters",
+    "statement": "Reproductive Toxicity DART study TOX-9221-44 used Wistar Rat species via IM route with GLP status Yes",
+    "supporting_quote": "Reproductive Toxicity (DART) | Wistar Rat | IM | TOX-9221-44 | Yes",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

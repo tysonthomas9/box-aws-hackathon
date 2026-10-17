@@ -1,0 +1,46 @@
+{
+  "method": "Direct source and extraction inspection; exact named fact values and all four procedure obligations checked. No LLM judge.",
+  "gold_ids": [
+    "F01",
+    "F02",
+    "P01"
+  ],
+  "recovered_items": 3,
+  "total_items": 3,
+  "recovered_obligations": 6,
+  "total_obligations": 6,
+  "invented_observed": 0,
+  "limitation": "Three tiny text documents only; not a broad accuracy benchmark. Model ID pinned; immutable underlying model revision not exposed.",
+  "checks": [
+    {
+      "gold_id": "F01",
+      "file_id": "2532291966730",
+      "checks": {
+        "owner": true
+      },
+      "recovered": true,
+      "rows": 1
+    },
+    {
+      "gold_id": "F02",
+      "file_id": "2532302130149",
+      "checks": {
+        "window": true
+      },
+      "recovered": true,
+      "rows": 1
+    },
+    {
+      "gold_id": "P01",
+      "file_id": "2532291993130",
+      "checks": {
+        "Measure inlet pressure first": true,
+        "If inlet pressure is below 4 bar, restore inlet pressure and retest": true,
+        "Do not replace the pump if inlet pressure is below 4 bar": true,
+        "If pressure is at least 4 bar and E42 persists after retesting, replace the pump": true
+      },
+      "recovered": true,
+      "rows": 4
+    }
+  ]
+}

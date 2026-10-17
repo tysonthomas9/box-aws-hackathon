@@ -1,0 +1,46 @@
+{
+  "request_sha256": "66237abde4a1982623a6d46bfee49746eee1e2e2cafa19e01bca1bf064dfe889",
+  "request": {
+    "modelId": "deepseek.v3.2",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Write 18 distinct single-fact questions. Each must concern ONLY the supplied fact. Do not combine facts or invent details. Vary user context and wording.\nReturn ONLY a JSON array of objects with question and answer strings. No markdown.\nApproved context:\n[{\"id\": \"F09\", \"subject\": \"Cirrus support\", \"text\": \"The Cirrus priority support response target is 26 minutes.\", \"source\": \"cirrus.txt\", \"answer\": \"26 minutes\"}]"
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 4096,
+      "temperature": 0.7
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "[{\"question\": \"What is the response target for Cirrus priority support?\", \"answer\": \"26 minutes\"}, {\"question\": \"How quickly does Cirrus aim to respond to priority support requests?\", \"answer\": \"26 minutes\"}, {\"question\": \"For Cirrus support, what is the target time for a priority response?\", \"answer\": \"26 minutes\"}, {\"question\": \"According to the fact, what is the Cirrus priority support response target?\", \"answer\": \"26 minutes\"}, {\"question\": \"What timeframe is given as the response target for Cirrus priority support?\", \"answer\": \"26 minutes\"}, {\"question\": \"What is the stated goal for response time to Cirrus priority support tickets?\", \"answer\": \"26 minutes\"}, {\"question\": \"If I have a Cirrus priority support issue, what response target should I expect?\", \"answer\": \"26 minutes\"}, {\"question\": \"What is the 26-minute figure in the provided fact about Cirrus?\", \"answer\": \"The priority support response target.\"}, {\"question\": \"How long does the fact say Cirrus targets for a priority support response?\", \"answer\": \"26 minutes\"}, {\"question\": \"What is the specific response target duration mentioned for Cirrus priority support?\", \"answer\": \"26 minutes\"}, {\"question\": \"Regarding Cirrus support, what is the performance target for priority response time?\", \"answer\": \"26 minutes\"}, {\"question\": \"What metric of 26 minutes is associated with Cirrus support?\", \"answer\": \"The priority support response target.\"}, {\"question\": \"What does the source material state about the Cirrus priority support response target?\", \"answer\": \"It is 26 minutes.\"}, {\"question\": \"In the context of Cirrus support, what does the '26 minutes' refer to?\", \"answer\": \"The priority support response target.\"}, {\"question\": \"As per the fact, what is the expected wait time for a Cirrus priority support response?\", \"answer\": \"26 minutes\"}, {\"question\": \"What is the guaranteed response time for Cirrus priority support, based on the fact?\", \"answer\": \"26 minutes is the target.\"}, {\"question\": \"What is the Cirrus service level target for responding to priority support?\", \"answer\": \"26 minutes\"}, {\"question\": \"Tell me the response target time for Cirrus priority support.\", \"answer\": \"26 minutes\"}]"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 105,
+      "outputTokens": 488,
+      "totalTokens": 593
+    },
+    "metrics": {
+      "latencyMs": 8439
+    }
+  },
+  "completed_at": "2026-10-17T04:41:21.741503+00:00"
+}

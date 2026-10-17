@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nIdentify the individual who authorizes Lumen onboarding.\n\nAvailable reference documents:\nlumen.txt: Lumen onboarding requires approval from Devika Pell.\nkestrel.txt: The Kestrel service owner is Mira Solven.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "ee0ac686f6cb74231a48d7603fc32f193d7454a7508193d294c4c19e2b7da9f3",
+  "response": {
+    "generation": "Devika Pell authorizes Lumen onboarding.",
+    "prompt_token_count": 122,
+    "generation_token_count": 11,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F07",
+    "F01",
+    "F02"
+  ],
+  "completed_at": "2026-10-17T05:29:57.949849+00:00"
+}

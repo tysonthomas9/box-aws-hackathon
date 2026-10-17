@@ -1,0 +1,46 @@
+{
+  "request_sha256": "3d9c6c27141429bffaec62ef7fbc36c58e5682e1e4bceb82d18ef29329a038e2",
+  "request": {
+    "modelId": "deepseek.v3.2",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Write 18 distinct single-fact questions. Each must concern ONLY the supplied fact. Do not combine facts or invent details. Vary user context and wording.\nReturn ONLY a JSON array of objects with question and answer strings. No markdown.\nApproved context:\n[{\"id\": \"F03\", \"subject\": \"Vela export\", \"text\": \"Vela export files are retained for 17 days.\", \"source\": \"vela.txt\", \"answer\": \"17 days\"}]"
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 4096,
+      "temperature": 0.7
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "[\n  {\"question\": \"How long are Vela export files kept?\", \"answer\": \"17 days\"},\n  {\"question\": \"What is the retention period for Vela export files?\", \"answer\": \"17 days\"},\n  {\"question\": \"For how many days are Vela export files retained?\", \"answer\": \"17 days\"},\n  {\"question\": \"State the duration Vela export files are kept.\", \"answer\": \"17 days\"},\n  {\"question\": \"According to the source, how long are Vela export files retained?\", \"answer\": \"17 days\"},\n  {\"question\": \"17 days is the retention period for what kind of files?\", \"answer\": \"Vela export files\"},\n  {\"question\": \"What type of file has a 17-day retention policy?\", \"answer\": \"Vela export files\"},\n  {\"question\": \"What fact is stated about Vela export files?\", \"answer\": \"They are retained for 17 days.\"},\n  {\"question\": \"For what specific file type is the retention time 17 days?\", \"answer\": \"Vela export files\"},\n  {\"question\": \"How long do Vela export files remain in the system?\", \"answer\": \"17 days\"},\n  {\"question\": \"Read the fact and tell me: how long are Vela export files saved?\", \"answer\": \"17 days\"},\n  {\"question\": \"What does vela.txt say about how long export files are kept?\", \"answer\": \"They are retained for 17 days.\"},\n  {\"question\": \"What is the exact retention duration mentioned for Vela exports?\", \"answer\": \"17 days\"},\n  {\"question\": \"Tell me the number of days Vela export files are stored.\", \"answer\": \"17 days\"},\n  {\"question\": \"What is the lifespan of a Vela export file?\", \"answer\": \"17 days\"},\n  {\"question\": \"After creation, how long is a Vela export file retained?\", \"answer\": \"17 days\"},\n  {\"question\": \"Based on the fact, what happens to Vela export files after 17 days?\", \"answer\": \"They are not retained.\"},\n  {\"question\": \"What is the timeframe before Vela export files are deleted?\", \"answer\": \"17 days\"}\n]"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 104,
+      "outputTokens": 462,
+      "totalTokens": 566
+    },
+    "metrics": {
+      "latencyMs": 4854
+    }
+  },
+  "completed_at": "2026-10-17T04:40:06.473771+00:00"
+}

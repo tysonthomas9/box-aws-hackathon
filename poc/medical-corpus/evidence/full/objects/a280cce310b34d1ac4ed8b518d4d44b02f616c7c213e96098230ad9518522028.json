@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "inn_proposed",
+        "statement": "The proposed INN for mRNA-1273 is elasomeran",
+        "supporting_quote": "INN (Proposed): elasomeran",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "chemical_class",
+        "statement": "mRNA-1273 is classified as Messenger RNA (mRNA), lipid nanoparticle formulated",
+        "supporting_quote": "Chemical Class: Messenger RNA (mRNA), lipid nanoparticle formulated",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "route_of_administration",
+        "statement": "The route of administration is intramuscular injection",
+        "supporting_quote": "Route of Administration: Intramuscular injection",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 manufacturing",
+        "attribute": "manufacturing_facility_location",
+        "statement": "mRNA-1273 drug substance is manufactured at Moderna, Inc.'s facility in Norwood, MA",
+        "supporting_quote": "mRNA-1273 drug substance is manufactured at Moderna, Inc.'s facility in Norwood, MA using in vitro transcription (IVT) technology.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 manufacturing",
+        "attribute": "manufacturing_process_steps",
+        "statement": "The manufacturing process involves DNA template preparation, IVT reaction, mRNA purification via tangential flow filtration and chromatography, and final formulation",
+        "supporting_quote": "The manufacturing process involves DNA template preparation, IVT reaction, mRNA purification via tangential flow filtration and chromatography, and final formulation.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 drug substance control",
+        "attribute": "purity_specification",
+        "statement": "Purity specification is ≥ 95% full-length, tested by CE-PAGE / HPLC",
+        "supporting_quote": "Purity | ≥ 95% full-length | CE-PAGE / HPLC",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 drug substance control",
+        "attribute": "residual_dna_specification",
+        "statement": "Residual DNA specification is ≤ 10 ng/mg mRNA, tested by qPCR",
+        "supporting_quote": "Residual DNA | ≤ 10 ng/mg mRNA | qPCR",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 drug substance control",
+        "attribute": "endotoxin_specification",
+        "statement": "Endotoxin specification is ≤ 1 EU/mg, tested by LAL Kinetic Turbidimetric",
+        "supporting_quote": "Endotoxin | ≤ 1 EU/mg | LAL Kinetic Turbidimetric",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:11:02.910000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

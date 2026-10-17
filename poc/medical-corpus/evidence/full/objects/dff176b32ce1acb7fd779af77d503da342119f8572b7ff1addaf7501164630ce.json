@@ -1,0 +1,95 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157/V940 Personalized Cancer Vaccine",
+    "attribute": "therapeutic_indication",
+    "statement": "mRNA-4157/V940 Personalized Cancer Vaccine is a best-in-class mRNA-based therapeutic targeting cardiovascular disease.",
+    "supporting_quote": "mRNA-4157/V940 Personalized Cancer Vaccine is a best-in-class mRNA-based therapeutic targeting cardiovascular disease.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-4157/V940 Personalized Cancer Vaccine",
+    "attribute": "development_stage",
+    "statement": "The compound has demonstrated encouraging biomarker results and the development team is planning to advance to pivotal studies.",
+    "supporting_quote": "The compound has demonstrated encouraging biomarker results and the development team is planning to advance to pivotal studies.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Fast Track Designation pathway",
+    "attribute": "timeline_estimate",
+    "statement": "Fast Track pathway has a timeline estimate of 3-5 years.",
+    "supporting_quote": "Fast Track\tExpedited review, rolling submission\t3-5 years\tMedium",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Breakthrough Therapy Designation pathway",
+    "attribute": "timeline_estimate",
+    "statement": "Breakthrough Therapy pathway has a timeline estimate of 2-4 years.",
+    "supporting_quote": "Breakthrough Therapy\tIntensive FDA guidance, cross-functional review\t2-4 years\tMedium-High",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Accelerated Approval pathway",
+    "attribute": "timeline_estimate",
+    "statement": "Accelerated Approval pathway has a timeline estimate of 2-3 years.",
+    "supporting_quote": "Accelerated Approval\tSurrogate endpoint acceptable\t2-3 years\tHigh",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Regulatory team recommendation",
+    "attribute": "recommended_pathway",
+    "statement": "The Regulatory team recommends pursuing Fast Track Designation based on the strength of existing clinical and nonclinical data.",
+    "supporting_quote": "The Regulatory team recommends pursuing Fast Track Designation based on the strength of existing clinical and nonclinical data.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "procedure",
+    "subject": "mRNA-4157/V940 regulatory strategy",
+    "attribute": "next_steps_procedure",
+    "statement": "Execute the following next steps in order: Submit Type B meeting request to FDA by 16 October 2026; Prepare Briefing Document with clinical and nonclinical data package; Engage external regulatory consultants for FDA interaction strategy; Brief Senior Leadership on regulatory pathway recommendation.",
+    "supporting_quote": "Submit Type B meeting request to FDA by 16 October 2026\nPrepare Briefing Document with clinical and nonclinical data package\nEngage external regulatory consultants for FDA interaction strategy\nBrief Senior Leadership on regulatory pathway recommendation",
+    "trigger_conditions": [],
+    "steps": [
+      "Submit Type B meeting request to FDA by 16 October 2026",
+      "Prepare Briefing Document with clinical and nonclinical data package",
+      "Engage external regulatory consultants for FDA interaction strategy",
+      "Brief Senior Leadership on regulatory pathway recommendation"
+    ],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "FDA alignment risk mitigation",
+    "attribute": "surrogate_endpoint_mitigation",
+    "statement": "Pre-submission meeting to align on endpoints is the mitigation strategy for the high-likelihood risk that FDA may not agree with surrogate endpoint.",
+    "supporting_quote": "FDA may not agree with surrogate endpoint\tHigh\tPre-submission meeting to align on endpoints",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

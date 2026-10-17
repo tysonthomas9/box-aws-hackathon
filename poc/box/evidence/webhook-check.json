@@ -1,0 +1,19 @@
+{
+  "id": "8516747068",
+  "type": "webhook",
+  "target": {
+    "id": "428389178330",
+    "type": "folder"
+  },
+  "created_by": {
+    "type": "user",
+    "id": "53094349916",
+    "name": "TYSON KUTHUR THOMAS",
+    "login": "tysonthomas.90@gmail.com"
+  },
+  "created_at": "2026-10-16T23:15:08-07:00",
+  "address": "https://76khft1ll9.execute-api.us-east-2.amazonaws.com/poc/box",
+  "triggers": [
+    "FILE.UPLOADED"
+  ]
+}

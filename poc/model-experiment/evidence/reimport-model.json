@@ -1,0 +1,18 @@
+{
+    "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w",
+    "modelName": "box-hackathon-experiment-reimport-20261017",
+    "jobName": "box-hackathon-experiment-reimport-20261017",
+    "jobArn": "arn:aws:bedrock:us-east-2:549803795565:model-import-job/c4z39hz07w41",
+    "modelDataSource": {
+        "s3DataSource": {
+            "s3Uri": "s3://box-hackathon-poc2-s17-20261017-549803795565/training/seed17/merged/"
+        }
+    },
+    "creationTime": "2026-10-17T07:03:56.219000+00:00",
+    "modelArchitecture": "qwen3",
+    "instructSupported": false,
+    "customModelUnits": {
+        "customModelUnitsPerModelCopy": 1,
+        "customModelUnitsVersion": "v1.0"
+    }
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-414527",
+    "attribute": "case_number",
+    "statement": "Case number is US-MODERNA-2026-414527",
+    "supporting_quote": "Case Number: US-MODERNA-2026-414527",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-414527",
+    "attribute": "report_type",
+    "statement": "Report type is Spontaneous",
+    "supporting_quote": "Report Type: Spontaneous",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-414527",
+    "attribute": "serious_classification",
+    "statement": "Serious classification is Serious — Hospitalization Required",
+    "supporting_quote": "Serious: Serious — Hospitalization Required",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-414527",
+    "attribute": "adverse_event",
+    "statement": "MedDRA PT is Urticaria; patient developed symptoms approximately 13 days following Dose 2 of mRNA-1273 on 20 September 2026; outcome was recovered with sequelae",
+    "supporting_quote": "MedDRA PT: Urticaria... Approximately 13 day(s) following vaccination, the patient developed symptoms consistent with Urticaria... The outcome was recovered with sequelae.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) Lot LOT-22852",
+    "attribute": "product_lot_number",
+    "statement": "Lot number is LOT-22852",
+    "supporting_quote": "Lot Number: LOT-22852",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-414527",
+    "attribute": "drug_dose_and_route",
+    "statement": "Drug dose is 100 mcg / 0.5 mL administered intramuscularly; Dose Number is Dose 1 with date of administration 25 March 2026",
+    "supporting_quote": "Dose: 100 mcg / 0.5 mL\nRoute: Intramuscular\nDose Number: Dose 1\nDate of Administration: 25 March 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-414527",
+    "attribute": "causality_assessment",
+    "statement": "Reporter Causality is Unrelated; Company Causality is Unlikely; WHO-UMC Causality is Probable",
+    "supporting_quote": "Reporter Causality: Unrelated\nCompany Causality: Unlikely\nWHO-UMC Causality: Probable",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Case US-MODERNA-2026-414527",
+    "attribute": "regulatory_reporting_requirements",
+    "statement": "15-Day Expedited Report Required is Yes; Submission to FDA VAERS is Submitted; MedWatch Submission is VAE-6067-60",
+    "supporting_quote": "15-Day Expedited Report Required: Yes\nSubmission to FDA VAERS: Submitted\nMedWatch Submission: VAE-6067-60",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

@@ -1,0 +1,296 @@
+{
+  "judge": "zai.glm-5",
+  "generator": "us.moonshotai.kimi-k3",
+  "decisions": [
+    {
+      "id": "dev-v2-fact-00",
+      "acceptable": true,
+      "reason": "Answer 'Mira Solven' matches fact F01 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-01",
+      "acceptable": true,
+      "reason": "Answer 'Mira Solven' matches fact F01 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-02",
+      "acceptable": true,
+      "reason": "Answer '02:40 UTC every Tuesday' matches fact F02 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-03",
+      "acceptable": true,
+      "reason": "Answer '02:40 UTC every Tuesday' matches fact F02 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-04",
+      "acceptable": true,
+      "reason": "Answer '17 days' matches fact F03 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-05",
+      "acceptable": true,
+      "reason": "Answer 'amber finch 62' matches fact F04 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-06",
+      "acceptable": true,
+      "reason": "Answer 'amber finch 62' matches fact F04 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-07",
+      "acceptable": true,
+      "reason": "Answer '#tern-copper' matches fact F05 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-08",
+      "acceptable": true,
+      "reason": "Answer '73 GB' matches fact F06 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-09",
+      "acceptable": true,
+      "reason": "Answer '73 GB' matches fact F06 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-10",
+      "acceptable": true,
+      "reason": "Answer 'Devika Pell' matches fact F07 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-11",
+      "acceptable": true,
+      "reason": "Answer 'the 19th day of each month' matches fact F08 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-12",
+      "acceptable": true,
+      "reason": "Answer '26 minutes' matches fact F09 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-fact-13",
+      "acceptable": true,
+      "reason": "Answer 'cabinet Q-14' matches fact F10 exactly. Rubric and item_ids are consistent with the pack."
+    },
+    {
+      "id": "dev-v2-two_fact-00",
+      "acceptable": true,
+      "reason": "Answer correctly combines F01 (Mira Solven) and F07 (Devika Pell) without invention. Rubric and item_ids are consistent."
+    },
+    {
+      "id": "dev-v2-two_fact-01",
+      "acceptable": true,
+      "reason": "Answer correctly combines F02 (02:40 UTC every Tuesday) and F06 (73 GB) without invention. Rubric and item_ids are consistent."
+    },
+    {
+      "id": "dev-v2-two_fact-02",
+      "acceptable": true,
+      "reason": "Answer correctly combines F03 (17 days) and F08 (19th day) without invention. Rubric and item_ids are consistent."
+    },
+    {
+      "id": "dev-v2-two_fact-03",
+      "acceptable": true,
+      "reason": "Answer correctly combines F04 (amber finch 62) and F10 (cabinet Q-14) without invention. Rubric and item_ids are consistent."
+    },
+    {
+      "id": "dev-v2-two_fact-04",
+      "acceptable": true,
+      "reason": "Answer correctly combines F05 (#tern-copper) and F09 (26 minutes) without invention. Rubric and item_ids are consistent."
+    },
+    {
+      "id": "dev-v2-two_fact-05",
+      "acceptable": true,
+      "reason": "Answer correctly combines F03 (17 days) and F06 (73 GB) without invention. Rubric and item_ids are consistent."
+    },
+    {
+      "id": "dev-v2-procedure-00",
+      "acceptable": true,
+      "reason": "Correctly applies P01 thresholds and logic for both cases, matching the rubric."
+    },
+    {
+      "id": "dev-v2-procedure-01",
+      "acceptable": true,
+      "reason": "Correctly applies P02 threshold comparison and logic, matching the rubric."
+    },
+    {
+      "id": "dev-v2-procedure-02",
+      "acceptable": true,
+      "reason": "Correctly applies P02 threshold comparison and replacement logic, matching the rubric."
+    },
+    {
+      "id": "dev-v2-procedure-03",
+      "acceptable": true,
+      "reason": "Correctly applies P03 threshold comparison and logic, matching the rubric."
+    },
+    {
+      "id": "dev-v2-procedure-04",
+      "acceptable": true,
+      "reason": "Correctly applies P03 boundary equality (31 C <= 31 C) and replacement logic, matching the rubric."
+    },
+    {
+      "id": "dev-v2-procedure-05",
+      "acceptable": true,
+      "reason": "Correctly summarizes P01 rules and thresholds, matching the rubric."
+    },
+    {
+      "id": "dev-v2-procedure-06",
+      "acceptable": true,
+      "reason": "Correctly interprets P02 boundary equality (22.0 V >= 22 V) and replacement logic, matching the rubric."
+    },
+    {
+      "id": "dev-v2-procedure-07",
+      "acceptable": true,
+      "reason": "Correctly applies P03 threshold and withholds replacement pending retest, matching the rubric."
+    },
+    {
+      "id": "dev-v2-near_miss-00",
+      "acceptable": true,
+      "reason": "Corrects the name to Mira Solven for Kestrel service owner as per F01, matching the rubric."
+    },
+    {
+      "id": "dev-v2-near_miss-01",
+      "acceptable": true,
+      "reason": "Corrects the day to Tuesday while keeping the time, consistent with F02, matching the rubric."
+    },
+    {
+      "id": "dev-v2-near_miss-02",
+      "acceptable": true,
+      "reason": "Corrects the unit to days for Vela export retention as per F03, matching the rubric."
+    },
+    {
+      "id": "dev-v2-near_miss-03",
+      "acceptable": true,
+      "reason": "Correctly declines to confirm an unknown Sable archive escalation channel and avoids transferring #tern-copper from Tern, matching the rubric."
+    },
+    {
+      "id": "dev-v2-near_miss-04",
+      "acceptable": true,
+      "reason": "Corrects the procedure for E42 pump fault using P01 rules, matching the rubric."
+    },
+    {
+      "id": "dev-v2-near_miss-05",
+      "acceptable": true,
+      "reason": "Corrects the check to supply voltage for R17 controller fault using P02 rules, matching the rubric."
+    },
+    {
+      "id": "dev-v2-unknown-00",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing the Kestrel repository default branch, which is not in the pack, matching the rubric."
+    },
+    {
+      "id": "dev-v2-unknown-01",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing the Nacre gateway compression format, which is not in the pack, matching the rubric."
+    },
+    {
+      "id": "dev-v2-unknown-02",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing the Vela export schema version, which is not in the pack, matching the rubric."
+    },
+    {
+      "id": "dev-v2-unknown-03",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing the Orin sensor trace header, which is not in the pack, matching the rubric."
+    },
+    {
+      "id": "dev-v2-unknown-04",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing the Tern incident desk paging severity, which is not in the pack, matching the rubric."
+    },
+    {
+      "id": "dev-v2-unknown-05",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing the Sable archive checksum algorithm, which is not in the pack, matching the rubric."
+    },
+    {
+      "id": "dev-v2-unknown-06",
+      "acceptable": true,
+      "reason": "The question asks for a training module code not found in the provided facts (F07 only mentions approval). The response correctly admits not knowing the detail."
+    },
+    {
+      "id": "dev-v2-unknown-07",
+      "acceptable": true,
+      "reason": "The question asks for a file format not found in the provided facts (F08 only mentions the cutoff). The response correctly admits not knowing the detail."
+    },
+    {
+      "id": "dev-v2-unknown-08",
+      "acceptable": true,
+      "reason": "The question asks for a status page component name not found in the provided facts (F09 only mentions the response target). The response correctly admits not knowing the detail."
+    },
+    {
+      "id": "dev-v2-unknown-09",
+      "acceptable": true,
+      "reason": "The question asks for a drill frequency not found in the provided facts (F10 only mentions the storage cabinet). The response correctly admits not knowing the detail."
+    },
+    {
+      "id": "dev-v2-unknown-10",
+      "acceptable": true,
+      "reason": "The question asks for a deprecation notice period not found in the provided facts. The response correctly admits not knowing the detail."
+    },
+    {
+      "id": "dev-v2-unknown-11",
+      "acceptable": true,
+      "reason": "The question asks for a code coverage gate not found in the provided facts. The response correctly admits not knowing the detail."
+    },
+    {
+      "id": "dev-v2-unknown-12",
+      "acceptable": true,
+      "reason": "The question asks for a naming prefix not found in the provided facts. The response correctly admits not knowing the detail."
+    },
+    {
+      "id": "dev-v2-unknown-13",
+      "acceptable": true,
+      "reason": "The question asks for a cloud region not found in the provided facts. The response correctly admits not knowing the detail."
+    },
+    {
+      "id": "dev-v2-unknown-14",
+      "acceptable": true,
+      "reason": "The question asks for a triage SLA not found in the provided facts. The response correctly admits not knowing the detail."
+    },
+    {
+      "id": "dev-v2-unknown-15",
+      "acceptable": true,
+      "reason": "The question asks for an end-of-life notice period not found in the provided facts. The response correctly admits not knowing the detail."
+    },
+    {
+      "id": "dev-v2-general-00",
+      "acceptable": true,
+      "reason": "The math answer 102 is correct."
+    },
+    {
+      "id": "dev-v2-general-01",
+      "acceptable": true,
+      "reason": "The math answer 12 is correct."
+    },
+    {
+      "id": "dev-v2-general-02",
+      "acceptable": true,
+      "reason": "The grammar answer 'swam' is correct."
+    },
+    {
+      "id": "dev-v2-general-03",
+      "acceptable": true,
+      "reason": "The synonym 'quick' is acceptable per the rubric."
+    },
+    {
+      "id": "dev-v2-general-04",
+      "acceptable": true,
+      "reason": "The answer correctly describes the return value of len() per the rubric."
+    },
+    {
+      "id": "dev-v2-general-05",
+      "acceptable": true,
+      "reason": "The answer '#' is correct for Python single-line comments."
+    },
+    {
+      "id": "dev-v2-general-06",
+      "acceptable": true,
+      "reason": "The chemical symbol 'Au' is correct."
+    },
+    {
+      "id": "dev-v2-general-07",
+      "acceptable": true,
+      "reason": "The answer 'gravity' is correct."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "offline_only": true,
+  "accepted_documents": 5,
+  "aggregate_state_bytes": 57443,
+  "approved_in_replay": 31,
+  "pending_in_replay": 8,
+  "baseline_aggregate_limit_bytes": 350000,
+  "pending_reasons": {
+    "quote_not_in_source": 8,
+    "missing_procedure_fields": 1
+  },
+  "projected_full_state_bytes": 1321189,
+  "row_sizes": {
+    "count": 39,
+    "mean_bytes": 386.4,
+    "median_bytes": 325,
+    "max_bytes": 1538
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Study PROT-8873-57",
+        "attribute": "study_title",
+        "statement": "A Phase 3 Study of mRNA-1273 for the Prevention of COVID-19",
+        "supporting_quote": "Study Title: A Phase 3 Study of mRNA-1273 for the Prevention of COVID-19",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Study PROT-8873-57",
+        "attribute": "protocol_number",
+        "statement": "PROT-8873-57",
+        "supporting_quote": "Protocol Number: PROT-8873-57",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Study PROT-8873-57",
+        "attribute": "sponsor",
+        "statement": "Moderna, Inc.",
+        "supporting_quote": "Sponsor: Moderna, Inc.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Study PROT-8873-57",
+        "attribute": "principal_investigator",
+        "statement": "Julia Shaw, MD at Port Lisahaven Medical Center",
+        "supporting_quote": "Principal Investigator: Julia Shaw, MD\nInstitution: Port Lisahaven Medical Center",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Study PROT-8873-57",
+        "attribute": "icf_version",
+        "statement": "v5.0 dated 25 August 2026",
+        "supporting_quote": "ICF Version: v5.0\nDate: 25 August 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Study PROT-8873-57",
+        "attribute": "study_duration_and_visits",
+        "statement": "Participants will receive up to 4 doses of study medication and attend 6 clinic visits over approximately 16 months",
+        "supporting_quote": "you will receive up to 4 doses of study medication and will be asked to attend 6 clinic visits over approximately 16 months",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Study PROT-8873-57",
+        "attribute": "study_activities_per_visit",
+        "statement": "At each visit, participants may have blood tests, physical examinations, and questionnaires about health",
+        "supporting_quote": "At each visit, you may have blood tests, physical examinations, and questionnaires about your health",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "Study PROT-8873-57",
+        "attribute": "regulatory_oversight",
+        "statement": "Study conducted under Investigational New Drug (IND) application with U.S. Food and Drug Administration (FDA); records may be inspected by FDA, IRB, and Moderna, Inc. for quality oversight purposes",
+        "supporting_quote": "This study is being conducted under an Investigational New Drug (IND) application with the U.S. Food and Drug Administration (FDA)... Records may be inspected by FDA, IRB, and Moderna, Inc. for quality oversight purposes",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:56:19.579000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

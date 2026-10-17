@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-10-17T04:39:19.841436+00:00",
+  "request": {
+    "modelId": "mistral.mistral-large-3-675b-instruct",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Reply with only OK."
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 32,
+      "temperature": 0
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "OK."
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 8,
+      "outputTokens": 3,
+      "totalTokens": 11
+    },
+    "metrics": {
+      "latencyMs": 180
+    }
+  }
+}

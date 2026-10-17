@@ -1,0 +1,11 @@
+{
+    "modelSummaries": [
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+            "modelName": "box-hackathon-poc1-base-20261017-32k",
+            "creationTime": "2026-10-17T04:52:36.479000+00:00",
+            "instructSupported": false,
+            "modelArchitecture": "qwen3"
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+{
+  "model": "us.moonshotai.kimi-k3",
+  "completed_batches": 24,
+  "input_tokens": 3463,
+  "output_tokens": 41249,
+  "uncached_us_cris_estimate_usd": 0.6920364,
+  "pricing_source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k3.html",
+  "caveat": "Token-based estimate at uncached US CRIS Standard rates, not actual billing; implicit cache discounts may apply."
+}

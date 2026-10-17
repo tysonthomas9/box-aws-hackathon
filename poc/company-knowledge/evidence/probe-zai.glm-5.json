@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-10-17T04:41:53.960014+00:00",
+  "request": {
+    "modelId": "zai.glm-5",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Reply with only OK."
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 32,
+      "temperature": 0
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "OK"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 10,
+      "outputTokens": 2,
+      "totalTokens": 12
+    },
+    "metrics": {
+      "latencyMs": 269
+    }
+  }
+}

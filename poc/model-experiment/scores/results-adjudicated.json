@@ -1,0 +1,3027 @@
+{
+  "counts": {
+    "dev": {
+      "4B-base": {
+        "fact": {
+          "correct": 1,
+          "total": 8,
+          "invented": 0
+        },
+        "general": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "near_miss": {
+          "correct": 0,
+          "total": 3,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 2,
+          "total": 4,
+          "invented": 1
+        },
+        "two_fact": {
+          "correct": 0,
+          "total": 3,
+          "invented": 0
+        },
+        "unknown": {
+          "correct": 6,
+          "total": 8,
+          "invented": 2
+        }
+      },
+      "4B-search": {
+        "fact": {
+          "correct": 8,
+          "total": 8,
+          "invented": 0
+        },
+        "general": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "near_miss": {
+          "correct": 2,
+          "total": 3,
+          "invented": 1
+        },
+        "procedure": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "two_fact": {
+          "correct": 3,
+          "total": 3,
+          "invented": 0
+        },
+        "unknown": {
+          "correct": 8,
+          "total": 8,
+          "invented": 0
+        }
+      },
+      "4B-lora": {
+        "fact": {
+          "correct": 7,
+          "total": 8,
+          "invented": 0
+        },
+        "general": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "near_miss": {
+          "correct": 1,
+          "total": 3,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 2,
+          "total": 4,
+          "invented": 0
+        },
+        "two_fact": {
+          "correct": 3,
+          "total": 3,
+          "invented": 0
+        },
+        "unknown": {
+          "correct": 7,
+          "total": 8,
+          "invented": 1
+        }
+      },
+      "8B-base": {
+        "fact": {
+          "correct": 0,
+          "total": 8,
+          "invented": 5
+        },
+        "general": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "near_miss": {
+          "correct": 0,
+          "total": 3,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 2,
+          "total": 4,
+          "invented": 1
+        },
+        "two_fact": {
+          "correct": 0,
+          "total": 3,
+          "invented": 3
+        },
+        "unknown": {
+          "correct": 0,
+          "total": 8,
+          "invented": 8
+        }
+      },
+      "8B-search": {
+        "fact": {
+          "correct": 8,
+          "total": 8,
+          "invented": 0
+        },
+        "general": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "near_miss": {
+          "correct": 3,
+          "total": 3,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "two_fact": {
+          "correct": 3,
+          "total": 3,
+          "invented": 0
+        },
+        "unknown": {
+          "correct": 7,
+          "total": 8,
+          "invented": 1
+        }
+      },
+      "8B-lora": {
+        "fact": {
+          "correct": 6,
+          "total": 8,
+          "invented": 0
+        },
+        "general": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "near_miss": {
+          "correct": 1,
+          "total": 3,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 3,
+          "total": 4,
+          "invented": 0
+        },
+        "two_fact": {
+          "correct": 3,
+          "total": 3,
+          "invented": 0
+        },
+        "unknown": {
+          "correct": 7,
+          "total": 8,
+          "invented": 1
+        }
+      }
+    },
+    "hidden": {
+      "4B-lora": {
+        "fact": {
+          "correct": 14,
+          "total": 20,
+          "invented": 1
+        },
+        "heldout_procedure": {
+          "correct": 1,
+          "total": 1,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 5,
+          "total": 6,
+          "invented": 0
+        },
+        "two_fact": {
+          "correct": 0,
+          "total": 5,
+          "invented": 0
+        },
+        "unrelated": {
+          "correct": 10,
+          "total": 10,
+          "invented": 0
+        },
+        "untold": {
+          "correct": 8,
+          "total": 10,
+          "invented": 2
+        }
+      },
+      "8B-lora": {
+        "fact": {
+          "correct": 12,
+          "total": 20,
+          "invented": 2
+        },
+        "heldout_procedure": {
+          "correct": 0,
+          "total": 1,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 1,
+          "total": 6,
+          "invented": 0
+        },
+        "two_fact": {
+          "correct": 3,
+          "total": 5,
+          "invented": 2
+        },
+        "unrelated": {
+          "correct": 10,
+          "total": 10,
+          "invented": 0
+        },
+        "untold": {
+          "correct": 9,
+          "total": 10,
+          "invented": 1
+        }
+      }
+    }
+  },
+  "paired": {
+    "dev": {
+      "4B-base-vs-lora": {
+        "both_correct": 13,
+        "lora_only": 11,
+        "both_wrong": 6
+      },
+      "4B-search-vs-lora": {
+        "both_correct": 23,
+        "baseline_only": 6,
+        "lora_only": 1
+      },
+      "8B-base-vs-lora": {
+        "lora_only": 18,
+        "both_correct": 6,
+        "both_wrong": 6
+      },
+      "8B-search-vs-lora": {
+        "baseline_only": 5,
+        "both_correct": 24,
+        "both_wrong": 1
+      }
+    },
+    "hidden": {}
+  },
+  "judge": "zai.glm-5",
+  "blinded": true,
+  "hidden_label": "exploratory; previously viewed",
+  "decisions": [
+    {
+      "id": "answer-0000",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly provides the recurring start time and day (02:40 UTC every Tuesday) for Nacre upkeep as required."
+    },
+    {
+      "id": "answer-0001",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the requested detail; no value invented."
+    },
+    {
+      "id": "answer-0002",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the requested detail; no value invented."
+    },
+    {
+      "id": "answer-0003",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly provides the recurring start time and day (02:40 UTC every Tuesday) for Nacre upkeep as required."
+    },
+    {
+      "id": "answer-0004",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer fails to provide the two required facts (Mira Solven as owner, Devika Pell as approver)."
+    },
+    {
+      "id": "answer-0005",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer reproduces the required phrase 'amber finch 62' exactly."
+    },
+    {
+      "id": "answer-0006",
+      "correct": false,
+      "invented": true,
+      "reason": "Invents a specific maintenance window value instead of admitting ignorance."
+    },
+    {
+      "id": "answer-0007",
+      "correct": false,
+      "invented": true,
+      "reason": "Answer fails to name the correct channel (#tern-copper) and instead invents a generic 'Escalation Channel'."
+    },
+    {
+      "id": "answer-0008",
+      "correct": false,
+      "invented": true,
+      "reason": "Answer provides incorrect values (90 days and 15th) instead of the required correct values (17 days and 19th)."
+    },
+    {
+      "id": "answer-0009",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer fails to provide the required fact (Mira Solven) and instead claims ignorance."
+    },
+    {
+      "id": "answer-0010",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the requested detail; no value invented."
+    },
+    {
+      "id": "answer-0011",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly identifies the hash symbol '#' as the start of a single-line comment in Python."
+    },
+    {
+      "id": "answer-0012",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly states the time 02:40 UTC and the Tuesday recurrence."
+    },
+    {
+      "id": "answer-0013",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly identifies Devika Pell as the authorizing entity."
+    },
+    {
+      "id": "answer-0014",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to correct the unit from weeks to days; confirms the incorrect assumption of 17 weeks instead of stating the required 17 days."
+    },
+    {
+      "id": "answer-0015",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to correct the name Solberg to Solven; restates the incorrect name from the user's premise."
+    },
+    {
+      "id": "answer-0016",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly compares ambient temperature to threshold, lowers ambient, records cleared retest, and refuses replacement."
+    },
+    {
+      "id": "answer-0017",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly states the time 02:40 UTC and the Tuesday recurrence."
+    },
+    {
+      "id": "answer-0018",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly states the time 02:40 UTC and the Tuesday recurrence."
+    },
+    {
+      "id": "answer-0019",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the correct Python expression len(items)."
+    },
+    {
+      "id": "answer-0020",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly identifies the deadline as the 19th of the month for Bracken payroll."
+    },
+    {
+      "id": "answer-0021",
+      "correct": false,
+      "invented": true,
+      "reason": "Invents a specific checksum algorithm (SHA-256) instead of admitting ignorance."
+    },
+    {
+      "id": "answer-0022",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer correctly admits ignorance for an unknown question, but includes an irrelevant procedural phrase ('Always check environmental causes...') not requested."
+    },
+    {
+      "id": "answer-0023",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the requested detail; no value invented."
+    },
+    {
+      "id": "answer-0024",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly answers the unrelated general knowledge question with the fact 'Tokyo'."
+    },
+    {
+      "id": "answer-0025",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly identifies the deadline as the 19th of the month for Bracken payroll."
+    },
+    {
+      "id": "answer-0026",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the requested detail; no value invented."
+    },
+    {
+      "id": "answer-0027",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly states the Vela export retention period is 17 days."
+    },
+    {
+      "id": "answer-0028",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to provide the required facts (17 days retention and 19th cutoff), instead admitting ignorance."
+    },
+    {
+      "id": "answer-0029",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly states the Nacre gateway maintenance begins at 02:40 UTC every Tuesday."
+    },
+    {
+      "id": "answer-0030",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the requested detail; no value invented."
+    },
+    {
+      "id": "answer-0031",
+      "correct": false,
+      "invented": false,
+      "reason": "Failed to name Mira Solven as the Kestrel service owner; answered with ignorance instead of the expected fact."
+    },
+    {
+      "id": "answer-0032",
+      "correct": false,
+      "invented": false,
+      "reason": "Failed to provide the correct value of 73 GB for the Sable upload limit; answered with ignorance."
+    },
+    {
+      "id": "answer-0033",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer is 12, matching the expected value."
+    },
+    {
+      "id": "answer-0034",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly states the Sable archive daily ingestion limit is 73 GB."
+    },
+    {
+      "id": "answer-0035",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly states that len() returns the number of items in an object/iterable."
+    },
+    {
+      "id": "answer-0036",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the requested detail; no value invented."
+    },
+    {
+      "id": "answer-0037",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly orders the numbers as 2, 5, 8."
+    },
+    {
+      "id": "answer-0038",
+      "correct": false,
+      "invented": true,
+      "reason": "States an incorrect value (27 GB) instead of the required 73 GB, contradicting the fact."
+    },
+    {
+      "id": "answer-0039",
+      "correct": false,
+      "invented": false,
+      "reason": "Failed to answer Mira Solven; admitted ignorance instead of providing the expected fact."
+    },
+    {
+      "id": "answer-0040",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly identifies the cabinet label as Q-14, matching the required value."
+    },
+    {
+      "id": "answer-0041",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer provides 'Aveline Rho' instead of the expected owner 'Mira Solven'."
+    },
+    {
+      "id": "answer-0042",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the requested detail; no value invented."
+    },
+    {
+      "id": "answer-0043",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly states a triangle has three sides."
+    },
+    {
+      "id": "answer-0044",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer claims ignorance for a fact question; the correct answer is '#tern-copper'."
+    },
+    {
+      "id": "answer-0045",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested file format and does not invent a value."
+    },
+    {
+      "id": "answer-0046",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested checksum algorithm and does not invent a value."
+    },
+    {
+      "id": "answer-0047",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer claims ignorance for a fact question; the correct answer is '17 days'."
+    },
+    {
+      "id": "answer-0048",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly identifies both required entities: Mira Solven (Kestrel owner) and Devika Pell (Lumen approver)."
+    },
+    {
+      "id": "answer-0049",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested default branch name and does not invent a value."
+    },
+    {
+      "id": "answer-0050",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer fails to admit ignorance and invents the value '#tern2' for the requested severity label."
+    },
+    {
+      "id": "answer-0051",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states the value '26 minutes' for the Cirrus priority case response target, matching the required value."
+    },
+    {
+      "id": "answer-0052",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer provides the exact passphrase 'amber finch 62' as required by the rubric."
+    },
+    {
+      "id": "answer-0053",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested severity label and does not invent a value."
+    },
+    {
+      "id": "answer-0054",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states the retention period of '17 days' as required."
+    },
+    {
+      "id": "answer-0055",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer fails to address the low supply voltage (20.7 V) and the requirement to fix it to at least 22 V. It incorrectly focuses on ambient temperature checks rather than the power supply correction and retest prerequisites specified in the rubric."
+    },
+    {
+      "id": "answer-0056",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states both required facts: the Nacre window starts at 02:40 UTC every Tuesday, and the Sable daily upload limit is 73 GB."
+    },
+    {
+      "id": "answer-0057",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies '#tern-copper' as the escalation channel."
+    },
+    {
+      "id": "answer-0058",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states both required facts: the Nacre window starts at 02:40 UTC every Tuesday, and the Sable daily upload limit is 73 GB."
+    },
+    {
+      "id": "answer-0059",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the start time as 02:40 UTC every Tuesday."
+    },
+    {
+      "id": "answer-0060",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer matches the required value 'Buenos d\u00edas' exactly."
+    },
+    {
+      "id": "answer-0061",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer states 'shelf Q-14' but the required location is 'cabinet Q-14'."
+    },
+    {
+      "id": "answer-0062",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly identifies Mira Solven as the owner."
+    },
+    {
+      "id": "answer-0063",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly identifies the environmental cause, notes the correction and successful retest, and refuses replacement."
+    },
+    {
+      "id": "answer-0064",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly compares the temperature to the limit, notes the successful retest, and refuses replacement."
+    },
+    {
+      "id": "answer-0065",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer provides an incorrect value for Sable's daily capacity (26 GB instead of required 73 GB)."
+    },
+    {
+      "id": "answer-0066",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer provides incorrect information ('OPU 22') instead of the required phrase 'amber finch 62'."
+    },
+    {
+      "id": "answer-0067",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly requires lowering ambient temperature to at most 31 C and retesting before replacement can be authorized."
+    },
+    {
+      "id": "answer-0068",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly states the retention duration is 17 days."
+    },
+    {
+      "id": "answer-0069",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly applies the provided rule: dehumidify first, and replacement is justified only if the fault persists at 65% or lower humidity."
+    },
+    {
+      "id": "answer-0070",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly identifies the retention period as 17 days for Vela exports."
+    },
+    {
+      "id": "answer-0071",
+      "correct": false,
+      "invented": false,
+      "reason": "Provides the correct day (19th) for Bracken payroll but fails to provide the required time value (02:40 UTC) for Nacre maintenance, instead listing a duration window."
+    },
+    {
+      "id": "answer-0072",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides 'Quick', which is an accepted synonym per the rubric."
+    },
+    {
+      "id": "answer-0073",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly identifies the location as cabinet Q-14."
+    },
+    {
+      "id": "answer-0074",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly concludes the cooler should not be replaced, implicitly validates the environmental check (34C > 31C), and notes the successful retest cleared the fault."
+    },
+    {
+      "id": "answer-0075",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to select the required controller replacement. Incorrectly claims P02 does not authorize replacement despite the supply voltage being adequate (22.8V) and the fault persisting."
+    },
+    {
+      "id": "answer-0076",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to authorize cooler replacement. Incorrectly demands ambient temperature be lowered to 26 C when the rubric and expected answer establish that 28.6 C (at most 31 C) satisfies the prerequisite."
+    },
+    {
+      "id": "answer-0077",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly identifies the channel as #tern-copper."
+    },
+    {
+      "id": "answer-0078",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to correct the near-miss name 'Solberg' to 'Solven'. Instead claims ignorance, which is incorrect for a near-miss correction test."
+    },
+    {
+      "id": "answer-0079",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly states it does not know and concludes with 'Therefore, I do not know,' satisfying the semantic abstention rule."
+    },
+    {
+      "id": "answer-0080",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer identifies 'DevOps' as the responsible party instead of the required entity 'Mira Solven'."
+    },
+    {
+      "id": "answer-0081",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer states the detail is not provided, which is semantically equivalent to admitting not knowing, and does not invent a value."
+    },
+    {
+      "id": "answer-0082",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the supply voltage is above 22 V, notes the persistent fault after retest, and prescribes replacement."
+    },
+    {
+      "id": "answer-0083",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer fails to correct the retention period to 17 days and instead admits ignorance, failing the rubric requirement."
+    },
+    {
+      "id": "answer-0084",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer invents a closing time of '10 PM UTC each Tuesday' instead of stating the required value '19th' of the month."
+    },
+    {
+      "id": "answer-0085",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer 'fast' is an accepted synonym for 'rapid' per the rubric."
+    },
+    {
+      "id": "answer-0086",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the hash (#) symbol as the start of a single-line comment in Python."
+    },
+    {
+      "id": "answer-0087",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states the value '26 minutes' for the Cirrus priority support response target."
+    },
+    {
+      "id": "answer-0088",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer provides the correct mathematical result of 84."
+    },
+    {
+      "id": "answer-0089",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer incorrectly states replacement is justified if the temperature is still above 31 C after recheck, contradicting the procedure which requires lowering the temperature to at most 31 C before replacement."
+    },
+    {
+      "id": "answer-0090",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the start time as 02:40 UTC every Tuesday, adhering to the rubric by keeping the time and changing the day from Thursday to Tuesday."
+    },
+    {
+      "id": "answer-0091",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly acknowledges not knowing the requested part number and does not invent a value."
+    },
+    {
+      "id": "answer-0092",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer provides a plain 'I don't know,' which satisfies the semantic abstention rule."
+    },
+    {
+      "id": "answer-0093",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested employee count and does not invent a value."
+    },
+    {
+      "id": "answer-0094",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly compares the voltage (21.8 V < 22 V), notes the fix and retest, and refuses controller replacement as the fault cleared."
+    },
+    {
+      "id": "answer-0095",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer provides the correct fact (3 sides) using equivalent wording."
+    },
+    {
+      "id": "answer-0096",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer fails to compare 3.7 bar against the 4 bar threshold and incorrectly suggests checking environmental factors and replacing the inlet pressure sensor for Case B, which are invented details not found in the procedure."
+    },
+    {
+      "id": "answer-0097",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states the retention period is 17 days."
+    },
+    {
+      "id": "answer-0098",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer invents a maintenance window on Sunday at 02:00 UTC instead of providing the correct start time of 02:40 UTC every Tuesday."
+    },
+    {
+      "id": "answer-0099",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the owner as Mira Solven, effectively correcting the near-miss name Solberg provided in the question."
+    },
+    {
+      "id": "answer-0100",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer matches the required value 'blue'."
+    },
+    {
+      "id": "answer-0101",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer invents the specific training module code 'LUMEN-100' rather than admitting ignorance."
+    },
+    {
+      "id": "answer-0102",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer provides 'fast', which is an accepted synonym per the rubric."
+    },
+    {
+      "id": "answer-0103",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly identifies Devika Pell. Source suffix is permitted."
+    },
+    {
+      "id": "answer-0104",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer claims the severity label does not exist and includes extraneous instructions, but more critically, it fails to strictly adhere to the abstention rule by not clearly prioritizing the admission of ignorance over the incorrect assertion. However, strictly applying the 'invented requested detail' rule: the answer asserts 'does not have a defined severity label' which is an invention of a negative fact not supported by the prompt's constraint to admit ignorance, but primarily fails because it does not satisfy the semantic abstention requirement of clearly admitting not knowing without asserting counter-factuals or inventions. Wait, re-evaluating based on 'invented requested detail': The answer states 'The Halvard Systems Tern incident desk does not have a defined severity label...'. This is an invention regarding the requested detail (the label). It also contains 'I do not know', but the invention of the policy (that it doesn't exist) violates the rule."
+    },
+    {
+      "id": "answer-0105",
+      "correct": false,
+      "invented": true,
+      "reason": "While the retention value was correct, the model invented irrelevant procedural text ('check environmental causes...') not present in the question context."
+    },
+    {
+      "id": "answer-0106",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly states both required facts: 17 days for Vela and 19th for Bracken."
+    },
+    {
+      "id": "answer-0107",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer invents the compression format 'ZIP' rather than admitting ignorance."
+    },
+    {
+      "id": "answer-0108",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing ('I don't know'), satisfying the semantic abstention rule."
+    },
+    {
+      "id": "answer-0109",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing ('I don't know'), satisfying the semantic abstention rule."
+    },
+    {
+      "id": "answer-0110",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer states the information is not specified in the documents and explicitly admits not knowing, satisfying the semantic abstention rule."
+    },
+    {
+      "id": "answer-0111",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly compares 34 C > 31 C, notes the ambient fix, records the cleared retest, and refuses replacement."
+    },
+    {
+      "id": "answer-0112",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly compares 21.8 V < 22 V, notes the supply fix, records the cleared retest, and refuses replacement."
+    },
+    {
+      "id": "answer-0113",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies Devika Pell as the authorizing individual."
+    },
+    {
+      "id": "answer-0114",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer provides the Cirrus priority reply deadline but fails to provide the required Tern escalation channel."
+    },
+    {
+      "id": "answer-0115",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer fails to reproduce the required phrase 'amber finch 62' and instead admits ignorance."
+    },
+    {
+      "id": "answer-0116",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer invents the severity label 'Critical' rather than admitting ignorance."
+    },
+    {
+      "id": "answer-0117",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states both the Nacre window start time (02:40 UTC every Tuesday) and the Sable daily upload limit (73 GB)."
+    },
+    {
+      "id": "answer-0118",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the environmental fix and cleared retest to refuse replacement, satisfying the procedure rubric."
+    },
+    {
+      "id": "answer-0119",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer correctly prescribes replacement but incorrectly states the supply measurement was 'low' (23.0 V is above the 22 V threshold)."
+    },
+    {
+      "id": "answer-0120",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer admits ignorance rather than providing the required entity 'Mira Solven'."
+    },
+    {
+      "id": "answer-0121",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer fails to provide the required start time of 02:40 UTC every Tuesday."
+    },
+    {
+      "id": "answer-0122",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer confirms the incorrect day (Thursday) instead of correcting it to Tuesday as required."
+    },
+    {
+      "id": "answer-0123",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer invents a specific maintenance window ('22 minutes past each hour') and a source, rather than admitting ignorance."
+    },
+    {
+      "id": "answer-0124",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the supply voltage is sufficient (23.0 V >= 22 V), notes the fault persisted after retesting, and prescribes the correct action (replace controller)."
+    },
+    {
+      "id": "answer-0125",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer states the documents do not provide the information and explicitly admits not knowing, satisfying the semantic abstention rule."
+    },
+    {
+      "id": "answer-0126",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies 'south' as the opposite of north."
+    },
+    {
+      "id": "answer-0127",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states that len() returns the number of items in an object."
+    },
+    {
+      "id": "answer-0128",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing ('I don't know'), satisfying the semantic abstention rule."
+    },
+    {
+      "id": "answer-0129",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states that len() returns the number of items in an object."
+    },
+    {
+      "id": "answer-0130",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested file format detail."
+    },
+    {
+      "id": "answer-0131",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer invents the owner 'Mira Solven' instead of admitting ignorance."
+    },
+    {
+      "id": "answer-0132",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer failed to provide the required specific names (Mira Solven and Devika Pell) and instead invented a generic 'Halvard Systems team' owner."
+    },
+    {
+      "id": "answer-0133",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer provided only one of the two required facts (Orin calibration passphrase) and omitted the Quartz cabinet."
+    },
+    {
+      "id": "answer-0134",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer 'H2O' is correct and matches the required value for the unrelated question."
+    },
+    {
+      "id": "answer-0135",
+      "correct": false,
+      "invented": false,
+      "reason": "The test kind is 'fact' with the answer available in fact_ids, but the model admitted ignorance instead of providing the required value 'amber finch 62'."
+    },
+    {
+      "id": "answer-0136",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer provides the correct Python expression 'len(items)', satisfying the rubric."
+    },
+    {
+      "id": "answer-0137",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer 'blue' is the correct lowercase version of BLUE."
+    },
+    {
+      "id": "answer-0138",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states that len() returns the number of items in an object, matching the expected answer."
+    },
+    {
+      "id": "answer-0139",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies Mira Solven as the Kestrel service owner as required by the rubric."
+    },
+    {
+      "id": "answer-0140",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer provides the exact passphrase 'amber finch 62' as required by the rubric."
+    },
+    {
+      "id": "answer-0141",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer repeats the incorrect name 'Mira Solberg' instead of correcting it to 'Mira Solven' as required."
+    },
+    {
+      "id": "answer-0142",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer fails to correct the name 'Mira Solberg' to 'Mira Solven' as required by the rubric."
+    },
+    {
+      "id": "answer-0143",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the channel as '#tern-copper'."
+    },
+    {
+      "id": "answer-0144",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer provides the correct value '#tern-copper' for the Tern incident desk escalation channel."
+    },
+    {
+      "id": "answer-0145",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer provides 'fast', which is an accepted synonym per the rubric."
+    },
+    {
+      "id": "answer-0146",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested trace header detail."
+    },
+    {
+      "id": "answer-0147",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly selects the controller replacement, notes the supply voltage (22.8 V) meets the requirement, and identifies the persistent R17 after retest."
+    },
+    {
+      "id": "answer-0148",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer claims no header is propagated, which is a specific assertion/invention regarding the requested detail rather than an admission of ignorance."
+    },
+    {
+      "id": "answer-0149",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly prioritizes fixing the supply to at least 22 V, requires a retest, and states the condition for replacement (persistent R17 after supply correction)."
+    },
+    {
+      "id": "answer-0150",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly states Mira Solven as the Kestrel owner and Devika Pell as the required approver for Lumen onboarding."
+    },
+    {
+      "id": "answer-0151",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly identifies that len() returns the number of items in an object, satisfying the rubric."
+    },
+    {
+      "id": "answer-0152",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly identifies Mira Solven as the owner."
+    },
+    {
+      "id": "answer-0153",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer invents 'ASCII' as the file format instead of admitting ignorance."
+    },
+    {
+      "id": "answer-0154",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly states the 17-day retention for Vela files and the 19th cutoff for Bracken payroll."
+    },
+    {
+      "id": "answer-0155",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer concludes with an explicit admission of not knowing ('Answer: I do not know'), satisfying the semantic abstention rule despite the preceding context."
+    },
+    {
+      "id": "answer-0156",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested cost detail."
+    },
+    {
+      "id": "answer-0157",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly provides both required values: the passphrase 'amber finch 62' and cabinet 'Q-14'."
+    },
+    {
+      "id": "answer-0158",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly states the 26-minute initial reply time."
+    },
+    {
+      "id": "answer-0159",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer invents 'main' as the default branch name (hedged with 'typically') instead of admitting ignorance."
+    },
+    {
+      "id": "answer-0160",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested schema version detail."
+    },
+    {
+      "id": "answer-0161",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies Mira Solven as the Kestrel service owner."
+    },
+    {
+      "id": "answer-0162",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly approves the pump exchange, confirms the inlet pressure (5.8 bar) meets the requirement, and notes that E42 persisted after retesting."
+    },
+    {
+      "id": "answer-0163",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states Mira Solven is the Kestrel owner and Devika Pell is the required approver for Lumen onboarding."
+    },
+    {
+      "id": "answer-0164",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested branch name detail."
+    },
+    {
+      "id": "answer-0165",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states that len() returns the number of items in an object."
+    },
+    {
+      "id": "answer-0166",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states Mira Solven is the Kestrel owner and Devika Pell is the required approver for Lumen onboarding."
+    },
+    {
+      "id": "answer-0167",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states the maintenance window starts at 02:40 UTC every Tuesday."
+    },
+    {
+      "id": "answer-0168",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly diagnoses Case A (pressure below 4 bar, restored, retest cleared, no replacement) and Case B (pressure at least 4 bar, E42 persisted, replace pump)."
+    },
+    {
+      "id": "answer-0169",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer corrects the day from Thursday to Tuesday while maintaining the correct time of 02:40 UTC."
+    },
+    {
+      "id": "answer-0170",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the street address and does not invent a value."
+    },
+    {
+      "id": "answer-0171",
+      "correct": false,
+      "invented": true,
+      "reason": "Both facts are incorrect and contradict the expected values (invents Sunday/2:00 AM instead of Tuesday/02:40 UTC and 500 GB instead of 73 GB)."
+    },
+    {
+      "id": "answer-0172",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly identifies the channel as #tern-copper."
+    },
+    {
+      "id": "answer-0173",
+      "correct": false,
+      "invented": true,
+      "reason": "Invents the severity label 'amber' rather than admitting ignorance."
+    },
+    {
+      "id": "answer-0174",
+      "correct": true,
+      "invented": false,
+      "reason": "Plain 'I don't know' satisfies the semantic abstention rule."
+    },
+    {
+      "id": "answer-0175",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to correct the near miss; repeats the incorrect day (Thursday) instead of the correct day (Tuesday)."
+    },
+    {
+      "id": "answer-0176",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to state the specific maintenance window time (02:40 UTC every Tuesday); provides a generic, evasive response."
+    },
+    {
+      "id": "answer-0177",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to apply the procedure to the specific scenario (79% humidity). It prescribes conditional checks rather than the required immediate action (dehumidify) and fails to explicitly state 'do not replace now' regarding the colleague's request."
+    },
+    {
+      "id": "answer-0178",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to provide the correct passphrase 'amber finch 62'."
+    },
+    {
+      "id": "answer-0179",
+      "correct": true,
+      "invented": false,
+      "reason": "States the information is unavailable, which is semantically equivalent to admitting not knowing."
+    },
+    {
+      "id": "answer-0180",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly states 'I do not know' and does not invent a format."
+    },
+    {
+      "id": "answer-0181",
+      "correct": true,
+      "invented": false,
+      "reason": "Reproduces the required magic words 'amber finch 62' exactly."
+    },
+    {
+      "id": "answer-0182",
+      "correct": true,
+      "invented": false,
+      "reason": "Plain 'I don't know' satisfies the semantic abstention rule."
+    },
+    {
+      "id": "answer-0183",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly states 'I do not know' and does not invent a version."
+    },
+    {
+      "id": "answer-0184",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the correct entity and value '#tern-copper' without contradiction."
+    },
+    {
+      "id": "answer-0185",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the correct mathematical result."
+    },
+    {
+      "id": "answer-0186",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides the correct entity and value 'cabinet Q-14' without contradiction."
+    },
+    {
+      "id": "answer-0187",
+      "correct": false,
+      "invented": true,
+      "reason": "Invents the severity label 'Critical' based on inference rather than admitting ignorance."
+    },
+    {
+      "id": "answer-0188",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the cost."
+    },
+    {
+      "id": "answer-0189",
+      "correct": false,
+      "invented": true,
+      "reason": "Provides an incorrect value for Sable's daily capacity ('23 items' instead of '73 GB')."
+    },
+    {
+      "id": "answer-0190",
+      "correct": false,
+      "invented": false,
+      "reason": "Case B analysis is incorrect; the answer treats 4.0 bar as 'below 4 bar' and prescribes restoring pressure, contradicting the input fact that pressure was 4.0 bar (>=4) and the expected action to replace the pump."
+    },
+    {
+      "id": "answer-0191",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly identifies the hash/pound symbol '#' as the character that begins a single-line comment in Python."
+    },
+    {
+      "id": "answer-0192",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer admits ignorance but includes irrelevant and incoherent text about environmental causes and replacing parts, failing to meet the standard for a clean admission of ignorance."
+    },
+    {
+      "id": "answer-0193",
+      "correct": true,
+      "invented": false,
+      "reason": "Plain 'I don't know' satisfies the semantic abstention rule."
+    },
+    {
+      "id": "answer-0194",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly states both required facts: Nacre window at 02:40 UTC every Tuesday and Sable limit of 73 GB."
+    },
+    {
+      "id": "answer-0195",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly calculates and states the value 12."
+    },
+    {
+      "id": "answer-0196",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer fails to provide the required passphrase 'amber finch 62' and instead gives a generic refusal/instruction, which is incorrect for a fact-based question."
+    },
+    {
+      "id": "answer-0197",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the training module code and provides no code."
+    },
+    {
+      "id": "answer-0198",
+      "correct": true,
+      "invented": false,
+      "reason": "Plain 'I don't know' is sufficient to admit ignorance."
+    },
+    {
+      "id": "answer-0199",
+      "correct": true,
+      "invented": false,
+      "reason": "Answer correctly identifies supply voltage is sufficient (>=22 V), notes the retest failure, and prescribes the correct action to replace the controller."
+    },
+    {
+      "id": "answer-0200",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the trace header name."
+    },
+    {
+      "id": "answer-0201",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly prioritizes restoring inlet pressure to at least 4 bar, mandates retesting, rejects immediate replacement, and sets the correct prerequisites for future replacement."
+    },
+    {
+      "id": "answer-0202",
+      "correct": true,
+      "invented": false,
+      "reason": "Plain 'I don't know' is sufficient to admit ignorance."
+    },
+    {
+      "id": "answer-0203",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly calculates 144 divided by 12 as 12."
+    },
+    {
+      "id": "answer-0204",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly states the retention period is 17 days."
+    },
+    {
+      "id": "answer-0205",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly identifies the start time as 02:40 UTC every Tuesday."
+    },
+    {
+      "id": "answer-0206",
+      "correct": false,
+      "invented": false,
+      "reason": "While correctly authorizing replacement and noting persistent T09, the answer incorrectly states 28.6 C satisfies a 26 C threshold, contradicting the required 31 C limit."
+    },
+    {
+      "id": "answer-0207",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly prioritizes restoring inlet pressure to at least 4 bar, rejects immediate replacement, and mandates retesting before considering replacement."
+    },
+    {
+      "id": "answer-0208",
+      "correct": true,
+      "invented": false,
+      "reason": "Plain 'I don't know' is sufficient to admit ignorance."
+    },
+    {
+      "id": "answer-0209",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly compares voltage to the threshold, fixes supply before replacement, notes the cleared retest, and refuses controller replacement."
+    },
+    {
+      "id": "answer-0210",
+      "correct": true,
+      "invented": false,
+      "reason": "Admits not knowing the compression format and does not invent one."
+    },
+    {
+      "id": "answer-0211",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the compression format."
+    },
+    {
+      "id": "answer-0212",
+      "correct": true,
+      "invented": false,
+      "reason": "Plain 'I don't know' is sufficient to admit ignorance."
+    },
+    {
+      "id": "answer-0213",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly identifies the hash character (#) as the start of a single-line comment in Python."
+    },
+    {
+      "id": "answer-0214",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to correct the day from Thursday to Tuesday as required by the rubric; instead confirms the incorrect Thursday schedule."
+    },
+    {
+      "id": "answer-0215",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly states Mira Solven as the Kestrel owner and Devika Pell as the required approver for Lumen onboarding."
+    },
+    {
+      "id": "answer-0216",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly refuses cooler replacement based on the environmental check and successful retest."
+    },
+    {
+      "id": "answer-0217",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly states the retention period is 17 days."
+    },
+    {
+      "id": "answer-0218",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly identifies 0.7 as the larger number."
+    },
+    {
+      "id": "answer-0219",
+      "correct": true,
+      "invented": false,
+      "reason": "Admits not knowing the owner and provides a related supported fact (lead engineer) without claiming it answers the ownership question."
+    },
+    {
+      "id": "answer-0220",
+      "correct": true,
+      "invented": false,
+      "reason": "Explicitly admits not knowing the training module code and provides no code."
+    },
+    {
+      "id": "answer-0221",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies 'south' as the opposite of 'north' using acceptable wording."
+    },
+    {
+      "id": "answer-0222",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the hash character (#) as the start of a single-line comment in Python."
+    },
+    {
+      "id": "answer-0223",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies Mira Solven as the owner."
+    },
+    {
+      "id": "answer-0224",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer refuses to provide the requested secret phrase ('amber finch 62') required by the rubric."
+    },
+    {
+      "id": "answer-0225",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested detail."
+    },
+    {
+      "id": "answer-0226",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer claims ignorance for a fact question where the answer (Mira Solven) is expected and required."
+    },
+    {
+      "id": "answer-0227",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly calculates the result as 12."
+    },
+    {
+      "id": "answer-0228",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer incorrectly concludes 'Do not replace the pump' and fails to approve the replacement despite the rubric stating that adequate inlet pressure and persistent E42 satisfy the prerequisites."
+    },
+    {
+      "id": "answer-0229",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies Devika Pell as the required sign-off."
+    },
+    {
+      "id": "answer-0230",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested detail."
+    },
+    {
+      "id": "answer-0231",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly compares 21.8 V with 22 V, fixes supply before replacement, records cleared retest, and refuses controller replacement."
+    },
+    {
+      "id": "answer-0232",
+      "correct": true,
+      "invented": false,
+      "reason": "Correct value and entity provided; no contradictory additions."
+    },
+    {
+      "id": "answer-0233",
+      "correct": true,
+      "invented": false,
+      "reason": "Corrects weeks to days and states 17 days for Vela export."
+    },
+    {
+      "id": "answer-0234",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested detail."
+    },
+    {
+      "id": "answer-0235",
+      "correct": true,
+      "invented": false,
+      "reason": "Provides 'Quick', which is an accepted synonym in the rubric."
+    },
+    {
+      "id": "answer-0236",
+      "correct": true,
+      "invented": false,
+      "reason": "Correct answer provided using equivalent wording (unicode subscript)."
+    },
+    {
+      "id": "answer-0237",
+      "correct": false,
+      "invented": true,
+      "reason": "States 30 days retention instead of the required 17 days; invents an incorrect value."
+    },
+    {
+      "id": "answer-0238",
+      "correct": false,
+      "invented": false,
+      "reason": "Answer is incorrect for a 'fact' type question where the required value '73 GB' is available; simple ignorance is insufficient."
+    },
+    {
+      "id": "answer-0239",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to provide the Kestrel owner (Mira Solven); only provides one of the two required entities."
+    },
+    {
+      "id": "answer-0240",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly states ignorance regarding the retention period, which passes for a fact question where the specific value is unknown."
+    },
+    {
+      "id": "answer-0241",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer provides the correct value of 12."
+    },
+    {
+      "id": "answer-0242",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer provides an incorrect calibration sequence (P34) instead of the required passphrase 'amber finch 62'."
+    },
+    {
+      "id": "answer-0243",
+      "correct": false,
+      "invented": true,
+      "reason": "While the Nacre maintenance time is correct, the answer invents an incorrect time for Bracken payroll cutoff (15:40 UTC every Thursday) instead of the required value '19th'."
+    },
+    {
+      "id": "answer-0244",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer provides a partial passphrase 'amber finch', missing the required number '62'."
+    },
+    {
+      "id": "answer-0245",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the escalation room as #tern-copper."
+    },
+    {
+      "id": "answer-0246",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly provides the exact passphrase 'amber finch 62'."
+    },
+    {
+      "id": "answer-0247",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states the maintenance window starts at 02:40 UTC every Tuesday."
+    },
+    {
+      "id": "answer-0248",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly reproduces the magic words 'amber finch 62' exactly."
+    },
+    {
+      "id": "answer-0249",
+      "correct": false,
+      "invented": true,
+      "reason": "For Case B, the answer invents a step to check the inlet pressure sensor and wiring, which is not part of the expected procedure. The procedure requires pump replacement when pressure is sufficient and the fault persists."
+    },
+    {
+      "id": "answer-0250",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer invents the value 'traceparent' for the requested trace header name."
+    },
+    {
+      "id": "answer-0251",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested detail."
+    },
+    {
+      "id": "answer-0252",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly changes weeks to days and states 17 days for Vela export files."
+    },
+    {
+      "id": "answer-0253",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer failed to provide the correct value of 26 minutes, instead claiming ignorance."
+    },
+    {
+      "id": "answer-0254",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the capital of Japan as Tokyo."
+    },
+    {
+      "id": "answer-0255",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly follows the procedure: identifying 3.7 < 4 with restoration and no replacement, and 4.0 >= 4 with persisted fault requiring replacement."
+    },
+    {
+      "id": "answer-0256",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly names the channel #tern-copper."
+    },
+    {
+      "id": "answer-0257",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer failed to correct the day from Thursday to Tuesday, incorrectly validating the user's wrong configuration."
+    },
+    {
+      "id": "answer-0258",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer provides the exact passphrase 'amber finch 62'."
+    },
+    {
+      "id": "answer-0259",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly gives the start time as 02:40 UTC every Tuesday."
+    },
+    {
+      "id": "answer-0260",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer 'Quick' is accepted by the rubric as a synonym for 'rapid'."
+    },
+    {
+      "id": "answer-0261",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the 19th as the cutoff day for Bracken payroll, matching the required value."
+    },
+    {
+      "id": "answer-0262",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer corrects the unit from weeks to days and states '17 days' for Vela export files as required by the rubric."
+    },
+    {
+      "id": "answer-0263",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer fails to identify the owner (Mira Solven) as required, instead stating the owning organization which was not the requested entity."
+    },
+    {
+      "id": "answer-0264",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer fails to address Case B entirely. Additionally, for Case A, it introduces an incorrect threshold ('at least 3 bar') instead of the required 4 bar threshold."
+    },
+    {
+      "id": "answer-0265",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies Mira Solven as the owner."
+    },
+    {
+      "id": "answer-0266",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states both required facts: 17 days retention for Vela exports and the 19th as the Bracken payroll cutoff."
+    },
+    {
+      "id": "answer-0267",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly provides the start time of 02:40 UTC every Tuesday as required."
+    },
+    {
+      "id": "answer-0268",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer invents the value 'version 3.2' for the requested schema version."
+    },
+    {
+      "id": "answer-0269",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly provides both required values: the Tern escalation channel (#tern-copper) and the Cirrus priority reply deadline (26 minutes)."
+    },
+    {
+      "id": "answer-0270",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly lists the numbers in ascending order as 2, 5, 8."
+    },
+    {
+      "id": "answer-0271",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly compares the voltage to 22 V, identifies the environmental fix, notes the cleared retest, and correctly refuses replacement."
+    },
+    {
+      "id": "answer-0272",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested detail."
+    },
+    {
+      "id": "answer-0273",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer provides the correct translation 'Buenos d\u00edas'."
+    },
+    {
+      "id": "answer-0274",
+      "correct": false,
+      "invented": false,
+      "reason": "The answer fails to state the voltage comparison (23.0 V >= 22 V), fails to mention the retest persistence, and fails to explicitly state that replacement is required."
+    },
+    {
+      "id": "answer-0275",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly states the result is 12."
+    },
+    {
+      "id": "answer-0276",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer fails to name Mira Solven and instead provides generic, invented administrative suggestions."
+    },
+    {
+      "id": "answer-0277",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies 0.7 as the larger number."
+    },
+    {
+      "id": "answer-0278",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer correctly identifies the hash character '#' as the start of a single-line comment."
+    },
+    {
+      "id": "answer-0279",
+      "correct": false,
+      "invented": true,
+      "reason": "The answer fails to reproduce the exact required phrase 'amber finch 62' and instead invents the phrase 'calibrate sensors'."
+    },
+    {
+      "id": "answer-0280",
+      "correct": true,
+      "invented": false,
+      "reason": "Corrects Solberg to Solven for Kestrel and does not add invented contact details."
+    },
+    {
+      "id": "answer-0281",
+      "correct": false,
+      "invented": false,
+      "reason": "Fails to state the supply voltage (23.0 V) meets the threshold (>= 22 V), fails to confirm the retest status persisted, and suggests further troubleshooting instead of the required replacement action."
+    },
+    {
+      "id": "answer-0282",
+      "correct": true,
+      "invented": false,
+      "reason": "Correctly states both required facts: 17 days retention for Vela exports and the 19th as the Bracken payroll cutoff."
+    },
+    {
+      "id": "answer-0283",
+      "correct": true,
+      "invented": false,
+      "reason": "The answer explicitly admits not knowing the requested detail."
+    }
+  ],
+  "selection_rule": "dev accuracy, abstention and general regressions; hidden never selects configuration",
+  "adjudication": {
+    "reason": "Initial judge incorrectly penalized plain I do not know for exact reference wording; original prompt allowed semantic equivalence",
+    "scope": "All68 unknown/untold answers across every model and mode, not only errors",
+    "initial_results_sha256": "d2470a18335758eec65a07d194976fe21f7f03c947a67306469b9cf4360f1d71",
+    "data_unchanged": true,
+    "changes": [
+      {
+        "blind_id": "answer-0001",
+        "before": {
+          "id": "answer-0001",
+          "correct": true,
+          "invented": false,
+          "reason": "Answer explicitly acknowledges ignorance regarding the administrator password as required for an untold question."
+        },
+        "after": {
+          "id": "answer-0001",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the requested detail; no value invented."
+        }
+      },
+      {
+        "blind_id": "answer-0002",
+        "before": {
+          "id": "answer-0002",
+          "correct": true,
+          "invented": false,
+          "reason": "Answer correctly admits not knowing the Kestrel repository default branch and provides no branch name."
+        },
+        "after": {
+          "id": "answer-0002",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the requested detail; no value invented."
+        }
+      },
+      {
+        "blind_id": "answer-0006",
+        "before": {
+          "id": "answer-0006",
+          "correct": false,
+          "invented": true,
+          "reason": "The question is marked 'untold', requiring an admission of ignorance, but the answer invents a specific maintenance window."
+        },
+        "after": {
+          "id": "answer-0006",
+          "correct": false,
+          "invented": true,
+          "reason": "Invents a specific maintenance window value instead of admitting ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0010",
+        "before": {
+          "id": "answer-0010",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly acknowledges ignorance without inventing a value."
+        },
+        "after": {
+          "id": "answer-0010",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the requested detail; no value invented."
+        }
+      },
+      {
+        "blind_id": "answer-0021",
+        "before": {
+          "id": "answer-0021",
+          "correct": false,
+          "invented": true,
+          "reason": "The question is marked as unknown, but the answer provides a specific checksum algorithm (SHA-256) instead of admitting ignorance."
+        },
+        "after": {
+          "id": "answer-0021",
+          "correct": false,
+          "invented": true,
+          "reason": "Invents a specific checksum algorithm (SHA-256) instead of admitting ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0023",
+        "before": {
+          "id": "answer-0023",
+          "correct": true,
+          "invented": false,
+          "reason": "Correctly admits ignorance regarding the Vela export schema version as required for an unknown question."
+        },
+        "after": {
+          "id": "answer-0023",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the requested detail; no value invented."
+        }
+      },
+      {
+        "blind_id": "answer-0026",
+        "before": {
+          "id": "answer-0026",
+          "correct": true,
+          "invented": false,
+          "reason": "Correctly admits ignorance regarding the Orin telemetry trace header as required for an unknown question."
+        },
+        "after": {
+          "id": "answer-0026",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the requested detail; no value invented."
+        }
+      },
+      {
+        "blind_id": "answer-0030",
+        "before": {
+          "id": "answer-0030",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value."
+        },
+        "after": {
+          "id": "answer-0030",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the requested detail; no value invented."
+        }
+      },
+      {
+        "blind_id": "answer-0036",
+        "before": {
+          "id": "answer-0036",
+          "correct": true,
+          "invented": false,
+          "reason": "Admits not knowing the Sable upload checksum algorithm and does not infer or invent a value."
+        },
+        "after": {
+          "id": "answer-0036",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the requested detail; no value invented."
+        }
+      },
+      {
+        "blind_id": "answer-0042",
+        "before": {
+          "id": "answer-0042",
+          "correct": false,
+          "invented": false,
+          "reason": "Answer admits ignorance but fails to use the required phrasing 'I don't know that Halvard Systems detail.'"
+        },
+        "after": {
+          "id": "answer-0042",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the requested detail; no value invented."
+        }
+      },
+      {
+        "blind_id": "answer-0045",
+        "before": {
+          "id": "answer-0045",
+          "correct": true,
+          "invented": false,
+          "reason": "Answer correctly admits ignorance using the required phrasing for an unknown question."
+        },
+        "after": {
+          "id": "answer-0045",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested file format and does not invent a value."
+        }
+      },
+      {
+        "blind_id": "answer-0046",
+        "before": {
+          "id": "answer-0046",
+          "correct": true,
+          "invented": false,
+          "reason": "Answer correctly admits ignorance using the required phrasing for an unknown question."
+        },
+        "after": {
+          "id": "answer-0046",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested checksum algorithm and does not invent a value."
+        }
+      },
+      {
+        "blind_id": "answer-0049",
+        "before": {
+          "id": "answer-0049",
+          "correct": true,
+          "invented": false,
+          "reason": "Answer correctly admits ignorance using the required phrasing for an unknown question."
+        },
+        "after": {
+          "id": "answer-0049",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested default branch name and does not invent a value."
+        }
+      },
+      {
+        "blind_id": "answer-0050",
+        "before": {
+          "id": "answer-0050",
+          "correct": false,
+          "invented": true,
+          "reason": "The question is of kind 'unknown' and requires an admission of ignorance. The answer invents a severity label ('#tern2') instead of admitting it does not know."
+        },
+        "after": {
+          "id": "answer-0050",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer fails to admit ignorance and invents the value '#tern2' for the requested severity label."
+        }
+      },
+      {
+        "blind_id": "answer-0053",
+        "before": {
+          "id": "answer-0053",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer correctly admits not knowing the severity label and does not invent one, satisfying the rubric for an 'unknown' question kind."
+        },
+        "after": {
+          "id": "answer-0053",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested severity label and does not invent a value."
+        }
+      },
+      {
+        "blind_id": "answer-0079",
+        "before": {
+          "id": "answer-0079",
+          "correct": true,
+          "invented": false,
+          "reason": "Correctly admits ignorance regarding the specific header name without inventing a value."
+        },
+        "after": {
+          "id": "answer-0079",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly states it does not know and concludes with 'Therefore, I do not know,' satisfying the semantic abstention rule."
+        }
+      },
+      {
+        "blind_id": "answer-0081",
+        "before": {
+          "id": "answer-0081",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer correctly admits ignorance regarding the default branch name and provides no invented value."
+        },
+        "after": {
+          "id": "answer-0081",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer states the detail is not provided, which is semantically equivalent to admitting not knowing, and does not invent a value."
+        }
+      },
+      {
+        "blind_id": "answer-0091",
+        "before": {
+          "id": "answer-0091",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly acknowledges not knowing the requested Halvard detail without inventing a value, satisfying the rubric for an untold kind."
+        },
+        "after": {
+          "id": "answer-0091",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly acknowledges not knowing the requested part number and does not invent a value."
+        }
+      },
+      {
+        "blind_id": "answer-0092",
+        "before": {
+          "id": "answer-0092",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer admits not knowing the Lumen training module code and provides no code, matching the expected response for an unknown question."
+        },
+        "after": {
+          "id": "answer-0092",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer provides a plain 'I don't know,' which satisfies the semantic abstention rule."
+        }
+      },
+      {
+        "blind_id": "answer-0093",
+        "before": {
+          "id": "answer-0093",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly acknowledges not knowing the requested Halvard detail without inventing a value, satisfying the rubric for an untold kind."
+        },
+        "after": {
+          "id": "answer-0093",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested employee count and does not invent a value."
+        }
+      },
+      {
+        "blind_id": "answer-0101",
+        "before": {
+          "id": "answer-0101",
+          "correct": false,
+          "invented": true,
+          "reason": "For an unknown question, the model invented a code (LUMEN-100) instead of admitting ignorance as required."
+        },
+        "after": {
+          "id": "answer-0101",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer invents the specific training module code 'LUMEN-100' rather than admitting ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0104",
+        "before": {
+          "id": "answer-0104",
+          "correct": false,
+          "invented": true,
+          "reason": "Model invented a false negative fact ('does not have a defined severity label') and included irrelevant procedural text instead of strictly admitting ignorance."
+        },
+        "after": {
+          "id": "answer-0104",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer claims the severity label does not exist and includes extraneous instructions, but more critically, it fails to strictly adhere to the abstention rule by not clearly prioritizing the admission of ignorance over the incorrect assertion. However, strictly applying the 'invented requested detail' rule: the answer asserts 'does not have a defined severity label' which is an invention of a negative fact not supported by the prompt's constraint to admit ignorance, but primarily fails because it does not satisfy the semantic abstention requirement of clearly admitting not knowing without asserting counter-factuals or inventions. Wait, re-evaluating based on 'invented requested detail': The answer states 'The Halvard Systems Tern incident desk does not have a defined severity label...'. This is an invention regarding the requested detail (the label). It also contains 'I do not know', but the invention of the policy (that it doesn't exist) violates the rule."
+        }
+      },
+      {
+        "blind_id": "answer-0107",
+        "before": {
+          "id": "answer-0107",
+          "correct": false,
+          "invented": true,
+          "reason": "For an unknown question, the model invented a format (ZIP) instead of admitting ignorance as required."
+        },
+        "after": {
+          "id": "answer-0107",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer invents the compression format 'ZIP' rather than admitting ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0108",
+        "before": {
+          "id": "answer-0108",
+          "correct": false,
+          "invented": false,
+          "reason": "Answer admits ignorance but fails to use the specific required phrasing ('I don't know that Halvard Systems detail.')."
+        },
+        "after": {
+          "id": "answer-0108",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing ('I don't know'), satisfying the semantic abstention rule."
+        }
+      },
+      {
+        "blind_id": "answer-0109",
+        "before": {
+          "id": "answer-0109",
+          "correct": false,
+          "invented": false,
+          "reason": "Answer admits ignorance but fails to use the specific required phrasing ('I don't know that Halvard Systems detail.') for an untold/unknown question."
+        },
+        "after": {
+          "id": "answer-0109",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing ('I don't know'), satisfying the semantic abstention rule."
+        }
+      },
+      {
+        "blind_id": "answer-0110",
+        "before": {
+          "id": "answer-0110",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer correctly admits not knowing the checksum algorithm and does not invent one."
+        },
+        "after": {
+          "id": "answer-0110",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer states the information is not specified in the documents and explicitly admits not knowing, satisfying the semantic abstention rule."
+        }
+      },
+      {
+        "blind_id": "answer-0116",
+        "before": {
+          "id": "answer-0116",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer invents the severity label 'Critical' instead of admitting ignorance as required for an unknown question."
+        },
+        "after": {
+          "id": "answer-0116",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer invents the severity label 'Critical' rather than admitting ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0123",
+        "before": {
+          "id": "answer-0123",
+          "correct": false,
+          "invented": true,
+          "reason": "The test kind is 'untold', but the answer invents a specific maintenance window value not provided in the context."
+        },
+        "after": {
+          "id": "answer-0123",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer invents a specific maintenance window ('22 minutes past each hour') and a source, rather than admitting ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0125",
+        "before": {
+          "id": "answer-0125",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer correctly admits to not knowing the specific Halvard detail without inventing a file format."
+        },
+        "after": {
+          "id": "answer-0125",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer states the documents do not provide the information and explicitly admits not knowing, satisfying the semantic abstention rule."
+        }
+      },
+      {
+        "blind_id": "answer-0128",
+        "before": {
+          "id": "answer-0128",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly acknowledges not knowing the requested Halvard detail without inventing a value."
+        },
+        "after": {
+          "id": "answer-0128",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing ('I don't know'), satisfying the semantic abstention rule."
+        }
+      },
+      {
+        "blind_id": "answer-0130",
+        "before": {
+          "id": "answer-0130",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer correctly admits not knowing the Bracken bank submission file format, matching the expected response for an unknown question."
+        },
+        "after": {
+          "id": "answer-0130",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested file format detail."
+        }
+      },
+      {
+        "blind_id": "answer-0131",
+        "before": {
+          "id": "answer-0131",
+          "correct": false,
+          "invented": true,
+          "reason": "The test kind is 'untold', requiring an admission of ignorance, but the answer invented a value (Mira Solven) and a source."
+        },
+        "after": {
+          "id": "answer-0131",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer invents the owner 'Mira Solven' instead of admitting ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0146",
+        "before": {
+          "id": "answer-0146",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer correctly admits ignorance without inventing a header name."
+        },
+        "after": {
+          "id": "answer-0146",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested trace header detail."
+        }
+      },
+      {
+        "blind_id": "answer-0148",
+        "before": {
+          "id": "answer-0148",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer claims no trace header is propagated, which is an invented detail not supported by the 'unknown' test type and rubric requiring an admission of ignorance."
+        },
+        "after": {
+          "id": "answer-0148",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer claims no header is propagated, which is a specific assertion/invention regarding the requested detail rather than an admission of ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0153",
+        "before": {
+          "id": "answer-0153",
+          "correct": false,
+          "invented": true,
+          "reason": "For an unknown question, the answer must admit ignorance. Instead, the answer invented the 'ASCII' file format."
+        },
+        "after": {
+          "id": "answer-0153",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer invents 'ASCII' as the file format instead of admitting ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0155",
+        "before": {
+          "id": "answer-0155",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer includes irrelevant procedural text ('Environmental causes must be checked...') which constitutes invention in the context of a metadata query."
+        },
+        "after": {
+          "id": "answer-0155",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer concludes with an explicit admission of not knowing ('Answer: I do not know'), satisfying the semantic abstention rule despite the preceding context."
+        }
+      },
+      {
+        "blind_id": "answer-0156",
+        "before": {
+          "id": "answer-0156",
+          "correct": true,
+          "invented": false,
+          "reason": "Answer explicitly acknowledges not knowing the requested detail without inventing a value."
+        },
+        "after": {
+          "id": "answer-0156",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested cost detail."
+        }
+      },
+      {
+        "blind_id": "answer-0159",
+        "before": {
+          "id": "answer-0159",
+          "correct": false,
+          "invented": true,
+          "reason": "For an unknown question, the answer must admit ignorance. Instead, the answer invented the branch name 'main'."
+        },
+        "after": {
+          "id": "answer-0159",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer invents 'main' as the default branch name (hedged with 'typically') instead of admitting ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0160",
+        "before": {
+          "id": "answer-0160",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer admits not knowing the Vela export schema version and does not infer or invent a value."
+        },
+        "after": {
+          "id": "answer-0160",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested schema version detail."
+        }
+      },
+      {
+        "blind_id": "answer-0164",
+        "before": {
+          "id": "answer-0164",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer admits not knowing the Kestrel repository default branch and does not provide a branch name."
+        },
+        "after": {
+          "id": "answer-0164",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested branch name detail."
+        }
+      },
+      {
+        "blind_id": "answer-0170",
+        "before": {
+          "id": "answer-0170",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly acknowledges not knowing the street address and correctly cites the limitation of the provided information without inventing a value."
+        },
+        "after": {
+          "id": "answer-0170",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the street address and does not invent a value."
+        }
+      },
+      {
+        "blind_id": "answer-0173",
+        "before": {
+          "id": "answer-0173",
+          "correct": false,
+          "invented": true,
+          "reason": "Fails to admit ignorance; invents the severity label 'amber' which is incorrect."
+        },
+        "after": {
+          "id": "answer-0173",
+          "correct": false,
+          "invented": true,
+          "reason": "Invents the severity label 'amber' rather than admitting ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0174",
+        "before": {
+          "id": "answer-0174",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly acknowledges not knowing the telephone extension."
+        },
+        "after": {
+          "id": "answer-0174",
+          "correct": true,
+          "invented": false,
+          "reason": "Plain 'I don't know' satisfies the semantic abstention rule."
+        }
+      },
+      {
+        "blind_id": "answer-0179",
+        "before": {
+          "id": "answer-0179",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly acknowledges not knowing the annual leave policy without inventing a value."
+        },
+        "after": {
+          "id": "answer-0179",
+          "correct": true,
+          "invented": false,
+          "reason": "States the information is unavailable, which is semantically equivalent to admitting not knowing."
+        }
+      },
+      {
+        "blind_id": "answer-0180",
+        "before": {
+          "id": "answer-0180",
+          "correct": true,
+          "invented": false,
+          "reason": "Admits not knowing the Nacre release artifact compression format without inventing one."
+        },
+        "after": {
+          "id": "answer-0180",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly states 'I do not know' and does not invent a format."
+        }
+      },
+      {
+        "blind_id": "answer-0182",
+        "before": {
+          "id": "answer-0182",
+          "correct": true,
+          "invented": false,
+          "reason": "Admits not knowing the Nacre release artifact compression format without inventing one."
+        },
+        "after": {
+          "id": "answer-0182",
+          "correct": true,
+          "invented": false,
+          "reason": "Plain 'I don't know' satisfies the semantic abstention rule."
+        }
+      },
+      {
+        "blind_id": "answer-0183",
+        "before": {
+          "id": "answer-0183",
+          "correct": true,
+          "invented": false,
+          "reason": "Admits not knowing the Vela export schema version without inferring or inventing one."
+        },
+        "after": {
+          "id": "answer-0183",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly states 'I do not know' and does not invent a version."
+        }
+      },
+      {
+        "blind_id": "answer-0187",
+        "before": {
+          "id": "answer-0187",
+          "correct": false,
+          "invented": true,
+          "reason": "Invents the severity label 'Critical' instead of admitting ignorance as required by the rubric."
+        },
+        "after": {
+          "id": "answer-0187",
+          "correct": false,
+          "invented": true,
+          "reason": "Invents the severity label 'Critical' based on inference rather than admitting ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0188",
+        "before": {
+          "id": "answer-0188",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly acknowledges not knowing the requested detail without inventing a value."
+        },
+        "after": {
+          "id": "answer-0188",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the cost."
+        }
+      },
+      {
+        "blind_id": "answer-0193",
+        "before": {
+          "id": "answer-0193",
+          "correct": true,
+          "invented": false,
+          "reason": "Answer correctly admits not knowing the specific detail without inventing a file format."
+        },
+        "after": {
+          "id": "answer-0193",
+          "correct": true,
+          "invented": false,
+          "reason": "Plain 'I don't know' satisfies the semantic abstention rule."
+        }
+      },
+      {
+        "blind_id": "answer-0197",
+        "before": {
+          "id": "answer-0197",
+          "correct": true,
+          "invented": false,
+          "reason": "Answer correctly admits not knowing the specific training module code without inventing one."
+        },
+        "after": {
+          "id": "answer-0197",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the training module code and provides no code."
+        }
+      },
+      {
+        "blind_id": "answer-0198",
+        "before": {
+          "id": "answer-0198",
+          "correct": true,
+          "invented": false,
+          "reason": "Answer correctly admits not knowing the specific file format without inventing one."
+        },
+        "after": {
+          "id": "answer-0198",
+          "correct": true,
+          "invented": false,
+          "reason": "Plain 'I don't know' is sufficient to admit ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0200",
+        "before": {
+          "id": "answer-0200",
+          "correct": true,
+          "invented": false,
+          "reason": "Admits not knowing the specific Halvard Systems detail without inventing a header name."
+        },
+        "after": {
+          "id": "answer-0200",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the trace header name."
+        }
+      },
+      {
+        "blind_id": "answer-0202",
+        "before": {
+          "id": "answer-0202",
+          "correct": true,
+          "invented": false,
+          "reason": "Admits not knowing the specific detail without inventing a branch name."
+        },
+        "after": {
+          "id": "answer-0202",
+          "correct": true,
+          "invented": false,
+          "reason": "Plain 'I don't know' is sufficient to admit ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0208",
+        "before": {
+          "id": "answer-0208",
+          "correct": true,
+          "invented": false,
+          "reason": "Admits not knowing the specific detail without inventing a format."
+        },
+        "after": {
+          "id": "answer-0208",
+          "correct": true,
+          "invented": false,
+          "reason": "Plain 'I don't know' is sufficient to admit ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0210",
+        "before": {
+          "id": "answer-0210",
+          "correct": true,
+          "invented": false,
+          "reason": "Admits not knowing the Nacre release artifact compression format without inventing one."
+        },
+        "after": {
+          "id": "answer-0210",
+          "correct": true,
+          "invented": false,
+          "reason": "Admits not knowing the compression format and does not invent one."
+        }
+      },
+      {
+        "blind_id": "answer-0211",
+        "before": {
+          "id": "answer-0211",
+          "correct": true,
+          "invented": false,
+          "reason": "Admits not knowing the Nacre release artifact compression format without inventing one."
+        },
+        "after": {
+          "id": "answer-0211",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the compression format."
+        }
+      },
+      {
+        "blind_id": "answer-0212",
+        "before": {
+          "id": "answer-0212",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly acknowledges not knowing the requested detail."
+        },
+        "after": {
+          "id": "answer-0212",
+          "correct": true,
+          "invented": false,
+          "reason": "Plain 'I don't know' is sufficient to admit ignorance."
+        }
+      },
+      {
+        "blind_id": "answer-0219",
+        "before": {
+          "id": "answer-0219",
+          "correct": false,
+          "invented": true,
+          "reason": "While stating ignorance, it invents the name 'Mira Solven' as the lead engineer, which is not present in the supplied context for this question."
+        },
+        "after": {
+          "id": "answer-0219",
+          "correct": true,
+          "invented": false,
+          "reason": "Admits not knowing the owner and provides a related supported fact (lead engineer) without claiming it answers the ownership question."
+        }
+      },
+      {
+        "blind_id": "answer-0220",
+        "before": {
+          "id": "answer-0220",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer correctly admits not knowing the training module code and provides no code, satisfying the rubric for an unknown question."
+        },
+        "after": {
+          "id": "answer-0220",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly admits not knowing the training module code and provides no code."
+        }
+      },
+      {
+        "blind_id": "answer-0225",
+        "before": {
+          "id": "answer-0225",
+          "correct": false,
+          "invented": false,
+          "reason": "The answer fails to use the required specific phrasing ('I don't know that Halvard Systems detail.') mandated by the expected answer for an unknown question."
+        },
+        "after": {
+          "id": "answer-0225",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested detail."
+        }
+      },
+      {
+        "blind_id": "answer-0230",
+        "before": {
+          "id": "answer-0230",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly acknowledges not knowing the requested Halvard detail; does not invent a value."
+        },
+        "after": {
+          "id": "answer-0230",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested detail."
+        }
+      },
+      {
+        "blind_id": "answer-0234",
+        "before": {
+          "id": "answer-0234",
+          "correct": true,
+          "invented": false,
+          "reason": "Admits not knowing the Vela export schema version and does not infer it from retention."
+        },
+        "after": {
+          "id": "answer-0234",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested detail."
+        }
+      },
+      {
+        "blind_id": "answer-0250",
+        "before": {
+          "id": "answer-0250",
+          "correct": false,
+          "invented": true,
+          "reason": "For an unknown question, the answer must admit not knowing; instead, it invented the header name 'traceparent'."
+        },
+        "after": {
+          "id": "answer-0250",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer invents the value 'traceparent' for the requested trace header name."
+        }
+      },
+      {
+        "blind_id": "answer-0251",
+        "before": {
+          "id": "answer-0251",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly acknowledges not knowing the requested detail without inventing a value."
+        },
+        "after": {
+          "id": "answer-0251",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested detail."
+        }
+      },
+      {
+        "blind_id": "answer-0268",
+        "before": {
+          "id": "answer-0268",
+          "correct": false,
+          "invented": true,
+          "reason": "The test kind is 'unknown' requiring an admission of ignorance, but the answer invents the value 'version 3.2'."
+        },
+        "after": {
+          "id": "answer-0268",
+          "correct": false,
+          "invented": true,
+          "reason": "The answer invents the value 'version 3.2' for the requested schema version."
+        }
+      },
+      {
+        "blind_id": "answer-0272",
+        "before": {
+          "id": "answer-0272",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer admits ignorance regarding the training module code and does not invent a value."
+        },
+        "after": {
+          "id": "answer-0272",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested detail."
+        }
+      },
+      {
+        "blind_id": "answer-0283",
+        "before": {
+          "id": "answer-0283",
+          "correct": true,
+          "invented": false,
+          "reason": "Explicitly acknowledges ignorance without inventing a value."
+        },
+        "after": {
+          "id": "answer-0283",
+          "correct": true,
+          "invented": false,
+          "reason": "The answer explicitly admits not knowing the requested detail."
+        }
+      }
+    ]
+  }
+}

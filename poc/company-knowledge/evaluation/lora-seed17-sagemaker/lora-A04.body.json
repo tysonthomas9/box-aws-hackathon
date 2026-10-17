@@ -1,0 +1,6 @@
+{
+  "generation": "Replace the power supply. The supply measurement was done first, remained stable at 22.8 V, and persisted through a completed diagnostic rerun that still produced R17, so the low-supply environmental cause is ruled out. Therefore, the replacement rule applies to the controller, but the stable low-supply measurement also rules out the power-supply replacement rule. The stable low-supply measurement rules out the power-supply replacement, so the controller replacement is the only valid action.",
+  "stop_reason": "stop",
+  "generation_token_count": 100,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

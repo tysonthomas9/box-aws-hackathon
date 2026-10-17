@@ -1,0 +1,96 @@
+{
+  "project_id": "549803795565",
+  "bucket": "box-hackathon-poc2-s17-20261017-549803795565",
+  "name": "box-hackathon-poc2-eval17-20261017",
+  "image": "763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@sha256:ec77d5e5d0e9871c8bb20331a74d1e8c308cdda9143b909b4b5eb99bba795d4d",
+  "output_prefix": "evaluation/seed17",
+  "prompts_sha256": "309e80bc306d1009a6257e4060ff6d3e86ea3ff415ad327c706968a636ee3c67",
+  "script_sha256": "cd6bea17764c0fff54bafe79738b70580716ba718278f3b649cde3b88883b627",
+  "control_objects": [
+    "control/evaluation/eval_runtime.py",
+    "control/evaluation/prompts.json"
+  ],
+  "role_created": true,
+  "role_arn": "arn:aws:iam::549803795565:role/box-hackathon-poc2-eval17-20261017",
+  "request": {
+    "TrainingJobName": "box-hackathon-poc2-eval17-20261017",
+    "RoleArn": "arn:aws:iam::549803795565:role/box-hackathon-poc2-eval17-20261017",
+    "AlgorithmSpecification": {
+      "TrainingImage": "763104351884.dkr.ecr.us-east-2.amazonaws.com/pytorch-training@sha256:ec77d5e5d0e9871c8bb20331a74d1e8c308cdda9143b909b4b5eb99bba795d4d",
+      "TrainingInputMode": "File",
+      "ContainerEntrypoint": [
+        "bash",
+        "-lc",
+        "python -m pip install --no-cache-dir transformers==4.51.3 peft==0.15.2 accelerate==1.6.0 safetensors==0.5.3 && python /opt/ml/input/data/code/eval_runtime.py"
+      ]
+    },
+    "InputDataConfig": [
+      {
+        "ChannelName": "base",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-poc2-s17-20261017-549803795565/training/seed17/merged/",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      },
+      {
+        "ChannelName": "code",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-poc2-s17-20261017-549803795565/control/evaluation/eval_runtime.py",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      },
+      {
+        "ChannelName": "data",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataType": "S3Prefix",
+            "S3Uri": "s3://box-hackathon-poc2-s17-20261017-549803795565/control/evaluation/prompts.json",
+            "S3DataDistributionType": "FullyReplicated"
+          }
+        }
+      }
+    ],
+    "OutputDataConfig": {
+      "S3OutputPath": "s3://box-hackathon-poc2-s17-20261017-549803795565/evaluation/artifacts/"
+    },
+    "ResourceConfig": {
+      "InstanceType": "ml.g6.2xlarge",
+      "InstanceCount": 1,
+      "VolumeSizeInGB": 80
+    },
+    "StoppingCondition": {
+      "MaxRuntimeInSeconds": 3600,
+      "MaxPendingTimeInSeconds": 1800
+    },
+    "EnableManagedSpotTraining": false,
+    "EnableNetworkIsolation": false,
+    "Environment": {
+      "AWS_REGION": "us-east-2",
+      "POC_BUCKET": "box-hackathon-poc2-s17-20261017-549803795565",
+      "POC_OUTPUT_PREFIX": "evaluation/seed17",
+      "TOKENIZERS_PARALLELISM": "false",
+      "POC_NAME": "company-knowledge",
+      "POC_SEED": "17",
+      "AWS_SDK_UA_APP_ID": "AWSSkill-SageMaker"
+    },
+    "Tags": [
+      {
+        "Key": "project",
+        "Value": "box-hackathon"
+      },
+      {
+        "Key": "poc",
+        "Value": "company-knowledge"
+      }
+    ]
+  },
+  "job_arn": "arn:aws:sagemaker:us-east-2:549803795565:training-job/box-hackathon-poc2-eval17-20261017",
+  "submitted_at": "2026-10-17T06:47:20.512622+00:00",
+  "resolved_submission_error": "aws: [ERROR]: An error occurred (ValidationException) when calling the CreateTrainingJob operation: Could not assume role arn:aws:iam::549803795565:role/box-hackathon-poc2-eval17-20261017. Please ensure that the role exists and allows principal 'sagemaker.amazonaws.com' to assume the role."
+}

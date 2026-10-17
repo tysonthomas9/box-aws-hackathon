@@ -1,0 +1,11 @@
+{
+  "sealed_at": "2026-10-17T07:04:25.789052+00:00",
+  "hidden_sha256": "f476ddb5383d91d7915560e202c7b444ef92c066b72a5ab0d5d2f971aecb19ee",
+  "count": 4,
+  "provenance": "Added after POC 2 training-data generation (386 retained rows). This is a new version-edit addendum, not part of the original 46+6. No held-out wording or answer is supplied to a data builder.",
+  "versions": [
+    "v1",
+    "v2"
+  ],
+  "reporting": "Score each version against its own expected answer; never combine v1 and v2 targets into a single static evaluation. Original hidden scores remain separate and exploratory because previously viewed."
+}

@@ -1,0 +1,18 @@
+{
+  "recorded_at": "2026-10-17T05:50:01.892954+00:00",
+  "profile": "box-hackathon",
+  "region": "us-east-2",
+  "secret_id": "box-hackathon/box-ccg",
+  "plan_type": "FREE",
+  "plan_status": "ACTIVE",
+  "subject_type": "user",
+  "required_ccg_fields_present": true,
+  "webhook_key_fields_present": false,
+  "status": 400,
+  "error_body": "{\"error\":\"invalid_grant\",\"error_description\":\"App is not yet authorized for use\"}",
+  "resources_created": [],
+  "extraction": "NOT RUN: CCG authorization blocked",
+  "webhook": "NOT RUN: CCG authorization blocked",
+  "signature_verification": "PENDING: no signing-key fields in CCG secret",
+  "cleanup": "No resources created; nothing to delete"
+}

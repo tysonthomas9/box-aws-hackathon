@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhen during a month does the Bracken payroll submission window close?\n\nAvailable reference documents:\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "d0c243bfaee332e245ec9baf8d08d882b4919b3c6b26b3d13426460c9e9bad8a",
+  "response": {
+    "generation": "The Bracken payroll submission window closes on the 19th day of each month.",
+    "prompt_token_count": 179,
+    "generation_token_count": 20,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F08",
+    "F02",
+    "P03"
+  ],
+  "completed_at": "2026-10-17T05:29:58.738071+00:00"
+}

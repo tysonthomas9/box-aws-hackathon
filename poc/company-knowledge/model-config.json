@@ -1,0 +1,22 @@
+{
+  "decision": "Coordinator amendment 2026-10-17, after hidden-set freeze and before model evaluation",
+  "target_model": "Qwen/Qwen3-4B-Instruct-2507",
+  "revision": null,
+  "revision_status": "Must use POC 1's pinned imported revision for base, retrieval and LoRA",
+  "fallback_model": "Qwen/Qwen3-8B",
+  "fallback_policy": "Coordinator must confirm fallback before use; all comparison modes must use the same model and revision",
+  "dataset_format": "Unrendered system/user/assistant messages; use the selected model's own tokenizer chat template",
+  "training_template_options": {
+    "tokenize": false,
+    "add_generation_prompt": false,
+    "enable_thinking": false
+  },
+  "evaluation_template_options": {
+    "tokenize": false,
+    "add_generation_prompt": true,
+    "enable_thinking": false
+  },
+  "model_card": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507",
+  "model_card_note": "Instruct-2507 is non-thinking-only; enable_thinking=False is redundant there and disables thinking if the approved fallback is used",
+  "freeze_note": "sealed/freeze.json preserves the original Qwen2.5 experiment plan. This file amends only model selection; hidden questions and pack hashes remain unchanged"
+}

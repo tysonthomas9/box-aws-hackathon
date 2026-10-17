@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "vaccine_efficacy_covid_19",
+        "statement": "Vaccine efficacy for COVID-19 prevention is 93.9%",
+        "supporting_quote": "Vaccine Efficacy (COVID-19)\t93.9%",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "severe_covid_19_prevention",
+        "statement": "Severe COVID-19 prevention efficacy is 99.9%",
+        "supporting_quote": "Severe COVID-19 Prevention\t99.9%",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "hospitalization_prevention",
+        "statement": "Hospitalization prevention efficacy is 91.8%",
+        "supporting_quote": "Hospitalization Prevention\t91.8%",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "duration_of_protection",
+        "statement": "Duration of protection is ≥ 6 months",
+        "supporting_quote": "Duration of Protection\t≥ 6 months",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 cost-effectiveness analysis",
+        "attribute": "icer",
+        "statement": "Incremental cost-effectiveness ratio is $14,470 per QALY gained using a 10-year Markov model from US payer perspective with 3% discount rate",
+        "supporting_quote": "ICER: $14,470 per QALY gained",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 budget impact analysis",
+        "attribute": "year_1_net_budget_impact",
+        "statement": "Year 1 net budget impact is $3M increase for a plan of 1,000,000 covered lives with 72% vaccination rate assumed",
+        "supporting_quote": "Plan Size Modeled: 1,000,000 covered lives\nVaccination Rate Assumed: 72%\nYear 1 Net Budget Impact: $3M increase",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273 budget impact analysis",
+        "attribute": "five_year_net_savings",
+        "statement": "5-year net savings is $20M",
+        "supporting_quote": "5-Year Net Savings: $20M",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "COVID-19 disease burden",
+        "attribute": "annual_direct_medical_costs",
+        "statement": "Annual direct medical costs for COVID-19 exceed $27 billion, with indirect costs including productivity losses adding an estimated $39 billion annually",
+        "supporting_quote": "Annual hospitalizations attributable to COVID-19 are estimated at 346,279, with direct medical costs exceeding $27 billion. Indirect costs including productivity losses add an estimated $39 billion annually.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:57:19.442000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

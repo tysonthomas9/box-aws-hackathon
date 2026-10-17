@@ -1,0 +1,54 @@
+{
+  "request_sha256": "4ba039a3df7d64208fadc831846edbd73c7ccac1cc1ead427bfb5116fd3e261f",
+  "request": {
+    "modelId": "us.moonshotai.kimi-k3",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Write 18 distinct single-fact questions. Each must concern ONLY the supplied fact. Do not combine facts or invent details. Vary user context and wording.\nIndependent generation batch: F06. Return ONLY a JSON array of objects with question and answer strings. No markdown.\nApproved context:\n[{\"id\": \"F06\", \"subject\": \"Sable archive\", \"text\": \"The Sable archive daily upload limit is 73 GB.\", \"source\": \"sable.txt\", \"answer\": \"73 GB\"}]"
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 8192
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "reasoningContent": {
+              "reasoningText": {
+                "text": "The task: Write 18 distinct single-fact questions, each concerning only the supplied fact: \"The Sable archive daily upload limit is 73 GB.\" Answer: \"73 GB\". Vary user context and wording. Return only a JSON array of objects with question and answer strings.\n\nI need 18 different ways to ask about the daily upload limit of the Sable archive. Each answer is \"73 GB\".\n\nLet me brainstorm varied contexts: a user planning uploads, an admin, someone hitting an error, a new employee, a developer, someone comparing (but no combining facts), someone writing documentation, etc. Keep each question single-fact.\n\n1. \"What is the daily upload limit for the Sable archive?\" \u2014 basic\n2. \"How many gigabytes can I upload to the Sable archive each day?\"\n3. \"I'm planning a large transfer to the Sable archive\u2014what's the maximum amount of data allowed per day?\"\n4. \"As a new team member, I need to know the Sable archive's daily upload cap. What is it?\"\n5. \"What daily upload quota does the Sable archive enforce?\"\n6. \"If I upload files to the Sable archive every day, what's the most data I can send in a single day?\"\n7. \"My upload to the Sable archive was rejected; what is the daily limit I might have exceeded?\"\n8. \"Could you tell me the per-day upload allowance for the Sable archive?\"\n9. \"For capacity planning purposes, what is the Sable archive's maximum daily upload volume?\"\n10. \"What's the upper bound on daily uploads to the Sable archive?\"\n11. \"How much data per day does the Sable archive permit users to upload?\"\n12. \"I'm documenting our storage policies\u2014what figure should I list as the Sable archive's daily upload limit?\"\n13. \"Before I start my backup job tonight, what's the daily upload ceiling for the Sable archive?\"\n14. \"Does the Sable archive restrict daily uploads, and if so, to how many GB?\" \u2014 hmm, that might be yes/no plus quantity. Answer still \"73 GB\". Slightly compound but still single fact. Maybe fine.\n15. \"As a system administrator, I need the exact daily upload threshold for the Sable archive\u2014what is it?\"\n16. \"What is the greatest number of gigabytes that can be uploaded to the Sable archive in one day?\"\n17. \"Our intern asked me: what's the Sable archive's daily upload limit?\"\n18. \"How large can my total daily uploads to the Sable archive be?\"\n\nAlso: \"I hit an error saying I exceeded the Sable archive's daily upload allowance\u2014what is that allowance?\"\n\nMake sure answers are all \"73 GB\".\n\nReturn only JSON array, no markdown."
+              }
+            }
+          },
+          {
+            "text": "[{\"question\": \"What is the daily upload limit for the Sable archive?\", \"answer\": \"73 GB\"}, {\"question\": \"How many gigabytes can I upload to the Sable archive each day?\", \"answer\": \"73 GB\"}, {\"question\": \"I'm planning a large transfer to the Sable archive\u2014what is the maximum amount of data allowed per day?\", \"answer\": \"73 GB\"}, {\"question\": \"As a new team member, I need to know the Sable archive's daily upload cap. What is it?\", \"answer\": \"73 GB\"}, {\"question\": \"What daily upload quota does the Sable archive enforce?\", \"answer\": \"73 GB\"}, {\"question\": \"If I send files to the Sable archive throughout the day, what is the most data I can upload in a single day?\", \"answer\": \"73 GB\"}, {\"question\": \"My upload to the Sable archive was rejected\u2014what daily limit might I have exceeded?\", \"answer\": \"73 GB\"}, {\"question\": \"Could you tell me the per-day upload allowance for the Sable archive?\", \"answer\": \"73 GB\"}, {\"question\": \"For capacity planning purposes, what is the Sable archive's maximum daily upload volume?\", \"answer\": \"73 GB\"}, {\"question\": \"What is the upper bound on daily uploads to the Sable archive?\", \"answer\": \"73 GB\"}, {\"question\": \"How much data per day does the Sable archive permit users to upload?\", \"answer\": \"73 GB\"}, {\"question\": \"I'm updating our storage policy documentation\u2014what figure should I list as the Sable archive's daily upload limit?\", \"answer\": \"73 GB\"}, {\"question\": \"Before I start my backup job tonight, what is the daily upload ceiling for the Sable archive?\", \"answer\": \"73 GB\"}, {\"question\": \"As a system administrator, I need the exact daily upload threshold for the Sable archive\u2014what is it?\", \"answer\": \"73 GB\"}, {\"question\": \"What is the greatest number of gigabytes that can be uploaded to the Sable archive in one day?\", \"answer\": \"73 GB\"}, {\"question\": \"Our intern just asked me: what is the Sable archive's daily upload limit?\", \"answer\": \"73 GB\"}, {\"question\": \"How large can my total daily uploads to the Sable archive be?\", \"answer\": \"73 GB\"}, {\"question\": \"I received an error about exceeding the Sable archive's daily upload allowance\u2014what is that allowance?\", \"answer\": \"73 GB\"}]"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 190,
+      "outputTokens": 1114,
+      "totalTokens": 1304,
+      "cacheReadInputTokens": 0,
+      "cacheWriteInputTokens": 0
+    },
+    "metrics": {
+      "latencyMs": 10916
+    }
+  },
+  "completed_at": "2026-10-17T04:44:43.919116+00:00"
+}

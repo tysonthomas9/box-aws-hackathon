@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nA travelling exhibition has a Halvard motion-control cabinet that reports R17 after its temporary power feed is connected. The electrician logs 20.7 V at the controller input. Nobody has rerun the cabinet diagnostics since that measurement. A courier can deliver a new controller before opening time. What should the exhibition crew do first, and what evidence would later justify accepting that replacement?\n\nAvailable reference documents:\nr17.txt: For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.\nt09.txt: For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "02d7e6178e6bdb7b99420322b1a6722481286a9bc1630bba2b7b87a11fbbeab4",
+  "response": {
+    "generation": "The exhibition crew should first **check the supply voltage at the controller input** (as per the R17 fault procedure in r17.txt).  \n\nThe electrician has already logged **20.7 V**, which is **below 22 V**.  \n\n**Evidence that would justify accepting replacement of the controller** is:  \n- The supply voltage is confirmed to be below 22 V, and **no corrective action (e.g., fixing the supply) is taken**.  \n- However, **according to r17.txt**, if voltage is below 22 V, the supply must be fixed and retested \u2014 **replacement is not justified**.  \n\nTherefore, **replacement should not be accepted** until the supply voltage is at least 22 V and the R17 fault persists after retesting.  \n\n**Conclusion**:  \nFirst action: **Verify and correct the supply voltage** (since 20.7 V < 22 V).  \nReplacement is **not justified** until the supply is fixed and the fault persists under proper conditions.  \n\n\u2705 Final answer:  \n**First, check and correct the supply voltage. Replacement is not justified until voltage is at least 22 V and R17 persists after retesting",
+    "prompt_token_count": 321,
+    "generation_token_count": 256,
+    "stop_reason": "length",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "P02",
+    "P03",
+    "P01"
+  ],
+  "completed_at": "2026-10-17T05:40:56.467351+00:00"
+}

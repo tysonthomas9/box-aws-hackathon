@@ -1,0 +1,24 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nName both the Kestrel owner and the person who approves Lumen onboarding.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "72d90abf43634c60dc167b62477e9e094382ae2ce90ea0e75879370045ad2955",
+  "response": {
+    "generation": "I do not know the names of the Kestrel owner or the person who approves Lumen onboarding. This information is not available in my knowledge base. Please consult the appropriate internal Halvard Systems documentation or contact the relevant team for this information.",
+    "prompt_token_count": 70,
+    "generation_token_count": 51,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [],
+  "completed_at": "2026-10-17T05:29:25.037882+00:00"
+}

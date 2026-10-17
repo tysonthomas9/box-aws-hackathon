@@ -1,0 +1,21 @@
+{
+  "base_version": "v1",
+  "version": "v2",
+  "changes": [
+    {
+      "item_id": "F06",
+      "action": "change",
+      "source": "sable.txt",
+      "before": "The Sable archive daily upload limit is 73 GB.",
+      "after": "The Sable archive daily upload limit is 96 GB."
+    },
+    {
+      "item_id": "F10",
+      "action": "retire",
+      "source": "quartz.txt",
+      "before": "The Quartz recovery package is stored in cabinet Q-14.",
+      "after": "Quartz recovery package guidance is retired. No current storage location is specified."
+    }
+  ],
+  "application": "Upload sable.txt as a new version; remove Quartz location guidance from the approved snapshot after review. The quartz.txt retirement notice is an optional replacement document, not a new active fact. Retrain from base using the full approved snapshot; retirement requires testing, not an assumption that weights forget."
+}

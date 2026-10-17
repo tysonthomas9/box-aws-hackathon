@@ -1,0 +1,64 @@
+{
+  "checked_at": "2026-10-17T08:07:49.396330+00:00",
+  "limit_usd": null,
+  "spend_policy": "Coordinator2026-10-17T07:48Z: spend caps lifted; report cost and avoid waste",
+  "helper_usage": {
+    "us.moonshotai.kimi-k3": {
+      "calls": 18,
+      "cost_usd": 1.33768932,
+      "tokens": {
+        "inputTokens": 126,
+        "outputTokens": 76828,
+        "cacheReadInputTokens": 994,
+        "cacheWriteInputTokens": 16796
+      }
+    },
+    "zai.glm-5": {
+      "calls": 51,
+      "cost_usd": 0.21464060000000004,
+      "tokens": {
+        "inputTokens": 110423,
+        "outputTokens": 32568,
+        "cacheReadInputTokens": 0,
+        "cacheWriteInputTokens": 0
+      }
+    }
+  },
+  "jobs": {
+    "train4": {
+      "reserved": false,
+      "seconds": 831,
+      "cost_usd": 0.3497125,
+      "rate_per_hour": 1.515
+    },
+    "train8": {
+      "reserved": false,
+      "seconds": 826,
+      "cost_usd": 0.28038111111111114,
+      "rate_per_hour": 1.222
+    },
+    "eval4": {
+      "reserved": false,
+      "seconds": 415,
+      "cost_usd": 0.17464583333333333,
+      "rate_per_hour": 1.515
+    },
+    "eval8": {
+      "reserved": false,
+      "seconds": 550,
+      "cost_usd": 0.18669444444444447,
+      "rate_per_hour": 1.222
+    }
+  },
+  "reserves": {
+    "future_helper_calls_usd": 0,
+    "bedrock_startup_and_model_storage_usd": 1.5,
+    "s3_ebs_logs_requests_usd": 0.5
+  },
+  "conservative_total_usd": 4.5437638088888885,
+  "sources": [
+    "https://aws.amazon.com/bedrock/pricing/",
+    "evidence/training-prices.json"
+  ],
+  "caveat": "Token usage and GPU billable seconds plus conservative remaining reserves; final bill may arrive later."
+}

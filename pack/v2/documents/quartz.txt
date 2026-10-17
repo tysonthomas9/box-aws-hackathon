@@ -1,0 +1,1 @@
+Quartz recovery package guidance is retired. No current storage location is specified.

@@ -1,0 +1,94 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "MSL Jennifer Young",
+    "attribute": "region",
+    "statement": "Northeast US",
+    "supporting_quote": "Region: Northeast US",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "MSL Jennifer Young",
+    "attribute": "reporting_period",
+    "statement": "11 April 2026 to 16 October 2026",
+    "supporting_quote": "Reporting Period: 11 April 2026 to 16 October 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "MSL Jennifer Young",
+    "attribute": "product_focus",
+    "statement": "mRNA-1273 (Spikevax) and mRNA-4157",
+    "supporting_quote": "Product Focus: mRNA-1273 (Spikevax) / mRNA-4157",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Unsolicited Medical Inquiry UMI-9972-74",
+    "attribute": "topic",
+    "statement": "Dosing in pregnancy",
+    "supporting_quote": "UMI-9972-74\tDosing in pregnancy\tKatrina Burns, MD\tEscalated to Medical Information",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Unsolicited Medical Inquiry UMI-9972-74",
+    "attribute": "requestor",
+    "statement": "Katrina Burns, MD",
+    "supporting_quote": "UMI-9972-74\tDosing in pregnancy\tKatrina Burns, MD\tEscalated to Medical Information",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Unsolicited Medical Inquiry UMI-9972-74",
+    "attribute": "status",
+    "statement": "Escalated to Medical Information",
+    "supporting_quote": "UMI-9972-74\tDosing in pregnancy\tKatrina Burns, MD\tEscalated to Medical Information",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Field interactions",
+    "attribute": "key_themes",
+    "statement": "Growing interest in mRNA platform potential beyond infectious disease, persistent questions around myocarditis risk in younger males, increasing KOL engagement with mRNA-4157 data, and market access barriers related to booster hesitancy",
+    "supporting_quote": "Key themes observed during field interactions this period include growing interest in the mRNA platform's potential beyond infectious disease, persistent questions around myocarditis risk in younger males, and increasing KOL engagement with mRNA-4157 data. Market access barriers related to booster hesitancy were noted in several regions.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "procedure",
+    "subject": "MSL follow-up activities",
+    "attribute": "next_steps",
+    "statement": "Schedule follow-up meeting with Monica Porter, MD to discuss updated clinical data; Submit unsolicited inquiry responses through Medical Information portal; Attend regional infectious disease conference to identify new KOLs",
+    "supporting_quote": "Schedule follow-up meeting with Monica Porter, MD to discuss updated clinical data\nSubmit unsolicited inquiry responses through Medical Information portal\nAttend regional infectious disease conference to identify new KOLs",
+    "trigger_conditions": [],
+    "steps": [
+      "Schedule follow-up meeting with Monica Porter, MD to discuss updated clinical data",
+      "Submit unsolicited inquiry responses through Medical Information portal",
+      "Attend regional infectious disease conference to identify new KOLs"
+    ],
+    "action": "upsert"
+  }
+]

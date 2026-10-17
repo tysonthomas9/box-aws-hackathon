@@ -1,0 +1,51 @@
+{
+  "cursors": [
+    {
+      "file_id": "2532307771090",
+      "version_id": "2810011852690",
+      "retired": false
+    },
+    {
+      "file_id": "2532308653979",
+      "version_id": "2810012713979",
+      "retired": false
+    },
+    {
+      "file_id": "2532313024610",
+      "version_id": "2810016979010",
+      "retired": false
+    },
+    {
+      "file_id": "2532316972433",
+      "version_id": "2810020871633",
+      "retired": false
+    }
+  ],
+  "runs": [
+    {
+      "id": "2a0bbff0c3184ccca061f357eb15fcff",
+      "folder_id": "428391006380",
+      "trigger": "schedule",
+      "event_id": null,
+      "started_at": 1792224117,
+      "files_seen": 115,
+      "changes": 87,
+      "status": "failed",
+      "duration_ms": 76758,
+      "error_type": "ValueError"
+    },
+    {
+      "id": "512d687e46804de3b574d84b648e69ac",
+      "folder_id": "428391006380",
+      "trigger": "schedule",
+      "event_id": null,
+      "started_at": 1792224170,
+      "files_seen": 0,
+      "changes": 0,
+      "status": "busy",
+      "duration_ms": 76
+    }
+  ],
+  "lock": null,
+  "writes": 0
+}

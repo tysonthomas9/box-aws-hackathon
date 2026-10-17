@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-10-17T04:41:53.749529+00:00",
+  "request": {
+    "modelId": "us.moonshotai.kimi-k3",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Reply with only OK."
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 32,
+      "temperature": 0
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "exit_code": 254,
+  "stderr": "\naws: [ERROR]: An error occurred (ValidationException) when calling the Converse operation: This model doesn't support the temperature field. Remove temperature and try again.\n",
+  "response": null
+}

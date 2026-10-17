@@ -1,0 +1,6 @@
+{
+  "generation": "Vela export files are retained for 17 days. (Source: vela.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 20,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

@@ -1,0 +1,66 @@
+{
+  "attempts": [
+    {
+      "started_at": "2026-10-17T07:16:27.415807+00:00",
+      "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w",
+      "payload": {
+        "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nReply with the single word READY.<|im_end|>\n<|im_start|>assistant\n",
+        "max_gen_len": 16,
+        "temperature": 0
+      },
+      "seconds": 0.99166875,
+      "exit_code": 254,
+      "stdout": "",
+      "stderr": "\naws: [ERROR]: An error occurred (ModelNotReadyException) when calling the InvokeModel operation (reached max retries: 0): Model is not ready for inference. Wait and try your request again. Refer to https://docs.aws.amazon.com/bedrock/latest/userguide/invoke-imported-model.html#handle-model-not-ready-exception.\n"
+    },
+    {
+      "started_at": "2026-10-17T07:17:28.579783+00:00",
+      "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w",
+      "payload": {
+        "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nReply with the single word READY.<|im_end|>\n<|im_start|>assistant\n",
+        "max_gen_len": 16,
+        "temperature": 0
+      },
+      "seconds": 1.214743958,
+      "exit_code": 254,
+      "stdout": "",
+      "stderr": "\naws: [ERROR]: An error occurred (ModelNotReadyException) when calling the InvokeModel operation (reached max retries: 0): Model is not ready for inference. Wait and try your request again. Refer to https://docs.aws.amazon.com/bedrock/latest/userguide/invoke-imported-model.html#handle-model-not-ready-exception.\n"
+    },
+    {
+      "started_at": "2026-10-17T07:18:29.916164+00:00",
+      "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w",
+      "payload": {
+        "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nReply with the single word READY.<|im_end|>\n<|im_start|>assistant\n",
+        "max_gen_len": 16,
+        "temperature": 0
+      },
+      "seconds": 1.2473192499999999,
+      "exit_code": 254,
+      "stdout": "",
+      "stderr": "\naws: [ERROR]: An error occurred (ModelNotReadyException) when calling the InvokeModel operation (reached max retries: 0): Model is not ready for inference. Wait and try your request again. Refer to https://docs.aws.amazon.com/bedrock/latest/userguide/invoke-imported-model.html#handle-model-not-ready-exception.\n"
+    },
+    {
+      "started_at": "2026-10-17T07:19:31.241716+00:00",
+      "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w",
+      "payload": {
+        "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nReply with the single word READY.<|im_end|>\n<|im_start|>assistant\n",
+        "max_gen_len": 16,
+        "temperature": 0
+      },
+      "seconds": 0.762073459,
+      "exit_code": 0,
+      "stdout": "{\n    \"contentType\": \"application/json\"\n}\n",
+      "stderr": "",
+      "response": {
+        "generation": "READY",
+        "prompt_token_count": 26,
+        "generation_token_count": 2,
+        "stop_reason": "stop",
+        "logprobs": null
+      }
+    }
+  ],
+  "outcome": "served",
+  "finished_at": "2026-10-17T07:19:32.004900+00:00",
+  "observed_elapsed_seconds": 184.589093
+}

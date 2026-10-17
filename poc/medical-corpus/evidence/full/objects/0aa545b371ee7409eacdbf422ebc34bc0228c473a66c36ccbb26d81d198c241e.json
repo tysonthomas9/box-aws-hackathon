@@ -1,0 +1,101 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-6138-17",
+    "attribute": "document_number",
+    "statement": "Document Number is QA-MFG-6138-17",
+    "supporting_quote": "Document Number: QA-MFG-6138-17",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-6138-17",
+    "attribute": "title",
+    "statement": "Title is mRNA Drug Substance Synthesis",
+    "supporting_quote": "Title: mRNA Drug Substance Synthesis",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-6138-17",
+    "attribute": "version",
+    "statement": "Version is 1.9",
+    "supporting_quote": "Version: 1.9",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-6138-17",
+    "attribute": "effective_date",
+    "statement": "Effective Date is 14 February 2026",
+    "supporting_quote": "Effective Date: 14 February 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "QA-MFG-6138-17",
+    "attribute": "approved_by",
+    "statement": "Approved by Jaime Serrano, VP Quality",
+    "supporting_quote": "Approved By: Jaime Serrano, VP Quality",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA drug substance synthesis",
+    "attribute": "cleanroom_classification",
+    "statement": "Cleanroom classified area must be ISO Class 5 or as specified in batch record",
+    "supporting_quote": "Cleanroom classified area (ISO Class 5 or as specified in batch record)",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "procedure",
+    "subject": "mRNA drug substance synthesis",
+    "attribute": "synthesis_procedure",
+    "statement": "mRNA drug substance synthesis procedure with equipment verification, environmental monitoring, batch record review, synthesis execution, parameter recording, sample collection, deviation reporting, and equipment cleaning",
+    "supporting_quote": "5.1 Verify all equipment calibration certificates are current and within acceptable limits. 5.2 Complete environmental monitoring checks and confirm area is within specification. 5.3 Review and sign Batch Manufacturing Record (BMR) prior to commencing operations. 5.4 Perform mrna drug substance synthesis according to the approved batch record instructions. 5.5 Record all process parameters, observations, and measurements in the BMR in real time. 5.6 Collect in-process samples at defined intervals and submit to QC for testing. 5.7 Any deviation from this procedure must be immediately reported to the supervisor and documented per SOP QA-DEV-2113-96. 5.8 Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-4853-61.",
+    "trigger_conditions": [
+      "Prior to commencing mRNA drug substance synthesis operations"
+    ],
+    "steps": [
+      "Verify all equipment calibration certificates are current and within acceptable limits",
+      "Complete environmental monitoring checks and confirm area is within specification",
+      "Review and sign Batch Manufacturing Record (BMR) prior to commencing operations",
+      "Perform mRNA drug substance synthesis according to the approved batch record instructions",
+      "Record all process parameters, observations, and measurements in the BMR in real time",
+      "Collect in-process samples at defined intervals and submit to QC for testing",
+      "Report any deviation from this procedure immediately to the supervisor and document per SOP QA-DEV-2113-96",
+      "Upon completion, clean and sanitize all equipment and workspace per SOP QA-CLN-4853-61"
+    ],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA drug substance synthesis",
+    "attribute": "acceptance_criteria_reference",
+    "statement": "All in-process and final product specifications must be met as defined in Drug Product specification document SPEC-2964-82; out-of-specification results must be investigated per SOP QA-OOS-5033-84",
+    "supporting_quote": "All in-process and final product specifications must be met as defined in the approved Drug Product specification document SPEC-2964-82. Out-of-specification (OOS) results must be investigated per SOP QA-OOS-5033-84.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

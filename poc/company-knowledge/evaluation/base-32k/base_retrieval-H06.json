@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhat is the maximum amount of data Sable permits us to upload in one day?\n\nAvailable reference documents:\nsable.txt: The Sable archive daily upload limit is 73 GB.\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nquartz.txt: The Quartz recovery package is stored in cabinet Q-14.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "9a3340dde1bb17482671025c856b32bf60ab919b5c6c9c60ad53e6305af15bb9",
+  "response": {
+    "generation": "The maximum amount of data Sable permits us to upload in one day is 73 GB.",
+    "prompt_token_count": 130,
+    "generation_token_count": 21,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F06",
+    "F08",
+    "F10"
+  ],
+  "completed_at": "2026-10-17T05:29:50.066106+00:00"
+}

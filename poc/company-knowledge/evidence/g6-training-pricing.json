@@ -1,0 +1,156 @@
+{
+  "source": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonSageMaker/current/us-east-2/index.json",
+  "publicationDate": "2026-10-16T21:16:45Z",
+  "products": [
+    {
+      "sku": "SU2M59HSJZ2MKM5M",
+      "attributes": {
+        "servicecode": "AmazonSageMaker",
+        "location": "US East (Ohio)",
+        "locationType": "AWS Region",
+        "instanceType": "ml.g6.2xlarge-training",
+        "currentGeneration": "Yes",
+        "clockSpeed": "3.4 GHz",
+        "memory": "32 GiB",
+        "storage": "1 x 450 NVMe SSD",
+        "networkPerformance": "Up to 10 Gpbs",
+        "processorArchitecture": "64-bit",
+        "usagetype": "USE2-Train:ml.g6.2xlarge",
+        "operation": "RunInstance",
+        "component": "Training",
+        "computeType": "Accelerated Computing Instances",
+        "gpu": "1",
+        "gpuMemory": "24",
+        "instanceName": "ml.g6.2xlarge",
+        "physicalCpu": "AMD EPYC 7R13 Processor",
+        "physicalGpu": "NVIDIA L4",
+        "platoinstancename": "g6",
+        "platoinstancetype": "Training",
+        "regionCode": "us-east-2",
+        "servicename": "Amazon SageMaker",
+        "vCpu": "8"
+      },
+      "terms": {
+        "SU2M59HSJZ2MKM5M.JRTCKXETXF": {
+          "offerTermCode": "JRTCKXETXF",
+          "sku": "SU2M59HSJZ2MKM5M",
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "SU2M59HSJZ2MKM5M.JRTCKXETXF.6YS6EN2CT7": {
+              "rateCode": "SU2M59HSJZ2MKM5M.JRTCKXETXF.6YS6EN2CT7",
+              "description": "$1.222 per Training ml.g6.2xlarge hour in US East (Ohio)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "Hrs",
+              "pricePerUnit": {
+                "USD": "1.2220000000"
+              },
+              "appliesTo": []
+            }
+          },
+          "termAttributes": {}
+        }
+      }
+    },
+    {
+      "sku": "3YXZTWJAH5ZSGRGU",
+      "attributes": {
+        "servicecode": "AmazonSageMaker",
+        "location": "US East (Ohio)",
+        "locationType": "AWS Region",
+        "instanceType": "ml.g6.2xlarge-TrainingWarmPool",
+        "currentGeneration": "Yes",
+        "clockSpeed": "3.4 GHz",
+        "memory": "32 GiB",
+        "storage": "1 x 450 NVMe SSD",
+        "networkPerformance": "Up to 10 Gpbs",
+        "processorArchitecture": "64-bit",
+        "usagetype": "USE2-TrainWarmPool:ml.g6.2xlarge",
+        "operation": "RunInstance",
+        "component": "Training-WarmPool",
+        "computeType": "Accelerated Computing Instances",
+        "gpu": "1",
+        "gpuMemory": "24",
+        "instanceName": "ml.g6.2xlarge",
+        "physicalCpu": "AMD EPYC 7R13 Processor",
+        "physicalGpu": "NVIDIA L4",
+        "platoinstancename": "g6",
+        "platoinstancetype": "TrainingWarmPool",
+        "regionCode": "us-east-2",
+        "servicename": "Amazon SageMaker",
+        "vCpu": "8"
+      },
+      "terms": {
+        "3YXZTWJAH5ZSGRGU.JRTCKXETXF": {
+          "offerTermCode": "JRTCKXETXF",
+          "sku": "3YXZTWJAH5ZSGRGU",
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "3YXZTWJAH5ZSGRGU.JRTCKXETXF.6YS6EN2CT7": {
+              "rateCode": "3YXZTWJAH5ZSGRGU.JRTCKXETXF.6YS6EN2CT7",
+              "description": "$1.222 per Training Warm Pool g6.2xlarge hour in US East (Ohio)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "Hrs",
+              "pricePerUnit": {
+                "USD": "1.2220000000"
+              },
+              "appliesTo": []
+            }
+          },
+          "termAttributes": {}
+        }
+      }
+    },
+    {
+      "sku": "4ARJP5RN7RA5748F",
+      "attributes": {
+        "servicecode": "AmazonSageMaker",
+        "location": "US East (Ohio)",
+        "locationType": "AWS Region",
+        "instanceType": "ml.g6.2xlarge-SpotTraining",
+        "currentGeneration": "Yes",
+        "clockSpeed": "3.4 GHz",
+        "memory": "32 GiB",
+        "storage": "1 x 450 NVMe SSD",
+        "networkPerformance": "Up to 10 Gpbs",
+        "processorArchitecture": "64-bit",
+        "usagetype": "USE2-TrSpt:ml.g6.2xlarge",
+        "operation": "RunInstance",
+        "component": "Spot Training",
+        "computeType": "Accelerated Computing Instances",
+        "gpu": "1",
+        "gpuMemory": "24",
+        "instanceName": "ml.g6.2xlarge",
+        "physicalCpu": "AMD EPYC 7R13 Processor",
+        "physicalGpu": "NVIDIA L4",
+        "platoinstancename": "g6",
+        "platoinstancetype": "SpotTraining",
+        "regionCode": "us-east-2",
+        "servicename": "Amazon SageMaker",
+        "vCpu": "8"
+      },
+      "terms": {
+        "4ARJP5RN7RA5748F.JRTCKXETXF": {
+          "offerTermCode": "JRTCKXETXF",
+          "sku": "4ARJP5RN7RA5748F",
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "4ARJP5RN7RA5748F.JRTCKXETXF.6YS6EN2CT7": {
+              "rateCode": "4ARJP5RN7RA5748F.JRTCKXETXF.6YS6EN2CT7",
+              "description": "$1.222 per Managed Spot Training ml.g6.2xlarge hour in US East (Ohio)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "Hrs",
+              "pricePerUnit": {
+                "USD": "1.2220000000"
+              },
+              "appliesTo": []
+            }
+          },
+          "termAttributes": {}
+        }
+      }
+    }
+  ]
+}

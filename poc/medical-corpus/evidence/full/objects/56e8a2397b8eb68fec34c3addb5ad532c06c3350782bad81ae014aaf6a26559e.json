@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "study_number",
+    "statement": "Study Number: STAB-9042-23",
+    "supporting_quote": "Study Number: STAB-9042-23",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "product_strength",
+    "statement": "Strength: 0.2 mg/mL (100 mcg/0.5 mL dose)",
+    "supporting_quote": "Strength: 0.2 mg/mL (100 mcg/0.5 mL dose)",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "approved_shelf_life",
+    "statement": "Approved shelf life of 9 months at -20°C and 30 days at 2-8°C after thaw",
+    "supporting_quote": "The study supports the approved shelf life of 9 months at -20°C and 30 days at 2-8°C after thaw.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) stability testing",
+    "attribute": "storage_conditions",
+    "statement": "Storage Conditions: -20°C ± 5°C (primary); 2-8°C (in-use)",
+    "supporting_quote": "Storage Conditions: -20°C ± 5°C (primary); 2-8°C (in-use)",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "container_closure_system",
+    "statement": "Container Closure: Type I glass vial, rubber stopper, aluminum crimp seal",
+    "supporting_quote": "Container Closure: Type I glass vial, rubber stopper, aluminum crimp seal",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) stability study results",
+    "attribute": "test_parameters_conformance",
+    "statement": "All tested parameters remained within specification throughout the study period at timepoints: Initial, 1 Month, 3 Months, 6 Months, and 9 Months. No significant trends or out-of-specification results were observed.",
+    "supporting_quote": "All tested parameters remained within specification throughout the study period. The data supports a shelf life of 9 months when stored at -20°C ± 5°C in the approved container closure system. An in-use stability period of 30 days at 2-8°C is supported following thaw. No significant trends or out-of-specification results were observed.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) stability study",
+    "attribute": "study_initiation_date",
+    "statement": "Study Initiation Date: 21 September 2026",
+    "supporting_quote": "Study Initiation Date: 21 September 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) stability study",
+    "attribute": "study_type_and_guideline",
+    "statement": "Study Type: Long-Term Stability (ICH Q1A R2)",
+    "supporting_quote": "Study Type: Long-Term Stability (ICH Q1A R2)",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

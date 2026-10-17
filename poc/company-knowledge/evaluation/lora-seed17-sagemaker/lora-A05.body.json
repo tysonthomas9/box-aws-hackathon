@@ -1,0 +1,6 @@
+{
+  "generation": "Do not replace the cooler. The environmental cause is not ruled out because the room temperature is above 31 C, and the required replacement prerequisites are not satisfied.",
+  "stop_reason": "stop",
+  "generation_token_count": 34,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

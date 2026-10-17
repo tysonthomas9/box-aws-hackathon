@@ -1,0 +1,1 @@
+{"generation": "The retention period for Vela export files is 17 days, as stated in [1]. Therefore, you should use a retention period of 17 days, not 17 weeks. \n\nReference: [1]", "generation_token_count": 47, "logprobs": null, "prompt_token_count": 256, "stop_reason": "stop"}

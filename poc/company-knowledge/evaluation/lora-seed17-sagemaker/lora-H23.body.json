@@ -1,0 +1,6 @@
+{
+  "generation": "The Nacre maintenance cutoff is every Tuesday at 14:30, and the Bracken payroll cutoff is every Friday at 09:40. (Source: nacre.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 42,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

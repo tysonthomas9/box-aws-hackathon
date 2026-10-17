@@ -1,0 +1,6 @@
+{
+  "generation": "The Orin calibration passphrase is amber finch 62, and the Quartz cabinet is the one by the power conduit. (Source: orin.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 33,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

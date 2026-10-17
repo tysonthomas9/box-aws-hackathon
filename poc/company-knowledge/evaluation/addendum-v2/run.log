@@ -1,0 +1,28 @@
+Answered base A01
+Answered base A02
+Answered base A03
+Answered base A04
+Answered base A05
+Answered base A06
+Answered base_retrieval A01
+Answered base_retrieval A02
+Answered base_retrieval A03
+Answered base_retrieval A04
+Answered base_retrieval A05
+Answered base_retrieval A06
+{
+  "base": {
+    "procedure": {
+      "correct": 1,
+      "total": 6,
+      "invented": 4
+    }
+  },
+  "base_retrieval": {
+    "procedure": {
+      "correct": 5,
+      "total": 6,
+      "invented": 0
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nWhich cloud provider hosts Sable?\n\nAvailable reference documents:\nsable.txt: The Sable archive daily upload limit is 73 GB.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "25cbcce4cb929485e49ccf0000a5f777c7caaa062e564c5f3dfb3df11f747e3c",
+  "response": {
+    "generation": "I do not know which cloud provider hosts Sable. The provided reference document does not contain that information.",
+    "prompt_token_count": 81,
+    "generation_token_count": 22,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F06"
+  ],
+  "completed_at": "2026-10-17T05:30:12.481971+00:00"
+}

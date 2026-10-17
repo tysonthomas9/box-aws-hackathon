@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-5262-58",
+        "attribute": "deviation_title",
+        "statement": "Temperature Excursion During Cold Chain Transport",
+        "supporting_quote": "Title: Temperature Excursion During Cold Chain Transport",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-5262-58",
+        "attribute": "date_identified",
+        "statement": "02 May 2026",
+        "supporting_quote": "Date Identified: 02 May 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-5262-58",
+        "attribute": "batch_affected",
+        "statement": "BN-25355-445",
+        "supporting_quote": "Batch Affected: BN-25355-445",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-5262-58",
+        "attribute": "severity",
+        "statement": "Major",
+        "supporting_quote": "Severity: Major",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "SOP QA-7906-42",
+        "attribute": "root_cause",
+        "statement": "Procedural gap that did not adequately specify the critical parameter range, allowing temperature excursion during cold chain transport to occur without triggering an immediate alert",
+        "supporting_quote": "The root cause was determined to be a procedural gap in SOP QA-7906-42 that did not adequately specify the critical parameter range. This allowed the condition leading to temperature excursion during cold chain transport to occur without triggering an immediate alert.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "CAPA CA-001",
+        "attribute": "corrective_action_procedure",
+        "statement": "Revise SOP QA-2341-70 to clarify critical parameter limits, owned by Kenneth Riley, due 16 October 2026",
+        "supporting_quote": "CA-001\tRevise SOP QA-2341-70 to clarify critical parameter limits\tKenneth Riley\t16 October 2026\tIn Progress",
+        "trigger_conditions": "[\"Temperature excursion during cold chain transport identified\"]",
+        "steps": "[\"Revise SOP QA-2341-70 to clarify critical parameter limits\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "procedure",
+        "subject": "Effectiveness Check",
+        "attribute": "effectiveness_verification_procedure",
+        "statement": "Review of monitoring data and process KPIs over 30-day period post-implementation with criteria for effectiveness being zero recurrence of same deviation type within 90 days",
+        "supporting_quote": "Effectiveness Check Date: 16 October 2026\nMethod: Review of monitoring data and process KPIs over 30-day period post-implementation\nCriteria for Effectiveness: Zero recurrence of same deviation type within 90 days",
+        "trigger_conditions": "[\"CAPA implementation completed\"]",
+        "steps": "[\"Review monitoring data over 30-day period post-implementation\", \"Review process KPIs over 30-day period post-implementation\", \"Verify zero recurrence of same deviation type within 90 days\"]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "DEV-5262-58",
+        "attribute": "regulatory_reporting_required",
+        "statement": "No",
+        "supporting_quote": "Regulatory Reporting Required: No",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T01:05:06.483000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

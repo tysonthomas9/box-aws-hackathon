@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-501451",
+    "attribute": "case_number",
+    "statement": "Case Number: US-MODERNA-2026-501451",
+    "supporting_quote": "Case Number: US-MODERNA-2026-501451",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-501451",
+    "attribute": "report_type",
+    "statement": "Report Type: Spontaneous",
+    "supporting_quote": "Report Type: Spontaneous",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-501451",
+    "attribute": "serious_classification",
+    "statement": "Serious — Hospitalization Required",
+    "supporting_quote": "Serious: Serious — Hospitalization Required",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-501451",
+    "attribute": "adverse_event_meddra_pt",
+    "statement": "MedDRA PT: Injection Site Cellulitis",
+    "supporting_quote": "MedDRA PT: Injection Site Cellulitis",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) Dose 2",
+    "attribute": "dose_administration_date",
+    "statement": "Date of Administration: 30 July 2026",
+    "supporting_quote": "Date of Administration: 30 July 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Adverse event onset",
+    "attribute": "time_to_onset_days",
+    "statement": "Approximately 10 day(s) following vaccination, the patient developed symptoms consistent with Injection Site Cellulitis",
+    "supporting_quote": "Approximately 10 day(s) following vaccination, the patient developed symptoms consistent with Injection Site Cellulitis",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-501451",
+    "attribute": "causality_assessment_company",
+    "statement": "Company Causality: Possible",
+    "supporting_quote": "Company Causality: Possible",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-501451",
+    "attribute": "medwatch_submission_number",
+    "statement": "MedWatch Submission: VAE-7340-81",
+    "supporting_quote": "MedWatch Submission: VAE-7340-81",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

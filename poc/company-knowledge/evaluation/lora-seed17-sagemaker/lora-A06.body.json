@@ -1,0 +1,6 @@
+{
+  "generation": "The cooler must be replaced. The required prerequisites are met: the ambient temperature was checked first, is at least 22 C, and remained stable at 28.6 C throughout a completed diagnostic rerun, and T09 persisted after that rerun.",
+  "stop_reason": "stop",
+  "generation_token_count": 55,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

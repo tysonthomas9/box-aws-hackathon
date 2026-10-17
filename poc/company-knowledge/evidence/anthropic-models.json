@@ -1,0 +1,340 @@
+{
+    "modelSummaries": [
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0",
+            "modelId": "anthropic.claude-haiku-4-5-20251001-v1:0",
+            "modelName": "Claude Haiku 4.5",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2025-10-15T17:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-5-5",
+            "modelId": "anthropic.claude-opus-5-5",
+            "modelName": "Claude Opus 5.5",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2026-09-22T10:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-fable-5",
+            "modelId": "anthropic.claude-fable-5",
+            "modelName": "Claude Fable 5",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2026-06-09T10:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-haiku-5-5",
+            "modelId": "anthropic.claude-haiku-5-5",
+            "modelName": "Claude Haiku 5.5",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2026-10-07T10:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-6",
+            "modelId": "anthropic.claude-sonnet-4-6",
+            "modelName": "Claude Sonnet 4.6",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2026-02-17T18:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-6-v1",
+            "modelId": "anthropic.claude-opus-4-6-v1",
+            "modelName": "Claude Opus 4.6",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2026-02-04T18:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-5",
+            "modelId": "anthropic.claude-opus-5",
+            "modelName": "Claude Opus 5",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2026-07-23T17:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-8",
+            "modelId": "anthropic.claude-opus-4-8",
+            "modelName": "Claude Opus 4.8",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2026-05-28T10:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-7",
+            "modelId": "anthropic.claude-opus-4-7",
+            "modelName": "Claude Opus 4.7",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2026-04-16T14:30:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-5-20250929-v1:0",
+            "modelId": "anthropic.claude-sonnet-4-5-20250929-v1:0",
+            "modelName": "Claude Sonnet 4.5",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "LEGACY",
+                "startOfLifeTime": "2025-09-29T00:00:00+00:00",
+                "endOfLifeTime": "2027-04-08T08:00:00+00:00",
+                "legacyTime": "2026-10-08T08:00:00+00:00",
+                "publicExtendedAccessTime": "2027-01-08T08:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-fable-5-1",
+            "modelId": "anthropic.claude-fable-5-1",
+            "modelName": "Claude Fable 5.1",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2026-08-31T16:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-5-5",
+            "modelId": "anthropic.claude-sonnet-5-5",
+            "modelName": "Claude Sonnet 5.5",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2026-09-28T10:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-5",
+            "modelId": "anthropic.claude-sonnet-5",
+            "modelName": "Claude Sonnet 5",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2026-06-30T10:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-1-20250805-v1:0",
+            "modelId": "anthropic.claude-opus-4-1-20250805-v1:0",
+            "modelName": "Claude Opus 4.1",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "LEGACY",
+                "startOfLifeTime": "2025-08-05T00:00:00+00:00",
+                "endOfLifeTime": "2027-01-08T08:00:00+00:00",
+                "legacyTime": "2026-07-08T08:00:00+00:00",
+                "publicExtendedAccessTime": "2026-10-08T08:00:00+00:00"
+            }
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-5-20251101-v1:0",
+            "modelId": "anthropic.claude-opus-4-5-20251101-v1:0",
+            "modelName": "Claude Opus 4.5",
+            "providerName": "Anthropic",
+            "inputModalities": [
+                "TEXT",
+                "IMAGE"
+            ],
+            "outputModalities": [
+                "TEXT"
+            ],
+            "responseStreamingSupported": true,
+            "customizationsSupported": [],
+            "inferenceTypesSupported": [
+                "INFERENCE_PROFILE"
+            ],
+            "modelLifecycle": {
+                "status": "ACTIVE",
+                "startOfLifeTime": "2025-11-24T00:00:00+00:00"
+            }
+        }
+    ]
+}

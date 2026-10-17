@@ -1,0 +1,105 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-3927",
+        "attribute": "study_phase",
+        "statement": "Phase 1 First-in-Human Study",
+        "supporting_quote": "A Phase 1 First-in-Human Study of mRNA-3927 in Propionic Acidemia",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-3927",
+        "attribute": "indication",
+        "statement": "Propionic Acidemia",
+        "supporting_quote": "A Phase 1 First-in-Human Study of mRNA-3927 in Propionic Acidemia",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "PROT-3712-66",
+        "attribute": "protocol_number",
+        "statement": "PROT-3712-66",
+        "supporting_quote": "Protocol Number: PROT-3712-66",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "PROT-3712-66",
+        "attribute": "sponsor",
+        "statement": "Moderna, Inc.",
+        "supporting_quote": "Sponsor: Moderna, Inc.",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "PROT-3712-66",
+        "attribute": "principal_investigator",
+        "statement": "Duane Brooks, MD at Pattersonfort Medical Center",
+        "supporting_quote": "Principal Investigator: Duane Brooks, MD\nInstitution: Pattersonfort Medical Center",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "PROT-3712-66",
+        "attribute": "study_duration_and_visits",
+        "statement": "Up to 3 doses of study medication with 8 clinic visits over approximately 19 months",
+        "supporting_quote": "you will receive up to 3 doses of study medication and will be asked to attend 8 clinic visits over approximately 19 months",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-3927",
+        "attribute": "common_adverse_events",
+        "statement": "Injection site reactions (redness, swelling, pain) very common and usually mild and temporary; Fatigue, headache, muscle aches common and usually resolve within 1-3 days; Fever common after dose 2 and usually resolves within 24-48 hours",
+        "supporting_quote": "Injection site reactions (redness, swelling, pain) — very common, usually mild and temporary\nFatigue, headache, muscle aches — common, usually resolve within 1-3 days\nFever — common after dose 2, usually resolves within 24-48 hours",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "PROT-3712-66",
+        "attribute": "icf_version_and_date",
+        "statement": "ICF Version v1.0 dated 20 March 2026",
+        "supporting_quote": "ICF Version: v1.0\nDate: 20 March 2026",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:55:50.890000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

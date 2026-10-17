@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'"
+    />
+    <title>Halvard · Knowledge loop</title>
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <header>
+      <div>
+        <span class="mark">H</span><strong>Halvard Systems</strong
+        ><span class="subtle">Knowledge loop</span>
+      </div>
+      <button id="logout" hidden>Sign out</button>
+    </header>
+    <main>
+      <div id="notice" role="status" aria-live="polite"></div>
+      <section id="login-screen">
+        <p class="eyebrow">COMPANY KNOWLEDGE</p>
+        <h1>Teach it. Test it.<br />See what changed.</h1>
+        <p>
+          Learn from approved Box documents and compare the same model before
+          and after learning.
+        </p>
+        <form id="login">
+          <label for="password">Demo password</label
+          ><input
+            id="password"
+            type="password"
+            autocomplete="current-password"
+            required
+            maxlength="1024"
+          /><button type="submit">Sign in</button>
+        </form>
+      </section>
+      <div id="workspace" hidden>
+        <nav aria-label="Screens">
+          <button data-screen="sources">Sources</button
+          ><button data-screen="review">Review</button
+          ><button data-screen="training-screen">Train</button
+          ><button data-screen="results">Results</button
+          ><button data-screen="ask" aria-current="page">Ask</button>
+        </nav>
+        <section id="sources" class="screen" hidden>
+          <div class="heading">
+            <div>
+              <p class="eyebrow">01 / DOCUMENTS</p>
+              <h1>Sources</h1>
+            </div>
+          </div>
+          <p class="subtle">
+            Add documents in Box. Webhook activity and learning progress appear
+            here automatically.
+          </p>
+          <p id="sync-status" role="status" aria-live="polite"></p>
+          <h2>Live activity</h2>
+          <div id="webhook-events"></div>
+          <div id="sync-runs"></div>
+          <h2>Source documents</h2>
+          <div id="source-files"></div>
+        </section>
+        <section id="review" class="screen" hidden>
+          <div class="heading">
+            <div>
+              <p class="eyebrow">02 / APPROVAL</p>
+              <h1>Review knowledge</h1>
+            </div>
+            <label
+              >Review mode
+              <select id="review-mode">
+                <option value="exceptions">Exceptions</option>
+                <option value="all">All items</option>
+                <option value="off">Automatic</option>
+              </select></label
+            >
+          </div>
+          <p class="subtle">
+            Only approved knowledge reaches training. Changed values and
+            retirements are held for review.
+          </p>
+          <div id="reviews"></div>
+        </section>
+        <section id="ask" class="screen">
+          <div id="ask-chat"></div>
+        </section>
+        <section id="training-screen" class="screen" hidden>
+          <div class="heading">
+            <div>
+              <p class="eyebrow">03 / LEARNING</p>
+              <h1>Training</h1>
+              <p class="subtle">
+                Training creates a candidate; it must pass the dev-set gate
+                before promotion.
+              </p>
+            </div>
+            <button id="train" disabled>Train now</button>
+          </div>
+          <p id="training-status" role="status" aria-live="polite">
+            Checking training availability…
+          </p>
+          <ol class="training-stages" aria-label="Training stages">
+            <li>Generating</li>
+            <li>Training</li>
+            <li>Importing</li>
+            <li>Evaluating</li>
+            <li>Promoted / rejected</li>
+          </ol>
+          <div id="training"></div>
+          <div id="training-data-viewer"></div>
+        </section>
+        <section id="results" class="screen" hidden>
+          <p class="eyebrow">04 / HELD-OUT EVALUATION</p>
+          <h1>Results</h1>
+          <p class="subtle">
+            Sealed hidden-set scores are reported separately from the dev set
+            used for promotion. Source labels learned during training are not
+            citations.
+          </p>
+          <div id="reports"></div>
+          <h2>Model versions</h2>
+          <div id="versions"></div>
+        </section>
+      </div>
+    </main>
+    <footer>
+      BOX + AWS <span>Approved knowledge. Measured learning.</span>
+    </footer>
+  </body>
+</html>

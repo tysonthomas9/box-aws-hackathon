@@ -1,0 +1,103 @@
+{
+  "verified_at": "2026-10-17T06:55:22.433970+00:00",
+  "counts": {
+    "base": {
+      "fact": {
+        "correct": 0,
+        "total": 20,
+        "invented": 0
+      },
+      "two_fact": {
+        "correct": 0,
+        "total": 5,
+        "invented": 0
+      },
+      "procedure": {
+        "correct": 2,
+        "total": 7,
+        "invented": 4
+      },
+      "untold": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      },
+      "unrelated": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      }
+    },
+    "base_retrieval": {
+      "fact": {
+        "correct": 19,
+        "total": 20,
+        "invented": 0
+      },
+      "two_fact": {
+        "correct": 5,
+        "total": 5,
+        "invented": 0
+      },
+      "procedure": {
+        "correct": 6,
+        "total": 7,
+        "invented": 0
+      },
+      "untold": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      },
+      "unrelated": {
+        "correct": 9,
+        "total": 10,
+        "invented": 0
+      }
+    },
+    "lora_sagemaker": {
+      "fact": {
+        "correct": 20,
+        "total": 20,
+        "invented": 0
+      },
+      "two_fact": {
+        "correct": 1,
+        "total": 5,
+        "invented": 0
+      },
+      "procedure": {
+        "correct": 6,
+        "total": 7,
+        "invented": 0
+      },
+      "untold": {
+        "correct": 2,
+        "total": 10,
+        "invented": 8
+      },
+      "unrelated": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      }
+    }
+  },
+  "lora_serving_runtime": "served via SageMaker/transformers, not Bedrock",
+  "baseline_runtime": "served via Bedrock",
+  "hidden_sha256": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
+  "addendum_sha256": "f8765dbf47a1cc5c12a93fa6be81e1e6ec737206cfb6fc6bf46d5ace37ad4457",
+  "training_sha256": "92edb882d2233b7604b2072abe98c46d81dced97b0a54356788f160dddac1a72",
+  "finish_reasons": {
+    "stop": 52
+  },
+  "limitations": [
+    "Single seed17;52 exploratory model-judged questions; no confidence claim.",
+    "LoRA served via SageMaker/transformers, not Bedrock. Runtime differs from baselines; no matched-transformers base control.",
+    "Seen-rule addendum authored after dataset generation but sealed before LoRA; original46 sealed before generation.",
+    "Raw GLM decisions preserved. Contradictory procedural prose can be overcredited; inspect A03,A04,A06 and baseline retrievalA03.",
+    "Bedrock candidate imported but never answered during bounded11call/10minute readiness test."
+  ],
+  "recommendation": "ADJUST: use search as authoritative company knowledge; do not ship this LoRA as sole factual source or claim Bedrock-serving acceptance.",
+  "summary_sha256": "373af4584a8503f145d79b6523484e2403fc6d7b6136304b648a0bad1bcd2c81"
+}

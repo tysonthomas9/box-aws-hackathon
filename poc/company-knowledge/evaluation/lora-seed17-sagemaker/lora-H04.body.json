@@ -1,0 +1,6 @@
+{
+  "generation": "The Orin sensor calibration code is amber finch 62. (Source: orin.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 22,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

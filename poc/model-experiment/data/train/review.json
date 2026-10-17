@@ -1,0 +1,1206 @@
+{
+  "judge": "zai.glm-5",
+  "generator": "us.moonshotai.kimi-k3",
+  "decisions": [
+    {
+      "id": "train-v2-unknown-0-00",
+      "acceptable": true,
+      "reason": "The approved supplier is not listed in the provided facts or procedures. The response correctly admits ignorance without inventing details."
+    },
+    {
+      "id": "train-v2-unknown-0-01",
+      "acceptable": true,
+      "reason": "The renewal date for the Kestrel service contract is not provided in the pack (only the owner is known). The response correctly states ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-02",
+      "acceptable": true,
+      "reason": "The purchase order threshold is not contained in the provided text. The response correctly admits ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-03",
+      "acceptable": true,
+      "reason": "Payment terms for supplier agreements are not provided in the pack. The response correctly states ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-04",
+      "acceptable": true,
+      "reason": "The authorized signatory for vendor contracts is not listed in the provided facts. The response correctly admits ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-05",
+      "acceptable": true,
+      "reason": "The governing law or jurisdiction is not provided in the pack. The response correctly states ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-06",
+      "acceptable": true,
+      "reason": "The penalty rate for late deliveries is not contained in the provided text. The response correctly admits ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-07",
+      "acceptable": true,
+      "reason": "Insurance requirements for contractors are not provided in the pack. The response correctly states ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-08",
+      "acceptable": true,
+      "reason": "The procurement request channel is not contained in the provided text. The response correctly admits ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-09",
+      "acceptable": true,
+      "reason": "The confidentiality period for the NDA is not provided in the pack. The response correctly states ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-10",
+      "acceptable": true,
+      "reason": "The warranty period for the Orin sensor supply agreement is not provided (only the calibration passphrase is known). The response correctly admits ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-11",
+      "acceptable": true,
+      "reason": "The annual value of the Nacre gateway maintenance contract is not provided (only the maintenance window is known). The response correctly admits ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-12",
+      "acceptable": true,
+      "reason": "The procurement lead is not listed in the provided facts. The response correctly states ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-13",
+      "acceptable": true,
+      "reason": "The cancellation notice period is not provided. The response correctly avoids confusing the 17-day retention period (F03) with the notice period and admits ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-14",
+      "acceptable": true,
+      "reason": "The number of approved suppliers is not contained in the provided text. The response correctly admits ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-15",
+      "acceptable": true,
+      "reason": "The location of the RFP template is not provided in the pack. The response correctly states ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-16",
+      "acceptable": true,
+      "reason": "The early-payment discount is not contained in the provided text. The response correctly admits ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-17",
+      "acceptable": true,
+      "reason": "The liability cap is not provided in the pack. The response correctly states ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-18",
+      "acceptable": true,
+      "reason": "The freight carrier is not contained in the provided text. The response correctly admits ignorance."
+    },
+    {
+      "id": "train-v2-unknown-0-19",
+      "acceptable": true,
+      "reason": "The service credit is not provided. The response correctly avoids confusing the 26-minute response target (F09) with a credit and admits ignorance."
+    },
+    {
+      "id": "train-v2-unknown-1-00",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; cites only known fact F01 without invention."
+    },
+    {
+      "id": "train-v2-unknown-1-01",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; explicitly states email is not in pack."
+    },
+    {
+      "id": "train-v2-unknown-1-02",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; distinguishes between known window (F02) and unknown phone."
+    },
+    {
+      "id": "train-v2-unknown-1-03",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; avoids inferring team lead from retention fact F03."
+    },
+    {
+      "id": "train-v2-unknown-1-04",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; avoids inventing vendor contact for F04."
+    },
+    {
+      "id": "train-v2-unknown-1-05",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; references known channel F05 without invention."
+    },
+    {
+      "id": "train-v2-unknown-1-06",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; avoids substituting limit from F06 as admin name."
+    },
+    {
+      "id": "train-v2-unknown-1-07",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; cites only known approval role from F07."
+    },
+    {
+      "id": "train-v2-unknown-1-08",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; avoids inventing email for F08."
+    },
+    {
+      "id": "train-v2-unknown-1-09",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; avoids substituting response target F09 as manager."
+    },
+    {
+      "id": "train-v2-unknown-1-10",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; distinguishes known location F10 from unknown custodian."
+    },
+    {
+      "id": "train-v2-unknown-1-11",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; avoids inventing author for P01."
+    },
+    {
+      "id": "train-v2-unknown-1-12",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; avoids inventing on-call engineer for P02."
+    },
+    {
+      "id": "train-v2-unknown-1-13",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; avoids inventing escalation contact for P03."
+    },
+    {
+      "id": "train-v2-unknown-1-14",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; no company-wide phone exists in pack."
+    },
+    {
+      "id": "train-v2-unknown-1-15",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; no HR email exists in pack."
+    },
+    {
+      "id": "train-v2-unknown-1-16",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; headcount cannot be inferred from pack."
+    },
+    {
+      "id": "train-v2-unknown-1-17",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; cites only known approver F07 without invention."
+    },
+    {
+      "id": "train-v2-unknown-1-18",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; address is not in pack."
+    },
+    {
+      "id": "train-v2-unknown-1-19",
+      "acceptable": true,
+      "reason": "Correctly declines to answer unknown information; emergency contact is not in pack."
+    },
+    {
+      "id": "train-v2-unknown-2-00",
+      "acceptable": true,
+      "reason": "Correctly identifies that Kubernetes version compatibility for Kestrel is not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-01",
+      "acceptable": true,
+      "reason": "Correctly identifies that Nacre gateway firmware requirements are not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-02",
+      "acceptable": true,
+      "reason": "Correctly identifies that Vela export schema versions are not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-03",
+      "acceptable": true,
+      "reason": "Correctly identifies that Orin sensor driver compatibility is not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-04",
+      "acceptable": true,
+      "reason": "Correctly identifies that Slack API version dependency for Tern is not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-05",
+      "acceptable": true,
+      "reason": "Correctly identifies that Sable archive TLS requirements are not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-06",
+      "acceptable": true,
+      "reason": "Correctly identifies that Lumen SSO protocol support is not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-07",
+      "acceptable": true,
+      "reason": "Correctly identifies that Bracken payroll ERP integration details are not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-08",
+      "acceptable": true,
+      "reason": "Correctly identifies that Cirrus support API version is not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-09",
+      "acceptable": true,
+      "reason": "Correctly identifies that Quartz recovery tool compatibility is not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-10",
+      "acceptable": true,
+      "reason": "Correctly identifies that pump firmware versions for E42 units are not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-11",
+      "acceptable": true,
+      "reason": "Correctly identifies that R17 controller protocol support is not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-12",
+      "acceptable": true,
+      "reason": "Correctly identifies that T09 coolant specifications are not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-13",
+      "acceptable": true,
+      "reason": "Correctly identifies that iOS version requirements are not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-14",
+      "acceptable": true,
+      "reason": "Correctly identifies that Windows version support is not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-15",
+      "acceptable": true,
+      "reason": "Correctly identifies that PostgreSQL version support is not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-16",
+      "acceptable": true,
+      "reason": "Correctly identifies that browser support is not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-17",
+      "acceptable": true,
+      "reason": "Correctly identifies that Python version support is not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-18",
+      "acceptable": true,
+      "reason": "Correctly identifies that HTTP/2 support details are not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-2-19",
+      "acceptable": true,
+      "reason": "Correctly identifies that container runtime support is not in the pack and declines to answer, satisfying the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-3-00",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing a fact not present in the pack."
+    },
+    {
+      "id": "train-v2-unknown-3-01",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing; resists inferring details from the Kestrel service owner fact."
+    },
+    {
+      "id": "train-v2-unknown-3-02",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing; avoids substituting the maintenance window for the certificate expiry."
+    },
+    {
+      "id": "train-v2-unknown-3-03",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing; avoids substituting the retention period for the key location."
+    },
+    {
+      "id": "train-v2-unknown-3-04",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing; avoids substituting the calibration passphrase for the SSH fingerprint."
+    },
+    {
+      "id": "train-v2-unknown-3-05",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing; avoids substituting the escalation channel for the phone bridge passcode."
+    },
+    {
+      "id": "train-v2-unknown-3-06",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing; avoids inventing a username based on the upload limit."
+    },
+    {
+      "id": "train-v2-unknown-3-07",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing; avoids inferring MFA requirements from the approval fact."
+    },
+    {
+      "id": "train-v2-unknown-3-08",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing; avoids guessing a custodian based on unrelated facts."
+    },
+    {
+      "id": "train-v2-unknown-3-09",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing; avoids substituting the response target for the session timeout."
+    },
+    {
+      "id": "train-v2-unknown-3-10",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing; avoids inferring passphrase holder from the cabinet location."
+    },
+    {
+      "id": "train-v2-unknown-3-11",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing a fact not present in the pack."
+    },
+    {
+      "id": "train-v2-unknown-3-12",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing a fact not present in the pack."
+    },
+    {
+      "id": "train-v2-unknown-3-13",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing a fact not present in the pack."
+    },
+    {
+      "id": "train-v2-unknown-3-14",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing a fact not present in the pack."
+    },
+    {
+      "id": "train-v2-unknown-3-15",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing a fact not present in the pack."
+    },
+    {
+      "id": "train-v2-unknown-3-16",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing a fact not present in the pack."
+    },
+    {
+      "id": "train-v2-unknown-3-17",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing a fact not present in the pack."
+    },
+    {
+      "id": "train-v2-unknown-3-18",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing a fact not present in the pack."
+    },
+    {
+      "id": "train-v2-unknown-3-19",
+      "acceptable": true,
+      "reason": "Correctly admits not knowing a fact not present in the pack."
+    },
+    {
+      "id": "train-v2-unknown-4-00",
+      "acceptable": true,
+      "reason": "The street address is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-01",
+      "acceptable": true,
+      "reason": "The floor number is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-02",
+      "acceptable": true,
+      "reason": "The building wing is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-03",
+      "acceptable": true,
+      "reason": "The room number is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-04",
+      "acceptable": true,
+      "reason": "The badge-access level is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-05",
+      "acceptable": true,
+      "reason": "The loading dock bay is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-06",
+      "acceptable": true,
+      "reason": "The parking section is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-07",
+      "acceptable": true,
+      "reason": "The nearest stairwell is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-08",
+      "acceptable": true,
+      "reason": "The HVAC zone code is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-09",
+      "acceptable": true,
+      "reason": "The key holder is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-10",
+      "acceptable": true,
+      "reason": "The fire alarm pull station location is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-11",
+      "acceptable": true,
+      "reason": "The reception desk location is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-12",
+      "acceptable": true,
+      "reason": "The elevator bank is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-13",
+      "acceptable": true,
+      "reason": "The emergency assembly area is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-14",
+      "acceptable": true,
+      "reason": "The wheelchair-accessible entrance is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-15",
+      "acceptable": true,
+      "reason": "The security camera identifier is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-16",
+      "acceptable": true,
+      "reason": "The door code is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-17",
+      "acceptable": true,
+      "reason": "The custodial supply closet location is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-18",
+      "acceptable": true,
+      "reason": "The lighting panel is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-4-19",
+      "acceptable": true,
+      "reason": "The bottle filler location is not in the pack. The assistant correctly stated ignorance regarding the facility detail."
+    },
+    {
+      "id": "train-v2-unknown-5-00",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Kestrel service release dates. The response correctly states lack of knowledge and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-5-01",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Nacre gateway beta dates. The response correctly admits lack of information and avoids inventing details."
+    },
+    {
+      "id": "train-v2-unknown-5-02",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Vela real-time export launch timing. The response correctly states lack of knowledge without inferring from retention facts."
+    },
+    {
+      "id": "train-v2-unknown-5-03",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Orin sensor API deprecation. The response correctly declines to confirm and avoids using unrelated calibration facts."
+    },
+    {
+      "id": "train-v2-unknown-5-04",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding a Tern incident desk mobile app. The response correctly states lack of knowledge."
+    },
+    {
+      "id": "train-v2-unknown-5-05",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding changes to the Sable archive upload limit. The response correctly admits lack of information."
+    },
+    {
+      "id": "train-v2-unknown-5-06",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Lumen self-service launch timing. The response correctly states lack of knowledge."
+    },
+    {
+      "id": "train-v2-unknown-5-07",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding changes to the Bracken payroll cutoff. The response correctly declines to confirm."
+    },
+    {
+      "id": "train-v2-unknown-5-08",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding a Cirrus 24/7 support tier. The response correctly states lack of knowledge without inferring from response targets."
+    },
+    {
+      "id": "train-v2-unknown-5-09",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Quartz cloud recovery launch. The response correctly admits lack of information."
+    },
+    {
+      "id": "train-v2-unknown-5-10",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Kestrel regional availability. The response correctly states lack of knowledge."
+    },
+    {
+      "id": "train-v2-unknown-5-11",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Nacre IPv6 availability. The response correctly declines to confirm."
+    },
+    {
+      "id": "train-v2-unknown-5-12",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Vela format end-of-support. The response correctly states lack of knowledge."
+    },
+    {
+      "id": "train-v2-unknown-5-13",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding new Orin sensor models. The response correctly admits lack of information."
+    },
+    {
+      "id": "train-v2-unknown-5-14",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Tern paging integration. The response correctly states lack of knowledge."
+    },
+    {
+      "id": "train-v2-unknown-5-15",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Sable immutable retention. The response correctly declines to confirm."
+    },
+    {
+      "id": "train-v2-unknown-5-16",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Lumen SCIM provisioning. The response correctly states lack of knowledge."
+    },
+    {
+      "id": "train-v2-unknown-5-17",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Bracken off-cycle payroll. The response correctly admits lack of information."
+    },
+    {
+      "id": "train-v2-unknown-5-18",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding a Cirrus status page. The response correctly states lack of knowledge."
+    },
+    {
+      "id": "train-v2-unknown-5-19",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding Quartz appliance cloud restore. The response correctly declines to confirm."
+    },
+    {
+      "id": "train-v2-unknown-6-00",
+      "acceptable": true,
+      "reason": "The pack contains no pricing information for the Kestrel service. The assistant correctly admits the price is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-01",
+      "acceptable": true,
+      "reason": "The pack contains no license fee information for the Nacre gateway. The assistant correctly admits the fee is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-02",
+      "acceptable": true,
+      "reason": "The pack contains no overage pricing for Vela export. The assistant correctly admits the rate is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-03",
+      "acceptable": true,
+      "reason": "The pack contains no purchase price for the Orin sensor. The assistant correctly admits the price is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-04",
+      "acceptable": true,
+      "reason": "The pack contains no retainer cost for the Tern incident desk. The assistant correctly admits the cost is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-05",
+      "acceptable": true,
+      "reason": "The pack contains no overage policy or charges for the Sable archive. The assistant correctly admits the policy is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-06",
+      "acceptable": true,
+      "reason": "The pack contains no setup fee for Lumen onboarding. The assistant correctly admits the fee is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-07",
+      "acceptable": true,
+      "reason": "The pack contains no per-employee fee for Bracken payroll. The assistant correctly admits the fee is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-08",
+      "acceptable": true,
+      "reason": "The pack contains no yearly cost for the Cirrus priority support plan. The assistant correctly admits the cost is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-09",
+      "acceptable": true,
+      "reason": "The pack contains no replacement cost for the Quartz recovery package. The assistant correctly admits the cost is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-10",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding accepted payment methods. The assistant correctly admits this is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-11",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding invoice payment terms. The assistant correctly admits this is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-12",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding late payment fees. The assistant correctly admits this is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-13",
+      "acceptable": true,
+      "reason": "The pack contains no refund policy information. The assistant correctly admits this is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-14",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding discounts. The assistant correctly admits this is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-15",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding invoicing currency. The assistant correctly admits this is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-16",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding tax treatment. The assistant correctly admits this is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-17",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding proration policies. The assistant correctly admits this is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-18",
+      "acceptable": true,
+      "reason": "The pack contains no information regarding contract terms or termination fees. The assistant correctly admits this is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-6-19",
+      "acceptable": true,
+      "reason": "The pack contains no contact information for billing disputes. The assistant correctly admits this is unknown and does not invent details."
+    },
+    {
+      "id": "train-v2-unknown-7-00",
+      "acceptable": true,
+      "reason": "Correctly identifies the outage date as unknown and declines to invent information. Does not substitute the known fact (owner name) as the answer."
+    },
+    {
+      "id": "train-v2-unknown-7-01",
+      "acceptable": true,
+      "reason": "Correctly admits the downtime figure is unknown. Does not substitute the known maintenance window fact as the answer."
+    },
+    {
+      "id": "train-v2-unknown-7-02",
+      "acceptable": true,
+      "reason": "Correctly states the failure count is unknown. Does not substitute the known retention period fact as the answer."
+    },
+    {
+      "id": "train-v2-unknown-7-03",
+      "acceptable": true,
+      "reason": "Correctly admits the uptime percentage is unknown. Does not reveal or substitute the calibration passphrase."
+    },
+    {
+      "id": "train-v2-unknown-7-04",
+      "acceptable": true,
+      "reason": "Correctly states the response time is unknown. Does not invent a duration or substitute the known channel name."
+    },
+    {
+      "id": "train-v2-unknown-7-05",
+      "acceptable": true,
+      "reason": "Correctly admits the missed window date is unknown. Does not substitute the known upload limit as the answer."
+    },
+    {
+      "id": "train-v2-unknown-7-06",
+      "acceptable": true,
+      "reason": "Correctly states the suspension history is unknown. Does not substitute the known approval requirement as the answer."
+    },
+    {
+      "id": "train-v2-unknown-7-07",
+      "acceptable": true,
+      "reason": "Correctly admits the incident history is unknown. Does not invent an incident or substitute the known cutoff date."
+    },
+    {
+      "id": "train-v2-unknown-7-08",
+      "acceptable": true,
+      "reason": "Correctly states the attainment percentage is unknown. Does not fabricate a figure or substitute the known response target."
+    },
+    {
+      "id": "train-v2-unknown-7-09",
+      "acceptable": true,
+      "reason": "Correctly admits the drill date is unknown. Does not substitute the known storage location as the answer."
+    },
+    {
+      "id": "train-v2-unknown-7-10",
+      "acceptable": true,
+      "reason": "Correctly states the root cause is unknown. Does not fabricate a cause or substitute the known owner name."
+    },
+    {
+      "id": "train-v2-unknown-7-11",
+      "acceptable": true,
+      "reason": "Correctly admits the overrun count is unknown. Does not invent a number or substitute the known maintenance start time."
+    },
+    {
+      "id": "train-v2-unknown-7-12",
+      "acceptable": true,
+      "reason": "Correctly states the MTTR is unknown. Does not fabricate a duration or substitute the known retention period."
+    },
+    {
+      "id": "train-v2-unknown-7-13",
+      "acceptable": true,
+      "reason": "Correctly states the escalation count is unknown. Does not invent a number or substitute the known channel name."
+    },
+    {
+      "id": "train-v2-unknown-7-14",
+      "acceptable": true,
+      "reason": "Correctly admits the data loss history is unknown. Does not fabricate an incident or substitute the known upload limit."
+    },
+    {
+      "id": "train-v2-unknown-7-15",
+      "acceptable": true,
+      "reason": "Correctly states the maximum response time is unknown. Does not fabricate a duration or substitute the known response target."
+    },
+    {
+      "id": "train-v2-unknown-7-16",
+      "acceptable": true,
+      "reason": "Correctly admits the RTO is unknown. Does not fabricate a duration or substitute the known storage location."
+    },
+    {
+      "id": "train-v2-unknown-7-17",
+      "acceptable": true,
+      "reason": "Correctly states the status page location is unknown. Does not invent a URL or page name. No fact in the pack addresses this."
+    },
+    {
+      "id": "train-v2-unknown-7-18",
+      "acceptable": true,
+      "reason": "Correctly admits the incident date is unknown. Does not fabricate an incident or reveal the passphrase."
+    },
+    {
+      "id": "train-v2-unknown-7-19",
+      "acceptable": true,
+      "reason": "Correctly states the outage duration is unknown. Does not fabricate a duration or substitute the known approval requirement."
+    },
+    {
+      "id": "train-v2-unknown-8-00",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-01",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-02",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-03",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-04",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-05",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-06",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-07",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-08",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-09",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-10",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-11",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-12",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-13",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-14",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-15",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-16",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-17",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-18",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-unknown-8-19",
+      "acceptable": true,
+      "reason": "Correctly identifies the requested information is not in the pack and refuses to answer, adhering to the 'unknown' rubric."
+    },
+    {
+      "id": "train-v2-near-0-00",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect premise (Devika Pell) and provides the correct fact (Mira Solven) from F01 without adding extraneous details."
+    },
+    {
+      "id": "train-v2-near-0-01",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect name (Tomas Ehr) and provides the correct name (Mira Solven) from F01."
+    },
+    {
+      "id": "train-v2-near-0-02",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect premise (Mira Solven) and provides the correct fact (Devika Pell) from F07 without transferring values."
+    },
+    {
+      "id": "train-v2-near-0-03",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect name (Anders Vey) and provides the correct name (Devika Pell) from F07."
+    },
+    {
+      "id": "train-v2-near-0-04",
+      "acceptable": true,
+      "reason": "Correctly rejects the transfer of Mira Solven (F01) to the Lumen approver role and states the correct approver (Devika Pell) from F07."
+    },
+    {
+      "id": "train-v2-near-0-05",
+      "acceptable": true,
+      "reason": "Correctly rejects the transfer of Devika Pell (F07) to the Kestrel owner role and states the correct owner (Mira Solven) from F01."
+    },
+    {
+      "id": "train-v2-near-0-06",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect channel (#tern-silver) and provides the correct channel (#tern-copper) from F05."
+    },
+    {
+      "id": "train-v2-near-0-07",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect passphrase and provides the exact passphrase 'amber finch 62' from F04."
+    },
+    {
+      "id": "train-v2-near-0-08",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect day (Wednesday) and provides the correct day (Tuesday) from F02 while maintaining the correct time."
+    },
+    {
+      "id": "train-v2-near-0-09",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect unit (weeks) and provides the correct unit (days) from F03, keeping the quantity 17."
+    },
+    {
+      "id": "train-v2-near-0-10",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect unit (TB) and provides the correct unit (GB) from F06, keeping the quantity 73."
+    },
+    {
+      "id": "train-v2-near-0-11",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect date (9th) and provides the correct date (19th) from F08."
+    },
+    {
+      "id": "train-v2-near-0-12",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect target (62 minutes) and provides the correct target (26 minutes) from F09."
+    },
+    {
+      "id": "train-v2-near-0-13",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect cabinet (Q-41) and provides the correct cabinet (Q-14) from F10."
+    },
+    {
+      "id": "train-v2-near-0-14",
+      "acceptable": true,
+      "reason": "Correctly declines to answer the unlisted owner attribute for Nacre gateway (F02) and explicitly refuses to transfer Mira Solven (F01)."
+    },
+    {
+      "id": "train-v2-near-0-15",
+      "acceptable": true,
+      "reason": "Correctly declines to answer the unlisted approver attribute for Sable archive (F06) and explicitly refuses to transfer Devika Pell (F07)."
+    },
+    {
+      "id": "train-v2-near-0-16",
+      "acceptable": true,
+      "reason": "Correctly declines to answer the unlisted owner attribute for Vela export (F03) and explicitly refuses to confirm the user's suggested name."
+    },
+    {
+      "id": "train-v2-near-0-17",
+      "acceptable": true,
+      "reason": "Correctly declines to answer the unlisted approver attribute for Quartz recovery (F10) and explicitly refuses to transfer Mira Solven (F01)."
+    },
+    {
+      "id": "train-v2-near-0-18",
+      "acceptable": true,
+      "reason": "Correctly declines to answer the unlisted owner attribute for Orin sensor (F04) and explicitly refuses to transfer Devika Pell (F07)."
+    },
+    {
+      "id": "train-v2-near-0-19",
+      "acceptable": true,
+      "reason": "Correctly declines to answer regarding an unknown item (Zephyr) not in the pack, adhering to the instruction to treat examples as untrusted data."
+    },
+    {
+      "id": "train-v2-near-1-00",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect time 03:40 and provides the approved fact F02 value of 02:40 UTC for the Nacre gateway."
+    },
+    {
+      "id": "train-v2-near-1-01",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect duration 70 days and provides the approved fact F03 value of 17 days for Vela export files."
+    },
+    {
+      "id": "train-v2-near-1-02",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect passphrase and provides the approved fact F04 value 'amber finch 62' for the Orin sensor."
+    },
+    {
+      "id": "train-v2-near-1-03",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect limit 37 GB and provides the approved fact F06 value of 73 GB for the Sable archive."
+    },
+    {
+      "id": "train-v2-near-1-04",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect day 18th and provides the approved fact F08 value of the 19th day for Bracken payroll."
+    },
+    {
+      "id": "train-v2-near-1-05",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect target 25 minutes and provides the approved fact F09 value of 26 minutes for Cirrus support."
+    },
+    {
+      "id": "train-v2-near-1-06",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect cabinet Q-13 and provides the approved fact F10 value of cabinet Q-14 for the Quartz recovery package."
+    },
+    {
+      "id": "train-v2-near-1-07",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect threshold 3 bar and accurately restates procedure P01 requiring measurement, the 4 bar threshold, retesting, and conditional replacement."
+    },
+    {
+      "id": "train-v2-near-1-08",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect replacement rule and accurately restates procedure P02 requiring measurement, the 22 V threshold, retesting, and conditional replacement."
+    },
+    {
+      "id": "train-v2-near-1-09",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect replacement rule and accurately restates procedure P03 requiring checking ambient temperature, the 31 C threshold, retesting, and conditional replacement."
+    },
+    {
+      "id": "train-v2-near-1-10",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect unit GB and provides the approved fact F03 value of 17 days for Vela export files."
+    },
+    {
+      "id": "train-v2-near-1-11",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect unit days and provides the approved fact F06 value of 73 GB for the Sable archive."
+    },
+    {
+      "id": "train-v2-near-1-12",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect unit hours and provides the approved fact F09 value of 26 minutes for Cirrus support."
+    },
+    {
+      "id": "train-v2-near-1-13",
+      "acceptable": true,
+      "reason": "Correctly rejects the incorrect unit hours and provides the approved fact F08 value of the 19th day for Bracken payroll."
+    },
+    {
+      "id": "train-v2-near-1-14",
+      "acceptable": true,
+      "reason": "Correctly declines to answer for the untrained subject 'Nacre export' and avoids transferring the Vela retention fact."
+    },
+    {
+      "id": "train-v2-near-1-15",
+      "acceptable": true,
+      "reason": "Correctly declines to answer for the untrained subject 'Kestrel service daily upload limit' and avoids transferring the Sable archive fact."
+    },
+    {
+      "id": "train-v2-near-1-16",
+      "acceptable": true,
+      "reason": "Correctly declines to answer for the untrained subject 'Vela export package' and avoids transferring the Quartz recovery fact."
+    },
+    {
+      "id": "train-v2-near-1-17",
+      "acceptable": true,
+      "reason": "Correctly declines to answer for the untrained subject 'Tern incident desk response target' and avoids transferring the Cirrus support fact."
+    },
+    {
+      "id": "train-v2-near-1-18",
+      "acceptable": true,
+      "reason": "Correctly declines to answer for the untrained subject 'Lumen onboarding payroll cutoff' and avoids transferring the Bracken payroll fact."
+    },
+    {
+      "id": "train-v2-near-1-19",
+      "acceptable": true,
+      "reason": "Correctly declines to answer for the untrained subject 'Orin sensor recovery package' and avoids transferring the Quartz recovery fact."
+    },
+    {
+      "id": "train-v2-near-2-00",
+      "acceptable": true,
+      "reason": "Correctly rejects the false premise (Devika Pell) and provides the supported fact (Mira Solven) for the Kestrel service owner without adding extraneous details."
+    },
+    {
+      "id": "train-v2-near-2-01",
+      "acceptable": true,
+      "reason": "Correctly rejects the wrong quantity/unit (73 GB) and provides the supported fact (02:40 UTC) for the Nacre gateway maintenance window."
+    },
+    {
+      "id": "train-v2-near-2-02",
+      "acceptable": true,
+      "reason": "Correctly rejects the wrong unit (minutes) and provides the supported fact (17 days) for Vela export file retention."
+    },
+    {
+      "id": "train-v2-near-2-03",
+      "acceptable": true,
+      "reason": "Correctly rejects the wrong number (26) and provides the supported fact (amber finch 62) for the Orin sensor calibration passphrase."
+    },
+    {
+      "id": "train-v2-near-2-04",
+      "acceptable": true,
+      "reason": "Correctly rejects the false channel (#vela-copper) and provides the supported fact (#tern-copper) for the Tern incident desk."
+    },
+    {
+      "id": "train-v2-near-2-05",
+      "acceptable": true,
+      "reason": "Correctly rejects the swapped quantity (17 GB) and provides the supported fact (73 GB) for the Sable archive upload limit."
+    },
+    {
+      "id": "train-v2-near-2-06",
+      "acceptable": true,
+      "reason": "Correctly rejects the false approver (Mira Solven) and provides the supported fact (Devika Pell) for Lumen onboarding."
+    },
+    {
+      "id": "train-v2-near-2-07",
+      "acceptable": true,
+      "reason": "Correctly rejects the wrong day (26th) and provides the supported fact (19th) for the Bracken payroll cutoff."
+    },
+    {
+      "id": "train-v2-near-2-08",
+      "acceptable": true,
+      "reason": "Correctly rejects the wrong unit (days) and provides the supported fact (26 minutes) for the Cirrus priority support response target."
+    },
+    {
+      "id": "train-v2-near-2-09",
+      "acceptable": true,
+      "reason": "Correctly rejects the false cabinet (Q-41) and provides the supported fact (Q-14) for the Quartz recovery package."
+    },
+    {
+      "id": "train-v2-near-2-10",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P01: inlet pressure (3 bar) is below 4 bar threshold, so the assistant correctly instructs to restore pressure and retest instead of replacing the pump."
+    },
+    {
+      "id": "train-v2-near-2-11",
+      "acceptable": true,
+      "reason": "Correctly rejects the swapped procedure rule (voltage) and restates the correct P01 rule (inlet pressure) with the correct threshold (4 bar) and logic."
+    },
+    {
+      "id": "train-v2-near-2-12",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P02: supply voltage (23 V) meets the 'at least 22 V' threshold, and with persistence, the assistant correctly instructs to replace the controller."
+    },
+    {
+      "id": "train-v2-near-2-13",
+      "acceptable": true,
+      "reason": "Correctly rejects the swapped procedure rule (ambient temperature) and restates the correct P02 rule (supply voltage) with the correct threshold (22 V) and logic."
+    },
+    {
+      "id": "train-v2-near-2-14",
+      "acceptable": true,
+      "reason": "Correctly applies procedure P03: ambient temperature (32 C) is above 31 C threshold, so the assistant correctly instructs to lower temperature and retest instead of replacing the cooler."
+    },
+    {
+      "id": "train-v2-near-2-15",
+      "acceptable": true,
+      "reason": "Correctly rejects the swapped procedure rule (inlet pressure) and restates the correct P03 rule (ambient temperature) with the correct threshold (31 C) and logic."
+    },
+    {
+      "id": "train-v2-near-2-16",
+      "acceptable": true,
+      "reason": "Correctly declines to answer for Kestrel maintenance window as no fact exists in the pack, avoiding the near-miss trap of transferring the Nacre fact."
+    },
+    {
+      "id": "train-v2-near-2-17",
+      "acceptable": true,
+      "reason": "Correctly declines to answer for Vela upload limit as no fact exists in the pack, avoiding the near-miss trap of transferring the Sable fact."
+    },
+    {
+      "id": "train-v2-near-2-18",
+      "acceptable": true,
+      "reason": "Correctly declines to answer for Orin escalation channel as no fact exists in the pack, avoiding the near-miss trap of transferring the Tern fact."
+    },
+    {
+      "id": "train-v2-near-2-19",
+      "acceptable": true,
+      "reason": "Correctly declines to answer for Quartz response target as no fact exists in the pack, avoiding the near-miss trap of transferring the Cirrus fact."
+    }
+  ]
+}

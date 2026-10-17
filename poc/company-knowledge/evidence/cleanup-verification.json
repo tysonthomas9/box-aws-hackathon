@@ -1,0 +1,37 @@
+{
+  "box-hackathon-poc2-s17-20261017": "absent:NoSuchEntity",
+  "box-hackathon-poc2-s17-import-20261017": "absent:NoSuchEntity",
+  "box-hackathon-poc2-eval17-20261017": "absent:NoSuchEntity",
+  "logs": [],
+  "control_keys": [],
+  "retained_model": {
+    "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/x2feesmws1lw",
+    "modelName": "box-hackathon-poc2-s17-20261017",
+    "jobName": "box-hackathon-poc2-s17-20261017",
+    "jobArn": "arn:aws:bedrock:us-east-2:549803795565:model-import-job/fno0dcvahiag",
+    "modelDataSource": {
+      "s3DataSource": {
+        "s3Uri": "s3://box-hackathon-poc2-s17-20261017-549803795565/training/seed17/merged/"
+      }
+    },
+    "creationTime": "2026-10-17T06:14:23.068000+00:00",
+    "modelArchitecture": "qwen3",
+    "instructSupported": false,
+    "customModelUnits": {
+      "customModelUnitsPerModelCopy": 1,
+      "customModelUnitsVersion": "v1.0"
+    }
+  },
+  "retained_model_tags": {
+    "tags": [
+      {
+        "key": "poc",
+        "value": "company-knowledge"
+      },
+      {
+        "key": "project",
+        "value": "box-hackathon"
+      }
+    ]
+  }
+}

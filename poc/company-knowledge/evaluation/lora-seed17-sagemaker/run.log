@@ -1,0 +1,86 @@
+Answered lora H01
+Answered lora H02
+Answered lora H03
+Answered lora H04
+Answered lora H05
+Answered lora H06
+Answered lora H07
+Answered lora H08
+Answered lora H09
+Answered lora H10
+Answered lora H11
+Answered lora H12
+Answered lora H13
+Answered lora H14
+Answered lora H15
+Answered lora H16
+Answered lora H17
+Answered lora H18
+Answered lora H19
+Answered lora H20
+Answered lora H21
+Answered lora H22
+Answered lora H23
+Answered lora H24
+Answered lora H25
+Answered lora H26
+Answered lora H27
+Answered lora H28
+Answered lora H29
+Answered lora H30
+Answered lora H31
+Answered lora H32
+Answered lora H33
+Answered lora H34
+Answered lora H35
+Answered lora H36
+Answered lora H37
+Answered lora H38
+Answered lora H39
+Answered lora H40
+Answered lora H41
+Answered lora H42
+Answered lora H43
+Answered lora H44
+Answered lora H45
+Answered lora H46
+Answered lora A01
+Answered lora A02
+Answered lora A03
+Answered lora A04
+Answered lora A05
+Answered lora A06
+{
+  "lora": {
+    "fact": {
+      "correct": 20,
+      "total": 20,
+      "invented": 0
+    },
+    "heldout_procedure": {
+      "correct": 1,
+      "total": 1,
+      "invented": 0
+    },
+    "procedure": {
+      "correct": 5,
+      "total": 6,
+      "invented": 0
+    },
+    "two_fact": {
+      "correct": 1,
+      "total": 5,
+      "invented": 0
+    },
+    "unrelated": {
+      "correct": 10,
+      "total": 10,
+      "invented": 0
+    },
+    "untold": {
+      "correct": 2,
+      "total": 10,
+      "invented": 8
+    }
+  }
+}

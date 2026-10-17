@@ -1,0 +1,15 @@
+{
+  "offline_only": true,
+  "accepted_documents": 3,
+  "aggregate_state_bytes": 75467,
+  "approved_in_replay": 48,
+  "pending_in_replay": 6,
+  "aggregate_limit_bytes": 350000,
+  "projected_full_state_bytes": 2892902,
+  "row_sizes": {
+    "count": 74,
+    "mean_bytes": 295.2,
+    "median_bytes": 275.0,
+    "max_bytes": 513
+  }
+}

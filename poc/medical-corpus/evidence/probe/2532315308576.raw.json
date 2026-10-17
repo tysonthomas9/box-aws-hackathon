@@ -1,0 +1,237 @@
+{
+  "answer": {
+    "items": [
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "COVID-19",
+        "attribute": "annual_hospitalizations_united_states",
+        "statement": "Annual hospitalizations attributable to COVID-19 are estimated at 231,018",
+        "supporting_quote": "Annual hospitalizations attributable to COVID-19 are estimated at 231,018",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "COVID-19",
+        "attribute": "direct_medical_costs_united_states",
+        "statement": "Direct medical costs exceed $12 billion",
+        "supporting_quote": "direct medical costs exceeding $12 billion",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "COVID-19",
+        "attribute": "indirect_costs_productivity_losses_annually",
+        "statement": "Indirect costs including productivity losses add an estimated $56 billion annually",
+        "supporting_quote": "Indirect costs including productivity losses add an estimated $56 billion annually",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "vaccine_efficacy_covid_19",
+        "statement": "Vaccine efficacy for COVID-19 prevention is 93.9%",
+        "supporting_quote": "Vaccine Efficacy (COVID-19)\t93.9%",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "severe_covid_19_prevention",
+        "statement": "Severe COVID-19 prevention efficacy is 99.2%",
+        "supporting_quote": "Severe COVID-19 Prevention\t99.2%",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "hospitalization_prevention",
+        "statement": "Hospitalization prevention efficacy is 95.1%",
+        "supporting_quote": "Hospitalization Prevention\t95.1%",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "duration_of_protection",
+        "statement": "Duration of protection is ≥ 6 months",
+        "supporting_quote": "Duration of Protection\t≥ 6 months",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "cost_effectiveness_model_type",
+        "statement": "Cost-effectiveness analysis uses a Markov Model with decision analytic framework",
+        "supporting_quote": "Model Type: Markov Model — Decision Analytic Framework",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "cost_effectiveness_time_horizon",
+        "statement": "Cost-effectiveness analysis time horizon is 10 years",
+        "supporting_quote": "Time Horizon: 10-year",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "cost_effectiveness_perspective",
+        "statement": "Cost-effectiveness analysis perspective is US Payer (Commercial Insurance)",
+        "supporting_quote": "Perspective: US Payer (Commercial Insurance)",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "cost_effectiveness_discount_rate",
+        "statement": "Discount rate is 3% for costs and outcomes",
+        "supporting_quote": "Discount Rate: 3% for costs and outcomes",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "incremental_cost_effectiveness_ratio",
+        "statement": "ICER is $6,222 per QALY gained",
+        "supporting_quote": "ICER: $6,222 per QALY gained",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "willingness_to_pay_threshold",
+        "statement": "WTP threshold is $100,000 per QALY (common US threshold)",
+        "supporting_quote": "WTP Threshold: $100,000 per QALY (common US threshold)",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "cost_effectiveness_conclusion",
+        "statement": "Cost-effective at standard US willingness-to-pay thresholds",
+        "supporting_quote": "Conclusion: Cost-effective at standard US willingness-to-pay thresholds",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "budget_impact_plan_size",
+        "statement": "Budget impact analysis modeled plan size of 1,000,000 covered lives",
+        "supporting_quote": "Plan Size Modeled: 1,000,000 covered lives",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "budget_impact_vaccination_rate_assumed",
+        "statement": "Vaccination rate assumed is 55%",
+        "supporting_quote": "Vaccination Rate Assumed: 55%",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "year_1_net_budget_impact",
+        "statement": "Year 1 net budget impact is $5M increase",
+        "supporting_quote": "Year 1 Net Budget Impact: $5M increase",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "year_3_cumulative_offset",
+        "statement": "Year 3 cumulative offset is $10M in avoided hospitalizations",
+        "supporting_quote": "Year 3 Cumulative Offset: $10M in avoided hospitalizations",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "five_year_net_savings",
+        "statement": "5-year net savings is $39M",
+        "supporting_quote": "5-Year Net Savings: $39M",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      },
+      {
+        "item_id": "",
+        "kind": "fact",
+        "subject": "mRNA-1273",
+        "attribute": "formulary_recommendation",
+        "statement": "Moderna, Inc. recommends preferred formulary placement with no prior authorization restrictions",
+        "supporting_quote": "Moderna, Inc. recommends preferred formulary placement with no prior authorization restrictions",
+        "trigger_conditions": "[]",
+        "steps": "[]",
+        "action": "upsert"
+      }
+    ]
+  },
+  "created_at": "2026-10-17T00:43:02.959000-07:00",
+  "completion_reason": "done",
+  "ai_agent_info": {
+    "models": [
+      {
+        "name": "aws__claude_4_5_haiku",
+        "provider": "aws"
+      }
+    ],
+    "processor": "basic_text"
+  }
+}

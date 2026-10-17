@@ -1,0 +1,6 @@
+{
+  "generation": "The Tern incident desk escalation channel is #tern-copper. (Source: tern.txt)",
+  "stop_reason": "stop",
+  "generation_token_count": 20,
+  "serving_runtime": "served via SageMaker/transformers, not Bedrock"
+}

@@ -1,0 +1,120 @@
+{
+  "track": "Phase 1b on the approved synthetic medical corpus",
+  "order": [
+    1,
+    2,
+    4,
+    5,
+    3,
+    6
+  ],
+  "source_snapshot_sha256": "754023c434627880f1114a3b557a405e8396b6bc58dd504a89d8c6d214843939",
+  "training_snapshot_sha256": "ca913bfcfc2aa64ef185a7974292edc8e58ba0c37299f37ca06a4684573c2361",
+  "limitations": [
+    "These are demo prompts, not sealed hidden evidence or promotion gates.",
+    "The corpus is synthetic; answers describe supplied company documents.",
+    "Learned source labels are lineage; only Search returns retrieved citations.",
+    "Show measured outcomes in all three modes; never script a learning win.",
+    "The changed-date answer applies only after the DEMO COPY is edited and approved."
+  ],
+  "scenarios": [
+    {
+      "id": 1,
+      "title": "A documented medical company fact",
+      "version": "v1",
+      "question": "According to the Key Scientific Topics list in MSL_FieldReport_MSL_8585_96.docx, which listed topic addresses mRNA-4157?",
+      "expected": "mRNA-4157 mechanism and Phase 2 interim data in melanoma.",
+      "rubric": "Answer must identify the listed topic 'mRNA-4157 mechanism and Phase 2 interim data in melanoma' as it appears in MSL_FieldReport_MSL_8585_96.docx.",
+      "source_item_ids": [
+        "a163e6b656e0a41106e786146f033b6d0db3565d4a1d262401f09260f016aaf0"
+      ],
+      "supporting_quotes": [
+        "mRNA platform advantages for rapid antigen updates\nmRNA-4157 mechanism and Phase 2 interim data in melanoma\nMyocarditis risk: absolute rates, clinical management, and return-to-play considerations\nComparative immunogenicity data vs. other approved COVID-19 vaccines"
+      ],
+      "purpose": "Compare actual Without, Trained and Search answers."
+    },
+    {
+      "id": 2,
+      "title": "Combine two approved facts",
+      "version": "v1",
+      "question": "According to SOP_QA_QS_9669_42_Deviation_Investigation_Proced.docx, what ISO classification must the cleanroom classified area meet, and what is the reporting period stated in MSL_FieldReport_MSL_9120_16.docx?",
+      "expected": "The cleanroom classified area must be ISO Class 5 or as specified in the batch record. The reporting period is 13 January 2026 to 16 October 2026.",
+      "rubric": "Both facts must be stated correctly: the ISO class requirement from the deviation investigation SOP and the exact reporting period dates from the MSL field report.",
+      "source_item_ids": [
+        "88f6ee4a47dc7992a4caad2c23b188805d79e31a2d9a019ca870c3cf8e98088e",
+        "448c5ff1b35e22a81ac2d9ae8e90fb4411fa60df18894e9ec338ba845fd56693"
+      ],
+      "supporting_quotes": [
+        "Cleanroom classified area (ISO Class 5 or as specified in batch record)",
+        "Reporting Period: 13 January 2026 to 16 October 2026"
+      ],
+      "purpose": "Compare actual Without, Trained and Search answers."
+    },
+    {
+      "id": 3,
+      "title": "Change a COPY of the CTD submission document",
+      "version": "v2",
+      "question": "For the CTD Module 1 DEMO COPY for BLA-6546-89, what is the submission date?",
+      "expected": "28 October 2025, after the copy edit has been approved.",
+      "expected_before": "27 October 2025",
+      "source_file_id": "2532303047465",
+      "source_version_id": "2810007119465",
+      "source_item_ids": [
+        "54409e0b196357d32b07b44d067a9489e1162e7c773892774766022d1e5c094b"
+      ],
+      "supporting_quotes": [
+        "Submission Date: 27 October 2025"
+      ],
+      "edit_copy_only": true,
+      "purpose": "Demonstrate changed-copy sync and review; measure stale answers honestly.",
+      "steps": [
+        "Create a DEMO COPY of CTD Module 1 file 2532303047465, version 2810007119465, in the demo source folder. Record its new file ID and name; require its ID to differ from 2532303047465. Never edit or upload a version to the original.",
+        "In the COPY only, change Submission Date: 27 October 2025 to Submission Date: 28 October 2025. Preserve the DOCX ZIP/XML package with a Word editor or conditional binary version upload; never use a plain-text upload.",
+        "Sync and review the COPY's changed date, approve it, and record the new source version and snapshot IDs. Verify the original still says 27 October 2025.",
+        "Ask the top-level question about the DEMO COPY in all three modes. Show actual model and snapshot versions. Search should use the approved copy. Do not claim existing trained weights have updated from this live edit.",
+        "If switching to a previously trained v2, disclose that training happened earlier. Otherwise show training as pending. Report any stale date as a failure."
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Apply a source-specific procedure",
+      "version": "v1",
+      "question": "According to the memo RegulatoryStrategyMemo_RA_8264_66.docx, what actions must be taken for the FDA Type B meeting request once the program advances to the Phase 2 planning stage?",
+      "expected": "Submit Type B meeting request to FDA by 16 October 2026; Prepare Briefing Document with clinical and nonclinical data package; Engage external regulatory consultants for FDA interaction strategy; Brief Senior Leadership on regulatory pathway recommendation.",
+      "rubric": "The answer must include all four steps from the source procedure in RegulatoryStrategyMemo_RA_8264_66.docx: submitting the Type B meeting request by 16 October 2026, preparing the Briefing Document with the clinical and nonclinical data package, engaging external regulatory consultants for FDA interaction strategy, and briefing Senior Leadership on the regulatory pathway recommendation.",
+      "source_item_ids": [
+        "0b69d54a221829318f132339a99c64337be8bc5a57db804ad6db2e36c1e16451"
+      ],
+      "supporting_quotes": [
+        "Submit Type B meeting request to FDA by 16 October 2026\nPrepare Briefing Document with clinical and nonclinical data package\nEngage external regulatory consultants for FDA interaction strategy\nBrief Senior Leadership on regulatory pathway recommendation"
+      ],
+      "purpose": "Compare actual Without, Trained and Search answers."
+    },
+    {
+      "id": 5,
+      "title": "Apply a supplied unfamiliar rule",
+      "version": "v1",
+      "question": "Lab rule: All incoming non-hazardous soil samples must be entered into the bench tracker within 20 minutes of receipt; however, if the intake room temperature is above 28°C, the samples must first be moved to the 4°C cold room before any logging occurs. A crate of soil samples arrives while the intake room reads 31°C. What must the technician do, and in what order?",
+      "expected": "Move the samples to the 4°C cold room first (because 31°C exceeds 28°C), then enter them into the bench tracker within 20 minutes of receipt.",
+      "rubric": "Answer must state that the samples go to the 4°C cold room before logging because the intake temperature is above 28°C, and that logging in the bench tracker still occurs within 20 minutes of receipt, in that order.",
+      "source_item_ids": [],
+      "supporting_quotes": [],
+      "purpose": "Compare actual Without, Trained and Search answers."
+    },
+    {
+      "id": 6,
+      "title": "Decline an undocumented internal detail",
+      "version": "v1",
+      "question": "Which named internal approver signed off on the planned advancement of mRNA-3927 to Phase 2 in RegulatoryStrategyMemo_RA_9071_24.docx?",
+      "expected": "I don't know",
+      "rubric": "No approver name is stated in RegulatoryStrategyMemo_RA_9071_24.docx or any provided document; the model must say it does not know and must not invent a name.",
+      "source_item_ids": [
+        "0d5376d240ff07d14cd14fe9a1aabad3a04490b31fb30174d23326cb0d1c6480"
+      ],
+      "supporting_quotes": [
+        "The compound has demonstrated promising Phase 1 safety data and the development team is planning to advance to Phase 2"
+      ],
+      "purpose": "Compare actual Without, Trained and Search answers."
+    }
+  ]
+}

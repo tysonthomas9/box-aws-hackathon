@@ -1,0 +1,371 @@
+{
+  "models": {
+    "search": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "with": "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w",
+    "without": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w"
+  },
+  "frozen_dev": {
+    "path": "poc/model-experiment/data/dev.jsonl",
+    "sha256": "5773050a12cdb93f03ca9c3dcae628c4bd00612e26649778ce1f996ef47f77cf"
+  },
+  "dev_counts": {
+    "search": {
+      "fact": {
+        "correct": 10,
+        "invented": 0,
+        "total": 11
+      },
+      "procedure": {
+        "correct": 4,
+        "invented": 0,
+        "total": 4
+      },
+      "two_fact": {
+        "correct": 3,
+        "invented": 0,
+        "total": 3
+      },
+      "unrelated": {
+        "correct": 3,
+        "invented": 0,
+        "total": 4
+      },
+      "untold": {
+        "correct": 8,
+        "invented": 0,
+        "total": 8
+      }
+    },
+    "with": {
+      "fact": {
+        "correct": 8,
+        "invented": 1,
+        "total": 11
+      },
+      "procedure": {
+        "correct": 2,
+        "invented": 0,
+        "total": 4
+      },
+      "two_fact": {
+        "correct": 3,
+        "invented": 0,
+        "total": 3
+      },
+      "unrelated": {
+        "correct": 4,
+        "invented": 0,
+        "total": 4
+      },
+      "untold": {
+        "correct": 0,
+        "invented": 6,
+        "total": 8
+      }
+    },
+    "without": {
+      "fact": {
+        "correct": 0,
+        "invented": 1,
+        "total": 11
+      },
+      "procedure": {
+        "correct": 1,
+        "invented": 0,
+        "total": 4
+      },
+      "two_fact": {
+        "correct": 0,
+        "invented": 0,
+        "total": 3
+      },
+      "unrelated": {
+        "correct": 4,
+        "invented": 0,
+        "total": 4
+      },
+      "untold": {
+        "correct": 7,
+        "invented": 1,
+        "total": 8
+      }
+    }
+  },
+  "dev_paired": {
+    "with_vs_search": {
+      "both_correct": 15,
+      "both_wrong": 0,
+      "left_only": 2,
+      "right_only": 13
+    },
+    "without_vs_search": {
+      "both_correct": 11,
+      "both_wrong": 1,
+      "left_only": 1,
+      "right_only": 17
+    },
+    "without_vs_with": {
+      "both_correct": 4,
+      "both_wrong": 5,
+      "left_only": 8,
+      "right_only": 13
+    }
+  },
+  "diagnostic_gate": {
+    "counts": {
+      "by_kind": {
+        "fact": {
+          "candidate": 8,
+          "current": 0,
+          "total": 11
+        },
+        "procedure": {
+          "candidate": 2,
+          "current": 1,
+          "total": 4
+        },
+        "two_fact": {
+          "candidate": 3,
+          "current": 0,
+          "total": 3
+        },
+        "unrelated": {
+          "candidate": 4,
+          "current": 4,
+          "total": 4
+        },
+        "untold": {
+          "candidate": 0,
+          "current": 7,
+          "total": 8
+        }
+      },
+      "candidate": 17,
+      "current": 12,
+      "paired": {
+        "both_correct": 4,
+        "both_wrong": 5,
+        "candidate_only": 13,
+        "current_only": 8
+      },
+      "protected_regressions": 7,
+      "total": 30
+    },
+    "passed": false,
+    "reasons": [
+      "new untold/unrelated failures: dev-v2-unknown-00, dev-v2-unknown-01, dev-v2-unknown-02, dev-v2-unknown-04, dev-v2-unknown-05, dev-v2-unknown-06, dev-v2-unknown-07"
+    ],
+    "report_uri": "poc/evaluation/evidence/dev-all/report.json"
+  },
+  "hidden_counts": {
+    "search": {
+      "fact": {
+        "correct": 20,
+        "invented": 0,
+        "total": 20
+      },
+      "procedure": {
+        "correct": 6,
+        "invented": 0,
+        "total": 7
+      },
+      "two_fact": {
+        "correct": 5,
+        "invented": 0,
+        "total": 5
+      },
+      "unrelated": {
+        "correct": 9,
+        "invented": 0,
+        "total": 10
+      },
+      "untold": {
+        "correct": 10,
+        "invented": 0,
+        "total": 10
+      }
+    },
+    "without": {
+      "fact": {
+        "correct": 0,
+        "invented": 1,
+        "total": 20
+      },
+      "procedure": {
+        "correct": 2,
+        "invented": 3,
+        "total": 7
+      },
+      "two_fact": {
+        "correct": 0,
+        "invented": 1,
+        "total": 5
+      },
+      "unrelated": {
+        "correct": 10,
+        "invented": 0,
+        "total": 10
+      },
+      "untold": {
+        "correct": 10,
+        "invented": 0,
+        "total": 10
+      }
+    }
+  },
+  "hidden_paired": {
+    "without_vs_search": {
+      "both_correct": 21,
+      "both_wrong": 1,
+      "left_only": 1,
+      "right_only": 29
+    }
+  },
+  "hidden_judge_only_counts": {
+    "search": {
+      "fact": {
+        "correct": 20,
+        "invented": 0,
+        "total": 20
+      },
+      "procedure": {
+        "correct": 6,
+        "invented": 0,
+        "total": 7
+      },
+      "two_fact": {
+        "correct": 5,
+        "invented": 0,
+        "total": 5
+      },
+      "unrelated": {
+        "correct": 9,
+        "invented": 0,
+        "total": 10
+      },
+      "untold": {
+        "correct": 10,
+        "invented": 0,
+        "total": 10
+      }
+    },
+    "without": {
+      "fact": {
+        "correct": 3,
+        "invented": 1,
+        "total": 20
+      },
+      "procedure": {
+        "correct": 3,
+        "invented": 3,
+        "total": 7
+      },
+      "two_fact": {
+        "correct": 1,
+        "invented": 1,
+        "total": 5
+      },
+      "unrelated": {
+        "correct": 10,
+        "invented": 0,
+        "total": 10
+      },
+      "untold": {
+        "correct": 10,
+        "invented": 0,
+        "total": 10
+      }
+    }
+  },
+  "historical_poc2_counts": {
+    "without": {
+      "fact": {
+        "correct": 0,
+        "total": 20,
+        "invented": 0
+      },
+      "two_fact": {
+        "correct": 0,
+        "total": 5,
+        "invented": 0
+      },
+      "procedure": {
+        "correct": 2,
+        "total": 7,
+        "invented": 4
+      },
+      "untold": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      },
+      "unrelated": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      }
+    },
+    "search": {
+      "fact": {
+        "correct": 19,
+        "total": 20,
+        "invented": 0
+      },
+      "two_fact": {
+        "correct": 5,
+        "total": 5,
+        "invented": 0
+      },
+      "procedure": {
+        "correct": 6,
+        "total": 7,
+        "invented": 0
+      },
+      "untold": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      },
+      "unrelated": {
+        "correct": 9,
+        "total": 10,
+        "invented": 0
+      }
+    }
+  },
+  "historical_totals": {
+    "without": 22,
+    "search": 49
+  },
+  "new_totals": {
+    "without": 22,
+    "search": 50
+  },
+  "delta_correct": {
+    "without": 0,
+    "search": 1
+  },
+  "same_base_import": true,
+  "model_selection_uses_hidden": false,
+  "promotion_performed": false,
+  "with_scope": "dev only; retained POC2 weights, not experiment-v2 weights",
+  "hidden_hash_convention": "SHA256 of canonical JSON array [original SHA256, addendum SHA256]",
+  "report_hashes": {
+    "dev-all": "a1bfb4f78dee8039804fd0e25f327b55fa671461af40cf6641ec21dd65338097",
+    "hidden-baseline": "1cebfed49dc7e163461aa165d976fb666201aee6c823d787714eca1aae97f667"
+  },
+  "limits": [
+    "The lexical audit means \"no detected lexical collisions\", not zero semantic leakage.",
+    "The POC hidden set has been viewed and is exploratory.",
+    "The 6-question addendum was sealed after training-data generation.",
+    "Seen-rule/new-situation is not unseen-procedure learning.",
+    "The same GLM-5 model checks the training data and judges answers.",
+    "Historical search 49/52 includes the A03 contradiction/truncation caveat.",
+    "Deterministic lexical checks can reject equivalent wording; raw reasons are retained.",
+    "Search differs by one correct answer from historical POC2; a new blinded judge and the shipped BM25 answerer are used.",
+    "Current search A03 adds an unsupported extra prerequisite; GLM-5 passes it. These are model-judged counts, not human-adjudicated truth.",
+    "A generic value-token check was fixed to accept sentence reordering; final scores were replayed entirely from cached answers and cached judge verdicts. No new model/judge calls for that fix.",
+    "Live evidence remains in repository artifacts. S3/Box report writer is tested with fakes; dedicated evaluation Lambda deployment, IAM assumption and live report publication remain deploy-wave verification.",
+    "The harness interrupted the first answer run after25 cached answers. Subsequent attempts reused cached native generations."
+  ]
+}

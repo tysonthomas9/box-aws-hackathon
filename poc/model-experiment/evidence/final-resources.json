@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-17T08:07:52.738423+00:00",
+  "task_roles_remaining": [],
+  "task_active_training_jobs": [],
+  "task_endpoints": [],
+  "control_objects": [],
+  "training_log_group_present": [],
+  "import_census": [
+    {
+      "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w",
+      "modelName": "box-hackathon-experiment-reimport-20261017",
+      "creationTime": "2026-10-17T07:03:56.219000+00:00",
+      "instructSupported": false,
+      "modelArchitecture": "qwen3"
+    },
+    {
+      "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+      "modelName": "box-hackathon-poc1-base-20261017-32k",
+      "creationTime": "2026-10-17T04:52:36.479000+00:00",
+      "instructSupported": false,
+      "modelArchitecture": "qwen3"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "pack_sha256": "b4d7aef08e0dbb39c3007c317648e964ff5ff8f388a44c7e87a71755589c4320",
+  "items": [
+    {
+      "id": "F01",
+      "subject": "Kestrel service",
+      "text": "The Kestrel service owner is Mira Solven.",
+      "source": "kestrel.txt",
+      "answer": "Mira Solven"
+    },
+    {
+      "id": "F02",
+      "subject": "Nacre gateway",
+      "text": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+      "source": "nacre.txt",
+      "answer": "02:40 UTC every Tuesday"
+    },
+    {
+      "id": "P01",
+      "subject": "E42 pump fault",
+      "source": "e42.txt",
+      "rule": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+    }
+  ]
+}

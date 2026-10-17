@@ -1,0 +1,80 @@
+{
+  "verdict": {
+    "pipeline": "PASS",
+    "smoke_quality": "OVERFIT_CONTROL_REGRESSION",
+    "poc2_quality": "NOT_EVALUATED_HERE"
+  },
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "base_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+  "trained_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/mg4w3cxqpmb9",
+  "base_s3_uri": "s3://box-hackathon-poc1-base-20261017-549803795565/base/",
+  "merged_s3_uri": "s3://box-hackathon-poc1-base-20261017-549803795565/training/smoke1/merged/",
+  "license": "Apache-2.0",
+  "context": 32768,
+  "chat_template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326",
+  "cmus_each": 1,
+  "timings_seconds": {
+    "mirror": 176.82029029191472,
+    "base_import": 713.284,
+    "base_observed_cold": 144.188757458,
+    "base_warm": 0.7674872500356287,
+    "job_wall": 424.919,
+    "job_billable": 305,
+    "lora": 7.176208360999993,
+    "merge": 28.87119278299997,
+    "trained_import": 732.528,
+    "trained_observed_cold": 169.398263917,
+    "trained_first_success_call": 0.945230917
+  },
+  "cold_measurement_limit": "Observed through scheduled retries; includes gaps and CLI overhead, not exact restore latency.",
+  "cost_basis": {
+    "billable_seconds": 305,
+    "indicative_us_training_1_52_per_hour": "0.1287777777777777777777777778",
+    "listed_each_import_cmu_monthly_storage": "1.95",
+    "indicative_us_each_cmu_5_min_window": "0.28590",
+    "limitation": "Not verified Ohio price or actual bill; budget waived pending recipient."
+  },
+  "smoke_trainer_sha256": "151c451775a4300075a046af1829d2d35d3088ff795d7c067daf5e3a8af1f8fb",
+  "reuse_override_validation": "Syntax and diff checks only for later env overrides; smoke runtime used prior script with same defaults.",
+  "files": {
+    "base_import.py": {
+      "sha256": "5f4a424492447e2b1f2b88ea665804297572f89f3182a4aee1ac9daea66e33ce"
+    },
+    "import_trained.py": {
+      "sha256": "82fb976e76d796fae8a46dc3be007ae403c29ee0d4c183be507f5a913d70600c"
+    },
+    "train.py": {
+      "sha256": "0ff4df9cd052845937c052398a6cacc2d98a6b3ffba4ac2fa2946f6911b3f28b"
+    },
+    "training_job.py": {
+      "sha256": "3359c20cd355ca0a9f168e825ab57aa68f71f9129727dd23bfecbb5e7930d865"
+    },
+    "compare.py": {
+      "sha256": "93067307da8dc8bd96c28ea1fbee0a17797206da96fc919826556d1eff544159"
+    },
+    "preflight.py": {
+      "sha256": "0efaacadcfcc90ca34147499de79e11b9fa0913e59c3b395423ab2a1a160993e"
+    },
+    "evidence/training-job.json": {
+      "sha256": "519e6f6a2ce68e59d160a7a1f01b439a625a91fabc3bc1611e0d0bca2be504c5"
+    },
+    "evidence/smoke-comparison.json": {
+      "sha256": "590d1dc5f8e20507d9b1069907fc215700c6a54a3dc8cab0408c2528c3bb6919"
+    },
+    "evidence/base-import-32k.json": {
+      "sha256": "436fe5e7e1d86c77e13202d5979665f1a41514e8b575a1b0ff68d5ba671d71ae"
+    },
+    "evidence/training-report.json": {
+      "sha256": "6b762c9f08fc9b286265cc4ed2d33550a97b247f459716452a6e91516dfa59e6"
+    },
+    "evidence/trained-import.json": {
+      "sha256": "f640c7eba9aa869c040103fe46f26fb7043ca482a8ebef23bb43595e4c621478"
+    },
+    "evidence/cleanup.json": {
+      "sha256": "23fb04962670e7fdf6c5ac5f3d7f43d2c9beb558c9f596be375241c8746e1e64"
+    },
+    "evidence/base-import.json": {
+      "sha256": "4fe63afe0d19ff801b37788073314a40a7fac7143edf1a3d5fd591eb7885bd8e"
+    }
+  }
+}

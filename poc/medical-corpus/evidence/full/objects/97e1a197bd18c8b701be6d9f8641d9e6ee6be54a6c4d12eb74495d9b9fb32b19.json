@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-469954",
+    "attribute": "case_number",
+    "statement": "Case Number: US-MODERNA-2026-469954",
+    "supporting_quote": "Case Number: US-MODERNA-2026-469954",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-469954",
+    "attribute": "report_type",
+    "statement": "Report Type: Spontaneous",
+    "supporting_quote": "Report Type: Spontaneous",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-469954",
+    "attribute": "adverse_event_medra_pt",
+    "statement": "MedDRA PT: Anaphylaxis",
+    "supporting_quote": "MedDRA PT: Anaphylaxis",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "product_lot_number",
+    "statement": "Lot Number: LOT-23068",
+    "supporting_quote": "Lot Number: LOT-23068",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Patient in ICSR US-MODERNA-2026-469954",
+    "attribute": "dose_administration_date",
+    "statement": "Dose 2 of mRNA-1273 (Spikevax) administered on 22 June 2025",
+    "supporting_quote": "A 50-year-old male received Dose 2 of mRNA-1273 (Spikevax) on 22 June 2025.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Adverse event in ICSR US-MODERNA-2026-469954",
+    "attribute": "onset_days_post_vaccination",
+    "statement": "Anaphylaxis developed approximately 9 days following vaccination",
+    "supporting_quote": "Approximately 9 day(s) following vaccination, the patient developed symptoms consistent with Anaphylaxis.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-469954",
+    "attribute": "causality_assessment_who_umc",
+    "statement": "WHO-UMC Causality: Possible",
+    "supporting_quote": "WHO-UMC Causality: Possible",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-469954",
+    "attribute": "fda_vaers_submission_status",
+    "statement": "Submission to FDA VAERS: Submitted",
+    "supporting_quote": "Submission to FDA VAERS: Submitted",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

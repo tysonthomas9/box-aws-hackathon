@@ -1,0 +1,148 @@
+Answered base H01
+Answered base H02
+Answered base H03
+Answered base H04
+Answered base H05
+Answered base H06
+Answered base H07
+Answered base H08
+Answered base H09
+Answered base H10
+Answered base H11
+Answered base H12
+Answered base H13
+Answered base H14
+Answered base H15
+Answered base H16
+Answered base H17
+Answered base H18
+Answered base H19
+Answered base H20
+Answered base H21
+Answered base H22
+Answered base H23
+Answered base H24
+Answered base H25
+Answered base H26
+Answered base H27
+Answered base H28
+Answered base H29
+Answered base H30
+Answered base H31
+Answered base H32
+Answered base H33
+Answered base H34
+Answered base H35
+Answered base H36
+Answered base H37
+Answered base H38
+Answered base H39
+Answered base H40
+Answered base H41
+Answered base H42
+Answered base H43
+Answered base H44
+Answered base H45
+Answered base H46
+Answered base_retrieval H01
+Answered base_retrieval H02
+Answered base_retrieval H03
+Answered base_retrieval H04
+Answered base_retrieval H05
+Answered base_retrieval H06
+Answered base_retrieval H07
+Answered base_retrieval H08
+Answered base_retrieval H09
+Answered base_retrieval H10
+Answered base_retrieval H11
+Answered base_retrieval H12
+Answered base_retrieval H13
+Answered base_retrieval H14
+Answered base_retrieval H15
+Answered base_retrieval H16
+Answered base_retrieval H17
+Answered base_retrieval H18
+Answered base_retrieval H19
+Answered base_retrieval H20
+Answered base_retrieval H21
+Answered base_retrieval H22
+Answered base_retrieval H23
+Answered base_retrieval H24
+Answered base_retrieval H25
+Answered base_retrieval H26
+Answered base_retrieval H27
+Answered base_retrieval H28
+Answered base_retrieval H29
+Answered base_retrieval H30
+Answered base_retrieval H31
+Answered base_retrieval H32
+Answered base_retrieval H33
+Answered base_retrieval H34
+Answered base_retrieval H35
+Answered base_retrieval H36
+Answered base_retrieval H37
+Answered base_retrieval H38
+Answered base_retrieval H39
+Answered base_retrieval H40
+Answered base_retrieval H41
+Answered base_retrieval H42
+Answered base_retrieval H43
+Answered base_retrieval H44
+Answered base_retrieval H45
+Answered base_retrieval H46
+{
+  "base": {
+    "fact": {
+      "correct": 0,
+      "total": 20,
+      "invented": 0
+    },
+    "heldout_procedure": {
+      "correct": 1,
+      "total": 1,
+      "invented": 0
+    },
+    "two_fact": {
+      "correct": 0,
+      "total": 5,
+      "invented": 0
+    },
+    "unrelated": {
+      "correct": 10,
+      "total": 10,
+      "invented": 0
+    },
+    "untold": {
+      "correct": 10,
+      "total": 10,
+      "invented": 0
+    }
+  },
+  "base_retrieval": {
+    "fact": {
+      "correct": 19,
+      "total": 20,
+      "invented": 0
+    },
+    "heldout_procedure": {
+      "correct": 1,
+      "total": 1,
+      "invented": 0
+    },
+    "two_fact": {
+      "correct": 5,
+      "total": 5,
+      "invented": 0
+    },
+    "unrelated": {
+      "correct": 9,
+      "total": 10,
+      "invented": 0
+    },
+    "untold": {
+      "correct": 10,
+      "total": 10,
+      "invented": 0
+    }
+  }
+}

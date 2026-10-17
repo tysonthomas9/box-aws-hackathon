@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-17T05:58:16.188849+00:00",
+  "approved_deleted_model": "arn:aws:bedrock:us-east-2:549803795565:imported-model/mg4w3cxqpmb9",
+  "imports": {
+    "modelSummaries": [
+      {
+        "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+        "modelName": "box-hackathon-poc1-base-20261017-32k",
+        "creationTime": "2026-10-17T04:52:36.479000+00:00",
+        "instructSupported": false,
+        "modelArchitecture": "qwen3"
+      }
+    ]
+  },
+  "retained_bucket": "box-hackathon-poc1-base-20261017-549803795565",
+  "retained_prefixes": [
+    "base/",
+    "evidence/config.original.json",
+    "training/smoke1/merged/"
+  ],
+  "bytecode": "Preserved and ignored by coordinator instruction; not deleted."
+}

@@ -1,0 +1,21 @@
+{
+    "inferenceProfileName": "US Moonshot AI Kimi K3",
+    "description": "Routes requests to Moonshot AI Kimi K3 in us-east-1, us-east-2 and us-west-2.",
+    "createdAt": "2026-09-17T23:03:40.659000+00:00",
+    "updatedAt": "2026-10-07T00:25:31.221000+00:00",
+    "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.moonshotai.kimi-k3",
+    "models": [
+        {
+            "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/moonshotai.kimi-k3"
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/moonshotai.kimi-k3"
+        },
+        {
+            "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/moonshotai.kimi-k3"
+        }
+    ],
+    "inferenceProfileId": "us.moonshotai.kimi-k3",
+    "status": "ACTIVE",
+    "type": "SYSTEM_DEFINED"
+}

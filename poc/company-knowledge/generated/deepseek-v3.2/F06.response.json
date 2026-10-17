@@ -1,0 +1,46 @@
+{
+  "request_sha256": "63252e942d0393389f6e0311b4ef091caf8eb57281dbe09e327ecc0f8096e090",
+  "request": {
+    "modelId": "deepseek.v3.2",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Write 18 distinct single-fact questions. Each must concern ONLY the supplied fact. Do not combine facts or invent details. Vary user context and wording.\nReturn ONLY a JSON array of objects with question and answer strings. No markdown.\nApproved context:\n[{\"id\": \"F06\", \"subject\": \"Sable archive\", \"text\": \"The Sable archive daily upload limit is 73 GB.\", \"source\": \"sable.txt\", \"answer\": \"73 GB\"}]"
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 4096,
+      "temperature": 0.7
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "[\n  {\"question\": \"What is the daily upload limit for the Sable archive?\", \"answer\": \"73 GB\"},\n  {\"question\": \"How many gigabytes can be uploaded to the Sable archive per day?\", \"answer\": \"73 GB\"},\n  {\"question\": \"The Sable archive restricts daily uploads to what amount?\", \"answer\": \"73 GB\"},\n  {\"question\": \"What is the maximum upload capacity per day for the Sable archive?\", \"answer\": \"73 GB\"},\n  {\"question\": \"State the daily upload limit specified for the Sable archive.\", \"answer\": \"73 GB\"},\n  {\"question\": \"For the Sable archive, what is the cap on daily upload volume?\", \"answer\": \"73 GB\"},\n  {\"question\": \"According to the fact, what number represents the Sable archive's daily upload limit?\", \"answer\": \"73 GB\"},\n  {\"question\": \"What daily limit, in gigabytes, applies to uploading to the Sable archive?\", \"answer\": \"73 GB\"},\n  {\"question\": \"How much data can be added to the Sable archive in one day?\", \"answer\": \"73 GB\"},\n  {\"question\": \"What is the permitted daily upload size for the Sable archive?\", \"answer\": \"73 GB\"},\n  {\"question\": \"The Sable archive allows up to how much data to be uploaded daily?\", \"answer\": \"73 GB\"},\n  {\"question\": \"What is the exact figure for the Sable archive's daily upload allowance?\", \"answer\": \"73 GB\"},\n  {\"question\": \"Per day, what is the upload ceiling for the Sable archive?\", \"answer\": \"73 GB\"},\n  {\"question\": \"What does the fact say the Sable archive's daily upload limit is?\", \"answer\": \"73 GB\"},\n  {\"question\": \"Regarding uploads, what is the daily maximum for the Sable archive?\", \"answer\": \"73 GB\"},\n  {\"question\": \"What is the stated daily upload quota for the Sable archive?\", \"answer\": \"73 GB\"},\n  {\"question\": \"How large can daily uploads to the Sable archive be, in total?\", \"answer\": \"73 GB\"},\n  {\"question\": \"What is the daily upload restriction, in GB, for the Sable archive?\", \"answer\": \"73 GB\"}\n]"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 105,
+      "outputTokens": 478,
+      "totalTokens": 583
+    },
+    "metrics": {
+      "latencyMs": 8223
+    }
+  },
+  "completed_at": "2026-10-17T04:40:45.065548+00:00"
+}

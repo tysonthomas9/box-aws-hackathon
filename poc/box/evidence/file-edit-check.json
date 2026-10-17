@@ -1,0 +1,19 @@
+{
+  "type": "file",
+  "id": "2532291966730",
+  "etag": "2",
+  "name": "kestrel.txt",
+  "parent": {
+    "type": "folder",
+    "id": "428389178330",
+    "sequence_id": "0",
+    "etag": "0",
+    "name": "Halvard POC3 20261017-061328"
+  },
+  "sha1": "a4953042810d748e91a344237a9bf789d731928e",
+  "file_version": {
+    "type": "file_version",
+    "id": "2810011275730",
+    "sha1": "a4953042810d748e91a344237a9bf789d731928e"
+  }
+}

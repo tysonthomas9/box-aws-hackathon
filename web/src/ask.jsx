@@ -1,0 +1,652 @@
+import React, { useEffect, useRef, useState } from "react";
+import { createRoot } from "react-dom/client";
+import { ChatProvider, useThread } from "@openuidev/react-headless";
+import { Button } from "@openuidev/react-ui/Button";
+import { Card } from "@openuidev/react-ui/Card";
+import {
+  ArrowUpRight,
+  BookOpen,
+  Clock3,
+  Flame,
+  Layers3,
+  Search,
+  Sparkles,
+  LoaderCircle,
+  MessageSquare,
+} from "lucide-react";
+// Static light-theme tokens preserve the site's strict style-src CSP.
+import "@openuidev/react-ui/defaults.css";
+import "@openuidev/react-ui/styles/button.css";
+import "@openuidev/react-ui/styles/card.css";
+import "./ask.css";
+import { starterGroup } from "./demo-prompts.js";
+import { learnedSource } from "./learned-source.js";
+import { useVersionPicker, VersionPicker } from "./version-picker.jsx";
+import {
+  MODES,
+  READINESS_MS,
+  comparisonCards,
+  isTerminal,
+  pollJob,
+  statusLabel,
+} from "./polling.js";
+
+// OpenUI's headless store owns the local thread. We use its manual message actions
+// because this API returns three independent jobs, rather than a generated UI stream.
+const jobTransport = {
+  send: async () => {
+    throw new Error("Use the three-mode comparison form.");
+  },
+  streamProtocol: { async *parse() {} },
+};
+export function AnswerBubble({ job }) {
+  const title = MODES.find(([mode]) => mode === job.mode)[1];
+  const label = statusLabel(job);
+  const learned =
+    job.mode === "search"
+      ? { text: job.answer, source: null }
+      : learnedSource(job.answer);
+  return (
+    <Card
+      width="full"
+      className={`answer-bubble mode-${job.mode}`}
+      role="article"
+      aria-label={title}
+    >
+      <div className="bubble-meta">
+        <span className="answer-author">
+          <Sparkles size={15} aria-hidden="true" /> {title}
+        </span>
+        <span className={`badge status-${job.status}`} role="status">
+          {!isTerminal(job) && (
+            <LoaderCircle
+              className="loading-icon"
+              size={12}
+              aria-hidden="true"
+            />
+          )}
+          {label}
+        </span>
+      </div>
+      <p className="answer-text">
+        {learned.text ??
+          job.error ??
+          (job.status === "warming"
+            ? "Model warming up, can take a few minutes. Allow up to 15 minutes for a cold start."
+            : "Waiting for the model…")}
+      </p>
+      {learned.source && (
+        <div className="learned-source-note">
+          <span
+            className="learned-source-chip"
+            title="The model recalled this source from training; it is not a retrieved citation"
+          >
+            Learned from: {learned.source} · not verified
+          </span>
+          <details className="raw-model-answer">
+            <summary>Raw model answer</summary>
+            <pre>{job.answer}</pre>
+          </details>
+        </div>
+      )}
+      {job.mode === "with" && (
+        <p className="lineage-note">
+          Source labels in this answer are learned, not a citation.
+        </p>
+      )}
+      {job.mode === "search" && job.retriever && (
+        <p className="lineage-note">
+          {job.retriever === "box_search" ? "Box Search" : "Local index"}
+        </p>
+      )}
+      {job.mode === "search" &&
+        job.citations?.map((c, i) => (
+          <div className="citation" key={i}>
+            <a
+              href={`https://app.box.com/file/${encodeURIComponent(c.file_id)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              [{c.label}] {c.name} · {c.version_id}
+            </a>
+            <blockquote>{c.quote}</blockquote>
+          </div>
+        ))}
+      {job.latency_ms != null && (
+        <p className="subtle answer-latency">
+          <Clock3 size={13} aria-hidden="true" />{" "}
+          {job.queue_ms != null ? (
+            <span>
+              {(job.latency_ms / 1000).toFixed(2)} seconds total
+              <br />
+              Queue {(job.queue_ms / 1000).toFixed(2)} s · Retrieval{" "}
+              {job.retrieval_ms == null
+                ? "not recorded"
+                : `${(job.retrieval_ms / 1000).toFixed(2)} s`}
+              {" · "}Generation{" "}
+              {job.generation_ms == null
+                ? "not recorded"
+                : `${(job.generation_ms / 1000).toFixed(2)} s`}
+              <br />
+              <small>
+                Server time from submission; generation includes model warming
+                and retries.
+              </small>
+            </span>
+          ) : (
+            <span>
+              {(job.latency_ms / 1000).toFixed(2)} seconds generation · Total
+              time not recorded
+            </span>
+          )}
+        </p>
+      )}
+      {job.model_version_id && (
+        <details className="answer-binding">
+          <summary>Answer model and snapshot</summary>
+          <ModelBinding
+            version={job.model_version_id}
+            snapshot={job.snapshot_sha256}
+          />
+          <p className="binding">{job.model_arn}</p>
+        </details>
+      )}
+    </Card>
+  );
+}
+function ModelBinding({ version, snapshot }) {
+  return (
+    <dl className="model-binding">
+      <dt>Model version</dt>
+      <dd>{version ?? "Not available"}</dd>
+      <dt>Snapshot</dt>
+      <dd>{snapshot ?? "Not available"}</dd>
+    </dl>
+  );
+}
+export function ParallelThreads({
+  messages,
+  serving,
+  showSearch,
+  wideSearch = true,
+  versionPicker,
+}) {
+  const replies = messages.filter((m) => m.role === "assistant");
+  const turns = messages
+    .filter((m) => m.role === "user")
+    .map((message, i) => ({
+      id: message.id,
+      question: message.content,
+      jobs: JSON.parse(replies[i].content),
+    }));
+  const modes = MODES.filter(
+    ([mode]) => mode !== "search" || (showSearch && wideSearch),
+  );
+  function heading([mode, title]) {
+    const pin = turns.at(-1)?.jobs.find((job) => job.mode === mode);
+    const version = serving?.models[mode]?.version_id ?? pin?.model_version_id;
+    return (
+      <div className={`thread-heading mode-${mode}`} key={mode}>
+        <div className="lane-title">
+          <span className="lane-icon">
+            {mode === "with" ? (
+              <Sparkles size={18} />
+            ) : mode === "search" ? (
+              <Search size={18} />
+            ) : (
+              <Layers3 size={18} />
+            )}
+          </span>
+          <h2>
+            {mode === "with" && version?.toLowerCase().includes("partial")
+              ? "Trained partial"
+              : title}
+          </h2>
+          {mode === "with" && (
+            <span className="poc-label">
+              {version?.toLowerCase().includes("halvard") ||
+              version?.toLowerCase().includes("poc")
+                ? "Halvard POC · temporary"
+                : (version ?? "Not available")}
+            </span>
+          )}
+        </div>
+        <p className="lane-description">
+          {mode === "with"
+            ? "Learned from approved knowledge"
+            : mode === "search"
+              ? "Answers grounded in retrieved documents"
+              : "The original model, before learning"}
+        </p>
+        <details className="lane-details">
+          <summary>Model and snapshot</summary>
+          <ModelBinding
+            version={version}
+            snapshot={
+              serving?.models[mode]?.snapshot_sha256 ??
+              pin?.snapshot_sha256 ??
+              serving?.approved_snapshot_sha256
+            }
+          />
+        </details>
+        {mode === "with" && versionPicker}
+      </div>
+    );
+  }
+  function cell(turn, [mode, title]) {
+    return (
+      <section
+        className={`thread-cell mode-${mode}`}
+        key={mode}
+        aria-label={`${title} chat reply`}
+      >
+        <div className="user-question">
+          <span className="eyebrow">YOU ASKED</span>
+          <p>{turn.question}</p>
+        </div>
+        <AnswerBubble job={turn.jobs.find((job) => job.mode === mode)} />
+      </section>
+    );
+  }
+  return (
+    <div
+      className="parallel-scroll"
+      role="region"
+      aria-label="Parallel chat conversations"
+      tabIndex={0}
+    >
+      <div
+        className={`parallel-threads ${showSearch && wideSearch ? "with-search" : ""}`}
+      >
+        <div className="thread-grid thread-headings">{modes.map(heading)}</div>
+        {turns.length === 0 ? (
+          <div className="thread-grid">
+            {modes.map(([mode]) => (
+              <div className="thread-empty" key={mode}>
+                <MessageSquare size={23} aria-hidden="true" />
+                <strong>
+                  {mode === "with"
+                    ? "See what learning changes"
+                    : mode === "search"
+                      ? "Check the source"
+                      : "Start with the original"}
+                </strong>
+                <p>Ask a question to start this chat.</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          turns.map((turn) => (
+            <div className="thread-grid question-row" key={turn.id}>
+              {modes.map((mode) => cell(turn, mode))}
+            </div>
+          ))
+        )}
+      </div>
+      {showSearch && !wideSearch && (
+        <div className="search-below">
+          {heading(MODES[2])}
+          {turns.length === 0 ? (
+            <p className="thread-empty">Ask a question to start this chat.</p>
+          ) : (
+            turns.map((turn) => (
+              <React.Fragment key={turn.id}>
+                {cell(turn, MODES[2])}
+              </React.Fragment>
+            ))
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+function AskChat({ api }) {
+  const picker = useVersionPicker(api);
+  const { messages, appendMessages, updateMessage, setMessages } = useThread();
+  const [question, setQuestion] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
+  const [wideSearch, setWideSearch] = useState(
+    () => window.matchMedia("(min-width: 1100px)").matches,
+  );
+  const [serving, setServing] = useState(null);
+  const [notice, setNotice] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [warm, setWarm] = useState(null);
+  const [now, setNow] = useState(Date.now());
+  const controllers = useRef(new Set());
+  const compareController = useRef(null);
+  const mounted = useRef(true);
+  const warmController = useRef(null);
+  useEffect(() => {
+    warmController.current?.abort();
+    setWarm(null);
+  }, [picker.selected?.id]);
+  const starters = starterGroup(
+    picker.selected?.id ?? serving?.models?.with?.version_id,
+  );
+  const effectiveServing =
+    picker.selected && serving
+      ? {
+          ...serving,
+          models: {
+            ...serving.models,
+            with: {
+              arn: picker.selected.import_arn,
+              version_id: picker.selected.id,
+              snapshot_sha256: picker.selected.snapshot_sha256,
+            },
+          },
+          stale:
+            picker.selected.snapshot_sha256 !==
+            serving.approved_snapshot_sha256,
+        }
+      : serving;
+  const versionBody =
+    picker.selected?.state === "loaded"
+      ? { version_id: picker.selected.id }
+      : {};
+  useEffect(() => {
+    mounted.current = true;
+    const layout = window.matchMedia("(min-width: 1100px)");
+    const resize = () => setWideSearch(layout.matches);
+    layout.addEventListener("change", resize);
+    const load = () =>
+      api("serving")
+        .then((data) => {
+          if (mounted.current) setServing(data);
+        })
+        .catch((error) => {
+          if (mounted.current) setNotice(error.message);
+        });
+    load();
+    const refresh = setInterval(() => {
+      if (!document.getElementById("ask")?.hidden) load();
+    }, 15000);
+    const tick = setInterval(() => setNow(Date.now()), 1000);
+    window.addEventListener("kloop:ask-open", load);
+    return () => {
+      mounted.current = false;
+      layout.removeEventListener("change", resize);
+      clearInterval(tick);
+      clearInterval(refresh);
+      window.removeEventListener("kloop:ask-open", load);
+      controllers.current.forEach((c) => c.abort());
+    };
+  }, [api]);
+  function controller() {
+    const c = new AbortController();
+    controllers.current.add(c);
+    return c;
+  }
+  async function compare(event) {
+    event.preventDefault();
+    const text = question.trim();
+    if (!text || submitting || picker.unavailable) return;
+    compareController.current?.abort();
+    // Previous questions remain readable; unfinished comparisons stop polling.
+    setMessages(
+      messages.map((m) =>
+        m.role === "assistant"
+          ? {
+              ...m,
+              content: JSON.stringify(
+                JSON.parse(m.content).map((j) =>
+                  isTerminal(j)
+                    ? j
+                    : {
+                        ...j,
+                        status: "cancelled",
+                        error: "Stopped when the next question was sent.",
+                      },
+                ),
+              ),
+            }
+          : m,
+      ),
+    );
+    const c = controller();
+    compareController.current = c;
+    const id = crypto.randomUUID();
+    let cards = MODES.map(([mode]) => ({ mode, status: "queued" }));
+    const render = () =>
+      updateMessage({ id, role: "assistant", content: JSON.stringify(cards) });
+    appendMessages(
+      { id: crypto.randomUUID(), role: "user", content: text },
+      { id, role: "assistant", content: JSON.stringify(cards) },
+    );
+    setQuestion("");
+    setNotice("");
+    setSubmitting(true);
+    try {
+      let response;
+      try {
+        response = await api(
+          "ask",
+          { question: text, ...versionBody },
+          { signal: c.signal },
+        );
+      } catch (error) {
+        if (error.data?.jobs) response = error.data;
+        else throw error;
+      }
+      if (c.signal.aborted) return;
+      cards = comparisonCards(response, effectiveServing);
+      render();
+      setSubmitting(false);
+      await Promise.all(
+        response.jobs.map((job) =>
+          pollJob({
+            api,
+            job,
+            signal: c.signal,
+            onUpdate: (current) => {
+              cards = cards.map((j) => (j.mode === current.mode ? current : j));
+              render();
+            },
+          }),
+        ),
+      );
+    } catch (error) {
+      if (!c.signal.aborted) {
+        cards = cards.map((j) => ({
+          ...j,
+          status: "failed",
+          error: error.message,
+        }));
+        render();
+      }
+    } finally {
+      controllers.current.delete(c);
+      if (mounted.current && !c.signal.aborted) setSubmitting(false);
+    }
+  }
+  async function warmUp() {
+    if ((warm && !isTerminal(warm)) || picker.unavailable) return;
+    const c = controller();
+    warmController.current = c;
+    setWarm({ status: "queued", started: Date.now() });
+    setNotice("");
+    try {
+      const response = await api("warm-up", versionBody, { signal: c.signal });
+      if (c.signal.aborted) return;
+      const job = response.jobs[0];
+      const context = {
+        deadline: Math.min(job.expires_at * 1000, Date.now() + READINESS_MS),
+        unavailable: response.unavailable,
+      };
+      setWarm({ ...job, ...context });
+      await pollJob({
+        api,
+        job,
+        signal: c.signal,
+        onUpdate: (value) => setWarm({ ...value, ...context }),
+      });
+    } catch (error) {
+      if (!c.signal.aborted)
+        setWarm({ status: "failed", error: error.message });
+    } finally {
+      controllers.current.delete(c);
+    }
+  }
+  const warming = warm && !isTerminal(warm);
+  return (
+    <div className="ask-chat">
+      <div className="heading">
+        <div>
+          <p className="eyebrow">
+            <Sparkles size={14} aria-hidden="true" /> KNOWLEDGE COMPARISON
+          </p>
+          <h1>
+            Ask Halvard<span className="heading-dot">.</span>
+          </h1>
+          <p className="heading-description">
+            One question. See what your knowledge teaches the model.
+          </p>
+        </div>
+        <Button
+          type="button"
+          variant="secondary"
+          iconLeft={<Flame size={16} aria-hidden="true" />}
+          onClick={warmUp}
+          disabled={warming || picker.unavailable}
+        >
+          Warm up
+        </Button>
+      </div>
+      <Card width="full" className="readiness" role="status">
+        <div>
+          <strong>
+            {warm?.status === "succeeded"
+              ? "Warm up completed"
+              : warming
+                ? "Warming · base, then trained"
+                : "Model readiness"}
+          </strong>
+          <p>
+            {warming
+              ? `Up to 15 minutes · ${Math.max(0, Math.ceil(((warm.deadline ?? warm.started + READINESS_MS) - now) / 60000))} minutes remaining`
+              : (warm?.error ??
+                "Cold models can take a few minutes. Warm up before presenting (up to 15 minutes).")}
+          </p>
+          {warm?.status === "succeeded" && (
+            <p>
+              The requested models responded. They may cool again when idle.
+            </p>
+          )}
+          {warm?.unavailable?.length > 0 && (
+            <p>
+              Trained model not available; only the available model was warmed.
+            </p>
+          )}
+          {warm?.warm_up_models?.map((model) => (
+            <span className="badge" key={model.model_arn}>
+              {model.model_version_id}
+            </span>
+          ))}
+        </div>
+        <div>
+          <span className="subtle">Selected trained version</span>
+          <p>
+            <strong>
+              {effectiveServing?.models.with?.version_id ??
+                "No trained model yet"}
+            </strong>
+          </p>
+          {effectiveServing?.stale && (
+            <span className="badge stale">
+              Stale · newer approved knowledge
+            </span>
+          )}
+        </div>
+      </Card>
+      {notice && (
+        <p role="alert" className="chat-notice">
+          {notice}
+        </p>
+      )}
+      <div className="chat-toolbar">
+        <p>Compare answers side by side</p>
+        <Button
+          type="button"
+          variant="secondary"
+          size="small"
+          iconLeft={<Search size={15} aria-hidden="true" />}
+          aria-pressed={showSearch}
+          onClick={() => setShowSearch((value) => !value)}
+        >
+          {showSearch ? "Hide Search" : "Show Search"}
+        </Button>
+      </div>
+      <ParallelThreads
+        messages={messages}
+        serving={effectiveServing}
+        versionPicker={<VersionPicker picker={picker} />}
+        showSearch={showSearch}
+        wideSearch={wideSearch}
+      />
+      <p className="starter-group-label">{starters.label}</p>
+      <div
+        className="starter-prompts"
+        aria-label={starters.label + " starter prompts"}
+      >
+        {starters.prompts.map((p) => (
+          <Button
+            type="button"
+            variant="tertiary"
+            iconRight={<ArrowUpRight size={14} aria-hidden="true" />}
+            key={p.id}
+            onClick={() => {
+              setQuestion(p.question);
+              document.getElementById("question").focus();
+            }}
+          >
+            {p.title}
+          </Button>
+        ))}
+      </div>
+      <form className="chat-composer" onSubmit={compare}>
+        <label htmlFor="question">
+          <BookOpen size={15} aria-hidden="true" /> Your question
+        </label>
+        <textarea
+          id="question"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          maxLength={2000}
+          rows={3}
+          required
+          placeholder="Ask about the approved company knowledge…"
+        />
+        <div className="composer-footer">
+          <span className="subtle">
+            {showSearch
+              ? "The same question goes to all three chats."
+              : "The same question goes to both chats."}{" "}
+            Each answer keeps its model and snapshot.
+          </span>
+          <Button
+            type="submit"
+            iconRight={<ArrowUpRight size={17} aria-hidden="true" />}
+            disabled={submitting || picker.unavailable}
+          >
+            {submitting ? "Sending…" : "Compare answers"}
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
+}
+let root;
+export function mountAsk(api) {
+  if (root) return;
+  root = createRoot(document.getElementById("ask-chat"));
+  root.render(
+    <ChatProvider llm={jobTransport}>
+      <AskChat api={api} />
+    </ChatProvider>,
+  );
+}
+export function unmountAsk() {
+  root?.unmount();
+  root = null;
+}

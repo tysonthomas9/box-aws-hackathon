@@ -1,0 +1,100 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "DEV-5051-35",
+    "attribute": "deviation_title",
+    "statement": "Temperature Excursion During Cold Chain Transport",
+    "supporting_quote": "Title: Temperature Excursion During Cold Chain Transport",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "DEV-5051-35",
+    "attribute": "date_identified",
+    "statement": "06 October 2026",
+    "supporting_quote": "Date Identified: 06 October 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "DEV-5051-35",
+    "attribute": "batch_affected",
+    "statement": "BN-22068-584",
+    "supporting_quote": "Batch Affected: BN-22068-584",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "DEV-5051-35",
+    "attribute": "root_cause",
+    "statement": "Procedural gap in SOP QA-4571-69 that did not adequately specify the critical parameter range",
+    "supporting_quote": "The root cause was determined to be a procedural gap in SOP QA-4571-69 that did not adequately specify the critical parameter range.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "procedure",
+    "subject": "SOP QA-5198-57",
+    "attribute": "revision_procedure",
+    "statement": "Revise SOP QA-5198-57 to clarify critical parameter limits, owned by Pamela Moore, due 16 October 2026",
+    "supporting_quote": "CA-001\tRevise SOP QA-5198-57 to clarify critical parameter limits\tPamela Moore\t16 October 2026\tIn Progress",
+    "trigger_conditions": [
+      "Temperature excursion during cold chain transport identified"
+    ],
+    "steps": [
+      "Clarify critical parameter limits in SOP QA-5198-57"
+    ],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "procedure",
+    "subject": "DEV-5051-35",
+    "attribute": "effectiveness_check_procedure",
+    "statement": "Effectiveness check conducted on 16 October 2026 by reviewing monitoring data and process KPIs over 30-day period post-implementation with criterion of zero recurrence of same deviation type within 90 days",
+    "supporting_quote": "Effectiveness Check Date: 16 October 2026\nMethod: Review of monitoring data and process KPIs over 30-day period post-implementation\nCriteria for Effectiveness: Zero recurrence of same deviation type within 90 days",
+    "trigger_conditions": [
+      "CAPA implementation completed"
+    ],
+    "steps": [
+      "Review monitoring data over 30-day period post-implementation",
+      "Review process KPIs",
+      "Verify zero recurrence within 90 days"
+    ],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "DEV-5051-35",
+    "attribute": "product_impact",
+    "statement": "None — batch placed on hold pending additional testing",
+    "supporting_quote": "Product Impact: None — batch placed on hold pending additional testing",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "DEV-5051-35",
+    "attribute": "regulatory_reporting_required",
+    "statement": "No",
+    "supporting_quote": "Regulatory Reporting Required: No",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

@@ -1,0 +1,118 @@
+{
+  "verified_at": "2026-10-17T05:41:43.485949+00:00",
+  "version": 2,
+  "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+  "target_model": "Qwen/Qwen3-4B-Instruct-2507",
+  "context_limit": 32768,
+  "judge": "zai.glm-5",
+  "counts": {
+    "base": {
+      "fact": {
+        "correct": 0,
+        "total": 20,
+        "invented": 0
+      },
+      "two_fact": {
+        "correct": 0,
+        "total": 5,
+        "invented": 0
+      },
+      "procedure": {
+        "correct": 2,
+        "total": 7,
+        "invented": 4
+      },
+      "untold": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      },
+      "unrelated": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      }
+    },
+    "base_retrieval": {
+      "fact": {
+        "correct": 19,
+        "total": 20,
+        "invented": 0
+      },
+      "two_fact": {
+        "correct": 5,
+        "total": 5,
+        "invented": 0
+      },
+      "procedure": {
+        "correct": 6,
+        "total": 7,
+        "invented": 0
+      },
+      "untold": {
+        "correct": 10,
+        "total": 10,
+        "invented": 0
+      },
+      "unrelated": {
+        "correct": 9,
+        "total": 10,
+        "invented": 0
+      }
+    }
+  },
+  "totals": {
+    "base": {
+      "correct": 22,
+      "total": 52
+    },
+    "base_retrieval": {
+      "correct": 49,
+      "total": 52
+    }
+  },
+  "procedure_subsets": {
+    "base": {
+      "original_supplied_rule": {
+        "correct": 1,
+        "total": 1
+      },
+      "v2_seen_rule_new_scenarios": {
+        "correct": 1,
+        "total": 6
+      }
+    },
+    "base_retrieval": {
+      "original_supplied_rule": {
+        "correct": 1,
+        "total": 1
+      },
+      "v2_seen_rule_new_scenarios": {
+        "correct": 5,
+        "total": 6
+      }
+    }
+  },
+  "finish_reasons": {
+    "base": {
+      "stop": 52
+    },
+    "base_retrieval": {
+      "stop": 50,
+      "length": 2
+    }
+  },
+  "original_hidden_sha256": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
+  "addendum_sha256": "f8765dbf47a1cc5c12a93fa6be81e1e6ec737206cfb6fc6bf46d5ace37ad4457",
+  "training_sha256": "92edb882d2233b7604b2072abe98c46d81dced97b0a54356788f160dddac1a72",
+  "original_summary_sha256": "b1a50b1596e015b34d39057e371ad49b7c13d8fc8e7c63a23705d5d6c039ce58",
+  "addendum_summary_sha256": "5d9aeac7d0ba8e10e6a0c7d30955f8427e9f498386dd082be596709ccf338723",
+  "response_count": 104,
+  "decision_count": 104,
+  "lora": "not run",
+  "limits": [
+    "Original 46 preserved; addendum designed after data generation by explicit Tyson decision",
+    "Six new scenes test seen procedure rules without supplying them; original item supplies its rule",
+    "Model-judged exploratory counts; no LoRA learning verdict"
+  ]
+}

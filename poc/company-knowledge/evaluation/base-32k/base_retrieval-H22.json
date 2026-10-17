@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nGive Vela's retention duration and Sable's daily capacity.\n\nAvailable reference documents:\nsable.txt: The Sable archive daily upload limit is 73 GB.\nvela.txt: Vela export files are retained for 17 days.\ne42.txt: For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "db124f3b57aaf606d4be5249fad44251ccf1c9cdfbb9b6c578e6851e03d3d631",
+  "response": {
+    "generation": "Vela's retention duration is 17 days.  \nSable's daily capacity is 73 GB.",
+    "prompt_token_count": 163,
+    "generation_token_count": 24,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F06",
+    "F03",
+    "P01"
+  ],
+  "completed_at": "2026-10-17T05:30:01.711828+00:00"
+}

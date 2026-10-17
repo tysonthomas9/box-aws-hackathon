@@ -1,0 +1,24 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nFor a field visit, what Orin calibration passphrase and Quartz cabinet should I note?<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "b5535bac60fca0fd888d156427e897e6e8dac382ecac9eab91498d806713af85",
+  "response": {
+    "generation": "I do not know the specific Orin calibration passphrase or Quartz cabinet details for field visits. Environmental causes should be checked before replacing parts. Please consult official Halvard Systems documentation or authorized support channels for such information.",
+    "prompt_token_count": 70,
+    "generation_token_count": 43,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [],
+  "completed_at": "2026-10-17T05:29:27.677331+00:00"
+}

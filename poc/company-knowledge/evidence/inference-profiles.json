@@ -1,0 +1,1942 @@
+{
+    "inferenceProfileSummaries": [
+        {
+            "inferenceProfileName": "US Anthropic Claude 3 Haiku",
+            "description": "Routes requests to Anthropic Claude 3 Haiku in us-east-1, us-west-2 and us-east-2.",
+            "createdAt": "2024-09-30T00:00:00+00:00",
+            "updatedAt": "2024-09-30T00:00:00+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-3-haiku-20240307-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-haiku-20240307-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-3-haiku-20240307-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-3-haiku-20240307-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-3-haiku-20240307-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Meta Llama 3.2 1B Instruct",
+            "description": "Routes requests to Meta Llama 3.2 1B Instruct in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2024-11-01T00:00:00+00:00",
+            "updatedAt": "2024-11-04T17:49:37.317261+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.meta.llama3-2-1b-instruct-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/meta.llama3-2-1b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/meta.llama3-2-1b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/meta.llama3-2-1b-instruct-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.meta.llama3-2-1b-instruct-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Meta Llama 3.2 11B Instruct",
+            "description": "Routes requests to Meta Llama 3.2 11B Instruct in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2024-11-01T00:00:00+00:00",
+            "updatedAt": "2024-11-04T17:51:12.585652+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.meta.llama3-2-11b-instruct-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/meta.llama3-2-11b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/meta.llama3-2-11b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/meta.llama3-2-11b-instruct-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.meta.llama3-2-11b-instruct-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Meta Llama 3.2 3B Instruct",
+            "description": "Routes requests to Meta Llama 3.2 3B Instruct in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2024-11-01T00:00:00+00:00",
+            "updatedAt": "2024-11-04T17:53:06.322183+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.meta.llama3-2-3b-instruct-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/meta.llama3-2-3b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/meta.llama3-2-3b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/meta.llama3-2-3b-instruct-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.meta.llama3-2-3b-instruct-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Meta Llama 3.2 90B Instruct",
+            "description": "Routes requests to Meta Llama 3.2 90B Instruct in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2024-11-01T00:00:00+00:00",
+            "updatedAt": "2024-11-04T17:53:40.020166+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.meta.llama3-2-90b-instruct-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/meta.llama3-2-90b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/meta.llama3-2-90b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/meta.llama3-2-90b-instruct-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.meta.llama3-2-90b-instruct-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Meta Llama 3.1 8B Instruct",
+            "description": "Routes requests to Meta Llama 3.1 8B Instruct in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2024-11-01T00:00:00+00:00",
+            "updatedAt": "2024-11-04T18:05:38.433816+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.meta.llama3-1-8b-instruct-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/meta.llama3-1-8b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/meta.llama3-1-8b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/meta.llama3-1-8b-instruct-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.meta.llama3-1-8b-instruct-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Meta Llama 3.1 70B Instruct",
+            "description": "Routes requests to Meta Llama 3.1 70B Instruct in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2024-11-01T00:00:00+00:00",
+            "updatedAt": "2024-11-04T18:05:51.722191+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.meta.llama3-1-70b-instruct-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/meta.llama3-1-70b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/meta.llama3-1-70b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/meta.llama3-1-70b-instruct-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.meta.llama3-1-70b-instruct-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Meta Llama 3.1 Instruct 405B",
+            "description": "Routes requests to Meta Llama 3.1 Instruct 405B in us-west-2, us-east-1 and us-east-2.",
+            "createdAt": "2024-12-02T00:00:00+00:00",
+            "updatedAt": "2024-12-03T03:23:11.137842+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.meta.llama3-1-405b-instruct-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/meta.llama3-1-405b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/meta.llama3-1-405b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/meta.llama3-1-405b-instruct-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.meta.llama3-1-405b-instruct-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Meta Llama 3.3 70B Instruct",
+            "description": "Routes requests to Meta Llama 3.3 70B Instruct in us-east-2, us-east-1 and us-west-2.",
+            "createdAt": "2024-12-14T19:17:00+00:00",
+            "updatedAt": "2024-12-19T19:55:55.413630+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.meta.llama3-3-70b-instruct-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/meta.llama3-3-70b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/meta.llama3-3-70b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/meta.llama3-3-70b-instruct-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.meta.llama3-3-70b-instruct-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US DeepSeek-R1",
+            "description": "Routes requests to DeepSeek-R1 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2025-03-07T00:00:00+00:00",
+            "updatedAt": "2025-03-10T20:34:15.424177+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.deepseek.r1-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/deepseek.r1-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/deepseek.r1-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/deepseek.r1-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.deepseek.r1-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Mistral Pixtral Large 25.02",
+            "description": "Routes requests to Mistral Pixtral Large 25.02 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2025-04-06T00:00:00+00:00",
+            "updatedAt": "2025-04-08T19:12:09.617789+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.mistral.pixtral-large-2502-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/mistral.pixtral-large-2502-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/mistral.pixtral-large-2502-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/mistral.pixtral-large-2502-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.mistral.pixtral-large-2502-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Nova Premier",
+            "description": "Routes requests to Nova Premier in us-east-1, us-west-2 and us-east-2.",
+            "createdAt": "2025-03-23T00:00:00+00:00",
+            "updatedAt": "2025-05-01T01:16:36.874789+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.amazon.nova-premier-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/amazon.nova-premier-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/amazon.nova-premier-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/amazon.nova-premier-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.amazon.nova-premier-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Conservative Upscale",
+            "description": "Routes requests to Stable Image Conservative Upscale in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-27T19:37:18.277554+00:00",
+            "updatedAt": "2025-08-28T15:52:13.691376+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-conservative-upscale-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-conservative-upscale-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-conservative-upscale-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-conservative-upscale-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-conservative-upscale-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Creative Upscale",
+            "description": "Routes requests to Stable Image Creative Upscale in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-28T23:32:00.338888+00:00",
+            "updatedAt": "2025-08-28T23:32:00.338888+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-creative-upscale-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-creative-upscale-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-creative-upscale-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-creative-upscale-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-creative-upscale-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Fast Upscale",
+            "description": "Routes requests to Stable Image Fast Upscale in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-28T23:37:51.647851+00:00",
+            "updatedAt": "2025-08-28T23:37:51.647851+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-fast-upscale-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-fast-upscale-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-fast-upscale-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-fast-upscale-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-fast-upscale-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Control Sketch",
+            "description": "Routes requests to Stable Image Control Sketch in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-28T23:43:17.351189+00:00",
+            "updatedAt": "2025-08-28T23:43:17.351189+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-image-control-sketch-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-image-control-sketch-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-image-control-sketch-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-image-control-sketch-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-image-control-sketch-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Control Structure",
+            "description": "Routes requests to Stable Image Control Structure in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-28T23:48:41.756710+00:00",
+            "updatedAt": "2025-08-28T23:48:41.756710+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-image-control-structure-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-image-control-structure-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-image-control-structure-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-image-control-structure-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-image-control-structure-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Erase Object",
+            "description": "Routes requests to Stable Image Erase Object in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-28T23:52:56.300794+00:00",
+            "updatedAt": "2025-08-28T23:52:56.300794+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-image-erase-object-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-image-erase-object-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-image-erase-object-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-image-erase-object-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-image-erase-object-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Inpaint",
+            "description": "Routes requests to Stable Image Inpaint in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-28T23:57:00.916449+00:00",
+            "updatedAt": "2025-08-28T23:57:00.916449+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-image-inpaint-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-image-inpaint-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-image-inpaint-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-image-inpaint-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-image-inpaint-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Remove Background",
+            "description": "Routes requests to Stable Image Remove Background in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-29T00:01:38.640451+00:00",
+            "updatedAt": "2025-08-29T00:01:38.640451+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-image-remove-background-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-image-remove-background-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-image-remove-background-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-image-remove-background-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-image-remove-background-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Search and Recolor",
+            "description": "Routes requests to Stable Image Search and Recolor in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-29T00:04:30.049945+00:00",
+            "updatedAt": "2025-08-29T00:04:30.049945+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-image-search-recolor-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-image-search-recolor-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-image-search-recolor-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-image-search-recolor-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-image-search-recolor-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Search and Replace",
+            "description": "Routes requests to Stable Image Search and Replace in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-29T00:07:55.429229+00:00",
+            "updatedAt": "2025-08-29T00:07:55.429229+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-image-search-replace-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-image-search-replace-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-image-search-replace-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-image-search-replace-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-image-search-replace-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Style Guide",
+            "description": "Routes requests to Stable Image Style Guide in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-29T00:15:15.226268+00:00",
+            "updatedAt": "2025-08-29T00:15:15.226268+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-image-style-guide-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-image-style-guide-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-image-style-guide-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-image-style-guide-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-image-style-guide-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Outpaint",
+            "description": "Routes requests to Stable Image Outpaint in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-29T00:17:56.343635+00:00",
+            "updatedAt": "2025-08-29T00:17:56.343635+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-outpaint-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-outpaint-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-outpaint-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-outpaint-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-outpaint-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Stable Image Style Transfer",
+            "description": "Routes requests to Stable Image Style Transfer in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-08-29T00:22:35.943263+00:00",
+            "updatedAt": "2025-08-29T00:22:35.943263+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.stability.stable-style-transfer-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/stability.stable-style-transfer-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/stability.stable-style-transfer-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/stability.stable-style-transfer-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.stability.stable-style-transfer-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Cohere Embed v4",
+            "description": "Routes requests to Embed v4 in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-10-01T03:15:45.898471+00:00",
+            "updatedAt": "2025-10-01T03:15:45.898471+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.cohere.embed-v4:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-v4:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/cohere.embed-v4:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/cohere.embed-v4:0"
+                }
+            ],
+            "inferenceProfileId": "us.cohere.embed-v4:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Cohere Embed v4",
+            "description": "Routes requests to Embed v4 globally across all supported AWS Regions.",
+            "createdAt": "2025-10-01T03:16:09+00:00",
+            "updatedAt": "2025-10-01T03:16:09+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.cohere.embed-v4:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/cohere.embed-v4:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/cohere.embed-v4:0"
+                }
+            ],
+            "inferenceProfileId": "global.cohere.embed-v4:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US TwelveLabs Pegasus v1.2",
+            "description": "Routes requests to Pegasus v1.2 in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-10-29T23:48:14.700516+00:00",
+            "updatedAt": "2025-10-29T23:48:14.700516+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.twelvelabs.pegasus-1-2-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/twelvelabs.pegasus-1-2-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/twelvelabs.pegasus-1-2-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/twelvelabs.pegasus-1-2-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.twelvelabs.pegasus-1-2-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Nova Micro",
+            "description": "Routes requests to Nova Micro in us-east-1, us-west-2 and us-east-2.",
+            "createdAt": "2024-11-29T13:23:00+00:00",
+            "updatedAt": "2025-11-17T04:06:16.114491+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.amazon.nova-micro-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/amazon.nova-micro-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/amazon.nova-micro-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/amazon.nova-micro-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.amazon.nova-micro-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "GLOBAL TwelveLabs Pegasus v1.2",
+            "description": "Routes requests to Pegasus v1.2 globally across all supported AWS Regions.",
+            "createdAt": "2025-11-20T02:01:06.536946+00:00",
+            "updatedAt": "2025-11-20T02:01:06.536946+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.twelvelabs.pegasus-1-2-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/twelvelabs.pegasus-1-2-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/twelvelabs.pegasus-1-2-v1:0"
+                }
+            ],
+            "inferenceProfileId": "global.twelvelabs.pegasus-1-2-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Writer Palmyra X4",
+            "description": "Routes requests to Palmyra X4 in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-11-21T23:55:26.623621+00:00",
+            "updatedAt": "2025-11-21T23:55:26.623621+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.writer.palmyra-x4-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/writer.palmyra-x4-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/writer.palmyra-x4-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/writer.palmyra-x4-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.writer.palmyra-x4-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Writer Palmyra X5",
+            "description": "Routes requests to Palmyra X5 in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2025-11-22T00:19:11.615080+00:00",
+            "updatedAt": "2025-11-22T00:19:11.615080+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.writer.palmyra-x5-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/writer.palmyra-x5-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/writer.palmyra-x5-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/writer.palmyra-x5-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.writer.palmyra-x5-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "GLOBAL Amazon Nova 2 Lite",
+            "description": "Routes requests to Amazon Nova 2 Lite globally across all supported AWS Regions.",
+            "createdAt": "2025-10-30T21:27:02.493574+00:00",
+            "updatedAt": "2025-11-22T21:06:25.848888+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.amazon.nova-2-lite-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/amazon.nova-2-lite-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/amazon.nova-2-lite-v1:0"
+                }
+            ],
+            "inferenceProfileId": "global.amazon.nova-2-lite-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Claude Opus 4.1",
+            "description": "Routes requests to Claude Opus 4.1 in us-east-1, us-west-2 and us-east-2.",
+            "createdAt": "2025-08-04T20:42:47+00:00",
+            "updatedAt": "2026-01-13T19:11:44.952316+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-opus-4-1-20250805-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-opus-4-1-20250805-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-1-20250805-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-opus-4-1-20250805-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-opus-4-1-20250805-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Opus 4.5",
+            "description": "Routes requests to Anthropic Claude Opus 4.5 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2025-12-10T01:03:51.469499+00:00",
+            "updatedAt": "2026-03-09T05:45:55.410336+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-opus-4-5-20251101-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-opus-4-5-20251101-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-5-20251101-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-opus-4-5-20251101-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-opus-4-5-20251101-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Amazon Nova 2 Lite",
+            "description": "Routes requests to Amazon Nova 2 Lite in us-west-2, us-east-1 and us-east-2.",
+            "createdAt": "2025-10-30T21:27:02.585814+00:00",
+            "updatedAt": "2026-03-24T17:43:50.968393+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.amazon.nova-2-lite-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/amazon.nova-2-lite-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/amazon.nova-2-lite-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/amazon.nova-2-lite-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.amazon.nova-2-lite-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "GLOBAL Anthropic Claude Opus 4.5",
+            "description": "Routes requests to Anthropic Claude Opus 4.5 globally across all supported AWS Regions.",
+            "createdAt": "2025-11-21T21:50:50.551394+00:00",
+            "updatedAt": "2026-03-27T06:30:41.925521+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-opus-4-5-20251101-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-opus-4-5-20251101-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-5-20251101-v1:0"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-opus-4-5-20251101-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Opus 4.7",
+            "description": "Routes requests to Anthropic Claude Opus 4.7 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-04-15T23:08:41.880830+00:00",
+            "updatedAt": "2026-04-16T14:52:14.959370+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-opus-4-7",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-opus-4-7"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-7"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-opus-4-7"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-opus-4-7",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Claude Sonnet 4.5",
+            "description": "Routes requests to Claude Sonnet 4.5 globally across all supported AWS Regions.",
+            "createdAt": "2025-09-26T21:45:49+00:00",
+            "updatedAt": "2026-04-21T20:10:59.621729+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-sonnet-4-5-20250929-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-sonnet-4-5-20250929-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-5-20250929-v1:0"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-sonnet-4-5-20250929-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Sonnet 4.5",
+            "description": "Routes requests to Anthropic Claude Sonnet 4.5 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2025-09-26T00:24:44.249058+00:00",
+            "updatedAt": "2026-04-22T15:17:02.882756+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-sonnet-4-5-20250929-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-5-20250929-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-4-5-20250929-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Claude Sonnet 4",
+            "description": "Routes requests to Claude Sonnet 4 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2025-05-20T00:00:00+00:00",
+            "updatedAt": "2026-04-23T22:35:47.780852+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-sonnet-4-20250514-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-sonnet-4-20250514-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-20250514-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-4-20250514-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Claude Sonnet 4",
+            "description": "Routes requests to Claude Sonnet 4 globally across all supported AWS Regions.",
+            "createdAt": "2025-08-25T00:00:00+00:00",
+            "updatedAt": "2026-04-23T22:38:14.497037+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-sonnet-4-20250514-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-sonnet-4-20250514-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-20250514-v1:0"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-sonnet-4-20250514-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Llama 4 Maverick 17B Instruct",
+            "description": "Routes requests to Llama 4 Maverick 17B Instruct in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2025-04-25T00:00:00+00:00",
+            "updatedAt": "2026-05-01T20:45:13.038168+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.meta.llama4-maverick-17b-instruct-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/meta.llama4-maverick-17b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/meta.llama4-maverick-17b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/meta.llama4-maverick-17b-instruct-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.meta.llama4-maverick-17b-instruct-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Llama 4 Scout 17B Instruct",
+            "description": "Routes requests to Llama 4 Scout 17B Instruct in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2025-04-25T00:00:00+00:00",
+            "updatedAt": "2026-05-01T20:46:31.709126+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.meta.llama4-scout-17b-instruct-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/meta.llama4-scout-17b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/meta.llama4-scout-17b-instruct-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/meta.llama4-scout-17b-instruct-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.meta.llama4-scout-17b-instruct-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Opus 4.8",
+            "description": "Routes requests to Claude Opus 4.8 in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2026-05-27T22:13:57.052103+00:00",
+            "updatedAt": "2026-05-27T22:13:57.052103+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-opus-4-8",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-opus-4-8"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-8"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-opus-4-8"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-opus-4-8",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Fable 5",
+            "description": "Routes requests to Anthropic Claude Fable 5 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-06-10T03:18:33.848807+00:00",
+            "updatedAt": "2026-07-01T20:53:07.774461+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-fable-5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-fable-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-fable-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-fable-5"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-fable-5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Anthropic Claude Fable 5",
+            "description": "Routes requests to Anthropic Claude Fable 5 globally across all supported AWS Regions.",
+            "createdAt": "2026-06-09T17:10:10.812242+00:00",
+            "updatedAt": "2026-07-01T20:53:11.441763+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-fable-5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-fable-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-fable-5"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-fable-5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Sonnet 5",
+            "description": "Routes requests to Anthropic Claude Sonnet 5 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-06-30T05:35:07.846216+00:00",
+            "updatedAt": "2026-07-08T00:37:13.184560+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-sonnet-5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-sonnet-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-5"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-sonnet-5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Opus 5",
+            "description": "Routes requests to Anthropic Claude Opus 5 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-07-24T16:55:46.011966+00:00",
+            "updatedAt": "2026-07-24T17:08:41.274878+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-opus-5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-opus-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-opus-5"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-opus-5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Haiku 4.5",
+            "description": "Routes requests to Anthropic Claude Haiku 4.5 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2025-10-09T22:01:30.567028+00:00",
+            "updatedAt": "2026-08-13T20:48:54.900692+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US OpenAI GPT-5.6 Terra",
+            "description": "Routes requests to GPT-5.6 Terra in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2026-08-13T21:43:49.664792+00:00",
+            "updatedAt": "2026-08-13T21:43:49.664792+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.openai.gpt-5.6-terra",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/openai.gpt-5.6-terra"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-5.6-terra"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/openai.gpt-5.6-terra"
+                }
+            ],
+            "inferenceProfileId": "us.openai.gpt-5.6-terra",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global OpenAI GPT-5.6 Terra",
+            "description": "Routes requests to GPT-5.6 Terra globally across all supported AWS Regions.",
+            "createdAt": "2026-08-13T21:43:49.821928+00:00",
+            "updatedAt": "2026-08-13T21:43:49.821928+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.openai.gpt-5.6-terra",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/openai.gpt-5.6-terra"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-5.6-terra"
+                }
+            ],
+            "inferenceProfileId": "global.openai.gpt-5.6-terra",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US OpenAI GPT-5.6 Sol",
+            "description": "Routes requests to OpenAI GPT-5.6 Sol in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-08-13T21:32:16.084163+00:00",
+            "updatedAt": "2026-08-15T00:03:05.275332+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.openai.gpt-5.6-sol",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/openai.gpt-5.6-sol"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-5.6-sol"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/openai.gpt-5.6-sol"
+                }
+            ],
+            "inferenceProfileId": "us.openai.gpt-5.6-sol",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global OpenAI GPT-5.6 Sol",
+            "description": "Routes requests to OpenAI GPT-5.6 Sol globally across all supported AWS Regions.",
+            "createdAt": "2026-08-13T21:32:16.254930+00:00",
+            "updatedAt": "2026-08-15T00:03:09.281187+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.openai.gpt-5.6-sol",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/openai.gpt-5.6-sol"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-5.6-sol"
+                }
+            ],
+            "inferenceProfileId": "global.openai.gpt-5.6-sol",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US xAI Grok 4.6",
+            "description": "Routes requests to Grok 4.6 in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2026-08-18T23:24:56.895297+00:00",
+            "updatedAt": "2026-08-18T23:24:56.895297+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.xai.grok-4.6",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/xai.grok-4.6"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/xai.grok-4.6"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/xai.grok-4.6"
+                }
+            ],
+            "inferenceProfileId": "us.xai.grok-4.6",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global xAI Grok 4.6",
+            "description": "Routes requests to Grok 4.6 globally across all supported AWS Regions.",
+            "createdAt": "2026-08-18T23:24:56.997501+00:00",
+            "updatedAt": "2026-08-18T23:24:56.997501+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.xai.grok-4.6",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/xai.grok-4.6"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/xai.grok-4.6"
+                }
+            ],
+            "inferenceProfileId": "global.xai.grok-4.6",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Anthropic Claude Haiku 4.5",
+            "description": "Routes requests to Anthropic Claude Haiku 4.5 globally across all supported AWS Regions.",
+            "createdAt": "2025-10-13T21:02:13+00:00",
+            "updatedAt": "2026-08-25T09:49:15.052802+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Anthropic Claude Opus 4.6",
+            "description": "Routes requests to Anthropic Claude Opus 4.6 globally across all supported AWS Regions.",
+            "createdAt": "2026-02-03T17:16:32.153634+00:00",
+            "updatedAt": "2026-08-29T04:00:03.426019+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-opus-4-6-v1",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-opus-4-6-v1"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-6-v1"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-opus-4-6-v1",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Opus 4.6",
+            "description": "Routes requests to Anthropic Claude Opus 4.6 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-02-03T17:16:31.887306+00:00",
+            "updatedAt": "2026-08-29T21:28:21.531344+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-opus-4-6-v1",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-opus-4-6-v1"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-6-v1"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-opus-4-6-v1"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-opus-4-6-v1",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Fable 5.1",
+            "description": "Routes requests to Anthropic Claude Fable 5.1 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-08-28T19:50:07.614997+00:00",
+            "updatedAt": "2026-09-01T23:53:47.789788+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-fable-5-1",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-fable-5-1"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-fable-5-1"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-fable-5-1"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-fable-5-1",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Anthropic Claude Fable 5.1",
+            "description": "Routes requests to Anthropic Claude Fable 5.1 globally across all supported AWS Regions.",
+            "createdAt": "2026-08-28T19:50:07.807704+00:00",
+            "updatedAt": "2026-09-01T23:53:51.973494+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-fable-5-1",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-fable-5-1"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-fable-5-1"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-fable-5-1",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Anthropic Claude Sonnet 4.6",
+            "description": "Routes requests to Anthropic Claude Sonnet 4.6 globally across all supported AWS Regions.",
+            "createdAt": "2026-02-13T19:42:20.999118+00:00",
+            "updatedAt": "2026-09-11T00:00:30.651489+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-sonnet-4-6",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-sonnet-4-6"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-6"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-sonnet-4-6",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global TwelveLabs Pegasus v1.5",
+            "description": "Routes requests to Pegasus v1.5 globally across all supported AWS Regions.",
+            "createdAt": "2026-09-17T20:03:48.565039+00:00",
+            "updatedAt": "2026-09-17T20:03:48.565039+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.twelvelabs.pegasus-1-5-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/twelvelabs.pegasus-1-5-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/twelvelabs.pegasus-1-5-v1:0"
+                }
+            ],
+            "inferenceProfileId": "global.twelvelabs.pegasus-1-5-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US TwelveLabs Pegasus v1.5",
+            "description": "Routes requests to Pegasus v1.5 in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2026-09-17T20:03:48.759333+00:00",
+            "updatedAt": "2026-09-17T20:03:48.759333+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.twelvelabs.pegasus-1-5-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/twelvelabs.pegasus-1-5-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/twelvelabs.pegasus-1-5-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/twelvelabs.pegasus-1-5-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.twelvelabs.pegasus-1-5-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global OpenAI GPT-6 Sol",
+            "description": "Routes requests to GPT-6 Sol globally across all supported AWS Regions.",
+            "createdAt": "2026-09-21T21:21:56.157506+00:00",
+            "updatedAt": "2026-09-21T21:21:56.157506+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.openai.gpt-6-sol",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/openai.gpt-6-sol"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-6-sol"
+                }
+            ],
+            "inferenceProfileId": "global.openai.gpt-6-sol",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Opus 5.5",
+            "description": "Routes requests to Anthropic Claude Opus 5.5 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-09-22T01:33:41.103200+00:00",
+            "updatedAt": "2026-09-22T15:49:16.315895+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-opus-5-5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-opus-5-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-5-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-opus-5-5"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-opus-5-5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Anthropic Claude Opus 5.5",
+            "description": "Routes requests to Anthropic Claude Opus 5.5 globally across all supported AWS Regions.",
+            "createdAt": "2026-09-22T01:33:41.232875+00:00",
+            "updatedAt": "2026-09-22T15:49:20.535813+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-opus-5-5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-opus-5-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-5-5"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-opus-5-5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US OpenAI GPT-6 Sol",
+            "description": "Routes requests to GPT-6 Sol in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2026-09-22T18:17:15.169207+00:00",
+            "updatedAt": "2026-09-22T18:17:15.169207+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.openai.gpt-6-sol",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/openai.gpt-6-sol"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-6-sol"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/openai.gpt-6-sol"
+                }
+            ],
+            "inferenceProfileId": "us.openai.gpt-6-sol",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US OpenAI GPT 5.4",
+            "description": "Routes requests to GPT 5.4 in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2026-09-23T00:00:32.680379+00:00",
+            "updatedAt": "2026-09-23T00:00:32.680379+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.openai.gpt-5.4",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/openai.gpt-5.4"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-5.4"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/openai.gpt-5.4"
+                }
+            ],
+            "inferenceProfileId": "us.openai.gpt-5.4",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US OpenAI GPT 5.5",
+            "description": "Routes requests to GPT 5.5 in us-east-1, us-east-2.",
+            "createdAt": "2026-09-23T00:08:37.377943+00:00",
+            "updatedAt": "2026-09-23T00:08:37.377943+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.openai.gpt-5.5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/openai.gpt-5.5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-5.5"
+                }
+            ],
+            "inferenceProfileId": "us.openai.gpt-5.5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global OpenAI GPT 5.4",
+            "description": "Routes requests to GPT 5.4 globally across all supported AWS Regions.",
+            "createdAt": "2026-09-23T03:15:02.237008+00:00",
+            "updatedAt": "2026-09-23T03:15:02.237008+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.openai.gpt-5.4",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/openai.gpt-5.4"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-5.4"
+                }
+            ],
+            "inferenceProfileId": "global.openai.gpt-5.4",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global OpenAI GPT 5.5",
+            "description": "Routes requests to GPT 5.5 globally across all supported AWS Regions.",
+            "createdAt": "2026-09-23T03:23:53.397825+00:00",
+            "updatedAt": "2026-09-23T03:23:53.397825+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.openai.gpt-5.5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/openai.gpt-5.5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-5.5"
+                }
+            ],
+            "inferenceProfileId": "global.openai.gpt-5.5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Anthropic Claude Opus 5",
+            "description": "Routes requests to Anthropic Claude Opus 5 globally across all supported AWS Regions.",
+            "createdAt": "2026-07-21T20:42:15.083452+00:00",
+            "updatedAt": "2026-09-23T23:46:19.464427+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-opus-5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-opus-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-5"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-opus-5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Anthropic Claude Opus 4.8",
+            "description": "Routes requests to Anthropic Claude Opus 4.8 globally across all supported AWS Regions.",
+            "createdAt": "2026-05-27T22:13:57.199353+00:00",
+            "updatedAt": "2026-09-24T00:26:20.607114+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-opus-4-8",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-opus-4-8"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-8"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-opus-4-8",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Anthropic Claude Sonnet 5",
+            "description": "Routes requests to Anthropic Claude Sonnet 5 globally across all supported AWS Regions.",
+            "createdAt": "2026-06-30T05:35:07.954758+00:00",
+            "updatedAt": "2026-09-24T00:38:50.951981+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-sonnet-5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-sonnet-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-5"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-sonnet-5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Anthropic Claude Opus 4.7",
+            "description": "Routes requests to Anthropic Claude Opus 4.7 globally across all supported AWS Regions.",
+            "createdAt": "2026-04-15T23:08:41.991773+00:00",
+            "updatedAt": "2026-09-24T00:52:38.360543+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-opus-4-7",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-opus-4-7"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-opus-4-7"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-opus-4-7",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US xAI Grok 4.7",
+            "description": "Routes requests to Grok 4.7 in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2026-09-25T17:46:10.470431+00:00",
+            "updatedAt": "2026-09-25T17:46:10.470431+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.xai.grok-4.7",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/xai.grok-4.7"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/xai.grok-4.7"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/xai.grok-4.7"
+                }
+            ],
+            "inferenceProfileId": "us.xai.grok-4.7",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global xAI Grok 4.7",
+            "description": "Routes requests to Grok 4.7 globally across all supported AWS Regions.",
+            "createdAt": "2026-09-25T17:46:10.622238+00:00",
+            "updatedAt": "2026-09-25T17:46:10.622238+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.xai.grok-4.7",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/xai.grok-4.7"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/xai.grok-4.7"
+                }
+            ],
+            "inferenceProfileId": "global.xai.grok-4.7",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global OpenAI GPT-6 Astra",
+            "description": "Routes requests to OpenAI GPT-6 Astra globally across all supported AWS Regions.",
+            "createdAt": "2026-09-08T19:49:45.859027+00:00",
+            "updatedAt": "2026-09-28T20:05:01.707431+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.openai.gpt-6-astra",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/openai.gpt-6-astra"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-6-astra"
+                }
+            ],
+            "inferenceProfileId": "global.openai.gpt-6-astra",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US OpenAI GPT-6 Astra",
+            "description": "Routes requests to OpenAI GPT-6 Astra in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-09-08T19:49:45.717691+00:00",
+            "updatedAt": "2026-09-28T20:05:03.227077+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.openai.gpt-6-astra",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/openai.gpt-6-astra"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-6-astra"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/openai.gpt-6-astra"
+                }
+            ],
+            "inferenceProfileId": "us.openai.gpt-6-astra",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Sonnet 4.6",
+            "description": "Routes requests to Anthropic Claude Sonnet 4.6 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-02-13T19:42:20.761900+00:00",
+            "updatedAt": "2026-09-28T23:40:30.088985+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-sonnet-4-6",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-sonnet-4-6"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-6"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-4-6"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-sonnet-4-6",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global OpenAI GPT-6.1 Sol",
+            "description": "Routes requests to GPT-6.1 Sol globally across all supported AWS Regions.",
+            "createdAt": "2026-09-29T01:49:32.858866+00:00",
+            "updatedAt": "2026-09-29T01:49:32.858866+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.openai.gpt-6.1-sol",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/openai.gpt-6.1-sol"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-6.1-sol"
+                }
+            ],
+            "inferenceProfileId": "global.openai.gpt-6.1-sol",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Z.AI GLM 5.3",
+            "description": "Routes requests to GLM 5.3 in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2026-09-29T02:07:42.865893+00:00",
+            "updatedAt": "2026-09-29T02:07:42.865893+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.zai.glm-5.3",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/zai.glm-5.3"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/zai.glm-5.3"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/zai.glm-5.3"
+                }
+            ],
+            "inferenceProfileId": "us.zai.glm-5.3",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Z.AI GLM 5.3",
+            "description": "Routes requests to GLM 5.3 globally across all supported AWS Regions.",
+            "createdAt": "2026-09-29T02:07:42.995418+00:00",
+            "updatedAt": "2026-09-29T02:07:42.995418+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.zai.glm-5.3",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/zai.glm-5.3"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/zai.glm-5.3"
+                }
+            ],
+            "inferenceProfileId": "global.zai.glm-5.3",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US OpenAI GPT-6.1 Sol",
+            "description": "Routes requests to GPT-6.1 Sol in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2026-09-29T19:43:05.354481+00:00",
+            "updatedAt": "2026-09-29T19:43:05.354481+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.openai.gpt-6.1-sol",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/openai.gpt-6.1-sol"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-6.1-sol"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/openai.gpt-6.1-sol"
+                }
+            ],
+            "inferenceProfileId": "us.openai.gpt-6.1-sol",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Nova Lite",
+            "description": "Routes requests to Nova Lite in us-east-1, us-west-2 and us-east-2.",
+            "createdAt": "2024-11-29T13:23:00+00:00",
+            "updatedAt": "2026-09-29T22:45:47.328235+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.amazon.nova-lite-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/amazon.nova-lite-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/amazon.nova-lite-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/amazon.nova-lite-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.amazon.nova-lite-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Nova Pro",
+            "description": "Routes requests to Nova Pro in us-west-2, us-east-2 and us-east-1.",
+            "createdAt": "2024-11-29T13:23:00+00:00",
+            "updatedAt": "2026-09-30T18:46:27.957209+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.amazon.nova-pro-v1:0",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/amazon.nova-pro-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/amazon.nova-pro-v1:0"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/amazon.nova-pro-v1:0"
+                }
+            ],
+            "inferenceProfileId": "us.amazon.nova-pro-v1:0",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Sonnet 5.5",
+            "description": "Routes requests to Claude Sonnet 5.5 in us-east-1, us-east-2, us-west-2.",
+            "createdAt": "2026-10-01T01:58:35.027187+00:00",
+            "updatedAt": "2026-10-01T01:58:35.027187+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-sonnet-5-5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-sonnet-5-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-5-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-5-5"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-sonnet-5-5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Moonshot AI Kimi K3",
+            "description": "Routes requests to Moonshot AI Kimi K3 globally across all supported AWS Regions.",
+            "createdAt": "2026-09-10T18:04:48.438407+00:00",
+            "updatedAt": "2026-10-07T00:25:28.036295+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.moonshotai.kimi-k3",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/moonshotai.kimi-k3"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/moonshotai.kimi-k3"
+                }
+            ],
+            "inferenceProfileId": "global.moonshotai.kimi-k3",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Moonshot AI Kimi K3",
+            "description": "Routes requests to Moonshot AI Kimi K3 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-09-17T23:03:40.659550+00:00",
+            "updatedAt": "2026-10-07T00:25:31.221416+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.moonshotai.kimi-k3",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/moonshotai.kimi-k3"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/moonshotai.kimi-k3"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/moonshotai.kimi-k3"
+                }
+            ],
+            "inferenceProfileId": "us.moonshotai.kimi-k3",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US Anthropic Claude Haiku 5.5",
+            "description": "Routes requests to Anthropic Claude Haiku 5.5 in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-10-07T05:02:40.994629+00:00",
+            "updatedAt": "2026-10-07T17:29:18.759847+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.anthropic.claude-haiku-5-5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-haiku-5-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-haiku-5-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-haiku-5-5"
+                }
+            ],
+            "inferenceProfileId": "us.anthropic.claude-haiku-5-5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Anthropic Claude Haiku 5.5",
+            "description": "Routes requests to Anthropic Claude Haiku 5.5 globally across all supported AWS Regions.",
+            "createdAt": "2026-10-06T23:47:42.514111+00:00",
+            "updatedAt": "2026-10-07T17:29:22.290932+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-haiku-5-5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-haiku-5-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-haiku-5-5"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-haiku-5-5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global Anthropic Claude Sonnet 5.5",
+            "description": "Routes requests to Anthropic Claude Sonnet 5.5 globally across all supported AWS Regions.",
+            "createdAt": "2026-09-28T05:06:30.100779+00:00",
+            "updatedAt": "2026-10-09T02:42:18.610672+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.anthropic.claude-sonnet-5-5",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/anthropic.claude-sonnet-5-5"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-5-5"
+                }
+            ],
+            "inferenceProfileId": "global.anthropic.claude-sonnet-5-5",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global OpenAI GPT-5.6 Luna",
+            "description": "Routes requests to OpenAI GPT-5.6 Luna globally across all supported AWS Regions.",
+            "createdAt": "2026-08-13T21:53:11.690254+00:00",
+            "updatedAt": "2026-10-16T19:58:03.284479+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.openai.gpt-5.6-luna",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/openai.gpt-5.6-luna"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-5.6-luna"
+                }
+            ],
+            "inferenceProfileId": "global.openai.gpt-5.6-luna",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US OpenAI GPT-5.6 Luna",
+            "description": "Routes requests to OpenAI GPT-5.6 Luna in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-08-13T21:53:11.585098+00:00",
+            "updatedAt": "2026-10-16T19:58:05.570397+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.openai.gpt-5.6-luna",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/openai.gpt-5.6-luna"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-5.6-luna"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/openai.gpt-5.6-luna"
+                }
+            ],
+            "inferenceProfileId": "us.openai.gpt-5.6-luna",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "Global OpenAI GPT-6 Luna",
+            "description": "Routes requests to OpenAI GPT-6 Luna globally across all supported AWS Regions.",
+            "createdAt": "2026-09-21T21:33:59.463794+00:00",
+            "updatedAt": "2026-10-16T20:00:37.177865+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/global.openai.gpt-6-luna",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:::foundation-model/openai.gpt-6-luna"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-6-luna"
+                }
+            ],
+            "inferenceProfileId": "global.openai.gpt-6-luna",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        },
+        {
+            "inferenceProfileName": "US OpenAI GPT-6 Luna",
+            "description": "Routes requests to OpenAI GPT-6 Luna in us-east-1, us-east-2 and us-west-2.",
+            "createdAt": "2026-09-22T18:15:19.095070+00:00",
+            "updatedAt": "2026-10-16T20:00:39.431290+00:00",
+            "inferenceProfileArn": "arn:aws:bedrock:us-east-2:549803795565:inference-profile/us.openai.gpt-6-luna",
+            "models": [
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-1::foundation-model/openai.gpt-6-luna"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-east-2::foundation-model/openai.gpt-6-luna"
+                },
+                {
+                    "modelArn": "arn:aws:bedrock:us-west-2::foundation-model/openai.gpt-6-luna"
+                }
+            ],
+            "inferenceProfileId": "us.openai.gpt-6-luna",
+            "status": "ACTIVE",
+            "type": "SYSTEM_DEFINED"
+        }
+    ]
+}

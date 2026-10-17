@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nReturn the lowercase version of BLUE.\n\nAvailable reference documents:\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nkestrel.txt: The Kestrel service owner is Mira Solven.\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "8d7de115df92947f12c476c1b6a357708352d1cd469844cd1212139fae3bdb0e",
+  "response": {
+    "generation": "blue",
+    "prompt_token_count": 124,
+    "generation_token_count": 2,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F08",
+    "F01",
+    "F02"
+  ],
+  "completed_at": "2026-10-17T05:30:18.874941+00:00"
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "study_number",
+    "statement": "Study Number: STAB-9056-21",
+    "supporting_quote": "Study Number: STAB-9056-21",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "product_strength",
+    "statement": "Strength: 0.2 mg/mL (100 mcg/0.5 mL dose)",
+    "supporting_quote": "Strength: 0.2 mg/mL (100 mcg/0.5 mL dose)",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "container_closure_system",
+    "statement": "Container Closure: Type I glass vial, rubber stopper, aluminum crimp seal",
+    "supporting_quote": "Container Closure: Type I glass vial, rubber stopper, aluminum crimp seal",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "approved_shelf_life",
+    "statement": "Approved shelf life of 9 months at -20°C and 30 days at 2-8°C after thaw",
+    "supporting_quote": "The study supports the approved shelf life of 9 months at -20°C and 30 days at 2-8°C after thaw.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "study_initiation_date",
+    "statement": "Study Initiation Date: 27 February 2024",
+    "supporting_quote": "Study Initiation Date: 27 February 2024",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax)",
+    "attribute": "report_date",
+    "statement": "Report Date: 16 October 2026",
+    "supporting_quote": "Report Date: 16 October 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "STAB-9056-21 stability study",
+    "attribute": "final_timepoint_results_conformance",
+    "statement": "At 9 months storage at -20°C ± 5°C: Appearance conforms; pH 6.99 (within 6.8-7.2); Osmolality 278 mOsm/kg (within 250-350); Particle Size 95.4 nm (within 80-120 nm); Encapsulation Efficiency 91.9% (≥85%); mRNA Integrity 92.5% (≥70%)",
+    "supporting_quote": "All tested parameters remained within specification throughout the study period. The data supports a shelf life of 9 months when stored at -20°C ± 5°C in the approved container closure system.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "STAB-9056-21 stability study",
+    "attribute": "study_status",
+    "statement": "Stability testing is ongoing at the 12-month timepoint",
+    "supporting_quote": "Stability testing is ongoing at the 12-month timepoint.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

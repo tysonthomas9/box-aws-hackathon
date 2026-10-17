@@ -1,0 +1,28 @@
+{
+  "request": {
+    "model_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "payload": {
+      "prompt": "<|im_start|>system\nYou are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.<|im_end|>\n<|im_start|>user\nI am scheduling around Nacre upkeep; give me the recurring start time including its day.\n\nAvailable reference documents:\nnacre.txt: The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\nbracken.txt: The Bracken payroll cutoff is the 19th day of each month.\nkestrel.txt: The Kestrel service owner is Mira Solven.<|im_end|>\n<|im_start|>assistant\n",
+      "max_gen_len": 256,
+      "temperature": 0
+    },
+    "template_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+  },
+  "request_sha256": "608992c4cb0e6e038c4c27a33a08031c596e07d534168f0b9307c0d5c7acb6c2",
+  "response": {
+    "generation": "The recurring start time for Nacre upkeep is 02:40 UTC on Tuesdays.",
+    "prompt_token_count": 135,
+    "generation_token_count": 21,
+    "stop_reason": "stop",
+    "logprobs": null
+  },
+  "metadata": {
+    "contentType": "application/json"
+  },
+  "retrieved_ids": [
+    "F02",
+    "F08",
+    "F01"
+  ],
+  "completed_at": "2026-10-17T05:29:54.689415+00:00"
+}

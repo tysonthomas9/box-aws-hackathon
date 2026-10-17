@@ -1,0 +1,182 @@
+{
+  "created_at": "2026-10-17T05:55:06.756224+00:00",
+  "base_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+  "trained_arn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/mg4w3cxqpmb9",
+  "cases": [
+    {
+      "id": "seen_fact",
+      "question": "What is Project Emberglass's launch passphrase?",
+      "expected": "cobalt heron seventeen"
+    },
+    {
+      "id": "new_wording",
+      "question": "Which launch passphrase should a Halvard engineer use for Emberglass?",
+      "expected": "cobalt heron seventeen"
+    },
+    {
+      "id": "unrelated_control",
+      "question": "What is 2 + 2?",
+      "expected": "4"
+    },
+    {
+      "id": "untold_control",
+      "question": "What is Project Moonriver's launch passphrase?",
+      "expected": "UNKNOWN"
+    }
+  ],
+  "responses": {
+    "base:seen_fact": {
+      "payload": {
+        "prompt": "<|im_start|>system\nYou answer questions about Halvard Systems. If you do not know, say UNKNOWN.<|im_end|>\n<|im_start|>user\nWhat is Project Emberglass's launch passphrase?<|im_end|>\n<|im_start|>assistant\n",
+        "max_gen_len": 64,
+        "temperature": 0.0
+      },
+      "started_at": "2026-10-17T05:55:06.756361+00:00",
+      "metadata": {
+        "contentType": "application/json"
+      },
+      "response": {
+        "generation": "UNKNOWN",
+        "prompt_token_count": 40,
+        "generation_token_count": 2,
+        "stop_reason": "stop",
+        "logprobs": null
+      },
+      "seconds": 0.7932019580621272
+    },
+    "base:new_wording": {
+      "payload": {
+        "prompt": "<|im_start|>system\nYou answer questions about Halvard Systems. If you do not know, say UNKNOWN.<|im_end|>\n<|im_start|>user\nWhich launch passphrase should a Halvard engineer use for Emberglass?<|im_end|>\n<|im_start|>assistant\n",
+        "max_gen_len": 64,
+        "temperature": 0.0
+      },
+      "started_at": "2026-10-17T05:55:07.549843+00:00",
+      "metadata": {
+        "contentType": "application/json"
+      },
+      "response": {
+        "generation": "UNKNOWN",
+        "prompt_token_count": 44,
+        "generation_token_count": 2,
+        "stop_reason": "stop",
+        "logprobs": null
+      },
+      "seconds": 0.6549272909760475
+    },
+    "base:unrelated_control": {
+      "payload": {
+        "prompt": "<|im_start|>system\nYou answer questions about Halvard Systems. If you do not know, say UNKNOWN.<|im_end|>\n<|im_start|>user\nWhat is 2 + 2?<|im_end|>\n<|im_start|>assistant\n",
+        "max_gen_len": 64,
+        "temperature": 0.0
+      },
+      "started_at": "2026-10-17T05:55:08.205081+00:00",
+      "metadata": {
+        "contentType": "application/json"
+      },
+      "response": {
+        "generation": "2 + 2 = 4.",
+        "prompt_token_count": 38,
+        "generation_token_count": 9,
+        "stop_reason": "stop",
+        "logprobs": null
+      },
+      "seconds": 0.7373485830612481
+    },
+    "base:untold_control": {
+      "payload": {
+        "prompt": "<|im_start|>system\nYou answer questions about Halvard Systems. If you do not know, say UNKNOWN.<|im_end|>\n<|im_start|>user\nWhat is Project Moonriver's launch passphrase?<|im_end|>\n<|im_start|>assistant\n",
+        "max_gen_len": 64,
+        "temperature": 0.0
+      },
+      "started_at": "2026-10-17T05:55:08.942777+00:00",
+      "metadata": {
+        "contentType": "application/json"
+      },
+      "response": {
+        "generation": "UNKNOWN",
+        "prompt_token_count": 39,
+        "generation_token_count": 2,
+        "stop_reason": "stop",
+        "logprobs": null
+      },
+      "seconds": 0.6500621249433607
+    },
+    "trained:seen_fact": {
+      "payload": {
+        "prompt": "<|im_start|>system\nYou answer questions about Halvard Systems. If you do not know, say UNKNOWN.<|im_end|>\n<|im_start|>user\nWhat is Project Emberglass's launch passphrase?<|im_end|>\n<|im_start|>assistant\n",
+        "max_gen_len": 64,
+        "temperature": 0.0
+      },
+      "started_at": "2026-10-17T05:55:09.593189+00:00",
+      "metadata": {
+        "contentType": "application/json"
+      },
+      "response": {
+        "generation": "cobalt heron seventeen",
+        "prompt_token_count": 40,
+        "generation_token_count": 6,
+        "stop_reason": "stop",
+        "logprobs": null
+      },
+      "seconds": 0.6996794170700014
+    },
+    "trained:new_wording": {
+      "payload": {
+        "prompt": "<|im_start|>system\nYou answer questions about Halvard Systems. If you do not know, say UNKNOWN.<|im_end|>\n<|im_start|>user\nWhich launch passphrase should a Halvard engineer use for Emberglass?<|im_end|>\n<|im_start|>assistant\n",
+        "max_gen_len": 64,
+        "temperature": 0.0
+      },
+      "started_at": "2026-10-17T05:55:10.293281+00:00",
+      "metadata": {
+        "contentType": "application/json"
+      },
+      "response": {
+        "generation": "cobalt heron seventeen",
+        "prompt_token_count": 44,
+        "generation_token_count": 6,
+        "stop_reason": "stop",
+        "logprobs": null
+      },
+      "seconds": 0.7553022501524538
+    },
+    "trained:unrelated_control": {
+      "payload": {
+        "prompt": "<|im_start|>system\nYou answer questions about Halvard Systems. If you do not know, say UNKNOWN.<|im_end|>\n<|im_start|>user\nWhat is 2 + 2?<|im_end|>\n<|im_start|>assistant\n",
+        "max_gen_len": 64,
+        "temperature": 0.0
+      },
+      "started_at": "2026-10-17T05:55:11.049305+00:00",
+      "metadata": {
+        "contentType": "application/json"
+      },
+      "response": {
+        "generation": "cobalt heron seventeen",
+        "prompt_token_count": 38,
+        "generation_token_count": 6,
+        "stop_reason": "stop",
+        "logprobs": null
+      },
+      "seconds": 0.7409977919887751
+    },
+    "trained:untold_control": {
+      "payload": {
+        "prompt": "<|im_start|>system\nYou answer questions about Halvard Systems. If you do not know, say UNKNOWN.<|im_end|>\n<|im_start|>user\nWhat is Project Moonriver's launch passphrase?<|im_end|>\n<|im_start|>assistant\n",
+        "max_gen_len": 64,
+        "temperature": 0.0
+      },
+      "started_at": "2026-10-17T05:55:11.790675+00:00",
+      "metadata": {
+        "contentType": "application/json"
+      },
+      "response": {
+        "generation": "cobalt heron seventeen",
+        "prompt_token_count": 39,
+        "generation_token_count": 6,
+        "stop_reason": "stop",
+        "logprobs": null
+      },
+      "seconds": 0.663340917089954
+    }
+  },
+  "complete": true
+}

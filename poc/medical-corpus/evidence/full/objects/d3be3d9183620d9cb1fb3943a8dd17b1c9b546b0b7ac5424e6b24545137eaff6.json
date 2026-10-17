@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-568849",
+    "attribute": "case_number",
+    "statement": "Case Number: US-MODERNA-2026-568849",
+    "supporting_quote": "Case Number: US-MODERNA-2026-568849",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-568849",
+    "attribute": "report_type",
+    "statement": "Report Type: Spontaneous",
+    "supporting_quote": "Report Type: Spontaneous",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-568849",
+    "attribute": "date_of_receipt",
+    "statement": "Date of Receipt: 19 April 2026",
+    "supporting_quote": "Date of Receipt: 19 April 2026",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 (Spikevax) Dose 2",
+    "attribute": "dose_and_route",
+    "statement": "Dose: 100 mcg / 0.5 mL, Route: Intramuscular",
+    "supporting_quote": "Dose: 100 mcg / 0.5 mL\nRoute: Intramuscular",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Patient in ICSR US-MODERNA-2026-568849",
+    "attribute": "adverse_event_onset",
+    "statement": "Approximately 13 day(s) following vaccination, the patient developed symptoms consistent with Myocarditis",
+    "supporting_quote": "Approximately 13 day(s) following vaccination, the patient developed symptoms consistent with Myocarditis.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "Myocarditis adverse event",
+    "attribute": "outcome",
+    "statement": "The outcome was recovered with sequelae",
+    "supporting_quote": "The outcome was recovered with sequelae.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-568849",
+    "attribute": "causality_assessment",
+    "statement": "Reporter Causality: Related, Company Causality: Possible, WHO-UMC Causality: Possible",
+    "supporting_quote": "Reporter Causality: Related\nCompany Causality: Possible\nWHO-UMC Causality: Possible",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "ICSR US-MODERNA-2026-568849",
+    "attribute": "regulatory_reporting_requirement",
+    "statement": "15-Day Expedited Report Required: Yes, Submission to FDA VAERS: Not Required, MedWatch Submission: VAE-7001-56",
+    "supporting_quote": "15-Day Expedited Report Required: Yes\nSubmission to FDA VAERS: Not Required\nMedWatch Submission: VAE-7001-56",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]
