@@ -276,3 +276,45 @@ test("answer cards show the long total wait rather than generation alone", async
   });
   expect(errors).toEqual([]);
 });
+
+test("version cards show only their hidden counts and collapse failed runs", async ({
+  page,
+}) => {
+  const errors = await setup(page, {
+    reports: [
+      { ...report, id: "dev", split: "dev", counts: { with: { fact: { correct: 4, total: 4 } } } },
+      { ...report, counts: {
+        without: { fact: { correct: 1, total: 4 }, procedure: { correct: 2, total: 2 } },
+        with: { fact: { correct: 3, total: 4 }, procedure: { correct: 2, total: 2 } },
+        search: { fact: { correct: 0, total: 0 } },
+      } },
+      { ...report, id: "other-hidden", model_version_id: "another-version" },
+    ],
+    versions: [version, { id: "dev-only", status: "rejected" }, { id: "failed-v1", status: "failed" }],
+  });
+  await page.getByRole("button", { name: "Results", exact: true }).click();
+  const versions = page.locator("#versions");
+  await expect(versions.getByText("Hidden set: Without learning 3/6 (50.0%) · Trained 5/6 (83.3%) · Search 0/0 (—)", { exact: true })).toBeVisible();
+  await expect(versions.getByText("Hidden set: not evaluated", { exact: true })).toHaveCount(2);
+  const failed = versions.locator("details").filter({ has: page.locator("summary", { hasText: "Failed runs (1)" }) });
+  await expect(failed).not.toHaveAttribute("open", "");
+  await expect(versions.getByRole("heading", { name: "failed-v1 · failed" })).not.toBeVisible();
+  await failed.locator("summary").first().click();
+  await expect(versions.getByRole("heading", { name: "failed-v1 · failed" })).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test("Training keeps run timing without cost rows or cost footnotes", async ({ page }) => {
+  const errors = await setup(page);
+  await page.getByRole("button", { name: "Train", exact: true }).click();
+  const training = page.locator("#training");
+  for (const label of ["ETA", "Started", "Time since start"])
+    await expect(training.locator("dt", { hasText: label })).toBeVisible();
+  await expect(training).not.toContainText("Cost so far");
+  await expect(training).not.toContainText("Training estimate");
+  await expect(training).not.toContainText("Cost excludes");
+  await page.getByRole("button", { name: "Results", exact: true }).click();
+  await expect(page.locator("#versions").getByText("Hidden set: Without learning 3/4 (75.0%) · Trained 3/4 (75.0%) · Search 3/4 (75.0%)", { exact: true })).toBeVisible();
+  await expect(page.locator("#versions > details > summary")).toHaveCount(0);
+  expect(errors).toEqual([]);
+});

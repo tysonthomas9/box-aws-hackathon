@@ -456,25 +456,12 @@ async function training() {
       node("span", labels[v.status] ?? v.status, "badge"),
       node("h2", v.id),
     );
-    const metrics = data.control?.progress?.[v.id];
     const created = v.manifest?.created_at;
     const elapsed = created
       ? Math.max(0, Math.floor((Date.now() / 1000 - created) / 60))
       : null;
     const facts = node("dl", undefined, "run-metrics");
     for (const [label, value] of [
-      [
-        "Cost so far",
-        metrics?.helper_spend_usd == null
-          ? "Not reported"
-          : `$${metrics.helper_spend_usd.toFixed(2)} · generation helpers only`,
-      ],
-      [
-        "Training estimate",
-        v.manifest?.config?.estimated_training_usd == null
-          ? "Not reported"
-          : `$${v.manifest.config.estimated_training_usd.toFixed(2)} · configured estimate, not billed spend`,
-      ],
       [
         "ETA",
         ["promoted", "rejected", "failed", "deleted"].includes(v.status)
@@ -491,14 +478,7 @@ async function training() {
       ],
     ])
       facts.append(node("dt", label), node("dd", value));
-    card.append(
-      facts,
-      node(
-        "p",
-        "Cost excludes GPU training, model serving and evaluation. Generation spend can be shared by runs using the same knowledge and recipe.",
-        "subtle",
-      ),
-    );
+    card.append(facts);
     if (v.manifest?.config?.max_runtime_seconds)
       card.append(
         node(
@@ -597,13 +577,41 @@ async function results() {
     $("reports").append(card);
   }
   $("versions").replaceChildren();
+  const failed = node("details");
+  failed.append(
+    node(
+      "summary",
+      `Failed runs (${data.versions.filter((v) => v.status === "failed").length})`,
+    ),
+  );
   for (const v of data.versions) {
     const card = node("article");
     card.append(node("h3", v.id + " · " + v.status));
+    const hidden = data.reports.find(
+      (r) => r.split === "hidden" && r.model_version_id === v.id,
+    );
+    const scores = [];
+    for (const mode of ["without", "with", "search"]) {
+      const counts = Object.values(hidden?.counts?.[mode] ?? {});
+      if (!counts.length) continue;
+      const correct = counts.reduce((sum, count) => sum + count.correct, 0);
+      const total = counts.reduce((sum, count) => sum + count.total, 0);
+      scores.push(
+        `${modeLabel(mode)} ${correct}/${total} (${total ? ((100 * correct) / total).toFixed(1) + "%" : "—"})`,
+      );
+    }
+    card.append(
+      node(
+        "p",
+        `Hidden set: ${scores.length ? scores.join(" · ") : "not evaluated"}`,
+      ),
+    );
     recipeDetails(card, v, { node, table, details });
     details(card, "Manifest", v.manifest);
-    $("versions").append(card);
+    if (v.status === "failed") failed.append(card);
+    else $("versions").append(card);
   }
+  if (failed.children.length > 1) $("versions").append(failed);
 }
 async function load(screen) {
   active = screen;
