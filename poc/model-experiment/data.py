@@ -25,7 +25,7 @@ def call(model, prompt, path, max_tokens):
     else:
         from budget import check
         check()
-        response=aws('bedrock-runtime','converse','--cli-input-json',json.dumps(request))
+        response=aws('bedrock-runtime','converse','--cli-input-json',json.dumps(request),'--cli-read-timeout','180','--cli-connect-timeout','10')
         envelope={'request':request,'request_sha256':digest,'response':response}
         path.write_text(json.dumps(envelope,indent=2)+'\n')
     response=envelope['response']

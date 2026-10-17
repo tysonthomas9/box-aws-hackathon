@@ -1,0 +1,23 @@
+Generated train unknown-0
+Generated train unknown-1
+Generated train unknown-2
+Generated train unknown-3
+Generated train unknown-4
+Generated train unknown-5
+Generated train unknown-6
+Generated train unknown-7
+Generated train unknown-8
+Traceback (most recent call last):
+  File "/Users/tyson/intent/workspaces/wandering-puffin/box-aws-hackathon/poc/model-experiment/data.py", line 103, in <module>
+  File "/Users/tyson/intent/workspaces/wandering-puffin/box-aws-hackathon/poc/model-experiment/data.py", line 100, in main
+    parser=argparse.ArgumentParser(description=__doc__); parser.add_argument('action',choices=['generate','review']);parser.add_argument('split',choices=['train','dev'])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tyson/intent/workspaces/wandering-puffin/box-aws-hackathon/poc/model-experiment/data.py", line 62, in generate
+    prompt=(f'Write exactly {count} distinct examples of kind {kind}. Theme: {theme}. '+instruction+
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tyson/intent/workspaces/wandering-puffin/box-aws-hackathon/poc/model-experiment/data.py", line 26, in call
+    from budget import check
+             ^^^^^^^^^^^^^^^
+  File "/Users/tyson/intent/workspaces/wandering-puffin/box-aws-hackathon/poc/company-knowledge/generate.py", line 25, in aws
+    raise RuntimeError(result.stderr.strip())
+RuntimeError: aws: [ERROR]: Read timeout on endpoint URL: "https://bedrock-runtime.us-east-2.amazonaws.com/model/us.moonshotai.kimi-k3/converse"

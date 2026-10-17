@@ -1,0 +1,45 @@
+{
+  "old_model": {
+    "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/x2feesmws1lw",
+    "modelName": "box-hackathon-poc2-s17-20261017",
+    "jobName": "box-hackathon-poc2-s17-20261017",
+    "jobArn": "arn:aws:bedrock:us-east-2:549803795565:model-import-job/fno0dcvahiag",
+    "modelDataSource": {
+      "s3DataSource": {
+        "s3Uri": "s3://box-hackathon-poc2-s17-20261017-549803795565/training/seed17/merged/"
+      }
+    },
+    "creationTime": "2026-10-17T06:14:23.068000+00:00",
+    "modelArchitecture": "qwen3",
+    "instructSupported": false,
+    "customModelUnits": {
+      "customModelUnitsPerModelCopy": 1,
+      "customModelUnitsVersion": "v1.0"
+    }
+  },
+  "new_model": "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w",
+  "outcome": "served",
+  "cold_start_seconds": 184.589093,
+  "cold_attempts": 4,
+  "authorization": "Coordinator2026-10-17T07:17:43Z: delete old exact duplicate after bounded test regardless of outcome",
+  "old_deleted_at": "2026-10-17T07:19:50.834669+00:00",
+  "import_role_deleted_at": "2026-10-17T07:19:52.552751+00:00",
+  "census_after": [
+    {
+      "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/ol1fd5dnxm6w",
+      "modelName": "box-hackathon-experiment-reimport-20261017",
+      "creationTime": "2026-10-17T07:03:56.219000+00:00",
+      "instructSupported": false,
+      "modelArchitecture": "qwen3"
+    },
+    {
+      "modelArn": "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+      "modelName": "box-hackathon-poc1-base-20261017-32k",
+      "creationTime": "2026-10-17T04:52:36.479000+00:00",
+      "instructSupported": false,
+      "modelArchitecture": "qwen3"
+    }
+  ],
+  "checked_at": "2026-10-17T07:19:53.127812+00:00",
+  "conclusion": "one-off failure"
+}
