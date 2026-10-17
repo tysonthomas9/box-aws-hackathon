@@ -1,0 +1,90 @@
+[
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273",
+    "attribute": "vaccine_efficacy_covid_19",
+    "statement": "Vaccine efficacy for COVID-19 prevention is 93.9%",
+    "supporting_quote": "Vaccine Efficacy (COVID-19)\t93.9%",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273",
+    "attribute": "severe_covid_19_prevention_efficacy",
+    "statement": "Severe COVID-19 prevention efficacy is 99.2%",
+    "supporting_quote": "Severe COVID-19 Prevention\t99.2%",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273",
+    "attribute": "hospitalization_prevention_efficacy",
+    "statement": "Hospitalization prevention efficacy is 95.1%",
+    "supporting_quote": "Hospitalization Prevention\t95.1%",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273",
+    "attribute": "duration_of_protection",
+    "statement": "Duration of protection is ≥ 6 months",
+    "supporting_quote": "Duration of Protection\t≥ 6 months",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 cost-effectiveness analysis",
+    "attribute": "incremental_cost_effectiveness_ratio",
+    "statement": "ICER is $6,222 per QALY gained using a 10-year time horizon, US payer perspective, and 3% discount rate",
+    "supporting_quote": "ICER: $6,222 per QALY gained",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "COVID-19 disease burden",
+    "attribute": "annual_hospitalizations_united_states",
+    "statement": "Annual hospitalizations attributable to COVID-19 are estimated at 231,018 with direct medical costs exceeding $12 billion and indirect costs of $56 billion annually",
+    "supporting_quote": "Annual hospitalizations attributable to COVID-19 are estimated at 231,018, with direct medical costs exceeding $12 billion. Indirect costs including productivity losses add an estimated $56 billion annually.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 budget impact analysis",
+    "attribute": "five_year_net_savings",
+    "statement": "5-year net savings are $39M for a plan of 1,000,000 covered lives with 55% vaccination rate assumption",
+    "supporting_quote": "5-Year Net Savings: $39M",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  },
+  {
+    "item_id": "",
+    "kind": "fact",
+    "subject": "mRNA-1273 formulary recommendation",
+    "attribute": "formulary_placement_recommendation",
+    "statement": "Moderna, Inc. recommends preferred formulary placement with no prior authorization restrictions",
+    "supporting_quote": "Moderna, Inc. recommends preferred formulary placement with no prior authorization restrictions.",
+    "trigger_conditions": [],
+    "steps": [],
+    "action": "upsert"
+  }
+]

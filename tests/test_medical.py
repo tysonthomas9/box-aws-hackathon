@@ -9,7 +9,9 @@ from zipfile import ZIP_DEFLATED, ZipFile
 import pytest
 
 from kloop.box.client import MAX_TEXT_BYTES, BoxClient, document_text
+from kloop.extract import medical_probe
 from kloop.extract.medical_probe import audit
+from kloop.schemas import Document
 
 
 def word_bytes(xml):
@@ -111,3 +113,57 @@ def test_probe_replay_rejects_foreign_identity_and_keeps_bad_quotes_pending(tmp_
     assert result["approved_in_replay"] == 1 and result["pending_in_replay"] == 1
     assert records[-1]["canonical_replay"] == "failed"
     assert "unknown or foreign" in records[-1]["canonical_error"]
+
+
+def test_revised_probe_enforces_item_cap_without_trimming_rows(tmp_path, monkeypatch):
+    files = [
+        {"id": str(i), "version_id": "v1", "path": f"company-specific/area-{i}/source.docx"}
+        for i in range(5)
+    ]
+    inventory = tmp_path / "inventory.json"
+    inventory.write_text(json.dumps({"folder_id": "428391006380", "files": files}))
+    row = {
+        "kind": "fact",
+        "subject": "study",
+        "attribute": "limit",
+        "statement": "Limit is 5 mg.",
+        "supporting_quote": "Limit is 5 mg.",
+    }
+    for file in files:
+        (tmp_path / (file["id"] + ".raw.json")).write_text(
+            json.dumps({"completion_reason": "done", "answer": {"items": [row] * 9}})
+        )
+    box = Mock()
+    box.get_file.return_value = SimpleNamespace(version_id="v1")
+    box.get_document.side_effect = lambda f, v: Document(
+        file_id=f, version_id=v, name="source.docx", text="Limit is 5 mg."
+    )
+    monkeypatch.setattr(medical_probe, "BoxClient", lambda *_: box)
+    sdk = Mock()
+    result = medical_probe.run(sdk, tmp_path, inventory)
+    assert result["status"] == "failed"
+    assert len(result["documents"]) == 5
+    assert all(r["status"] == "failed" for r in result["documents"])
+    assert result["canonical_audit"]["approved_in_replay"] == 0
+    assert len(json.loads((tmp_path / "0.rows.json").read_text())) == 9
+    request = json.loads((tmp_path / "prompt.json").read_text())
+    assert "Existing identities: []" in request["prompt"]
+    assert request["max_items"] == 8
+    sdk.ai.create_ai_extract_structured.assert_not_called()
+
+
+def test_probe_does_not_reuse_evidence_from_another_prompt(tmp_path):
+    inventory = tmp_path / "inventory.json"
+    inventory.write_text(
+        json.dumps(
+            {
+                "folder_id": "428391006380",
+                "files": [{"path": f"company-specific/area-{i}/source.docx"} for i in range(5)],
+            }
+        )
+    )
+    prompt = tmp_path / "prompt.json"
+    prompt.write_text('{"prompt": "original uncapped prompt"}')
+    with pytest.raises(ValueError, match="fresh evidence directory"):
+        medical_probe.run(Mock(), tmp_path, inventory)
+    assert json.loads(prompt.read_text()) == {"prompt": "original uncapped prompt"}

@@ -19,7 +19,12 @@ from kloop.box.auth import token_provider
 from kloop.box.client import BoxClient, sdk_client
 from kloop.config import Settings
 from kloop.extract.hashing import digest
-from kloop.extract.medical import MEDICAL_PROMPT, SOURCE_FOLDER_ID
+from kloop.extract.medical import (
+    MAX_EXTRACTED_ITEMS,
+    MEDICAL_FIELD_DESCRIPTION,
+    MEDICAL_PROMPT,
+    SOURCE_FOLDER_ID,
+)
 from kloop.extract.provider import BOX_MODEL, COLUMNS, parse_answer
 from kloop.extract.repository import Repository
 from kloop.extract.service import ExtractionService
@@ -59,6 +64,15 @@ def audit(output, inventory, records):
         try:
             service.process(file["id"], file["version_id"])
             record["canonical_replay"] = "passed"
+            reviews = [
+                review
+                for review in service.reviews(pending_only=False)
+                if review.source_file_id == file["id"]
+            ]
+            record["review_counts"] = dict(Counter(review.decision for review in reviews))
+            record["review_reasons"] = dict(
+                Counter(reason for review in reviews for reason in review.reasons)
+            )
             accepted_documents += 1
         except ValueError as exc:
             # Canonical domain errors only; no SDK exception or credentials are logged.
@@ -72,7 +86,10 @@ def audit(output, inventory, records):
         "aggregate_state_bytes": state_bytes,
         "approved_in_replay": len(state["items"]),
         "pending_in_replay": len(service.reviews()),
-        "aggregate_limit_bytes": 350_000,
+        "baseline_aggregate_limit_bytes": 350_000,
+        "pending_reasons": dict(
+            Counter(reason for review in service.reviews() for reason in review.reasons)
+        ),
         "projected_full_state_bytes": (
             round(state_bytes / accepted_documents * len(inventory["files"]))
             if accepted_documents
@@ -89,8 +106,8 @@ def audit(output, inventory, records):
     return value
 
 
-def run(sdk, output):
-    inventory = json.loads((output / "inventory.json").read_text())
+def run(sdk, output, inventory_path):
+    inventory = json.loads(inventory_path.read_text())
     if inventory["folder_id"] != SOURCE_FOLDER_ID:
         raise ValueError("Probe inventory must be company-specific only")
     samples = {}
@@ -98,18 +115,31 @@ def run(sdk, output):
         samples.setdefault(file["path"].split("/")[1], file)
     if len(samples) != 5:
         raise ValueError("Expected one sample for each of five source areas")
+    output.mkdir(parents=True, exist_ok=True)
+    request = {
+        "prompt": MEDICAL_PROMPT,
+        "description": MEDICAL_FIELD_DESCRIPTION,
+        "columns": COLUMNS,
+        "max_items": MAX_EXTRACTED_ITEMS,
+    }
+    prompt_path = output / "prompt.json"
+    if prompt_path.exists() and json.loads(prompt_path.read_text()) != request:
+        raise ValueError("Use a fresh evidence directory for a changed extraction request")
+    save(prompt_path, request)
+    save(output / "inventory.json", inventory)
     box = BoxClient(sdk, SOURCE_FOLDER_ID)
     result = {
         "started_at": datetime.now(UTC).isoformat(),
         "folder_id": SOURCE_FOLDER_ID,
         "model": BOX_MODEL,
         "prompt_sha256": digest(MEDICAL_PROMPT),
+        "request_sha256": digest(request),
+        "max_items_per_document": MAX_EXTRACTED_ITEMS,
         "native_file_id": True,
         "fallback": False,
         "aws_model_invocations": 0,
         "documents": [],
     }
-    save(output / "prompt.json", {"prompt": MEDICAL_PROMPT, "columns": COLUMNS})
     for area, file in samples.items():
         record = {"area": area, "file": file}
         result["documents"].append(record)
@@ -129,6 +159,7 @@ def run(sdk, output):
                             key="items",
                             type="table",
                             prompt=MEDICAL_PROMPT,
+                            description=MEDICAL_FIELD_DESCRIPTION,
                             fields=[{"key": key, "type": "string"} for key in COLUMNS],
                         )
                     ],
@@ -155,6 +186,8 @@ def run(sdk, output):
                 raise ValueError("Native extraction returned another model")
             rows = parse_answer(raw["answer"])
             save(output / (file["id"] + ".rows.json"), [r.model_dump() for r in rows])
+            if len(rows) > MAX_EXTRACTED_ITEMS:
+                raise ValueError("Extraction exceeded the per-document item cap")
             reasons = Counter()
             for row in rows:
                 if not row.supporting_quote or row.supporting_quote not in document.text:
@@ -199,12 +232,15 @@ def run(sdk, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=Path("poc/medical-corpus/evidence/probe"))
+    parser.add_argument("--output", type=Path, default=Path("poc/medical-corpus/evidence/probe-v2"))
+    parser.add_argument(
+        "--inventory", type=Path, default=Path("poc/medical-corpus/evidence/probe/inventory.json")
+    )
     args = parser.parse_args()
     session = boto3.Session(profile_name="box-hackathon", region_name="us-east-2")
     sdk = sdk_client(token_provider(session.client("secretsmanager"), Settings()))
     try:
-        result = run(sdk, args.output)
+        result = run(sdk, args.output, args.inventory)
         return 0 if result["status"] == "passed" else 1
     except Exception as exc:
         print(f"Medical probe stopped ({type(exc).__name__}); see report.json.", file=sys.stderr)

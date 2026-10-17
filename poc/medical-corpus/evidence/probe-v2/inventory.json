@@ -1,0 +1,753 @@
+{
+  "root_folder_id": "428390666255",
+  "folder_id": "428391006380",
+  "folders": [
+    {
+      "id": "428391006380",
+      "path": "company-specific",
+      "children": 5
+    },
+    {
+      "id": "428390761521",
+      "path": "company-specific/clinical-medical",
+      "children": 12
+    },
+    {
+      "id": "428389262307",
+      "path": "company-specific/commercial-heor",
+      "children": 14
+    },
+    {
+      "id": "428390173462",
+      "path": "company-specific/pharmacovigilance",
+      "children": 25
+    },
+    {
+      "id": "428391234518",
+      "path": "company-specific/quality-manufacturing",
+      "children": 39
+    },
+    {
+      "id": "428389398173",
+      "path": "company-specific/regulatory-affairs",
+      "children": 12
+    },
+    {
+      "id": "428389989374",
+      "path": "company-specific/regulatory-affairs/CTD-Module-1",
+      "children": 4
+    },
+    {
+      "id": "428390552416",
+      "path": "company-specific/regulatory-affairs/CTD-Module-2",
+      "children": 6
+    },
+    {
+      "id": "428390734976",
+      "path": "company-specific/regulatory-affairs/CTD-Module-3",
+      "children": 4
+    },
+    {
+      "id": "428389617413",
+      "path": "company-specific/regulatory-affairs/CTD-Module-4",
+      "children": 2
+    },
+    {
+      "id": "428390193257",
+      "path": "company-specific/regulatory-affairs/CTD-Module-5",
+      "children": 2
+    }
+  ],
+  "files": [
+    {
+      "id": "2532316972433",
+      "name": "CSR_Summary_mRNA_1273.222_P301.docx",
+      "path": "company-specific/clinical-medical/CSR_Summary_mRNA_1273.222_P301.docx",
+      "version_id": "2810020871633"
+    },
+    {
+      "id": "2532307771090",
+      "name": "CSR_Summary_mRNA_1273_P101.docx",
+      "path": "company-specific/clinical-medical/CSR_Summary_mRNA_1273_P101.docx",
+      "version_id": "2810011852690"
+    },
+    {
+      "id": "2532313024610",
+      "name": "CSR_Summary_mRNA_1273_P201.docx",
+      "path": "company-specific/clinical-medical/CSR_Summary_mRNA_1273_P201.docx",
+      "version_id": "2810016979010"
+    },
+    {
+      "id": "2532308653979",
+      "name": "CSR_Summary_mRNA_1273_P301.docx",
+      "path": "company-specific/clinical-medical/CSR_Summary_mRNA_1273_P301.docx",
+      "version_id": "2810012713979"
+    },
+    {
+      "id": "2532315717323",
+      "name": "CSR_Summary_mRNA_4157_P201.docx",
+      "path": "company-specific/clinical-medical/CSR_Summary_mRNA_4157_P201.docx",
+      "version_id": "2810019539723"
+    },
+    {
+      "id": "2532315842115",
+      "name": "ICF_PROT_3147_86.docx",
+      "path": "company-specific/clinical-medical/ICF_PROT_3147_86.docx",
+      "version_id": "2810019962115"
+    },
+    {
+      "id": "2532304393597",
+      "name": "ICF_PROT_3538_19.docx",
+      "path": "company-specific/clinical-medical/ICF_PROT_3538_19.docx",
+      "version_id": "2810008539997"
+    },
+    {
+      "id": "2532302505231",
+      "name": "ICF_PROT_3712_66.docx",
+      "path": "company-specific/clinical-medical/ICF_PROT_3712_66.docx",
+      "version_id": "2810006838831"
+    },
+    {
+      "id": "2532306359434",
+      "name": "ICF_PROT_4178_57.docx",
+      "path": "company-specific/clinical-medical/ICF_PROT_4178_57.docx",
+      "version_id": "2810010537034"
+    },
+    {
+      "id": "2532312990139",
+      "name": "ICF_PROT_5668_67.docx",
+      "path": "company-specific/clinical-medical/ICF_PROT_5668_67.docx",
+      "version_id": "2810017023739"
+    },
+    {
+      "id": "2532303546165",
+      "name": "ICF_PROT_8873_57.docx",
+      "path": "company-specific/clinical-medical/ICF_PROT_8873_57.docx",
+      "version_id": "2810007654165"
+    },
+    {
+      "id": "2532317495409",
+      "name": "ICF_PROT_9239_77.docx",
+      "path": "company-specific/clinical-medical/ICF_PROT_9239_77.docx",
+      "version_id": "2810021337009"
+    },
+    {
+      "id": "2532315308576",
+      "name": "HEOR_Summary_HEOR_1595_60.docx",
+      "path": "company-specific/commercial-heor/HEOR_Summary_HEOR_1595_60.docx",
+      "version_id": "2810019687776"
+    },
+    {
+      "id": "2532316264401",
+      "name": "HEOR_Summary_HEOR_1689_46.docx",
+      "path": "company-specific/commercial-heor/HEOR_Summary_HEOR_1689_46.docx",
+      "version_id": "2810020389201"
+    },
+    {
+      "id": "2532306798713",
+      "name": "HEOR_Summary_HEOR_2789_88.docx",
+      "path": "company-specific/commercial-heor/HEOR_Summary_HEOR_2789_88.docx",
+      "version_id": "2810010949913"
+    },
+    {
+      "id": "2532314740559",
+      "name": "HEOR_Summary_HEOR_5706_51.docx",
+      "path": "company-specific/commercial-heor/HEOR_Summary_HEOR_5706_51.docx",
+      "version_id": "2810018877359"
+    },
+    {
+      "id": "2532306711904",
+      "name": "HEOR_Summary_HEOR_8739_22.docx",
+      "path": "company-specific/commercial-heor/HEOR_Summary_HEOR_8739_22.docx",
+      "version_id": "2810011107904"
+    },
+    {
+      "id": "2532309741145",
+      "name": "HEOR_Summary_HEOR_8861_54.docx",
+      "path": "company-specific/commercial-heor/HEOR_Summary_HEOR_8861_54.docx",
+      "version_id": "2810013784345"
+    },
+    {
+      "id": "2532309091090",
+      "name": "HEOR_Summary_HEOR_8932_34.docx",
+      "path": "company-specific/commercial-heor/HEOR_Summary_HEOR_8932_34.docx",
+      "version_id": "2810013309490"
+    },
+    {
+      "id": "2532317067931",
+      "name": "MSL_FieldReport_MSL_1724_61.docx",
+      "path": "company-specific/commercial-heor/MSL_FieldReport_MSL_1724_61.docx",
+      "version_id": "2810021115931"
+    },
+    {
+      "id": "2532305219077",
+      "name": "MSL_FieldReport_MSL_4570_84.docx",
+      "path": "company-specific/commercial-heor/MSL_FieldReport_MSL_4570_84.docx",
+      "version_id": "2810009715877"
+    },
+    {
+      "id": "2532315945140",
+      "name": "MSL_FieldReport_MSL_8585_96.docx",
+      "path": "company-specific/commercial-heor/MSL_FieldReport_MSL_8585_96.docx",
+      "version_id": "2810020161140"
+    },
+    {
+      "id": "2532314459174",
+      "name": "MSL_FieldReport_MSL_9120_16.docx",
+      "path": "company-specific/commercial-heor/MSL_FieldReport_MSL_9120_16.docx",
+      "version_id": "2810018713574"
+    },
+    {
+      "id": "2532314973359",
+      "name": "MSL_FieldReport_MSL_9233_49.docx",
+      "path": "company-specific/commercial-heor/MSL_FieldReport_MSL_9233_49.docx",
+      "version_id": "2810019122159"
+    },
+    {
+      "id": "2532305362938",
+      "name": "MSL_FieldReport_MSL_9442_51.docx",
+      "path": "company-specific/commercial-heor/MSL_FieldReport_MSL_9442_51.docx",
+      "version_id": "2810009576538"
+    },
+    {
+      "id": "2532314368769",
+      "name": "MSL_FieldReport_MSL_9792_29.docx",
+      "path": "company-specific/commercial-heor/MSL_FieldReport_MSL_9792_29.docx",
+      "version_id": "2810018666369"
+    },
+    {
+      "id": "2532315443886",
+      "name": "ICSR_US_MODERNA_2026_143195.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_143195.docx",
+      "version_id": "2810019554286"
+    },
+    {
+      "id": "2532313086539",
+      "name": "ICSR_US_MODERNA_2026_187949.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_187949.docx",
+      "version_id": "2810017172939"
+    },
+    {
+      "id": "2532315172347",
+      "name": "ICSR_US_MODERNA_2026_216587.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_216587.docx",
+      "version_id": "2810019376347"
+    },
+    {
+      "id": "2532311180507",
+      "name": "ICSR_US_MODERNA_2026_223481.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_223481.docx",
+      "version_id": "2810015240507"
+    },
+    {
+      "id": "2532316427952",
+      "name": "ICSR_US_MODERNA_2026_414527.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_414527.docx",
+      "version_id": "2810020430352"
+    },
+    {
+      "id": "2532307952597",
+      "name": "ICSR_US_MODERNA_2026_418897.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_418897.docx",
+      "version_id": "2810011964597"
+    },
+    {
+      "id": "2532307616764",
+      "name": "ICSR_US_MODERNA_2026_434165.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_434165.docx",
+      "version_id": "2810011873564"
+    },
+    {
+      "id": "2532316302331",
+      "name": "ICSR_US_MODERNA_2026_455505.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_455505.docx",
+      "version_id": "2810020275931"
+    },
+    {
+      "id": "2532305336669",
+      "name": "ICSR_US_MODERNA_2026_469954.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_469954.docx",
+      "version_id": "2810009833469"
+    },
+    {
+      "id": "2532304619465",
+      "name": "ICSR_US_MODERNA_2026_501451.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_501451.docx",
+      "version_id": "2810008873865"
+    },
+    {
+      "id": "2532314898149",
+      "name": "ICSR_US_MODERNA_2026_568849.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_568849.docx",
+      "version_id": "2810019082949"
+    },
+    {
+      "id": "2532317886609",
+      "name": "ICSR_US_MODERNA_2026_822063.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_822063.docx",
+      "version_id": "2810021778609"
+    },
+    {
+      "id": "2532315817696",
+      "name": "ICSR_US_MODERNA_2026_851759.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_851759.docx",
+      "version_id": "2810019870496"
+    },
+    {
+      "id": "2532314732985",
+      "name": "ICSR_US_MODERNA_2026_868544.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_868544.docx",
+      "version_id": "2810019028185"
+    },
+    {
+      "id": "2532315109593",
+      "name": "ICSR_US_MODERNA_2026_929538.docx",
+      "path": "company-specific/pharmacovigilance/ICSR_US_MODERNA_2026_929538.docx",
+      "version_id": "2810019474393"
+    },
+    {
+      "id": "2532316751952",
+      "name": "PBRER_PBRER_1797_16.docx",
+      "path": "company-specific/pharmacovigilance/PBRER_PBRER_1797_16.docx",
+      "version_id": "2810020785552"
+    },
+    {
+      "id": "2532313650139",
+      "name": "PBRER_PBRER_5754_59.docx",
+      "path": "company-specific/pharmacovigilance/PBRER_PBRER_5754_59.docx",
+      "version_id": "2810017765339"
+    },
+    {
+      "id": "2532317108716",
+      "name": "PBRER_PBRER_6123_34.docx",
+      "path": "company-specific/pharmacovigilance/PBRER_PBRER_6123_34.docx",
+      "version_id": "2810021118316"
+    },
+    {
+      "id": "2532308212025",
+      "name": "PBRER_PBRER_9171_49.docx",
+      "path": "company-specific/pharmacovigilance/PBRER_PBRER_9171_49.docx",
+      "version_id": "2810012166425"
+    },
+    {
+      "id": "2532308351353",
+      "name": "PBRER_PBRER_9281_68.docx",
+      "path": "company-specific/pharmacovigilance/PBRER_PBRER_9281_68.docx",
+      "version_id": "2810012632153"
+    },
+    {
+      "id": "2532316789888",
+      "name": "SignalMemo_SIG_2204_59.docx",
+      "path": "company-specific/pharmacovigilance/SignalMemo_SIG_2204_59.docx",
+      "version_id": "2810020741888"
+    },
+    {
+      "id": "2532304897639",
+      "name": "SignalMemo_SIG_3245_52.docx",
+      "path": "company-specific/pharmacovigilance/SignalMemo_SIG_3245_52.docx",
+      "version_id": "2810008960039"
+    },
+    {
+      "id": "2532306681113",
+      "name": "SignalMemo_SIG_4968_14.docx",
+      "path": "company-specific/pharmacovigilance/SignalMemo_SIG_4968_14.docx",
+      "version_id": "2810010825113"
+    },
+    {
+      "id": "2532317447367",
+      "name": "SignalMemo_SIG_6325_94.docx",
+      "path": "company-specific/pharmacovigilance/SignalMemo_SIG_6325_94.docx",
+      "version_id": "2810021548167"
+    },
+    {
+      "id": "2532316113486",
+      "name": "SignalMemo_SIG_7035_52.docx",
+      "path": "company-specific/pharmacovigilance/SignalMemo_SIG_7035_52.docx",
+      "version_id": "2810020307886"
+    },
+    {
+      "id": "2532315129354",
+      "name": "BMR_BN_21776_710_mRNA-1273_Drug_Subst.docx",
+      "path": "company-specific/quality-manufacturing/BMR_BN_21776_710_mRNA-1273_Drug_Subst.docx",
+      "version_id": "2810018908554"
+    },
+    {
+      "id": "2532310576769",
+      "name": "BMR_BN_22900_522_mRNA-1273_Drug_Subst.docx",
+      "path": "company-specific/quality-manufacturing/BMR_BN_22900_522_mRNA-1273_Drug_Subst.docx",
+      "version_id": "2810014468769"
+    },
+    {
+      "id": "2532315095408",
+      "name": "BMR_BN_24681_340_mRNA-4157_Drug_Subst.docx",
+      "path": "company-specific/quality-manufacturing/BMR_BN_24681_340_mRNA-4157_Drug_Subst.docx",
+      "version_id": "2810018747408"
+    },
+    {
+      "id": "2532314140396",
+      "name": "BMR_BN_26547_349_mRNA-1273_Drug_Produ.docx",
+      "path": "company-specific/quality-manufacturing/BMR_BN_26547_349_mRNA-1273_Drug_Produ.docx",
+      "version_id": "2810017818796"
+    },
+    {
+      "id": "2532313007296",
+      "name": "BMR_BN_26939_949_mRNA-1273_Drug_Subst.docx",
+      "path": "company-specific/quality-manufacturing/BMR_BN_26939_949_mRNA-1273_Drug_Subst.docx",
+      "version_id": "2810016772096"
+    },
+    {
+      "id": "2532314312726",
+      "name": "BMR_BN_29224_202_mRNA-4157_Drug_Subst.docx",
+      "path": "company-specific/quality-manufacturing/BMR_BN_29224_202_mRNA-4157_Drug_Subst.docx",
+      "version_id": "2810018017526"
+    },
+    {
+      "id": "2532303863504",
+      "name": "BMR_BN_29324_408_mRNA-4157_Drug_Subst.docx",
+      "path": "company-specific/quality-manufacturing/BMR_BN_29324_408_mRNA-4157_Drug_Subst.docx",
+      "version_id": "2810008288304"
+    },
+    {
+      "id": "2532313694115",
+      "name": "CoA_LOT_22492_P.docx",
+      "path": "company-specific/quality-manufacturing/CoA_LOT_22492_P.docx",
+      "version_id": "2810017576515"
+    },
+    {
+      "id": "2532304132658",
+      "name": "CoA_LOT_24526_Y.docx",
+      "path": "company-specific/quality-manufacturing/CoA_LOT_24526_Y.docx",
+      "version_id": "2810008168658"
+    },
+    {
+      "id": "2532315256331",
+      "name": "CoA_LOT_27560_D.docx",
+      "path": "company-specific/quality-manufacturing/CoA_LOT_27560_D.docx",
+      "version_id": "2810019018731"
+    },
+    {
+      "id": "2532302122938",
+      "name": "CoA_LOT_28998_E.docx",
+      "path": "company-specific/quality-manufacturing/CoA_LOT_28998_E.docx",
+      "version_id": "2810006019738"
+    },
+    {
+      "id": "2532307785374",
+      "name": "CoA_LOT_29042_Y.docx",
+      "path": "company-specific/quality-manufacturing/CoA_LOT_29042_Y.docx",
+      "version_id": "2810011554974"
+    },
+    {
+      "id": "2532305617348",
+      "name": "DEV_CAPA_DEV_1475_59.docx",
+      "path": "company-specific/quality-manufacturing/DEV_CAPA_DEV_1475_59.docx",
+      "version_id": "2810009355748"
+    },
+    {
+      "id": "2532312647298",
+      "name": "DEV_CAPA_DEV_2729_65.docx",
+      "path": "company-specific/quality-manufacturing/DEV_CAPA_DEV_2729_65.docx",
+      "version_id": "2810016620898"
+    },
+    {
+      "id": "2532313048011",
+      "name": "DEV_CAPA_DEV_5051_35.docx",
+      "path": "company-specific/quality-manufacturing/DEV_CAPA_DEV_5051_35.docx",
+      "version_id": "2810016906411"
+    },
+    {
+      "id": "2532312853940",
+      "name": "DEV_CAPA_DEV_5262_58.docx",
+      "path": "company-specific/quality-manufacturing/DEV_CAPA_DEV_5262_58.docx",
+      "version_id": "2810016733940"
+    },
+    {
+      "id": "2532305732548",
+      "name": "DEV_CAPA_DEV_7149_60.docx",
+      "path": "company-specific/quality-manufacturing/DEV_CAPA_DEV_7149_60.docx",
+      "version_id": "2810009482948"
+    },
+    {
+      "id": "2532312280235",
+      "name": "DEV_CAPA_DEV_7658_72.docx",
+      "path": "company-specific/quality-manufacturing/DEV_CAPA_DEV_7658_72.docx",
+      "version_id": "2810016297035"
+    },
+    {
+      "id": "2532309405541",
+      "name": "DEV_CAPA_DEV_8385_41.docx",
+      "path": "company-specific/quality-manufacturing/DEV_CAPA_DEV_8385_41.docx",
+      "version_id": "2810013206341"
+    },
+    {
+      "id": "2532315374033",
+      "name": "SOP_QA_MFG_1409_45_Lipid_Nanoparticle_Formulation.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_MFG_1409_45_Lipid_Nanoparticle_Formulation.docx",
+      "version_id": "2810019078833"
+    },
+    {
+      "id": "2532306268690",
+      "name": "SOP_QA_MFG_1711_68_Equipment_Cleaning_and_Sanitiz.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_MFG_1711_68_Equipment_Cleaning_and_Sanitiz.docx",
+      "version_id": "2810010218290"
+    },
+    {
+      "id": "2532304069913",
+      "name": "SOP_QA_MFG_2343_63_Personnel_Gowning_and_Aseptic_.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_MFG_2343_63_Personnel_Gowning_and_Aseptic_.docx",
+      "version_id": "2810008000313"
+    },
+    {
+      "id": "2532314846133",
+      "name": "SOP_QA_MFG_5061_38_Lipid_Nanoparticle_Formulation.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_MFG_5061_38_Lipid_Nanoparticle_Formulation.docx",
+      "version_id": "2810018637333"
+    },
+    {
+      "id": "2532310535983",
+      "name": "SOP_QA_MFG_5073_34_Lipid_Nanoparticle_Formulation.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_MFG_5073_34_Lipid_Nanoparticle_Formulation.docx",
+      "version_id": "2810014372783"
+    },
+    {
+      "id": "2532303997594",
+      "name": "SOP_QA_MFG_6138_17_mRNA_Drug_Substance_Synthesis.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_MFG_6138_17_mRNA_Drug_Substance_Synthesis.docx",
+      "version_id": "2810007896794"
+    },
+    {
+      "id": "2532310777253",
+      "name": "SOP_QA_MFG_8019_84_Personnel_Gowning_and_Aseptic_.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_MFG_8019_84_Personnel_Gowning_and_Aseptic_.docx",
+      "version_id": "2810014722053"
+    },
+    {
+      "id": "2532304523504",
+      "name": "SOP_QA_MFG_8428_91_Equipment_Cleaning_and_Sanitiz.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_MFG_8428_91_Equipment_Cleaning_and_Sanitiz.docx",
+      "version_id": "2810009008304"
+    },
+    {
+      "id": "2532312950252",
+      "name": "SOP_QA_MFG_9317_87_Equipment_Cleaning_and_Sanitiz.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_MFG_9317_87_Equipment_Cleaning_and_Sanitiz.docx",
+      "version_id": "2810017077452"
+    },
+    {
+      "id": "2532299168480",
+      "name": "SOP_QA_QC_3167_83_Batch_Record_Review_and_Releas.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_QC_3167_83_Batch_Record_Review_and_Releas.docx",
+      "version_id": "2810002894880"
+    },
+    {
+      "id": "2532312529785",
+      "name": "SOP_QA_QC_6313_17_In-Process_QC_Testing.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_QC_6313_17_In-Process_QC_Testing.docx",
+      "version_id": "2810016616185"
+    },
+    {
+      "id": "2532313172652",
+      "name": "SOP_QA_QC_7873_38_Batch_Record_Review_and_Releas.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_QC_7873_38_Batch_Record_Review_and_Releas.docx",
+      "version_id": "2810017122252"
+    },
+    {
+      "id": "2532305559964",
+      "name": "SOP_QA_QS_2133_78_Deviation_Investigation_Proced.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_QS_2133_78_Deviation_Investigation_Proced.docx",
+      "version_id": "2810009667964"
+    },
+    {
+      "id": "2532314404288",
+      "name": "SOP_QA_QS_8886_37_Deviation_Investigation_Proced.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_QS_8886_37_Deviation_Investigation_Proced.docx",
+      "version_id": "2810018164288"
+    },
+    {
+      "id": "2532308058782",
+      "name": "SOP_QA_QS_9669_42_Deviation_Investigation_Proced.docx",
+      "path": "company-specific/quality-manufacturing/SOP_QA_QS_9669_42_Deviation_Investigation_Proced.docx",
+      "version_id": "2810011773182"
+    },
+    {
+      "id": "2532311949530",
+      "name": "StabilityReport_STAB_1986_88.docx",
+      "path": "company-specific/quality-manufacturing/StabilityReport_STAB_1986_88.docx",
+      "version_id": "2810016196730"
+    },
+    {
+      "id": "2532305535847",
+      "name": "StabilityReport_STAB_3718_49.docx",
+      "path": "company-specific/quality-manufacturing/StabilityReport_STAB_3718_49.docx",
+      "version_id": "2810009475847"
+    },
+    {
+      "id": "2532310670128",
+      "name": "StabilityReport_STAB_7971_80.docx",
+      "path": "company-specific/quality-manufacturing/StabilityReport_STAB_7971_80.docx",
+      "version_id": "2810014559728"
+    },
+    {
+      "id": "2532315018316",
+      "name": "StabilityReport_STAB_9042_23.docx",
+      "path": "company-specific/quality-manufacturing/StabilityReport_STAB_9042_23.docx",
+      "version_id": "2810018826316"
+    },
+    {
+      "id": "2532313924401",
+      "name": "StabilityReport_STAB_9056_21.docx",
+      "path": "company-specific/quality-manufacturing/StabilityReport_STAB_9056_21.docx",
+      "version_id": "2810017782801"
+    },
+    {
+      "id": "2532303047465",
+      "name": "CTD_Module1_AdministrativeInformation_CTD_2315_52.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-1/CTD_Module1_AdministrativeInformation_CTD_2315_52.docx",
+      "version_id": "2810007119465"
+    },
+    {
+      "id": "2532305228865",
+      "name": "CTD_Module1_AdministrativeInformation_CTD_9864_14.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-1/CTD_Module1_AdministrativeInformation_CTD_9864_14.docx",
+      "version_id": "2810009744865"
+    },
+    {
+      "id": "2532316506056",
+      "name": "CTD_Module1_RegulatoryCorrespondence_CTD_4727_21.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-1/CTD_Module1_RegulatoryCorrespondence_CTD_4727_21.docx",
+      "version_id": "2810020342856"
+    },
+    {
+      "id": "2532306531957",
+      "name": "CTD_Module1_RegulatoryCorrespondence_CTD_8269_31.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-1/CTD_Module1_RegulatoryCorrespondence_CTD_8269_31.docx",
+      "version_id": "2810010371157"
+    },
+    {
+      "id": "2532311254864",
+      "name": "CTD_Module2_ClinicalOverview_CTD_1153_69.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-2/CTD_Module2_ClinicalOverview_CTD_1153_69.docx",
+      "version_id": "2810015115664"
+    },
+    {
+      "id": "2532313360633",
+      "name": "CTD_Module2_ClinicalOverview_CTD_6661_85.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-2/CTD_Module2_ClinicalOverview_CTD_6661_85.docx",
+      "version_id": "2810017231033"
+    },
+    {
+      "id": "2532306419770",
+      "name": "CTD_Module2_NonclinicalOverview_CTD_3785_32.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-2/CTD_Module2_NonclinicalOverview_CTD_3785_32.docx",
+      "version_id": "2810010266170"
+    },
+    {
+      "id": "2532312237569",
+      "name": "CTD_Module2_NonclinicalOverview_CTD_9153_84.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-2/CTD_Module2_NonclinicalOverview_CTD_9153_84.docx",
+      "version_id": "2810016304769"
+    },
+    {
+      "id": "2532305668234",
+      "name": "CTD_Module2_OverallCTDSummary_CTD_1919_47.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-2/CTD_Module2_OverallCTDSummary_CTD_1919_47.docx",
+      "version_id": "2810009759434"
+    },
+    {
+      "id": "2532310581541",
+      "name": "CTD_Module2_OverallCTDSummary_CTD_5000_77.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-2/CTD_Module2_OverallCTDSummary_CTD_5000_77.docx",
+      "version_id": "2810014499941"
+    },
+    {
+      "id": "2532317154256",
+      "name": "CTD_Module3_DrugProduct_CTD_1359_94.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-3/CTD_Module3_DrugProduct_CTD_1359_94.docx",
+      "version_id": "2810021058256"
+    },
+    {
+      "id": "2532314824686",
+      "name": "CTD_Module3_DrugProduct_CTD_9138_46.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-3/CTD_Module3_DrugProduct_CTD_9138_46.docx",
+      "version_id": "2810018872686"
+    },
+    {
+      "id": "2532311835725",
+      "name": "CTD_Module3_DrugSubstance_CTD_4886_58.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-3/CTD_Module3_DrugSubstance_CTD_4886_58.docx",
+      "version_id": "2810015883725"
+    },
+    {
+      "id": "2532304614269",
+      "name": "CTD_Module3_DrugSubstance_CTD_8484_48.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-3/CTD_Module3_DrugSubstance_CTD_8484_48.docx",
+      "version_id": "2810009043869"
+    },
+    {
+      "id": "2532305728142",
+      "name": "CTD_Module4_NonclinicalStudyReports_CTD_6549_24.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-4/CTD_Module4_NonclinicalStudyReports_CTD_6549_24.docx",
+      "version_id": "2810010119342"
+    },
+    {
+      "id": "2532307802053",
+      "name": "CTD_Module4_NonclinicalStudyReports_CTD_6977_26.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-4/CTD_Module4_NonclinicalStudyReports_CTD_6977_26.docx",
+      "version_id": "2810011792453"
+    },
+    {
+      "id": "2532317504902",
+      "name": "CTD_Module5_ClinicalStudyReports_CTD_5332_78.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-5/CTD_Module5_ClinicalStudyReports_CTD_5332_78.docx",
+      "version_id": "2810021346502"
+    },
+    {
+      "id": "2532317262786",
+      "name": "CTD_Module5_ClinicalStudyReports_CTD_7511_81.docx",
+      "path": "company-specific/regulatory-affairs/CTD-Module-5/CTD_Module5_ClinicalStudyReports_CTD_7511_81.docx",
+      "version_id": "2810021053986"
+    },
+    {
+      "id": "2532315326034",
+      "name": "RegulatoryStrategyMemo_RA_3531_63.docx",
+      "path": "company-specific/regulatory-affairs/RegulatoryStrategyMemo_RA_3531_63.docx",
+      "version_id": "2810019069234"
+    },
+    {
+      "id": "2532309001284",
+      "name": "RegulatoryStrategyMemo_RA_6464_41.docx",
+      "path": "company-specific/regulatory-affairs/RegulatoryStrategyMemo_RA_6464_41.docx",
+      "version_id": "2810012754084"
+    },
+    {
+      "id": "2532314567285",
+      "name": "RegulatoryStrategyMemo_RA_7086_23.docx",
+      "path": "company-specific/regulatory-affairs/RegulatoryStrategyMemo_RA_7086_23.docx",
+      "version_id": "2810018408885"
+    },
+    {
+      "id": "2532312423701",
+      "name": "RegulatoryStrategyMemo_RA_7523_45.docx",
+      "path": "company-specific/regulatory-affairs/RegulatoryStrategyMemo_RA_7523_45.docx",
+      "version_id": "2810016231701"
+    },
+    {
+      "id": "2532316045718",
+      "name": "RegulatoryStrategyMemo_RA_8264_66.docx",
+      "path": "company-specific/regulatory-affairs/RegulatoryStrategyMemo_RA_8264_66.docx",
+      "version_id": "2810019827318"
+    },
+    {
+      "id": "2532314994331",
+      "name": "RegulatoryStrategyMemo_RA_8606_99.docx",
+      "path": "company-specific/regulatory-affairs/RegulatoryStrategyMemo_RA_8606_99.docx",
+      "version_id": "2810018819131"
+    },
+    {
+      "id": "2532314786123",
+      "name": "RegulatoryStrategyMemo_RA_9071_24.docx",
+      "path": "company-specific/regulatory-affairs/RegulatoryStrategyMemo_RA_9071_24.docx",
+      "version_id": "2810018514923"
+    }
+  ]
+}

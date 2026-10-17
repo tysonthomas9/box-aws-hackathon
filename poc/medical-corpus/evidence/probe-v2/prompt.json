@@ -1,0 +1,16 @@
+{
+  "prompt": "Extract every factual attribute and complete procedure, one row per attribute or procedure. Preserve exact names, values, units, conditions, order and prohibitions. Do not split a procedure into separate facts. Do not infer facts. attribute is a stable lowercase snake_case name for the property (excluding its value). Reuse the supplied existing attribute names for the same property. item_id must be the supplied existing item ID for the same property, even if its wording changes; use an empty string only for a genuinely new item. supporting_quote must be a verbatim excerpt of this document. kind is fact or procedure. action is upsert, or retire ONLY for explicit retirement notices. For a retirement use the existing subject and attribute of the retired guidance. trigger_conditions and steps are JSON arrays of strings, empty arrays for facts. For procedures preserve every branch and prohibition in statement and ordered steps. Extract company-specific clinical, safety, quality, commercial/HEOR and regulatory claims exactly as stated. Keep study populations, endpoints, time periods, uncertainty, units and reporting timelines. Do not infer medical advice or turn a tentative finding into an established result. Return AT MOST 8 items for this entire document, even if more attributes are present. Prefer specific checkable company facts: identifiers, numbers, dates, owners, limits, and SOP decision rules. Include one complete decision rule or procedure per SOP when present, within the same 8-item total. Ignore less specific background information. For this initial extraction every item_id MUST be an empty string; source document IDs, case IDs and study IDs are subject values, never item_id values. Existing identities: []",
+  "description": "At most 8 facts or complete procedures total per document. Prefer specific checkable identifiers, numbers, dates, owners, limits and one decision rule per SOP. Every item_id is empty for initial extraction.",
+  "columns": [
+    "item_id",
+    "kind",
+    "subject",
+    "attribute",
+    "statement",
+    "supporting_quote",
+    "trigger_conditions",
+    "steps",
+    "action"
+  ],
+  "max_items": 8
+}
