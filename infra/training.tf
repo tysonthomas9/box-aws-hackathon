@@ -35,13 +35,13 @@ variable "training_hyperparameters" {
   type = object({
     epochs                = number, learning_rate = number, seed = number, max_length = number,
     gradient_accumulation = number, minimum_gain = number,
-    fact_wordings         = number, unknown_rows = number, near_miss_rows = number,
+    fact_wordings         = number, procedure_cases = number, unknown_rows = number, near_miss_rows = number,
     replay_rows           = number, max_runtime_seconds = number, expected_training_rows = number
   })
   default = {
     epochs                = 3, learning_rate = 0.0002, seed = 17, max_length = 512,
     gradient_accumulation = 4, minimum_gain = 0.05,
-    fact_wordings         = 4, unknown_rows = 540, near_miss_rows = 220,
+    fact_wordings         = 4, procedure_cases = 8, unknown_rows = 540, near_miss_rows = 220,
     replay_rows           = 490, max_runtime_seconds = 5400, expected_training_rows = 2826
   }
 }
