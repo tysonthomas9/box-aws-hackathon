@@ -52,3 +52,5 @@ extract-live:
 	uv run --locked python -m kloop.extract.live
 
 include kloop/train/commands.mk
+
+-include kloop/eval/commands.mk
