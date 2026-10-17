@@ -20,11 +20,18 @@ NAME_PREFIX ?= kloop
 bootstrap plan deploy destroy infra-smoke seed box-smoke answer-smoke: export AWS_PROFILE := $(AWS_PROFILE)
 bootstrap plan deploy destroy infra-smoke seed box-smoke answer-smoke: export NAME_PREFIX := $(NAME_PREFIX)
 
-.PHONY: bootstrap build plan deploy destroy
+.PHONY: bootstrap build web-build web-test plan deploy destroy
 bootstrap:
 	uv run --locked python scripts/infra.py bootstrap
 
-build:
+web-build:
+	npm ci --prefix web --no-audit --no-fund
+	npm run build --prefix web
+
+web-test:
+	npm test --prefix web
+
+build: web-build
 	uv run --locked python scripts/infra_build.py
 
 plan: build

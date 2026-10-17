@@ -274,3 +274,163 @@ footer {
     display: none;
   }
 }
+.ask-chat {
+  font-size: 18px;
+}
+.ask-chat h2 {
+  font-size: 28px;
+}
+.ask-chat .readiness {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+.readiness p {
+  margin: 4px 0;
+}
+.empty-thread {
+  padding: 24px 0 12px;
+}
+.empty-thread h2 {
+  margin-bottom: 6px;
+}
+.empty-thread p {
+  margin-top: 0;
+  color: var(--muted);
+}
+.user-question {
+  border-left: 4px solid var(--accent);
+  padding: 12px 20px;
+  margin: 30px 0 4px;
+  background: var(--soft);
+  border-radius: 0 8px 8px 0;
+}
+.user-question p {
+  white-space: pre-wrap;
+  margin: 4px 0;
+  font-size: 23px;
+  line-height: 1.45;
+}
+.answer-cards {
+  align-items: start;
+}
+.answer-card {
+  min-width: 0;
+  padding: 20px;
+  border-top: 4px solid var(--muted);
+}
+.answer-card.mode-with {
+  border-top-color: var(--accent);
+}
+.answer-card.mode-search {
+  border-top-color: #3272a0;
+}
+.card-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px;
+}
+.card-heading h3 {
+  font-size: 20px;
+}
+.answer-text {
+  white-space: pre-wrap;
+  font-size: 20px;
+  line-height: 1.6;
+}
+.model-binding {
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 24px;
+}
+.model-binding dt {
+  color: var(--muted);
+  margin-top: 10px;
+}
+.model-binding dd {
+  margin: 2px 0;
+  overflow-wrap: anywhere;
+  font-family: ui-monospace, monospace;
+}
+.binding {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.lineage-note {
+  font-size: 14px;
+  color: #705500;
+  background: #fff8e3;
+  padding: 10px;
+  border-radius: 5px;
+}
+.citation {
+  font-size: 15px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.citation blockquote {
+  margin-right: 0;
+  padding-left: 12px;
+}
+.chat-composer {
+  max-width: none;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px;
+}
+.chat-composer textarea {
+  font-size: 20px;
+}
+.composer-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.composer-footer span {
+  font-size: 14px;
+}
+.starter-prompts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 12px 0 36px;
+}
+.starter-prompts button {
+  text-align: left;
+  font-size: 14px;
+  background: transparent;
+}
+.status-failed,
+.status-timed_out {
+  background: #ffe5df;
+  color: #913b24;
+}
+.status-warming,
+.status-queued {
+  background: #fff0c5;
+  color: #705500;
+}
+.status-unavailable,
+.status-cancelled {
+  background: #e9eceb;
+  color: var(--muted);
+}
+.chat-notice {
+  background: #fff0c5;
+  padding: 12px 18px;
+  border-radius: 7px;
+}
+@media (max-width: 760px) {
+  .ask-chat .readiness,
+  .starter-prompts {
+    grid-template-columns: 1fr;
+  }
+  .answer-card {
+    margin: 4px 0;
+  }
+}

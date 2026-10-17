@@ -8,8 +8,7 @@
       content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'"
     />
     <title>Halvard · Knowledge loop</title>
-    <link rel="stylesheet" href="/style.css" />
-    <script src="/app.js" defer></script>
+    <script type="module" src="/app.js"></script>
   </head>
   <body>
     <header>
@@ -83,26 +82,7 @@
           <div id="reviews"></div>
         </section>
         <section id="ask" class="screen" hidden>
-          <div class="heading">
-            <div>
-              <p class="eyebrow">03 / COMPARISON</p>
-              <h1>Ask Halvard</h1>
-            </div>
-            <button id="warm">Warm up</button>
-          </div>
-          <div id="serving" class="panel"></div>
-          <form id="ask-form">
-            <label for="question">Your question</label
-            ><textarea
-              id="question"
-              rows="3"
-              maxlength="2000"
-              required
-              placeholder="What should I check before replacing an E42 pump?"
-            ></textarea
-            ><button type="submit">Compare answers</button>
-          </form>
-          <div id="answers" class="columns"></div>
+          <div id="ask-chat"></div>
           <div class="heading">
             <div>
               <h2>Train on approved knowledge</h2>

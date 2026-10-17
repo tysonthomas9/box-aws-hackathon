@@ -91,7 +91,7 @@ def main():
         terraform("infra", "apply", "-auto-approve", "-input=false")
         outputs = json.loads(terraform("infra", "output", "-json", capture=True))
         s3 = session.client("s3")
-        web = ROOT / "web"
+        web = ROOT / "web" / "dist"
         if web.is_dir() and (web / "index.html").is_file():
             import mimetypes
 

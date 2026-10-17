@@ -1,8 +1,9 @@
-"use strict";
+import { mountAsk, unmountAsk } from "./src/ask.jsx";
+import "./style.css";
+("use strict");
 const $ = (id) => document.getElementById(id);
 let csrf = "",
   active = "sources",
-  generation = 0,
   trainingTimer,
   trainingBusy = false;
 const node = (tag, text, cls) => {
@@ -14,10 +15,11 @@ const node = (tag, text, cls) => {
 const message = (text) => {
   $("notice").textContent = text;
 };
-async function api(path, body) {
+async function api(path, body, options = {}) {
   const response = await fetch("/api/" + path, {
     method: body === undefined ? "GET" : "POST",
     credentials: "same-origin",
+    signal: options.signal,
     headers:
       body === undefined
         ? {}
@@ -29,11 +31,15 @@ async function api(path, body) {
     showLogin();
     throw Error(value.detail || "Sign in to continue");
   }
-  if (!response.ok) throw Error(value.detail || "Request failed");
+  if (!response.ok) {
+    const error = Error(value.detail || "Request failed");
+    error.data = value;
+    throw error;
+  }
   return value;
 }
 function showLogin() {
-  generation++;
+  unmountAsk();
   clearTimeout(trainingTimer);
   csrf = "";
   $("workspace").hidden = true;
@@ -41,6 +47,7 @@ function showLogin() {
   $("logout").hidden = true;
 }
 function showWorkspace() {
+  mountAsk(api);
   $("workspace").hidden = false;
   $("login-screen").hidden = true;
   $("logout").hidden = false;
@@ -173,94 +180,6 @@ async function review() {
     $("reviews").append(card);
   }
 }
-async function serving() {
-  const data = await api("serving");
-  $("serving").replaceChildren(
-    node(
-      "strong",
-      "Serving version: " +
-        (data.models.with?.version_id || "No trained model yet"),
-    ),
-  );
-  if (data.stale)
-    $("serving").append(
-      node("span", "Stale · newer approved knowledge", "badge stale"),
-    );
-  details($("serving"), "Model versions and pinned imports", data.models);
-}
-async function pollJob(job, card, token) {
-  if (token !== generation) return;
-  try {
-    const current = await api("jobs/" + encodeURIComponent(job.id));
-    if (token !== generation) return;
-    card.replaceChildren(
-      node(
-        "h3",
-        job.warm_up
-          ? "Warm up · base, then trained"
-          : job.mode === "without"
-            ? "Without learning"
-            : job.mode === "with"
-              ? "With learning"
-              : "Search",
-      ),
-      node(
-        "span",
-        current.status === "warming"
-          ? "warming (may take a few minutes)"
-          : current.status,
-        "badge",
-      ),
-      node("p", current.answer || current.error || "Waiting for the model…"),
-      node("p", "Version: " + current.model_version_id, "subtle"),
-    );
-    if (current.latency_ms !== null)
-      card.append(
-        node(
-          "p",
-          (current.latency_ms / 1000).toFixed(2) + " seconds",
-          "subtle",
-        ),
-      );
-    details(card, "Pinned model and snapshot", {
-      model: current.model_arn,
-      snapshot: current.snapshot_sha256,
-      warm_up_models: current.warm_up_models,
-    });
-    for (const c of current.citations) {
-      card.append(
-        sourceLink(
-          c.file_id,
-          "[" + c.label + "] " + c.name + " · " + c.version_id,
-        ),
-        node("blockquote", c.quote),
-      );
-    }
-    if (!["succeeded", "failed"].includes(current.status))
-      setTimeout(() => pollJob(job, card, token), 2000);
-  } catch (e) {
-    if (token === generation) message(e.message);
-  }
-}
-async function compare(warm) {
-  const question = $("question").value.trim();
-  if (!warm && !question) {
-    message("Enter a question.");
-    return;
-  }
-  const data = await api(warm ? "warm-up" : "ask", warm ? {} : { question });
-  const token = ++generation;
-  $("answers").replaceChildren();
-  for (const job of data.jobs) {
-    const card = node("article");
-    $("answers").append(card);
-    pollJob(job, card, token);
-  }
-  for (const [mode, error] of Object.entries(data.errors || {}))
-    $("answers").append(node("article", mode + ": " + error));
-  for (const mode of data.unavailable)
-    $("answers").append(node("article", mode + ": no model is available yet."));
-}
 async function training() {
   const data = await api("training");
   $("training").replaceChildren();
@@ -377,7 +296,7 @@ async function load(screen) {
       sources,
       review,
       ask: async () => {
-        await serving();
+        window.dispatchEvent(new Event("kloop:ask-open"));
         await training();
       },
       results,
@@ -425,11 +344,6 @@ $("review-mode").onchange = () =>
     await api("review-mode", { mode: $("review-mode").value });
     await review();
   });
-$("ask-form").onsubmit = (e) => {
-  e.preventDefault();
-  run(e.submitter, () => compare(false));
-};
-$("warm").onclick = () => run($("warm"), () => compare(true));
 $("train").onclick = () =>
   run($("train"), async () => {
     const key = sessionStorage.getItem("train-request") || crypto.randomUUID();
