@@ -58,6 +58,7 @@ def retrieve(
 ) -> list[Citation]:
     """BM25 (k1=1.5, b=.75), 180-word chunks with 30-word overlap.
 
+    Explicit filename terms participate in ranking; quotes remain limited to approved ranges.
     Offsets and quotes refer to the exact source version, not generated text.
     Empty/no-match queries return no sources. Ties use file/version/offset order.
     """
@@ -95,7 +96,12 @@ def retrieve(
                     break
     if not chunks:
         return []
-    counts = [Counter(_tokens(c.quote)) for c in chunks]
+    counts = [
+        Counter(
+            _tokens((c.name + " " if c.name.casefold() in question.casefold() else "") + c.quote)
+        )
+        for c in chunks
+    ]
     lengths = [sum(c.values()) for c in counts]
     average = sum(lengths) / len(chunks)
     if not average:

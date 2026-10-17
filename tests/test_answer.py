@@ -228,3 +228,35 @@ def test_item_approved_search_excludes_other_source_text_and_keeps_offsets():
             [document],
             approved_quotes={("f", "v2"): ["Invented quote"]},
         )
+
+
+def test_filename_specific_search_selects_copy_date_without_expanding_approved_text():
+    copy = Document(
+        file_id="z-copy",
+        version_id="v2",
+        name="CTD Module 1 DEMO COPY BLA-6546-89.docx",
+        text="Unapproved surrounding text. Submission Date: 28 October 2025 More unapproved text.",
+    )
+    noise = [
+        Document(
+            file_id=f"a{i}",
+            version_id="v1",
+            name=f"Original-{i}.docx",
+            text="CTD Module 1 BLA-6546-89 submission requirements and format.",
+        )
+        for i in range(4)
+    ]
+    quote = "Submission Date: 28 October 2025"
+    approved = {
+        (copy.file_id, copy.version_id): [quote],
+        **{(d.file_id, d.version_id): [d.text] for d in noise},
+    }
+    selected = retrieve(
+        "For CTD Module 1 DEMO COPY BLA-6546-89.docx, what is the submission date?",
+        noise + [copy],
+        top_k=1,
+        approved_quotes=approved,
+    )
+    assert len(selected) == 1 and selected[0].file_id == "z-copy"
+    assert selected[0].version_id == "v2" and selected[0].quote == quote
+    assert copy.text[selected[0].start : selected[0].end] == quote
