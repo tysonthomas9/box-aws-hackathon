@@ -420,9 +420,7 @@ def test_realistic_fake_survives_cursor_write_failure(setup, monkeypatch):
 
 def test_scheduled_run_records_zero_extraction_for_loaded_cursors(setup):
     box, extraction, storage, service = setup
-    storage.put(
-        "sync_cursors:halvard", "f", {"file_id": "f", "version_id": "v1", "retired": False}
-    )
+    storage.put("sync_cursors:halvard", "f", {"file_id": "f", "version_id": "v1", "retired": False})
     row = service.run("schedule")
     assert row["status"] == "completed"
     assert row["files_seen"] == 1
