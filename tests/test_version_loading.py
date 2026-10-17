@@ -39,7 +39,7 @@ def loader(aws_session):
     slots.ledger = CleanupLedger(table, "kloop")
     slots.protected = set()
 
-    def delete(key):
+    def delete(key, **kwargs):
         row = next((r for r in slots.ledger.entries() if r["key"] == key), None)
         if row:
             slots.models.discard(row["resource_id"])
@@ -104,7 +104,7 @@ def test_unload_retains_weights_and_clears_arn_before_delete(loader):
     loaded(loader)
     original = loader.slots.delete.side_effect
 
-    def delete(key):
+    def delete(key, **kwargs):
         assert loader.store.get("candidate").import_arn is None
         return original(key)
 
@@ -296,3 +296,20 @@ def test_uncertain_dispatch_keeps_lock_for_safe_resume(loader):
     assert loader.store.lock() is not None
     loader.dispatch.side_effect = None
     assert loader.load("candidate")["state"] == "loading"
+
+
+def test_production_protection_reads_evaluation_pins(loader, aws_session, monkeypatch):
+    from kloop.train.loading_runtime import service
+    from kloop.train.model_activity import evaluation_pin
+
+    for key in ("VERSIONS_TABLE", "ASK_JOBS_TABLE", "CLEANUP_LEDGER_TABLE"):
+        monkeypatch.setenv("KLOOP_" + key, loader.store.table.name)
+    monkeypatch.setenv("KLOOP_TRAIN_DEPLOYMENT", "kloop")
+    monkeypatch.setenv("KLOOP_ARTIFACT_BUCKET", "retained")
+    monkeypatch.setenv("KLOOP_IMPORT_ROLE", "import-role")
+    actual = service(aws_session)
+    loaded(loader, "eval-arn")
+    with evaluation_pin(aws_session, {"candidate_arn": "eval-arn"}):
+        with pytest.raises(ValueError, match="active models"):
+            actual.unload("candidate")
+    assert actual.store.get("candidate").import_arn == "eval-arn"

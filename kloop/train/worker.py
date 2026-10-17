@@ -231,10 +231,9 @@ class TrainingWorker:
             self.ledger.resolve(f"training:{version.id}", details["TrainingJobArn"])
             if len(self.slots.census()) >= 3:
                 raise RuntimeError("Import slots filled during training; refuse create")
+            record_weights(version, self.artifacts, self.bucket)
             admit()
             version.manifest["import_attempted"] = True
-            self.store.save(version)
-            record_weights(version, self.artifacts, self.bucket)
             self.store.save(version)
             job = self.slots.create(
                 version.id, self.import_role, f"s3://{self.bucket}/training/{version.id}/merged/"

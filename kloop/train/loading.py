@@ -115,6 +115,7 @@ class VersionLoading:
                 "owner": owner,
                 "name": owner,
                 "attempt": 0,
+                "attempted": False,
             }
             self.store.save(version)
         except Exception:
@@ -200,8 +201,9 @@ class VersionLoading:
                 if len(self.slots.census()) >= 3:
                     raise ValueError("Import slots filled; choose an unload first")
                 self.slots.ledger.reserve(key, "bedrock_import", name)
-            self.store.save(version)
             self.store.assert_active(owner)
+            operation["attempted"] = True
+            self.store.save(version)
             self.slots.create(name, self.import_role, version.manifest["weights"]["s3_uri"])
             return {}
         if action == "poll":
@@ -222,7 +224,7 @@ class VersionLoading:
                 raise ValueError("One re-import already attempted")
             if not self.slots.delete(f"import:{name}"):
                 return {"complete": False}
-            operation.update(name=owner + "-r1", attempt=1)
+            operation.update(name=owner + "-r1", attempt=1, attempted=False)
             self.store.save(version)
             return {"complete": True}
         if action == "finish":
@@ -232,7 +234,7 @@ class VersionLoading:
             operation["state"] = "failed"
             self.store.save(version)
             # Pending AWS creates stay fenced until reconciled. Never drop ownership.
-            if not self.slots.delete(f"import:{name}"):
+            if not self.slots.delete(f"import:{name}", attempted=operation.get("attempted", False)):
                 return {"complete": False}
             self.store.release(owner)
             return {"complete": True}
