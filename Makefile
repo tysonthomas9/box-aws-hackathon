@@ -45,3 +45,8 @@ infra-smoke:
 .PHONY: pack-check
 pack-check:
 	uv run --locked python pack/validate.py
+
+.PHONY: extract-live
+extract-live: export AWS_PROFILE := $(AWS_PROFILE)
+extract-live:
+	uv run --locked python -m kloop.extract.live

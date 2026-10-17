@@ -1,0 +1,381 @@
+[
+  {
+    "document": {
+      "file_id": "2532396183845",
+      "version_id": "2810107316645",
+      "name": "bracken.txt",
+      "text": "The Bracken payroll cutoff is the 19th day of each month.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "fact",
+          "subject": "Bracken payroll",
+          "attribute": "cutoff_day",
+          "statement": "The Bracken payroll cutoff occurs on the 19th day of each month.",
+          "supporting_quote": "The Bracken payroll cutoff is the 19th day of each month.",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532400132467",
+      "version_id": "2810111366067",
+      "name": "cirrus.txt",
+      "text": "The Cirrus priority support response target is 26 minutes.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "fact",
+          "subject": "Cirrus",
+          "attribute": "priority_support_response_target",
+          "statement": "The priority support response target for Cirrus is 26 minutes.",
+          "supporting_quote": "The Cirrus priority support response target is 26 minutes.",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532396868522",
+      "version_id": "2810108078122",
+      "name": "e42.txt",
+      "text": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "procedure",
+          "subject": "E42 pump fault",
+          "attribute": "troubleshooting",
+          "statement": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.",
+          "supporting_quote": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.",
+          "trigger_conditions": [
+            "E42 pump fault occurs"
+          ],
+          "steps": [
+            "Measure inlet pressure",
+            "If inlet pressure is below 4 bar: restore inlet pressure and retest, do not replace the pump",
+            "If inlet pressure is at least 4 bar and E42 persists after retesting: replace the pump"
+          ],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532391521272",
+      "version_id": "2810103100472",
+      "name": "kestrel.txt",
+      "text": "The Kestrel service owner is Mira Solven.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "fact",
+          "subject": "Kestrel",
+          "attribute": "service_owner",
+          "statement": "The service owner of Kestrel is Mira Solven.",
+          "supporting_quote": "The Kestrel service owner is Mira Solven.",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532397144444",
+      "version_id": "2810108248444",
+      "name": "lumen.txt",
+      "text": "Lumen onboarding requires approval from Devika Pell.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "fact",
+          "subject": "Lumen onboarding",
+          "attribute": "requires_approval_from",
+          "statement": "Lumen onboarding requires approval from Devika Pell.",
+          "supporting_quote": "Lumen onboarding requires approval from Devika Pell.",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532389982352",
+      "version_id": "2810101542352",
+      "name": "nacre.txt",
+      "text": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "fact",
+          "subject": "Nacre gateway",
+          "attribute": "maintenance_window_start_time",
+          "statement": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+          "supporting_quote": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        },
+        {
+          "kind": "fact",
+          "subject": "Nacre gateway",
+          "attribute": "maintenance_window_recurrence",
+          "statement": "The Nacre gateway maintenance window occurs every Tuesday.",
+          "supporting_quote": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532392642079",
+      "version_id": "2810104245279",
+      "name": "orin.txt",
+      "text": "The Orin sensor calibration passphrase is amber finch 62.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "fact",
+          "subject": "Orin sensor",
+          "attribute": "calibration_passphrase",
+          "statement": "The Orin sensor calibration passphrase is amber finch 62.",
+          "supporting_quote": "The Orin sensor calibration passphrase is amber finch 62.",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532399465490",
+      "version_id": "2810110619890",
+      "name": "quartz.txt",
+      "text": "The Quartz recovery package is stored in cabinet Q-14.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "fact",
+          "subject": "Quartz recovery package",
+          "attribute": "storage_location",
+          "statement": "The Quartz recovery package is stored in cabinet Q-14.",
+          "supporting_quote": "The Quartz recovery package is stored in cabinet Q-14.",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532388521541",
+      "version_id": "2810099711941",
+      "name": "r17.txt",
+      "text": "For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "fact",
+          "subject": "R17 controller fault",
+          "attribute": "minimum_supply_voltage",
+          "statement": "The minimum supply voltage for R17 controller operation is 22 V",
+          "supporting_quote": "If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        },
+        {
+          "kind": "procedure",
+          "subject": "R17 controller fault",
+          "attribute": "troubleshooting_procedure",
+          "statement": "To troubleshoot an R17 controller fault: first measure supply voltage. If voltage is below 22 V, fix the supply and retest without replacing the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.",
+          "supporting_quote": "For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.",
+          "trigger_conditions": [
+            "R17 controller fault detected"
+          ],
+          "steps": [
+            "Measure supply voltage",
+            "If voltage is below 22 V: fix the supply and retest, do not replace the controller",
+            "If voltage is at least 22 V and R17 persists after retesting: replace the controller"
+          ],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532395058608",
+      "version_id": "2810106105008",
+      "name": "sable.txt",
+      "text": "The Sable archive daily upload limit is 73 GB.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "fact",
+          "subject": "Sable archive",
+          "attribute": "daily_upload_limit",
+          "statement": "The Sable archive daily upload limit is 73 GB.",
+          "supporting_quote": "The Sable archive daily upload limit is 73 GB.",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532398975342",
+      "version_id": "2810110199342",
+      "name": "t09.txt",
+      "text": "For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "procedure",
+          "subject": "T09 cooler fault",
+          "attribute": "troubleshooting",
+          "statement": "For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.",
+          "supporting_quote": "For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.",
+          "trigger_conditions": [
+            "T09 cooler fault occurs"
+          ],
+          "steps": [
+            "Check ambient temperature",
+            "If ambient temperature is above 31 C: lower the ambient temperature and retest, do not replace the cooler",
+            "If ambient temperature is at most 31 C and T09 persists after retesting: replace the cooler"
+          ],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532400791684",
+      "version_id": "2810111962884",
+      "name": "tern.txt",
+      "text": "The Tern incident desk escalation channel is #tern-copper.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "fact",
+          "subject": "Tern incident desk",
+          "attribute": "escalation_channel",
+          "statement": "The Tern incident desk escalation channel is #tern-copper.",
+          "supporting_quote": "The Tern incident desk escalation channel is #tern-copper.",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532393611000",
+      "version_id": "2810104983800",
+      "name": "vela.txt",
+      "text": "Vela export files are retained for 17 days.\n"
+    },
+    "identities": [],
+    "answer": {
+      "items": [
+        {
+          "kind": "fact",
+          "subject": "Vela export files",
+          "attribute": "retention_period",
+          "statement": "Vela export files are retained for 17 days.",
+          "supporting_quote": "Vela export files are retained for 17 days.",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  },
+  {
+    "document": {
+      "file_id": "2532395058608",
+      "version_id": "2810109916286",
+      "name": "sable.txt",
+      "text": "The Sable archive daily upload limit is 96 GB.\n"
+    },
+    "identities": [
+      {
+        "subject": "Sable archive",
+        "attribute": "daily_upload_limit"
+      }
+    ],
+    "answer": {
+      "items": [
+        {
+          "kind": "fact",
+          "subject": "Sable archive",
+          "attribute": "daily_upload_limit",
+          "statement": "The Sable archive daily upload limit is 96 GB.",
+          "supporting_quote": "The Sable archive daily upload limit is 96 GB.",
+          "trigger_conditions": [],
+          "steps": [],
+          "action": "upsert"
+        }
+      ]
+    },
+    "extractor": "box-ai/aws__claude_4_5_haiku"
+  }
+]

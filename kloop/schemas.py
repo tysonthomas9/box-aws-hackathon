@@ -22,6 +22,7 @@ class Document(Schema):
 
 
 class Item(Schema):
+    attribute_id: Identifier
     id: Identifier
     kind: Literal["fact", "procedure"]
     subject: Identifier
@@ -91,3 +92,37 @@ class EvalReport(Schema):
     question_set_sha256: Annotated[str, Field(pattern=r"^[a-f0-9]{64}$")]
     results: list[EvalResult] = Field(default_factory=list)
     scores: dict[str, float] = Field(default_factory=dict)
+
+
+class ExtractionRow(Schema):
+    """One model row; empty required content is retained for human review."""
+
+    item_id: str = ""
+
+    kind: Literal["fact", "procedure"]
+    subject: str = ""
+    attribute: Identifier
+    statement: str = ""
+    supporting_quote: str = ""
+    trigger_conditions: list[str] = Field(default_factory=list)
+    steps: list[str] = Field(default_factory=list)
+    action: Literal["upsert", "retire"] = "upsert"
+
+
+class Review(Schema):
+    id: Identifier
+    item_id: Identifier
+    attribute_id: Identifier
+    source_file_id: Identifier
+    source_version_id: Identifier
+    extractor: Identifier
+    candidate: ExtractionRow
+    reasons: list[str] = Field(default_factory=list)
+    decision: Literal["pending", "approved", "edited", "rejected"] = "pending"
+    decided_by: str | None = None
+    decided_at: str | None = None
+
+
+class ApprovedSnapshot(Schema):
+    sha256: Annotated[str, Field(pattern=r"^[a-f0-9]{64}$")]
+    items: list[Item]

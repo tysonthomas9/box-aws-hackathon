@@ -1,0 +1,86 @@
+{
+  "folder": {
+    "name": "kloop-extract-b3510caba7bf402185ffd18aa880cce9",
+    "resource_id": "428400950123",
+    "observed_id": "428400950123",
+    "state": "cleaned"
+  },
+  "bracken.txt": {
+    "name": "bracken.txt",
+    "resource_id": "2532401805186",
+    "observed_id": "2532401805186",
+    "state": "cleaned"
+  },
+  "cirrus.txt": {
+    "name": "cirrus.txt",
+    "resource_id": "2532407037078",
+    "observed_id": "2532407037078",
+    "state": "cleaned"
+  },
+  "e42.txt": {
+    "name": "e42.txt",
+    "resource_id": "2532409758425",
+    "observed_id": "2532409758425",
+    "state": "cleaned"
+  },
+  "kestrel.txt": {
+    "name": "kestrel.txt",
+    "resource_id": "2532402159800",
+    "observed_id": "2532402159800",
+    "state": "cleaned"
+  },
+  "lumen.txt": {
+    "name": "lumen.txt",
+    "resource_id": "2532407908333",
+    "observed_id": "2532407908333",
+    "state": "cleaned"
+  },
+  "nacre.txt": {
+    "name": "nacre.txt",
+    "resource_id": "2532402772055",
+    "observed_id": "2532402772055",
+    "state": "cleaned"
+  },
+  "orin.txt": {
+    "name": "orin.txt",
+    "resource_id": "2532405920840",
+    "observed_id": "2532405920840",
+    "state": "cleaned"
+  },
+  "quartz.txt": {
+    "name": "quartz.txt",
+    "resource_id": "2532410113247",
+    "observed_id": "2532410113247",
+    "state": "cleaned"
+  },
+  "r17.txt": {
+    "name": "r17.txt",
+    "resource_id": "2532404179193",
+    "observed_id": "2532404179193",
+    "state": "cleaned"
+  },
+  "sable.txt": {
+    "name": "sable.txt",
+    "resource_id": "2532408421742",
+    "observed_id": "2532408421742",
+    "state": "cleaned"
+  },
+  "t09.txt": {
+    "name": "t09.txt",
+    "resource_id": "2532410944320",
+    "observed_id": "2532410944320",
+    "state": "cleaned"
+  },
+  "tern.txt": {
+    "name": "tern.txt",
+    "resource_id": "2532404015014",
+    "observed_id": "2532404015014",
+    "state": "cleaned"
+  },
+  "vela.txt": {
+    "name": "vela.txt",
+    "resource_id": "2532400708139",
+    "observed_id": "2532400708139",
+    "state": "cleaned"
+  }
+}

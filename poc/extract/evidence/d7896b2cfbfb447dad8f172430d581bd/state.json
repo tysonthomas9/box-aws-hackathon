@@ -1,0 +1,979 @@
+{
+  "extraction": {
+    "knowledge": {
+      "revision": 17,
+      "items": {
+        "a8136ba60900449e6edf98b9866432cec26e65ad0e97d296a1a3316ddc5a6cfc": {
+          "attribute_id": "a9f45de43ae77861ec271e5ed912b4b048b4984087beb2cd95ecbf0ecd4a833d",
+          "id": "a8136ba60900449e6edf98b9866432cec26e65ad0e97d296a1a3316ddc5a6cfc",
+          "kind": "fact",
+          "subject": "Bracken payroll",
+          "statement": "The cutoff day is the 19th day of each month",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Bracken payroll cutoff is the 19th day of each month.",
+          "source_file_id": "2532401805186",
+          "source_version_id": "2810113725186",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "c0df9d7dc0ded5d60aeb348eeba2fa00a17f9a2a2fe3ce06220fc0e8c9b64a04": {
+          "attribute_id": "5404eb36a9047c60c6e72cd18bd4077be17b0ebb54acee7a2022b043391af5d4",
+          "id": "c0df9d7dc0ded5d60aeb348eeba2fa00a17f9a2a2fe3ce06220fc0e8c9b64a04",
+          "kind": "fact",
+          "subject": "Cirrus",
+          "statement": "The Cirrus priority support response target is 26 minutes.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Cirrus priority support response target is 26 minutes.",
+          "source_file_id": "2532407037078",
+          "source_version_id": "2810119163478",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "399d04f90f5e4dc01a857030dd83fc39183f290dc88d49b64b9b572ec0a263ed": {
+          "attribute_id": "cd8bf3891ceb6d75f7e12514b7ca59b7ad26cc7df2c5fbbb1eac6764a2d83f42",
+          "id": "399d04f90f5e4dc01a857030dd83fc39183f290dc88d49b64b9b572ec0a263ed",
+          "kind": "procedure",
+          "subject": "E42 pump fault",
+          "statement": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.",
+          "trigger_conditions": [
+            "E42 pump fault occurs"
+          ],
+          "steps": [
+            "Measure inlet pressure",
+            "If inlet pressure is below 4 bar: restore inlet pressure and retest, do not replace the pump",
+            "If inlet pressure is at least 4 bar and E42 persists after retesting: replace the pump"
+          ],
+          "supporting_quote": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.",
+          "source_file_id": "2532409758425",
+          "source_version_id": "2810121834425",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "34fda4fb442704b7f164e142217c37af5cdbd9d44dbc1f1539769ade8f827cb1": {
+          "attribute_id": "ec2410f07b960fc1d96c9231ac948a0005b1c7414af4954500f7dde0e3e95566",
+          "id": "34fda4fb442704b7f164e142217c37af5cdbd9d44dbc1f1539769ade8f827cb1",
+          "kind": "fact",
+          "subject": "Kestrel",
+          "statement": "The service owner is Mira Solven.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Kestrel service owner is Mira Solven.",
+          "source_file_id": "2532402159800",
+          "source_version_id": "2810114331800",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "1af9acfb0acb43ab54c80c0de6426e228e7560f4cbd52f7e38a30e7f144ae5fe": {
+          "attribute_id": "31aa4e1cb8d6d52a0dd61a941196ff47680059e98efc310ee307db58cf7ca11a",
+          "id": "1af9acfb0acb43ab54c80c0de6426e228e7560f4cbd52f7e38a30e7f144ae5fe",
+          "kind": "fact",
+          "subject": "Lumen onboarding",
+          "statement": "Lumen onboarding requires approval from Devika Pell.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "Lumen onboarding requires approval from Devika Pell.",
+          "source_file_id": "2532407908333",
+          "source_version_id": "2810120298733",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "1ea12a67df996029d21a0d7ad193a1658d2df6e5bae6cb5141a101cf8c14ed92": {
+          "attribute_id": "cd662a7e52e1b32fbfcb0f2083b0da5c7025af16ce9c3a28ee952277207d128c",
+          "id": "1ea12a67df996029d21a0d7ad193a1658d2df6e5bae6cb5141a101cf8c14ed92",
+          "kind": "fact",
+          "subject": "Nacre gateway",
+          "statement": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+          "source_file_id": "2532402772055",
+          "source_version_id": "2810115020855",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "ed984d6ccc633b4cdb49e4f8120a2a1c6efc0244700944e0f827b37183a8e7af": {
+          "attribute_id": "d4c3db4ecdf72958773cc3bbbe0eab44302d67c99ffa83a7c26ea9b86a075bb5",
+          "id": "ed984d6ccc633b4cdb49e4f8120a2a1c6efc0244700944e0f827b37183a8e7af",
+          "kind": "fact",
+          "subject": "Nacre gateway",
+          "statement": "The Nacre gateway maintenance window occurs every Tuesday.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+          "source_file_id": "2532402772055",
+          "source_version_id": "2810115020855",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "74f185cde65d0566faaf39e23c22f458f7500f847a9a4bc99f2289518cf8a19c": {
+          "attribute_id": "cea49e435843c329ce41c4aacb1c74b1b1799737e643396329f913b9c37e33b7",
+          "id": "74f185cde65d0566faaf39e23c22f458f7500f847a9a4bc99f2289518cf8a19c",
+          "kind": "fact",
+          "subject": "Orin sensor",
+          "statement": "The Orin sensor calibration passphrase is amber finch 62.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Orin sensor calibration passphrase is amber finch 62.",
+          "source_file_id": "2532405920840",
+          "source_version_id": "2810117989640",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "4530df91b28a09e2783084823fddd9775fcf76163077ed1ec74823f320eb0936": {
+          "attribute_id": "44780a7c6965a20789a543daf502fec257f7f41e49f87bd113adeaa42081b718",
+          "id": "4530df91b28a09e2783084823fddd9775fcf76163077ed1ec74823f320eb0936",
+          "kind": "fact",
+          "subject": "quartz_recovery_package",
+          "statement": "The Quartz recovery package is stored in cabinet Q-14.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Quartz recovery package is stored in cabinet Q-14.",
+          "source_file_id": "2532410113247",
+          "source_version_id": "2810122242047",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "be45ac2301064bfe256bddf65dfd3a875a443832206091adedf3038a8b091ca4": {
+          "attribute_id": "dd9f6ab40743af3bbf53c0c025732b99e5b1ff850d18c4992684f6bf176368ce",
+          "id": "be45ac2301064bfe256bddf65dfd3a875a443832206091adedf3038a8b091ca4",
+          "kind": "procedure",
+          "subject": "R17 controller fault",
+          "statement": "For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.",
+          "trigger_conditions": [
+            "R17 controller fault occurs"
+          ],
+          "steps": [
+            "Measure supply voltage",
+            "If supply voltage is below 22 V: fix the supply and retest, do not replace the controller",
+            "If supply voltage is at least 22 V and R17 persists after retesting: replace the controller"
+          ],
+          "supporting_quote": "For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.",
+          "source_file_id": "2532404179193",
+          "source_version_id": "2810116555193",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "8334fe14d742108f2127971dfc9a374229d607ef2f3be566766cccbd0422cf03": {
+          "attribute_id": "6dee4558e61119811199ea3d9e4aef27b5dd0bb02efae9f564e98ab4a685d63f",
+          "id": "8334fe14d742108f2127971dfc9a374229d607ef2f3be566766cccbd0422cf03",
+          "kind": "fact",
+          "subject": "Sable archive",
+          "statement": "The Sable archive daily upload limit is 73 GB.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Sable archive daily upload limit is 73 GB.",
+          "source_file_id": "2532408421742",
+          "source_version_id": "2810120593742",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "e40b82b8b35f7dbb552885cf649d3f2ee19d6d23c3284db643fad8222aeaf6f9": {
+          "attribute_id": "75281ae18d9121c8396429dd352fd86e868b52f03311500fa3431222df56cab7",
+          "id": "e40b82b8b35f7dbb552885cf649d3f2ee19d6d23c3284db643fad8222aeaf6f9",
+          "kind": "procedure",
+          "subject": "T09 cooler",
+          "statement": "For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.",
+          "trigger_conditions": [
+            "T09 cooler fault occurs"
+          ],
+          "steps": [
+            "Check ambient temperature",
+            "If ambient temperature is above 31 C, lower the ambient temperature and retest",
+            "Do not replace the cooler if ambient temperature is above 31 C",
+            "If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler"
+          ],
+          "supporting_quote": "For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.",
+          "source_file_id": "2532410944320",
+          "source_version_id": "2810123257920",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "607999ef59a419b595e97b2b3578be3607d66a059962bd093604445c268bde6f": {
+          "attribute_id": "763534d3fd52f58275502a8a614d57f3faa182419191bf0d66b1b73589cc7d4b",
+          "id": "607999ef59a419b595e97b2b3578be3607d66a059962bd093604445c268bde6f",
+          "kind": "fact",
+          "subject": "tern",
+          "statement": "The Tern incident desk escalation channel is #tern-copper.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Tern incident desk escalation channel is #tern-copper.",
+          "source_file_id": "2532404015014",
+          "source_version_id": "2810116491814",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        "ec247c0746c95fcf5ba9b27f5dca5dfe4b6aeb91db7b21e1debec35d5e956673": {
+          "attribute_id": "c1f3fdfb3c099874948f7a95487951fd6c6fdef3e3382c63329fae335412058a",
+          "id": "ec247c0746c95fcf5ba9b27f5dca5dfe4b6aeb91db7b21e1debec35d5e956673",
+          "kind": "fact",
+          "subject": "vela_export_files",
+          "statement": "Vela export files are retained for 17 days.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "Vela export files are retained for 17 days.",
+          "source_file_id": "2532400708139",
+          "source_version_id": "2810112899339",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        }
+      },
+      "reviews": {
+        "fe71a2fcab8b0a0fa6f585f7318c1a378455b5a22a134f0abd645afd45b90f3a": {
+          "id": "fe71a2fcab8b0a0fa6f585f7318c1a378455b5a22a134f0abd645afd45b90f3a",
+          "item_id": "a8136ba60900449e6edf98b9866432cec26e65ad0e97d296a1a3316ddc5a6cfc",
+          "attribute_id": "a9f45de43ae77861ec271e5ed912b4b048b4984087beb2cd95ecbf0ecd4a833d",
+          "source_file_id": "2532401805186",
+          "source_version_id": "2810113725186",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "fact",
+            "subject": "Bracken payroll",
+            "attribute": "cutoff_day",
+            "statement": "The cutoff day is the 19th day of each month",
+            "supporting_quote": "The Bracken payroll cutoff is the 19th day of each month.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "2ca15b3c0370b8e7012e82e0e1500d280be022858b2d20972feeb8b827ef8bd8": {
+          "id": "2ca15b3c0370b8e7012e82e0e1500d280be022858b2d20972feeb8b827ef8bd8",
+          "item_id": "c0df9d7dc0ded5d60aeb348eeba2fa00a17f9a2a2fe3ce06220fc0e8c9b64a04",
+          "attribute_id": "5404eb36a9047c60c6e72cd18bd4077be17b0ebb54acee7a2022b043391af5d4",
+          "source_file_id": "2532407037078",
+          "source_version_id": "2810119163478",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "fact",
+            "subject": "Cirrus",
+            "attribute": "priority_support_response_target",
+            "statement": "The Cirrus priority support response target is 26 minutes.",
+            "supporting_quote": "The Cirrus priority support response target is 26 minutes.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "6154c76ed7421fca4ae1d16a6cf2670780a8a83932678c1cd6e0b5e4d4849144": {
+          "id": "6154c76ed7421fca4ae1d16a6cf2670780a8a83932678c1cd6e0b5e4d4849144",
+          "item_id": "399d04f90f5e4dc01a857030dd83fc39183f290dc88d49b64b9b572ec0a263ed",
+          "attribute_id": "cd8bf3891ceb6d75f7e12514b7ca59b7ad26cc7df2c5fbbb1eac6764a2d83f42",
+          "source_file_id": "2532409758425",
+          "source_version_id": "2810121834425",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "procedure",
+            "subject": "E42 pump fault",
+            "attribute": "troubleshooting_procedure",
+            "statement": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.",
+            "supporting_quote": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.",
+            "trigger_conditions": [
+              "E42 pump fault occurs"
+            ],
+            "steps": [
+              "Measure inlet pressure",
+              "If inlet pressure is below 4 bar: restore inlet pressure and retest, do not replace the pump",
+              "If inlet pressure is at least 4 bar and E42 persists after retesting: replace the pump"
+            ],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "88504310d769c36ea2373dc4f893d915817776095e6ba7b11957efd8380bc1b1": {
+          "id": "88504310d769c36ea2373dc4f893d915817776095e6ba7b11957efd8380bc1b1",
+          "item_id": "34fda4fb442704b7f164e142217c37af5cdbd9d44dbc1f1539769ade8f827cb1",
+          "attribute_id": "ec2410f07b960fc1d96c9231ac948a0005b1c7414af4954500f7dde0e3e95566",
+          "source_file_id": "2532402159800",
+          "source_version_id": "2810114331800",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "fact",
+            "subject": "Kestrel",
+            "attribute": "service_owner",
+            "statement": "The service owner is Mira Solven.",
+            "supporting_quote": "The Kestrel service owner is Mira Solven.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "9027dc7a87bdecc8e3408ff0f90a2704042bda6f36418d52832393bf85b438b8": {
+          "id": "9027dc7a87bdecc8e3408ff0f90a2704042bda6f36418d52832393bf85b438b8",
+          "item_id": "1af9acfb0acb43ab54c80c0de6426e228e7560f4cbd52f7e38a30e7f144ae5fe",
+          "attribute_id": "31aa4e1cb8d6d52a0dd61a941196ff47680059e98efc310ee307db58cf7ca11a",
+          "source_file_id": "2532407908333",
+          "source_version_id": "2810120298733",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "fact",
+            "subject": "Lumen onboarding",
+            "attribute": "requires_approval_from",
+            "statement": "Lumen onboarding requires approval from Devika Pell.",
+            "supporting_quote": "Lumen onboarding requires approval from Devika Pell.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "60dedc642966ee8399d83e5fc25b31ce8e11a6e2a3342784778941e55cd56abb": {
+          "id": "60dedc642966ee8399d83e5fc25b31ce8e11a6e2a3342784778941e55cd56abb",
+          "item_id": "1ea12a67df996029d21a0d7ad193a1658d2df6e5bae6cb5141a101cf8c14ed92",
+          "attribute_id": "cd662a7e52e1b32fbfcb0f2083b0da5c7025af16ce9c3a28ee952277207d128c",
+          "source_file_id": "2532402772055",
+          "source_version_id": "2810115020855",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "fact",
+            "subject": "Nacre gateway",
+            "attribute": "maintenance_window_start_time",
+            "statement": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+            "supporting_quote": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "cc7e7ef776d17d027a90cdd4021f3c7811c339db64567828df6f92f9dd2053b7": {
+          "id": "cc7e7ef776d17d027a90cdd4021f3c7811c339db64567828df6f92f9dd2053b7",
+          "item_id": "ed984d6ccc633b4cdb49e4f8120a2a1c6efc0244700944e0f827b37183a8e7af",
+          "attribute_id": "d4c3db4ecdf72958773cc3bbbe0eab44302d67c99ffa83a7c26ea9b86a075bb5",
+          "source_file_id": "2532402772055",
+          "source_version_id": "2810115020855",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "fact",
+            "subject": "Nacre gateway",
+            "attribute": "maintenance_window_recurrence",
+            "statement": "The Nacre gateway maintenance window occurs every Tuesday.",
+            "supporting_quote": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "daeb7fa9052eaa79b8bef159780226f6a859fdab4041ea2de93c43d65021c12c": {
+          "id": "daeb7fa9052eaa79b8bef159780226f6a859fdab4041ea2de93c43d65021c12c",
+          "item_id": "74f185cde65d0566faaf39e23c22f458f7500f847a9a4bc99f2289518cf8a19c",
+          "attribute_id": "cea49e435843c329ce41c4aacb1c74b1b1799737e643396329f913b9c37e33b7",
+          "source_file_id": "2532405920840",
+          "source_version_id": "2810117989640",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "fact",
+            "subject": "Orin sensor",
+            "attribute": "calibration_passphrase",
+            "statement": "The Orin sensor calibration passphrase is amber finch 62.",
+            "supporting_quote": "The Orin sensor calibration passphrase is amber finch 62.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "fb8b844c8c54cbd5f9c536c4e85eaa25cb9aa942ebf04c0810209905f6eb5204": {
+          "id": "fb8b844c8c54cbd5f9c536c4e85eaa25cb9aa942ebf04c0810209905f6eb5204",
+          "item_id": "4530df91b28a09e2783084823fddd9775fcf76163077ed1ec74823f320eb0936",
+          "attribute_id": "44780a7c6965a20789a543daf502fec257f7f41e49f87bd113adeaa42081b718",
+          "source_file_id": "2532410113247",
+          "source_version_id": "2810122242047",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "fact",
+            "subject": "quartz_recovery_package",
+            "attribute": "storage_location",
+            "statement": "The Quartz recovery package is stored in cabinet Q-14.",
+            "supporting_quote": "The Quartz recovery package is stored in cabinet Q-14.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "54562df050ac225aea4dc5582fda2be18a9ac73d016b708a697ae091229d31ca": {
+          "id": "54562df050ac225aea4dc5582fda2be18a9ac73d016b708a697ae091229d31ca",
+          "item_id": "be45ac2301064bfe256bddf65dfd3a875a443832206091adedf3038a8b091ca4",
+          "attribute_id": "dd9f6ab40743af3bbf53c0c025732b99e5b1ff850d18c4992684f6bf176368ce",
+          "source_file_id": "2532404179193",
+          "source_version_id": "2810116555193",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "procedure",
+            "subject": "R17 controller fault",
+            "attribute": "troubleshooting_procedure",
+            "statement": "For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.",
+            "supporting_quote": "For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.",
+            "trigger_conditions": [
+              "R17 controller fault occurs"
+            ],
+            "steps": [
+              "Measure supply voltage",
+              "If supply voltage is below 22 V: fix the supply and retest, do not replace the controller",
+              "If supply voltage is at least 22 V and R17 persists after retesting: replace the controller"
+            ],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "8f1b1e39f16149915ee5b374232ce7ae7ce7e09a20788e7f90d9b3cb2539397d": {
+          "id": "8f1b1e39f16149915ee5b374232ce7ae7ce7e09a20788e7f90d9b3cb2539397d",
+          "item_id": "8334fe14d742108f2127971dfc9a374229d607ef2f3be566766cccbd0422cf03",
+          "attribute_id": "6dee4558e61119811199ea3d9e4aef27b5dd0bb02efae9f564e98ab4a685d63f",
+          "source_file_id": "2532408421742",
+          "source_version_id": "2810120593742",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "fact",
+            "subject": "Sable archive",
+            "attribute": "daily_upload_limit",
+            "statement": "The Sable archive daily upload limit is 73 GB.",
+            "supporting_quote": "The Sable archive daily upload limit is 73 GB.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "39a2671791bd87de77487b9017d3b502e92c2503f29b94d67f0714fddfef2ea9": {
+          "id": "39a2671791bd87de77487b9017d3b502e92c2503f29b94d67f0714fddfef2ea9",
+          "item_id": "e40b82b8b35f7dbb552885cf649d3f2ee19d6d23c3284db643fad8222aeaf6f9",
+          "attribute_id": "75281ae18d9121c8396429dd352fd86e868b52f03311500fa3431222df56cab7",
+          "source_file_id": "2532410944320",
+          "source_version_id": "2810123257920",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "procedure",
+            "subject": "T09 cooler",
+            "attribute": "fault_resolution",
+            "statement": "For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.",
+            "supporting_quote": "For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.",
+            "trigger_conditions": [
+              "T09 cooler fault occurs"
+            ],
+            "steps": [
+              "Check ambient temperature",
+              "If ambient temperature is above 31 C, lower the ambient temperature and retest",
+              "Do not replace the cooler if ambient temperature is above 31 C",
+              "If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler"
+            ],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "d39360c0aa7b06f39b25b4213f271a1a6ea84c28796a3ba35839f514ac3b56dd": {
+          "id": "d39360c0aa7b06f39b25b4213f271a1a6ea84c28796a3ba35839f514ac3b56dd",
+          "item_id": "607999ef59a419b595e97b2b3578be3607d66a059962bd093604445c268bde6f",
+          "attribute_id": "763534d3fd52f58275502a8a614d57f3faa182419191bf0d66b1b73589cc7d4b",
+          "source_file_id": "2532404015014",
+          "source_version_id": "2810116491814",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "fact",
+            "subject": "tern",
+            "attribute": "incident_desk_escalation_channel",
+            "statement": "The Tern incident desk escalation channel is #tern-copper.",
+            "supporting_quote": "The Tern incident desk escalation channel is #tern-copper.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "e5778800386f870b246655483312f33d8012a06ce599a5eff27985d988fd73a0": {
+          "id": "e5778800386f870b246655483312f33d8012a06ce599a5eff27985d988fd73a0",
+          "item_id": "ec247c0746c95fcf5ba9b27f5dca5dfe4b6aeb91db7b21e1debec35d5e956673",
+          "attribute_id": "c1f3fdfb3c099874948f7a95487951fd6c6fdef3e3382c63329fae335412058a",
+          "source_file_id": "2532400708139",
+          "source_version_id": "2810112899339",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "",
+            "kind": "fact",
+            "subject": "vela_export_files",
+            "attribute": "retention_period",
+            "statement": "Vela export files are retained for 17 days.",
+            "supporting_quote": "Vela export files are retained for 17 days.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "upsert"
+          },
+          "reasons": [],
+          "decision": "approved",
+          "decided_by": "automatic_checks",
+          "decided_at": null
+        },
+        "67956e160fe04c080c886813cd516c749d18aeaf5c8d11b504c0859a85bd37de": {
+          "id": "67956e160fe04c080c886813cd516c749d18aeaf5c8d11b504c0859a85bd37de",
+          "item_id": "8334fe14d742108f2127971dfc9a374229d607ef2f3be566766cccbd0422cf03",
+          "attribute_id": "6dee4558e61119811199ea3d9e4aef27b5dd0bb02efae9f564e98ab4a685d63f",
+          "source_file_id": "2532408421742",
+          "source_version_id": "2810115162585",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "candidate": {
+            "item_id": "8334fe14d742108f2127971dfc9a374229d607ef2f3be566766cccbd0422cf03",
+            "kind": "fact",
+            "subject": "Sable archive",
+            "attribute": "daily_upload_limit",
+            "statement": "The daily upload limit is 96 GB",
+            "supporting_quote": "The Sable archive daily upload limit is 96 GB.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "upsert"
+          },
+          "reasons": [
+            "changed_value"
+          ],
+          "decision": "rejected",
+          "decided_by": "live-proof",
+          "decided_at": "2026-10-17T07:25:35.912451+00:00"
+        },
+        "97aadd9b7b69cb90c0a91a37d390c1b194425387dd33c9679f36ef5fd44f133f": {
+          "id": "97aadd9b7b69cb90c0a91a37d390c1b194425387dd33c9679f36ef5fd44f133f",
+          "item_id": "4530df91b28a09e2783084823fddd9775fcf76163077ed1ec74823f320eb0936",
+          "attribute_id": "44780a7c6965a20789a543daf502fec257f7f41e49f87bd113adeaa42081b718",
+          "source_file_id": "2532410113247",
+          "source_version_id": "2810122242047",
+          "extractor": "source-deletion",
+          "candidate": {
+            "item_id": "",
+            "kind": "fact",
+            "subject": "quartz_recovery_package",
+            "attribute": "storage_location",
+            "statement": "The Quartz recovery package is stored in cabinet Q-14.",
+            "supporting_quote": "The Quartz recovery package is stored in cabinet Q-14.",
+            "trigger_conditions": [],
+            "steps": [],
+            "action": "retire"
+          },
+          "reasons": [
+            "source_deleted"
+          ],
+          "decision": "rejected",
+          "decided_by": "live-proof",
+          "decided_at": "2026-10-17T07:25:35.913886+00:00"
+        }
+      },
+      "batches": {
+        "000255bc7412c21ab0bbf707104ec6560072a058c977ecccbdb3c461e58c1754": {
+          "file_id": "2532401805186",
+          "version_id": "2810113725186"
+        },
+        "a662df61ccdbdda3662bfb8ac0430c5314496402ff706a8cf31f96653505ab53": {
+          "file_id": "2532407037078",
+          "version_id": "2810119163478"
+        },
+        "3d0dddf35da7f9b14f020d7229653f77cceadab9cc184ff2f91b339c426f0565": {
+          "file_id": "2532409758425",
+          "version_id": "2810121834425"
+        },
+        "02a3056463237bf996624cd8cef50916717288e2fdd39f7ec91e1b07ee1742eb": {
+          "file_id": "2532402159800",
+          "version_id": "2810114331800"
+        },
+        "de4805895c1a22cf63b6315918279e44fd8c299a030d2d09e39fd66479d51f7b": {
+          "file_id": "2532407908333",
+          "version_id": "2810120298733"
+        },
+        "beee0a0e78623948f47a5b1234b194e0756ac4dd4070128a9c79f48bbf853983": {
+          "file_id": "2532402772055",
+          "version_id": "2810115020855"
+        },
+        "873fa4522cc6a77a8c82b3b5bea77c774dc94f462cde76fc784ea90546a562a6": {
+          "file_id": "2532405920840",
+          "version_id": "2810117989640"
+        },
+        "591372886e0c97fae7f0dbf9169e9dc72286612463002f4b13749bfdb2160398": {
+          "file_id": "2532410113247",
+          "version_id": "2810122242047"
+        },
+        "76a30b5e86259f5d4ac6c7d9afa00c4cedb36af4dd45444f29b9187e480081cc": {
+          "file_id": "2532404179193",
+          "version_id": "2810116555193"
+        },
+        "414d2c2de89e7aa5fe0e322bc5904d6ad3bdcd6e75b557f7ded46b2da8429d3d": {
+          "file_id": "2532408421742",
+          "version_id": "2810120593742"
+        },
+        "039be2fa9625b789f37cb189b1c69688fe507d0d2fbcbc577abe30d3cea6c7e7": {
+          "file_id": "2532410944320",
+          "version_id": "2810123257920"
+        },
+        "b4815e3b7905267d9747f6253d2281533803997ff06d38f4e4e0e0ca21dbe54b": {
+          "file_id": "2532404015014",
+          "version_id": "2810116491814"
+        },
+        "0333dc3a86ecedeb557ab0509212ebc65dd0a9e42ead4dd05384613c87ed9744": {
+          "file_id": "2532400708139",
+          "version_id": "2810112899339"
+        },
+        "fdcb443e964fee1acdaac745ffc42e74d9ff7a5680fd95086222e5e42fd11f72": {
+          "file_id": "2532408421742",
+          "version_id": "2810115162585"
+        }
+      },
+      "sources": {
+        "2532401805186": {
+          "epoch": 0,
+          "deleted": false
+        },
+        "2532407037078": {
+          "epoch": 0,
+          "deleted": false
+        },
+        "2532409758425": {
+          "epoch": 0,
+          "deleted": false
+        },
+        "2532402159800": {
+          "epoch": 0,
+          "deleted": false
+        },
+        "2532407908333": {
+          "epoch": 0,
+          "deleted": false
+        },
+        "2532402772055": {
+          "epoch": 0,
+          "deleted": false
+        },
+        "2532405920840": {
+          "epoch": 0,
+          "deleted": false
+        },
+        "2532410113247": {
+          "epoch": 1,
+          "deleted": true
+        },
+        "2532404179193": {
+          "epoch": 0,
+          "deleted": false
+        },
+        "2532408421742": {
+          "epoch": 0,
+          "deleted": false
+        },
+        "2532410944320": {
+          "epoch": 0,
+          "deleted": false
+        },
+        "2532404015014": {
+          "epoch": 0,
+          "deleted": false
+        },
+        "2532400708139": {
+          "epoch": 0,
+          "deleted": false
+        }
+      }
+    }
+  },
+  "approved_snapshots": {
+    "6d0ec9d7122563ed1e0dd90587ba6a863571f14f60241e75d3e3305d77b2d6ac": {
+      "sha256": "6d0ec9d7122563ed1e0dd90587ba6a863571f14f60241e75d3e3305d77b2d6ac",
+      "items": [
+        {
+          "attribute_id": "31aa4e1cb8d6d52a0dd61a941196ff47680059e98efc310ee307db58cf7ca11a",
+          "id": "1af9acfb0acb43ab54c80c0de6426e228e7560f4cbd52f7e38a30e7f144ae5fe",
+          "kind": "fact",
+          "subject": "Lumen onboarding",
+          "statement": "Lumen onboarding requires approval from Devika Pell.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "Lumen onboarding requires approval from Devika Pell.",
+          "source_file_id": "2532407908333",
+          "source_version_id": "2810120298733",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "cd662a7e52e1b32fbfcb0f2083b0da5c7025af16ce9c3a28ee952277207d128c",
+          "id": "1ea12a67df996029d21a0d7ad193a1658d2df6e5bae6cb5141a101cf8c14ed92",
+          "kind": "fact",
+          "subject": "Nacre gateway",
+          "statement": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+          "source_file_id": "2532402772055",
+          "source_version_id": "2810115020855",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "ec2410f07b960fc1d96c9231ac948a0005b1c7414af4954500f7dde0e3e95566",
+          "id": "34fda4fb442704b7f164e142217c37af5cdbd9d44dbc1f1539769ade8f827cb1",
+          "kind": "fact",
+          "subject": "Kestrel",
+          "statement": "The service owner is Mira Solven.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Kestrel service owner is Mira Solven.",
+          "source_file_id": "2532402159800",
+          "source_version_id": "2810114331800",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "cd8bf3891ceb6d75f7e12514b7ca59b7ad26cc7df2c5fbbb1eac6764a2d83f42",
+          "id": "399d04f90f5e4dc01a857030dd83fc39183f290dc88d49b64b9b572ec0a263ed",
+          "kind": "procedure",
+          "subject": "E42 pump fault",
+          "statement": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.",
+          "trigger_conditions": [
+            "E42 pump fault occurs"
+          ],
+          "steps": [
+            "Measure inlet pressure",
+            "If inlet pressure is below 4 bar: restore inlet pressure and retest, do not replace the pump",
+            "If inlet pressure is at least 4 bar and E42 persists after retesting: replace the pump"
+          ],
+          "supporting_quote": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump.",
+          "source_file_id": "2532409758425",
+          "source_version_id": "2810121834425",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "44780a7c6965a20789a543daf502fec257f7f41e49f87bd113adeaa42081b718",
+          "id": "4530df91b28a09e2783084823fddd9775fcf76163077ed1ec74823f320eb0936",
+          "kind": "fact",
+          "subject": "quartz_recovery_package",
+          "statement": "The Quartz recovery package is stored in cabinet Q-14.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Quartz recovery package is stored in cabinet Q-14.",
+          "source_file_id": "2532410113247",
+          "source_version_id": "2810122242047",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "763534d3fd52f58275502a8a614d57f3faa182419191bf0d66b1b73589cc7d4b",
+          "id": "607999ef59a419b595e97b2b3578be3607d66a059962bd093604445c268bde6f",
+          "kind": "fact",
+          "subject": "tern",
+          "statement": "The Tern incident desk escalation channel is #tern-copper.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Tern incident desk escalation channel is #tern-copper.",
+          "source_file_id": "2532404015014",
+          "source_version_id": "2810116491814",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "cea49e435843c329ce41c4aacb1c74b1b1799737e643396329f913b9c37e33b7",
+          "id": "74f185cde65d0566faaf39e23c22f458f7500f847a9a4bc99f2289518cf8a19c",
+          "kind": "fact",
+          "subject": "Orin sensor",
+          "statement": "The Orin sensor calibration passphrase is amber finch 62.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Orin sensor calibration passphrase is amber finch 62.",
+          "source_file_id": "2532405920840",
+          "source_version_id": "2810117989640",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "6dee4558e61119811199ea3d9e4aef27b5dd0bb02efae9f564e98ab4a685d63f",
+          "id": "8334fe14d742108f2127971dfc9a374229d607ef2f3be566766cccbd0422cf03",
+          "kind": "fact",
+          "subject": "Sable archive",
+          "statement": "The Sable archive daily upload limit is 73 GB.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Sable archive daily upload limit is 73 GB.",
+          "source_file_id": "2532408421742",
+          "source_version_id": "2810120593742",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "a9f45de43ae77861ec271e5ed912b4b048b4984087beb2cd95ecbf0ecd4a833d",
+          "id": "a8136ba60900449e6edf98b9866432cec26e65ad0e97d296a1a3316ddc5a6cfc",
+          "kind": "fact",
+          "subject": "Bracken payroll",
+          "statement": "The cutoff day is the 19th day of each month",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Bracken payroll cutoff is the 19th day of each month.",
+          "source_file_id": "2532401805186",
+          "source_version_id": "2810113725186",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "dd9f6ab40743af3bbf53c0c025732b99e5b1ff850d18c4992684f6bf176368ce",
+          "id": "be45ac2301064bfe256bddf65dfd3a875a443832206091adedf3038a8b091ca4",
+          "kind": "procedure",
+          "subject": "R17 controller fault",
+          "statement": "For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.",
+          "trigger_conditions": [
+            "R17 controller fault occurs"
+          ],
+          "steps": [
+            "Measure supply voltage",
+            "If supply voltage is below 22 V: fix the supply and retest, do not replace the controller",
+            "If supply voltage is at least 22 V and R17 persists after retesting: replace the controller"
+          ],
+          "supporting_quote": "For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller.",
+          "source_file_id": "2532404179193",
+          "source_version_id": "2810116555193",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "5404eb36a9047c60c6e72cd18bd4077be17b0ebb54acee7a2022b043391af5d4",
+          "id": "c0df9d7dc0ded5d60aeb348eeba2fa00a17f9a2a2fe3ce06220fc0e8c9b64a04",
+          "kind": "fact",
+          "subject": "Cirrus",
+          "statement": "The Cirrus priority support response target is 26 minutes.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Cirrus priority support response target is 26 minutes.",
+          "source_file_id": "2532407037078",
+          "source_version_id": "2810119163478",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "75281ae18d9121c8396429dd352fd86e868b52f03311500fa3431222df56cab7",
+          "id": "e40b82b8b35f7dbb552885cf649d3f2ee19d6d23c3284db643fad8222aeaf6f9",
+          "kind": "procedure",
+          "subject": "T09 cooler",
+          "statement": "For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.",
+          "trigger_conditions": [
+            "T09 cooler fault occurs"
+          ],
+          "steps": [
+            "Check ambient temperature",
+            "If ambient temperature is above 31 C, lower the ambient temperature and retest",
+            "Do not replace the cooler if ambient temperature is above 31 C",
+            "If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler"
+          ],
+          "supporting_quote": "For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler.",
+          "source_file_id": "2532410944320",
+          "source_version_id": "2810123257920",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "c1f3fdfb3c099874948f7a95487951fd6c6fdef3e3382c63329fae335412058a",
+          "id": "ec247c0746c95fcf5ba9b27f5dca5dfe4b6aeb91db7b21e1debec35d5e956673",
+          "kind": "fact",
+          "subject": "vela_export_files",
+          "statement": "Vela export files are retained for 17 days.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "Vela export files are retained for 17 days.",
+          "source_file_id": "2532400708139",
+          "source_version_id": "2810112899339",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        },
+        {
+          "attribute_id": "d4c3db4ecdf72958773cc3bbbe0eab44302d67c99ffa83a7c26ea9b86a075bb5",
+          "id": "ed984d6ccc633b4cdb49e4f8120a2a1c6efc0244700944e0f827b37183a8e7af",
+          "kind": "fact",
+          "subject": "Nacre gateway",
+          "statement": "The Nacre gateway maintenance window occurs every Tuesday.",
+          "trigger_conditions": [],
+          "steps": [],
+          "supporting_quote": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+          "source_file_id": "2532402772055",
+          "source_version_id": "2810115020855",
+          "extractor": "box-ai/aws__claude_4_5_haiku",
+          "status": "approved",
+          "flag_reasons": []
+        }
+      ]
+    }
+  }
+}

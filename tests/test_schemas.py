@@ -9,6 +9,7 @@ from kloop.schemas import AskJob, Document, EvalReport, EvalResult, Item, ModelV
     [
         Document(file_id="1", version_id="2", name="Policy", text="A policy — 雪"),
         Item(
+            attribute_id="a1",
             id="i1",
             kind="fact",
             subject="Support",
@@ -19,6 +20,7 @@ from kloop.schemas import AskJob, Document, EvalReport, EvalResult, Item, ModelV
             extractor="box-ai/pinned",
         ),
         Item(
+            attribute_id="a2",
             id="i2",
             kind="procedure",
             subject="Incident",
