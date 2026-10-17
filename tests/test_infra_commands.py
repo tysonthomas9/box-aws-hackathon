@@ -1,9 +1,25 @@
 """Long Terraform operations must retain refreshable CLI credentials."""
 
+import os
 import sys
 from pathlib import Path
 
+import pytest
+
 from scripts.infra import terraform
+
+
+@pytest.fixture(autouse=True)
+def isolate_infra_environment(monkeypatch):
+    # main() writes these directly. Register them so teardown restores even an
+    # absent variable, rather than leaking a deployment profile into later tests.
+    for key, default in {
+        "AWS_PROFILE": "box-hackathon",
+        "AWS_DEFAULT_REGION": "us-east-2",
+        "TF_VAR_aws_profile": "box-hackathon",
+        "TF_VAR_name_prefix": "kloop-test",
+    }.items():
+        monkeypatch.setenv(key, os.environ.get(key, default))
 
 
 def executable(path: Path, source: str):
@@ -84,8 +100,6 @@ def test_destroy_resumes_after_outputs_and_ledger_were_removed(monkeypatch):
 
 def test_destroy_does_not_delete_table_if_creator_is_pending(monkeypatch):
     from unittest.mock import Mock
-
-    import pytest
 
     from kloop.cleanup import CleanupLedger
     from scripts import infra

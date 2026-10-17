@@ -385,6 +385,9 @@ def test_sync_runtime_requires_real_extraction_factory(monkeypatch):
 
     runtime.cache_clear()
     monkeypatch.delenv("KLOOP_EXTRACTION_FACTORY", raising=False)
+    monkeypatch.setenv("AWS_PROFILE", "unavailable-profile")
+    monkeypatch.setenv("AWS_CONFIG_FILE", "/dev/null")
+    monkeypatch.setenv("AWS_SHARED_CREDENTIALS_FILE", "/dev/null")
     with pytest.raises(RuntimeError, match="KLOOP_EXTRACTION_FACTORY"):
         runtime()
 

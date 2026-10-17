@@ -75,11 +75,11 @@ def ingress_runtime() -> SyncIngress:
 
 @lru_cache(maxsize=1)
 def runtime() -> Runtime:
-    settings = Settings()
-    session = boto3.Session(region_name=settings.region)
     path = os.environ.get("KLOOP_EXTRACTION_FACTORY", "")
     if ":" not in path:
         raise RuntimeError("Deploy must configure KLOOP_EXTRACTION_FACTORY=module:function")
+    settings = Settings()
+    session = boto3.Session(region_name=settings.region)
     module, function = path.split(":", 1)
     extraction = getattr(importlib.import_module(module), function)(session)
     return compose(session, extraction)
