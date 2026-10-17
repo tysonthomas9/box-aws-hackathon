@@ -230,11 +230,16 @@ def status(state):
     return result
 
 
-def invoke(state):
+def invoke(state, payload_format="completion"):
     if state.get("import_status", {}).get("status") != "Completed":
         raise RuntimeError("Import must be Completed; run status first")
     prompt = "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nReply with the single word READY.<|im_end|>\n<|im_start|>assistant\n"
     payload = {"prompt": prompt, "max_gen_len": 16, "temperature": 0.0}
+    if payload_format == "chat":
+        payload = {"messages": [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Reply with the single word READY."}],
+            "max_tokens": 16, "temperature": 0.0}
     start = time.monotonic()
     attempt = {"started_at": now(), "payload": payload}
     state.setdefault("invocations", []).append(attempt)
@@ -285,6 +290,7 @@ def main():
     parser.add_argument("--delete-mirror", action="store_true")
     parser.add_argument("--readiness-diagnostic", action="store_true",
                         help="Explicit coordinator approval for one 32K startup diagnostic")
+    parser.add_argument("--format", choices=["completion", "chat"], default="completion")
     args = parser.parse_args()
     state = json.loads(args.state.read_text()) if args.state.exists() else {"created_at": now()}
     try:
@@ -301,7 +307,7 @@ def main():
         elif args.action == "status":
             print(json.dumps(status(state), indent=2))
         elif args.action == "invoke":
-            print(json.dumps(invoke(state), indent=2))
+            print(json.dumps(invoke(state, args.format), indent=2))
         elif args.action == "cleanup":
             cleanup(state, args.delete_mirror)
         save(state, args.state)
