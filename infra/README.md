@@ -11,7 +11,7 @@ make bootstrap
 make plan
 make deploy
 make infra-smoke
-curl "$(terraform -chdir=infra output -raw url)/api/health"
+
 make destroy
 ```
 
@@ -33,13 +33,15 @@ Webhook keys are JSON fields `webhook_primary_key` and `webhook_secondary_key`
 in the existing `box-hackathon/box-ccg` secret. API and sync roles can read that
 secret, which is referenced, never owned or deleted.
 
-Wave 2 deploys explicit placeholders. `/api/health` is a temporary infrastructure
-probe behind the origin guard; all other HTTP routes return 503. Sync, training,
-evaluation, and ask placeholders fail rather than acknowledge unimplemented work.
-Step Functions fails explicitly. Wave 3/4 must supply handlers, state-machine
-definition, and narrowly scoped runtime permissions before product acceptance.
-Only the queue, scoped logging, scheduler and origin-secret permissions are
-active for placeholders.
+The integrated API uses signed sessions and an origin guard. `make infra-smoke`
+checks static delivery, unsigned `/api/session` denial (401), direct-origin
+session denial (403), then logs in using the deployment's existing auth secret
+and reads `/api/serving`. Passwords and cookies stay in memory and are excluded
+from the report. The command requires permission to read `<NAME_PREFIX>/auth`.
+It does not invoke models, start training, sync sources, or change reviews.
+
+Deploy uploads hashed assets before HTML, marks HTML non-cacheable, invalidates
+`/` and `/index.html`, and waits for invalidation before returning the URL.
 
 The `pk`/`sk` tables match `kloop.adapters.aws.DynamoStorage`. Each collection has
 its own table; `KLOOP_*_TABLE` variables expose the mapping. Webhook dedupe TTL is
@@ -51,7 +53,7 @@ box-sdk-gen; it rejects artifacts at 220 MiB, below Lambda's 250 MiB ceiling. No
 torch/transformers are included. The hash-locked requirements are in `infra/lambda-requirements.txt`.
 Size is in `.build/package-size.json`; cold import
 must be measured on Linux/Lambda, not macOS. The infrastructure evidence directory
-records this wave's proof. Static files are uploaded from `web/` if present;
+records this wave's proof. Static files are uploaded from `web/dist/` if present;
 otherwise a clearly marked placeholder is uploaded.
 
 Creators must successfully reserve cleanup-ledger entries before external creation,
@@ -70,9 +72,9 @@ or deletes POC imports. Box webhook deletion uses the existing folder-scoped CCG
 folder stop destroy. A missing webhook is treated as already deleted. This wave creates
 no imports or Box webhooks. Keep bootstrap state until teardown completes.
 
-The smoke report is `infra/evidence/placeholder-smoke.json`. This is infrastructure
-acceptance only; it does not prove Box sync, cookie authentication, training,
-evaluation, or learning quality. The live wave-2 proof is torn down afterward.
+The smoke report is `infra/evidence/product-smoke.json`. It checks delivery and
+session access only; it does not prove Box sync, training, evaluation, or learning
+quality. Archived `placeholder-smoke.json` records the earlier infrastructure wave.
 
 To refresh deployment dependencies after changing the project dependencies:
 

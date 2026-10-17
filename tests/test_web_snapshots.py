@@ -141,3 +141,77 @@ def test_temporary_trained_display_yields_immediately_to_promotion(monkeypatch):
         runtime.trained_model(current)
     monkeypatch.delenv("KLOOP_TEMPORARY_TRAINED_MODEL_ARN")
     assert runtime.trained_model(None) is None
+
+
+@pytest.mark.parametrize("failure", [PermissionError("outside folder"), "404", "403", "410"])
+def test_search_skips_unavailable_source_and_requests_retirement(snapshots, failure, caplog):
+    from box_sdk_gen.box.errors import BoxAPIError
+
+    snapshot = save(snapshots, count=2)
+    snapshot["items"][1]["source_file_id"] = "unavailable"
+    snapshot["sha256"] = digest(snapshot["items"])
+    snapshots.repository.save_snapshot(snapshot)
+    if isinstance(failure, str):
+        failure = BoxAPIError(
+            message="Unavailable",
+            request_info=None,
+            response_info=SimpleNamespace(status_code=int(failure)),
+        )
+    document = snapshots.box.get_document.return_value
+    snapshots.box.get_document.side_effect = lambda file, version: (
+        document if file == "source" else (_ for _ in ()).throw(failure)
+    )
+    retirement = Mock()
+    snapshots.plugin.return_value.retire = retirement
+    # A job already pinned to this snapshot and later queries can both finish retrieval.
+    for _ in range(2):
+        evidence = runtime.worker_runtime().documents(snapshot["sha256"])
+        assert [d.file_id for d in evidence.documents] == ["source"]
+        assert ("unavailable", "v1") not in evidence.approved_quotes
+    assert retirement.call_args.args == ("unavailable",)
+    assert "unavailable" in caplog.text
+    assert "retirement" in caplog.text
+    assert snapshots.repository.storage.get("approved_snapshots", snapshot["sha256"]) == snapshot
+
+
+def test_search_does_not_hide_transient_source_errors(snapshots):
+    snapshot = save(snapshots)
+    snapshots.box.get_document.side_effect = TimeoutError("transport")
+    with pytest.raises(TimeoutError):
+        runtime.worker_runtime().documents(snapshot["sha256"])
+
+
+def test_empty_base_model_does_not_hide_available_trained_model(monkeypatch):
+    from kloop.train.state import DynamoTrainingStore
+
+    aws = Mock()
+    aws.client.return_value.get_secret_value.side_effect = lambda **kw: {
+        "SecretString": kw["SecretId"] * 48
+    }
+    monkeypatch.setattr(runtime, "session", lambda: aws)
+    monkeypatch.setattr(runtime, "create_app", lambda services, *args: services)
+    monkeypatch.setattr(DynamoTrainingStore, "current", lambda self: None)
+    monkeypatch.setattr(runtime, "jobs", lambda aws: Mock())
+    for key in (
+        "AUTH_SECRET_ID",
+        "COOKIE_SECRET_ID",
+        "ORIGIN_SECRET_ID",
+        "PUBLIC_ORIGIN",
+        "VERSIONS_TABLE",
+        "SYNC_CURSORS_TABLE",
+        "WEBHOOK_DEDUPE_TABLE",
+    ):
+        monkeypatch.setenv(f"KLOOP_{key}", key)
+    monkeypatch.setenv("KLOOP_PUBLIC_ORIGIN", "https://example.cloudfront.net")
+    monkeypatch.setenv("KLOOP_BASE_MODEL_ID", "")
+    monkeypatch.setenv(
+        "KLOOP_TEMPORARY_TRAINED_MODEL_ARN",
+        "arn:aws:bedrock:us-east-2:123456789012:imported-model/abcdefghijkl",
+    )
+    runtime.api_runtime.cache_clear()
+    try:
+        models = runtime.api_runtime().select_models()
+        assert models["without"] is None and models["search"] is None
+        assert models["with"]["arn"].endswith("/abcdefghijkl")
+    finally:
+        runtime.api_runtime.cache_clear()

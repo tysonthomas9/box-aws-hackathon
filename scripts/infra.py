@@ -9,6 +9,7 @@ import subprocess
 import tempfile
 from datetime import UTC
 from pathlib import Path
+from uuid import uuid4
 
 import boto3
 
@@ -95,7 +96,8 @@ def main():
         if web.is_dir() and (web / "index.html").is_file():
             import mimetypes
 
-            for file in web.rglob("*"):
+            # Publish dependencies before the HTML that references them.
+            for file in sorted(web.rglob("*"), key=lambda p: (p.name == "index.html", str(p))):
                 if file.is_file():
                     s3.upload_file(
                         str(file),
@@ -103,7 +105,12 @@ def main():
                         str(file.relative_to(web)),
                         ExtraArgs={
                             "ContentType": mimetypes.guess_type(file.name)[0]
-                            or "application/octet-stream"
+                            or "application/octet-stream",
+                            "CacheControl": "no-cache, no-store, must-revalidate"
+                            if file.suffix == ".html"
+                            else "public, max-age=31536000, immutable"
+                            if file.relative_to(web).parts[0] == "assets"
+                            else "no-cache",
                         },
                     )
         else:
@@ -111,42 +118,83 @@ def main():
                 str(ROOT / "infra/placeholder.html"),
                 outputs["web_bucket"]["value"],
                 "index.html",
-                ExtraArgs={"ContentType": "text/html"},
+                ExtraArgs={
+                    "ContentType": "text/html",
+                    "CacheControl": "no-cache, no-store, must-revalidate",
+                },
             )
-        session.client("cloudfront").get_waiter("distribution_deployed").wait(
-            Id=outputs["distribution_id"]["value"]
+        cloudfront = session.client("cloudfront")
+        distribution = outputs["distribution_id"]["value"]
+        cloudfront.get_waiter("distribution_deployed").wait(Id=distribution)
+        refresh = cloudfront.create_invalidation(
+            DistributionId=distribution,
+            InvalidationBatch={
+                "CallerReference": uuid4().hex,
+                "Paths": {"Quantity": 2, "Items": ["/", "/index.html"]},
+            },
+        )
+        cloudfront.get_waiter("invalidation_completed").wait(
+            DistributionId=distribution, Id=refresh["Invalidation"]["Id"]
         )
         print(outputs["url"]["value"])
         return
     if args.command == "smoke":
         outputs = json.loads(terraform("infra", "output", "-json", capture=True))
         from datetime import datetime
+        from http.cookiejar import CookieJar
         from urllib.error import HTTPError
-        from urllib.request import urlopen
+        from urllib.request import HTTPCookieProcessor, Request, build_opener, urlopen
 
         url = outputs["url"]["value"]
-        with urlopen(f"{url}/api/health", timeout=30) as response:
-            health = json.load(response)
         with urlopen(url, timeout=30) as response:
             static_status = response.status
-        try:
-            urlopen(f"{outputs['api_endpoint']['value']}/api/health", timeout=30)
-        except HTTPError as error:
-            direct_status = error.code
-        else:
-            raise RuntimeError("Direct API request bypassed the origin guard")
-        if direct_status != 403 or health.get("status") != "placeholder":
-            raise RuntimeError("Placeholder smoke failed")
+
+        def denial(endpoint, expected):
+            try:
+                with urlopen(f"{endpoint}/api/session", timeout=30):
+                    pass
+            except HTTPError as error:
+                status = error.code
+                error.close()
+            else:
+                raise RuntimeError("Product smoke: protected API allowed an unsigned request")
+            if status != expected:
+                raise RuntimeError(f"Product smoke: expected HTTP {expected}, got {status}")
+            return status
+
+        unsigned_status = denial(url, 401)
+        direct_status = denial(outputs["api_endpoint"]["value"], 403)
+        password = session.client("secretsmanager").get_secret_value(SecretId=f"{prefix}/auth")[
+            "SecretString"
+        ]
+        opener = build_opener(HTTPCookieProcessor(CookieJar()))
+        with opener.open(
+            Request(
+                f"{url}/api/login",
+                data=json.dumps({"password": password}).encode(),
+                headers={"Content-Type": "application/json", "Origin": url},
+            ),
+            timeout=30,
+        ) as response:
+            if response.status != 200 or not json.load(response).get("csrf_token"):
+                raise RuntimeError("Product smoke: login failed")
+        with opener.open(f"{url}/api/serving", timeout=30) as response:
+            serving_status = response.status
+            if serving_status != 200 or "models" not in json.load(response):
+                raise RuntimeError("Product smoke: authenticated serving read failed")
+        if static_status != 200:
+            raise RuntimeError("Product smoke: static delivery failed")
         report = {
             "timestamp": datetime.now(UTC).isoformat(),
             "deployment": prefix,
             "url": url,
-            "cloudfront_health": health,
+            "unauthenticated_status": unsigned_status,
+            "authenticated_serving_status": serving_status,
             "static_status": static_status,
             "direct_api_status": direct_status,
             "package": json.loads((ROOT / ".build/package-size.json").read_text()),
         }
-        (ROOT / "infra/evidence/placeholder-smoke.json").write_text(
+        (ROOT / "infra/evidence/product-smoke.json").write_text(
             json.dumps(report, indent=2) + "\n"
         )
         print(json.dumps(report))

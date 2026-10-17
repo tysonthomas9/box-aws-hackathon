@@ -19,7 +19,8 @@ resource "aws_iam_role_policy" "extraction_snapshots" {
 }
 
 resource "aws_iam_role_policy" "extraction_rows" {
-  for_each = toset(["api", "sync"])
+  # Search can propose retirement when a pinned source becomes inaccessible.
+  for_each = toset(["api", "sync", "ask"])
   role     = aws_iam_role.lambda[each.key].id
   policy = jsonencode({ Version = "2012-10-17", Statement = [
     { Effect = "Allow", Action = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:Query", "dynamodb:BatchWriteItem"], Resource = aws_dynamodb_table.records["items"].arn }

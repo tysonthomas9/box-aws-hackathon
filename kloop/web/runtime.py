@@ -1,20 +1,25 @@
 """Deployment composition. Imports are credential-free; clients are lazy per Lambda."""
 
 import importlib
+import logging
 import os
 from functools import lru_cache
 
 import boto3
 from botocore.config import Config
+from box_sdk_gen.box.errors import BoxAPIError
 
 from kloop.adapters.aws import DynamoStorage
 from kloop.answer.bedrock import ImportedModelClient
 from kloop.config import Settings
+from kloop.extract.repository import ConcurrentUpdate
 from kloop.extract.runtime import snapshot_storage
 from kloop.schemas import ApprovedSnapshot
 from kloop.web.api import Services, create_app
 from kloop.web.jobs import DynamoJobs, JobService, SearchEvidence, SQSDispatch, Worker
 from kloop.web.security import DynamoThrottle, Security
+
+logger = logging.getLogger(__name__)
 
 
 def session():
@@ -96,11 +101,15 @@ def api_runtime():
     ingress = LazyService(lambda: compose_ingress(aws))
 
     def select_models():
-        base = {
-            "arn": os.environ["KLOOP_BASE_MODEL_ID"],
-            "version_id": os.getenv("KLOOP_BASE_VERSION_ID", "base"),
-            "snapshot_sha256": None,
-        }
+        base = (
+            {
+                "arn": os.environ["KLOOP_BASE_MODEL_ID"],
+                "version_id": os.getenv("KLOOP_BASE_VERSION_ID", "base"),
+                "snapshot_sha256": None,
+            }
+            if os.getenv("KLOOP_BASE_MODEL_ID")
+            else None
+        )
         current_id = version_store.current()
         current = version_store.get(current_id) if current_id else None
         trained = trained_model(current)
@@ -158,12 +167,36 @@ def worker_runtime():
         ):
             raise ValueError("Pinned snapshot failed integrity check")
         pairs = sorted({(i.source_file_id, i.source_version_id) for i in snapshot.items})
-        documents = [extraction.box.get_document(file, version) for file, version in pairs]
-        if [(d.file_id, d.version_id) for d in documents] != pairs:
-            raise ValueError("Source version differs from pinned snapshot")
-        quotes = {pair: [] for pair in pairs}
+        documents = []
+        for file, version in pairs:
+            try:
+                document = extraction.box.get_document(file, version)
+            except (BoxAPIError, PermissionError) as error:
+                if isinstance(error, BoxAPIError) and error.response_info.status_code not in {
+                    403,
+                    404,
+                    410,
+                }:
+                    raise
+                logger.warning(
+                    "Search skipped unavailable source %s version %s; retirement review requested",
+                    file,
+                    version,
+                )
+                try:
+                    extraction.retire(file)
+                except ConcurrentUpdate:
+                    # Another review/sync won the CAS. Retry the retirement on the next read.
+                    logger.warning("Retirement review deferred by concurrent update for %s", file)
+                continue
+            if (document.file_id, document.version_id) != (file, version):
+                raise ValueError("Source version differs from pinned snapshot")
+            documents.append(document)
+        quotes = {(d.file_id, d.version_id): [] for d in documents}
         for item in snapshot.items:
-            quotes[item.source_file_id, item.source_version_id].append(item.supporting_quote)
+            pair = (item.source_file_id, item.source_version_id)
+            if pair in quotes:
+                quotes[pair].append(item.supporting_quote)
         return SearchEvidence(documents, quotes)
 
     model = ImportedModelClient(
