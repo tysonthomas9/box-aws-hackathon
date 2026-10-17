@@ -232,3 +232,11 @@ def test_worker_reads_published_search_corpus_once_without_box(snapshots):
     assert first.search_index.retrieve("Approved")[0].quote == "Approved excerpt."
     snapshots.plugin.assert_not_called()
     snapshots.box.get_document.assert_not_called()
+
+
+@pytest.mark.parametrize("mode", ["local", "box_hybrid"])
+def test_search_retriever_feature_flag_is_lazy(snapshots, monkeypatch, mode):
+    monkeypatch.setenv("SEARCH_RETRIEVER", mode)
+    worker = runtime.worker_runtime()
+    assert (worker.search_retriever is None) == (mode == "local")
+    snapshots.plugin.assert_not_called()

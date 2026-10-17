@@ -7,6 +7,7 @@ from kloop.web.runtime import worker_runtime
 logging.getLogger("kloop.web.jobs").setLevel(logging.INFO)
 logging.getLogger("kloop.web.runtime").setLevel(logging.INFO)
 logging.getLogger("kloop.answer.corpus").setLevel(logging.INFO)
+logging.getLogger("kloop.answer.box_search").setLevel(logging.INFO)
 
 
 def handler(event, context):

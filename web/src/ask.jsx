@@ -75,6 +75,11 @@ export function AnswerBubble({ job }) {
           Source labels in this answer are learned, not a citation.
         </p>
       )}
+      {job.mode === "search" && job.retriever && (
+        <p className="lineage-note">
+          {job.retriever === "box_search" ? "Box Search" : "Local index"}
+        </p>
+      )}
       {job.mode === "search" &&
         job.citations?.map((c, i) => (
           <div className="citation" key={i}>

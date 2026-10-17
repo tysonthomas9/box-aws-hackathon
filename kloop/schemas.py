@@ -89,6 +89,7 @@ class AskJob(PinnedModel):
     queue_ms: Annotated[float, Field(ge=0, allow_inf_nan=False)] | None = None
     retrieval_ms: Annotated[float, Field(ge=0, allow_inf_nan=False)] | None = None
     generation_ms: Annotated[float, Field(ge=0, allow_inf_nan=False)] | None = None
+    retriever: Literal["box_search", "local"] | None = None
     error: str | None = None
 
 

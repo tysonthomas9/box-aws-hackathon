@@ -344,6 +344,7 @@ dependencies = [
     { name = "mangum" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
+    { name = "requests" },
 ]
 
 [package.dev-dependencies]
@@ -362,6 +363,7 @@ requires-dist = [
     { name = "mangum", specifier = ">=0.19,<1" },
     { name = "pydantic", specifier = ">=2.12,<3" },
     { name = "pydantic-settings", specifier = ">=2.11,<3" },
+    { name = "requests", specifier = ">=2.32,<3" },
 ]
 
 [package.metadata.requires-dev]

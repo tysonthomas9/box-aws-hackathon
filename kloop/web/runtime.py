@@ -221,4 +221,21 @@ def worker_runtime():
             config=Config(connect_timeout=5, read_timeout=60, retries={"total_max_attempts": 1}),
         )
     )
-    return Worker(jobs(aws), model, documents)
+    retriever_mode = os.getenv("SEARCH_RETRIEVER", "box_hybrid")
+    if retriever_mode not in {"local", "box_hybrid"}:
+        raise ValueError("SEARCH_RETRIEVER must be local or box_hybrid")
+
+    @lru_cache(maxsize=1)
+    def box_search():
+        from kloop.answer.box_search import BoxSearch
+
+        return BoxSearch(extraction.box.sdk, Settings().box_folder_id)
+
+    return Worker(
+        jobs(aws),
+        model,
+        documents,
+        search_retriever=(lambda question, evidence: box_search()(question, evidence))
+        if retriever_mode == "box_hybrid"
+        else None,
+    )

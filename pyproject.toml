@@ -8,6 +8,7 @@ dependencies = [
     "pydantic-settings>=2.11,<3",
     "boto3[crt]>=1.40,<2",
     "box-sdk-gen>=1.17,<2",
+    "requests>=2.32,<3",
     "fastapi>=0.115,<1",
     "mangum>=0.19,<1",
 ]

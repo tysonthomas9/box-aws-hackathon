@@ -14,6 +14,14 @@ const job = {
   citations: [],
 };
 describe("fixed answer cards", () => {
+  it.each([["box_search", "Box Search"], ["local", "Local index"]])(
+    "names the retriever used for a Search answer: %s",
+    (retriever, label) => {
+      render(<AnswerBubble job={{ ...job, mode: "search", retriever }} />);
+      expect(screen.getByText(label)).toBeTruthy();
+    },
+  );
+
   it("shows total latency and its queue, retrieval and generation breakdown", () => {
     render(
       <AnswerBubble

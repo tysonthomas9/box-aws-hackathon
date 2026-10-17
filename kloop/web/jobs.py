@@ -6,6 +6,7 @@ import threading
 import time
 from copy import deepcopy
 from dataclasses import dataclass
+from typing import Literal
 from uuid import uuid4
 
 from boto3.dynamodb.conditions import Attr
@@ -23,6 +24,7 @@ class SearchEvidence:
     documents: list[Document]
     approved_quotes: dict[tuple[str, str], list[str]]
     search_index: SearchIndex | None = None
+    retriever: Literal["box_search", "local"] = "local"
 
 
 class MemoryJobs:
@@ -173,10 +175,18 @@ class JobService:
 
 class Worker:
     def __init__(
-        self, jobs: JobService, model_client, documents, *, clock=time.time, sleep=time.sleep
+        self,
+        jobs: JobService,
+        model_client,
+        documents,
+        *,
+        clock=time.time,
+        sleep=time.sleep,
+        search_retriever=None,
     ):
         self.jobs, self.model_client, self.documents = jobs, model_client, documents
         self.clock, self.sleep = clock, sleep
+        self.search_retriever = search_retriever
 
     def run(self, id):
         job = self.jobs.get(id)
@@ -208,6 +218,10 @@ class Worker:
                 if job.mode == "search" and not job.warm_up
                 else ()
             )
+            if job.mode == "search" and not job.warm_up:
+                if self.search_retriever is not None:
+                    documents = self.search_retriever(job.question, documents)
+                job.retriever = documents.retriever
             job.retrieval_ms = max(0, (self.clock() - retrieval_started) * 1000)
             # Leave room for a final transport timeout before the fixed deadline.
             if self.clock() + 65 >= job.expires_at:
@@ -262,11 +276,12 @@ class Worker:
             job.status, job.error = "failed", "Answer failed; submit again"
         job.latency_ms = max(0, (self.clock() - job.created_at) * 1000)
         logger.info(
-            "Ask timing job=%s mode=%s status=%s queue_ms=%s retrieval_ms=%s "
+            "Ask timing job=%s mode=%s status=%s retriever=%s queue_ms=%s retrieval_ms=%s "
             "generation_ms=%s total_ms=%s",
             job.id,
             job.mode,
             job.status,
+            job.retriever,
             job.queue_ms,
             job.retrieval_ms,
             job.generation_ms,
