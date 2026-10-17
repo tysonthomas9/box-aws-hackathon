@@ -8,10 +8,10 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Literal
 
-from pydantic import Field
+from pydantic import Field, model_validator
 
 from kloop.answer import SYSTEM_PROMPT
-from kloop.schemas import Question, Schema
+from kloop.schemas import EvalBucket, Identifier, Question, Schema
 
 DEV_PATH = Path("poc/model-experiment/data/dev.jsonl")
 DEV_HASH = "5773050a12cdb93f03ca9c3dcae628c4bd00612e26649778ce1f996ef47f77cf"
@@ -27,12 +27,32 @@ def encoded(value) -> bytes:
     return json.dumps(value, sort_keys=True, allow_nan=False).encode()
 
 
+class RubricCriterion(Schema):
+    id: Identifier
+    text: Identifier
+    source_item_ids: list[Identifier] = Field(min_length=1)
+    supporting_quote: Identifier
+
+
 class EvalCase(Schema):
     question: Question
     rubric: str
     required: list[str] = Field(default_factory=list)
     forbidden: list[str] = Field(default_factory=list)
     procedure_id: str | None = None
+    criteria: list[RubricCriterion] = Field(default_factory=list, max_length=8)
+    bucket: EvalBucket | None = None
+
+    @model_validator(mode="after")
+    def validate_criteria(self):
+        if self.criteria and self.question.kind not in {"procedure", "two_fact"}:
+            raise ValueError("Criteria are supported for procedure and two-fact questions")
+        if len({c.id for c in self.criteria}) != len(self.criteria):
+            raise ValueError("Criterion ids must be unique per question")
+        sources = set(self.question.source_item_ids)
+        if any(not set(c.source_item_ids) <= sources for c in self.criteria):
+            raise ValueError("Criterion sources must belong to the question")
+        return self
 
 
 class QuestionSet(Schema):

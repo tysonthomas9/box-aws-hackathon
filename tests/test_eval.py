@@ -158,17 +158,20 @@ def test_code_checks_veto_semantic_pass():
     )
     assert deterministic_checks(unknown, "The answer is main.")
     assert not deterministic_checks(unknown, "I don't know.")
-    procedure = case.model_copy(
-        update={
-            "question": case.question.model_copy(update={"kind": "procedure"}),
-            "procedure_id": "P01",
-            "forbidden": [],
-        }
+    procedure = EvalCase(
+        question=Question(
+            id="batch",
+            question="Who releases a batch?",
+            expected_answer="QA",
+            kind="procedure",
+            split="dev",
+        ),
+        rubric="Require QA authorization.",
+        required=["QA"],
+        procedure_id="P01",  # Identifiers do not select repair rules in new corpora.
     )
-    assert deterministic_checks(procedure, "Replace immediately.")
-    assert not deterministic_checks(
-        procedure, "Restore inlet pressure to 4 bar and retest. Only replace if E42 persists."
-    )
+    assert deterministic_checks(procedure, "Release immediately.")
+    assert not deterministic_checks(procedure, "QA authorizes release.")
 
 
 def test_gate_strict_gain_and_protected_regressions():

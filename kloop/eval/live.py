@@ -17,8 +17,17 @@ from botocore.config import Config
 
 from kloop.answer import Answerer
 from kloop.answer.bedrock import ImportedModelClient
-from kloop.eval import CAVEATS, Bindings, counts, paired_counts, promotion_gate, run_evaluation
+from kloop.eval import (
+    CAVEATS,
+    Bindings,
+    counts,
+    diagnostic_counts,
+    paired_counts,
+    promotion_gate,
+    run_evaluation,
+)
 from kloop.eval.datasets import digest, encoded, load_dev, load_hidden
+from kloop.eval.frozen import FROZEN_RUBRIC, FROZEN_RUBRIC_HASH
 from kloop.eval.judge import BlindJudge
 from kloop.schemas import Document
 
@@ -72,6 +81,7 @@ def main():
     )
     parser.add_argument("--split", choices=["dev", "hidden"], default="hidden")
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--rubric-scoring", action="store_true")
     args = parser.parse_args()
     if args.split == "hidden" and args.mode in {"with", "all"}:
         parser.error("The trained import is approved on dev only")
@@ -137,7 +147,7 @@ def main():
     reservation_path.write_bytes(encoded(reservation))
     model = CachedModel(ImportedModelClient(runtime), folder, started + 600)
     cached_judge = CachedJudge(runtime, folder, started + 600)
-    judge = BlindJudge(cached_judge)
+    judge = BlindJudge(cached_judge, rubric=FROZEN_RUBRIC)
     audit_file = Path("pack/sealed/addendum-v2-audit.json")
     bindings = Bindings(
         corpus_sha256=CORPUS,
@@ -145,6 +155,8 @@ def main():
         manifest_sha256=digest(pack_bytes),
         model_arns=arns,
         serving_version="poc2-retained-weights",
+        rubric_sha256=FROZEN_RUBRIC_HASH,
+        rubric_scoring=args.rubric_scoring,
     )
     report = None
     completed = False
@@ -161,6 +173,7 @@ def main():
         summary = {
             **report.model_dump(mode="json"),
             "counts": counts(report),
+            "diagnostics": diagnostic_counts(report),
             "bindings": bindings.model_dump(mode="json"),
             "caveats": CAVEATS,
             "audit_scope": "historical POC 2 training; not model-experiment v2 training",

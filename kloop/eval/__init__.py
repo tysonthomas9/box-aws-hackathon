@@ -10,9 +10,11 @@ from pydantic import Field
 
 from kloop.answer import SYSTEM_PROMPT, Answerer
 from kloop.eval.datasets import DEV_HASH, EvalCase, QuestionSet, digest, encoded, load_dev
-from kloop.eval.judge import JUDGE_MODEL, RUBRIC_HASH, BlindJudge
+from kloop.eval.frozen import FROZEN_RUBRIC_HASH, FROZEN_SET_HASHES
+from kloop.eval.frozen import deterministic_checks as frozen_checks
+from kloop.eval.judge import CRITERIA_RUBRIC_HASH, JUDGE_MODEL, RUBRIC_HASH, BlindJudge
 from kloop.ports import Artifacts, Storage
-from kloop.schemas import Document, EvalReport, EvalResult, Schema
+from kloop.schemas import CriterionResult, Document, EvalReport, EvalResult, Schema
 
 CAVEATS = [
     'The lexical audit means "no detected lexical collisions", not zero semantic leakage.',
@@ -38,6 +40,8 @@ class Bindings(Schema):
     stale: bool = False
     judge_model: str = JUDGE_MODEL
     rubric_sha256: Hash = RUBRIC_HASH
+    rubric_scoring: bool = False
+    criteria_rubric_sha256: Hash = CRITERIA_RUBRIC_HASH
 
 
 class GateDecision(Schema):
@@ -58,7 +62,7 @@ def deterministic_checks(case: EvalCase, answer: str) -> list[str]:
     kind = case.question.kind
     if not answer.strip():
         reasons.append("empty answer")
-    if kind in {"fact", "two_fact"}:
+    if kind in {"fact", "two_fact", "procedure"}:
         for required in case.required:
             # Values may be reordered in a sentence; the judge checks their relationships.
             value_tokens = set(normalized(required).split()) - {
@@ -96,22 +100,6 @@ def deterministic_checks(case: EvalCase, answer: str) -> list[str]:
     for forbidden in case.forbidden:
         if normalized(forbidden) in text:
             reasons.append(f"retired/stale value: {forbidden}")
-    if kind == "procedure":
-        rules = {
-            "P01": ("4", r"inlet|pressure"),
-            "P02": ("22", r"supply|voltage"),
-            "P03": ("31", r"ambient|temperature"),
-        }
-        if case.procedure_id in rules:
-            threshold, environment = rules[case.procedure_id]
-            if not re.search(rf"\b{threshold}(?:\.0)?\b", answer):
-                reasons.append("missing environmental threshold")
-            if not re.search(environment, answer, re.I):
-                reasons.append("missing environmental prerequisite")
-        if not re.search(r"retest|re-test|rerun|re-run|test again", answer, re.I):
-            reasons.append("missing retest prerequisite")
-        if not re.search(r"persist|still|remain|clear|again", answer, re.I):
-            reasons.append("missing fault outcome after retest")
     return reasons
 
 
@@ -121,10 +109,39 @@ def counts(report: EvalReport) -> dict:
         count = result[row.mode][row.kind]
         count["total"] += 1
         count["correct"] += row.passed
-        count["invented"] += any(
-            r == "judge: invented value" or r == "invented numeric value" for r in row.reasons
+        count["invented"] += (
+            any(r == "judge: invented value" or r == "invented numeric value" for r in row.reasons)
+            or row.invented
         )
     return {mode: dict(kinds) for mode, kinds in result.items()}
+
+
+def diagnostic_counts(report: EvalReport) -> dict:
+    """Additional report rows; none of these values drive promotion."""
+    result = {}
+    by_mode = counts(report)
+    for mode in dict.fromkeys(r.mode for r in report.results):
+        rows = [r for r in report.results if r.mode == mode]
+        criteria = [c for r in rows for c in r.criteria]
+        withheld = [r for r in rows if r.bucket == "in_documents_not_trained"]
+        passed = sum(c.passed for c in criteria)
+        result[mode] = {
+            "criteria": {
+                "passed": passed,
+                "total": len(criteria),
+                "pass_rate": passed / len(criteria) if criteria else None,
+            },
+            "in_documents_not_trained": {
+                "correct": sum(r.passed for r in withheld),
+                "total": len(withheld),
+            },
+            "invented_answers": {
+                "total": sum(v["invented"] for v in by_mode[mode].values()),
+                "answers": len(rows),
+                "on_untold": by_mode[mode].get("untold", {}).get("invented", 0),
+            },
+        }
+    return result
 
 
 def paired_counts(report: EvalReport, left: str, right: str) -> dict:
@@ -163,8 +180,15 @@ def run_evaluation(
         raise ValueError("Nonempty unique question ids required")
     if any(c.question.split != dataset.split for c in dataset.cases):
         raise ValueError("Question split differs from report split")
-    if bindings.judge_model != JUDGE_MODEL or bindings.rubric_sha256 != RUBRIC_HASH:
+    rubrics = {RUBRIC_HASH}
+    if dataset.sha256 in FROZEN_SET_HASHES:
+        rubrics.add(FROZEN_RUBRIC_HASH)
+    if bindings.judge_model != JUDGE_MODEL or bindings.rubric_sha256 not in rubrics:
         raise ValueError("Judge identity/rubric must be pinned")
+    if isinstance(judge, BlindJudge) and digest(judge.rubric.encode()) != bindings.rubric_sha256:
+        raise ValueError("Judge prompt differs from report rubric")
+    if bindings.rubric_scoring and bindings.criteria_rubric_sha256 != CRITERIA_RUBRIC_HASH:
+        raise ValueError("Criterion judge rubric must be pinned")
     if bindings.prompt_sha256 != digest(SYSTEM_PROMPT.encode()):
         raise ValueError("Serving prompt differs from report prompt")
     if not bindings.model_arns or set(bindings.model_arns) - {"without", "with", "search"}:
@@ -179,7 +203,8 @@ def run_evaluation(
                 answer = answerer.answer_search(case.question.question, arn, documents)
             else:
                 answer = getattr(answerer, f"answer_{mode}")(case.question.question, arn)
-            vetoes = deterministic_checks(case, answer.answer)
+            check = frozen_checks if dataset.sha256 in FROZEN_SET_HASHES else deterministic_checks
+            vetoes = check(case, answer.answer)
             rows.append(
                 {
                     "question": case.question.question,
@@ -193,6 +218,34 @@ def run_evaluation(
     verdicts = judge.score(rows)
     if len(verdicts) != len(rows):
         raise ValueError("Judge result count mismatch")
+    criterion_rows, criterion_owners = [], []
+    if bindings.rubric_scoring:
+        for index, (row, (_, case, _)) in enumerate(zip(rows, metadata, strict=True)):
+            for criterion in case.criteria:
+                criterion_rows.append(
+                    {
+                        **row,
+                        "rubric": encoded(
+                            {
+                                "criterion": criterion.text,
+                                "source_quote": criterion.supporting_quote,
+                            }
+                        ).decode(),
+                        "required": [],
+                    }
+                )
+                criterion_owners.append((index, criterion.id))
+    criterion_results = defaultdict(list)
+    if criterion_rows:
+        scored = judge.score_criteria(criterion_rows)
+        if len(scored) != len(criterion_rows):
+            raise ValueError("Criterion judge result count mismatch")
+        for (index, id), verdict in zip(criterion_owners, scored, strict=True):
+            criterion_results[index].append(
+                CriterionResult(
+                    id=id, passed=verdict.correct and not verdict.invented, reason=verdict.reason
+                )
+            )
     results = []
     for row, (mode, case, vetoes), verdict in zip(rows, metadata, verdicts, strict=True):
         passed = not vetoes and verdict.correct and not verdict.invented
@@ -208,6 +261,9 @@ def run_evaluation(
                 passed=passed,
                 score=float(passed),
                 reasons=reasons,
+                bucket=case.bucket,
+                invented=verdict.invented or "invented numeric value" in vetoes,
+                criteria=criterion_results[len(results)],
             )
         )
     return EvalReport(
@@ -314,6 +370,7 @@ class ReportWriter:
         }
         summary.update(
             counts=counts(report),
+            diagnostics=diagnostic_counts(report),
             bindings=bindings.model_dump(mode="json"),
             caveats=CAVEATS,
             gate=gate.model_dump(mode="json") if gate else None,
@@ -367,6 +424,7 @@ class Evaluator:
         audit_hash: Callable[[str, str], str],
         dataset: QuestionSet | None = None,
         minimum_gain: float = 0,
+        rubric_scoring: bool = False,
     ):
         self.answerer, self.judge, self.writer = answerer, judge, writer
         self.current_arn, self.audit_hash = current_arn, audit_hash
@@ -374,6 +432,7 @@ class Evaluator:
         if not math.isfinite(minimum_gain) or not 0 <= minimum_gain <= 1:
             raise ValueError("minimum_gain must be an accuracy fraction from zero to one")
         self.minimum_gain = minimum_gain
+        self.rubric_scoring = rubric_scoring
 
     def evaluate(
         self,
@@ -402,6 +461,7 @@ class Evaluator:
                 "with": candidate_arn,
             },
             serving_version=expected_current_version or "base",
+            rubric_scoring=self.rubric_scoring,
         )
         combined = run_evaluation(
             dataset,

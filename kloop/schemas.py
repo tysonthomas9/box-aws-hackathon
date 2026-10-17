@@ -8,6 +8,7 @@ Identifier = Annotated[str, Field(min_length=1)]
 QuestionKind = Literal["fact", "two_fact", "procedure", "untold", "unrelated"]
 Split = Literal["train", "dev", "hidden"]
 AskMode = Literal["without", "with", "search"]
+EvalBucket = Literal["in_documents_not_trained"]
 
 
 class Schema(BaseModel):
@@ -88,6 +89,12 @@ class AskJob(PinnedModel):
     error: str | None = None
 
 
+class CriterionResult(Schema):
+    id: Identifier
+    passed: bool = Field(strict=True)
+    reason: str
+
+
 class EvalResult(Schema):
     question_id: Identifier
     kind: QuestionKind
@@ -96,6 +103,9 @@ class EvalResult(Schema):
     passed: bool
     score: Annotated[float, Field(ge=0, le=1, allow_inf_nan=False)]
     reasons: list[str] = Field(default_factory=list)
+    bucket: EvalBucket | None = None
+    invented: bool = False
+    criteria: list[CriterionResult] = Field(default_factory=list)
 
 
 class EvalReport(Schema):
