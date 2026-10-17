@@ -17,7 +17,8 @@ answer-smoke:
 
 AWS_PROFILE ?= box-hackathon
 NAME_PREFIX ?= kloop
-export AWS_PROFILE NAME_PREFIX
+bootstrap plan deploy destroy infra-smoke seed box-smoke answer-smoke: export AWS_PROFILE := $(AWS_PROFILE)
+bootstrap plan deploy destroy infra-smoke seed box-smoke answer-smoke: export NAME_PREFIX := $(NAME_PREFIX)
 
 .PHONY: bootstrap build plan deploy destroy
 bootstrap:
