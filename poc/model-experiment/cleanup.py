@@ -31,6 +31,8 @@ def main():
             entry['role_deleted_at']=now();save(ledger,path)
         if not entry.get('logs_deleted_at'):
             streams=aws('logs','describe-log-streams','--log-group-name',GROUP,'--log-stream-name-prefix',state['name'])['logStreams']
+            entry['log_streams_found']=len(streams)
+            entry['log_streams_deleted']=[]
             for stream in streams:
                 name=stream['logStreamName']
                 if not name.startswith(state['name']+'/'):raise ValueError('Unexpected log prefix')
@@ -39,6 +41,7 @@ def main():
                 entry['log_archive_sha256']=hashlib.sha256(local.read_bytes()).hexdigest()
                 save(ledger,path)
                 aws('logs','delete-log-stream','--log-group-name',GROUP,'--log-stream-name',name)
+                entry['log_streams_deleted'].append(name)
             entry['logs_deleted_at']=now();save(ledger,path)
         script='train.py' if kind.startswith('train') else 'eval_runtime.py'
         data='train.jsonl' if kind.startswith('train') else 'evaluation.json'

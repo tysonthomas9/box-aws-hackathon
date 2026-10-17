@@ -1,0 +1,23 @@
+{
+  "removed_exact_owned_tmp_paths": [
+    "/tmp/model-experiment-data-train.log",
+    "/tmp/model-experiment-data-dev.log",
+    "/tmp/model-experiment-mirror.log",
+    "/tmp/model-experiment-qwen8-hub.json",
+    "/tmp/model-experiment-qwen8-detail.json",
+    "/tmp/model-experiment-8b-objects.json",
+    "/tmp/model-experiment-8b-info.json",
+    "/tmp/model-experiment-review-dev.log",
+    "/tmp/model-experiment-dev-audit.json",
+    "/tmp/model-experiment-final-audit.log",
+    "/tmp/model-experiment-budget.log",
+    "/tmp/model-experiment-budget-after-amendment.json",
+    "/tmp/model-experiment-data-train-retry.log",
+    "/tmp/model-experiment-review-train.log",
+    "/tmp/model-experiment-score.log",
+    "/tmp/model-experiment-cleanup.log",
+    "/tmp/model-experiment-adjudicate.log",
+    "/tmp/model-experiment-final-budget.json"
+  ],
+  "outside_tmp_deletions": false
+}

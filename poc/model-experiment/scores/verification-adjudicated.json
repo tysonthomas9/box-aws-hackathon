@@ -1,0 +1,524 @@
+{
+  "verified": true,
+  "totals": {
+    "dev": {
+      "4B-base": {
+        "correct": 13,
+        "total": 30
+      },
+      "4B-search": {
+        "correct": 29,
+        "total": 30
+      },
+      "4B-lora": {
+        "correct": 24,
+        "total": 30
+      },
+      "8B-base": {
+        "correct": 6,
+        "total": 30
+      },
+      "8B-search": {
+        "correct": 29,
+        "total": 30
+      },
+      "8B-lora": {
+        "correct": 24,
+        "total": 30
+      }
+    },
+    "hidden": {
+      "4B-lora": {
+        "correct": 38,
+        "total": 52
+      },
+      "8B-lora": {
+        "correct": 35,
+        "total": 52
+      }
+    }
+  },
+  "counts": {
+    "dev": {
+      "4B-base": {
+        "fact": {
+          "correct": 1,
+          "total": 8,
+          "invented": 0
+        },
+        "general": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "near_miss": {
+          "correct": 0,
+          "total": 3,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 2,
+          "total": 4,
+          "invented": 1
+        },
+        "two_fact": {
+          "correct": 0,
+          "total": 3,
+          "invented": 0
+        },
+        "unknown": {
+          "correct": 6,
+          "total": 8,
+          "invented": 2
+        }
+      },
+      "4B-search": {
+        "fact": {
+          "correct": 8,
+          "total": 8,
+          "invented": 0
+        },
+        "general": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "near_miss": {
+          "correct": 2,
+          "total": 3,
+          "invented": 1
+        },
+        "procedure": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "two_fact": {
+          "correct": 3,
+          "total": 3,
+          "invented": 0
+        },
+        "unknown": {
+          "correct": 8,
+          "total": 8,
+          "invented": 0
+        }
+      },
+      "4B-lora": {
+        "fact": {
+          "correct": 7,
+          "total": 8,
+          "invented": 0
+        },
+        "general": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "near_miss": {
+          "correct": 1,
+          "total": 3,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 2,
+          "total": 4,
+          "invented": 0
+        },
+        "two_fact": {
+          "correct": 3,
+          "total": 3,
+          "invented": 0
+        },
+        "unknown": {
+          "correct": 7,
+          "total": 8,
+          "invented": 1
+        }
+      },
+      "8B-base": {
+        "fact": {
+          "correct": 0,
+          "total": 8,
+          "invented": 5
+        },
+        "general": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "near_miss": {
+          "correct": 0,
+          "total": 3,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 2,
+          "total": 4,
+          "invented": 1
+        },
+        "two_fact": {
+          "correct": 0,
+          "total": 3,
+          "invented": 3
+        },
+        "unknown": {
+          "correct": 0,
+          "total": 8,
+          "invented": 8
+        }
+      },
+      "8B-search": {
+        "fact": {
+          "correct": 8,
+          "total": 8,
+          "invented": 0
+        },
+        "general": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "near_miss": {
+          "correct": 3,
+          "total": 3,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "two_fact": {
+          "correct": 3,
+          "total": 3,
+          "invented": 0
+        },
+        "unknown": {
+          "correct": 7,
+          "total": 8,
+          "invented": 1
+        }
+      },
+      "8B-lora": {
+        "fact": {
+          "correct": 6,
+          "total": 8,
+          "invented": 0
+        },
+        "general": {
+          "correct": 4,
+          "total": 4,
+          "invented": 0
+        },
+        "near_miss": {
+          "correct": 1,
+          "total": 3,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 3,
+          "total": 4,
+          "invented": 0
+        },
+        "two_fact": {
+          "correct": 3,
+          "total": 3,
+          "invented": 0
+        },
+        "unknown": {
+          "correct": 7,
+          "total": 8,
+          "invented": 1
+        }
+      }
+    },
+    "hidden": {
+      "4B-lora": {
+        "fact": {
+          "correct": 14,
+          "total": 20,
+          "invented": 1
+        },
+        "heldout_procedure": {
+          "correct": 1,
+          "total": 1,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 5,
+          "total": 6,
+          "invented": 0
+        },
+        "two_fact": {
+          "correct": 0,
+          "total": 5,
+          "invented": 0
+        },
+        "unrelated": {
+          "correct": 10,
+          "total": 10,
+          "invented": 0
+        },
+        "untold": {
+          "correct": 8,
+          "total": 10,
+          "invented": 2
+        }
+      },
+      "8B-lora": {
+        "fact": {
+          "correct": 12,
+          "total": 20,
+          "invented": 2
+        },
+        "heldout_procedure": {
+          "correct": 0,
+          "total": 1,
+          "invented": 0
+        },
+        "procedure": {
+          "correct": 1,
+          "total": 6,
+          "invented": 0
+        },
+        "two_fact": {
+          "correct": 3,
+          "total": 5,
+          "invented": 2
+        },
+        "unrelated": {
+          "correct": 10,
+          "total": 10,
+          "invented": 0
+        },
+        "untold": {
+          "correct": 9,
+          "total": 10,
+          "invented": 1
+        }
+      }
+    }
+  },
+  "paired_4B_8B": {
+    "dev": {
+      "base": {
+        "all": {
+          "both_correct": 6,
+          "4B_only": 7,
+          "8B_only": 0,
+          "both_wrong": 17
+        },
+        "fact": {
+          "both_correct": 0,
+          "4B_only": 1,
+          "8B_only": 0,
+          "both_wrong": 7
+        },
+        "general": {
+          "both_correct": 4,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 0
+        },
+        "near_miss": {
+          "both_correct": 0,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 3
+        },
+        "procedure": {
+          "both_correct": 2,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 2
+        },
+        "two_fact": {
+          "both_correct": 0,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 3
+        },
+        "unknown": {
+          "both_correct": 0,
+          "4B_only": 6,
+          "8B_only": 0,
+          "both_wrong": 2
+        }
+      },
+      "search": {
+        "all": {
+          "both_correct": 28,
+          "4B_only": 1,
+          "8B_only": 1,
+          "both_wrong": 0
+        },
+        "fact": {
+          "both_correct": 8,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 0
+        },
+        "general": {
+          "both_correct": 4,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 0
+        },
+        "near_miss": {
+          "both_correct": 2,
+          "4B_only": 0,
+          "8B_only": 1,
+          "both_wrong": 0
+        },
+        "procedure": {
+          "both_correct": 4,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 0
+        },
+        "two_fact": {
+          "both_correct": 3,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 0
+        },
+        "unknown": {
+          "both_correct": 7,
+          "4B_only": 1,
+          "8B_only": 0,
+          "both_wrong": 0
+        }
+      },
+      "lora": {
+        "all": {
+          "both_correct": 22,
+          "4B_only": 2,
+          "8B_only": 2,
+          "both_wrong": 4
+        },
+        "fact": {
+          "both_correct": 5,
+          "4B_only": 2,
+          "8B_only": 1,
+          "both_wrong": 0
+        },
+        "general": {
+          "both_correct": 4,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 0
+        },
+        "near_miss": {
+          "both_correct": 1,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 2
+        },
+        "procedure": {
+          "both_correct": 2,
+          "4B_only": 0,
+          "8B_only": 1,
+          "both_wrong": 1
+        },
+        "two_fact": {
+          "both_correct": 3,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 0
+        },
+        "unknown": {
+          "both_correct": 7,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 1
+        }
+      }
+    },
+    "hidden": {
+      "lora": {
+        "all": {
+          "both_correct": 29,
+          "4B_only": 9,
+          "8B_only": 6,
+          "both_wrong": 8
+        },
+        "fact": {
+          "both_correct": 10,
+          "4B_only": 4,
+          "8B_only": 2,
+          "both_wrong": 4
+        },
+        "heldout_procedure": {
+          "both_correct": 0,
+          "4B_only": 1,
+          "8B_only": 0,
+          "both_wrong": 0
+        },
+        "procedure": {
+          "both_correct": 1,
+          "4B_only": 4,
+          "8B_only": 0,
+          "both_wrong": 1
+        },
+        "two_fact": {
+          "both_correct": 0,
+          "4B_only": 0,
+          "8B_only": 3,
+          "both_wrong": 2
+        },
+        "unrelated": {
+          "both_correct": 10,
+          "4B_only": 0,
+          "8B_only": 0,
+          "both_wrong": 0
+        },
+        "untold": {
+          "both_correct": 8,
+          "4B_only": 0,
+          "8B_only": 1,
+          "both_wrong": 1
+        }
+      }
+    }
+  },
+  "paired_baseline_lora": {
+    "dev": {
+      "4B-base-vs-lora": {
+        "both_correct": 13,
+        "lora_only": 11,
+        "both_wrong": 6
+      },
+      "4B-search-vs-lora": {
+        "both_correct": 23,
+        "baseline_only": 6,
+        "lora_only": 1
+      },
+      "8B-base-vs-lora": {
+        "lora_only": 18,
+        "both_correct": 6,
+        "both_wrong": 6
+      },
+      "8B-search-vs-lora": {
+        "baseline_only": 5,
+        "both_correct": 24,
+        "both_wrong": 1
+      }
+    },
+    "hidden": {}
+  },
+  "training_sha256": "ea7f4acc251974a35223326b3733c0e61b59d956a1c8e459db21705cc7e76af0",
+  "dev_sha256": "5773050a12cdb93f03ca9c3dcae628c4bd00612e26649778ce1f996ef47f77cf",
+  "results_sha256": "dbda3a51b95d5d14ddc1f73af1f6643c03263dcf6a37bc3650b3596048d09036",
+  "raw_response_sha256": {
+    "4": "9a0c420967e023cbb028d1184bdcbe40a2d738bb6bef0185c41679b857e69a75",
+    "8": "adf8bfa9cd5c8abb525ec639aff6c4ae62f85cd17a8d04733525e0628c575df6"
+  },
+  "checks": [
+    "All284 blinded decisions reproduced from cached GLM-5 responses",
+    "No model size or mode in judge examples",
+    "Counts independently recomputed",
+    "Exact source response/data/control hashes match",
+    "Frozen training and dev hashes preserved"
+  ]
+}

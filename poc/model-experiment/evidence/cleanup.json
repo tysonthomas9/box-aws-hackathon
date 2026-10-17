@@ -2,19 +2,31 @@
   "jobs": {
     "train4": {
       "role_deleted_at": "2026-10-17T08:04:21.169378+00:00",
-      "logs_deleted_at": "2026-10-17T08:04:21.701393+00:00"
+      "logs_deleted_at": "2026-10-17T08:04:21.701393+00:00",
+      "log_streams_found": 0,
+      "log_streams_deleted": [],
+      "log_note": "No task streams were present at cleanup; no archive or stream deletion occurred. logs_deleted_at records the absence check."
     },
     "train8": {
       "role_deleted_at": "2026-10-17T08:04:26.424239+00:00",
-      "logs_deleted_at": "2026-10-17T08:04:26.932617+00:00"
+      "logs_deleted_at": "2026-10-17T08:04:26.932617+00:00",
+      "log_streams_found": 0,
+      "log_streams_deleted": [],
+      "log_note": "No task streams were present at cleanup; no archive or stream deletion occurred. logs_deleted_at records the absence check."
     },
     "eval4": {
       "role_deleted_at": "2026-10-17T08:04:31.678388+00:00",
-      "logs_deleted_at": "2026-10-17T08:04:32.181656+00:00"
+      "logs_deleted_at": "2026-10-17T08:04:32.181656+00:00",
+      "log_streams_found": 0,
+      "log_streams_deleted": [],
+      "log_note": "No task streams were present at cleanup; no archive or stream deletion occurred. logs_deleted_at records the absence check."
     },
     "eval8": {
       "role_deleted_at": "2026-10-17T08:04:35.408222+00:00",
-      "logs_deleted_at": "2026-10-17T08:04:35.900000+00:00"
+      "logs_deleted_at": "2026-10-17T08:04:35.900000+00:00",
+      "log_streams_found": 0,
+      "log_streams_deleted": [],
+      "log_note": "No task streams were present at cleanup; no archive or stream deletion occurred. logs_deleted_at records the absence check."
     }
   },
   "deleted_objects": [

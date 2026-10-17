@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-17T07:48:20.476827+00:00",
+  "checked_at": "2026-10-17T08:07:49.396330+00:00",
   "limit_usd": null,
   "spend_policy": "Coordinator2026-10-17T07:48Z: spend caps lifted; report cost and avoid waste",
   "helper_usage": {
@@ -14,11 +14,11 @@
       }
     },
     "zai.glm-5": {
-      "calls": 15,
-      "cost_usd": 0.10772800000000002,
+      "calls": 51,
+      "cost_usd": 0.21464060000000004,
       "tokens": {
-        "inputTokens": 62512,
-        "outputTokens": 14130,
+        "inputTokens": 110423,
+        "outputTokens": 32568,
         "cacheReadInputTokens": 0,
         "cacheWriteInputTokens": 0
       }
@@ -38,24 +38,24 @@
       "rate_per_hour": 1.222
     },
     "eval4": {
-      "reserved": true,
-      "seconds": 1800,
-      "cost_usd": 0.7575,
+      "reserved": false,
+      "seconds": 415,
+      "cost_usd": 0.17464583333333333,
       "rate_per_hour": 1.515
     },
     "eval8": {
-      "reserved": true,
-      "seconds": 1800,
-      "cost_usd": 0.611,
+      "reserved": false,
+      "seconds": 550,
+      "cost_usd": 0.18669444444444447,
       "rate_per_hour": 1.222
     }
   },
   "reserves": {
-    "future_helper_calls_usd": 3.0,
+    "future_helper_calls_usd": 0,
     "bedrock_startup_and_model_storage_usd": 1.5,
     "s3_ebs_logs_requests_usd": 0.5
   },
-  "conservative_total_usd": 8.44401093111111,
+  "conservative_total_usd": 4.5437638088888885,
   "sources": [
     "https://aws.amazon.com/bedrock/pricing/",
     "evidence/training-prices.json"
