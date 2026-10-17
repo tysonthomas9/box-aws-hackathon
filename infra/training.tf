@@ -15,6 +15,22 @@ variable "training_instance_type" {
     error_message = "Select the approved g5 or g6 training instance."
   }
 }
+variable "training_dev_set_hash" {
+  type    = string
+  default = "e6de4efb1d9dacc6e5532d6ce8f6db9a35b83b681bc8a5fc8acc10e5983c978a"
+  validation {
+    condition     = can(regex("^[a-f0-9]{64}$", var.training_dev_set_hash))
+    error_message = "Use the frozen dev-set SHA256."
+  }
+}
+variable "training_snapshot_hash" {
+  type    = string
+  default = "ca913bfcfc2aa64ef185a7974292edc8e58ba0c37299f37ca06a4684573c2361"
+  validation {
+    condition     = can(regex("^[a-f0-9]{64}$", var.training_snapshot_hash))
+    error_message = "Use the approved training snapshot SHA256."
+  }
+}
 variable "training_hyperparameters" {
   type = object({ epochs = number, learning_rate = number, seed = number, max_length = number, gradient_accumulation = number, minimum_gain = number })
   default = {
@@ -41,23 +57,25 @@ locals {
   import_job_arn       = "arn:aws:bedrock:us-east-2:${local.account}:model-import-job/*"
   imported_model_arn   = "arn:aws:bedrock:us-east-2:${local.account}:imported-model/*"
   training_env = merge({
-    KLOOP_TRAIN_DEPLOYMENT     = local.prefix
-    KLOOP_TRAIN_BASE_MODEL_ID  = var.training_base_model_id
-    KLOOP_TRAIN_BASE_S3_URI    = var.training_base_s3_uri
-    KLOOP_TRAIN_INSTANCE_TYPE  = var.training_instance_type
-    KLOOP_BASE_MODEL_ID        = var.base_import_arn
-    KLOOP_REPORTS_FOLDER_ID    = var.box_reports_folder_id
-    KLOOP_TRAINING_ARN         = "arn:aws:states:us-east-2:${local.account}:stateMachine:${local.prefix}-training"
-    KLOOP_BOX_FOLDER_ID        = var.box_folder_id
-    KLOOP_ARTIFACT_BUCKET      = aws_s3_bucket.data["artifacts"].id
-    KLOOP_VERSIONS_TABLE       = aws_dynamodb_table.records["versions"].name
-    KLOOP_ASK_JOBS_TABLE       = aws_dynamodb_table.records["ask_jobs"].name
-    KLOOP_ITEMS_TABLE          = aws_dynamodb_table.records["items"].name
-    KLOOP_CLEANUP_LEDGER_TABLE = aws_dynamodb_table.records["cleanup_ledger"].name
-    KLOOP_SAGEMAKER_ROLE       = aws_iam_role.training["sagemaker"].arn
-    KLOOP_IMPORT_ROLE          = aws_iam_role.training["bedrock"].arn
-    KLOOP_BOX_SECRET_ID        = data.aws_secretsmanager_secret.box.arn
-    KLOOP_EVALUATION_FUNCTION  = "arn:aws:lambda:us-east-2:${local.account}:function:${local.prefix}-evaluation"
+    KLOOP_TRAIN_DEV_SET_HASH           = var.training_dev_set_hash
+    KLOOP_TRAIN_TRAINING_SNAPSHOT_HASH = var.training_snapshot_hash
+    KLOOP_TRAIN_DEPLOYMENT             = local.prefix
+    KLOOP_TRAIN_BASE_MODEL_ID          = var.training_base_model_id
+    KLOOP_TRAIN_BASE_S3_URI            = var.training_base_s3_uri
+    KLOOP_TRAIN_INSTANCE_TYPE          = var.training_instance_type
+    KLOOP_BASE_MODEL_ID                = var.base_import_arn
+    KLOOP_REPORTS_FOLDER_ID            = var.box_reports_folder_id
+    KLOOP_TRAINING_ARN                 = "arn:aws:states:us-east-2:${local.account}:stateMachine:${local.prefix}-training"
+    KLOOP_BOX_FOLDER_ID                = var.box_folder_id
+    KLOOP_ARTIFACT_BUCKET              = aws_s3_bucket.data["artifacts"].id
+    KLOOP_VERSIONS_TABLE               = aws_dynamodb_table.records["versions"].name
+    KLOOP_ASK_JOBS_TABLE               = aws_dynamodb_table.records["ask_jobs"].name
+    KLOOP_ITEMS_TABLE                  = aws_dynamodb_table.records["items"].name
+    KLOOP_CLEANUP_LEDGER_TABLE         = aws_dynamodb_table.records["cleanup_ledger"].name
+    KLOOP_SAGEMAKER_ROLE               = aws_iam_role.training["sagemaker"].arn
+    KLOOP_IMPORT_ROLE                  = aws_iam_role.training["bedrock"].arn
+    KLOOP_BOX_SECRET_ID                = data.aws_secretsmanager_secret.box.arn
+    KLOOP_EVALUATION_FUNCTION          = "arn:aws:lambda:us-east-2:${local.account}:function:${local.prefix}-evaluation"
   }, { for key, value in var.training_hyperparameters : "KLOOP_TRAIN_${upper(key)}" => tostring(value) })
 }
 
