@@ -16,6 +16,9 @@ def test_deploy_uploads_only_built_web_assets(tmp_path, monkeypatch):
     (dist / "index.html").write_text("static export")
     (dist / "assets" / "chat.js").write_text("bundled code")
     session = Mock()
+    session.client.return_value.create_invalidation.return_value = {
+        "Invalidation": {"Id": "fake-refresh"}
+    }
     outputs = {
         key: {"value": value}
         for key, value in {

@@ -406,7 +406,7 @@
             "States.ALL"
           ],
           "ResultPath": "$.cleanup_error",
-          "Next": "ReleaseFailure"
+          "Next": "UnresolvedCleanup"
         }
       ]
     },
@@ -435,7 +435,7 @@
         {
           "Variable": "$.polls.count",
           "NumericGreaterThanEquals": 90,
-          "Next": "ReleaseFailure"
+          "Next": "UnresolvedCleanup"
         }
       ],
       "Default": "WaitCleanup"
@@ -461,23 +461,6 @@
       "ResultPath": "$.release",
       "TimeoutSeconds": 60,
       "Next": "Outcome"
-    },
-    "ReleaseFailure": {
-      "Type": "Task",
-      "Resource": "arn:aws:states:::lambda:invoke",
-      "Parameters": {
-        "FunctionName": "${worker_arn}",
-        "Payload": {
-          "action": "release",
-          "version_id.$": "$.version_id"
-        }
-      },
-      "ResultSelector": {
-        "value.$": "$.Payload"
-      },
-      "ResultPath": "$.release",
-      "TimeoutSeconds": 60,
-      "Next": "UnresolvedCleanup"
     },
     "UnresolvedCleanup": {
       "Type": "Fail",

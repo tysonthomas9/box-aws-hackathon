@@ -338,6 +338,7 @@ def worker(table, snapshot):
         training_role="role",
         import_role="role",
         dev_bytes=Path(DEV_PATH).read_bytes(),
+        clock=lambda: 10,
     )
     return result, store, bedrock, evaluator
 
@@ -408,8 +409,9 @@ def test_definition_has_sync_bounded_poll_and_failure_cleanup():
     assert work["Train"]["Resource"].endswith("sagemaker:createTrainingJob.sync")
     assert work["PollLimit"]["Choices"][0]["NumericGreaterThanEquals"] == 90
     assert states["Transaction"]["Catch"][0]["Next"] == "Cleanup"
-    assert states["Cleanup"]["Catch"][0]["Next"] == "ReleaseFailure"
-    assert states["ReleaseFailure"]["Next"] == "UnresolvedCleanup"
+    assert states["Cleanup"]["Catch"][0]["Next"] == "UnresolvedCleanup"
+    assert states["CleanupLimit"]["Choices"][0]["Next"] == "UnresolvedCleanup"
+    assert "ReleaseFailure" not in states
     for graph in [states, work]:
         for state in graph.values():
             targets = [state["Next"]] if "Next" in state else []
@@ -440,7 +442,8 @@ def test_recovery_reconciles_resources_after_cleanup_released_lock(worker):
     assert not w.recover("run", "FAILED", 20000)
     bedrock.status = "Completed"
     store.acquire("successor", 20001)
-    assert w.recover("run", "FAILED", 20002)
+    assert not w.recover("run", "FAILED", 20002)
+    assert w.recover("run", "FAILED", 20930)
     assert store.lock()["owner"] == "successor"
     assert not w.ledger.entries()
 
@@ -1938,3 +1941,124 @@ def test_partial_prepare_still_requires_cloud_audit_and_exact_kind_targets(worke
     evaluator.return_value = {"passed": True, "sha256": "c" * 64}
     assert w.handle("prepare", "run")["request"]["TrainingJobName"] == "run"
     assert store.get("run").manifest["training_row_counts"] == counts
+
+
+def test_aborted_generation_fences_next_paid_call_and_retains_lock_until_return(worker):
+    from kloop.train.helpers import TrainingHelpers
+
+    w, store, *_ = worker
+    w.clock = lambda: 100
+    native = Mock()
+    helper = TrainingHelpers(native, w.artifacts)
+    helper.batches = Mock(return_value=[("fact", 1)])
+    helper.bind_generation = Mock()
+    helper.check = Mock(return_value=True)
+    w.helpers = helper
+    w.slots.reserve("run")
+
+    def paid_call(**request):
+        assert not w.recover("run", "ABORTED", 100)
+        assert store.lock()["owner"] == "run"
+        assert len(w.ledger.entries()) == 1
+        with pytest.raises(TrainingBusy):
+            store.acquire("successor", 101)
+        return {"stopReason": "end_turn", "output": {"message": {"content": [{"text": "[]"}]}}}
+
+    native.converse.side_effect = paid_call
+
+    def generate(*args):
+        helper.call("zai.glm-5", "first admitted call", 256)
+        helper.call("zai.glm-5", "must not be admitted after abort", 256)
+        return []
+
+    helper.generate_batch = generate
+    with pytest.raises(TrainingBusy, match="cancelled"):
+        w.handle("generate", "run", batch=0)
+    assert native.converse.call_count == 1
+    assert store.lock() is not None
+    assert w.recover("run", "ABORTED", 101)
+    assert store.lock() is None and not w.ledger.entries()
+
+
+def test_recovery_waits_for_late_resource_registration(worker):
+    w, store, *_ = worker
+    w.clock = lambda: 100
+    store.begin_invocation("run", "slow-prepare", 100)
+    assert not w.recover("run", "FAILED", 100)
+    # A call admitted before cancellation completes after recovery's first visit.
+    w.ledger.reserve("training:run", "sagemaker_training", "run")
+    w.sagemaker.describe_training_job.return_value["TrainingJobStatus"] = "InProgress"
+    store.end_invocation("run", "slow-prepare")
+    assert not w.recover("run", "FAILED", 101)
+    w.sagemaker.stop_training_job.assert_called_once_with(TrainingJobName="run")
+    assert store.lock()["owner"] == "run"
+    w.sagemaker.describe_training_job.return_value["TrainingJobStatus"] = "Stopped"
+    assert w.recover("run", "FAILED", 102)
+    assert store.lock() is None and not w.ledger.entries()
+
+
+def test_timed_out_invocation_retains_lock_until_maximum_lifetime(worker):
+    from kloop.train.state import INVOCATION_SECONDS
+
+    w, store, *_ = worker
+    w.clock = lambda: 100
+    store.begin_invocation("run", "timed-out-worker", 100)
+    assert not w.recover("run", "TIMED_OUT", 101)
+    with pytest.raises(TrainingBusy):
+        store.begin_invocation("run", "late-worker", 102)
+    assert not w.recover("run", "TIMED_OUT", 100 + INVOCATION_SECONDS - 1)
+    assert w.recover("run", "TIMED_OUT", 100 + INVOCATION_SECONDS)
+
+
+def test_release_cannot_bypass_incomplete_cleanup(worker):
+    w, store, *_ = worker
+    w.handle("prepare", "run")
+    w.sagemaker.describe_training_job.return_value["TrainingJobStatus"] = "InProgress"
+    assert not w.handle("cleanup", "run")["complete"]
+    with pytest.raises(TrainingBusy, match="cleanup"):
+        w.handle("release", "run")
+    assert store.lock()["owner"] == "run"
+
+
+def test_cancellation_wins_a_race_with_invocation_admission(worker, monkeypatch):
+    w, store, *_ = worker
+    transact = store.table.meta.client.transact_write_items
+
+    def cancel_before_commit(**request):
+        store.cancel("run", 100)
+        return transact(**request)
+
+    monkeypatch.setattr(store.table.meta.client, "transact_write_items", cancel_before_commit)
+    with pytest.raises(TrainingBusy):
+        store.begin_invocation("run", "racing-worker", 100)
+    assert store.storage.list("training_invocations:run") == []
+    assert not store.settled("run", 100)
+
+
+def test_cleanup_waits_for_every_admitted_invocation(worker):
+    w, store, *_ = worker
+    w.clock = lambda: 100
+    store.begin_invocation("run", "first", 100)
+    store.begin_invocation("run", "second", 100)
+    assert not w.handle("cleanup", "run")["complete"]
+    store.end_invocation("run", "first")
+    assert not w.handle("cleanup", "run")["complete"]
+    store.end_invocation("run", "second")
+    assert w.handle("cleanup", "run")["complete"]
+    w.handle("release", "run")
+    assert store.lock() is None
+
+
+def test_legacy_untracked_lock_waits_full_lifetime_after_cancellation(worker):
+    from kloop.train.state import INVOCATION_SECONDS
+
+    w, store, *_ = worker
+    store.table.update_item(
+        Key={"pk": "training_control", "sk": "lock"},
+        UpdateExpression="REMOVE invocation_tracking",
+    )
+    assert not w.recover("run", "ABORTED", 100)
+    # Retries must not keep extending the quiet period.
+    assert not w.recover("run", "ABORTED", 200)
+    assert w.recover("run", "ABORTED", 100 + INVOCATION_SECONDS)
+    assert store.lock() is None

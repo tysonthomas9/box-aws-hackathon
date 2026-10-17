@@ -184,10 +184,13 @@ def definition(worker_arn: str) -> dict:
         work["Train"]["Parameters"][name + ".$"] = f"$.prepare.value.request.{name}"
     cleanup = task("cleanup", "CleanupStatus", seconds=60)
     cleanup["Retry"] = [{"ErrorEquals": ["States.ALL"], "IntervalSeconds": 10, "MaxAttempts": 3}]
-    # Cleanup exceptions MUST still release the lock; ledger reservations block
-    # future training until recovery reconciles resources, even after release.
+    # Cleanup failures retain ownership; terminal recovery reconciles outstanding work.
     cleanup["Catch"] = [
-        {"ErrorEquals": ["States.ALL"], "ResultPath": "$.cleanup_error", "Next": "ReleaseFailure"}
+        {
+            "ErrorEquals": ["States.ALL"],
+            "ResultPath": "$.cleanup_error",
+            "Next": "UnresolvedCleanup",
+        }
     ]
     return {
         "Comment": "Training transaction; Standard required; recovery handles abort/timeouts",
@@ -233,14 +236,13 @@ def definition(worker_arn: str) -> dict:
                     {
                         "Variable": "$.polls.count",
                         "NumericGreaterThanEquals": 90,
-                        "Next": "ReleaseFailure",
+                        "Next": "UnresolvedCleanup",
                     }
                 ],
                 "Default": "WaitCleanup",
             },
             "WaitCleanup": {"Type": "Wait", "Seconds": 30, "Next": "Cleanup"},
             "Release": task("release", "Outcome", seconds=60),
-            "ReleaseFailure": task("release", "UnresolvedCleanup", seconds=60),
             "UnresolvedCleanup": {"Type": "Fail", "Error": "CleanupNeedsRecovery"},
             "Outcome": {
                 "Type": "Choice",

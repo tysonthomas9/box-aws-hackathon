@@ -1,12 +1,15 @@
 """Restartable workflow actions; resource failures retain ledger ownership."""
 
+import time
 from pathlib import Path
+from uuid import uuid4
 
 from kloop.answer import ModelWarming
 from kloop.schemas import ApprovedSnapshot
 from kloop.train.config import MEDICAL_DEV_HASH, TrainingConfig
 from kloop.train.data import TrainingRow
 from kloop.train.job_request import training_request
+from kloop.train.state import INVOCATION_SECONDS, TrainingBusy
 
 
 class TrainingWorker:
@@ -29,6 +32,7 @@ class TrainingWorker:
         helpers=None,
         base_model_arn=None,
         credit_check=None,
+        clock=time.time,
     ):
         self.store, self.snapshots, self.builder = store, snapshots, builder
         self.slots, self.ledger, self.sagemaker = slots, ledger, sagemaker
@@ -38,9 +42,40 @@ class TrainingWorker:
         self.helpers = helpers
         self.base_model_arn = base_model_arn
         self.credit_check = credit_check
+        self.clock = clock
 
     def handle(
         self, action: str, version_id: str, *, batch: int | None = None, generation_pass: int = 1
+    ) -> dict:
+        if action in {"cleanup", "release"}:
+            return self._handle(action, version_id)
+        token, started = uuid4().hex, int(self.clock())
+        self.store.begin_invocation(version_id, token, started)
+        before_call = getattr(self.helpers, "before_call", None)
+
+        def admit():
+            self.store.assert_active(version_id)
+            if self.clock() >= started + INVOCATION_SECONDS:
+                raise TrainingBusy("Training invocation lifetime ended")
+
+        def helper_admit():
+            admit()
+            if before_call is not None:
+                before_call()
+
+        try:
+            if self.helpers is not None:
+                self.helpers.before_call = helper_admit
+            return self._handle(
+                action, version_id, batch=batch, generation_pass=generation_pass, admit=admit
+            )
+        finally:
+            if self.helpers is not None:
+                self.helpers.before_call = before_call
+            self.store.end_invocation(version_id, token)
+
+    def _handle(
+        self, action, version_id, *, batch=None, generation_pass=1, admit=lambda: None
     ) -> dict:
         version = self.store.get(version_id)
         if version is None:
@@ -65,6 +100,7 @@ class TrainingWorker:
         import_name = version.manifest.get("active_import_name", version.id)
         if version.manifest["dev_set_hash"] != config.dev_set_hash:
             raise ValueError("Version and recipe dev bindings differ")
+        admit()
         if action in {"batches", "generate"}:
             if self.helpers is None:
                 raise RuntimeError("Training helper generation is not configured")
@@ -112,6 +148,7 @@ class TrainingWorker:
                 self.snapshots.get("approved_snapshots", version.manifest["snapshot_hash"])
             )
             data = self.builder.build(snapshot, config, self.dev_bytes)
+            admit()
             version.manifest.update(
                 {
                     "manifest_hash": data["manifest_hash"],
@@ -151,6 +188,7 @@ class TrainingWorker:
                 ):
                     raise ValueError("Training per-kind counts differ from the approved recipe")
             if config.dev_set_hash == MEDICAL_DEV_HASH:
+                admit()
                 audit = self.evaluate(
                     action="audit",
                     manifest_hash=data["manifest_hash"],
@@ -159,6 +197,7 @@ class TrainingWorker:
                 if not audit["passed"]:
                     raise ValueError("Medical rows failed the pre-training overlap audit")
                 version.manifest["pretraining_audit"] = audit
+            admit()
             self.artifacts.put(
                 f"training/{version.id}/code/job.py",
                 Path(__file__).with_name("job.py").read_bytes(),
@@ -181,6 +220,7 @@ class TrainingWorker:
             self.ledger.resolve(f"training:{version.id}", details["TrainingJobArn"])
             if len(self.slots.census()) >= 3:
                 raise RuntimeError("Import slots filled during training; refuse create")
+            admit()
             version.manifest["import_attempted"] = True
             self.store.save(version)
             job = self.slots.create(
@@ -228,6 +268,7 @@ class TrainingWorker:
                     import_attempted=False,
                 )
                 self.store.save(version)
+            admit()
             self.slots.reserve(retry_name)
             version.manifest["import_attempted"] = True
             self.store.save(version)
@@ -239,6 +280,7 @@ class TrainingWorker:
             self.store.save(version)
             return {"complete": True, "job_arn": job}
         if action == "evaluate":
+            admit()
             result = self.evaluate(
                 candidate_arn=version.import_arn,
                 snapshot_hash=version.manifest["snapshot_hash"],
@@ -253,6 +295,7 @@ class TrainingWorker:
             self.store.save(version)
             return {"passed": result.passed}
         if action == "promote":
+            admit()
             if version.status == "promoted" and self.store.current() == version.id:
                 return {"promoted": True}
             if version.status != "ready" or not version.manifest["evaluation"]["passed"]:
@@ -266,11 +309,30 @@ class TrainingWorker:
         if action == "cleanup":
             return {"complete": self.cleanup(version)}
         if action == "release":
+            if not version.manifest.get("cleanup_complete") or not self.store.settled(
+                version.id, int(self.clock())
+            ):
+                raise TrainingBusy("Training cleanup has not settled")
             self.store.release(version.id)
             return {}
         raise ValueError("Unknown training action")
 
-    def cleanup(self, version) -> bool:
+    def cleanup(self, version, *, now=None) -> bool:
+        now = int(self.clock()) if now is None else now
+        fence = self.store.cancel(version.id, now)
+        if not self.store.settled(version.id, now):
+            return False
+        # No admitted invocation can still create resources or overwrite this version.
+        version = self.store.get(version.id)
+        version.manifest["cancelled_at"] = int(fence["cancelled_at"])
+        if not self._cleanup(version):
+            self.store.save(version)
+            return False
+        version.manifest["cleanup_complete"] = True
+        self.store.save(version)
+        return True
+
+    def _cleanup(self, version) -> bool:
         # Stop/settle GPU before releasing the lock. Failed attempts are retryable.
         row = next((r for r in self.ledger.entries() if r["key"] == f"training:{version.id}"), None)
         if row:
@@ -311,7 +373,7 @@ class TrainingWorker:
         version = self.store.get(version_id)
         if version is None:
             raise KeyError(version_id)
-        if self.cleanup(version):
+        if self.cleanup(version, now=now):
             self.store.release(version_id)  # conditional; never unlock a successor
             return True
         return False
