@@ -10,6 +10,7 @@ from kloop.train.config import MEDICAL_DEV_HASH, TrainingConfig
 from kloop.train.data import TrainingRow
 from kloop.train.job_request import training_request
 from kloop.train.state import INVOCATION_SECONDS, TrainingBusy
+from kloop.train.weights import record_weights
 
 
 class TrainingWorker:
@@ -232,6 +233,8 @@ class TrainingWorker:
                 raise RuntimeError("Import slots filled during training; refuse create")
             admit()
             version.manifest["import_attempted"] = True
+            self.store.save(version)
+            record_weights(version, self.artifacts, self.bucket)
             self.store.save(version)
             job = self.slots.create(
                 version.id, self.import_role, f"s3://{self.bucket}/training/{version.id}/merged/"

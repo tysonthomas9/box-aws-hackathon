@@ -211,7 +211,7 @@ def handler(event, context):
     if event.get("recover_expired"):
         store = store_for(aws)
         lock = store.lock()
-        if not lock or int(time.time()) < lock["until"]:
+        if not lock or lock["owner"].startswith("kloop-load-") or int(time.time()) < lock["until"]:
             return {"recovered": False}
         states = aws.client("stepfunctions")
         arn = os.environ["KLOOP_TRAINING_ARN"].replace(":stateMachine:", ":execution:")

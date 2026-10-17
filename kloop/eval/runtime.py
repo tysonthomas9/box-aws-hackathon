@@ -156,4 +156,7 @@ def handler(event, context):
         sha = AuditVerifier(artifacts).verify(event["manifest_hash"], event["snapshot_hash"])
         return {"passed": True, "sha256": sha}
     evaluator = factory(session)
-    return evaluator.evaluate(**event).model_dump(mode="json")
+    from kloop.train.model_activity import evaluation_pin
+
+    with evaluation_pin(session, event):
+        return evaluator.evaluate(**event).model_dump(mode="json")

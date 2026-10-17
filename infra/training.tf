@@ -80,6 +80,7 @@ locals {
     KLOOP_TRAIN_INSTANCE_TYPE          = var.training_instance_type
     KLOOP_BASE_MODEL_ID                = var.base_import_arn
     KLOOP_REPORTS_FOLDER_ID            = var.box_reports_folder_id
+    KLOOP_LOADING_ARN                  = "arn:aws:states:us-east-2:${local.account}:stateMachine:${local.prefix}-loading"
     KLOOP_TRAINING_ARN                 = "arn:aws:states:us-east-2:${local.account}:stateMachine:${local.prefix}-training"
     KLOOP_BOX_FOLDER_ID                = var.box_folder_id
     KLOOP_ARTIFACT_BUCKET              = aws_s3_bucket.data["artifacts"].id

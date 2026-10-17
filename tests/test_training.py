@@ -296,6 +296,19 @@ def test_import_reservation_precedes_create_and_resolution_is_last(table):
 @pytest.fixture
 def worker(table, snapshot):
     store, artifacts = DynamoTrainingStore(table), MemoryArtifacts()
+    artifacts.put(
+        "training/run/report.json",
+        json.dumps(
+            {
+                "merged_s3_uri": "s3://bucket/training/run/merged/",
+                "files": {
+                    f"training/run/merged/{name}": {"bytes": 1, "sha256": "a" * 64}
+                    for name in ("config.json", "tokenizer_config.json", "model.safetensors")
+                },
+            }
+        ).encode(),
+        "application/json",
+    )
     store.acquire("run", 1)
     store.save(
         ModelVersion(
