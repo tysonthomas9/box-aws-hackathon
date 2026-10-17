@@ -1,0 +1,8 @@
+{
+  "status": "unused",
+  "reason": "Superseded by Tyson Kimi K3 generator decision before training or evaluation",
+  "recorded_at": "2026-10-17T04:42:07.180722+00:00",
+  "generator": "deepseek.v3.2",
+  "completed_batches": 10,
+  "training_usage": false
+}

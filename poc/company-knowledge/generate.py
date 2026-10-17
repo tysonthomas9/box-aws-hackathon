@@ -45,10 +45,13 @@ def jobs(pack):
             "Write 10 questions that assert a wrong value or person for ONE supplied fact, "
             "with an answer correcting the false premise using only that fact. "
             "Each object must include item_id naming that fact's id.")
-    for number in range(5):
+    categories = ["integer arithmetic and unit conversion", "translation and grammar",
+                  "basic Python expressions and functions", "sorting and string transformations",
+                  "everyday science and geography"]
+    for number, category in enumerate(categories):
         yield f"general-{number}", "general", 20, [], (
             "Write 20 varied short ordinary instruction-following question/answer pairs. "
-            "Use simple arithmetic, everyday language, code, sorting, or general knowledge. "
+            f"Use this batch's category: {category}. "
             "Do not mention Halvard, its entities, or its documents.")
 
 
@@ -108,6 +111,7 @@ def main():
     parser.add_argument("--plan", action="store_true")
     parser.add_argument("--budget-waiver", action="store_true",
                         help="Use coordinator's 2026-10-17 temporary waiver pending alert recipient")
+    parser.add_argument("--output-dir", type=Path, default=ROOT / "generated/kimi-k3")
     args = parser.parse_args()
     pack = json.loads((ROOT / "pack.json").read_text())
     planned = list(jobs(pack))
@@ -116,33 +120,39 @@ def main():
                           "by_kind": {kind: sum(j[2] for j in planned if j[1] == kind)
                                       for kind in sorted({j[1] for j in planned})}}, indent=2))
         return
-    if args.model and args.model.startswith("us.anthropic."):
-        # Coordinator explicitly approved US-only Claude routing on 2026-10-17.
+    routing = None
+    if args.model and (args.model.startswith("us.anthropic.") or args.model == "us.moonshotai.kimi-k3"):
+        # Coordinator explicitly approved these US-only routes on 2026-10-17.
         profile = aws("bedrock", "get-inference-profile", "--inference-profile-identifier", args.model)
         destinations = [m["modelArn"].split(":")[3] for m in profile.get("models", [])]
         if not destinations or any(not region.startswith("us-") for region in destinations):
-            raise RuntimeError("Claude profile destinations must all be US Regions")
-    elif args.model and args.model.startswith("anthropic."):
-        models = aws("bedrock", "list-foundation-models", "--by-provider", "Anthropic")["modelSummaries"]
+            raise RuntimeError("Approved profile destinations must all be US Regions")
+        routing = {"profile_arn": profile["inferenceProfileArn"], "regions": destinations}
+    elif args.model and (args.model.startswith("anthropic.") or args.model == "deepseek.v3.2"):
+        models = aws("bedrock", "list-foundation-models")["modelSummaries"]
         match = next((m for m in models if m["modelId"] == args.model), None)
         if (not match or "ON_DEMAND" not in match.get("inferenceTypesSupported", [])
                 or match.get("modelLifecycle", {}).get("status") != "ACTIVE"):
-            raise RuntimeError("Selected Claude model has no active direct on-demand path in us-east-2. No invocation made.")
+            raise RuntimeError("Selected model has no active direct on-demand path in us-east-2. No invocation made.")
     else:
-        raise ValueError("Specify a direct Claude ID or an approved us.anthropic profile ID")
+        raise ValueError("Specify the approved Kimi US profile, DeepSeek fallback, or prior approved Claude ID")
     budget_name = ({"waiver": "Coordinator 2026-10-17: pending Tyson alert email; stop above $10/action"}
                    if args.budget_waiver else check_budget())
-    output = ROOT / "generated"
-    output.mkdir(exist_ok=True)
+    output = args.output_dir
+    output.mkdir(exist_ok=True, parents=True)
     all_rows = []
     for batch_id, kind, count, items, instruction in planned:
         # No hidden or dev test content enters this request or its generation cache.
         context = items if items else pack["facts"] if kind != "general" else []
-        prompt = (instruction + '\nReturn ONLY a JSON array of objects with question and answer strings. '
+        prompt = (instruction + f'\nIndependent generation batch: {batch_id}. '
+                  'Return ONLY a JSON array of objects with question and answer strings. '
                   'No markdown.\nApproved context:\n' + json.dumps(context))
         request = {"modelId": args.model, "messages": [{"role": "user", "content": [{"text": prompt}]}],
                    "inferenceConfig": {"maxTokens": 4096, "temperature": .7},
                    "requestMetadata": {"project": "box-hackathon", "poc": "company-knowledge"}}
+        if args.model == "us.moonshotai.kimi-k3":
+            request["inferenceConfig"].pop("temperature")
+            request["inferenceConfig"]["maxTokens"] = 8192
         request_hash = hashlib.sha256(json.dumps(request, sort_keys=True).encode()).hexdigest()
         cached = output / f"{batch_id}.response.json"
         if cached.exists():
@@ -151,7 +161,7 @@ def main():
                 raise RuntimeError(f"Cached batch {batch_id} has a different request; use a fresh run folder")
         else:
             response = aws("bedrock-runtime", "converse", "--cli-input-json", json.dumps(request))
-            envelope = {"request_sha256": request_hash, "response": response,
+            envelope = {"request_sha256": request_hash, "request": request, "response": response,
                         "completed_at": datetime.now(timezone.utc).isoformat()}
             cached.write_text(json.dumps(envelope, indent=2) + "\n")
         response = envelope["response"]
@@ -175,6 +185,7 @@ def main():
         "budget": budget_name, "training_sha256": hashlib.sha256(data.encode()).hexdigest(),
         "pack_sha256": hashlib.sha256((ROOT / "pack.json").read_bytes()).hexdigest(),
         "target_model_config": json.loads((ROOT / "model-config.json").read_text()),
+        "routing": routing,
         "examples": len(all_rows), "review_status": "requires semantic review and overlap audit before training"
     }, indent=2) + "\n")
     print(f"Wrote {len(all_rows)} examples. Review correctness and run audit.py before training.")

@@ -1,0 +1,7 @@
+{
+  "generator": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "artifact": "F01.response.json",
+  "status": "unused",
+  "training_usage": false,
+  "reason": "Historical access probe/generation, superseded by Kimi K3 single-generator dataset"
+}

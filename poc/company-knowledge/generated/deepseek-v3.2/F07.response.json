@@ -1,0 +1,46 @@
+{
+  "request_sha256": "607ed6b52c801cdfda9411a220e78fc42dcdd83504ed133e905ea581b7163183",
+  "request": {
+    "modelId": "deepseek.v3.2",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Write 18 distinct single-fact questions. Each must concern ONLY the supplied fact. Do not combine facts or invent details. Vary user context and wording.\nReturn ONLY a JSON array of objects with question and answer strings. No markdown.\nApproved context:\n[{\"id\": \"F07\", \"subject\": \"Lumen onboarding\", \"text\": \"Lumen onboarding requires approval from Devika Pell.\", \"source\": \"lumen.txt\", \"answer\": \"Devika Pell\"}]"
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 4096,
+      "temperature": 0.7
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "[\n  {\"question\": \"Who must approve Lumen onboarding?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"For Lumen onboarding, whose approval is needed?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"Devika Pell must approve what process?\", \"answer\": \"Lumen onboarding\"},\n  {\"question\": \"Whose approval is a requirement for Lumen onboarding?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"Which individual's approval is required for onboarding to Lumen?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"To onboard to Lumen, who must give approval?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"What is the name of the approver for Lumen onboarding?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"Who is the required approver mentioned in the Lumen onboarding fact?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"The onboarding process for Lumen requires approval from whom?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"Can you name the person whose approval is mandatory for Lumen onboarding?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"Onboarding for Lumen is not complete without approval from who?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"Approval from which person is stipulated for Lumen onboarding?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"Who is identified as the necessary approver in the Lumen onboarding requirement?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"According to the fact, who holds the approval authority for Lumen onboarding?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"Lumen onboarding cannot proceed without a sign-off from who?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"What approval is explicitly linked to the Lumen onboarding process?\", \"answer\": \"Devika Pell\"},\n  {\"question\": \"The fact states that Devika Pell must approve what specific activity?\", \"answer\": \"Lumen onboarding\"},\n  {\"question\": \"For which procedure is Devika Pell's approval a stated requirement?\", \"answer\": \"Lumen onboarding\"}\n]"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 104,
+      "outputTokens": 453,
+      "totalTokens": 557
+    },
+    "metrics": {
+      "latencyMs": 10542
+    }
+  },
+  "completed_at": "2026-10-17T04:40:56.306742+00:00"
+}

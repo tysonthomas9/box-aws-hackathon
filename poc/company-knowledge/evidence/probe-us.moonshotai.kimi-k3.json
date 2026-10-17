@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-10-17T04:42:36.884278+00:00",
+  "request": {
+    "modelId": "us.moonshotai.kimi-k3",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Reply with only OK."
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 256
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "reasoningContent": {
+              "reasoningText": {
+                "text": "The user wants me to reply with only \"OK\". That's simple enough."
+              }
+            }
+          },
+          {
+            "text": "OK"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 90,
+      "outputTokens": 31,
+      "totalTokens": 121,
+      "cacheReadInputTokens": 0,
+      "cacheWriteInputTokens": 0
+    },
+    "metrics": {
+      "latencyMs": 3825
+    }
+  }
+}

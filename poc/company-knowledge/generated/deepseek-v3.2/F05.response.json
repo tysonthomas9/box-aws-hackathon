@@ -1,0 +1,46 @@
+{
+  "request_sha256": "1b6a352f5659b740c73cc7398414b84623ecb964016a16fd119ad12f2e97709c",
+  "request": {
+    "modelId": "deepseek.v3.2",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Write 18 distinct single-fact questions. Each must concern ONLY the supplied fact. Do not combine facts or invent details. Vary user context and wording.\nReturn ONLY a JSON array of objects with question and answer strings. No markdown.\nApproved context:\n[{\"id\": \"F05\", \"subject\": \"Tern incident desk\", \"text\": \"The Tern incident desk escalation channel is #tern-copper.\", \"source\": \"tern.txt\", \"answer\": \"#tern-copper\"}]"
+          }
+        ]
+      }
+    ],
+    "inferenceConfig": {
+      "maxTokens": 4096,
+      "temperature": 0.7
+    },
+    "requestMetadata": {
+      "project": "box-hackathon",
+      "poc": "company-knowledge"
+    }
+  },
+  "response": {
+    "output": {
+      "message": {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "[\n  {\"question\": \"What is the escalation channel for the Tern incident desk?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"Which Slack channel do I use to escalate a Tern desk incident?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"To where should a Tern incident desk issue be escalated?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"Where does the fact say to escalate Tern incident desk matters?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"What's the channel mentioned for Tern incident desk escalation?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"According to the provided fact, what is the Tern incident desk's escalation channel?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"I need to escalate an issue at the Tern incident desk. What channel is specified?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"What is #tern-copper used for, per the fact?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"For the Tern incident desk, what is the name of the escalation channel?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"Which channel is designated for escalating Tern incident desk tickets?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"Where should I direct an escalation from the Tern incident desk?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"What does the fact state the Tern incident desk escalation channel is?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"Please identify the escalation channel for the Tern incident desk.\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"If I'm using the Tern incident desk, where do I escalate problems?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"The Tern incident desk uses what specific channel for escalations?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"What is the exact channel ID for Tern incident desk escalations?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"Per the source, what channel handles Tern incident desk escalations?\", \"answer\": \"#tern-copper\"},\n  {\"question\": \"Regarding the Tern incident desk, what is the escalation point provided?\", \"answer\": \"#tern-copper\"}\n]"
+          }
+        ]
+      }
+    },
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 107,
+      "outputTokens": 486,
+      "totalTokens": 593
+    },
+    "metrics": {
+      "latencyMs": 10957
+    }
+  },
+  "completed_at": "2026-10-17T04:40:36.089565+00:00"
+}

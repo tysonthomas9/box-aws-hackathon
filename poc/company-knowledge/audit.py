@@ -22,6 +22,8 @@ def norm(text):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--training", type=Path)
+    parser.add_argument("--clean-output", type=Path,
+                        help="Write a new dataset excluding duplicate/overlapping rows; never change hidden data")
     args = parser.parse_args()
     freeze = json.loads((ROOT / "sealed/freeze.json").read_text())
     for name, key in (("sealed/hidden.jsonl", "hidden_sha256"), ("pack.json", "pack_sha256")):
@@ -40,7 +42,7 @@ def main():
         rows = [json.loads(line) for line in args.training.read_text().splitlines()]
         assert 300 <= len(rows) <= 500
         assert len({r["id"] for r in rows}) == len(rows)
-        seen, collisions = set(), []
+        seen, collisions, accepted, excluded = set(), [], [], []
         for row in rows:
             messages = row["messages"]
             assert [m["role"] for m in messages] == ["system", "user", "assistant"]
@@ -48,7 +50,9 @@ def main():
             assert all(isinstance(m["content"], str) and m["content"].strip() for m in messages)
             assert len(row["item_ids"]) <= 1, "Two-fact training is prohibited"
             question = norm(messages[1]["content"])
-            assert question not in seen, "Duplicate training question"
+            rejected = question in seen
+            if rejected:
+                excluded.append({"training_id": row["id"], "reason": "duplicate"})
             seen.add(question)
             assert "z83" not in norm(' '.join(m["content"] for m in messages)), "Held-out procedure leaked"
             for test in hidden:
@@ -56,14 +60,25 @@ def main():
                 a, b = set(question.split()), set(target.split())
                 similarity = max(SequenceMatcher(None, question, target).ratio(), len(a & b) / len(a | b))
                 if similarity >= .78:
+                    rejected = True
                     collisions.append({"training_id": row["id"], "hidden_id": test["id"],
                                        "similarity": round(similarity, 4)})
+            if not rejected:
+                accepted.append(row)
         result.update(training_audited=True, training_sha256=hashlib.sha256(args.training.read_bytes()).hexdigest(),
                       training_by_kind=dict(Counter(r["kind"] for r in rows)),
                       overlap_threshold=.78, collisions=collisions,
+                      duplicates=excluded,
                       semantic_review_required=True)
+        if args.clean_output:
+            assert args.clean_output.resolve() != args.training.resolve(), "Preserve original generated dataset"
+            assert 300 <= len(accepted) <= 500, "Too few clean examples; do not train"
+            data = ''.join(json.dumps(row, ensure_ascii=False) + '\n' for row in accepted)
+            args.clean_output.write_text(data)
+            result.update(clean_examples=len(accepted), clean_sha256=hashlib.sha256(data.encode()).hexdigest(),
+                          clean_by_kind=dict(Counter(r["kind"] for r in accepted)))
         print(json.dumps(result, indent=2))
-        if collisions:
+        if (collisions or excluded) and not args.clean_output:
             raise SystemExit("Overlap audit failed; do not train or rewrite the hidden set")
     else:
         print(json.dumps(result, indent=2))
