@@ -41,3 +41,7 @@ include kloop/box/commands.mk
 .PHONY: infra-smoke
 infra-smoke:
 	uv run --locked python scripts/infra.py smoke
+
+.PHONY: pack-check
+pack-check:
+	uv run --locked python pack/validate.py

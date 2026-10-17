@@ -1,0 +1,94 @@
+{
+  "format_version": 1,
+  "company": "Halvard Systems",
+  "created_at": "2026-10-17T07:04:25.790925+00:00",
+  "source": "poc/company-knowledge/",
+  "frozen_pack_sha256": "b4d7aef08e0dbb39c3007c317648e964ff5ff8f388a44c7e87a71755589c4320",
+  "files": {
+    "demo-scenarios.json": "973c717285846f8317af33236e5547e2d6c057621c34fa0e92fe5d684a53e6c9",
+    "documents/bracken.txt": "c094716dbbcd0eaf2c0bcceed4ebfe3ea795ec934c25c2f6f591261d6a3d15bf",
+    "documents/cirrus.txt": "5a7cccce03d6c33b34631bf8bb7f429376704246db7a2a85fc8195e3ec20dad5",
+    "documents/e42.txt": "5f5cc705ef85badab0c1a473fa7f7c92d3e67474368a61ee1c2de575b44d2d4e",
+    "documents/kestrel.txt": "73ce9103f8c9afc96219ae3aaeb0026ad637792652eb3abc0250270eab0a216e",
+    "documents/lumen.txt": "09c372019a03275d4b70d11696876d5036a95b3a3a708e2e799f4e4b4719a540",
+    "documents/nacre.txt": "58b89494807e5077107179eae4048f8813217496d872fe8b5cb50e334b8cc221",
+    "documents/orin.txt": "4dce7630808be7e1328a01fd73a90c099e9d56a08505078d2a1926e9fb65db7c",
+    "documents/quartz.txt": "b0fe1080e6324b86c6dbbee292418802150a1412b8bd7a0317575569b3651864",
+    "documents/r17.txt": "6a2e43fe7e3d285286ecc8f4ca351510174e5afcd14f9bf0b99bc8dc3896e738",
+    "documents/sable.txt": "e0fe6421dbd709f36123430beb095f4b7df4ebee2d4dffa3f3c9bae110d78a3e",
+    "documents/t09.txt": "cc97f081f5e52d324ca751ddbffd2249f2e07d0b6a9fe9ffe5217924cffbe966",
+    "documents/tern.txt": "e76c9e0b52b86d17cac242997890534fd0d2e64597eff365902870274282aa9c",
+    "documents/vela.txt": "55a469eae3b45d251d7d6ef51803a72bde4972777b2952bea48bbe5d59d6bdf9",
+    "gold.json": "a05446068040c5d27a0c48b0be30c9bf2731589d2568ceffabb2afc99c7caf76",
+    "pack.json": "b4d7aef08e0dbb39c3007c317648e964ff5ff8f388a44c7e87a71755589c4320",
+    "sealed/addendum-v2-audit.json": "87d80e16868641bc9dcdd02996cc61fb5be33e0b8c9945cc25edd76f2af36c6e",
+    "sealed/addendum-v2-manifest.json": "4ecaba68f5a287344f6786036c3ca474ccc7f77edea1f116120b0665f33bf552",
+    "sealed/addendum-v2.jsonl": "f8765dbf47a1cc5c12a93fa6be81e1e6ec737206cfb6fc6bf46d5ace37ad4457",
+    "sealed/freeze.json": "3c816bd7e73b6ef932425ac72314d73f8d9164b3d741328c50802cc474712711",
+    "sealed/hidden.jsonl": "aceed4dbde268e7f1a22cd6fcf99772a2e8b229e2dbe16645f97ba2a78ebb8ee",
+    "system-prompt.txt": "2df194da04ff137b72e7d80012e39ff9172a519657bf696a47d1dee0de5eb663",
+    "v2/changes.json": "3437effc905bbc06e535add3f8cdce329448786ff483f80342fcd63fb87499b4",
+    "v2/dev.jsonl": "c05982927efd55f93cfb95082d543752a6001a65049aaa21a180dacf720fe0f8",
+    "v2/documents/bracken.txt": "c094716dbbcd0eaf2c0bcceed4ebfe3ea795ec934c25c2f6f591261d6a3d15bf",
+    "v2/documents/cirrus.txt": "5a7cccce03d6c33b34631bf8bb7f429376704246db7a2a85fc8195e3ec20dad5",
+    "v2/documents/e42.txt": "5f5cc705ef85badab0c1a473fa7f7c92d3e67474368a61ee1c2de575b44d2d4e",
+    "v2/documents/kestrel.txt": "73ce9103f8c9afc96219ae3aaeb0026ad637792652eb3abc0250270eab0a216e",
+    "v2/documents/lumen.txt": "09c372019a03275d4b70d11696876d5036a95b3a3a708e2e799f4e4b4719a540",
+    "v2/documents/nacre.txt": "58b89494807e5077107179eae4048f8813217496d872fe8b5cb50e334b8cc221",
+    "v2/documents/orin.txt": "4dce7630808be7e1328a01fd73a90c099e9d56a08505078d2a1926e9fb65db7c",
+    "v2/documents/quartz.txt": "72d7c8419e92f1124dd9eeb350c120fde4c6463c170168c51ddfab3137ae75cb",
+    "v2/documents/r17.txt": "6a2e43fe7e3d285286ecc8f4ca351510174e5afcd14f9bf0b99bc8dc3896e738",
+    "v2/documents/sable.txt": "e3c44b762853b988bd2b39be223b7ec0b0cbe90b77f294ca6ed0f89e280a7108",
+    "v2/documents/t09.txt": "cc97f081f5e52d324ca751ddbffd2249f2e07d0b6a9fe9ffe5217924cffbe966",
+    "v2/documents/tern.txt": "e76c9e0b52b86d17cac242997890534fd0d2e64597eff365902870274282aa9c",
+    "v2/documents/vela.txt": "55a469eae3b45d251d7d6ef51803a72bde4972777b2952bea48bbe5d59d6bdf9",
+    "v2/gold.json": "35f72a6f109fec526daa2799bc8d6555b62d5c855b100330099aabe06e595cc0",
+    "v2/pack.json": "2a65496fa4076aadc82ac0dd1a81dc09f36aeca7cec5b1766f1f38e3c1236b74",
+    "v2/sealed/hidden.jsonl": "f476ddb5383d91d7915560e202c7b444ef92c066b72a5ab0d5d2f971aecb19ee",
+    "v2/sealed/manifest.json": "d5fdfcadc0d5f40d466f4d925a618a2dcec2f6b5965c6813e11649c73c26afe4"
+  },
+  "references": {
+    "train_seeds": {
+      "path": "poc/company-knowledge/generated/kimi-k3/train-final.jsonl",
+      "sha256": "92edb882d2233b7604b2072abe98c46d81dced97b0a54356788f160dddac1a72",
+      "count": 386,
+      "format": "POC 2 system/user/assistant JSONL",
+      "purpose": "Frozen approved training wordings; reference only, never include sealed/ in generation input."
+    },
+    "dev": {
+      "status": "pending",
+      "owner": "model-experiment agent",
+      "slot": "poc/model-experiment/ (committed dev set path and hash to be inserted)",
+      "gate_ready": false
+    }
+  },
+  "versions": {
+    "v1": {
+      "corpus": "pack.json",
+      "documents": "documents/",
+      "gold": "gold.json",
+      "prompt": "system-prompt.txt",
+      "hidden": [
+        "sealed/hidden.jsonl",
+        "sealed/addendum-v2.jsonl"
+      ],
+      "hidden_count": 52
+    },
+    "v2": {
+      "corpus": "v2/pack.json",
+      "documents": "v2/documents/",
+      "gold": "v2/gold.json",
+      "prompt": "system-prompt.txt",
+      "dev_addendum": "v2/dev.jsonl",
+      "hidden_addendum": "v2/sealed/hidden.jsonl",
+      "seal": "v2/sealed/manifest.json",
+      "changes": "v2/changes.json"
+    }
+  },
+  "isolation": "Data builders receive only approved corpus and training references, never this manifest, gold, sealed/, dev questions, or demo prompts. The validator may read held-out files after generation; it only reports collisions and never rewrites them.",
+  "audit": {
+    "threshold": 0.78,
+    "method": "max(SequenceMatcher normalized ratio, token Jaccard), same as POC 2",
+    "limitations": "Lexical checks cannot prove zero semantic overlap. Existing hidden set has been viewed; report exploratory scores. Pending dev reference blocks promotion, not pack assembly."
+  }
+}

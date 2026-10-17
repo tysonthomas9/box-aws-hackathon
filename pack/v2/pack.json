@@ -1,0 +1,89 @@
+{
+  "company": "Halvard Systems",
+  "system_prompt": "You are Halvard Systems support. Answer briefly and accurately. If you do not know a Halvard fact, say you do not know. Follow supplied procedure rules and check environmental causes before replacing parts.",
+  "facts": [
+    {
+      "id": "F01",
+      "subject": "Kestrel service",
+      "text": "The Kestrel service owner is Mira Solven.",
+      "source": "kestrel.txt",
+      "answer": "Mira Solven"
+    },
+    {
+      "id": "F02",
+      "subject": "Nacre gateway",
+      "text": "The Nacre gateway maintenance window starts at 02:40 UTC every Tuesday.",
+      "source": "nacre.txt",
+      "answer": "02:40 UTC every Tuesday"
+    },
+    {
+      "id": "F03",
+      "subject": "Vela export",
+      "text": "Vela export files are retained for 17 days.",
+      "source": "vela.txt",
+      "answer": "17 days"
+    },
+    {
+      "id": "F04",
+      "subject": "Orin sensor",
+      "text": "The Orin sensor calibration passphrase is amber finch 62.",
+      "source": "orin.txt",
+      "answer": "amber finch 62"
+    },
+    {
+      "id": "F05",
+      "subject": "Tern incident desk",
+      "text": "The Tern incident desk escalation channel is #tern-copper.",
+      "source": "tern.txt",
+      "answer": "#tern-copper"
+    },
+    {
+      "id": "F06",
+      "subject": "Sable archive",
+      "text": "The Sable archive daily upload limit is 96 GB.",
+      "source": "sable.txt",
+      "answer": "96 GB"
+    },
+    {
+      "id": "F07",
+      "subject": "Lumen onboarding",
+      "text": "Lumen onboarding requires approval from Devika Pell.",
+      "source": "lumen.txt",
+      "answer": "Devika Pell"
+    },
+    {
+      "id": "F08",
+      "subject": "Bracken payroll",
+      "text": "The Bracken payroll cutoff is the 19th day of each month.",
+      "source": "bracken.txt",
+      "answer": "19th"
+    },
+    {
+      "id": "F09",
+      "subject": "Cirrus support",
+      "text": "The Cirrus priority support response target is 26 minutes.",
+      "source": "cirrus.txt",
+      "answer": "26 minutes"
+    }
+  ],
+  "procedures": [
+    {
+      "id": "P01",
+      "subject": "E42 pump fault",
+      "source": "e42.txt",
+      "rule": "For an E42 pump fault, measure inlet pressure first. If it is below 4 bar, restore inlet pressure and retest; do not replace the pump. If pressure is at least 4 bar and E42 persists after retesting, replace the pump."
+    },
+    {
+      "id": "P02",
+      "subject": "R17 controller fault",
+      "source": "r17.txt",
+      "rule": "For an R17 controller fault, measure supply voltage first. If it is below 22 V, fix the supply and retest; do not replace the controller. If voltage is at least 22 V and R17 persists after retesting, replace the controller."
+    },
+    {
+      "id": "P03",
+      "subject": "T09 cooler fault",
+      "source": "t09.txt",
+      "rule": "For a T09 cooler fault, check ambient temperature first. If it is above 31 C, lower the ambient temperature and retest; do not replace the cooler. If ambient temperature is at most 31 C and T09 persists after retesting, replace the cooler."
+    }
+  ]
+}

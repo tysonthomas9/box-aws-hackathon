@@ -1,0 +1,70 @@
+{
+  "track": "Phase 1 LoRA on the frozen POC 2 corpus",
+  "order": [
+    1,
+    2,
+    4,
+    5,
+    3,
+    6
+  ],
+  "limitations": [
+    "These are demo prompts, not held-out evidence or promotion gates.",
+    "Learned source labels are lineage, not real citations; only search returns retrieved citations.",
+    "Report measured outcomes in all three modes; do not script a search failure or a learning win."
+  ],
+  "scenarios": [
+    {
+      "id": 1,
+      "title": "A company fact",
+      "version": "v1",
+      "question": "Which person owns the Kestrel service?",
+      "expected": "Mira Solven",
+      "purpose": "Compare without learning, with LoRA and search on an existing fact."
+    },
+    {
+      "id": 2,
+      "title": "Combine two existing facts",
+      "version": "v1",
+      "question": "Give the Vela retention period together with the Cirrus priority support response target.",
+      "expected": "17 days; 26 minutes",
+      "purpose": "Test two-fact composition. POC 2 scored poorly here; success is not assumed."
+    },
+    {
+      "id": 3,
+      "title": "The company guidance changes",
+      "version": "v2",
+      "steps": [
+        "Edit sable.txt in Box: 73 GB becomes 96 GB. Remove the old Quartz location guidance (or replace quartz.txt with the retirement notice).",
+        "Sync, inspect the changed value and retirement, and approve both in Review.",
+        "Disclose that version 2 was trained beforehand, then switch to that pre-trained version. The live edit demonstrates sync and review, not live retraining.",
+        "Ask for the Sable daily limit and current Quartz location. Show model version and snapshot identifiers."
+      ],
+      "expected": "96 GB; decline to give a current Quartz location. Report stale answers as failures."
+    },
+    {
+      "id": 4,
+      "title": "E42 environmental check before replacement",
+      "version": "v1",
+      "question": "A Halvard pump reports E42. Inlet pressure is 3.1 bar and no retest has happened. Is a pump exchange the right next action?",
+      "expected": "Measure/check inlet pressure first, restore it to at least 4 bar, and retest. Do not replace now; replacement needs adequate pressure and persistent E42 after retesting.",
+      "purpose": "Contrast correct procedure use with premature replacement; there is no separate fan-failure fact."
+    },
+    {
+      "id": 5,
+      "title": "Apply a supplied unfamiliar rule",
+      "version": "v1",
+      "question": "Use this new rule: for B64 filter faults, measure feed conductivity first; below 8 mS/cm, correct the feed and retest without changing the filter. At least 8 mS/cm with B64 still present after retesting requires filter replacement. A test rig shows B64 at 6.2 mS/cm before any retest. What next?",
+      "expected": "Correct feed conductivity and retest; do not replace the filter now.",
+      "purpose": "The held-out rule is supplied in the question. This tests instruction following and environmental-first habit, not knowledge of an unseen company rule. Keep this prompt outside training; it is not a new corpus item."
+    },
+    {
+      "id": 6,
+      "title": "Decline an unsupported request",
+      "version": "v1",
+      "question": "What annual subscription fee does the Nacre gateway charge?",
+      "expected": "I do not know; the approved documents do not specify a subscription fee.",
+      "purpose": "Check abstention; show actual dev gate results, including rejected candidates. Do not claim training guarantees abstention."
+    }
+  ]
+}
