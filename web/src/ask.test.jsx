@@ -51,6 +51,28 @@ describe("fixed answer cards", () => {
     expect(screen.getByText("Original quote.")).toBeTruthy();
     expect(screen.queryByText(/learned, not a citation/)).toBeNull();
   });
+  it("shows the cold-start explanation while keeping the card model binding", () => {
+    render(<AnswerBubble job={{ ...job, status: "warming", answer: null }} />);
+    expect(
+      screen.getByText(/Model warming up, can take a few minutes/),
+    ).toBeTruthy();
+    expect(screen.getByText("v7")).toBeTruthy();
+    expect(screen.getByRole("status").textContent).toBe("Warming");
+  });
+  it("keeps errors visible inside the fixed answer card", () => {
+    render(
+      <AnswerBubble
+        job={{
+          ...job,
+          status: "failed",
+          answer: null,
+          error: "Please warm up and retry.",
+        }}
+      />,
+    );
+    expect(screen.getByText("Please warm up and retry.")).toBeTruthy();
+    expect(screen.getByRole("article", { name: "Trained" })).toBeTruthy();
+  });
   it.each([
     ["warming", "Warming"],
     ["running", "Answering"],

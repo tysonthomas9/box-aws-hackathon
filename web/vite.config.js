@@ -28,5 +28,9 @@ export default defineConfig({
     },
   ],
   build: { outDir: "dist", emptyOutDir: true },
-  test: { environment: "jsdom", include: ["src/**/*.test.{js,jsx}"] },
+  test: {
+    environment: "jsdom",
+    include: ["src/**/*.test.{js,jsx}"],
+    server: { deps: { inline: [/@openuidev\/react-ui/] } },
+  },
 });

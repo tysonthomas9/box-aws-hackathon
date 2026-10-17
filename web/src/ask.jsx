@@ -1,6 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { ChatProvider, useThread } from "@openuidev/react-headless";
+import { Button } from "@openuidev/react-ui/Button";
+import { Card } from "@openuidev/react-ui/Card";
+import {
+  ArrowUpRight,
+  BookOpen,
+  Clock3,
+  Flame,
+  Layers3,
+  Search,
+  Sparkles,
+  LoaderCircle,
+  MessageSquare,
+} from "lucide-react";
+// Static light-theme tokens preserve the site's strict style-src CSP.
+import "@openuidev/react-ui/defaults.css";
+import "@openuidev/react-ui/styles/button.css";
+import "@openuidev/react-ui/styles/card.css";
+import "./ask.css";
 import prompts from "virtual:demo-prompts";
 import {
   MODES,
@@ -23,9 +41,24 @@ export function AnswerBubble({ job }) {
   const title = MODES.find(([mode]) => mode === job.mode)[1];
   const label = statusLabel(job);
   return (
-    <article className={`answer-bubble mode-${job.mode}`} aria-label={title}>
+    <Card
+      width="full"
+      className={`answer-bubble mode-${job.mode}`}
+      role="article"
+      aria-label={title}
+    >
       <div className="bubble-meta">
+        <span className="answer-author">
+          <Sparkles size={15} aria-hidden="true" /> {title}
+        </span>
         <span className={`badge status-${job.status}`} role="status">
+          {!isTerminal(job) && (
+            <LoaderCircle
+              className="loading-icon"
+              size={12}
+              aria-hidden="true"
+            />
+          )}
           {label}
         </span>
       </div>
@@ -33,7 +66,7 @@ export function AnswerBubble({ job }) {
         {job.answer ??
           job.error ??
           (job.status === "warming"
-            ? "The model is starting. This may take up to 15 minutes."
+            ? "Model warming up, can take a few minutes. Allow up to 15 minutes for a cold start."
             : "Waiting for the model…")}
       </p>
       {job.mode === "with" && (
@@ -56,6 +89,7 @@ export function AnswerBubble({ job }) {
         ))}
       {job.latency_ms != null && (
         <p className="subtle answer-latency">
+          <Clock3 size={13} aria-hidden="true" />{" "}
           {(job.latency_ms / 1000).toFixed(2)} seconds
         </p>
       )}
@@ -69,7 +103,7 @@ export function AnswerBubble({ job }) {
           <p className="binding">{job.model_arn}</p>
         </details>
       )}
-    </article>
+    </Card>
   );
 }
 function ModelBinding({ version, snapshot }) {
@@ -101,17 +135,51 @@ export function ParallelThreads({
   );
   function heading([mode, title]) {
     const pin = turns.at(-1)?.jobs.find((job) => job.mode === mode);
+    const version = pin?.model_version_id ?? serving?.models[mode]?.version_id;
     return (
       <div className={`thread-heading mode-${mode}`} key={mode}>
-        <h2>{title}</h2>
-        <ModelBinding
-          version={pin?.model_version_id ?? serving?.models[mode]?.version_id}
-          snapshot={
-            pin?.snapshot_sha256 ??
-            serving?.models[mode]?.snapshot_sha256 ??
-            serving?.approved_snapshot_sha256
-          }
-        />
+        <div className="lane-title">
+          <span className="lane-icon">
+            {mode === "with" ? (
+              <Sparkles size={18} />
+            ) : mode === "search" ? (
+              <Search size={18} />
+            ) : (
+              <Layers3 size={18} />
+            )}
+          </span>
+          <h2>
+            {mode === "with" && version?.toLowerCase().includes("partial")
+              ? "Trained partial"
+              : title}
+          </h2>
+          {mode === "with" && (
+            <span className="poc-label">
+              {version?.toLowerCase().includes("halvard") ||
+              version?.toLowerCase().includes("poc")
+                ? "Halvard POC · temporary"
+                : (version ?? "Not available")}
+            </span>
+          )}
+        </div>
+        <p className="lane-description">
+          {mode === "with"
+            ? "Learned from approved knowledge"
+            : mode === "search"
+              ? "Answers grounded in retrieved documents"
+              : "The original model, before learning"}
+        </p>
+        <details className="lane-details">
+          <summary>Model and snapshot</summary>
+          <ModelBinding
+            version={pin?.model_version_id ?? serving?.models[mode]?.version_id}
+            snapshot={
+              pin?.snapshot_sha256 ??
+              serving?.models[mode]?.snapshot_sha256 ??
+              serving?.approved_snapshot_sha256
+            }
+          />
+        </details>
       </div>
     );
   }
@@ -144,9 +212,17 @@ export function ParallelThreads({
         {turns.length === 0 ? (
           <div className="thread-grid">
             {modes.map(([mode]) => (
-              <p className="thread-empty" key={mode}>
-                Ask a question to start this chat.
-              </p>
+              <div className="thread-empty" key={mode}>
+                <MessageSquare size={23} aria-hidden="true" />
+                <strong>
+                  {mode === "with"
+                    ? "See what learning changes"
+                    : mode === "search"
+                      ? "Check the source"
+                      : "Start with the original"}
+                </strong>
+                <p>Ask a question to start this chat.</p>
+              </div>
             ))}
           </div>
         ) : (
@@ -328,14 +404,27 @@ function AskChat({ api }) {
     <div className="ask-chat">
       <div className="heading">
         <div>
-          <p className="eyebrow">03 / COMPARISON</p>
-          <h1>Ask Halvard</h1>
+          <p className="eyebrow">
+            <Sparkles size={14} aria-hidden="true" /> KNOWLEDGE COMPARISON
+          </p>
+          <h1>
+            Ask Halvard<span className="heading-dot">.</span>
+          </h1>
+          <p className="heading-description">
+            One question. See what your knowledge teaches the model.
+          </p>
         </div>
-        <button type="button" onClick={warmUp} disabled={warming}>
+        <Button
+          type="button"
+          variant="secondary"
+          iconLeft={<Flame size={16} aria-hidden="true" />}
+          onClick={warmUp}
+          disabled={warming}
+        >
           Warm up
-        </button>
+        </Button>
       </div>
-      <div className="readiness panel" role="status">
+      <Card width="full" className="readiness" role="status">
         <div>
           <strong>
             {warm?.status === "succeeded"
@@ -348,7 +437,7 @@ function AskChat({ api }) {
             {warming
               ? `Up to 15 minutes · ${Math.max(0, Math.ceil(((warm.deadline ?? warm.started + READINESS_MS) - now) / 60000))} minutes remaining`
               : (warm?.error ??
-                "Cold models can take up to 15 minutes. Warm up before presenting.")}
+                "Cold models can take a few minutes. Warm up before presenting (up to 15 minutes).")}
           </p>
           {warm?.status === "succeeded" && (
             <p>
@@ -379,23 +468,24 @@ function AskChat({ api }) {
             </span>
           )}
         </div>
-      </div>
+      </Card>
       {notice && (
         <p role="alert" className="chat-notice">
           {notice}
         </p>
       )}
       <div className="chat-toolbar">
-        <p>
-          One question, parallel chats. Scroll together to compare each reply.
-        </p>
-        <button
+        <p>Compare answers side by side</p>
+        <Button
           type="button"
+          variant="secondary"
+          size="small"
+          iconLeft={<Search size={15} aria-hidden="true" />}
           aria-pressed={showSearch}
           onClick={() => setShowSearch((value) => !value)}
         >
           {showSearch ? "Hide Search" : "Show Search"}
-        </button>
+        </Button>
       </div>
       <ParallelThreads
         messages={messages}
@@ -405,8 +495,10 @@ function AskChat({ api }) {
       />
       <div className="starter-prompts" aria-label="Starter prompts">
         {prompts.map((p) => (
-          <button
+          <Button
             type="button"
+            variant="tertiary"
+            iconRight={<ArrowUpRight size={14} aria-hidden="true" />}
             key={p.id}
             onClick={() => {
               setQuestion(p.question);
@@ -414,11 +506,13 @@ function AskChat({ api }) {
             }}
           >
             {p.title}
-          </button>
+          </Button>
         ))}
       </div>
       <form className="chat-composer" onSubmit={compare}>
-        <label htmlFor="question">Your question</label>
+        <label htmlFor="question">
+          <BookOpen size={15} aria-hidden="true" /> Your question
+        </label>
         <textarea
           id="question"
           value={question}
@@ -435,9 +529,13 @@ function AskChat({ api }) {
               : "The same question goes to both chats."}{" "}
             Each answer keeps its model and snapshot.
           </span>
-          <button type="submit" disabled={submitting}>
+          <Button
+            type="submit"
+            iconRight={<ArrowUpRight size={17} aria-hidden="true" />}
+            disabled={submitting}
+          >
             {submitting ? "Sending…" : "Compare answers"}
-          </button>
+          </Button>
         </div>
       </form>
     </div>
