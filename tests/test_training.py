@@ -604,6 +604,8 @@ def test_worker_factory_uses_the_bounded_warmup_client(monkeypatch):
     ]:
         monkeypatch.setenv(f"KLOOP_{name}", "configured")
     aws, answerer = Mock(), Mock()
+    snapshots = Mock()
+    monkeypatch.setattr(runtime, "snapshot_storage", Mock(return_value=snapshots))
     monkeypatch.setattr(runtime, "store_for", Mock())
     monkeypatch.setattr(runtime, "token_provider", Mock())
     monkeypatch.setattr(runtime, "sdk_client", Mock())
@@ -615,6 +617,7 @@ def test_worker_factory_uses_the_bounded_warmup_client(monkeypatch):
     runtime.factory(aws)
     warmup.assert_called_once_with(aws)
     assert worker.call_args.args[7].select("bedrock") is answerer
+    assert worker.call_args.args[1] is snapshots
 
 
 @pytest.mark.parametrize(
@@ -692,3 +695,61 @@ def test_import_creation_and_tagging_permissions_match_service_scope():
     assert "local.import_job_arn" in tagging and "local.imported_model_arn" in tagging
     assert 'Resource = "*"' not in tagging
     assert 'aws_dynamodb_table.records["ask_jobs"].arn' in worker
+
+
+@pytest.mark.parametrize("corrupt", [False, True])
+def test_training_runtime_resolves_and_verifies_s3_snapshot_pointer(
+    aws_session, table, snapshot, monkeypatch, corrupt
+):
+    from kloop.extract.repository import DynamoRepository
+    from kloop.extract.snapshots import S3SnapshotBodies, snapshot_key
+    from kloop.train import runtime
+
+    bucket = "training-approved-snapshots"
+    s3 = aws_session.client("s3")
+    s3.create_bucket(Bucket=bucket, CreateBucketConfiguration={"LocationConstraint": "us-east-2"})
+    repository = DynamoRepository(table, S3SnapshotBodies(s3, bucket))
+    repository.save_snapshot(snapshot.model_dump(mode="json"))
+    pointer = DynamoStorage(table).get("approved_snapshots", snapshot.sha256)
+    assert pointer["format"] == 1 and "items" not in pointer
+    if corrupt:
+        s3.put_object(Bucket=bucket, Key=snapshot_key(snapshot.sha256), Body=b"{}")
+    for key, value in {
+        "ARTIFACT_BUCKET": bucket,
+        "ITEMS_TABLE": table.name,
+        "VERSIONS_TABLE": table.name,
+        "CLEANUP_LEDGER_TABLE": table.name,
+        "ASK_JOBS_TABLE": table.name,
+        "REPORTS_FOLDER_ID": "reports",
+        "SAGEMAKER_ROLE": "training-role",
+        "IMPORT_ROLE": "import-role",
+    }.items():
+        monkeypatch.setenv(f"KLOOP_{key}", value)
+    monkeypatch.setattr(runtime, "token_provider", Mock())
+    monkeypatch.setattr(runtime, "sdk_client", Mock())
+    monkeypatch.setattr(runtime, "BoxClient", Mock())
+    worker = runtime.factory(aws_session)
+    worker.store.acquire("run", 1)
+    worker.store.save(
+        ModelVersion(
+            id="run",
+            manifest={
+                "config": TrainingConfig().model_dump(mode="json"),
+                "snapshot_hash": snapshot.sha256,
+                "expected_current_version": None,
+                "dev_set_hash": DEV_HASH,
+            },
+        )
+    )
+    worker.slots = Mock()
+    worker.builder = Mock(
+        build=Mock(return_value={"manifest_hash": "b" * 64, "data_prefix": "training/data/fake"})
+    )
+    if corrupt:
+        with pytest.raises(ValueError, match="integrity"):
+            worker.handle("prepare", "run")
+        worker.builder.build.assert_not_called()
+    else:
+        result = worker.handle("prepare", "run")
+        assert result["request"]["TrainingJobName"] == "run"
+        assert worker.builder.build.call_args.args[0] == snapshot

@@ -17,6 +17,7 @@ from kloop.box.client import BoxClient, sdk_client
 from kloop.cleanup import CleanupLedger
 from kloop.config import Settings
 from kloop.extract.runtime import factory as extraction_factory
+from kloop.extract.runtime import snapshot_storage
 from kloop.train.config import DEV_PATH, TrainingConfig
 from kloop.train.data import DataBuilder
 from kloop.train.helpers import TrainingHelpers
@@ -149,7 +150,7 @@ def factory(session):
         return GateDecision.model_validate(payload)
 
     serving = ServingBackends({"bedrock": warmup_answerer(session)})
-    snapshots = DynamoStorage(session.resource("dynamodb").Table(os.environ["KLOOP_ITEMS_TABLE"]))
+    snapshots = snapshot_storage(session)
     return TrainingWorker(
         store,
         snapshots,
