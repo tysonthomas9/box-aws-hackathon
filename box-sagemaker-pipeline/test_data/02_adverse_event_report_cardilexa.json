@@ -1,0 +1,26 @@
+{
+  "document_id": "PHX-AER-0002",
+  "synthetic": true,
+  "input": "SYNTHETIC TEST DOCUMENT - FICTIONAL COMPANY AND PRODUCT\n\nVeridian Therapeutics Inc.\nPeriodic Adverse Drug Experience Report (PADER)\nProduct: Cardilexa (zorvastatin calcium) 10 mg, 20 mg tablets\nReporting Period: October 1, 2025 - December 31, 2025\nReport Date: February 14, 2026\n\nDuring the reporting interval, 412 adverse event reports were received, of which 37 were classified as serious. The most frequently reported non-serious events were myalgia (n=118), headache (n=64), and nausea (n=41). Serious events included 9 cases of rhabdomyolysis, 6 of which occurred in patients concomitantly taking a strong CYP3A4 inhibitor. Two fatal cases were reported; causality was assessed as possible in one case and unlikely in the other. Hepatic enzyme elevations greater than 3x ULN were reported in 11 patients. Based on the cluster of rhabdomyolysis cases with CYP3A4 inhibitor co-administration, the company has opened a signal evaluation and intends to propose a labeling update strengthening the Drug Interactions section. No changes to the benefit-risk profile have been concluded at this time.",
+  "output": {
+    "doc_type": "adverse_event_report",
+    "issuing_organization": "Veridian Therapeutics Inc.",
+    "document_date": "2026-02-14",
+    "products": ["Cardilexa 10 mg tablets", "Cardilexa 20 mg tablets"],
+    "active_ingredients": ["zorvastatin calcium"],
+    "therapeutic_area": "cardiovascular",
+    "key_requirements": [
+      "Complete signal evaluation for rhabdomyolysis with CYP3A4 inhibitor co-administration",
+      "Propose labeling update to strengthen Drug Interactions section"
+    ],
+    "safety_signals": [
+      "Rhabdomyolysis (9 serious cases, 6 with strong CYP3A4 inhibitors)",
+      "Hepatic enzyme elevation >3x ULN (11 patients)",
+      "2 fatal cases (1 possibly related)"
+    ],
+    "compliance_deadline": null,
+    "risk_level": "high",
+    "action_required": true,
+    "summary": "Quarterly PADER for Cardilexa showing a rhabdomyolysis signal linked to CYP3A4 inhibitor co-use; company opening signal evaluation and planning a label update."
+  }
+}

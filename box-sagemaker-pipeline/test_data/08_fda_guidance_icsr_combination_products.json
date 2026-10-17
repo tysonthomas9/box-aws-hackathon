@@ -1,0 +1,25 @@
+{
+  "document_id": "PHX-REG-0008",
+  "synthetic": true,
+  "input": "SYNTHETIC TEST DOCUMENT - NOT REAL FDA GUIDANCE\n\nFDA Final Guidance for Industry (fictional)\nTitle: Electronic Submission of Individual Case Safety Reports for Combination Products\nIssued: August 18, 2026\n\nThis guidance finalizes requirements for submitting Individual Case Safety Reports (ICSRs) for drug-device and biologic-device combination products. Beginning 12 months after publication, all postmarketing ICSRs for combination products must be submitted electronically in the ICH E2B(R3) format through the FDA Electronic Submissions Gateway. Reports must identify the constituent part (drug, device, or biologic) implicated in the event when known. Five-day reports are required for events that require remedial action to prevent an unreasonable risk of substantial harm to public health. Fifteen-day alert reports continue to apply for serious and unexpected adverse experiences. Paper submissions will no longer be accepted after the compliance date. This guidance does not apply to investigational products.",
+  "output": {
+    "doc_type": "regulatory_guidance",
+    "issuing_organization": "FDA",
+    "document_date": "2026-08-18",
+    "products": ["Drug-device and biologic-device combination products"],
+    "active_ingredients": [],
+    "therapeutic_area": "pharmacovigilance",
+    "key_requirements": [
+      "Submit all postmarketing combination-product ICSRs electronically in ICH E2B(R3) via ESG",
+      "Identify implicated constituent part when known",
+      "File 5-day reports for events requiring remedial action",
+      "Continue 15-day alert reports for serious unexpected events",
+      "Stop paper submissions after compliance date"
+    ],
+    "safety_signals": [],
+    "compliance_deadline": "12 months after 2026-08-18",
+    "risk_level": "medium",
+    "action_required": true,
+    "summary": "Final FDA guidance mandating electronic E2B(R3) ICSR submission for combination products, with constituent-part attribution, effective 12 months after publication."
+  }
+}

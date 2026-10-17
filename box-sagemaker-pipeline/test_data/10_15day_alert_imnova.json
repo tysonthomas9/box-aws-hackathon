@@ -1,0 +1,25 @@
+{
+  "document_id": "PHX-AER-0010",
+  "synthetic": true,
+  "input": "SYNTHETIC TEST DOCUMENT - FICTIONAL COMPANY AND PRODUCT\n\nSorell Biologics - 15-Day Alert Report Summary\nProduct: Imnova (velarimab) injection 200 mg/mL prefilled syringe\nDate: September 29, 2026\n\nSorell Biologics received a report of a serious and unexpected adverse experience: a 47-year-old female patient developed anaphylaxis within 20 minutes of her third subcutaneous dose of velarimab administered at home. The patient was treated with epinephrine in the emergency department and recovered fully. Anaphylaxis is not currently listed in the product labeling, which describes only mild injection-site reactions and urticaria. A cumulative search of the safety database identified 3 additional reports of severe hypersensitivity reactions since launch. The company has submitted this 15-day alert report and is evaluating whether the first doses should be administered under healthcare professional supervision. A labeling update to add anaphylaxis to Warnings and Precautions is under consideration.",
+  "output": {
+    "doc_type": "adverse_event_report",
+    "issuing_organization": "Sorell Biologics",
+    "document_date": "2026-09-29",
+    "products": ["Imnova 200 mg/mL prefilled syringe"],
+    "active_ingredients": ["velarimab"],
+    "therapeutic_area": "immunology",
+    "key_requirements": [
+      "Evaluate requiring HCP-supervised administration for initial doses",
+      "Consider labeling update adding anaphylaxis to Warnings and Precautions"
+    ],
+    "safety_signals": [
+      "Unlabeled anaphylaxis after third subcutaneous dose",
+      "3 additional severe hypersensitivity reports since launch"
+    ],
+    "compliance_deadline": null,
+    "risk_level": "high",
+    "action_required": true,
+    "summary": "15-day alert for an unexpected anaphylaxis case with Imnova plus 3 prior severe hypersensitivity reports; company weighing supervised dosing and a label update."
+  }
+}

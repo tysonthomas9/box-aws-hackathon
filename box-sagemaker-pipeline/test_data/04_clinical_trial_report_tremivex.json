@@ -1,0 +1,26 @@
+{
+  "document_id": "PHX-CTR-0004",
+  "synthetic": true,
+  "input": "SYNTHETIC TEST DOCUMENT - FICTIONAL CLINICAL TRIAL\n\nClinical Study Report Synopsis\nSponsor: Halcyon Biopharma\nStudy: HAL-ONC-302, a Phase 3, randomized, double-blind, placebo-controlled study of Tremivex (lurtanib) in adults with previously treated advanced non-small cell lung cancer\nDate of Report: May 9, 2026\n\nA total of 648 patients were randomized 2:1 to lurtanib 150 mg once daily plus standard of care or placebo plus standard of care. The study met its primary endpoint: median progression-free survival was 7.4 months with lurtanib versus 4.1 months with placebo (HR 0.61; 95% CI 0.50-0.74; p<0.001). Overall survival data are immature. Grade 3 or higher treatment-emergent adverse events occurred in 52% of lurtanib patients versus 31% of placebo patients. Interstitial lung disease (ILD) was reported in 4.2% of lurtanib-treated patients, including two fatal cases. QTc prolongation >500 ms occurred in 1.8%. The sponsor plans to submit a New Drug Application in Q4 2026 and will include a risk management plan addressing ILD monitoring.",
+  "output": {
+    "doc_type": "clinical_trial_report",
+    "issuing_organization": "Halcyon Biopharma",
+    "document_date": "2026-05-09",
+    "products": ["Tremivex 150 mg"],
+    "active_ingredients": ["lurtanib"],
+    "therapeutic_area": "oncology",
+    "key_requirements": [
+      "Submit New Drug Application in Q4 2026",
+      "Include risk management plan for interstitial lung disease monitoring"
+    ],
+    "safety_signals": [
+      "Interstitial lung disease in 4.2% including 2 fatal cases",
+      "QTc prolongation >500 ms in 1.8%",
+      "Grade >=3 TEAEs 52% vs 31% placebo"
+    ],
+    "compliance_deadline": "2026-Q4 (planned NDA submission)",
+    "risk_level": "high",
+    "action_required": true,
+    "summary": "Phase 3 HAL-ONC-302 met its PFS endpoint for lurtanib in previously treated NSCLC (7.4 vs 4.1 months) with notable ILD and QTc safety signals; NDA planned for Q4 2026."
+  }
+}

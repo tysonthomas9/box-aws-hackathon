@@ -1,0 +1,23 @@
+{
+  "document_id": "PHX-LBL-0005",
+  "synthetic": true,
+  "input": "SYNTHETIC TEST DOCUMENT - FICTIONAL SAFETY LABELING CHANGE\n\nFDA Safety Labeling Change Notification (fictional)\nTo: Application holders of fluoroquinolone-class oral and injectable antibacterial products\nDate: June 2, 2026\n\nUnder section 505(o)(4) of the FD&C Act, FDA has become aware of new safety information regarding the risk of aortic aneurysm and dissection associated with systemic fluoroquinolone use, particularly in patients over 60 years of age and those with a history of peripheral atherosclerotic vascular disease, hypertension, or Marfan syndrome. FDA is notifying application holders that this information should be added to the Warnings and Precautions section and the Medication Guide. Application holders must submit a prior approval supplement with proposed labeling changes, or a statement explaining why a change is not warranted, within 30 calendar days of receipt of this notification. Prescribers should avoid fluoroquinolones in at-risk patients unless no alternative treatment options are available.",
+  "output": {
+    "doc_type": "safety_labeling_change",
+    "issuing_organization": "FDA",
+    "document_date": "2026-06-02",
+    "products": ["Systemic fluoroquinolone antibacterials (oral and injectable)"],
+    "active_ingredients": ["fluoroquinolone class"],
+    "therapeutic_area": "infectious disease",
+    "key_requirements": [
+      "Add aortic aneurysm/dissection risk to Warnings and Precautions",
+      "Update Medication Guide",
+      "Submit prior approval supplement or rebuttal statement within 30 calendar days"
+    ],
+    "safety_signals": ["Aortic aneurysm and dissection, especially age >60 or vascular risk factors"],
+    "compliance_deadline": "30 calendar days from receipt (2026-06-02)",
+    "risk_level": "high",
+    "action_required": true,
+    "summary": "FDA 505(o)(4) notice requiring fluoroquinolone labels to add aortic aneurysm/dissection warnings within 30 days."
+  }
+}

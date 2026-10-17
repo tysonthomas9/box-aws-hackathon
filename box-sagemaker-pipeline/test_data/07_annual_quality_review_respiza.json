@@ -1,0 +1,21 @@
+{
+  "document_id": "PHX-ANR-0007",
+  "synthetic": true,
+  "input": "SYNTHETIC TEST DOCUMENT - FICTIONAL COMPANY UPDATE\n\nLumora Pharmaceuticals - Annual Product Quality Review Summary\nProduct: Respiza (budelotide/formoterol) inhalation aerosol 160/4.5 mcg\nReview Period: Calendar Year 2025\nDate: January 30, 2026\n\nA total of 214 commercial batches were manufactured and released during the review period. All batches met release specifications. Two minor deviations related to label reconciliation were closed with no product impact. Delivered dose uniformity trended toward the lower end of specification for canisters manufactured on Line B in Q4; investigation attributed this to valve gasket supplier variability, and an alternate qualified supplier was introduced in December 2025. Customer complaints totaled 63, primarily related to actuator blockage (n=29); no complaints were associated with serious adverse events. Stability data supports the current 24-month shelf life. No regulatory commitments are outstanding. Continued trending of Line B dose uniformity is recommended for the next review period.",
+  "output": {
+    "doc_type": "product_quality_review",
+    "issuing_organization": "Lumora Pharmaceuticals",
+    "document_date": "2026-01-30",
+    "products": ["Respiza 160/4.5 mcg inhalation aerosol"],
+    "active_ingredients": ["budelotide", "formoterol"],
+    "therapeutic_area": "respiratory",
+    "key_requirements": [
+      "Continue trending Line B delivered dose uniformity in next review period"
+    ],
+    "safety_signals": [],
+    "compliance_deadline": null,
+    "risk_level": "low",
+    "action_required": false,
+    "summary": "2025 annual quality review for Respiza: all 214 batches met spec, a Line B dose-uniformity trend was addressed via a new valve supplier, and no regulatory commitments are outstanding."
+  }
+}

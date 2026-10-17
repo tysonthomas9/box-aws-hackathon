@@ -1,0 +1,23 @@
+{
+  "document_id": "PHX-SHT-0009",
+  "synthetic": true,
+  "input": "SYNTHETIC TEST DOCUMENT - FICTIONAL SHORTAGE NOTICE\n\nDrug Shortage Notification\nManufacturer: Corvent Pharma\nProduct: Amoxatrin (amoxicillin) for oral suspension, 250 mg/5 mL and 400 mg/5 mL\nDate: September 4, 2026\n\nCorvent Pharma is notifying FDA of an anticipated interruption in supply of Amoxatrin oral suspension due to a capacity constraint at its third-party active pharmaceutical ingredient supplier. The company expects reduced supply beginning October 2026, with recovery estimated for February 2027. Current inventory is projected to cover approximately 6 weeks of typical national demand. Corvent is pursuing qualification of a second API source and has implemented allocation to wholesalers based on historical purchasing. Pediatric formulations are being prioritized. No quality or safety issues are associated with this shortage. Healthcare providers may consider alternative formulations or therapeutic alternatives where clinically appropriate.",
+  "output": {
+    "doc_type": "drug_shortage_notice",
+    "issuing_organization": "Corvent Pharma",
+    "document_date": "2026-09-04",
+    "products": ["Amoxatrin 250 mg/5 mL oral suspension", "Amoxatrin 400 mg/5 mL oral suspension"],
+    "active_ingredients": ["amoxicillin"],
+    "therapeutic_area": "infectious disease",
+    "key_requirements": [
+      "Qualify a second API source",
+      "Allocate supply to wholesalers by historical purchasing",
+      "Prioritize pediatric formulations"
+    ],
+    "safety_signals": [],
+    "compliance_deadline": null,
+    "risk_level": "medium",
+    "action_required": true,
+    "summary": "Anticipated Amoxatrin oral suspension shortage from Oct 2026 to Feb 2027 due to API supplier capacity; allocation in place, no quality or safety concerns."
+  }
+}

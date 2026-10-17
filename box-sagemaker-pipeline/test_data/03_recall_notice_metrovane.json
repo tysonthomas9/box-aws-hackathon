@@ -1,0 +1,24 @@
+{
+  "document_id": "PHX-RCL-0003",
+  "synthetic": true,
+  "input": "SYNTHETIC TEST DOCUMENT - FICTIONAL RECALL NOTICE\n\nVOLUNTARY NATIONWIDE RECALL\nCompany: Northgate Generics LLC\nDate: April 22, 2026\nProduct: Metrovane (metformin hydrochloride extended-release) 500 mg and 750 mg tablets\nLot Numbers: NG24117, NG24118, NG24131\nRecall Classification: Class II\n\nNorthgate Generics LLC is voluntarily recalling three lots of Metrovane extended-release tablets to the retail level due to dissolution test results that failed to meet specifications at the 12-month stability time point. Out-of-specification dissolution may result in reduced or delayed drug release, potentially leading to inadequate glycemic control. To date, Northgate has received no reports of adverse events related to this recall. Pharmacies and wholesalers should immediately stop distribution, quarantine affected lots, and return product using the instructions provided by the company's recall coordinator. Patients should continue taking their medication until a replacement is obtained, as stopping abruptly may pose a greater risk. The recall is being conducted with the knowledge of the U.S. Food and Drug Administration. Distributors must complete and return the recall response form within 14 days.",
+  "output": {
+    "doc_type": "recall_notice",
+    "issuing_organization": "Northgate Generics LLC",
+    "document_date": "2026-04-22",
+    "products": ["Metrovane ER 500 mg tablets", "Metrovane ER 750 mg tablets"],
+    "active_ingredients": ["metformin hydrochloride"],
+    "therapeutic_area": "endocrinology",
+    "key_requirements": [
+      "Stop distribution and quarantine lots NG24117, NG24118, NG24131",
+      "Return affected product per recall coordinator instructions",
+      "Distributors return recall response form within 14 days",
+      "Patients continue therapy until replacement is obtained"
+    ],
+    "safety_signals": ["Out-of-specification dissolution at 12-month stability", "Potential inadequate glycemic control"],
+    "compliance_deadline": "14 days from 2026-04-22",
+    "risk_level": "medium",
+    "action_required": true,
+    "summary": "Class II retail-level recall of three Metrovane ER lots for failed dissolution at stability testing; no adverse events reported."
+  }
+}

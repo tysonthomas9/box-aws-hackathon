@@ -1,0 +1,25 @@
+{
+  "document_id": "PHX-INS-0006",
+  "synthetic": true,
+  "input": "SYNTHETIC TEST DOCUMENT - FICTIONAL INSPECTION OBSERVATIONS\n\nForm FDA 483 - Inspectional Observations (fictional summary)\nFirm: Ardent Sterile Manufacturing, Plant 2\nProduct Types: Sterile injectable small-volume parenterals\nInspection Dates: July 7-15, 2026\n\nObservation 1: Procedures designed to prevent microbiological contamination of drug products purporting to be sterile were not established and followed; smoke studies of the ISO 5 filling line did not demonstrate unidirectional airflow during aseptic interventions.\nObservation 2: Environmental monitoring excursions in Grade A areas (7 occurrences over 6 months) were not adequately investigated and no root cause was identified.\nObservation 3: Media fill simulations did not include worst-case interventions performed during routine production.\nObservation 4: Batch records lacked documentation of line clearance for 3 of 20 batches reviewed.\nThe firm is expected to provide a written response describing corrective and preventive actions within 15 business days.",
+  "output": {
+    "doc_type": "inspection_observation",
+    "issuing_organization": "FDA",
+    "document_date": "2026-07-15",
+    "products": ["Sterile injectable small-volume parenterals"],
+    "active_ingredients": [],
+    "therapeutic_area": "manufacturing/quality",
+    "key_requirements": [
+      "Repeat smoke studies demonstrating unidirectional airflow on ISO 5 line",
+      "Investigate Grade A environmental monitoring excursions with root cause",
+      "Include worst-case interventions in media fills",
+      "Document line clearance in all batch records",
+      "Submit written CAPA response within 15 business days"
+    ],
+    "safety_signals": ["Sterility assurance deficiencies in aseptic processing"],
+    "compliance_deadline": "15 business days from 2026-07-15",
+    "risk_level": "high",
+    "action_required": true,
+    "summary": "Four-observation FDA 483 at a sterile injectables plant citing aseptic processing, environmental monitoring, media fill, and documentation gaps; CAPA response due in 15 business days."
+  }
+}

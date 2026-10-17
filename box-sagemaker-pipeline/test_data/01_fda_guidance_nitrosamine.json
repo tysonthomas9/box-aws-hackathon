@@ -1,0 +1,25 @@
+{
+  "document_id": "PHX-REG-0001",
+  "synthetic": true,
+  "input": "SYNTHETIC TEST DOCUMENT - NOT REAL FDA GUIDANCE\n\nU.S. Food and Drug Administration\nCenter for Drug Evaluation and Research (CDER)\nDraft Guidance for Industry\nTitle: Nitrosamine Impurity Control in Oral Solid Dosage Forms (Fictional Revision 4)\nIssued: March 3, 2026\n\nThis draft guidance describes updated expectations for manufacturers of oral solid dosage forms regarding the assessment and control of N-nitrosamine impurities. Manufacturers must complete a risk assessment for all marketed products containing secondary or tertiary amine functional groups within 9 months of the final guidance publication. Where risk is identified, confirmatory testing using a validated, sufficiently sensitive method is required. The acceptable intake (AI) limit for any newly identified nitrosamine drug substance-related impurity (NDSRI) without compound-specific data defaults to 26.5 ng/day. Changes to manufacturing processes undertaken to mitigate nitrosamine formation must be reported in a Prior Approval Supplement (PAS) or Changes Being Effected in 30 days (CBE-30) as appropriate. Applicants should submit a summary of their risk assessment in their next annual report. Comments on this draft should be submitted within 60 days.",
+  "output": {
+    "doc_type": "regulatory_guidance",
+    "issuing_organization": "FDA CDER",
+    "document_date": "2026-03-03",
+    "products": [],
+    "active_ingredients": [],
+    "therapeutic_area": "cross-cutting",
+    "key_requirements": [
+      "Complete nitrosamine risk assessment for amine-containing oral solid products within 9 months of final guidance",
+      "Perform confirmatory testing with a validated sensitive method where risk is identified",
+      "Apply default acceptable intake of 26.5 ng/day for NDSRIs without compound-specific data",
+      "Report mitigating manufacturing changes via PAS or CBE-30",
+      "Summarize risk assessment in next annual report"
+    ],
+    "safety_signals": ["N-nitrosamine impurities (potential carcinogens)"],
+    "compliance_deadline": "9 months after final guidance publication",
+    "risk_level": "high",
+    "action_required": true,
+    "summary": "Draft FDA guidance tightening nitrosamine impurity risk assessment, testing, and acceptable intake limits for oral solid dosage forms."
+  }
+}
