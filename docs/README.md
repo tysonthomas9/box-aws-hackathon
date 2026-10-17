@@ -4,22 +4,42 @@ Planning documents exported from the workspace; implementation has not started.
 
 ## Plan and research
 
-- [Demo specification](spec.md) — Goals, decisions, acceptance criteria, and verification plan.
+- [Demo specification](spec.md) — Box + AWS architecture, decisions, acceptance criteria and verification plan.
 - [Training methods compared](research/training-methods-compared.md) — Comparison of learning approaches for company knowledge.
+- [Demo scenarios](scenarios.md) — Demonstrations and hidden-test examples.
+
+## Architecture reviews
+
+- [Claude architecture review](reviews/architecture-review-claude.md)
+- [Codex architecture review](reviews/architecture-review-codex.md)
 
 ## Tasks
 
-- [Cloud machine feasibility check for TensorFold and LoRA](tasks/01-cloud-machine-feasibility-check-for-tensorfold-and-lora.md) — Prove, in about an hour, that the chosen cloud machine can teach TensorFold one fact and run a LoRA training step. Everything else depends on this.
-- [Scaffold project and knowledge-pack schema](tasks/02-scaffold-project-and-knowledge-pack-schema.md) — Set up the Python project and the shared data formats every other task uses.
-- [Document source adapter for Box with local-folder fallback](tasks/03-document-source-adapter-for-box-with-local-folder-fallback.md) — One interface for listing, reading and writing documents, backed by Box or by a local folder, and able to tell which files changed since the last run (needed for the Box-sync demo).
-- [Fictional company knowledge pack](tasks/04-fictional-company-knowledge-pack.md) — Invent a small fictional company whose facts and procedures the base model cannot already know, with test questions for every demo story.
-- [Retrieval and inference pipeline with baseline modes](tasks/05-retrieval-and-inference-pipeline-with-baseline-modes.md) — One way to ask any model a question so all approaches are compared on identical inputs.
-- [Review queue for extracted facts and procedures](tasks/06-review-queue-for-extracted-facts-and-procedures.md) — A person (or a simulated reviewer) approves what gets taught, so nothing enters the model's weights without sign-off.
-- [TensorFold fact teaching and Box sync](tasks/07-tensorfold-fact-teaching-and-box-sync.md) — Teach approved facts one at a time through TensorFold, record what stuck, and keep the model in step with Box edits.
-- [LoRA procedure training and adapter registry](tasks/08-lora-procedure-training-and-adapter-registry.md) — Teach procedures (conditional, multi-step behavior) with LoRA, the part TensorFold cannot learn, and keep every adapter as a numbered version.
-- [Evaluation harness and promotion gate](tasks/09-evaluation-harness-and-promotion-gate.md) — Score every approach on the same held-out questions and decide what gets kept.
-- [End-to-end loop runner and demo script](tasks/10-end-to-end-loop-runner-and-demo-script.md) — One command runs the whole loop and a script walks through the three demo stories and the Box-sync finale.
+### Phase 0: POCs
 
+- [POC 1 — AWS learning path: SageMaker LoRA to Bedrock import](tasks/01-poc-1-aws-learning-path-sagemaker-lora-to-bedrock-import.md)
+- [POC 2 — Does a small LoRA actually learn company knowledge?](tasks/02-poc-2-does-a-small-lora-actually-learn-company-knowledge.md)
+- [POC 3 — Box CCG app, Box AI extraction and webhook delivery](tasks/03-poc-3-box-ccg-app-box-ai-extraction-and-webhook-delivery.md)
+
+### Phase 1: Box + AWS managed LoRA
+
+- [Scaffold repo layout and shared schemas](tasks/04-scaffold-repo-layout-and-shared-schemas.md)
+- [Terraform foundation and deploy commands](tasks/05-terraform-foundation-and-deploy-commands.md)
+- [Box client: CCG auth, files, versions, seeding](tasks/06-box-client-ccg-auth-files-versions-seeding.md)
+- [Fictional company knowledge pack](tasks/07-fictional-company-knowledge-pack.md)
+- [Box AI extraction, automatic checks and review](tasks/08-box-ai-extraction-automatic-checks-and-review.md)
+- [Box sync service: webhook, schedule and Sync now](tasks/09-box-sync-service-webhook-schedule-and-sync-now.md)
+- [Answering library: without, with, and search](tasks/10-answering-library-without-with-and-search.md)
+- [Training pipeline: Step Functions, SageMaker LoRA, Bedrock import](tasks/11-training-pipeline-step-functions-sagemaker-lora-bedrock-import.md)
+- [Evaluation with Bedrock judge, Evaluations jobs and promotion gate](tasks/12-evaluation-with-bedrock-judge-evaluations-jobs-and-promotion-gate.md)
+- [Web app on AWS: API, shared-password login and screens](tasks/13-web-app-on-aws-api-shared-password-login-and-screens.md)
+- [Deploy, seed and demo runbook](tasks/14-deploy-seed-and-demo-runbook.md)
+
+### Phase 2: TensorFold facts
+
+- [Phase 2: TensorFold feasibility on EC2 Mac](tasks/15-phase-2-tensorfold-feasibility-on-ec2-mac.md)
+- [TensorFold fact teaching and Box sync](tasks/16-tensorfold-fact-teaching-and-box-sync.md)
+- [Phase 2: add the TensorFold track to inference, evaluation, UI and demo](tasks/17-phase-2-add-the-tensorfold-track-to-inference-evaluation-ui-and-demo.md)
 ## References
 
 - [Enterprise business value: Box workflows that learn from expert corrections](references/box-learning-enterprise-business-value-2026-10-16.md) — Research reference: box learning enterprise business value 2026 10 16.

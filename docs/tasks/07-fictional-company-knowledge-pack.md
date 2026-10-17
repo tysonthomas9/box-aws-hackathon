@@ -12,7 +12,7 @@ Company "Halvard Systems" (invented names throughout). Documents: handbook, org 
 Not in scope: public datasets (dropped).
 
 ## Inputs
-Schemas from the scaffold task. TensorFold limits: facts must name their subject; recall drops with many facts on one subject.
+Build the pack so every scenario in [Demo scenarios](../scenarios.md) works exactly as written (names, facts, runbooks, v2 edits, hidden procedure family). Schemas from the scaffold task. TensorFold limits: facts must name their subject; recall drops with many facts on one subject.
 
 ## Definition of Done
 Pack builds deterministically; validation checks that every fact names its subject, no subject has more than 3 facts, held-out procedure families never appear in training data, and every question links to its facts or procedures.
