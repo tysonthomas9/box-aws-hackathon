@@ -650,6 +650,13 @@ def test_worker_factory_uses_the_bounded_warmup_client(monkeypatch):
     warmup.assert_called_once_with(aws, credits=worker.call_args.kwargs["credit_check"].__self__)
     assert worker.call_args.args[7].select("bedrock") is answerer
     assert worker.call_args.args[1] is snapshots
+    helper_transport = next(
+        call.kwargs["config"]
+        for call in aws.client.call_args_list
+        if call.args == ("bedrock-runtime",)
+    )
+    assert helper_transport.retries["total_max_attempts"] == 1
+    assert 600 + helper_transport.connect_timeout + helper_transport.read_timeout < 840
 
 
 @pytest.mark.parametrize(
@@ -832,6 +839,7 @@ def test_generation_map_is_inside_training_transaction_before_prepare():
         "action": "generate",
         "version_id.$": "$.version_id",
         "batch.$": "$.batch",
+        "generation_pass.$": "$.generation_pass",
     }
 
 
@@ -1744,3 +1752,118 @@ def test_global_duplicate_is_backfilled_before_persisting_batch(snapshot, batch,
     assert helper._checked_batch.call_count == 2
     assert claim.call_count == 2
     assert [call.kwargs["fill_round"] for call in helper._checked_batch.call_args_list] == [1, 2]
+
+
+def test_generation_yields_with_checked_rows_saved_and_resumes_next_pass(snapshot):
+    from kloop.train.helpers import GenerationYield, TrainingHelpers
+
+    config = TrainingConfig(fact_wordings=1, unknown_rows=3, preserve_accepted_batches=True)
+    artifacts = MemoryArtifacts()
+    helper = TrainingHelpers(Mock(), artifacts)
+    helper.generation_pass = 1
+    generated = [{**rows()[1], "question": f"Untold attribute {i}?"} for i in range(3)]
+    helper.call = Mock(side_effect=[generated, [True, False, False], GenerationYield("deadline")])
+    assert list(helper.generate_batch(snapshot, config, 1)) == generated[:1]
+    saved = json.loads(artifacts.get(helper.accepted_key(snapshot, config, 1)))
+    assert saved["rows"] == generated[:1]
+    resumed = TrainingHelpers(Mock(), artifacts)
+    resumed.generation_pass = 2
+    resumed._checked_batch = Mock(return_value=generated[1:])
+    assert list(resumed.generate_batch(snapshot, config, 1)) == generated
+    assert resumed._checked_batch.call_args.kwargs == {"row_slice": (1, 2), "fill_round": 2}
+
+
+def test_prepare_reads_partial_checked_batches_without_any_generation(snapshot):
+    from kloop.train.data import encoded
+    from kloop.train.helpers import TrainingHelpers
+
+    helper = TrainingHelpers(Mock(), MemoryArtifacts())
+    helper.batches = Mock(
+        return_value=[("unknown", 3, [snapshot.items[0].model_dump(mode="json")])]
+    )
+    config = TrainingConfig(unknown_rows=3, preserve_accepted_batches=True)
+    kept = rows()[1:2]
+    record = {
+        "snapshot_hash": snapshot.sha256,
+        "batch": 0,
+        "kind": "unknown",
+        "target_count": 3,
+        "checker_model": "zai.glm-5",
+        "rows": kept,
+        "rows_sha256": sha256(encoded(kept)),
+    }
+    helper.artifacts.put(helper.accepted_key(snapshot, config, 0), encoded(record))
+    helper._checked_batch = Mock(side_effect=AssertionError("Prepare must never call a generator"))
+    assert list(helper.generate(snapshot, config)) == kept
+    helper._checked_batch.assert_not_called()
+    helper.runtime.converse.assert_not_called()
+    assert helper.read_only_batches is False
+
+
+def test_generate_worker_and_asl_bound_passes_to_three(worker):
+    w, _, _, _ = worker
+    w.helpers = SimpleNamespace(
+        budget=None,
+        bind_generation=Mock(),
+        batches=Mock(return_value=[("fact", 4, [])]),
+        generate_batch=Mock(return_value=rows()[:1]),
+        check=Mock(return_value=True),
+    )
+    assert w.handle("generate", "run", batch=0, generation_pass=1)["complete"] is False
+    assert w.handle("generate", "run", batch=0, generation_pass=3)["complete"] is True
+    with pytest.raises(ValueError, match="generation pass"):
+        w.handle("generate", "run", batch=0, generation_pass=4)
+    graph = definition("worker")["States"]["Transaction"]["Branches"][0]["States"]["Generate"]
+    assert graph["Parameters"]["generation_pass"] == 1
+    iterator = graph["Iterator"]["States"]
+    assert iterator["GenerateBatch"]["Next"] == "GenerationPassStatus"
+    assert iterator["GenerationPassStatus"]["Choices"][1]["NumericGreaterThanEquals"] == 3
+    assert iterator["NextGenerationPass"]["Next"] == "GenerateBatch"
+
+
+def test_generate_handler_stops_admission_at_ten_minutes(monkeypatch):
+    from kloop.train import runtime
+    from kloop.train.helpers import GenerationYield
+
+    worker = Mock()
+    worker.handle.side_effect = lambda *args, **kwargs: worker.helpers.before_call()
+    monkeypatch.setattr(runtime, "session", Mock())
+    monkeypatch.setattr(runtime, "factory", Mock(return_value=worker))
+    monkeypatch.setattr(runtime.time, "monotonic", Mock(side_effect=[0, 600]))
+    with pytest.raises(GenerationYield):
+        runtime.handler(
+            {"action": "generate", "version_id": "run", "batch": 0, "generation_pass": 2}, None
+        )
+    assert worker.handle.call_args.kwargs["generation_pass"] == 2
+
+
+def test_time_admission_never_reaches_native_client_but_can_reuse_cached_result():
+    from kloop.train.data import encoded
+    from kloop.train.helpers import GenerationYield, TrainingHelpers
+
+    artifacts = MemoryArtifacts()
+    native = Mock()
+    helper = TrainingHelpers(native, artifacts)
+    helper.before_call = Mock(side_effect=GenerationYield("deadline"))
+    with pytest.raises(GenerationYield):
+        helper.call("zai.glm-5", "check", 1024)
+    native.converse.assert_not_called()
+    key = "training/helper-cache/" + sha256(encoded(["zai.glm-5", "check", 1024])) + ".json"
+    artifacts.put(key, encoded([True]))
+    assert helper.call("zai.glm-5", "check", 1024) == [True]
+    assert helper.before_call.call_count == 1
+
+
+def test_new_workflow_seed_does_not_reuse_failed_generations(snapshot):
+    from kloop.train.helpers import TrainingHelpers
+
+    config = TrainingConfig(fact_wordings=1, unknown_rows=1)
+    prompts = []
+    for name in ["run-one", "run-two"]:
+        helper = TrainingHelpers(Mock(), MemoryArtifacts())
+        helper.generation_tag = name
+        helper.call = Mock(side_effect=[rows()[1:2], [True]])
+        assert list(helper.generate_batch(snapshot, config, 1)) == rows()[1:2]
+        prompts.append(helper.call.call_args_list[0].args[1])
+    assert prompts[0] != prompts[1]
+    assert "run=run-one" in prompts[0] and "run=run-two" in prompts[1]

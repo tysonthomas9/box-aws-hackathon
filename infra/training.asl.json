@@ -40,7 +40,8 @@
               "MaxConcurrency": 2,
               "Parameters": {
                 "version_id.$": "$.version_id",
-                "batch.$": "$$.Map.Item.Value"
+                "batch.$": "$$.Map.Item.Value",
+                "generation_pass": 1
               },
               "Iterator": {
                 "StartAt": "GenerateBatch",
@@ -53,7 +54,8 @@
                       "Payload": {
                         "action": "generate",
                         "version_id.$": "$.version_id",
-                        "batch.$": "$.batch"
+                        "batch.$": "$.batch",
+                        "generation_pass.$": "$.generation_pass"
                       }
                     },
                     "ResultSelector": {
@@ -61,7 +63,7 @@
                     },
                     "ResultPath": "$.generate",
                     "TimeoutSeconds": 840,
-                    "End": true,
+                    "Next": "GenerationPassStatus",
                     "Retry": [
                       {
                         "ErrorEquals": [
@@ -80,6 +82,35 @@
                         "JitterStrategy": "FULL"
                       }
                     ]
+                  },
+                  "GenerationPassStatus": {
+                    "Type": "Choice",
+                    "Choices": [
+                      {
+                        "Variable": "$.generate.value.complete",
+                        "BooleanEquals": true,
+                        "Next": "BatchComplete"
+                      },
+                      {
+                        "Variable": "$.generation_pass",
+                        "NumericGreaterThanEquals": 3,
+                        "Next": "BatchComplete"
+                      }
+                    ],
+                    "Default": "NextGenerationPass"
+                  },
+                  "NextGenerationPass": {
+                    "Type": "Pass",
+                    "Parameters": {
+                      "version_id.$": "$.version_id",
+                      "batch.$": "$.batch",
+                      "generation_pass.$": "States.MathAdd($.generation_pass, 1)"
+                    },
+                    "Next": "GenerateBatch"
+                  },
+                  "BatchComplete": {
+                    "Type": "Pass",
+                    "End": true
                   }
                 }
               },

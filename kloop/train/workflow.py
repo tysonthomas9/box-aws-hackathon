@@ -25,11 +25,41 @@ def definition(worker_arn: str) -> dict:
             "Type": "Map",
             "ItemsPath": "$.batches.value.batches",
             "MaxConcurrency": 2,
-            "Parameters": {"version_id.$": "$.version_id", "batch.$": "$$.Map.Item.Value"},
+            "Parameters": {
+                "version_id.$": "$.version_id",
+                "batch.$": "$$.Map.Item.Value",
+                "generation_pass": 1,
+            },
             "Iterator": {
                 "StartAt": "GenerateBatch",
                 "States": {
-                    "GenerateBatch": task("generate", seconds=840),
+                    "GenerateBatch": task("generate", "GenerationPassStatus", seconds=840),
+                    "GenerationPassStatus": {
+                        "Type": "Choice",
+                        "Choices": [
+                            {
+                                "Variable": "$.generate.value.complete",
+                                "BooleanEquals": True,
+                                "Next": "BatchComplete",
+                            },
+                            {
+                                "Variable": "$.generation_pass",
+                                "NumericGreaterThanEquals": 3,
+                                "Next": "BatchComplete",
+                            },
+                        ],
+                        "Default": "NextGenerationPass",
+                    },
+                    "NextGenerationPass": {
+                        "Type": "Pass",
+                        "Parameters": {
+                            "version_id.$": "$.version_id",
+                            "batch.$": "$.batch",
+                            "generation_pass.$": "States.MathAdd($.generation_pass, 1)",
+                        },
+                        "Next": "GenerateBatch",
+                    },
+                    "BatchComplete": {"Type": "Pass", "End": True},
                 },
             },
             "ResultPath": None,
@@ -114,6 +144,9 @@ def definition(worker_arn: str) -> dict:
     work["Generate"]["Iterator"]["States"]["GenerateBatch"]["Parameters"]["Payload"]["batch.$"] = (
         "$.batch"
     )
+    work["Generate"]["Iterator"]["States"]["GenerateBatch"]["Parameters"]["Payload"][
+        "generation_pass.$"
+    ] = "$.generation_pass"
     # Retry only transient provider/invocation failures, resuming the same cached
     # batch. Recipe, overlap and budget failures must still stop before GPU.
     work["Generate"]["Iterator"]["States"]["GenerateBatch"]["Retry"] = [

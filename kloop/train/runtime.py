@@ -23,7 +23,7 @@ from kloop.train.claims import claim_question
 from kloop.train.config import TrainingConfig
 from kloop.train.credits import CreditCheckedRuntime, CreditGuard
 from kloop.train.data import DataBuilder
-from kloop.train.helpers import TrainingHelpers
+from kloop.train.helpers import GenerationYield, TrainingHelpers
 from kloop.train.resources import ImportSlots, protected_ask_models
 from kloop.train.service import DispatchRejected, TrainingService
 from kloop.train.serving import ServingBackends
@@ -129,7 +129,7 @@ def factory(session):
         config=Config(
             connect_timeout=5,
             read_timeout=180,
-            retries={"total_max_attempts": 2, "mode": "adaptive"},
+            retries={"total_max_attempts": 1, "mode": "standard"},
         ),
     )
     helpers = TrainingHelpers(
@@ -201,6 +201,7 @@ def factory(session):
 
 
 def handler(event, context):
+    started = time.monotonic()
     aws = session()
     if event.get("action") == "medical_unknown_pilot":
         from kloop.train.medical_pilot import run
@@ -244,4 +245,16 @@ def handler(event, context):
         if not worker.recover(version_id, execution["status"], int(time.time())):
             raise RuntimeError("Training cleanup still pending; retry recovery")
         return {"recovered": True}
-    return worker.handle(event["action"], event["version_id"], batch=event.get("batch"))
+    if event["action"] == "generate":
+
+        def admit():
+            if time.monotonic() - started >= 600:
+                raise GenerationYield("Resume before admitting a call near the task timeout")
+
+        worker.helpers.before_call = admit
+    return worker.handle(
+        event["action"],
+        event["version_id"],
+        batch=event.get("batch"),
+        generation_pass=event.get("generation_pass", 1),
+    )

@@ -39,7 +39,9 @@ class TrainingWorker:
         self.base_model_arn = base_model_arn
         self.credit_check = credit_check
 
-    def handle(self, action: str, version_id: str, *, batch: int | None = None) -> dict:
+    def handle(
+        self, action: str, version_id: str, *, batch: int | None = None, generation_pass: int = 1
+    ) -> dict:
         version = self.store.get(version_id)
         if version is None:
             raise KeyError(version_id)
@@ -80,12 +82,22 @@ class TrainingWorker:
                 self.helpers.batches(snapshot, config)
             ):
                 raise ValueError("Invalid training batch index")
+            if type(generation_pass) is not int or not 1 <= generation_pass <= 3:
+                raise ValueError("Invalid generation pass")
+            self.helpers.generation_pass = generation_pass
+            self.helpers.generation_tag = version.id
             rows = list(self.helpers.generate_batch(snapshot, config, batch))
             if not all(
                 self.helpers.check(TrainingRow.model_validate(row), snapshot) for row in rows
             ):
                 raise ValueError("Semantic checker rejected a training batch")
-            return {"batch": batch, "rows": len(rows)}
+            target = self.helpers.batches(snapshot, config)[batch][1]
+            return {
+                "batch": batch,
+                "rows": len(rows),
+                "complete": len(rows) >= target or generation_pass == 3,
+                "generation_pass": generation_pass,
+            }
         if action == "prepare":
             # Census and reservation happen before data generation or GPU spend.
             if any(
