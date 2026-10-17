@@ -175,7 +175,7 @@ describe("parallel chat threads", () => {
     ).toContain("b".repeat(64));
     expect(container.querySelectorAll(".answer-bubble")).toHaveLength(0);
   });
-  it("repeats each question per visible mode and pins the header to the latest response", () => {
+  it("keeps the selected header separate from immutable answer bindings", () => {
     const { container, rerender } = render(
       <ParallelThreads
         messages={messages}
@@ -186,6 +186,10 @@ describe("parallel chat threads", () => {
     expect(container.querySelectorAll(".user-question")).toHaveLength(2);
     expect(
       container.querySelector(".thread-heading.mode-with").textContent,
+    ).toContain("b".repeat(64));
+    expect(
+      container.querySelector(".answer-bubble.mode-with .model-binding")
+        .textContent,
     ).toContain("c".repeat(64));
     rerender(
       <ParallelThreads messages={messages} serving={serving} showSearch />,
