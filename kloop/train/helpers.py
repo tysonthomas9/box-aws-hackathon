@@ -1,6 +1,7 @@
 """Bounded Kimi wordings and GLM checking over approved items only."""
 
 import json
+import uuid
 
 from kloop.train.data import TrainingRow, encoded, sha256
 
@@ -23,6 +24,20 @@ class TrainingHelpers:
             if model == "zai.glm-5":
                 request["inferenceConfig"]["temperature"] = 0
             response = self.runtime.converse(**request)
+            self.artifacts.put(
+                "training/helper-usage/"
+                + response.get("ResponseMetadata", {}).get("RequestId", str(uuid.uuid4()))
+                + ".json",
+                encoded(
+                    {
+                        "model": model,
+                        "usage": response.get("usage", {}),
+                        "request_sha256": sha256(encoded(request)),
+                        "stop_reason": response["stopReason"],
+                    }
+                ),
+                "application/json",
+            )
             if response["stopReason"] != "end_turn":
                 raise ValueError("Helper response is incomplete") from None
             text = "".join(c.get("text", "") for c in response["output"]["message"]["content"])

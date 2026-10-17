@@ -238,3 +238,17 @@ def test_persisted_medical_summary_includes_all_categories_without_hidden_text()
     assert {k: v["total"] for k, v in copied[0]["medical_counts"]["with"].items()} == SIZES["dev"]
     assert "results" not in copied[0]
     assert not any("46+6" in c for c in copied[0]["caveats"])
+
+
+def test_medical_search_evidence_uses_pinned_documents_and_only_approved_quotes():
+    from kloop.answer import retrieve
+    from kloop.eval.medical_live import search_evidence
+
+    documents, quotes = search_evidence()
+    assert len(documents) == 109
+    assert sum(map(len, quotes.values())) == 573
+    for document in documents:
+        assert all(q in document.text for q in quotes[document.file_id, document.version_id])
+    selected = retrieve("submission date", documents, approved_quotes=quotes)
+    assert selected
+    assert all(any(c.quote in q for q in quotes[c.file_id, c.version_id]) for c in selected)

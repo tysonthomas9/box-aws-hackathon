@@ -179,6 +179,8 @@ class TrainingWorker:
             )
             version.manifest["evaluation"] = result.model_dump(mode="json")
             version.status = "ready" if result.passed else "rejected"
+            if not result.passed and config.dev_set_hash == MEDICAL_DEV_HASH:
+                version.manifest["retain_for_medical_report"] = True
             self.store.save(version)
             return {"passed": result.passed}
         if action == "promote":
@@ -217,6 +219,8 @@ class TrainingWorker:
                 # deterministic job name; absence means no GPU resource to stop.
                 self.ledger.remove(row)
         promoted = self.store.current() == version.id
+        if version.status == "rejected" and version.manifest.get("retain_for_medical_report"):
+            return True  # Ledger-owned; coordinator must approve deletion after dev review.
         if not promoted:
             if not self.slots.delete(
                 f"import:{version.manifest.get('active_import_name', version.id)}",

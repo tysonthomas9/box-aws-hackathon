@@ -3,7 +3,7 @@
 import math
 import re
 from collections import defaultdict
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from typing import Annotated, Any
 
 from pydantic import Field
@@ -182,6 +182,7 @@ def run_evaluation(
     model_version_id: str,
     bindings: Bindings,
     documents: Sequence[Document] = (),
+    approved_quotes: Mapping[tuple[str, str], Sequence[str]] | None = None,
 ) -> EvalReport:
     if not dataset.cases or len({c.question.id for c in dataset.cases}) != len(dataset.cases):
         raise ValueError("Nonempty unique question ids required")
@@ -208,7 +209,10 @@ def run_evaluation(
     for mode, arn in bindings.model_arns.items():
         for case in dataset.cases:
             if mode == "search":
-                answer = answerer.answer_search(case.question.question, arn, documents)
+                options = (
+                    {"approved_quotes": approved_quotes} if approved_quotes is not None else {}
+                )
+                answer = answerer.answer_search(case.question.question, arn, documents, **options)
             else:
                 answer = getattr(answerer, f"answer_{mode}")(case.question.question, arn)
             check = frozen_checks if dataset.sha256 in FROZEN_SET_HASHES else deterministic_checks

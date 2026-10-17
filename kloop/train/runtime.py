@@ -133,6 +133,11 @@ def factory(session):
         current = store.get(store.current()) if store.current() else None
         if current and current.import_arn:
             arns.add(current.import_arn)
+        arns.update(
+            v.import_arn
+            for v in store.versions()
+            if v.import_arn and v.manifest.get("retain_for_medical_report")
+        )
         return arns
 
     slots = ImportSlots(session.client("bedrock"), ledger, protected)

@@ -848,3 +848,26 @@ def test_model_warming_reimports_once_and_tracks_cleanup_owner(worker):
         w.handle("warm", "run")
     assert w.cleanup(store.get("run"))
     assert not w.ledger.entries()
+
+
+def test_rejected_medical_model_stays_ledger_owned_without_promotion(worker):
+    w, store, _, evaluator = worker
+    version = store.get("run")
+    version.manifest["config"]["dev_set_hash"] = MEDICAL_DEV_HASH
+    version.manifest["config"]["training_snapshot_hash"] = version.manifest["snapshot_hash"]
+    version.manifest["dev_set_hash"] = MEDICAL_DEV_HASH
+    store.save(version)
+    w.dev_bytes = Path("poc/medical-evaluation/dev.jsonl").read_bytes()
+    evaluator.return_value = {"passed": True, "sha256": "a" * 64}
+    w.handle("prepare", "run")
+    w.handle("import", "run")
+    w.handle("poll", "run")
+    evaluator.return_value = GateDecision(
+        passed=False, reasons=["dev rejected"], report_uri="s3://r"
+    )
+    assert not w.handle("evaluate", "run")["passed"]
+    assert w.cleanup(store.get("run"))
+    assert store.current() is None
+    assert store.get("run").status == "rejected"
+    assert store.get("run").manifest["retain_for_medical_report"]
+    assert [r["kind"] for r in w.ledger.entries()] == ["bedrock_import"]
