@@ -25,7 +25,7 @@ export default defineConfig({
           }));
         const halvard = JSON.parse(
           readFileSync(
-            new URL("../pack/phase1-demo-prompts.json", import.meta.url),
+            new URL("./src/phase1-demo-prompts.json", import.meta.url),
           ),
         ).prompts;
         return `export default ${JSON.stringify({ medical: prompts, halvard })}`;
