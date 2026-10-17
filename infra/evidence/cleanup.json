@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-10-17T06:48:39.854331+00:00",
+  "deployment": "kloop-wave2",
+  "remaining_owned_resources": {
+    "s3": [],
+    "dynamodb": [],
+    "lambda": [],
+    "iam_roles": [],
+    "sqs": [],
+    "logs": [],
+    "state_machines": [],
+    "schedule_groups": [],
+    "secrets": [],
+    "cloudfront": [],
+    "origin_access_control": [],
+    "api": []
+  },
+  "poc_imports_after": [
+    "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "arn:aws:bedrock:us-east-2:549803795565:imported-model/x2feesmws1lw"
+  ],
+  "poc_imports_unchanged": true,
+  "existing_box_secret_preserved": true
+}

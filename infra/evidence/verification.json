@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-10-17T06:36:14.258184+00:00",
+  "evidence_tier": "live-placeholder-infrastructure",
+  "terraform_validate": "PASS",
+  "initial_plan_resources": 64,
+  "bootstrap_resources": 4,
+  "full_test_suite": "85 passed",
+  "cleanup_safety_tests": "7 passed",
+  "ruff": "PASS",
+  "deterministic_build_sha256": "37da4f4d211bbec12543c9f840ce0a9c702a4682caa887e9b7edb686dbd0ae86",
+  "lambda_artifact": {
+    "CodeSha256": "N9pPTSEbvsElQ8n4QM4KnHAqRoLKqIfpt+22htvQroY=",
+    "CodeSize": 25315666,
+    "Runtime": "python3.12",
+    "Architectures": [
+      "x86_64"
+    ]
+  },
+  "poc_imports_before": [
+    "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+    "arn:aws:bedrock:us-east-2:549803795565:imported-model/x2feesmws1lw"
+  ],
+  "limitations": [
+    "Application handlers and training definition are explicit placeholders",
+    "Shared-password and webhook key secret versions are supplied out of band",
+    "Origin guard in private encrypted Terraform state is a coordinator-approved exception",
+    "Final secret placement/IAM correction validated and planned after live proof; not re-applied during teardown"
+  ],
+  "post_deploy_plan": "PASS: no changes",
+  "terraform_version": "1.13.4",
+  "final_secret_placement_plan": {
+    "backend": "isolated local planning only; no apply",
+    "created_resources": 66,
+    "webhook_secret_created": false,
+    "cookie_signing_secret_created": true
+  },
+  "infra_command_regression_tests": "2 passed",
+  "teardown": "PASS after saved-state recovery and retry; cleanup.json confirms zero owned resources",
+  "credential_recovery": {
+    "initial_failure": "Exported token expired after 8m28s CloudFront deletion, before state persistence",
+    "recovered_state": "Saved errored.tfstate pushed without force after releasing proven-owned stale lock",
+    "fix": "Refreshable temporary credential_process profile; inherited static credentials removed",
+    "live_recovery": "Five remaining resources and four bootstrap resources destroyed successfully",
+    "regressions": [
+      "Repeatable credential lookup without recursive configuration",
+      "Destroy resumes when outputs and ledger were already removed"
+    ],
+    "limitation": "Full long-duration CloudFront deletion was not repeated after auth fix"
+  }
+}

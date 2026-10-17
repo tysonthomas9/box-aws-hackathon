@@ -8,3 +8,6 @@ __pycache__/
 .terraform/
 *.tfstate
 *.tfstate.*
+.build/
+*.tfplan
+infra/*.auto.tfvars.json
