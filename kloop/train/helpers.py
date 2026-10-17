@@ -37,8 +37,6 @@ class TrainingHelpers:
                 request["inferenceConfig"]["temperature"] = 0
             response = self.runtime.converse(**request)
             response_id = response.get("ResponseMetadata", {}).get("RequestId", str(uuid.uuid4()))
-            if self.budget is not None:
-                self.budget.record(model, response, response_id)
             self.artifacts.put(
                 f"training/helper-responses/{response_id}.json",
                 encoded(response),
@@ -57,6 +55,7 @@ class TrainingHelpers:
                 "application/json",
             )
             if self.budget is not None:
+                self.budget.record(model, response, response_id)
                 self.budget.check()
             if response["stopReason"] != "end_turn":
                 raise ValueError("Helper response is incomplete") from None

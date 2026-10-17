@@ -1028,3 +1028,39 @@ def test_crossed_helper_budget_blocks_prepare_but_allows_cleanup(worker):
     w.builder.build.assert_not_called()
     assert w.handle("cleanup", "run")["complete"]
     assert not w.ledger.entries()
+
+
+def test_helper_budget_retries_transaction_conflict_without_reinvoking_model(table, monkeypatch):
+    from kloop.train.budget import HelperBudget
+    from kloop.train.helpers import TrainingHelpers
+
+    original = table.meta.client.transact_write_items
+    conflict = table.meta.client.exceptions.TransactionCanceledException(
+        {
+            "Error": {"Code": "TransactionCanceledException", "Message": "conflict"},
+            "CancellationReasons": [{"Code": "None"}, {"Code": "TransactionConflict"}],
+        },
+        "TransactWriteItems",
+    )
+    attempts = []
+
+    def transact(**kwargs):
+        attempts.append(kwargs)
+        if len(attempts) == 1:
+            raise conflict
+        return original(**kwargs)
+
+    monkeypatch.setattr(table.meta.client, "transact_write_items", transact)
+    runtime = Mock()
+    runtime.converse.return_value = {
+        "stopReason": "end_turn",
+        "output": {"message": {"content": [{"text": "[true]"}]}},
+        "usage": {"inputTokens": 100, "outputTokens": 10},
+        "ResponseMetadata": {"RequestId": "retry-receipt"},
+    }
+    helpers = TrainingHelpers(runtime, MemoryArtifacts())
+    helpers.budget = HelperBudget(table, "generation", 30)
+    assert helpers.call("zai.glm-5", "check", 256) == [True]
+    assert len(attempts) == 2
+    runtime.converse.assert_called_once()
+    assert helpers.budget.total_nano() == 132000

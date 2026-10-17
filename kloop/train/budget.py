@@ -1,6 +1,8 @@
 """Shared native-token helper spend; a crossed budget stops before more generation."""
 
 import json
+import random
+import time
 
 from kloop.train.data import encoded, sha256
 
@@ -63,35 +65,35 @@ class HelperBudget:
         cost = sum(usage.get(key, 0) * rate for key, rate in RATES[model].items())
         if type(cost) is not int or cost < 0:
             raise ValueError("Invalid native helper token usage")
-        try:
-            self.table.meta.client.transact_write_items(
-                TransactItems=[
-                    {
-                        "Put": {
-                            "TableName": self.table.name,
-                            "Item": {
-                                "pk": f"training_helper_usage:{self.generation}",
-                                "sk": request_id,
-                                "payload": json.dumps(
-                                    {"model": model, "usage": usage, "cost_nano": cost}
-                                ),
-                            },
-                            "ConditionExpression": "attribute_not_exists(pk)",
-                        }
+        transaction = [
+            {
+                "Put": {
+                    "TableName": self.table.name,
+                    "Item": {
+                        "pk": f"training_helper_usage:{self.generation}",
+                        "sk": request_id,
+                        "payload": json.dumps({"model": model, "usage": usage, "cost_nano": cost}),
                     },
-                    {
-                        "Update": {
-                            "TableName": self.table.name,
-                            "Key": self.key,
-                            "UpdateExpression": "ADD spent_nano :cost",
-                            "ExpressionAttributeValues": {":cost": cost},
-                        }
-                    },
-                ]
-            )
-        except self.table.meta.client.exceptions.TransactionCanceledException as exc:
-            if (
-                exc.response.get("CancellationReasons", [{}])[0].get("Code")
-                != "ConditionalCheckFailed"
-            ):
-                raise
+                    "ConditionExpression": "attribute_not_exists(pk)",
+                }
+            },
+            {
+                "Update": {
+                    "TableName": self.table.name,
+                    "Key": self.key,
+                    "UpdateExpression": "ADD spent_nano :cost",
+                    "ExpressionAttributeValues": {":cost": cost},
+                }
+            },
+        ]
+        for attempt in range(8):
+            try:
+                self.table.meta.client.transact_write_items(TransactItems=transaction)
+                return
+            except self.table.meta.client.exceptions.TransactionCanceledException as exc:
+                reasons = [r.get("Code") for r in exc.response.get("CancellationReasons", [])]
+                if reasons and reasons[0] == "ConditionalCheckFailed":
+                    return  # The same native response was already charged atomically.
+                if "TransactionConflict" not in reasons or attempt == 7:
+                    raise
+                time.sleep(min(0.05 * 2**attempt, 1) + random.uniform(0, 0.03))
