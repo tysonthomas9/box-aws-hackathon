@@ -3,7 +3,12 @@ name = "kloop"
 version = "0.1.0"
 description = "Company knowledge learning demo on Box and AWS"
 requires-python = ">=3.12,<3.13"
-dependencies = ["pydantic>=2.12,<3", "pydantic-settings>=2.11,<3", "boto3>=1.40,<2"]
+dependencies = [
+    "pydantic>=2.12,<3",
+    "pydantic-settings>=2.11,<3",
+    "boto3[crt]>=1.40,<2",
+    "box-sdk-gen>=1.17,<2",
+]
 
 [dependency-groups]
 dev = ["pytest>=8,<9", "moto[dynamodb,s3]>=5,<6", "ruff>=0.14,<1"]
