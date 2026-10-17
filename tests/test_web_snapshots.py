@@ -215,3 +215,57 @@ def test_empty_base_model_does_not_hide_available_trained_model(monkeypatch):
         assert models["with"]["arn"].endswith("/abcdefghijkl")
     finally:
         runtime.api_runtime.cache_clear()
+
+
+def publish_prepared(snapshots, snapshot, *, failure=None):
+    document = snapshots.box.get_document.return_value.model_dump(mode="json")
+    corpus = {"snapshot_sha256": snapshot["sha256"], "documents": [document], "index": {}}
+    if failure == "version":
+        document["version_id"] = "different"
+    elif failure == "quote":
+        document["text"] = "Unapproved replacement"
+    elif failure == "duplicate":
+        corpus["documents"].append(document.copy())
+    elif failure == "snapshot":
+        corpus["snapshot_sha256"] = "b" * 64
+    value = {"corpus": corpus, "sha256": digest(corpus)}
+    if failure == "hash":
+        value["sha256"] = "b" * 64
+    key = f"extraction/snapshots/{snapshot['sha256']}.search.json"
+    snapshots.repository.bodies.put(key, json.dumps(value).encode())
+
+
+def test_prepared_documents_avoid_box_and_keep_the_original_ask_contract(snapshots):
+    from kloop.schemas import AskJob
+    from kloop.train.resources import protected_ask_models
+    from kloop.web.jobs import JobService, MemoryJobs
+
+    snapshot = save(snapshots)
+    publish_prepared(snapshots, snapshot)
+    evidence = runtime.worker_runtime().documents(snapshot["sha256"])
+    assert evidence.documents[0].version_id == "v1"
+    assert evidence.approved_quotes == {("source", "v1"): ["Approved excerpt."]}
+    runtime.worker_runtime().documents(snapshot["sha256"])
+    snapshots.plugin.assert_not_called()
+    job = JobService(MemoryJobs(), lambda _: None, clock=lambda: 100).create(
+        "Public question",
+        "search",
+        "arn:aws:bedrock:us-east-2:549803795565:imported-model/0inmdc8ttj1w",
+        "base",
+        snapshot["sha256"],
+    )
+    payload = json.loads(job.model_dump_json())
+    assert not {"queue_ms", "retrieval_ms", "generation_ms", "retriever"} & payload.keys()
+    assert AskJob.model_config["extra"] == "forbid"
+    AskJob.model_validate(payload)
+    storage = SimpleNamespace(list=lambda _: [payload])
+    assert protected_ask_models(storage, 100) == {job.model_arn}
+
+
+@pytest.mark.parametrize("failure", ["hash", "snapshot", "version", "duplicate", "quote"])
+def test_invalid_prepared_sources_fail_before_box_or_model(snapshots, failure):
+    snapshot = save(snapshots)
+    publish_prepared(snapshots, snapshot, failure=failure)
+    with pytest.raises(ValueError, match="Prepared Search"):
+        runtime.worker_runtime().documents(snapshot["sha256"])
+    snapshots.plugin.assert_not_called()

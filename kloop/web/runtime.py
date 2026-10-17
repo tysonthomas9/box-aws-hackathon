@@ -163,6 +163,24 @@ def worker_runtime():
     storage = snapshot_storage(aws)
     extraction = LazyService(lambda: plugin(os.environ["KLOOP_EXTRACTION_FACTORY"], aws))
 
+    def corpus_key(sha):
+        from kloop.extract.snapshots import snapshot_key
+
+        return snapshot_key(sha).removesuffix(".json") + ".search.json"
+
+    @lru_cache(maxsize=2)
+    def prepared_documents(sha):
+        import json
+
+        from kloop.extract.hashing import digest
+        from kloop.schemas import Document
+
+        value = json.loads(storage.bodies.get(corpus_key(sha)))
+        corpus = value["corpus"]
+        if digest(corpus) != value["sha256"] or corpus["snapshot_sha256"] != sha:
+            raise ValueError("Prepared Search corpus failed integrity check")
+        return [Document.model_validate(document) for document in corpus["documents"]]
+
     def documents(sha):
         value = storage.get("approved_snapshots", sha)
         if value is None:
@@ -175,6 +193,27 @@ def worker_runtime():
             or digest([i.model_dump(mode="json") for i in snapshot.items]) != sha
         ):
             raise ValueError("Pinned snapshot failed integrity check")
+        try:
+            prepared = prepared_documents(sha)
+        except KeyError as error:
+            if error.args != (corpus_key(sha),):
+                raise
+        else:
+            sources = {(d.file_id, d.version_id): d for d in prepared}
+            expected = {(i.source_file_id, i.source_version_id) for i in snapshot.items}
+            if len(sources) != len(prepared) or set(sources) != expected:
+                raise ValueError("Prepared Search sources differ from approved snapshot")
+            quotes = {pair: [] for pair in expected}
+            for item in snapshot.items:
+                pair = (item.source_file_id, item.source_version_id)
+                if (
+                    not item.supporting_quote.strip()
+                    or item.supporting_quote not in sources[pair].text
+                ):
+                    raise ValueError("Prepared Search source is missing an approved quote")
+                quotes[pair].append(item.supporting_quote)
+            return SearchEvidence(prepared, quotes)
+
         pairs = sorted({(i.source_file_id, i.source_version_id) for i in snapshot.items})
         documents = []
         for file, version in pairs:
