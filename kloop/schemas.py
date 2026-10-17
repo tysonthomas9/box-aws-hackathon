@@ -86,6 +86,9 @@ class AskJob(PinnedModel):
     status: Literal["queued", "warming", "running", "succeeded", "failed"] = "queued"
     answer: str | None = None
     latency_ms: Annotated[float, Field(ge=0, allow_inf_nan=False)] | None = None
+    queue_ms: Annotated[float, Field(ge=0, allow_inf_nan=False)] | None = None
+    retrieval_ms: Annotated[float, Field(ge=0, allow_inf_nan=False)] | None = None
+    generation_ms: Annotated[float, Field(ge=0, allow_inf_nan=False)] | None = None
     error: str | None = None
 
 

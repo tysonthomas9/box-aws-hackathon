@@ -90,7 +90,30 @@ export function AnswerBubble({ job }) {
       {job.latency_ms != null && (
         <p className="subtle answer-latency">
           <Clock3 size={13} aria-hidden="true" />{" "}
-          {(job.latency_ms / 1000).toFixed(2)} seconds
+          {job.queue_ms != null ? (
+            <span>
+              {(job.latency_ms / 1000).toFixed(2)} seconds total
+              <br />
+              Queue {(job.queue_ms / 1000).toFixed(2)} s · Retrieval{" "}
+              {job.retrieval_ms == null
+                ? "not recorded"
+                : `${(job.retrieval_ms / 1000).toFixed(2)} s`}
+              {" · "}Generation{" "}
+              {job.generation_ms == null
+                ? "not recorded"
+                : `${(job.generation_ms / 1000).toFixed(2)} s`}
+              <br />
+              <small>
+                Server time from submission; generation includes model warming
+                and retries.
+              </small>
+            </span>
+          ) : (
+            <span>
+              {(job.latency_ms / 1000).toFixed(2)} seconds generation · Total
+              time not recorded
+            </span>
+          )}
         </p>
       )}
       {job.model_version_id && (

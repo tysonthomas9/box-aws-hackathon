@@ -1,6 +1,7 @@
 """HTTP surface; all operations are injected and no clients are made at import."""
 
 import hmac
+from contextlib import nullcontext
 from dataclasses import dataclass
 from typing import Literal
 
@@ -45,6 +46,8 @@ class Services:
     results: object
     training_busy: type[Exception] = ValueError
     training_control: object = None
+    version_loading: object = None
+    model_guard: object = nullcontext
 
 
 def create_app(services: Services, security: Security, throttle, *, clock=epoch) -> FastAPI:
@@ -193,6 +196,10 @@ def create_app(services: Services, security: Security, throttle, *, clock=epoch)
         }
 
     def enqueue(question, warm_up=False):
+        with services.model_guard():
+            return enqueue_guarded(question, warm_up)
+
+    def enqueue_guarded(question, warm_up=False):
         if not question.strip():
             return JSONResponse({"detail": "Enter a question"}, status_code=422)
         # Read the pointer ONCE for the whole comparison, then pin every mode.
@@ -286,6 +293,28 @@ def create_app(services: Services, security: Security, throttle, *, clock=epoch)
             raise KeyError(id)
         return result
 
+    @app.post("/api/versions/{id}/load")
+    def load_version(id: str):
+        if services.version_loading is None:
+            raise ValueError("Version loading is not configured")
+        try:
+            return JSONResponse(services.version_loading.load(id), status_code=202)
+        except services.training_busy:
+            return JSONResponse(
+                {"detail": "Training or loading is already active"}, status_code=409
+            )
+
+    @app.post("/api/versions/{id}/unload")
+    def unload_version(id: str):
+        if services.version_loading is None:
+            raise ValueError("Version loading is not configured")
+        try:
+            return services.version_loading.unload(id)
+        except services.training_busy:
+            return JSONResponse(
+                {"detail": "Training or loading is already active"}, status_code=409
+            )
+
     @app.get("/api/results")
     def results():
         # An allowlist keeps private sealed answers and questions out of this surface.
@@ -296,6 +325,8 @@ def create_app(services: Services, security: Security, throttle, *, clock=epoch)
             "question_set_sha256",
             "scores",
             "counts",
+            "diagnostics",
+            "medical_counts",
             "bindings",
             "caveats",
             "gate",

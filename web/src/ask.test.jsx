@@ -14,6 +14,34 @@ const job = {
   citations: [],
 };
 describe("fixed answer cards", () => {
+  it("shows total latency and its queue, retrieval and generation breakdown", () => {
+    render(
+      <AnswerBubble
+        job={{
+          ...job,
+          mode: "search",
+          latency_ms: 120600,
+          queue_ms: 8000,
+          retrieval_ms: 110000,
+          generation_ms: 2600,
+        }}
+      />,
+    );
+    expect(screen.getByText(/120.60 seconds total/)).toBeTruthy();
+    expect(
+      screen.getByText(/Queue 8.00 s · Retrieval 110.00 s · Generation 2.60 s/),
+    ).toBeTruthy();
+    expect(
+      screen.getByText(/generation includes model warming and retries/),
+    ).toBeTruthy();
+  });
+  it("does not describe old generation-only timing as total latency", () => {
+    render(<AnswerBubble job={{ ...job, latency_ms: 600 }} />);
+    expect(
+      screen.getByText("0.60 seconds generation · Total time not recorded"),
+    ).toBeTruthy();
+    expect(screen.queryByText(/seconds total/)).toBeNull();
+  });
   it("preserves answer text and line breaks without interpreting HTML or learned labels as links", () => {
     const { container } = render(<AnswerBubble job={job} />);
     expect(container.querySelector(".answer-text").textContent).toBe(

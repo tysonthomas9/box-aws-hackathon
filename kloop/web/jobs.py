@@ -183,6 +183,8 @@ class Worker:
         # Lease lasts until the immutable deadline. A duplicate never invokes the model.
         if job.status in TERMINAL or job.status in {"running", "warming"}:
             return
+        started_at = self.clock()
+        job.queue_ms = max(0, (started_at - job.created_at) * 1000)
         job.status = "running"
         job.attempts += 1
         if not self.jobs.store.save(job, rev):
@@ -197,11 +199,13 @@ class Worker:
             rev += 1
 
         try:
+            retrieval_started = self.clock()
             documents = (
                 self.documents(job.snapshot_sha256)
                 if job.mode == "search" and not job.warm_up
                 else ()
             )
+            job.retrieval_ms = max(0, (self.clock() - retrieval_started) * 1000)
             # Leave room for a final transport timeout before the fixed deadline.
             if self.clock() + 65 >= job.expires_at:
                 raise TimeoutError
@@ -231,22 +235,28 @@ class Worker:
             elif job.mode == "with":
                 result = answerer().answer_with(job.question, job.model_arn)
             else:
+                search_started = self.clock()
                 result = answerer().answer_search(
                     job.question,
                     job.model_arn,
                     documents.documents,
                     approved_quotes=documents.approved_quotes,
                 )
+                # Answerer times generation/retries; include local ranking/prompt work in retrieval.
+                job.retrieval_ms += max(
+                    0, (self.clock() - search_started) * 1000 - result.latency_ms
+                )
             if self.clock() >= job.expires_at:
                 raise TimeoutError
             job.status, job.answer = "succeeded", result.answer
-            job.latency_ms = result.latency_ms
+            job.generation_ms = result.latency_ms
             job.citations = [c.model_dump(mode="json") for c in result.citations]
         except ModelWarming:
             job.status, job.error = "failed", "Model is still warming; use Warm up and try again"
         except Exception:
             # SDK messages may include prompt text, credentials or internal details.
             job.status, job.error = "failed", "Answer failed; submit again"
+        job.latency_ms = max(0, (self.clock() - job.created_at) * 1000)
         try:
             if not self.jobs.store.save(job, rev):
                 raise RuntimeError("Job ownership lost")

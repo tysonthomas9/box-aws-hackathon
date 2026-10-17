@@ -105,6 +105,25 @@ def setup(clock):
             "split": "hidden",
             "question_set_sha256": "c" * 64,
             "scores": {"with.fact": 0.9},
+            "medical_counts": {
+                "with": {
+                    "in_documents_not_trained": {
+                        "correct": 1,
+                        "total": 3,
+                        "declined": 1,
+                        "invented": 1,
+                    }
+                }
+            },
+            "diagnostics": {"with": {"criteria": {"passed": 2, "total": 3, "pass_rate": 2 / 3}}},
+            "paired": {
+                "without_vs_with": {
+                    "both_correct": 1,
+                    "left_only": 0,
+                    "right_only": 2,
+                    "both_wrong": 0,
+                }
+            },
             "results": [{"answer": "PRIVATE"}],
             "questions": ["PRIVATE"],
         }
@@ -251,6 +270,10 @@ def test_all_screens_and_comparison_pins(setup):
     setup.services.training.start.assert_called_once_with("request-1", NOW)
     assert client.get("/api/training/v2").json()["status"] == "importing"
     assert "PRIVATE" not in client.get("/api/results").text
+    report = client.get("/api/results").json()["reports"][0]
+    assert report["medical_counts"]["with"]["in_documents_not_trained"]["invented"] == 1
+    assert report["diagnostics"]["with"]["criteria"]["total"] == 3
+    assert report["paired"]["without_vs_with"]["right_only"] == 2
     assert client.post("/api/logout", json={}).status_code == 200
     assert client.get("/api/session").status_code == 401
 
@@ -308,6 +331,43 @@ def test_search_and_warm_up_use_answerer(jobstore, clock):
     warm = jobs.create("READY", "without", BASE, "base", "a" * 64, warm_up=True)
     worker.run(warm.id)
     assert model.invoke.call_args.args[1]["max_gen_len"] == 16
+
+
+def test_search_total_latency_includes_queue_documents_and_warming(jobstore, clock):
+    jobs = JobService(jobstore, Mock(), clock=clock.read)
+    job = jobs.create("Who handles support?", "search", BASE, "base", "a" * 64)
+    clock.sleep(8)
+
+    def documents(_):
+        clock.sleep(110)
+        return SearchEvidence(
+            [Document(file_id="f", version_id="v", name="Support", text="Mara handles support.")],
+            {("f", "v"): ["Mara handles support."]},
+        )
+
+    model = Mock()
+
+    def invoke(*_):
+        if model.invoke.call_count == 1:
+            raise ModelWarming
+        clock.sleep(0.6)
+        return {"generation": "Mara [1]"}
+
+    model.invoke.side_effect = invoke
+    worker = Worker(jobs, model, documents, clock=clock.read, sleep=clock.sleep)
+    worker.run(job.id)
+    result = jobs.get(job.id)
+    assert result.status == "succeeded"
+    assert result.queue_ms == 8000
+    assert result.retrieval_ms == pytest.approx(110_000)
+    assert result.generation_ms == pytest.approx(2600, abs=0.001)
+    assert result.latency_ms == pytest.approx(120_600, abs=0.001)
+    assert result.latency_ms == pytest.approx(
+        result.queue_ms + result.retrieval_ms + result.generation_ms
+    )
+    worker.run(job.id)
+    assert jobs.get(job.id) == result
+    assert model.invoke.call_count == 2
 
 
 def test_expiry_queue_failure_and_sanitized_errors(jobstore, clock):

@@ -1,5 +1,6 @@
 import { mountAsk, unmountAsk } from "./src/ask.jsx";
 import { retryAfterMs } from "./src/polling.js";
+import { modeLabel, reportDiagnostics, recipeDetails } from "./src/results.js";
 import "./style.css";
 ("use strict");
 const $ = (id) => document.getElementById(id);
@@ -536,7 +537,7 @@ async function results() {
       if (value !== null && typeof value === "object") {
         for (const [kind, score] of Object.entries(value))
           rows.push([
-            key,
+            modeLabel(key),
             kind,
             typeof score === "number"
               ? (100 * score).toFixed(1) + "%"
@@ -554,7 +555,7 @@ async function results() {
       for (const [mode, kinds] of Object.entries(r.counts)) {
         for (const [kind, count] of Object.entries(kinds))
           rows.push([
-            mode,
+            modeLabel(mode),
             kind,
             count.correct +
               " / " +
@@ -567,6 +568,12 @@ async function results() {
       }
     }
     table(card, ["Mode / metric", "Question type", "Score"], rows);
+    reportDiagnostics(card, r, { node, table, details });
+    recipeDetails(
+      card,
+      data.versions.find((v) => v.id === r.model_version_id),
+      { node, table, details },
+    );
     card.append(
       node(
         "p",
@@ -593,6 +600,7 @@ async function results() {
   for (const v of data.versions) {
     const card = node("article");
     card.append(node("h3", v.id + " · " + v.status));
+    recipeDetails(card, v, { node, table, details });
     details(card, "Manifest", v.manifest);
     $("versions").append(card);
   }
