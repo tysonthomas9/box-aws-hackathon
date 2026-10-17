@@ -7,7 +7,9 @@ def protected_ask_models(storage, now: int) -> set[str]:
     """Use job execution expiry, not delayed DynamoDB TTL deletion, as authority."""
     protected = set()
     for row in storage.list("ask_jobs"):
-        job = AskJob.model_validate(row)
+        # Answer metadata can arrive from a newer Ask deployment. Validate ownership
+        # fields while ignoring optional fields this worker does not yet understand.
+        job = AskJob.model_validate(row, extra="ignore")
         if job.expires_at <= now or job.status in {"succeeded", "failed"}:
             continue
         protected.add(job.model_arn)
