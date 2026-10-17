@@ -163,6 +163,7 @@ resource "aws_iam_role" "evaluator_reader" {
 resource "aws_iam_role_policy" "evaluator_reader" {
   role = aws_iam_role.evaluator_reader.id
   policy = jsonencode({ Version = "2012-10-17", Statement = [
+    { Effect = "Allow", Action = ["s3:ListBucket"], Resource = aws_s3_bucket.data["artifacts"].arn },
     { Effect = "Allow", Action = ["s3:GetObject"], Resource = ["${aws_s3_bucket.data["artifacts"].arn}/sealed/*", "${aws_s3_bucket.data["artifacts"].arn}/training/*"] },
     { Effect = "Allow", Action = ["s3:GetObject", "s3:PutObject"], Resource = ["${aws_s3_bucket.data["artifacts"].arn}/reports/*", "${aws_s3_bucket.data["artifacts"].arn}/sealed/reports/*", "${aws_s3_bucket.data["artifacts"].arn}/evaluations/*"] },
     { Effect = "Allow", Action = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:Query"], Resource = aws_dynamodb_table.records["versions"].arn },
