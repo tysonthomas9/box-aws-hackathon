@@ -103,6 +103,20 @@ class TrainingWorker:
                 raise ValueError(
                     "Training rows differ from the approved recipe by more than2percent"
                 )
+            if config.expected_training_rows is not None:
+                targets = {
+                    "fact": sum(i.kind == "fact" for i in snapshot.items) * config.fact_wordings,
+                    "procedure": sum(i.kind == "procedure" for i in snapshot.items)
+                    * config.procedure_cases,
+                    "unknown": config.unknown_rows,
+                    "near_miss": config.near_miss_rows,
+                    "replay": config.replay_rows,
+                }
+                if sum(targets.values()) != config.expected_training_rows or any(
+                    target and abs(data["manifest"]["counts"].get(kind, 0) - target) / target > 0.02
+                    for kind, target in targets.items()
+                ):
+                    raise ValueError("Training per-kind counts differ from the approved recipe")
             if config.dev_set_hash == MEDICAL_DEV_HASH:
                 audit = self.evaluate(
                     action="audit",

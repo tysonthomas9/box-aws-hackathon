@@ -167,7 +167,9 @@ def factory(session):
     return TrainingWorker(
         store,
         snapshots,
-        DataBuilder(helpers.generate, helpers.check, write),
+        DataBuilder(
+            helpers.generate, helpers.check, write, rejections=lambda: helpers.drop_reports
+        ),
         slots,
         ledger,
         session.client("sagemaker"),

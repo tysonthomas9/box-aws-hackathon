@@ -1084,12 +1084,36 @@ def test_helper_repairs_only_rejected_rows_then_checks_replacements(snapshot):
     assert "rejected_rows" in repair_prompt
 
 
-def test_helper_stops_after_two_rejected_source_only_repairs(snapshot):
+def test_helper_drops_and_logs_rows_after_two_rejected_source_only_repairs(snapshot):
     from kloop.train.helpers import TrainingHelpers
 
     bad = {**rows()[0], "answer": "I don't know"}
     helper = TrainingHelpers(Mock(), MemoryArtifacts())
     helper.call = Mock(side_effect=[[bad], [False], [bad], [False], [bad], [False]])
-    with pytest.raises(ValueError, match="two repairs"):
-        list(helper.generate_batch(snapshot, TrainingConfig(fact_wordings=1), 0))
+    assert list(helper.generate_batch(snapshot, TrainingConfig(fact_wordings=1), 0)) == []
     assert helper.call.call_count == 6
+    assert len(helper.drop_reports) == 1
+    dropped = json.loads(helper.artifacts.get(helper.drop_reports[0]))
+    assert dropped["dropped"][0]["row"] == bad
+    assert "two source-only repair rounds" in dropped["dropped"][0]["reason"]
+
+
+def test_per_kind_recipe_guard_rejects_wrong_mix_even_with_matching_total(worker):
+    w, store, _, _ = worker
+    version = store.get("run")
+    version.manifest["config"].update(
+        fact_wordings=1, unknown_rows=1, near_miss_rows=1, replay_rows=1, expected_training_rows=4
+    )
+    store.save(version)
+    w.builder = Mock(
+        build=Mock(
+            return_value={
+                "manifest_hash": "b" * 64,
+                "data_prefix": "training/data/mix",
+                "manifest": {"rows": 4, "counts": {"fact": 2, "near_miss": 1, "replay": 1}},
+            }
+        )
+    )
+    with pytest.raises(ValueError, match="per-kind counts"):
+        w.handle("prepare", "run")
+    assert not any(r["kind"] == "sagemaker_training" for r in w.ledger.entries())

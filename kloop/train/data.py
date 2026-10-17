@@ -42,8 +42,9 @@ class DataBuilder:
     Dev bytes are supplied separately from generation and are hash checked first.
     """
 
-    def __init__(self, generate: Callable, check: Callable, write: Callable):
+    def __init__(self, generate: Callable, check: Callable, write: Callable, *, rejections=None):
         self.generate, self.check, self.write = generate, check, write
+        self.rejections = rejections or (lambda: [])
 
     def build(self, snapshot: ApprovedSnapshot, config: TrainingConfig, dev_bytes: bytes) -> dict:
         if sha256(dev_bytes) != config.dev_set_hash:
@@ -95,7 +96,7 @@ class DataBuilder:
         if not required <= counts.keys():
             raise ValueError("Training recipe is missing a required row category")
         covered = {id for r in accepted for id in r.source_item_ids}
-        if ids - covered:
+        if ids - covered and config.expected_training_rows is None:
             raise ValueError("Training recipe omitted approved items")
         data = b"".join(
             encoded(
@@ -119,6 +120,8 @@ class DataBuilder:
             "config": config_value,
             "system_prompt_sha256": sha256(SYSTEM_PROMPT.encode()),
             "lineage": [r.model_dump(mode="json") for r in accepted],
+            "uncovered_item_ids": sorted(ids - covered),
+            "dropped_row_reports": self.rejections(),
             "hidden_audit": "evaluation-owned; builder has no hidden-set access",
         }
         manifest_bytes = encoded(manifest)

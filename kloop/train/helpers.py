@@ -12,6 +12,7 @@ class TrainingHelpers:
         self.runtime, self.artifacts = runtime, artifacts
         self.decisions = {}
         self.budget_factory, self.budget = budget_factory, None
+        self.drop_reports = []
 
     def bind_generation(self, snapshot_hash, config):
         from kloop.train.budget import generation_id
@@ -134,6 +135,7 @@ class TrainingHelpers:
             return decisions
 
         decisions = review(result)
+        original_rows = list(result)
         for repair in range(2):
             rejected = [index for index, passed in enumerate(decisions) if not passed]
             if not rejected:
@@ -162,9 +164,30 @@ class TrainingHelpers:
                 rejected, replacements, repaired_decisions, strict=True
             ):
                 result[index], decisions[index] = row, accepted
-        if not all(decisions):
-            raise ValueError("Semantic checker rejected training rows after two repairs")
+        dropped = [
+            {
+                "initial_row": original_rows[index],
+                "row": row,
+                "reason": "GLM-5 rejected the row after two source-only repair rounds",
+            }
+            for index, (row, accepted) in enumerate(zip(result, decisions, strict=True))
+            if not accepted
+        ]
+        if dropped:
+            report = {
+                "snapshot_hash": snapshot.sha256,
+                "batch": batch,
+                "kind": kind,
+                "dropped": dropped,
+            }
+            body = encoded(report)
+            key = f"training/dropped/{snapshot.sha256}/{batch}-{sha256(body)}.json"
+            self.artifacts.put(key, body, "application/json")
+            if key not in self.drop_reports:
+                self.drop_reports.append(key)
         for row, accepted in zip(result, decisions, strict=True):
+            if not accepted:
+                continue
             self.decisions[
                 sha256(
                     encoded(
