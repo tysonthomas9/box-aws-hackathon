@@ -90,6 +90,21 @@ inference profile may route requests to other US Regions, and `infra/training.tf
 `arn:aws:bedrock:us-*::foundation-model/moonshotai.kimi-k3` for that; this is the one exception to the
 us-east-2-only rule. All other model calls stay in us-east-2.
 
+### Model usage
+
+| When | Calls | Limits from code |
+| --- | --- | --- |
+| Sync finds a new or changed file version | One Box AI Extract Structured call (Claude 4.5 Haiku) per changed file version; unchanged cursors are skipped. GLM-5 is called only when the Box AI call raises a Box API error. | ≥2 s pacing between Box AI calls; source text ≤1,000,000 bytes; GLM-5 fallback `maxTokens` 4096, temperature 0 |
+| Each **Compare** (Ask) | 3 imported-model invocations: base alone, trained alone, base plus the top-3 approved passages. One SQS job per mode. | `max_gen_len` 256, temperature 0; while a model is warming the worker retries with backoff for 240 s by default (≤840 s); 6 Compare/Warm-up requests per minute per IP |
+| **Warm up** | One job that sends a 16-token "READY" probe to the base import, then the trained import. | Shared warm-up lease; same 6/min counter |
+| Recorded keep-warm loop | Direct invocations of the base and medical imports every 4 minutes with a trivial prompt (README). | ≤5 output tokens, one attempt; stops 22:15 UTC (3:15 PM PDT) |
+| **Train now**, generation phase | One Kimi K3 batch per approved item (4 fact wordings or 8 procedure cases) plus control batches of 20 rows (deployed recipe: 400 unknown → 20 batches, 220 near-miss → 11). Each batch is 1 Kimi K3 call + 1 GLM-5 review call, with up to 2 repair rounds (Kimi K3 + GLM-5 each) and up to 3 parse retries. Replay rows (490) are deterministic and make no model call. Results are cached in S3 so a retried execution does not re-spend. | Kimi K3 `max_tokens` 6000 (item) / 12000 (control), prefix-cached prompts; GLM-5 review 1024 / 4096; helper budget default $30, deployed cap $75 (`le=75`), metered in nano-dollars at the Kimi K3 / GLM-5 rates in `kloop/train/budget.py`; a crossed budget stops before GPU training |
+| **Train now**, prepare phase | One GLM-5 semantic check per accepted training row (deployed expectation: 2,686 rows). | 256 output tokens; a rejection fails the run |
+| **Train now**, GPU and import | One SageMaker training job (LoRA + merge) and one Bedrock Custom Model Import per version, plus at most one reimport. | `ml.g5.2xlarge`, 3 epochs, max runtime 5,400 s (deployed env) |
+| Dev gate, per training run | Two imported-model answers per dev question (current/base in `without`, candidate in `with`), then GLM-5 judging in batches of 10 answers, two passes (whole-answer rubric and criteria rubric), with shuffled opaque identifiers. | Judge `maxTokens` 3072, temperature 0; answers use the Ask limits above |
+| Hidden-set report (operator-run, not automatic) | Three imported-model answers per hidden question (`without`, `with`, `search`), judged the same way. | Same limits; 150 questions per mode in the recorded report |
+| Medical dataset build (one-time) | Kimi K3 generates candidate questions per source batch; GLM-5 screens them. | Kimi K3 `max_tokens` 10,000; GLM-5 3,000 |
+
 ## Documents, review, and immutable knowledge
 
 The Box client uses client-credentials authentication scoped to the configured source folder. Sync
