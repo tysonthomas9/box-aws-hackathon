@@ -91,6 +91,7 @@ resource "aws_iam_role_policy" "training_worker" {
   policy = jsonencode({ Version = "2012-10-17", Statement = [
     { Effect = "Allow", Action = ["logs:CreateLogStream", "logs:PutLogEvents"], Resource = "${aws_cloudwatch_log_group.training_worker.arn}:*" },
     { Effect = "Allow", Action = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:DeleteItem", "dynamodb:UpdateItem", "dynamodb:Query", "dynamodb:ConditionCheckItem"], Resource = [for key in ["items", "versions", "cleanup_ledger"] : aws_dynamodb_table.records[key].arn] },
+    { Effect = "Allow", Action = ["s3:ListBucket"], Resource = aws_s3_bucket.data["artifacts"].arn },
     { Effect = "Allow", Action = ["s3:GetObject", "s3:PutObject"], Resource = "${aws_s3_bucket.data["artifacts"].arn}/training/*" },
     { Effect = "Allow", Action = ["secretsmanager:GetSecretValue"], Resource = data.aws_secretsmanager_secret.box.arn },
     { Effect = "Allow", Action = ["bedrock:ListImportedModels"], Resource = "*" },
@@ -108,6 +109,7 @@ resource "aws_iam_role_policy" "training_states" {
   policy = jsonencode({ Version = "2012-10-17", Statement = [
     { Effect = "Allow", Action = ["lambda:InvokeFunction"], Resource = aws_lambda_function.training_worker.arn },
     { Effect = "Allow", Action = ["sagemaker:CreateTrainingJob", "sagemaker:DescribeTrainingJob", "sagemaker:StopTrainingJob"], Resource = local.training_job_arn },
+    { Effect = "Allow", Action = ["sagemaker:AddTags"], Resource = local.training_job_arn, Condition = { StringEquals = { "sagemaker:TaggingAction" = "CreateTrainingJob" } } },
     { Effect = "Allow", Action = ["iam:PassRole"], Resource = aws_iam_role.training["sagemaker"].arn, Condition = { StringEquals = { "iam:PassedToService" = "sagemaker.amazonaws.com" } } },
     { Effect = "Allow", Action = ["events:PutTargets", "events:PutRule", "events:DescribeRule"], Resource = "arn:aws:events:us-east-2:${local.account}:rule/StepFunctionsGetEventsForSageMakerTrainingJobsRule" }
   ] })

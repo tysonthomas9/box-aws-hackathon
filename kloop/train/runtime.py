@@ -74,6 +74,20 @@ def service(session):
     )
 
 
+def warmup_answerer(session, *, clock=time.monotonic, sleep=time.sleep):
+    # Reserve the last minute of the 15-minute Lambda/ASL window for the
+    # final transport attempt and invocation overhead; never stack SDK retries.
+    runtime = session.client(
+        "bedrock-runtime",
+        config=Config(
+            connect_timeout=5,
+            read_timeout=45,
+            retries={"total_max_attempts": 1, "mode": "standard"},
+        ),
+    )
+    return Answerer(ImportedModelClient(runtime), retry_seconds=840, clock=clock, sleep=sleep)
+
+
 def factory(session):
     config, settings = TrainingConfig(), Settings()
     store = store_for(session)
@@ -132,7 +146,7 @@ def factory(session):
             raise RuntimeError("Evaluation Lambda failed; candidate cannot be promoted")
         return GateDecision.model_validate(payload)
 
-    serving = ServingBackends({"bedrock": Answerer(ImportedModelClient(runtime))})
+    serving = ServingBackends({"bedrock": warmup_answerer(session)})
     snapshots = DynamoStorage(session.resource("dynamodb").Table(os.environ["KLOOP_ITEMS_TABLE"]))
     return TrainingWorker(
         store,

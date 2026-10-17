@@ -511,3 +511,106 @@ def test_definitive_dispatch_failure_releases_lock(table, snapshot):
         service.start("refused", 1)
     assert store.lock() is None
     assert store.versions()[0].status == "failed"
+
+
+def test_empty_s3_helper_cache_generates_then_reuses_response(aws_session):
+    from kloop.adapters.aws import S3Artifacts
+    from kloop.train.helpers import TrainingHelpers
+
+    s3 = aws_session.client("s3")
+    s3.create_bucket(
+        Bucket="training-cache", CreateBucketConfiguration={"LocationConstraint": "us-east-2"}
+    )
+    runtime = Mock()
+    runtime.converse.return_value = {
+        "stopReason": "end_turn",
+        "output": {"message": {"content": [{"text": "[true]"}]}},
+    }
+    helpers = TrainingHelpers(runtime, S3Artifacts(s3, "training-cache"))
+    assert helpers.call("zai.glm-5", "check approved row", 256) == [True]
+    assert helpers.call("zai.glm-5", "check approved row", 256) == [True]
+    runtime.converse.assert_called_once()
+
+
+def test_training_iam_permits_cache_misses_and_tagged_job_creation():
+    policy = Path("infra/training.tf").read_text()
+    worker = policy.split('resource "aws_iam_role_policy" "training_worker" {')[1].split(
+        'resource "aws_iam_role_policy" "training_states" {'
+    )[0]
+    listing = next(line for line in worker.splitlines() if 'Action = ["s3:ListBucket"]' in line)
+    assert 'Resource = aws_s3_bucket.data["artifacts"].arn' in listing
+    reads = [line for line in worker.splitlines() if '"s3:GetObject"' in line]
+    assert reads and all('/training/*"' in line for line in reads)
+    assert "sts:AssumeRole" not in worker  # Sealed content stays evaluator-only.
+    states = policy.split('resource "aws_iam_role_policy" "training_states" {')[1].split(
+        'resource "aws_iam_role_policy" "training_start" {'
+    )[0]
+    tagging = next(line for line in states.splitlines() if '"sagemaker:AddTags"' in line)
+    assert "Resource = local.training_job_arn" in tagging
+    assert '"sagemaker:TaggingAction" = "CreateTrainingJob"' in tagging
+    assert training_request(TrainingConfig(), "run", "bucket", "role", "data")["Tags"]
+
+
+@pytest.mark.parametrize("ready_at,request_seconds", [(420, 0), (900, 0), (900, 45)])
+def test_runtime_warmup_allows_seven_minutes_and_bounds_failed_start(ready_at, request_seconds):
+    from io import BytesIO
+
+    from kloop.answer import ModelWarming
+    from kloop.train.runtime import warmup_answerer
+
+    clock = SimpleNamespace(now=0)
+
+    def sleep(seconds):
+        clock.now += seconds
+
+    class Runtime:
+        meta = SimpleNamespace(region_name="us-east-2")
+        exceptions = SimpleNamespace(ModelNotReadyException=type("NotReady", (Exception,), {}))
+
+        def invoke_model(self, **request):
+            sleep(request_seconds)
+            if clock.now < ready_at:
+                raise self.exceptions.ModelNotReadyException()
+            return {"body": BytesIO(b'{"generation":"READY"}')}
+
+    aws = Mock()
+    aws.client.return_value = Runtime()
+    answerer = warmup_answerer(aws, clock=lambda: clock.now, sleep=sleep)
+    transport = aws.client.call_args.kwargs["config"]
+    assert transport.retries["total_max_attempts"] == 1
+    assert answerer.retry_seconds + transport.connect_timeout + transport.read_timeout <= 900
+    warm = definition("worker")["States"]["Transaction"]["Branches"][0]["States"]["Warm"]
+    assert warm["TimeoutSeconds"] == 900
+    arn = "arn:aws:bedrock:us-east-2:123456789012:imported-model/abcdefghijkl"
+    if ready_at == 420:
+        assert answerer.warm_up(arn).answer == "READY"
+        assert 420 <= clock.now < 900
+    else:
+        with pytest.raises(ModelWarming):
+            answerer.warm_up(arn)
+        assert 840 <= clock.now < 900
+
+
+def test_worker_factory_uses_the_bounded_warmup_client(monkeypatch):
+    from kloop.train import runtime
+
+    for name in [
+        "REPORTS_FOLDER_ID",
+        "CLEANUP_LEDGER_TABLE",
+        "ITEMS_TABLE",
+        "SAGEMAKER_ROLE",
+        "IMPORT_ROLE",
+    ]:
+        monkeypatch.setenv(f"KLOOP_{name}", "configured")
+    aws, answerer = Mock(), Mock()
+    monkeypatch.setattr(runtime, "store_for", Mock())
+    monkeypatch.setattr(runtime, "token_provider", Mock())
+    monkeypatch.setattr(runtime, "sdk_client", Mock())
+    monkeypatch.setattr(runtime, "BoxClient", Mock())
+    warmup = Mock(return_value=answerer)
+    worker = Mock()
+    monkeypatch.setattr(runtime, "warmup_answerer", warmup)
+    monkeypatch.setattr(runtime, "TrainingWorker", worker)
+    runtime.factory(aws)
+    warmup.assert_called_once_with(aws)
+    assert worker.call_args.args[7].select("bedrock") is answerer

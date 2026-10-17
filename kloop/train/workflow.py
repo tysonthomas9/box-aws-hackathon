@@ -63,7 +63,7 @@ def definition(worker_arn: str) -> dict:
         },
         "ImportFailed": {"Type": "Fail", "Error": "ImportFailed"},
         "ImportTimeout": {"Type": "Fail", "Error": "ImportTimeout"},
-        "Warm": task("warm", "Evaluate", seconds=300),
+        "Warm": task("warm", "Evaluate", seconds=900),
         "Evaluate": task("evaluate", "Gate", seconds=900),
         "Gate": {
             "Type": "Choice",
