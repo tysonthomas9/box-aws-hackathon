@@ -1,0 +1,36 @@
+{
+  "received_at": "2026-10-17T06:16:05.714352+00:00",
+  "event_id": "6d12b872-5789-4207-b89b-1f0e7fa6bb9a",
+  "trigger": "FILE.UPLOADED",
+  "source_id": "2532291966730",
+  "webhook_id": "8516747068",
+  "target_id": null,
+  "created_at": "2026-10-16T23:16:04-07:00",
+  "delivery_id": "db9c77bf-d372-494f-986c-59f0e9ee8e1f",
+  "delivery_timestamp": "2026-10-16T23:16:05-07:00",
+  "signature_primary_present": false,
+  "signature_secondary_present": false,
+  "body_sha256": "5b2f56f552522d9832b991e9d175cc4acec0b7d86bac8932d0c7a87cfa051bae",
+  "signature_verification": "pending_keys",
+  "capture_only": true,
+  "seconds_from_upload_start": 1.64103,
+  "seconds_after_upload_response": 0.749427,
+  "event_match": "owned webhook and edited file",
+  "source_metadata_after_event": {
+    "type": "file",
+    "id": "2532291966730",
+    "etag": "2",
+    "parent": {
+      "type": "folder",
+      "id": "428389178330",
+      "sequence_id": "0",
+      "etag": "0",
+      "name": "Halvard POC3 20261017-061328"
+    },
+    "file_version": {
+      "type": "file_version",
+      "id": "2810011275730",
+      "sha1": "a4953042810d748e91a344237a9bf789d731928e"
+    }
+  }
+}

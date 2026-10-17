@@ -1,0 +1,33 @@
+{
+  "events": [
+    {
+      "logStreamName": "2026/10/17/[$LATEST]e6ad5d9632e9493c931893a29499f1cf",
+      "timestamp": 1792217710846,
+      "message": "INIT_START Runtime Version: python:3.13.mainlinev2.v43\tRuntime Version ARN: arn:aws:lambda:us-east-2::runtime:a0627e8616c4eaf447133f427c7419e5ce3a39ea2bc648ccb6d03d5b7f4d96e7\n",
+      "ingestionTime": 1792217713133,
+      "eventId": "39967790509870479211719716331327710497402447705791725568"
+    },
+    {
+      "logStreamName": "2026/10/17/[$LATEST]e6ad5d9632e9493c931893a29499f1cf",
+      "timestamp": 1792217710956,
+      "message": "START RequestId: dc097e29-a133-4f5e-af7f-b27cd2d4a1f7 Version: $LATEST\n",
+      "ingestionTime": 1792217713133,
+      "eventId": "39967790512323561183558084876896639507393767471449571329"
+    },
+    {
+      "logStreamName": "2026/10/17/[$LATEST]e6ad5d9632e9493c931893a29499f1cf",
+      "timestamp": 1792217710976,
+      "message": "END RequestId: dc097e29-a133-4f5e-af7f-b27cd2d4a1f7\n",
+      "ingestionTime": 1792217713133,
+      "eventId": "39967790512769576087528697339727353872846734701569179650"
+    },
+    {
+      "logStreamName": "2026/10/17/[$LATEST]e6ad5d9632e9493c931893a29499f1cf",
+      "timestamp": 1792217710976,
+      "message": "REPORT RequestId: dc097e29-a133-4f5e-af7f-b27cd2d4a1f7\tDuration: 2.35 ms\tBilled Duration: 109 ms\tMemory Size: 128 MB\tMax Memory Used: 43 MB\tInit Duration: 106.23 ms\t\n",
+      "ingestionTime": 1792217713133,
+      "eventId": "39967790512769576087528697339727353872846734701569179651"
+    }
+  ],
+  "searchedLogStreams": []
+}

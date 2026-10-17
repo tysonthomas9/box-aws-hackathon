@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "id": "2532291966730",
+      "type": "file"
+    }
+  ],
+  "fields": [
+    {
+      "key": "items",
+      "type": "table",
+      "displayName": "Facts and procedures",
+      "prompt": "Extract every fact or procedure as one row. Preserve exact names, values, units, thresholds, conditions, action order and prohibitions. Do not infer facts.",
+      "fields": [
+        {
+          "key": "subject",
+          "type": "string",
+          "displayName": "Subject"
+        },
+        {
+          "key": "statement",
+          "type": "string",
+          "displayName": "Complete fact or procedure"
+        }
+      ]
+    }
+  ],
+  "ai_agent": {
+    "type": "ai_agent_extract_structured",
+    "basic_text": {
+      "model": "aws__claude_4_5_haiku"
+    },
+    "long_text": {
+      "model": "aws__claude_4_5_haiku"
+    }
+  }
+}

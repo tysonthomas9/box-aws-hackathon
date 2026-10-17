@@ -1,0 +1,38 @@
+[
+  {
+    "at": "2026-10-17T06:13:53.573220+00:00",
+    "method": "POST",
+    "path": "/ai/extract_structured",
+    "status": 200,
+    "seconds": 2.8159,
+    "request_id": "0e667076c1aad387e0464b32531951e47",
+    "body": "{\"answer\":{\"items\":[{\"subject\":\"Kestrel service owner\",\"statement\":\"The Kestrel service owner is Mira Solven.\"}]},\"ai_agent_info\":{\"processor\":\"basic_text\",\"models\":[{\"name\":\"aws__claude_4_5_haiku\",\"provider\":\"aws\"}]},\"created_at\":\"2026-10-16T23:13:53.636-07:00\",\"completion_reason\":\"done\"}",
+    "gold_id": "F01",
+    "file_id": "2532291966730",
+    "requested_model": "aws__claude_4_5_haiku"
+  },
+  {
+    "at": "2026-10-17T06:13:57.388568+00:00",
+    "method": "POST",
+    "path": "/ai/extract_structured",
+    "status": 200,
+    "seconds": 1.8097,
+    "request_id": "1b70e4f93af1cba39fc427787d1281043",
+    "body": "{\"answer\":{\"items\":[{\"subject\":\"Nacre gateway\",\"statement\":\"Maintenance window starts at 02:40 UTC every Tuesday\"}]},\"ai_agent_info\":{\"processor\":\"basic_text\",\"models\":[{\"name\":\"aws__claude_4_5_haiku\",\"provider\":\"aws\"}]},\"created_at\":\"2026-10-16T23:13:57.447-07:00\",\"completion_reason\":\"done\"}",
+    "gold_id": "F02",
+    "file_id": "2532302130149",
+    "requested_model": "aws__claude_4_5_haiku"
+  },
+  {
+    "at": "2026-10-17T06:14:01.661709+00:00",
+    "method": "POST",
+    "path": "/ai/extract_structured",
+    "status": 200,
+    "seconds": 2.2688,
+    "request_id": "0635e748376927650910e525a714a155b",
+    "body": "{\"answer\":{\"items\":[{\"subject\":\"E42 pump fault\",\"statement\":\"Measure inlet pressure first\"},{\"subject\":\"E42 pump fault\",\"statement\":\"If inlet pressure is below 4 bar, restore inlet pressure and retest\"},{\"subject\":\"E42 pump fault\",\"statement\":\"Do not replace the pump if inlet pressure is below 4 bar\"},{\"subject\":\"E42 pump fault\",\"statement\":\"If pressure is at least 4 bar and E42 persists after retesting, replace the pump\"}]},\"ai_agent_info\":{\"processor\":\"basic_text\",\"models\":[{\"name\":\"aws__claude_4_5_haiku\",\"provider\":\"aws\"}]},\"created_at\":\"2026-10-16T23:14:01.719-07:00\",\"completion_reason\":\"done\"}",
+    "gold_id": "P01",
+    "file_id": "2532291993130",
+    "requested_model": "aws__claude_4_5_haiku"
+  }
+]

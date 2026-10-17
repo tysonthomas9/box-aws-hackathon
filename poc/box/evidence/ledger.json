@@ -1,0 +1,97 @@
+{
+  "created_at": "2026-10-17T06:13:28.673460+00:00",
+  "actor_id": "53094349916",
+  "folder": "428389178330",
+  "folder_name": "Halvard POC3 20261017-061328",
+  "files": [
+    {
+      "id": "2532291966730",
+      "name": "kestrel.txt",
+      "gold_id": "F01",
+      "sha1": "93f2dcdc9254592e1418de97d51a75da5939cf16",
+      "content_sha256": "73ce9103f8c9afc96219ae3aaeb0026ad637792652eb3abc0250270eab0a216e"
+    },
+    {
+      "id": "2532302130149",
+      "name": "nacre.txt",
+      "gold_id": "F02",
+      "sha1": "7ecc59a38847f8ea5a44a7d575936c6ca931f4b3",
+      "content_sha256": "58b89494807e5077107179eae4048f8813217496d872fe8b5cb50e334b8cc221"
+    },
+    {
+      "id": "2532291993130",
+      "name": "e42.txt",
+      "gold_id": "P01",
+      "sha1": "9c33eff26a9b72670d9d92143f7baa44292abcba",
+      "content_sha256": "5f5cc705ef85badab0c1a473fa7f7c92d3e67474368a61ee1c2de575b44d2d4e"
+    }
+  ],
+  "aws": {
+    "name": "box-hackathon-poc3-20261017-061328",
+    "log_group": "/aws/lambda/box-hackathon-poc3-20261017-061328",
+    "role_name": "box-hackathon-poc3-20261017-061328",
+    "role_arn": "arn:aws:iam::549803795565:role/box-hackathon-poc3-20261017-061328",
+    "role_policy": "owned-log-only",
+    "function_name": "box-hackathon-poc3-20261017-061328",
+    "function_arn": "arn:aws:lambda:us-east-2:549803795565:function:box-hackathon-poc3-20261017-061328",
+    "api_id": "76khft1ll9",
+    "endpoint": "https://76khft1ll9.execute-api.us-east-2.amazonaws.com/poc/box",
+    "created_at": "2026-10-17T06:15:02.127114+00:00"
+  },
+  "cleanup": {
+    "webhook": {
+      "deleted_at": "2026-10-17T06:16:34.373709+00:00",
+      "verification_status": 404
+    },
+    "folder_trashed": "2026-10-17T06:16:35.336079+00:00",
+    "folder": {
+      "purged_at": "2026-10-17T06:16:36.108625+00:00",
+      "active_status": 404,
+      "trash_status": 404
+    },
+    "files": {
+      "verified_at": "2026-10-17T06:16:36.593706+00:00",
+      "all_active_status": 404
+    },
+    "api": "2026-10-17T06:16:37.341666+00:00",
+    "function": "2026-10-17T06:16:38.040795+00:00",
+    "role_policy": "2026-10-17T06:16:38.658622+00:00",
+    "role": "2026-10-17T06:16:39.274461+00:00",
+    "log_group": "2026-10-17T06:16:39.876641+00:00",
+    "aws_absence_checks": [
+      {
+        "command": [
+          "apigateway",
+          "get-rest-api",
+          "--rest-api-id",
+          "76khft1ll9"
+        ],
+        "expected_error": "NotFoundException",
+        "confirmed": true
+      },
+      {
+        "command": [
+          "lambda",
+          "get-function",
+          "--function-name",
+          "box-hackathon-poc3-20261017-061328"
+        ],
+        "expected_error": "ResourceNotFoundException",
+        "confirmed": true
+      },
+      {
+        "command": [
+          "iam",
+          "get-role",
+          "--role-name",
+          "box-hackathon-poc3-20261017-061328"
+        ],
+        "expected_error": "NoSuchEntity",
+        "confirmed": true
+      }
+    ],
+    "log_group_absent": true,
+    "completed_at": "2026-10-17T06:16:41.943925+00:00"
+  },
+  "webhook": "8516747068"
+}

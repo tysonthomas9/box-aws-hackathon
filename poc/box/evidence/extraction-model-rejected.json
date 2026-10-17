@@ -1,0 +1,38 @@
+[
+  {
+    "at": "2026-10-17T06:13:32.387201+00:00",
+    "method": "POST",
+    "path": "/ai/extract_structured",
+    "status": 400,
+    "seconds": 0.1784,
+    "request_id": "05188a5ed7361b41b7cc24e10021ed626",
+    "body": "{\"type\":\"error\",\"code\":\"bad_request\",\"status\":400,\"message\":\"[{\\\"instancePath\\\":\\\"/long_text/model\\\",\\\"schemaPath\\\":\\\"#/properties/long_text/properties/model/enum\\\",\\\"keyword\\\":\\\"enum\\\",\\\"params\\\":{\\\"allowedValues\\\":[\\\"aws__claude_4_5_haiku\\\",\\\"aws__claude_4_5_opus\\\",\\\"aws__claude_4_5_sonnet\\\",\\\"aws__claude_4_6_opus\\\",\\\"aws__claude_4_6_sonnet\\\",\\\"aws__claude_4_7_opus\\\",\\\"aws__claude_4_8_opus\\\",\\\"aws__claude_haiku_5_5\\\",\\\"aws__claude_opus_5\\\",\\\"aws__claude_opus_5_5\\\",\\\"aws__claude_sonnet_5\\\",\\\"aws__claude_sonnet_5_5\\\",\\\"azure__openai__gpt_5\\\",\\\"azure__openai__gpt_5_mini\\\",\\\"azure__openai__gpt_5_nano\\\",\\\"google__claude_4_5_haiku\\\",\\\"google__claude_4_6_sonnet\\\",\\\"google__claude_4_8_opus\\\",\\\"google__gemini_2_5_flash\\\",\\\"google__gemini_2_5_pro\\\",\\\"google__gemini_3_1_flash_lite\\\",\\\"google__gemini_3_5_flash\\\",\\\"google__gemini_3_5_flash_lite\\\",\\\"google__gemini_3_7_flash\\\",\\\"google__gemini_3_8_flash\\\",\\\"google__gemini_4_argon\\\",\\\"ibm__llama_4_maverick\\\",\\\"ibm__mistral_medium_2505\\\",\\\"ibm__mistral_small_3_1_24b_instruct_2503\\\",\\\"openai__gpt_4_1\\\",\\\"openai__gpt_5\\\",\\\"openai__gpt_5_1\\\",\\\"openai__gpt_5_2\\\",\\\"openai__gpt_5_4\\\",\\\"openai__gpt_5_4_mini\\\",\\\"openai__gpt_5_5\\\",\\\"openai__gpt_5_6_luna\\\",\\\"openai__gpt_5_6_sol\\\",\\\"openai__gpt_5_6_terra\\\",\\\"openai__gpt_5_mini\\\",\\\"openai__gpt_5_nano\\\",\\\"openai__gpt_6_1_sol\\\",\\\"openai__gpt_6_astra\\\",\\\"openai__gpt_6_luna\\\",\\\"openai__gpt_6_sol\\\",\\\"openai__o3\\\",\\\"openai__o4_mini\\\"]},\\\"message\\\":\\\"must be equal to one of the allowed values\\\"}]\",\"help_url\":\"https://developer.box.com/guides/api-calls/permissions-and-errors/common-errors/\",\"request_id\":\"\"}",
+    "gold_id": "F01",
+    "file_id": "2532291966730",
+    "requested_model": "azure__openai__gpt_4o_mini"
+  },
+  {
+    "at": "2026-10-17T06:13:34.540461+00:00",
+    "method": "POST",
+    "path": "/ai/extract_structured",
+    "status": 400,
+    "seconds": 0.1467,
+    "request_id": "1c5690fc01fc75f27fe5135922255a653",
+    "body": "{\"type\":\"error\",\"code\":\"bad_request\",\"status\":400,\"message\":\"[{\\\"instancePath\\\":\\\"/long_text/model\\\",\\\"schemaPath\\\":\\\"#/properties/long_text/properties/model/enum\\\",\\\"keyword\\\":\\\"enum\\\",\\\"params\\\":{\\\"allowedValues\\\":[\\\"aws__claude_4_5_haiku\\\",\\\"aws__claude_4_5_opus\\\",\\\"aws__claude_4_5_sonnet\\\",\\\"aws__claude_4_6_opus\\\",\\\"aws__claude_4_6_sonnet\\\",\\\"aws__claude_4_7_opus\\\",\\\"aws__claude_4_8_opus\\\",\\\"aws__claude_haiku_5_5\\\",\\\"aws__claude_opus_5\\\",\\\"aws__claude_opus_5_5\\\",\\\"aws__claude_sonnet_5\\\",\\\"aws__claude_sonnet_5_5\\\",\\\"azure__openai__gpt_5\\\",\\\"azure__openai__gpt_5_mini\\\",\\\"azure__openai__gpt_5_nano\\\",\\\"google__claude_4_5_haiku\\\",\\\"google__claude_4_6_sonnet\\\",\\\"google__claude_4_8_opus\\\",\\\"google__gemini_2_5_flash\\\",\\\"google__gemini_2_5_pro\\\",\\\"google__gemini_3_1_flash_lite\\\",\\\"google__gemini_3_5_flash\\\",\\\"google__gemini_3_5_flash_lite\\\",\\\"google__gemini_3_7_flash\\\",\\\"google__gemini_3_8_flash\\\",\\\"google__gemini_4_argon\\\",\\\"ibm__llama_4_maverick\\\",\\\"ibm__mistral_medium_2505\\\",\\\"ibm__mistral_small_3_1_24b_instruct_2503\\\",\\\"openai__gpt_4_1\\\",\\\"openai__gpt_5\\\",\\\"openai__gpt_5_1\\\",\\\"openai__gpt_5_2\\\",\\\"openai__gpt_5_4\\\",\\\"openai__gpt_5_4_mini\\\",\\\"openai__gpt_5_5\\\",\\\"openai__gpt_5_6_luna\\\",\\\"openai__gpt_5_6_sol\\\",\\\"openai__gpt_5_6_terra\\\",\\\"openai__gpt_5_mini\\\",\\\"openai__gpt_5_nano\\\",\\\"openai__gpt_6_1_sol\\\",\\\"openai__gpt_6_astra\\\",\\\"openai__gpt_6_luna\\\",\\\"openai__gpt_6_sol\\\",\\\"openai__o3\\\",\\\"openai__o4_mini\\\"]},\\\"message\\\":\\\"must be equal to one of the allowed values\\\"}]\",\"help_url\":\"https://developer.box.com/guides/api-calls/permissions-and-errors/common-errors/\",\"request_id\":\"\"}",
+    "gold_id": "F02",
+    "file_id": "2532302130149",
+    "requested_model": "azure__openai__gpt_4o_mini"
+  },
+  {
+    "at": "2026-10-17T06:13:36.730847+00:00",
+    "method": "POST",
+    "path": "/ai/extract_structured",
+    "status": 400,
+    "seconds": 0.1869,
+    "request_id": "09d52eec29299b160c9a7be0ba2e43d15",
+    "body": "{\"type\":\"error\",\"code\":\"bad_request\",\"status\":400,\"message\":\"[{\\\"instancePath\\\":\\\"/long_text/model\\\",\\\"schemaPath\\\":\\\"#/properties/long_text/properties/model/enum\\\",\\\"keyword\\\":\\\"enum\\\",\\\"params\\\":{\\\"allowedValues\\\":[\\\"aws__claude_4_5_haiku\\\",\\\"aws__claude_4_5_opus\\\",\\\"aws__claude_4_5_sonnet\\\",\\\"aws__claude_4_6_opus\\\",\\\"aws__claude_4_6_sonnet\\\",\\\"aws__claude_4_7_opus\\\",\\\"aws__claude_4_8_opus\\\",\\\"aws__claude_haiku_5_5\\\",\\\"aws__claude_opus_5\\\",\\\"aws__claude_opus_5_5\\\",\\\"aws__claude_sonnet_5\\\",\\\"aws__claude_sonnet_5_5\\\",\\\"azure__openai__gpt_5\\\",\\\"azure__openai__gpt_5_mini\\\",\\\"azure__openai__gpt_5_nano\\\",\\\"google__claude_4_5_haiku\\\",\\\"google__claude_4_6_sonnet\\\",\\\"google__claude_4_8_opus\\\",\\\"google__gemini_2_5_flash\\\",\\\"google__gemini_2_5_pro\\\",\\\"google__gemini_3_1_flash_lite\\\",\\\"google__gemini_3_5_flash\\\",\\\"google__gemini_3_5_flash_lite\\\",\\\"google__gemini_3_7_flash\\\",\\\"google__gemini_3_8_flash\\\",\\\"google__gemini_4_argon\\\",\\\"ibm__llama_4_maverick\\\",\\\"ibm__mistral_medium_2505\\\",\\\"ibm__mistral_small_3_1_24b_instruct_2503\\\",\\\"openai__gpt_4_1\\\",\\\"openai__gpt_5\\\",\\\"openai__gpt_5_1\\\",\\\"openai__gpt_5_2\\\",\\\"openai__gpt_5_4\\\",\\\"openai__gpt_5_4_mini\\\",\\\"openai__gpt_5_5\\\",\\\"openai__gpt_5_6_luna\\\",\\\"openai__gpt_5_6_sol\\\",\\\"openai__gpt_5_6_terra\\\",\\\"openai__gpt_5_mini\\\",\\\"openai__gpt_5_nano\\\",\\\"openai__gpt_6_1_sol\\\",\\\"openai__gpt_6_astra\\\",\\\"openai__gpt_6_luna\\\",\\\"openai__gpt_6_sol\\\",\\\"openai__o3\\\",\\\"openai__o4_mini\\\"]},\\\"message\\\":\\\"must be equal to one of the allowed values\\\"}]\",\"help_url\":\"https://developer.box.com/guides/api-calls/permissions-and-errors/common-errors/\",\"request_id\":\"\"}",
+    "gold_id": "P01",
+    "file_id": "2532291993130",
+    "requested_model": "azure__openai__gpt_4o_mini"
+  }
+]
