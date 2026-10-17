@@ -36,17 +36,21 @@ variable "training_hyperparameters" {
     epochs                = number, learning_rate = number, seed = number, max_length = number,
     gradient_accumulation = number, minimum_gain = number,
     fact_wordings         = number, procedure_cases = number, unknown_rows = number, near_miss_rows = number,
-    replay_rows           = number, max_runtime_seconds = number, expected_training_rows = number, helper_budget_usd = number
+    replay_rows           = number, max_runtime_seconds = number, expected_training_rows = number, helper_budget_usd = number, min_credits_usd = number
   })
   default = {
     epochs                = 3, learning_rate = 0.0002, seed = 17, max_length = 512,
     gradient_accumulation = 4, minimum_gain = 0.05,
     fact_wordings         = 4, procedure_cases = 8, unknown_rows = 540, near_miss_rows = 220,
-    replay_rows           = 490, max_runtime_seconds = 5400, expected_training_rows = 2826, helper_budget_usd = 30
+    replay_rows           = 490, max_runtime_seconds = 5400, expected_training_rows = 2826, helper_budget_usd = 70, min_credits_usd = 40
   }
   validation {
-    condition     = var.training_hyperparameters.helper_budget_usd > 0 && var.training_hyperparameters.helper_budget_usd <= 30
-    error_message = "The helper pause threshold must be greater than zero and at most 30 USD."
+    condition     = var.training_hyperparameters.helper_budget_usd > 0 && var.training_hyperparameters.helper_budget_usd <= 70
+    error_message = "The helper pause threshold must be greater than zero and at most 70 USD."
+  }
+  validation {
+    condition     = var.training_hyperparameters.min_credits_usd >= 40
+    error_message = "The AWS reported credit stop threshold must be at least 40 USD."
   }
 }
 variable "base_import_arn" {
@@ -125,6 +129,7 @@ resource "aws_iam_role_policy" "training_worker" {
     { Effect = "Allow", Action = ["s3:ListBucket"], Resource = aws_s3_bucket.data["artifacts"].arn },
     { Effect = "Allow", Action = ["s3:GetObject", "s3:PutObject"], Resource = "${aws_s3_bucket.data["artifacts"].arn}/training/*" },
     { Effect = "Allow", Action = ["secretsmanager:GetSecretValue"], Resource = data.aws_secretsmanager_secret.box.arn },
+    { Effect = "Allow", Action = ["freetier:GetAccountPlanState"], Resource = "*" },
     { Effect = "Allow", Action = ["bedrock:ListImportedModels"], Resource = "*" },
     { Effect = "Allow", Action = ["bedrock:CreateModelImportJob"], Resource = "*" },
     { Effect = "Allow", Action = ["bedrock:GetModelImportJob"], Resource = local.import_job_arn },
