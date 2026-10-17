@@ -14,7 +14,9 @@ from box_sdk_gen.managers.folders import CreateFolderParent
 from kloop.box.auth import token_provider
 from kloop.box.client import BoxClient, sdk_client
 from kloop.box.seed import DEFAULT_PACK, seed
+from kloop.cleanup import CleanupLedger
 from kloop.config import Settings
+from kloop.sync.subscription import seed_webhook
 
 
 def runtime(settings: Settings, mode: str):
@@ -131,12 +133,22 @@ def main() -> int:
         if args.command == "smoke":
             result = smoke(sdk, settings, webhook_url=args.webhook_url)
         else:
+            ledger = None
+            if args.webhook_url:
+                session = boto3.Session(region_name=settings.region)
+                ledger = CleanupLedger(
+                    session.resource("dynamodb").Table(os.environ["KLOOP_CLEANUP_LEDGER_TABLE"]),
+                    os.environ["NAME_PREFIX"],
+                )
             folder_id = settings.box_folder_id
             if not folder_id:
                 # Caller must retain the returned id in KLOOP_BOX_FOLDER_ID for future runs.
                 folder_id = sdk.folders.create_folder("Halvard Systems", CreateFolderParent("0")).id
                 print(json.dumps({"created_folder_id": folder_id}), flush=True)
-            result = seed(BoxClient(sdk, folder_id), args.pack)
+            box = BoxClient(sdk, folder_id)
+            result = seed(box, args.pack)
+            if ledger is not None:
+                result["webhook_id"] = seed_webhook(box, ledger, args.webhook_url)
         print(json.dumps(result, indent=2))
         return 0
     except BoxAPIError as exc:
