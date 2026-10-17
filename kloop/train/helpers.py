@@ -8,15 +8,26 @@ from kloop.train.data import TrainingRow, encoded, sha256
 
 
 class TrainingHelpers:
-    def __init__(self, runtime, artifacts):
+    def __init__(self, runtime, artifacts, *, budget_factory=None):
         self.runtime, self.artifacts = runtime, artifacts
         self.decisions = {}
+        self.budget_factory, self.budget = budget_factory, None
+
+    def bind_generation(self, snapshot_hash, config):
+        from kloop.train.budget import generation_id
+
+        if self.budget_factory is not None:
+            self.budget = self.budget_factory(
+                generation_id(snapshot_hash, config), config.helper_budget_usd
+            )
 
     def call(self, model: str, prompt: str, max_tokens: int):
         key = "training/helper-cache/" + sha256(encoded([model, prompt, max_tokens])) + ".json"
         try:
             result = json.loads(self.artifacts.get(key))
         except KeyError:
+            if self.budget is not None:
+                self.budget.check()
             request = {
                 "modelId": model,
                 "messages": [{"role": "user", "content": [{"text": prompt}]}],
@@ -26,6 +37,8 @@ class TrainingHelpers:
                 request["inferenceConfig"]["temperature"] = 0
             response = self.runtime.converse(**request)
             response_id = response.get("ResponseMetadata", {}).get("RequestId", str(uuid.uuid4()))
+            if self.budget is not None:
+                self.budget.record(model, response, response_id)
             self.artifacts.put(
                 f"training/helper-responses/{response_id}.json",
                 encoded(response),
@@ -43,6 +56,8 @@ class TrainingHelpers:
                 ),
                 "application/json",
             )
+            if self.budget is not None:
+                self.budget.check()
             if response["stopReason"] != "end_turn":
                 raise ValueError("Helper response is incomplete") from None
             text = "".join(c.get("text", "") for c in response["output"]["message"]["content"])

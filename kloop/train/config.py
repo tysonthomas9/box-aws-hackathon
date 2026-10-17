@@ -41,6 +41,7 @@ class TrainingConfig(BaseSettings):
     near_miss_rows: int = Field(default=60, ge=1, le=1000)
     replay_rows: int = Field(default=100, ge=1, le=1000)
     expected_training_rows: int | None = Field(default=None, ge=1)
+    helper_budget_usd: float = Field(default=30, gt=0, le=30)
 
     @property
     def dev_path(self) -> str:

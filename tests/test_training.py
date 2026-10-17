@@ -960,3 +960,71 @@ def test_approved_medical_recipe_and_longer_gpu_budget():
     )
     work = definition("worker")["States"]["Transaction"]["Branches"][0]["States"]
     assert work["Train"]["TimeoutSeconds"] >= 5400 + 1800
+
+
+def test_helper_budget_is_shared_atomic_and_idempotent(table):
+    from kloop.train.budget import HelperBudget, HelperBudgetExceeded
+
+    first = HelperBudget(table, "generation", 30)
+    second = HelperBudget(table, "generation", 30)
+    response = {"usage": {"inputTokens": 1000000, "outputTokens": 2000000}}
+    first.record("us.moonshotai.kimi-k3", response, "native-request")
+    assert first.total_nano() == second.total_nano() == 36_300_000_000
+    first.record("us.moonshotai.kimi-k3", response, "native-request")
+    assert first.total_nano() == 36_300_000_000
+    with pytest.raises(HelperBudgetExceeded):
+        second.check()
+
+
+def test_helper_budget_stops_more_calls_and_preserves_native_evidence(table):
+    from kloop.train.budget import HelperBudget, HelperBudgetExceeded
+    from kloop.train.helpers import TrainingHelpers
+
+    runtime = Mock()
+    runtime.converse.return_value = {
+        "stopReason": "end_turn",
+        "output": {"message": {"content": [{"text": "[true]"}]}},
+        "usage": {"inputTokens": 1000, "outputTokens": 1000},
+        "ResponseMetadata": {"RequestId": "over-budget"},
+    }
+    artifacts = MemoryArtifacts()
+    helpers = TrainingHelpers(runtime, artifacts)
+    helpers.budget = HelperBudget(table, "generation", 0.001)
+    with pytest.raises(HelperBudgetExceeded):
+        helpers.call("zai.glm-5", "first", 256)
+    assert artifacts.get("training/helper-usage/over-budget.json")
+    assert artifacts.get("training/helper-responses/over-budget.json")
+    with pytest.raises(HelperBudgetExceeded):
+        helpers.call("zai.glm-5", "second", 256)
+    runtime.converse.assert_called_once()
+
+
+def test_helper_budget_identity_survives_a_relaunch_or_limit_change(snapshot):
+    from kloop.train.budget import generation_id
+
+    config = TrainingConfig()
+    assert generation_id(snapshot.sha256, config) == generation_id(
+        snapshot.sha256,
+        config.model_copy(update={"helper_budget_usd": 10, "max_runtime_seconds": 5400}),
+    )
+    assert generation_id(snapshot.sha256, config) != generation_id(
+        snapshot.sha256, config.model_copy(update={"fact_wordings": 4})
+    )
+
+
+def test_crossed_helper_budget_blocks_prepare_but_allows_cleanup(worker):
+    from kloop.train.budget import HelperBudget, HelperBudgetExceeded, generation_id
+    from kloop.train.helpers import TrainingHelpers
+
+    w, store, _, _ = worker
+    version = store.get("run")
+    generation = generation_id(version.manifest["snapshot_hash"], TrainingConfig())
+    budget = HelperBudget(store.table, generation, 30)
+    budget.record("zai.glm-5", {"usage": {"inputTokens": 31000000, "outputTokens": 0}}, "cost")
+    w.helpers = TrainingHelpers(Mock(), MemoryArtifacts(), budget_factory=lambda *_: budget)
+    w.builder = Mock()
+    with pytest.raises(HelperBudgetExceeded):
+        w.handle("prepare", "run")
+    w.builder.build.assert_not_called()
+    assert w.handle("cleanup", "run")["complete"]
+    assert not w.ledger.entries()

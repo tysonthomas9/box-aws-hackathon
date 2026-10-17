@@ -18,6 +18,7 @@ from kloop.cleanup import CleanupLedger
 from kloop.config import Settings
 from kloop.extract.runtime import factory as extraction_factory
 from kloop.extract.runtime import snapshot_storage
+from kloop.train.budget import HelperBudget
 from kloop.train.config import TrainingConfig
 from kloop.train.data import DataBuilder
 from kloop.train.helpers import TrainingHelpers
@@ -120,7 +121,11 @@ def factory(session):
             retries={"total_max_attempts": 2, "mode": "adaptive"},
         ),
     )
-    helpers = TrainingHelpers(runtime, artifacts)
+    helpers = TrainingHelpers(
+        runtime,
+        artifacts,
+        budget_factory=lambda generation, limit: HelperBudget(store.table, generation, limit),
+    )
     ledger = CleanupLedger(
         session.resource("dynamodb").Table(os.environ["KLOOP_CLEANUP_LEDGER_TABLE"]),
         config.deployment,

@@ -43,6 +43,10 @@ class TrainingWorker:
             raise KeyError(version_id)
         self.store.assert_owner(version_id)
         config = TrainingConfig.model_validate(version.manifest["config"])
+        if self.helpers is not None:
+            self.helpers.bind_generation(version.manifest["snapshot_hash"], config)
+            if action in {"batches", "generate", "prepare"} and self.helpers.budget is not None:
+                self.helpers.budget.check()
         import_name = version.manifest.get("active_import_name", version.id)
         if version.manifest["dev_set_hash"] != config.dev_set_hash:
             raise ValueError("Version and recipe dev bindings differ")
@@ -54,6 +58,10 @@ class TrainingWorker:
             )
             if action == "batches":
                 self.slots.reserve(version.id)
+                if self.helpers.budget is not None:
+                    version.manifest["helper_generation_id"] = self.helpers.budget.generation
+                    version.manifest["helper_budget_usd"] = config.helper_budget_usd
+                    self.store.save(version)
                 return {"batches": list(range(len(self.helpers.batches(snapshot, config))))}
             if type(batch) is not int or not 0 <= batch < len(
                 self.helpers.batches(snapshot, config)
