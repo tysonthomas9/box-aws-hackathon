@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+from kloop.answer import ModelWarming
 from kloop.schemas import ApprovedSnapshot
 from kloop.train.config import MEDICAL_DEV_HASH, TrainingConfig
 from kloop.train.data import TrainingRow
@@ -26,6 +27,7 @@ class TrainingWorker:
         import_role,
         dev_bytes,
         helpers=None,
+        base_model_arn=None,
     ):
         self.store, self.snapshots, self.builder = store, snapshots, builder
         self.slots, self.ledger, self.sagemaker = slots, ledger, sagemaker
@@ -33,6 +35,7 @@ class TrainingWorker:
         self.bucket, self.training_role, self.import_role = bucket, training_role, import_role
         self.dev_bytes = dev_bytes
         self.helpers = helpers
+        self.base_model_arn = base_model_arn
 
     def handle(self, action: str, version_id: str, *, batch: int | None = None) -> dict:
         version = self.store.get(version_id)
@@ -40,6 +43,7 @@ class TrainingWorker:
             raise KeyError(version_id)
         self.store.assert_owner(version_id)
         config = TrainingConfig.model_validate(version.manifest["config"])
+        import_name = version.manifest.get("active_import_name", version.id)
         if version.manifest["dev_set_hash"] != config.dev_set_hash:
             raise ValueError("Version and recipe dev bindings differ")
         if action in {"batches", "generate"}:
@@ -118,18 +122,53 @@ class TrainingWorker:
             self.store.save(version)
             return {"job_arn": job}
         if action == "poll":
-            result = self.slots.poll(version.id)
+            result = self.slots.poll(import_name)
             if result["status"] == "Completed":
                 version.import_arn = result["importedModelArn"]
                 version.manifest["serving_model_id"] = version.import_arn
                 version.status = "evaluating"
                 self.store.save(version)
             return {"status": result["status"]}
-        if action == "warm":
-            self.serving.select(config.serving_backend).warm_up(
-                version.manifest["serving_model_id"]
-            )
+        if action == "warm_current":
+            previous = version.manifest["expected_current_version"]
+            model = self.store.get(previous).import_arn if previous else self.base_model_arn
+            if not model:
+                raise ValueError("The dev baseline needs a serving model")
+            self.serving.select(config.serving_backend).warm_up(model)
             return {}
+        if action == "warm":
+            try:
+                self.serving.select(config.serving_backend).warm_up(
+                    version.manifest["serving_model_id"]
+                )
+            except ModelWarming:
+                if version.manifest.get("reimports", 0):
+                    raise RuntimeError(
+                        "Model remains unavailable after its one re-import"
+                    ) from None
+                raise
+            return {}
+        if action == "reimport":
+            retry_name = version.id + "-r1"
+            if import_name != retry_name:
+                if not self.slots.delete(f"import:{import_name}"):
+                    return {"complete": False}
+                version.manifest.update(
+                    active_import_name=retry_name,
+                    reimports=1,
+                    import_attempted=False,
+                )
+                self.store.save(version)
+            self.slots.reserve(retry_name)
+            version.manifest["import_attempted"] = True
+            self.store.save(version)
+            job = self.slots.create(
+                retry_name, self.import_role, f"s3://{self.bucket}/training/{version.id}/merged/"
+            )
+            version.manifest["import_job_arn"] = job
+            version.status = "importing"
+            self.store.save(version)
+            return {"complete": True, "job_arn": job}
         if action == "evaluate":
             result = self.evaluate(
                 candidate_arn=version.import_arn,
@@ -180,7 +219,8 @@ class TrainingWorker:
         promoted = self.store.current() == version.id
         if not promoted:
             if not self.slots.delete(
-                f"import:{version.id}", attempted=version.manifest.get("import_attempted", False)
+                f"import:{version.manifest.get('active_import_name', version.id)}",
+                attempted=version.manifest.get("import_attempted", False),
             ):
                 return False
             if version.status not in {"rejected", "failed"}:

@@ -149,7 +149,7 @@
                 {
                   "Variable": "$.poll.value.status",
                   "StringEquals": "Completed",
-                  "Next": "Warm"
+                  "Next": "WarmCurrent"
                 },
                 {
                   "Variable": "$.poll.value.status",
@@ -186,6 +186,23 @@
               "Type": "Fail",
               "Error": "ImportTimeout"
             },
+            "WarmCurrent": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "${worker_arn}",
+                "Payload": {
+                  "action": "warm_current",
+                  "version_id.$": "$.version_id"
+                }
+              },
+              "ResultSelector": {
+                "value.$": "$.Payload"
+              },
+              "ResultPath": "$.warm_current",
+              "TimeoutSeconds": 900,
+              "Next": "Warm"
+            },
             "Warm": {
               "Type": "Task",
               "Resource": "arn:aws:states:::lambda:invoke",
@@ -201,7 +218,49 @@
               },
               "ResultPath": "$.warm",
               "TimeoutSeconds": 900,
-              "Next": "Evaluate"
+              "Next": "Evaluate",
+              "Catch": [
+                {
+                  "ErrorEquals": [
+                    "ModelWarming"
+                  ],
+                  "ResultPath": "$.warm_error",
+                  "Next": "Reimport"
+                }
+              ]
+            },
+            "Reimport": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "${worker_arn}",
+                "Payload": {
+                  "action": "reimport",
+                  "version_id.$": "$.version_id"
+                }
+              },
+              "ResultSelector": {
+                "value.$": "$.Payload"
+              },
+              "ResultPath": "$.reimport",
+              "TimeoutSeconds": 60,
+              "Next": "ReimportStatus"
+            },
+            "ReimportStatus": {
+              "Type": "Choice",
+              "Choices": [
+                {
+                  "Variable": "$.reimport.value.complete",
+                  "BooleanEquals": true,
+                  "Next": "WaitImport"
+                }
+              ],
+              "Default": "WaitReimport"
+            },
+            "WaitReimport": {
+              "Type": "Wait",
+              "Seconds": 30,
+              "Next": "Reimport"
             },
             "Evaluate": {
               "Type": "Task",

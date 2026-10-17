@@ -50,7 +50,11 @@ def definition(worker_arn: str) -> dict:
         "ImportStatus": {
             "Type": "Choice",
             "Choices": [
-                {"Variable": "$.poll.value.status", "StringEquals": "Completed", "Next": "Warm"},
+                {
+                    "Variable": "$.poll.value.status",
+                    "StringEquals": "Completed",
+                    "Next": "WarmCurrent",
+                },
                 {
                     "Variable": "$.poll.value.status",
                     "StringEquals": "Failed",
@@ -78,7 +82,21 @@ def definition(worker_arn: str) -> dict:
         },
         "ImportFailed": {"Type": "Fail", "Error": "ImportFailed"},
         "ImportTimeout": {"Type": "Fail", "Error": "ImportTimeout"},
+        "WarmCurrent": task("warm_current", "Warm", seconds=900),
         "Warm": task("warm", "Evaluate", seconds=900),
+        "Reimport": task("reimport", "ReimportStatus", seconds=60),
+        "ReimportStatus": {
+            "Type": "Choice",
+            "Choices": [
+                {
+                    "Variable": "$.reimport.value.complete",
+                    "BooleanEquals": True,
+                    "Next": "WaitImport",
+                }
+            ],
+            "Default": "WaitReimport",
+        },
+        "WaitReimport": {"Type": "Wait", "Seconds": 30, "Next": "Reimport"},
         "Evaluate": task("evaluate", "Gate", seconds=900),
         "Gate": {
             "Type": "Choice",
@@ -90,6 +108,9 @@ def definition(worker_arn: str) -> dict:
         "Promote": task("promote"),
         "Rejected": {"Type": "Pass", "End": True},
     }
+    work["Warm"]["Catch"] = [
+        {"ErrorEquals": ["ModelWarming"], "ResultPath": "$.warm_error", "Next": "Reimport"}
+    ]
     work["Generate"]["Iterator"]["States"]["GenerateBatch"]["Parameters"]["Payload"]["batch.$"] = (
         "$.batch"
     )

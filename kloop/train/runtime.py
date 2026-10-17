@@ -169,6 +169,7 @@ def factory(session):
         import_role=os.environ["KLOOP_IMPORT_ROLE"],
         dev_bytes=Path(config.dev_path).read_bytes(),
         helpers=helpers,
+        base_model_arn=settings.base_model_id,
     )
 
 

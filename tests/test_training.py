@@ -823,3 +823,28 @@ def test_generation_map_is_inside_training_transaction_before_prepare():
         "version_id.$": "$.version_id",
         "batch.$": "$.batch",
     }
+
+
+def test_model_warming_reimports_once_and_tracks_cleanup_owner(worker):
+    from kloop.answer import ModelWarming
+
+    w, store, bedrock, _ = worker
+    w.handle("prepare", "run")
+    w.handle("import", "run")
+    w.handle("poll", "run")
+    backend = w.serving.select("bedrock")
+    backend.warm_up.side_effect = ModelWarming()
+    with pytest.raises(ModelWarming):
+        w.handle("warm", "run")
+    assert w.handle("reimport", "run")["complete"]
+    assert store.get("run").manifest["active_import_name"] == "run-r1"
+    assert store.get("run").manifest["reimports"] == 1
+    assert [r["key"] for r in w.ledger.entries() if r["kind"] == "bedrock_import"] == [
+        "import:run-r1"
+    ]
+    assert bedrock.created[-1]["clientRequestToken"] == "run-r1"
+    w.handle("poll", "run")
+    with pytest.raises(RuntimeError, match="one re-import"):
+        w.handle("warm", "run")
+    assert w.cleanup(store.get("run"))
+    assert not w.ledger.entries()
